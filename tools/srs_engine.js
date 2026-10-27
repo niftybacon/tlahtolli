@@ -4,10 +4,10 @@ const TlahtolliSRS=(()=>{
 const DAY=86400000,MIN=60000,KEY='tlahtolli_srs_settings_v2';
 const DEFAULT={newLimit:10,reviewLimit:100,learning:'1m 10m',relearning:'10m',graduating:1,easyDays:4,
  maxInterval:36500,startingEase:2.5,easyBonus:1.3,hardFactor:1.2,intervalModifier:1,lapseMultiplier:.2,
- minLapse:1,leechThreshold:8,leechAction:'tag',order:'due',burySiblings:true};
+ minLapse:1,leechThreshold:8,leechAction:'tag',order:'due',burySiblings:true,reviewFirst:true,newOrder:'added',reviewOrder:'due',timerSeconds:0,autoReveal:false};
 const LIMITS={newLimit:[0,999],reviewLimit:[0,9999],graduating:[1,3650],easyDays:[1,3650],
  maxInterval:[1,36500],startingEase:[1.3,4],easyBonus:[1,4],hardFactor:[1,2],
- intervalModifier:[.2,3],lapseMultiplier:[0,1],minLapse:[1,3650],leechThreshold:[1,99]};
+ intervalModifier:[.2,3],lapseMultiplier:[0,1],minLapse:[1,3650],leechThreshold:[1,99],timerSeconds:[0,600]};
 const FIELDS=[
  ['newLimit','New cards per day'],['reviewLimit','Maximum daily reviews'],
  ['learning','Learning steps (1m 10m)'],['relearning','Relearning steps (10m)'],
@@ -15,6 +15,7 @@ const FIELDS=[
  ['startingEase','Starting ease (1.3–4.0)'],['easyBonus','Easy bonus'],
  ['hardFactor','Hard interval factor'],['intervalModifier','Interval modifier'],
  ['lapseMultiplier','Lapse interval multiplier'],['minLapse','Minimum lapse interval · days'],
+ ['timerSeconds','Optional answer timer · seconds (0 = off)'],
  ['maxInterval','Maximum interval · days'],['leechThreshold','Leech lapse threshold']
 ];
 const PRESETS={
@@ -32,6 +33,10 @@ function config(input={}){
  x.order=['due','new','alphabetical'].includes(input.order)?input.order:DEFAULT.order;
  x.leechAction=['tag','suspend'].includes(input.leechAction)?input.leechAction:DEFAULT.leechAction;
  x.burySiblings=input.burySiblings!==false;
+ x.reviewFirst=input.reviewFirst!==false;
+ x.newOrder=['added','alphabetical','random'].includes(input.newOrder)?input.newOrder:DEFAULT.newOrder;
+ x.reviewOrder=['due','random','hardest'].includes(input.reviewOrder)?input.reviewOrder:DEFAULT.reviewOrder;
+ x.autoReveal=input.autoReveal===true;
  return x;
 }
 function steps(value){
@@ -95,9 +100,15 @@ function allowed(key,r,filter,stats,now){
  if(filter!=='all'&&r&&phase(r)==='review'&&stats.reviews>=opts.reviewLimit)return false;
  return true;
 }
+function stableSortHash(s){let h=2166136261;for(const c of String(s)){h=Math.imul(h^c.charCodeAt(0),16777619);}return h>>>0;}
 function sort(a,b,ka,kb){
- if(opts.order==='alphabetical')return a.localeCompare(b);
- if(opts.order==='new'&&(!ka)!==(!kb))return ka?1:-1;
+ const newA=!ka,newB=!kb;
+ if(newA!==newB)return opts.reviewFirst?(newA?1:-1):(newA?-1:1);
+ if(newA){if(opts.newOrder==='alphabetical')return a.localeCompare(b);
+  if(opts.newOrder==='random')return stableSortHash(a+'|'+midnight())-stableSortHash(b+'|'+midnight());
+  return 0;}
+ if(opts.reviewOrder==='random')return stableSortHash(a+'|'+midnight())-stableSortHash(b+'|'+midnight());
+ if(opts.reviewOrder==='hardest')return (ka?.ease||2.5)-(kb?.ease||2.5)||((ka?.due||0)-(kb?.due||0));
  return (ka?.due||0)-(kb?.due||0)||a.localeCompare(b);
 }
 function queueWords(now=Date.now()){
@@ -164,14 +175,15 @@ function undoLast(){if(!undo)return;
 function exportAnki(paradigms=false){
  const reverse=paradigms==='reverse',isParadigms=paradigms===true;
  const deck='Tlahtōlli::'+(isParadigms?'Verb Paradigms':reverse?'Reverse Vocabulary':'Vocabulary');
- const head='#separator:Tab\r\n#html:true\r\n#notetype:Basic\r\n#deck:'+deck+'\r\n#columns:Front\tBack\tTags\r\n#tags column:3\r\n';
+ const head='#separator:Tab\r\n#html:true\r\n#notetype:Basic\r\n#deck:'+deck+'\r\n#columns:GUID\tFront\tBack\tTags\r\n#guid column:1\r\n#tags column:4\r\n';
+ function guid(key){const s='tlahtolli|'+deck+'|'+key;return 'tl'+stableSortHash(s).toString(36)+stableSortHash(s+'|2').toString(36)}
  const rows=[];
  if(isParadigms){
   for(const [lemma,model] of Object.entries(FULL_VERB_PARADIGMS))
    for(let ti=0;ti<model.cells.length;ti++)for(let pi=0;pi<6;pi++){
     const prompt=lemma+' · '+VERB_TENSES[ti].name+' · '+PARADIGM_PERSONS[pi][0];
     const back='<strong>'+safe(model.cells[ti][pi])+'</strong><hr>Grammar-derived, not individually manuscript-attested. Source: '+safe(model.lemmaSource);
-    rows.push([prompt,back,'Nahuatl Tlahtolli Paradigm GrammarDerived']);
+    rows.push([guid('paradigm|'+lemma+'|'+ti+'|'+pi),prompt,back,'Nahuatl Tlahtolli Paradigm GrammarDerived']);
    }
  }else for(const w of words){
   if(!w.word||!w.meaning)continue;
@@ -179,12 +191,12 @@ function exportAnki(paradigms=false){
    '<br>Historic spelling: '+safe(w.original||'not recorded')+
    '<br>Verification: '+safe(w.status)+
    '<br>Source: '+safe(w.source)+(w.notes?'<br>Notes: '+safe(w.notes):'');
-  rows.push([reverse?w.meaning:w.word,reverse?'<strong>'+safe(w.word)+'</strong><hr>'+back:back,
+  rows.push([guid((w.variety||'')+'|'+w.word),reverse?w.meaning:w.word,reverse?'<strong>'+safe(w.word)+'</strong><hr>'+back:back,
    'Nahuatl Tlahtolli Vocabulary '+String(w.pos||'').toLowerCase().replace(/[^a-z]+/g,'_')]);
  }
  download(isParadigms?'tlahtolli-anki-verb-paradigms.tsv':reverse?'tlahtolli-anki-reverse-vocabulary.tsv':'tlahtolli-anki-vocabulary.tsv',
   head+rowsToText(rows,'\t'),'text/tab-separated-values');
- message('Exported '+rows.length+' Anki notes. Anki will schedule them independently; TSV does not transfer this browser’s review history.');
+ message('Exported '+rows.length+' Anki notes with stable import GUIDs. Anki schedules them independently; TSV does not transfer this browser’s review history.');
 }
 function resumeSuspended(){
  const affected=Object.values(studyRecords).filter(r=>r.suspended===true);
@@ -200,6 +212,9 @@ function applySettings(newSettings){
  if($('srsOrder'))$('srsOrder').value=opts.order;
  if($('srsLeechAction'))$('srsLeechAction').value=opts.leechAction;
  if($('srsBury'))$('srsBury').checked=opts.burySiblings;
+ for(const k of ['newOrder','reviewOrder'])if($('srs_'+k))$('srs_'+k).value=opts[k];
+ if($('srsReviewFirst'))$('srsReviewFirst').checked=opts.reviewFirst;
+ if($('srsAutoReveal'))$('srsAutoReveal').checked=opts.autoReveal;
  excluded.clear();studyCurrentKey='';drillCurrentKey='';
  renderStudy();renderDrill();statsText();
 }

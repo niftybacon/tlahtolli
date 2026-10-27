@@ -250,8 +250,9 @@ let suppressedPublished=new Set(readLocalJson(suppressedKey,[]));
 function persistPublished(){try{localStorage.setItem(publishedBaseKey,JSON.stringify(publishedBaseline));localStorage.setItem(suppressedKey,JSON.stringify([...suppressedPublished]));}catch{}}
 // Prior HTML editions stored complete lists. Compare them to the packaged v1.0 baseline
 // before changing anything, so legacy personal edits are treated as local overrides.
-for(const seeded of VERIFIED_PACK_WORDS){const key=pubKey(seeded);if(!publishedBaseline[key])publishedBaseline[key]=seeded;}
-persistPublished();
+let initialBaselineChanges=0;
+for(const seeded of VERIFIED_PACK_WORDS){const key=pubKey(seeded);if(!publishedBaseline[key]){publishedBaseline[key]=seeded;initialBaselineChanges++;}}
+if(initialBaselineChanges)persistPublished();
 
 let words;let selected=-1;let editing=-1;let entryView='overview';let formEditing=-1;
 try{const saved=localStorage.getItem(storageKey);words=saved?JSON.parse(saved):VERIFIED_PACK_WORDS.map(x=>({...x}));if(!Array.isArray(words))throw Error('invalid saved data');}catch(e){words=VERIFIED_PACK_WORDS.map(x=>({...x}));}
@@ -782,18 +783,20 @@ async function syncPublished(silent=false){
   if(remoteWordDoc.version!==remoteVerbDoc.version)throw Error('Dictionary and paradigms have different release versions.');
   const nextWords=validatePublishedDictionary(remoteWordDoc);
   const nextModels=validatePublishedParadigms(remoteVerbDoc);
-  let added=0,updated=0,protectedEdits=0,hidden=0;
+  let added=0,updated=0,protectedEdits=0,hidden=0,baselineChanges=0;
   for(const entry of nextWords){
    const key=pubKey(entry),index=words.findIndex(w=>samePackWord(w,entry)),oldBase=publishedBaseline[key];
    if(index<0){if(suppressedPublished.has(key)){hidden++;}else{words.push(clean(entry));added++;}}
    else if(oldBase&&entriesIdentical(words[index],oldBase)){
     if(!entriesIdentical(words[index],entry)){words[index]=clean(entry);updated++;}
    }else if(!entriesIdentical(words[index],entry)){protectedEdits++;}
-   publishedBaseline[key]=clean(entry);
+   if(!oldBase||!entriesIdentical(oldBase,entry)){publishedBaseline[key]=clean(entry);baselineChanges++;}
   }
   VERIFIED_PACK_WORDS=nextWords;
   FULL_VERB_PARADIGMS=nextModels;
-  persistPublished();store();render();renderFormProbe();if(!$('auditView').classList.contains('hidden'))renderAudit();if(!$('studyView').classList.contains('hidden')){renderStudy();renderDrill();}
+  if(baselineChanges)persistPublished();
+  if(added||updated)store();else searchIndex=null;
+  if(added||updated||!published.bundled){render();renderFormProbe();if(!$('auditView').classList.contains('hidden'))renderAudit();if(!$('studyView').classList.contains('hidden')){renderStudy();renderDrill();}}
   try{localStorage.setItem(syncMetaKey,JSON.stringify({version:remoteWordDoc.version,checked:new Date().toISOString()}));}catch{}
   showSyncState('Published edition '+remoteWordDoc.version+' · '+(published.bundled?'Current':'Synced'),`${nextWords.length} published lemmas · ${added} added · ${updated} updated · ${protectedEdits} local edits protected${hidden?' · '+hidden+' intentionally hidden':''}`,'ok');
   if(!silent||added||updated)message('Dictionary synced: '+added+' new words, '+updated+' untouched entries updated. '+protectedEdits+' edited entries preserved.');

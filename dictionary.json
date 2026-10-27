@@ -1,9 +1,9 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-26.2",
+  "version": "2026-10-26.3",
   "variety": "Classical Nahuatl",
-  "editorial_policy": "Source-checked is not specialist peer review. Paradigms are grammar-derived rather than independently attested manuscript forms. Read individual evidence labels.",
+  "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
     {
       "word": "ātl",

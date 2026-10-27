@@ -18,17 +18,17 @@ m=json.loads((ROOT/'data/morphology.json').read_text(encoding='utf-8'))
 l=json.loads((ROOT/'data/lexicon.json').read_text(encoding='utf-8'))
 names=['ācatl','cuahuitl','iztatl','nacatl','tamalli','quetzalli','āyōtl',
        'cacahuatl','tlacuilo','cochi','caqui','tlazotla','cuiloa','tlacuiloa','yauh']
-assert len(d['words'])==len(e['entries'])==len(m['entries'])==len(l['words'])==103
-assert [w['word'] for w in d['words'][88:]]==names
+assert len(d['words'])==len(e['entries'])==len(m['entries'])==len(l['words'])>=103
+assert [w['word'] for w in d['words'][88:103]]==names
 assert len(p['paradigms'])==12
-assert d['version']==p['version']==e['version']==m['version']==l['version']=='2026-10-27.4.0'
+assert d['version']==p['version']==e['version']==m['version']==l['version'] and d['version'].startswith('2026-10-27.')
 assert sum(len(w['claims']) for w in d['words'][:88])==674
 assert sum(len(w['inflections']) for w in d['words'][:88])==178
-assert sum(len(w['claims']) for w in d['words'])==777
-assert sum(len(w['inflections']) for w in d['words'])==211
+assert sum(len(w['claims']) for w in d['words'][:103])==777
+assert sum(len(w['inflections']) for w in d['words'][:103])==211
 old_grade=Counter(c['assessment'] for w in d['words'][:88] for c in w['claims'])
 assert old_grade=={'dictionary':327,'grammar':129,'text':15,'inference':108,'unverified':95},old_grade
-for w in d['words'][88:]:
+for w in d['words'][88:103]:
     claims={c['field']:c for c in w['claims']}
     assert {'headword','meaning','pos','stem','other'}<=set(claims) if 'verb' in w['pos'] else {'headword','meaning','pos','animacy','number','plural','possessed','stem'}<=set(claims)
     for field in ('headword','meaning','pos'):
@@ -55,7 +55,7 @@ assert any(f['evidence']=='dictionary' and f['form']=='onitlacac' for f in by['c
 assert all(x not in p['paradigms'] for x in names if x in ('cochi','caqui','yauh'))
 with (ROOT/'claim_audit.csv').open(encoding='utf-8',newline='') as stream:
     rows=list(csv.DictReader(stream))
-assert len(rows)==777
+assert len(rows)==sum(len(w['claims']) for w in d['words'])
 
 with sync_playwright() as pw:
     browser=pw.chromium.launch(headless=True,args=['--no-sandbox'])
@@ -75,7 +75,7 @@ with sync_playwright() as pw:
     }""",[d,p])
     page.set_content((ROOT/'index.html').read_text(encoding='utf-8'),wait_until='load')
     page.wait_for_function("document.querySelector('#syncStatus')?.textContent.includes('Current')")
-    assert int(page.locator('#total').inner_text())==103
+    assert int(page.locator('#total').inner_text())==len(d['words'])
     parsed=page.evaluate("""()=>{
      const f=x=>TlahtolliMorphEngine.analyze(x);
      return {
@@ -99,7 +99,7 @@ with sync_playwright() as pw:
     }""")
     assert all(parsed[k] for k in ('reed','salt','feather','scribes','slept','hear','love','write','wrote','go','sleepSegments','hearingSegments','motionSegments')),parsed
     assert not parsed['turtle'],parsed
-    assert parsed['corpusSize']==103 and parsed['totalClaims']==777,parsed
+    assert parsed['corpusSize']==len(d['words']) and parsed['totalClaims']==sum(len(w['claims']) for w in d['words']),parsed
     page.locator('#analyzerDetails').evaluate('(el)=>el.open=true')
     page.locator('#formProbeInput').fill('onicoch')
     page.locator('#formProbeForm button[type="submit"]').click()

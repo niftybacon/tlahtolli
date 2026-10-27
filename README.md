@@ -1,3 +1,7 @@
+# Amoxtli — four cited reading excerpts and nine source-led dictionary entries (2026-10-27)
+
+Four compact historical text passages now appear in the reading desk, including Florentine Codex Book 11 and a Cantares Mexicanos excerpt identified in a UNAM edition. Nine new lexical entries are fully separated into their lexical, morphological and claim-level sources, for **112 total lemmas**. Previously saved personal passages and annotations receive the new public excerpts additively. No manuscript-level verification, universal morphology or new paradigm is inferred. [Research ledger](docs/AMOXTLI_EXPANSION_02.md).
+
 # Historical spellings and interface polish (October 27, 2026)
 
 Word overviews now display an evidence-aware **Historical spellings** section. Already linked transcriptions are shown with sources, including the Florentine Codex spellings `Jn` and `yn` for **in** (Book 1, folio 16r). These spellings are searchable. The rest of the dictionary, morphology, and study tools remain unchanged. See [the documentation](docs/HISTORICAL_SPELLINGS.md).

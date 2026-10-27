@@ -1,3 +1,9 @@
+## October 27, 2026 — Amoxtli reading expansion 02
+
+- Add four concise, specifically sourced reading excerpts from the Florentine Codex and a scholarly edition of the Cantares Mexicanos.
+- Expand the lexicon to 112 words with nine separately audited entries, without extrapolating forms or changing prior attestations.
+- Non-destructively introduce new reading samples to browsers with existing passages; preserve local edits and annotations.
+
 ## October 27, 2026 — Historical spellings and final interface polish
 
 - Display source-linked original and historical spelling variants at the bottom of every dictionary overview, and index documented spellings for search.

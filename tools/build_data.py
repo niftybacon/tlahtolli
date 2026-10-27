@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build Tlahtolli's published dictionary from the three canonical data files."""
-import argparse,csv,hashlib,io,json,sys
+import argparse,csv,io,json,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 FIELDS="word meaning pos stem original variety status source example translation notes number animacy plural pluralStatus absolutive possessed grammarSource grammarNotes inflections formsEdited claims".split()
@@ -37,8 +37,6 @@ def build():
        "variety":l["variety"],"editorial_policy":l["editorial_policy"],"words":words}
     if release["headwords"]!=len(words) or release["paradigms"]!=len(p["paradigms"]):
         raise ValueError("Release counts mismatch")
-    blob=json.dumps([d,p,r],ensure_ascii=False,sort_keys=True,separators=(",",":"))
-    release["dataSha256"]=hashlib.sha256(blob.encode("utf-8")).hexdigest()
     output=io.StringIO(newline="")
     output.write("headword,claim_field,review_level,source_url,exact_locator_or_section,editorial_conclusion,reviewer,reviewed_date\n")
     wr=csv.writer(output,quoting=csv.QUOTE_ALL,lineterminator="\n")

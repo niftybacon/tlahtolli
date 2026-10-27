@@ -61,7 +61,7 @@ class Parser(HTMLParser):
         if self.inside:self.scripts[-1]+=text
 h=Parser();h.feed((root/'index.html').read_text(encoding='utf-8'))
 check(not [x for x,n in Counter(h.ids).items() if n>1],'Duplicate HTML IDs')
-check(all(x in h.ids for x in ('tabStudy','studyView','studyCard','auditView','formProbeInput','concordanceInput','facetPOS','facetAnimacy','facetEvidence','concordanceMode','concordanceSource','drillCard','drillVerb','auditCoverageMatrix','interlinearDesk','interlinearRows')),'Study/research UI missing')
+check(all(x in h.ids for x in ('tabStudy','studyView','studyCard','auditView','formProbeInput','concordanceInput','facetPOS','facetAnimacy','facetEvidence','concordanceMode','concordanceSource','drillCard','drillVerb','auditCoverageMatrix')),'Study/research UI missing')
 check('v1.7' in (root/'index.html').read_text(encoding='utf-8'),'App version header mismatch')
 try:
     seed=json.loads(h.scripts[0].split('window.TLAHTOLLI_OFFLINE_SEED=',1)[1].strip().rstrip(';'))

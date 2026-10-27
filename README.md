@@ -1,3 +1,7 @@
+# Expansion 01 — 103 sourced Classical Nahuatl lemmas (2026-10-27)
+
+Fifteen new historical-lexicon entries add **nine nouns and six verbs**, with individual Molina/Karttunen/Lockhart or colonial-edition locators. Includes source-quoted special verb forms and bounded noun stem analyses; no fabricated 10×6 paradigms or manuscript-attestation claims. All original 88 lemmas, 12 verb models, and 674 original field claims are preserved. The [15-entry research ledger](docs/EXPANSION01_SOURCE_LEDGER.md) states exact evidence boundaries, including unresolved plurals. The advanced offline morphology engine can now recognize the new cited tokens.
+
 # Advanced source-aware Classical Nahuatl morphology engine (2026-10-27)
 
 Tlahtōlli now includes a bounded reverse morphological analyzer using all 720 indexed grammar-derived verb cells, evidence-specific lexical inflections, careful noun stem/absolutive segmentation, and guarded transitive/possessive hypotheses. It retains ambiguous analyses, labels rule generation as **unverified**, and explains what each matched morpheme does. The standalone HTML works offline, with the engine now maintained in `tools/morphology_engine.js` and checked against the embedded copy by CI. This does **not** increase the 88 headwords or imply manuscript attestation of generated forms. See the [engine's research boundaries and architecture](docs/ADVANCED_MORPHOLOGY_ENGINE.md).

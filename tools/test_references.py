@@ -43,6 +43,7 @@ with sync_playwright() as pw:
     assert page.locator('#resultList').count()==1 and 'in' in page.locator('#resultList').inner_text().lower()
     page.locator('#search').fill('xōchitl')
     page.wait_for_timeout(250)
+    page.locator('[data-entry-tab="overview"]').click()
     assert page.locator('.historical-spellings').count()==1
     assert 'xochitl' in page.locator('.historical-spellings').inner_text()
     page.locator('#analyzerDetails').evaluate('(el)=>el.open=true')

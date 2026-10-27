@@ -188,7 +188,7 @@ const TlahtolliMorphEngine = (() => {
       all.push(make(lemma,'Productive transitive parse','hypothesis',
        {tense:VERB_TENSES[t].name,subject:parsed.person,object:obj.person,
         lexicalClass:model.cls,template:baseCell},parts,model.lemmaSource,'',
-       'Analogy from an indexed finite verb cell. Prefix allomorphy, person/object restrictions, phonotactics and historical variety are not comprehensively verified.'));
+       'This generated surface form is NOT independently attested here. It is an analogy from an indexed verb cell; object allomorphy, person restrictions, phonotactics and historical variety require independent checking.'));
      }
     }
    }
@@ -270,3 +270,16 @@ const TlahtolliMorphEngine = (() => {
  return {analyze,html,splitVerbCell,lexicalStems,nounSegmentation,subjectSpecs:PEOPLE,objectSpecs:OBJECTS};
 })();
 renderMorphologyBreakdown=TlahtolliMorphEngine.html;
+
+const previousAdvancedProbe=renderFormProbe;
+renderFormProbe=function(){
+ previousAdvancedProbe();
+ const q=$('formProbeInput').value.trim(),box=$('formProbeOutput');
+ if(!q||/\s/.test(q)||!TlahtolliMorphEngine.analyze(q).length)return;
+ // A form without its own dictionary/paradigm index may still have an explicitly
+ // unverified rule-based proposal. Keep the two categories distinct.
+ const warning=box.querySelector('.analysis-unknown');
+ if(warning&&warning.textContent.includes('No indexed analysis.'))
+  warning.textContent='No separately indexed form. The possibilities below are ANALYTICAL HYPOTHESES, not attestations.';
+};
+

@@ -27,7 +27,7 @@ function config(input={}){
  for(const [key,[lo,hi]] of Object.entries(LIMITS))x[key]=clamp(input[key]??DEFAULT[key],lo,hi,DEFAULT[key]);
  for(const key of ['learning','relearning']){
   const s=String(input[key]||DEFAULT[key]).trim().slice(0,90);
-  x[key]=/^(\d+(?:\.\d+)?[smhd])(?:\s+\d+(?:\.\d+)?[smhd]){0,7}$/i.test(s)?s:DEFAULT[key];
+  x[key]=/^(\d+(?:\.\d+)?[smhd])(?:\s+\d+(?:\.\d+)?[smhd]){0,7}$/i.test(s)&&steps(s).length===s.split(/\s+/).length?s:DEFAULT[key];
  }
  x.order=['due','new','alphabetical'].includes(input.order)?input.order:DEFAULT.order;
  x.leechAction=['tag','suspend'].includes(input.leechAction)?input.leechAction:DEFAULT.leechAction;

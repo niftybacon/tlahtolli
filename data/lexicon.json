@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-27.5.0",
+  "version": "2026-10-27.6.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -1348,6 +1348,42 @@
       "example": "",
       "translation": "",
       "notes": "Second-conjugation intransitive, associated with disappearance and death; distinguish from transitive poloa."
+    },
+    {
+      "word": "tēzcatl",
+      "meaning": "mirror; polished reflective stone (including mineral mirrors)",
+      "pos": "noun",
+      "original": "tezcatl; tēzcatl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+      "example": "in mochioa tezcatl, in mocuepa ca tetl",
+      "translation": "Stone fashioned into a mirror (short historical clause).",
+      "notes": "Originally a reflective mirror, frequently manufactured from polished minerals such as obsidian or pyrite. The 16th-century Florentine Codex describes stones made into mirrors. This lexical evidence alone does NOT prove the object literally revealed hidden truths. Plural tezcame comes from a printed transcription of Florentine Codex Book 6, p. 216; exact plural vowel length is not independently established."
+    },
+    {
+      "word": "cuepa",
+      "meaning": "to turn, return; to change or turn into something",
+      "pos": "verb (transitive/reflexive)",
+      "original": "cuepa",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+      "example": "in mocuepa ca tetl",
+      "translation": "A stone that is changed/turned into a mirror (contextual).",
+      "notes": "Verb with transitive and reflexive uses. In the Codex source, 'mo-cuepa' means 'is transformed / turns into', but that does not establish a full conjugation paradigm. Do not confuse a reflexive third-person form with the citation verb."
+    },
+    {
+      "word": "ca",
+      "meaning": "for, because, indeed (emphatic particle); also homographic with an existential verb",
+      "pos": "particle / conjunction (homographic with verb)",
+      "original": "ca; cah (distinct homograph)",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/175904",
+      "example": "in mocuepa ca tetl",
+      "translation": "... [a] stone converted into [a] mirror (interpretative source fragment).",
+      "notes": "This entry centers on clause-linking/emphatic 'ca'. Written ca can also be an existential verb 'to be' (see separate ODN /content/ca); the role of 'ca' in 'in mocuepa ca tetl' needs source-specific syntactic review and should NOT be mechanically translated as 'because'. The quoted wording appears in the historical Codex edition."
     }
   ]
 }

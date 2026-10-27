@@ -1,3 +1,16 @@
+## Additional source-located review (second pass, 2026-10-27)
+
+The following 4 further previously-unverified fields now have direct source locations. Current totals: **325 dictionary, 129 grammar, 18 historical-text, 111 inference, 91 unverified (674 records).** Twenty of the starting 222 claims have source-located support; **202 remain explicitly pending.** Earlier preliminary totals of 16/206 below are superseded.
+
+- **tlamatini, plural:** tlamatinime. Chimalpahin, Annals of His Time, ed. Lockhart, Schroeder & Namala (2006), pp.184–185, central Mexico 1611: 'yn tlamatinime in Astrologos.me'. **Scope:** Explicit historical word-form tlamatinime 'wise men' appears in a 1611 annal quoted in the edition. This is a dated text occurrence, not proof all regional paradigms share the same plural.
+- **teocalli, possessed:** iteocaltzin. Lockhart, We People Here (1993), pp.284–285: 'Inic momamal yn iteocaltzin ȳ sanct juº bapᵗª'. **Scope:** A colonial annal records the possessed reverential form iteocaltzin referring to the church of St John the Baptist. -tzin is reverential; this does not establish the simple unhonorified possessive or all senses.
+- **tecuani, other:** agentive -ni. Karttunen, Analytical Dictionary (1992), p.218 'literal sense ... maneater'; ODN IDIEZ 'morfología tē1, cuā, ni2'. **Scope:** Explicit morpheme breakdown tē- + cuā + agentive -ni, and Karttunen's etymological commentary, support agentive classification, not locative. This is grammatical/lexical source evidence, not manuscript proof of a possessive stem.
+- **ocotl, plural:** ocome. Florentine Codex Book 6, ed. Anderson & Dibble (1961), p.216: 'in tlaviltin, in ocome, in tezcame'. **Scope:** The plural ocome is quoted in a sixteenth-century metaphor describing people as lights/torches/mirrors; attests a figurative torch sense, NOT a general literal plural for pine trees. Other ocome homographs exist.
+
+**Additional display correction:** `āltepētl` has an ordinary bound possessed `-āltepēuh` as well as the separated `-āuh ... -tepēuh` compound construction (Lockhart 2001 p.210; Karttunen 1992 p.9). Neither alone is proof of an unconstrained full paradigm. `ocotl → ocome` is only endorsed for the historically cited *figurative torch* example, not all pines.
+
+---
+
 # Historical field-claim reassessment — 2026-10-27
 
 **Scope:** all **222** claims provisionally marked `inference` (113) or `unverified` (109) in the pre-review commit of Tlahtōlli v2.3.1. Every starting claim is individually indexed in [claim_reassessment_2026-10-27.csv](../claim_reassessment_2026-10-27.csv) with its original class, final class, source citation if established, field-specific evidence boundary, and outstanding research task. This is **AI-assisted source triage**, not independent palaeographical inspection of all sources, not specialist peer review, and not proof that all 222 have been verified.

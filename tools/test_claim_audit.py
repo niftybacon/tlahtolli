@@ -27,7 +27,7 @@ for name,plural in [('conetl','cōconeh'),('ichpochtli','ichpōpōchtin'),('telp
   assert w['plural']==plural and w['pluralStatus']=='attested'
 from collections import Counter
 counts=Counter(c['assessment'] for w in d['words'] for c in w['claims'])
-assert counts=={"dictionary":324,"grammar":129,"unverified":95,"inference":111,"text":15},counts
+assert counts=={"dictionary":325,"grammar":129,"unverified":91,"inference":111,"text":18},counts
 with (r/'claim_audit.csv').open(encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
 assert len(rows)==674
 assert 'function renderClaimLedger' in (r/'index.html').read_text(encoding='utf8')
@@ -51,8 +51,8 @@ for name in ('tlaxcalli','conetl','milli','teōtl'):
 # October 27 field-specific reassessment: no blanket promotion of inferences.
 with (r/'claim_reassessment_2026-10-27.csv').open(encoding='utf-8',newline='') as f: review=list(csv.DictReader(f))
 assert len(review)==222
-assert sum(x['decision']=='upgraded_with_specific_evidence' for x in review)==16
-assert sum(x['current_status']=='unverified' for x in review)==95
+assert sum(x['decision']=='upgraded_with_specific_evidence' for x in review)==20
+assert sum(x['current_status']=='unverified' for x in review)==91
 assert sum(x['current_status']=='inference' for x in review)==111
 for word,field in [('xōchitl','possessed'),('itzcuintli','plural'),('icxitl','possessed'),('āltepētl','possessed'),('tecpan','other')]:
     w=next(x for x in d['words'] if x['word']==word)

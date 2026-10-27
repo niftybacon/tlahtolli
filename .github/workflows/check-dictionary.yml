@@ -49,6 +49,8 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Run browser regressions
         run: python tools/browser_smoke.py
+      - name: Phase 3 scalable search and result-list parity
+        run: python tools/test_phase3.py
       - name: Verify evidence ledger in browser
         run: python tools/test_claim_browser.py
       - name: Test cited token annotations and export safety

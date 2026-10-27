@@ -1,3 +1,9 @@
+## October 27, 2026 — Historical spellings and final interface polish
+
+- Display source-linked original and historical spelling variants at the bottom of every dictionary overview, and index documented spellings for search.
+- Add located `Jn` and `yn` forms for `in` in Florentine Codex Book 1, folio 16r. Distinguish source transcription from editorial orthography and avoid generating forms.
+- Correct source names and clarify current opt-in FSRS-5 across the UI and release documentation. No redesign, lexical reinterpretation, or changes to personal study progress.
+
 ## v2.3.1 (2026-10-27) — Historical possessive evidence
 
 - Located **notlaxcal** in Launey's grammar, **noconeuh** in a dated 1673 will, **nomil** in a 1586 land document, and **noteuh** in Sahagún's *Primeros Memoriales*.

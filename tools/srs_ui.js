@@ -10,7 +10,7 @@
   '<button class="btn" type="button" id="srsAnkiReverse">↓ Anki reverse cards</button>'+
   '<button class="btn" type="button" id="srsAnkiVerbs">↓ Anki conjugations</button></div>'+
   '<details class="srs-options" id="srsOptions"><summary>Advanced study options · scheduling, limits and difficulty</summary>'+
-  '<p class="readerhint"><strong>Anki-inspired, not Anki FSRS.</strong> Learning steps, review intervals, daily limits and leeches are configurable. Settings and progress stay in this browser. Saving settings affects future reviews, not existing due dates.</p>'+
+  '<p class="readerhint"><strong>Classic or optional FSRS-5.</strong> Classic interval controls, daily limits and leeches are configurable; FSRS has separate retention settings. Settings and progress stay in this browser. Saving settings affects future reviews, not existing due dates.</p>'+
   '<div class="srs-settings-row"><label>Preset<select id="srsPreset">'+
   '<option value="custom">Current / custom</option><option value="balanced">Balanced</option>'+ 
   '<option value="screenshot">Light · 2 new / 5 reviews</option>'+
@@ -103,7 +103,7 @@
  root.insertBefore(timer,root.querySelector('#srsUndo'));
  const details=document.createElement('details');details.className='srs-options';details.id='srsInsights';
  details.innerHTML='<summary>Study insights · retention and next 7 days</summary>'+
-  '<p class="readerhint">A descriptive forecast of scheduled due dates, not an FSRS memory prediction. Actual retention uses the first graded review on each day (Again = missed).</p>'+
+  '<p class="readerhint">Scheduled due dates are shown here; model-predicted recall appears separately under FSRS insights. Actual retention uses the first graded review on each day (Again = missed).</p>'+
   '<div id="srsRetention" role="status" aria-live="polite"></div>'+
   '<div id="srsForecast" class="srs-forecast" role="img" aria-label="Scheduled review counts over the next seven calendar days"></div>';
  options.insertAdjacentElement('afterend',details);

@@ -275,6 +275,24 @@
       "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
       "evidence": "transcription-occurrence",
       "note": "Item/thing occurs in phrase itla tlamantli; no plural evidence."
+    },
+    {
+      "lemma": "in",
+      "form": "Jn",
+      "sourceId": "dfc",
+      "locator": "Book 1, folio 16r · Nahuatl transcription: 'Jn aqujn ipam muchioaia'",
+      "url": "https://florentinecodex.getty.edu/en/book/1/folio/16r",
+      "evidence": "transcription-occurrence",
+      "note": "The historical J spelling of the particle in; vowel i written j. Not a distinct lexeme or derived grammatical form."
+    },
+    {
+      "lemma": "in",
+      "form": "yn",
+      "sourceId": "dfc",
+      "locator": "Book 1, folio 16r · Nahuatl transcription: 'yn jquac ilhujqujxtililo'",
+      "url": "https://florentinecodex.getty.edu/en/book/1/folio/16r",
+      "evidence": "transcription-occurrence",
+      "note": "Historical spelling yn for the particle in. Not evidence of a distinct grammatical form."
     }
   ]
 }

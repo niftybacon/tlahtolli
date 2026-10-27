@@ -101,21 +101,21 @@ with sync_playwright() as pw:
     assert '#separator:Tab' in raw and '#notetype:Basic' in raw
     assert '#deck:Tlahtōlli::Vocabulary' in raw
     rows=list(csv.reader((line for line in raw.splitlines() if not line.startswith('#')),delimiter='\t'))
-    assert len(rows)==len(dictionary['words']) and all(len(row)==3 for row in rows)
-    assert any(row[0]=='xōchitl' for row in rows)
+    assert len(rows)==len(dictionary['words']) and all(len(row)==4 for row in rows)
+    assert any(row[1]=='xōchitl' for row in rows)
     with page.expect_download() as incoming:
         page.locator('#srsAnkiReverse').click()
     raw=Path(incoming.value.path()).read_text(encoding='utf-8-sig')
     assert '#deck:Tlahtōlli::Reverse Vocabulary' in raw
     reverse_rows=list(csv.reader((line for line in raw.splitlines() if not line.startswith('#')),delimiter='\t'))
-    assert len(reverse_rows)==len(dictionary['words']) and any('xōchitl' in row[1] for row in reverse_rows)
+    assert len(reverse_rows)==len(dictionary['words']) and any('xōchitl' in row[2] for row in reverse_rows)
     with page.expect_download() as incoming:
         page.locator('#srsAnkiVerbs').click()
     raw=Path(incoming.value.path()).read_text(encoding='utf-8-sig')
     assert '#deck:Tlahtōlli::Verb Paradigms' in raw
     rows=list(csv.reader((line for line in raw.splitlines() if not line.startswith('#')),delimiter='\t'))
     assert len(rows)==720 and all(len(row)==3 for row in rows)
-    assert all('Grammar-derived' in row[1] for row in rows)
+    assert all('Grammar-derived' in row[2] for row in rows)
 
     with page.expect_download() as incoming:
         page.locator('#workspaceTools').evaluate('(el)=>el.open=true')

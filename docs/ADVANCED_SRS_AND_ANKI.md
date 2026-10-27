@@ -31,8 +31,8 @@ settings or recall history.
 | Review order | Earliest due; new first; alphabetical | Earliest due |
 | Sibling suppression | Bury other same-verb conjugations reviewed on that day | On |
 
-Three selectable presets are included: **Balanced**, **Intensive** and
-**Gentle**, and individual values can be customized. All defaults can be
+Four selectable presets are included: **Balanced**, **Intensive**, **Gentle** and
+**Light (2 new/5 reviews)**, the latter matching the limits in the reference Anki screenshot. Individual values can be customized. All defaults can be
 restored by selecting Balanced and saving. Settings modify **future** grading;
 existing due timestamps are not forcibly rescheduled.
 

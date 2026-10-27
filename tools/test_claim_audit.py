@@ -52,7 +52,7 @@ for name in ('tlaxcalli','conetl','milli','teōtl'):
 with (r/'claim_reassessment_2026-10-27.csv').open(encoding='utf-8',newline='') as f: review=list(csv.DictReader(f))
 assert len(review)==222
 assert sum(x['decision']=='upgraded_with_specific_evidence' for x in review)==20
-assert sum(x['current_status']=='unverified' for x in review)==95
+assert sum(x['current_status']=='unverified' for x in review)==91
 assert sum(x['current_status']=='inference' for x in review)==111
 for word,field in [('xōchitl','possessed'),('itzcuintli','plural'),('icxitl','possessed'),('āltepētl','possessed'),('tecpan','other')]:
     w=next(x for x in d['words'] if x['word']==word)

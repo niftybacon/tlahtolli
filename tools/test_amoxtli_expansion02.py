@@ -11,7 +11,7 @@ m=json.loads((ROOT/'data/morphology.json').read_text(encoding='utf8'))
 e=json.loads((ROOT/'data/evidence.json').read_text(encoding='utf8'))
 new=['itic','nemini','iuhquin','inīn','ītech','quiza','tlapalli','cen','polihui']
 assert len(d['words'])==len(l['words'])==len(m['entries'])==len(e['entries'])>=112
-assert [w['word'] for w in d['words'][103:]]==new
+assert [w['word'] for w in d['words'][103:112]]==new
 assert d['version']==l['version']==p['version']==m['version']==e['version'] and d['version'].startswith('2026-10-27.')
 assert sum(len(w['claims']) for w in d['words'][:103])==777
 assert sum(len(w['inflections']) for w in d['words'][:103])==211
@@ -70,9 +70,30 @@ with sync_playwright() as pw:
   assert all(x['match']!='unknown' for p in checks['found'] for x in p['tokens']),checks['found']
   assert checks['initial']>=5 and checks['custom']=='my translation' and checks['note']=='do not overwrite this note'
   assert checks['repeatAdded']==0 and checks['deliberatelyDeletedStillAbsent']
-  assert checks['newNames']==new
+  assert checks['newNames'][:len(new)]==new
   page.locator('#tabRead').click()
   assert page.locator('#passageList [data-passage]').count()>=5
+  # Mirror-stone sentence: every token resolves; the old entry tetl is reused.
+  mirror=page.evaluate("""()=>{
+    const p=passages.find(p=>p.title==='Florentine Codex XI · Stone becomes a mirror');
+    return p&&{
+      original:p.original,
+      source:p.source,
+      tokens:getTokens(p.normalized).map((token,i)=>{
+        const match=resolveToken(p,i);
+        return {token,kind:match.type,lemma:match.word?.word||null};
+      }),
+      reflected:passages.filter(q=>q.title===p.title).length
+    };
+  }""")
+  assert mirror and 'tetl' in mirror['original'] and 'tezcatl' in mirror['original'],mirror
+  assert mirror['source'].endswith('/book/11/folio/209v'),mirror
+  assert mirror['reflected']==1,mirror
+  assert {x['lemma'] for x in mirror['tokens']}=={'in','chīhua','tēzcatl','cuepa','ca','tetl'},mirror
+  assert all(x['kind']!='unknown' for x in mirror['tokens']),mirror
+  assert [w['word'] for w in d['words'][112:]]==['tēzcatl','cuepa','ca']
+  assert d['words'][-3]['plural']=='tezcame' and d['words'][-3]['pluralStatus']=='attested'
+  assert all(w['word'] not in p['paradigms'] for w in d['words'][112:])
   assert not errors,errors
   browser.close()
 print('PASS: four sourced reader excerpts, nine new lemmas and additive local-data migration')

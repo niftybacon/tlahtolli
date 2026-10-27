@@ -54,14 +54,15 @@ with sync_playwright() as pw:
         goodDays:(good.due-now)/86400000,easyDays:(easy.due-now)/86400000,
         lapsePhase:lap.phase,lapseMinutes:(lap.due-now)/60000,
         leech:leech.suspended&&leech.phase==='suspended',
+        recovered:T.schedule({...review,lapses:8,leech:false,suspended:false},'good',now).suspended===false,
         old:legacy['old§card'],advanced:advanced['word§card'],zero};
     }""")
     assert results['freshDays']<1 and 9<=results['freshDays']*1440<=11,results
     assert results['failedMinutes']==1 and results['laterDays']>=1,results
     assert results['hardDays']<results['goodDays']<results['easyDays'],results
     assert results['lapsePhase']=='relearning' and results['lapseMinutes']==10,results
-    assert results['leech'] and results['zero']==0,results
-    assert results['old']['reps']==2 and results['old']['due']==300,results
+    assert results['leech'] and results['recovered'] and results['zero']==0,results
+    assert results['old']['reps']==2 and results['old']['due']==300 and results['old']['interval']>0,results
     assert results['advanced']['interval']==18 and results['advanced']['history'][0]['grade']=='good',results
 
     page.locator('#tabStudy').click()

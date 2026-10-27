@@ -79,7 +79,8 @@ function schedule(prior,grade,now=Date.now()){
    due=now+span*DAY;
   }
  }
- const leech=lapses>=opts.leechThreshold,suspended=leech&&opts.leechAction==='suspend';
+ const newLeech=review&&grade==='again'&&lapses>=opts.leechThreshold;
+ const leech=prev.leech===true||newLeech,suspended=newLeech&&opts.leechAction==='suspend';
  if(suspended)next='suspended';
  return {...prev,reps:(Number(prev.reps)||0)+1,lapses,phase:next,step,interval:span,ease:easeNext,
   last:now,due,introducedAt:prev.introducedAt||now,lastGrade:grade,leech,suspended,

@@ -6,7 +6,7 @@ r=Path(__file__).resolve().parents[1]
 d=json.loads((r/'dictionary.json').read_text(encoding='utf8'))
 p=json.loads((r/'paradigms.json').read_text(encoding='utf8'))
 s=json.loads((r/'references.json').read_text(encoding='utf8'))
-assert d['version']==p['version']==s['version']=='2026-10-27.3.2'
+assert d['version']==p['version']==s['version']=='2026-10-27.4.0'
 assert len(d['words'])>=88 and len(p['paradigms'])>=12
 fields={'headword','meaning','pos'}
 for i,w in enumerate(d['words']):
@@ -16,7 +16,7 @@ for i,w in enumerate(d['words']):
   assert fields<=f,w['word']
   if 'noun' in w['pos'].lower():
     assert {'animacy','number','plural','possessed','stem'}<=f,w['word']
-  if i>=44:
+  if 44<=i<88: # original 44-word research cohort only; new verbs have their own checks
     for name in fields:
       assert any(c['field']==name and c['assessment'] in ('dictionary','grammar') and c['locator'] and c['source']==w['source'] for c in claims),(w['word'],name)
     assert any(c['field']=='animacy' and c['assessment'] in ('grammar','inference','unverified') for c in claims)

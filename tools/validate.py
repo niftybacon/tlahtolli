@@ -82,7 +82,7 @@ check("fetch('release.json',{cache:'no-cache'})" in source_html,'Missing conditi
 check("manifest.version===embedded.version" in source_html,'Bundled data are not reused for matching releases')
 check("if(searchOnly&&previousSelected===selected)return;" in source_html,'Missing search-only detail preservation')
 check("$('search').oninput=scheduleSearchRender" in source_html,'Missing batched dictionary search')
-check("const oldBase=publishedBaseline[key]" in source_html and "else if(oldBase&&entriesIdentical" in source_html,'User-edit-safe published-data merge is missing')
+check("oldBase=publishedBaseline[key]" in source_html and "else if(oldBase&&entriesIdentical" in source_html,'User-edit-safe published-data merge is missing')
 if errors:
     print('FAILED:\n'+'\n'.join(' - '+x for x in errors));sys.exit(1)
 print('PASS:',len(words),'lemmas,',forms,'forms,',len(models),'verb paradigms; matched offline seed.')

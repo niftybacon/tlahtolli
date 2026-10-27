@@ -1,3 +1,7 @@
+# Tlahtōlli Phase 2 — Editorial data architecture (2026-10-27)
+
+The dictionary is now maintained in separate authoritative [lexicon](data/lexicon.json), [morphology](data/morphology.json), and [historical evidence](data/evidence.json) sources. A deterministic [builder](tools/build_dictionary.py) reconstructs the **unchanged public dictionary and standalone offline HTML seed**, with CI rejecting out-of-sync outputs. All **88 headwords, 178 forms, 12 verb paradigms, and 674 claim records** are preserved. Read the [architecture and editing guide](docs/PHASE2_ARCHITECTURE.md). This is a code/data maintainability upgrade, not a new historical verification claim or a measured speed improvement.
+
 # Tlahtōlli Phase 1 — Reduced startup downloads and faster interactive search (2026-10-27)
 
 The published HTML retains all 88 headwords and 12 verb paradigms offline. On the website a cache-revalidated [release manifest](release.json) now avoids re-downloading already bundled dictionary/paradigm JSON when the edition is unchanged. Search input redraws are batched, preserving the detail pane when the selected headword is unchanged. See [implementation and compatibility notes](docs/PHASE1_PERFORMANCE.md). No lexical evidence classifications or locally saved personal edits were changed.

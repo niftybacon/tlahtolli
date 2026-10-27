@@ -72,6 +72,14 @@ with sync_playwright() as pw:
     page.locator('#srsSave').click()
     assert page.evaluate("TlahtolliSRS.getSettings().newLimit") ==2
     assert page.evaluate("TlahtolliSRS.getSettings().learning") =='2m 15m'
+    # Reverse-direction cards have distinct histories; founding forward keys survive.
+    keys=page.evaluate("""()=>{
+      const w=words[0];
+      $('studyDirection').value='nh-en';const forward=studyKey(w);
+      $('studyDirection').value='en-nh';const reverse=studyKey(w);
+      $('studyDirection').value='nh-en';return {forward,reverse};
+    }""")
+    assert keys['reverse']==keys['forward']+'§reverse',keys
     page.locator('#studySubset').select_option('due')
     page.locator('#studyReveal').click()
     page.locator('[data-study-grade="good"]').click()

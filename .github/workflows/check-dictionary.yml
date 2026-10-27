@@ -47,6 +47,8 @@ jobs:
           Path('/tmp/tlahtolli-app.js').write_text(h.scripts[-1],encoding='utf8')
           PY
           node --check /tmp/tlahtolli-app.js
+      - name: Test FSRS Stage 1 and Stage 2 engine
+        run: node tools/test_fsrs.js
       - name: Install headless browser
         run: |
           python -m pip install playwright==1.57.0

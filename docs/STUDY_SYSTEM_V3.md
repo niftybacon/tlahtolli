@@ -2,8 +2,7 @@
 
 ## What is implemented
 
-The existing local-only adjustable **SM-2-family** scheduler remains the
-authority for scheduling inside Tlahtōlli. No recorded review, due date,
+The local adjustable **SM-2-family** scheduler remains the default. Offline FSRS-5 is available as an opt-in alternative. No recorded review, due date,
 learning step, lapse or study session is silently migrated or reset.
 
 ### Study options

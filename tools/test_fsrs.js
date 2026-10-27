@@ -1,0 +1,36 @@
+/* Run with: node tools/test_fsrs.js */
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const memory={};
+const context={localStorage:{getItem:k=>memory[k]??null,setItem:(k,v)=>memory[k]=String(v)},Date,Math,JSON};
+vm.createContext(context);
+vm.runInContext(fs.readFileSync('tools/fsrs_core.js','utf8')+';globalThis.F=TlahtolliFSRS;',context);
+const F=context.F,now=Date.UTC(2026,9,27,12),H=86400000;
+assert.equal(F.getSettings().enabled,false);
+F.setSettings({enabled:true,targets:{vocabulary:.95,reverse:.9,paradigm:.85}});
+let first=F.schedule(null,'good',now,'Classical§calli');
+assert.equal(first.phase,'learning');
+let second=F.schedule(first,'good',now+600000,'Classical§calli');
+assert.equal(second.phase,'review');
+assert.equal(second.fsrs.version,5);
+let strict=F.schedule(second,'good',second.due,'Classical§calli');
+let gentle=F.schedule(second,'good',second.due,'paradigm§calli§0');
+assert.ok(strict.due<=gentle.due);
+let forgotten=F.schedule(strict,'again',strict.due,'Classical§calli');
+assert.equal(forgotten.phase,'relearning');
+assert.equal(forgotten.lapses,1);
+let legacy={reps:5,phase:'review',last:now-3*H,due:now+6*H,interval:12,lapses:2};
+let reviewed=F.schedule(legacy,'good',now,'Classical§legacy');
+assert.equal(legacy.due,now+6*H);
+assert.equal(reviewed.reps,6);assert.equal(reviewed.lapses,2);assert.equal(reviewed.fsrs.version,5);
+const history=[];
+for(let i=0;i<48;i++)history.push({wasReview:true,grade:i%8===0?'again':'good',fsrsElapsed:3+i%4,fsrsStabilityBefore:8});
+const outcomes=F.optimize({'Classical§test':{history}});
+assert.equal(outcomes.vocabulary.updated,true);
+assert.equal(outcomes.reverse.updated,false);
+assert.ok(F.getSettings().scales.vocabulary>=.55&&F.getSettings().scales.vocabulary<=1.8);
+const html=fs.readFileSync('index.html','utf8');
+assert.ok(html.includes('/* FSRS Stage 2:'));
+assert.ok(html.includes('fsrsSettings:TlahtolliFSRS.getSettings()'));
+assert.ok(html.includes('if(content.fsrsSettings)TlahtolliFSRS.setSettings(content.fsrsSettings)'));
+console.log('PASS: FSRS modes, retention targets, grading, legacy state, calibration, backup and Stage 2 embed');
+

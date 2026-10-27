@@ -270,7 +270,7 @@ function message(s){$('message').textContent=s}
 function norm(s){return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
 // Matching headwords ignores macrons for cross-version storage compatibility.
 function samePackWord(a,b){return norm(a.word)===norm(b.word)&&a.variety===b.variety;}
-function packCoverage(){return VERIFIED_PACK_WORDS.filter(p=>words.some(w=>samePackWord(w,p))).length;}
+function packCoverage(){const present=new Set(words.map(pubKey));return VERIFIED_PACK_WORDS.reduce((n,p)=>n+(present.has(pubKey(p))?1:0),0);}
 function addMissingPackWords(){let count=0;for(const p of VERIFIED_PACK_WORDS){if(!suppressedPublished.has(pubKey(p))&&!words.some(w=>samePackWord(w,p))){words.push(clean(p));count++;}}return count;}
 function mergeBundledForms(){let added=0;for(const w of words){const p=VERIFIED_PACK_WORDS.find(seed=>samePackWord(seed,w));if(p&&!w.formsEdited&&!w.inflections.length){w.inflections=p.inflections.map(cleanForm);added+=w.inflections.length;}}return added;}
 function refreshPackWords(){let replaced=0,added=0;for(const p of VERIFIED_PACK_WORDS){const i=words.findIndex(w=>samePackWord(w,p));if(i<0){words.push(clean(p));added++;}else{words[i]=clean(p);replaced++;}}return {replaced,added};}
@@ -393,10 +393,24 @@ function openInflectionEditor(i=-1){
 $('cancelInflection').onclick=()=>$('inflectionEditor').close();
 $('inflectionForm').onsubmit=e=>{e.preventDefault();const w=words[selected];if(!w)return;const raw={};for(const k of ['form','category','gloss','evidence','source','note'])raw[k]=$('if_'+k).value.trim();const f=cleanForm(raw);if(!f.form||!f.category)return;if(f.evidence!=='review'&&!validUrl(f.source)){alert('Please provide a valid source link, or select “Provisional / needs verification”.');return;}if(w.inflections.some((old,i)=>i!==formEditing&&old.form===f.form&&old.category===f.category&&old.source===f.source)){alert('An identical form entry already exists.');return;}
  if(formEditing<0)w.inflections.push(f);else w.inflections[formEditing]=f;w.formsEdited=true;store();$('inflectionEditor').close();entryView='forms';render();message('Saved form '+f.form+' for '+w.word+'.');};
-function render(){const result=results();$('packCount').textContent=packCoverage()+' / '+VERIFIED_PACK_WORDS.length+' learning-pack words available';$('total').textContent=words.length;$('count').textContent=result.length+' matching entries';$('resultList').innerHTML=result.length?result.map(w=>`<button class="result ${selected===w._idx?'active':''}" data-select="${w._idx}"><div class="resrow"><strong>${safe(w.word)}</strong><span class="pill ${w.status==='Draft'?'draft':''}">${safe(w.status==='Checked against source'?'Source linked':w.status==='Expert reviewed'?'Reviewed':w.status==='Proposed / neologism'?'Proposed':'Draft')}</span></div><p>${safe(w.meaning)}</p><span>${safe(w.pos||'unclassified')} · ${safe(w.animacy==='not_applicable'?'animacy n/a':w.animacy||'animacy unverified')} · ${safe(w.number==='not_applicable'?'number n/a':w.number||'number unverified')}</span>${$('search').value.trim()?`<span class="search-match ${safe(w._match.type)}">${safe(w._match.label)}${w._match.form?' · '+safe(w._match.form):''}</span>`:''}</button>`).join(''):'<div class="empty">No matching entries.<br>Try another search, or add a word.</div>';if(selected<0||!words[selected]||!result.some(w=>w._idx===selected)){selected=result.length?result[0]._idx:-1;}const w=words[selected];if(!w){$('detail').innerHTML='<div class="empty">Select a word to explore its details.</div>';return}const show=(label,v)=>`<div><label>${label}</label><strong>${safe(({not_applicable:'Not applicable',inapplicable:'Not applicable',no_attested_form:'No attested form recorded',singular:'Singular (citation form)',plural:'Plural',inanimate:'Inanimate',animate:'Animate',contextual:'Context-dependent'}[v])||v||'Not recorded')}</strong></div>`;const sourceUrl=validUrl(w.source);const tabsHtml=`<div class="entrytabs" role="tablist" aria-label="Dictionary entry views"><button type="button" role="tab" data-entry-tab="overview" aria-selected="${entryView==='overview'}">Overview · Tlahtōlli</button><button type="button" role="tab" data-entry-tab="forms" aria-selected="${entryView==='forms'}">Forms / Inflections · ${w.inflections.length}${FULL_VERB_PARADIGMS[w.word]?" + 60 paradigm cells":""}</button><button type="button" role="tab" data-entry-tab="verification" aria-selected="${entryView==='verification'}">Evidence · Sources</button></div>`;
+let lastSearchResults=[];
+function render(searchOnly=false){const previousSelected=selected;const result=results();lastSearchResults=result;$('packCount').textContent=packCoverage()+' / '+VERIFIED_PACK_WORDS.length+' learning-pack words available';$('total').textContent=words.length;$('count').textContent=result.length+' matching entries';$('resultList').innerHTML=result.length?result.map(w=>`<button class="result ${selected===w._idx?'active':''}" data-select="${w._idx}"><div class="resrow"><strong>${safe(w.word)}</strong><span class="pill ${w.status==='Draft'?'draft':''}">${safe(w.status==='Checked against source'?'Source linked':w.status==='Expert reviewed'?'Reviewed':w.status==='Proposed / neologism'?'Proposed':'Draft')}</span></div><p>${safe(w.meaning)}</p><span>${safe(w.pos||'unclassified')} · ${safe(w.animacy==='not_applicable'?'animacy n/a':w.animacy||'animacy unverified')} · ${safe(w.number==='not_applicable'?'number n/a':w.number||'number unverified')}</span>${$('search').value.trim()?`<span class="search-match ${safe(w._match.type)}">${safe(w._match.label)}${w._match.form?' · '+safe(w._match.form):''}</span>`:''}</button>`).join(''):'<div class="empty">No matching entries.<br>Try another search, or add a word.</div>';if(selected<0||!words[selected]||!result.some(w=>w._idx===selected)){selected=result.length?result[0]._idx:-1;}const w=words[selected];if(!w){$('detail').innerHTML='<div class="empty">Select a word to explore its details.</div>';return}if(searchOnly&&previousSelected===selected)return;const show=(label,v)=>`<div><label>${label}</label><strong>${safe(({not_applicable:'Not applicable',inapplicable:'Not applicable',no_attested_form:'No attested form recorded',singular:'Singular (citation form)',plural:'Plural',inanimate:'Inanimate',animate:'Animate',contextual:'Context-dependent'}[v])||v||'Not recorded')}</strong></div>`;const sourceUrl=validUrl(w.source);const tabsHtml=`<div class="entrytabs" role="tablist" aria-label="Dictionary entry views"><button type="button" role="tab" data-entry-tab="overview" aria-selected="${entryView==='overview'}">Overview · Tlahtōlli</button><button type="button" role="tab" data-entry-tab="forms" aria-selected="${entryView==='forms'}">Forms / Inflections · ${w.inflections.length}${FULL_VERB_PARADIGMS[w.word]?" + 60 paradigm cells":""}</button><button type="button" role="tab" data-entry-tab="verification" aria-selected="${entryView==='verification'}">Evidence · Sources</button></div>`;
 $('detail').innerHTML=`<span class="eyebrow">Word study · entry ${selected+1}</span><h2>${safe(w.word)}</h2><p class="meaning">${safe(w.meaning)}</p><div class="chips"><span class="chip">${safe(w.variety)}</span><span class="chip">${safe(w.pos||'Unclassified')}</span><span class="chip">${safe(w.status)}</span><span class="chip">${safe(w.animacy==='not_applicable'?'Animacy: n/a':'Animacy: '+(w.animacy||'unverified'))}</span><span class="chip">${safe(w.number==='not_applicable'?'Number: n/a':'Number: '+(w.number||'unverified'))}</span></div>${tabsHtml}${entryView==='forms'?renderForms(w):entryView==='verification'?renderVerification(w):`<div class="info">${show('Original spelling',w.original)}${show('Combining stem / morphology',w.stem)}${show('Grammatical number',w.number)}${show('Animacy / noun class',w.animacy)}${show('Attested plural spelling',w.plural)}${show('Plural evidence',w.pluralStatus)}${show('Absolutive ending',w.absolutive)}${show('Attested possessed form',w.possessed)}${show('Grammar evidence / citation',w.grammarSource)}</div>${w.grammarNotes?`<div class="note"><span class="subhead">Grammatical details & exceptions</span>${safe(w.grammarNotes)}</div>`:''}${w.example?`<div class="example"><span class="subhead">Example sentence</span><p>${safe(w.example)}</p><small>${safe(w.translation||'Translation not provided')}</small></div>`:''}${w.notes?`<div class="note"><span class="subhead">Study notes</span>${safe(w.notes)}</div>`:''}<div class="source"><span class="subhead">Source</span>${sourceUrl?`<a href="${safe(sourceUrl)}" target="_blank" rel="noopener noreferrer">${safe(w.source)}</a>`:safe(w.source||'Not yet recorded — verify before sharing')}</div>`}<div class="detailfoot"><button class="btn primary" data-edit="${selected}">Edit this entry</button><button class="btn warn" data-remove="${selected}">Delete</button></div><p class="badgefoot">You can edit the headword spelling here. Existing manually linked occurrences will follow a renamed entry.</p>`;
 for(const b of $('detail').querySelectorAll('[data-entry-tab]'))b.onclick=()=>{entryView=b.dataset.entryTab;render();};
-if(entryView==='forms')bindFormActions();if(entryView==='verification')bindVerificationActions();for(const el of $('resultList').querySelectorAll('[data-select]'))el.addEventListener('click',()=>{selected=Number(el.dataset.select);entryView=['recorded','derived','provisional','plural'].includes((result.find(x=>x._idx===selected)||{})._match?.type)?'forms':'overview';render()});for(const el of $('detail').querySelectorAll('[data-edit]'))el.addEventListener('click',()=>openEditor(Number(el.dataset.edit)));for(const el of $('detail').querySelectorAll('[data-remove]'))el.addEventListener('click',()=>{const i=Number(el.dataset.remove);if(confirm('Delete '+words[i].word+'? Export a backup first if needed.')){suppressedPublished.add(pubKey(words[i]));persistPublished();words.splice(i,1);selected=-1;store();render();message('Entry deleted.')}})}
+if(entryView==='forms')bindFormActions();if(entryView==='verification')bindVerificationActions();for(const el of $('detail').querySelectorAll('[data-edit]'))el.addEventListener('click',()=>openEditor(Number(el.dataset.edit)));for(const el of $('detail').querySelectorAll('[data-remove]'))el.addEventListener('click',()=>{const i=Number(el.dataset.remove);if(confirm('Delete '+words[i].word+'? Export a backup first if needed.')){suppressedPublished.add(pubKey(words[i]));persistPublished();words.splice(i,1);selected=-1;store();render();message('Entry deleted.')}})}
+// Delegate clicks once: per-keystroke list redraws no longer attach 88 handlers.
+$('resultList').addEventListener('click',event=>{
+ const button=event.target.closest('[data-select]');
+ if(!button||!$('resultList').contains(button))return;
+ selected=Number(button.dataset.select);
+ entryView=['recorded','derived','provisional','plural'].includes((lastSearchResults.find(x=>x._idx===selected)||{})._match?.type)?'forms':'overview';
+ render();
+});
+let pendingSearchFrame=0;
+function scheduleSearchRender(){
+ if(pendingSearchFrame)return;
+ pendingSearchFrame=requestAnimationFrame(()=>{pendingSearchFrame=0;render(true);});
+}
 $('editor').addEventListener('close',()=>{entryEditorContext=null});function openEditor(i=-1){editing=i;const w=i>=0?words[i]:clean({variety:'Classical Nahuatl',status:'Draft'});$('formTitle').textContent=i>=0?'Edit '+w.word:'Add a word';for(const f of fields)$('f_'+f).value=w[f]||'';$('editor').showModal();$('f_word').focus()}
 $('addBtn').onclick=()=>{entryEditorContext=null;openEditor()};$('cancelBtn').onclick=()=>{entryEditorContext=null;$('editor').close()};$('editForm').onsubmit=e=>{
  e.preventDefault();const w={};for(const f of fields)w[f]=$('f_'+f).value.trim();if(!w.word||!w.meaning)return;
@@ -414,7 +428,7 @@ $('addBtn').onclick=()=>{entryEditorContext=null;openEditor()};$('cancelBtn').on
  store();$('editor').close();$('search').value='';$('filter').value='all';render();
  if(ctx?.origin==='reader'){setTab('reader');passageIdx=ctx.passageIdx;tokenIdx=ctx.tokenIdx;renderReader();}
  entryEditorContext=null;message('Saved '+w.word+'. Your reading location is unchanged. Back up dictionary + texts when finished.');
-};$('search').oninput=render;$('filter').onchange=render;$('verifyFilter').onchange=render;
+};$('search').oninput=scheduleSearchRender;$('filter').onchange=render;$('verifyFilter').onchange=render;
 function csvEscape(s,sep){const val=String(s??'');return /["\r\n]/.test(val)||val.includes(sep)?'"'+val.replace(/"/g,'""')+'"':val}
 function rowsToText(rows,sep){return rows.map(row=>row.map(x=>csvEscape(x,sep)).join(sep)).join('\r\n')+'\r\n'}
 function download(name,txt,mime){const url=URL.createObjectURL(new Blob(['\ufeff',txt],{type:mime+';charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2500)}
@@ -728,30 +742,49 @@ function validatePublishedParadigms(input){
  }
  return input.paradigms;
 }
+// A tiny cache-revalidated manifest prevents re-downloading our own embedded
+// 88-lemma dictionary and verb paradigms on every page load. The embedded
+// edition remains a complete offline fallback, including personal-edit sync.
+async function publishedReleaseDocuments(){
+ const manifestResponse=await fetch('release.json',{cache:'no-cache'});
+ if(!manifestResponse.ok)throw Error('Release manifest unavailable (HTTP '+manifestResponse.status+').');
+ const manifest=await manifestResponse.json();
+ if(!manifest||manifest.format!=='tlahtolli-release-manifest'||manifest.schema!==1||typeof manifest.version!=='string'||!manifest.version)throw Error('Invalid published release manifest.');
+ const embedded=window.TLAHTOLLI_OFFLINE_SEED;
+ if(manifest.version===embedded.version){
+  return {
+   dictionary:{format:'tlahtolli-published-dictionary',schema:1,version:embedded.version,words:embedded.words},
+   verbs:{format:'tlahtolli-verb-paradigms',schema:1,version:embedded.version,paradigms:embedded.paradigms},
+   bundled:true
+  };
+ }
+ // Fetch only for a genuinely different release; versioned URLs can be cached.
+ const query='?v='+encodeURIComponent(manifest.version);
+ const [wordResponse,verbResponse]=await Promise.all([
+  fetch('dictionary.json'+query,{cache:'default'}),
+  fetch('paradigms.json'+query,{cache:'default'})
+ ]);
+ if(!wordResponse.ok||!verbResponse.ok)throw Error('Published files could not be downloaded (HTTP '+wordResponse.status+' / '+verbResponse.status+').');
+ return {dictionary:await wordResponse.json(),verbs:await verbResponse.json(),bundled:false};
+}
 async function syncPublished(silent=false){
  if(syncBusy)return;
  if(location.protocol==='file:'){
-  showSyncState('Offline preview · Packaged edition','To receive updates automatically, publish these site files on GitHub Pages. The included 88 entries work offline.','offline');
-  if(!silent)message('You are previewing the downloadable files. Online sync works after GitHub Pages deployment.');
+  showSyncState('Offline preview · Packaged edition','The embedded dictionary and paradigms work without an internet connection.','offline');
+  if(!silent)message('Offline preview: local data remains available without publishing.');
   return;
  }
  syncBusy=true;const btn=$('syncNow');if(btn)btn.disabled=true;
- showSyncState('Checking updates · Tlahtōlli…','Reading the published dictionary and verb tables.','loading');
+ showSyncState('Checking updates · Tlahtōlli…','Revalidating the small release manifest.','loading');
  try{
-  const query='?check='+Date.now();
-  const [wordResponse,verbResponse]=await Promise.all([
-   fetch('dictionary.json'+query,{cache:'no-store'}),
-   fetch('paradigms.json'+query,{cache:'no-store'})
-  ]);
-  if(!wordResponse.ok||!verbResponse.ok)throw Error('Published files could not be downloaded (HTTP '+wordResponse.status+' / '+verbResponse.status+').');
-  const [remoteWordDoc,remoteVerbDoc]=await Promise.all([wordResponse.json(),verbResponse.json()]);
+  const published=await publishedReleaseDocuments();
+  const remoteWordDoc=published.dictionary,remoteVerbDoc=published.verbs;
   if(remoteWordDoc.version!==remoteVerbDoc.version)throw Error('Dictionary and paradigms have different release versions.');
   const nextWords=validatePublishedDictionary(remoteWordDoc);
   const nextModels=validatePublishedParadigms(remoteVerbDoc);
   let added=0,updated=0,protectedEdits=0,hidden=0;
   for(const entry of nextWords){
-   const key=pubKey(entry);const index=words.findIndex(w=>samePackWord(w,entry));
-   const oldBase=publishedBaseline[key];
+   const key=pubKey(entry),index=words.findIndex(w=>samePackWord(w,entry)),oldBase=publishedBaseline[key];
    if(index<0){if(suppressedPublished.has(key)){hidden++;}else{words.push(clean(entry));added++;}}
    else if(oldBase&&entriesIdentical(words[index],oldBase)){
     if(!entriesIdentical(words[index],entry)){words[index]=clean(entry);updated++;}
@@ -762,7 +795,7 @@ async function syncPublished(silent=false){
   FULL_VERB_PARADIGMS=nextModels;
   persistPublished();store();render();renderFormProbe();if(!$('auditView').classList.contains('hidden'))renderAudit();if(!$('studyView').classList.contains('hidden')){renderStudy();renderDrill();}
   try{localStorage.setItem(syncMetaKey,JSON.stringify({version:remoteWordDoc.version,checked:new Date().toISOString()}));}catch{}
-  showSyncState('Published edition '+remoteWordDoc.version+' · Synced',`${nextWords.length} published lemmas · ${added} added · ${updated} updated · ${protectedEdits} local edits protected${hidden?' · '+hidden+' intentionally hidden':''}`,'ok');
+  showSyncState('Published edition '+remoteWordDoc.version+' · '+(published.bundled?'Current':'Synced'),`${nextWords.length} published lemmas · ${added} added · ${updated} updated · ${protectedEdits} local edits protected${hidden?' · '+hidden+' intentionally hidden':''}`,'ok');
   if(!silent||added||updated)message('Dictionary synced: '+added+' new words, '+updated+' untouched entries updated. '+protectedEdits+' edited entries preserved.');
  }catch(err){
   showSyncState('Offline / update unavailable','Your saved dictionary is safe. '+err.message,'offline');
@@ -1045,7 +1078,7 @@ function renderSourceAtlas(){const root=$('sourceAtlas');if(!root)return;
  root.innerHTML=`<section class="source-atlas"><h4>Source atlas · Āmoxtli</h4><p>${researchSources.witnesses.length} located text witnesses across ${new Set(researchSources.witnesses.map(x=>norm(x.lemma))).size} headwords; ${researchSources.sources.length} reference collections. A text witness concerns the <strong>presence of a written form</strong>, not a claim that every grammatical interpretation is established.</p><div class="source-directory">${researchSources.sources.map(s=>`<div class="source-card"><strong>${safe(s.name)}</strong><span class="source-kicker">${safe(s.kind)}</span><p>${safe(s.note)}</p>${safeLink(s.url,'Visit source ↗')}</div>`).join('')}</div><details><summary>Research record: located text witnesses (${researchSources.witnesses.length})</summary><div class="witness-list">${researchSources.witnesses.map(x=>`<div class="witness"><strong>${safe(x.lemma)} · ${safe(x.locator)}</strong>${safeLink(x.url,'Open text witness ↗')}</div>`).join('')}</div></details></section>`;
 }
 // Library updates are public and optional. Personal annotations stay local; an unavailable network retains embedded references.
-function syncSourceAtlas(){fetch('references.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Reference lookup unavailable');return r.json()}).then(x=>{
+function syncSourceAtlas(){fetch('references.json?v='+encodeURIComponent(window.TLAHTOLLI_OFFLINE_SEED.version),{cache:'default'}).then(r=>{if(!r.ok)throw new Error('Reference lookup unavailable');return r.json()}).then(x=>{
  if(x?.format!=='tlahtolli-source-atlas'||x.schema!==1||!Array.isArray(x.sources)||!Array.isArray(x.witnesses))throw new Error('Invalid source schema');
  if(x.witnesses.some(a=>!validUrl(a.url)||!a.locator||!a.form))throw new Error('Incomplete folio record');
  researchSources=x;renderSourceAtlas();if(entryView==='verification')render();

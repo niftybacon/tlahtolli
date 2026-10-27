@@ -1369,6 +1369,41 @@ const TlahtolliMorphEngine = (() => {
   }
   return null;
  }
+ // Explicit source-licensed surface tokens from expansion 01. These segment
+ // only the IDENTIFIED token. Boundaries are scholarly interpretations, not
+ // claims that every constituent is separately manuscript-attested.
+ const SOURCE_BOUND_VERB_SEGMENTS={
+  'cochi':{
+   'onicoch':[['o','Proposed preterite augment'],['ni','1sg subject'],['coch','Lexeme-specific preterite base (Karttunen p.36 / Lockhart p.215)']]
+  },
+  'caqui':{
+   'onitlacac':[['o','Proposed preterite augment'],['ni','1sg subject'],['tla','Unspecified nonhuman object marker'],['cac','Recorded irregular preterite base (Karttunen p.25)']],
+   'oniccac':[['ō','Preterite augment'],['ni','1sg subject'],['c','Third-person object prefix'],['cac','Preterite lexical remainder; exact spelling checked in Lockhart p.213']]
+  },
+  'tlazotla':{
+   'oninotlazotlac':[['o','Proposed preterite augment'],['ni','1sg subject'],['no','Reflexive object prefix'],['tlazotlac','Recorded finite remainder; internal morphological boundary unverified']],
+   'onitetlazotlac':[['o','Proposed preterite augment'],['ni','1sg subject'],['te','Human nonspecific object prefix'],['tlazotlac','Recorded finite remainder; do not generalize the verb stem']]
+  },
+  'cuiloa':{
+   'onitlacuilo':[['o','Proposed preterite augment'],['ni','1sg subject'],['tla','Nonspecific object marker'],['cuilo','Recorded preterite remainder, not a freely productive stem']]
+  },
+  'tlacuiloa':{
+   'onitlahcuiloh':[['o','Proposed preterite augment'],['ni','1sg subject'],['tlahcuiloh','Lexicalized writing-verb remainder; initial tla- NOT separated from this lemma']]
+  },
+  'yauh':{
+   'onia':[['o','Proposed preterite augment'],['ni','1sg subject'],['a','Irregular motion-verb remainder; original morphology uncertain']],
+   'oniyah':[['ō','Preterite augment'],['ni','1sg subject'],['yah','Suppletive past form recorded by Lockhart p.242']],
+   'niauh':[['ni','1sg subject'],['auh','Irregular present-tense remainder; do not infer a uniform root']],
+   'tihui':[['ti','1pl subject'],['hui','Suppletive present plural base']],
+   'niyaz':[['ni','1sg subject'],['yāz','Suppletive future base and tense material; internal suffix boundary not independently verified']]
+  }
+ };
+ function locatedVerbParts(w,form){
+  if(!String(w.pos||'').includes('verb'))return null;
+  const spec=SOURCE_BOUND_VERB_SEGMENTS[w.word]?.[normalize(form)];
+  if(!spec)return null;
+  return spec.map(([surface,role])=>({surface,role:'Source-linked token; '+role+'. Segmentation is analytical.'}));
+ }
  function fromForms(q,w,all){
   if(normalize(w.word)===q){
    all.push(make(w.word,'Dictionary headword','lemma',{partOfSpeech:w.pos},
@@ -1387,7 +1422,7 @@ const TlahtolliMorphEngine = (() => {
    const grade=f.evidence==='text'?'manuscript':f.evidence==='dictionary'?'lexical':
     f.evidence==='paradigm'?'paradigm':'unreviewed';
    const plural=String(f.category||'').toLowerCase().includes('plural');
-   const parts=plural?segmentRecordedNounPlural(w,f.form):null;
+   const parts=locatedVerbParts(w,f.form)||(plural?segmentRecordedNounPlural(w,f.form):null);
    all.push(make(w.word,f.category||'Indexed form',grade,{partOfSpeech:w.pos,evidence:f.evidence},
     parts||[{surface:f.form,role:f.category||'Indexed form; internal segmentation not established'}],
     f.source,'',(f.note||'')+(parts?' The plural segmentation describes only this recorded token.':'')));

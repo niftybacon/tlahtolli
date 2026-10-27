@@ -45,5 +45,7 @@ jobs:
         run: python tools/browser_smoke.py
       - name: Test cited token annotations and export safety
         run: python tools/test_interlinear.py
+      - name: Validate source catalog and historical variety annotations
+        run: python tools/test_references_schema.py
       - name: Check reference atlas and bounded morphological hypotheses
         run: python tools/test_references.py

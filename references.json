@@ -1,8 +1,8 @@
 {
   "format": "tlahtolli-source-atlas",
   "schema": 1,
-  "version": "2026-10-26.9",
-  "policy": "A located text witness confirms a written form in a cited transcription; it does not certify a headword sense or grammatical paradigm. This non-peer-reviewed edition only links to rights-restricted transcripts.",
+  "version": "2026-10-26.10",
+  "policy": "A cited occurrence demonstrates a written form in one source, not automatic verification of its grammatical classification. ENL Coyoacan records are mid-sixteenth-century; the Gospel of Luke (1833) reflects nineteenth-century Puebla-area Nahuatl. Period and dialect must remain explicit.",
   "sources": [
     {
       "id": "dfc",
@@ -57,6 +57,24 @@
       "url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
       "rights": "Limited-preview copyrighted academic text; link and cite page only",
       "note": "Chapters 1 and 3 document the subject and object prefix paradigm. Applying the pattern to a specific verb remains a rule-derived hypothesis."
+    },
+    {
+      "id": "enl",
+      "name": "Early Nahuatl Library",
+      "publisher": "Wired Humanities Projects, University of Oregon; Stephanie Wood, ed.",
+      "kind": "16th–19th century Nahuatl manuscript transcriptions (specific document dated mid-16th century)",
+      "url": "https://enl.wired-humanities.org/content/welcome-early-nahuatl-library",
+      "rights": "Site and scholarly transcription have their own rights; quote no extensive transcription without permission; link to source with line/section instead.",
+      "note": "For the Coyoacan example, consult AGN Tierras 1735, exp. 2 / Beyond the Codices Doc. 26, transcribed/translated by Lockhart. Editorial intro and primary transcription are not interchangeable."
+    },
+    {
+      "id": "lucas1833",
+      "name": "San Lucas 1833, Nahuatl Gospel of Luke",
+      "publisher": "Mariano Paz y Sánchez; London: Samuel Bagster / BFBS (1833). MissionAssist digital edition at Bible.com",
+      "kind": "19th-century Puebla-area Nahuatl Bible translation, **not** 16th-century central Mexican corpus",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "rights": "Link to verse and identifying spelling only; the host digital edition may have additional terms. Do not bulk ingest chapters.",
+      "note": "Cambridge University Library notes a Puebla-area variety in ca.1830 translation. Distinguish from the early colonial document language and source editions."
     }
   ],
   "witnesses": [
@@ -131,6 +149,132 @@
       "sourceId": "dfc",
       "evidence": "transcription-occurrence",
       "note": "This page writes Auh as a discourse connector; a specific clause relation requires contextual analysis."
+    },
+    {
+      "lemma": "tecpan",
+      "form": "tecpan",
+      "sourceId": "enl",
+      "locator": "Folio A, analytic transcription, section 1 (line 30); Coyoacan, mid-16th c.",
+      "url": "https://enl.wired-humanities.org/bc26/elements/bc26a/000",
+      "evidence": "transcription-occurrence",
+      "note": "This is the exact ENL transcribed form of the palace/ruler’s household organization; context is institutional."
+    },
+    {
+      "lemma": "tecpancalli",
+      "form": "tecpancalli",
+      "sourceId": "enl",
+      "locator": "Folio A, analytic transcription, section 1 (line 27); Coyoacan, mid-16th c.",
+      "url": "https://enl.wired-humanities.org/bc26/elements/bc26a/000",
+      "evidence": "transcription-occurrence",
+      "note": "The compound is recorded in a historical administrative context; physical versus institutional reading not conclusively settled by spelling."
+    },
+    {
+      "lemma": "chilli",
+      "form": "chilli",
+      "sourceId": "enl",
+      "locator": "Folio A, analytic transcription, section 1 provisions list (around line 6); Coyoacan, mid-16th c.",
+      "url": "https://enl.wired-humanities.org/bc26/elements/bc26a/000",
+      "evidence": "transcription-occurrence",
+      "note": "Chilli is listed among tribute provisions. Does not establish a plural suffix."
+    },
+    {
+      "lemma": "milli",
+      "form": "milli",
+      "sourceId": "enl",
+      "locator": "Folio A, analytic transcription, section 1 fields list (around lines 9–11); Coyoacan, mid-16th c.",
+      "url": "https://enl.wired-humanities.org/bc26/elements/bc26a/000",
+      "evidence": "transcription-occurrence",
+      "note": "Cultivated fields in the tribute document. Does not establish a plural marker."
+    },
+    {
+      "lemma": "xihuitl",
+      "form": "xivitl",
+      "sourceId": "enl",
+      "locator": "Folio A, analytic transcription, section 1 after tribute frequency (approx. line 35)",
+      "url": "https://enl.wired-humanities.org/bc26/elements/bc26a/000",
+      "evidence": "transcription-occurrence",
+      "note": "Historical spelling xivitl (year) is linked to xihuitl as lexical spelling variant, not a separately checked word-form morphology."
+    },
+    {
+      "lemma": "tlatoani",
+      "form": "tlahtoani",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:5; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "Spelling tlahtoani appears in the translated narrative; this is a 19th-century Puebla-area witness, not early Classic central Mexico."
+    },
+    {
+      "lemma": "tonalli",
+      "form": "tonali",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:20; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "tonali (single l) occurs for day/time. Orthographic variant, not evidence for lexical plural."
+    },
+    {
+      "lemma": "metztli",
+      "form": "metztli",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:24; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "Month reading; separate from thigh/leg homograph."
+    },
+    {
+      "lemma": "ichpochtli",
+      "form": "ichpochtli",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:27; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "The unmarried young woman/virgin is mentioned; this passage does not support a plural."
+    },
+    {
+      "lemma": "mahuiliztli",
+      "form": "mahuiliztli",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:12; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "Fear/apprehension appears in translation."
+    },
+    {
+      "lemma": "paquiliztli",
+      "form": "paquiliztli",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:14; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "Joy; only presence of written noun is checked."
+    },
+    {
+      "lemma": "piltzintli",
+      "form": "piltzintli",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:41; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "The child appears in Marian narrative; honorific reading remains a grammatical interpretation."
+    },
+    {
+      "lemma": "chimalli",
+      "form": "chimali",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:69; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "Single-l historical spelling chimali in metaphorical context; do not confuse with a literal shield every time."
+    },
+    {
+      "lemma": "tlamantli",
+      "form": "tlamantli",
+      "sourceId": "lucas1833",
+      "locator": "San Lucas 1:37; Nahuatl text, 1833 edition",
+      "url": "https://www.bible.com/bible/4612/LUK.1.NCI1833",
+      "evidence": "transcription-occurrence",
+      "note": "Item/thing occurs in phrase itla tlamantli; no plural evidence."
     }
   ]
 }

@@ -20,7 +20,7 @@ check(d.get('schema')==1 and d.get('format')=='tlahtolli-published-dictionary','
 check(p.get('schema')==1 and p.get('format')=='tlahtolli-verb-paradigms','Invalid verb schema')
 check(d.get('version')==p.get('version'),'Dictionary and paradigms are different versions')
 words=d.get('words',[])
-check(isinstance(words,list) and len(words)>=44,'Missing founding headwords')
+check(isinstance(words,list) and len(words)>=88,'Missing founding headwords')
 seen=set(); forms=0
 for w in words:
     key=(w.get('word'),w.get('variety'))
@@ -62,7 +62,7 @@ class Parser(HTMLParser):
 h=Parser();h.feed((root/'index.html').read_text(encoding='utf-8'))
 check(not [x for x,n in Counter(h.ids).items() if n>1],'Duplicate HTML IDs')
 check(all(x in h.ids for x in ('tabStudy','studyView','studyCard','auditView','formProbeInput','concordanceInput','facetPOS','facetAnimacy','facetEvidence','concordanceMode','concordanceSource','drillCard','drillVerb','auditCoverageMatrix','quickLookup','quickLookupForm','workspaceTools','analyzerDetails','exportDetails')),'Study/research UI missing')
-check('v1.9' in (root/'index.html').read_text(encoding='utf-8'),'App version header mismatch')
+check('v2.0' in (root/'index.html').read_text(encoding='utf-8'),'App version header mismatch')
 try:
     seed=json.loads(h.scripts[0].split('window.TLAHTOLLI_OFFLINE_SEED=',1)[1].strip().rstrip(';'))
     check(seed.get('words')==words,'Offline words differ from published words')

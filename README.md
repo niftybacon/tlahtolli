@@ -1,22 +1,22 @@
-# Tlahtōlli v1.9 · Source Atlas and Bounded Morphology
+# Tlahtōlli v2.0 · 88-word research expansion
 
-[Open the live website](https://niftybacon.github.io/tlahtolli/).
+[Open Tlahtōlli](https://niftybacon.github.io/tlahtolli/)
 
-## New in v1.9
-- **Source atlas:** six described external source collections with attribution, chronology and rights guidance.
-- **Getty folio witnesses:** eight researched folio locations recorded for ātl, calli, xōchitl, tlācatl, pilli, tēpetl, in, and auh. Each is evidence of a *written occurrence*, not automatically of its grammar or sense.
-- **Source explorer:** Evidence · Sources on every entry shows Getty occurrences where checked; Research Audit shows the complete bibliography. General source-site links are marked for exploration only.
-- **Limited morphotactic hypotheses:** proposals for a subject + object + indexed present-tense transitive stem, using the object-prefix inventory documented in Launey's grammar. Never marks a generated form historically attested.
-- **Better verification:** new sourced grammatical claims require specific page/folio/entry locations. Grammar-derived inferences no longer count as independently supported field claims.
+**Version 2.0 — 44 additional lexically documented headwords** (44 founding + 44 new = 88). New headwords have lexicon links and publication/page locators. The **reference atlas** covers eight reference collections and 22 individually linked historical-text occurrences; 14 witnesses come from this expansion.
 
-## How to add a genuine attestation
-Check the actual text and original spelling at a historical folio. Add a record to `references.json` with lemma, recorded form, exact folio URL and locator, edition rights and a caution about what is supported. Do **not** copy rights-restricted transcript passages into the repository.
+## Evidence hierarchy and period labels
 
-For a grammatical classification, use the entry's Evidence form with precise citation and source location. Historical examples and grammar paradigms should remain distinct.
+- **Online Nahuatl Dictionary:** confirms the lexical citation spelling and primary English sense with references to Molina (1571), Karttunen (1992), Lockhart (2001), etc. A dictionary link alone does NOT prove a noun's grammatical animacy, an unattested plural, or a particular textual parsing.
+- **Early Nahuatl Library:** mid-sixteenth-century Coyoacan archival document (AGN Tierras 1735, exp. 2; Lockhart, *Beyond the Codices* Doc. 26). Records several observed forms, including *chilli*, *milli*, *tecpan*, *tecpancalli* and *xivitl*.
+- **Gospel of Luke:** Mariano Paz y Sánchez, 1833, a **19th-century Puebla-region** Nahuatl translation (NOT automatically the same dialect or period as sixteenth-century central Mexico). Witnesses cite chapter and verse. This text may illustrate historical vocabulary, but cannot be generalized as precontact or early colonial usage.
+- **Florentine Codex:** original eight linked folio references remain. They are not blanket grammatical proof.
 
-## Verify
-`python tools/validate.py`, `python tools/test_data.py`, `python tools/test_references.py`, and the GitHub Actions browser suite. Passing code checks does not constitute human scholarly review.
+The release preserves previous 44 headwords, 120 recorded forms, and 12 verb paradigms. Five newly added words have dictionary-recorded **full plural** forms; many other entries intentionally have no independently verified plural recorded, which **does not mean the word cannot be pluralized**. Animacy for new headwords is an explicit provisional working hypothesis based on meaning and flagged as unverified at the grammatical-claim level. Editorial names do not imply expert review.
 
-Current coverage: 44 headwords, 120 indexed form records, 12 finite-verb paradigms, 13 previously recorded claim-level citations, and 8 located historical-form references. Most fields still need independent investigation.
+## Maintain and test
 
-Personal notes, saved passages, edits and study progress remain browser-local; export a full JSON backup when moving between browsers.
+Run `python tools/validate.py`, `python tools/test_references_schema.py`, `python tools/test_data.py`, `python tools/browser_smoke.py`, `python tools/test_references.py`, and `python tools/test_interlinear.py` before publishing. References and published dictionary/paradigms must share the same version; `index.html` also contains a matching offline seed.
+
+`verified_44_source_index.csv` has the precise evidence review ledger and explicit limitations for every new entry. ENL and Bible.com are linked; no entire copyrighted chapter or archival transcription is republished.
+
+The user’s reading passages, study records, edits and annotations remain browser-local. Back up your project JSON before changing browsers or devices. Data sync adds new published headwords while preserving local edits.

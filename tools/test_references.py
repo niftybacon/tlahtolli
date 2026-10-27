@@ -8,8 +8,8 @@ d=json.loads((root/'dictionary.json').read_text(encoding='utf-8'))
 p=json.loads((root/'paradigms.json').read_text(encoding='utf-8'))
 r=json.loads((root/'references.json').read_text(encoding='utf-8'))
 assert d['version']==p['version']==r['version']
-assert len(r['witnesses'])==8 and len(r['sources'])==6
-assert all(x['locator'] and x['url'].startswith('https://florentinecodex.getty.edu/') for x in r['witnesses'])
+assert len(r['witnesses'])==22 and len(r['sources'])==8
+assert all(x['locator'] and x['url'].startswith('https://') for x in r['witnesses'])
 assert all(x['lemma'] in {w['word'] for w in d['words']} for x in r['witnesses'])
 with sync_playwright() as pw:
     browser=pw.chromium.launch(headless=True,args=['--no-sandbox'])
@@ -24,7 +24,7 @@ with sync_playwright() as pw:
     assert 'Book 11, folio 160v' in page.locator('#detail').inner_text()
     page.locator('#tabAudit').click()
     atlas=page.locator('#sourceAtlas').inner_text()
-    assert '8 checked folio pointers' in atlas and 'Gran Diccionario' in atlas
+    assert '22 located text witnesses' in atlas and 'Gran Diccionario' in atlas
     page.locator('#tabDict').click()
     page.locator('#analyzerDetails').evaluate('(el)=>el.open=true')
     page.locator('#formProbeInput').fill('nimitzchīhua')
@@ -36,4 +36,4 @@ with sync_playwright() as pw:
     assert 'Rule-based hypotheses' not in page.locator('#formProbeOutput').inner_text()
     assert not errors,errors
     browser.close()
-print('PASS: exact source pointers and conservative hypothetical object agreement')
+print('PASS: multiple referenced corpora and cautious morphological hypotheses')

@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-26.9",
+  "version": "2026-10-26.10",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -2190,6 +2190,2775 @@
       ],
       "formsEdited": false,
       "claims": []
+    },
+    {
+      "word": "tonalli",
+      "meaning": "day; solar warmth; day sign; solar life force",
+      "pos": "noun",
+      "stem": "",
+      "original": "tonalli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tonalli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 149r col. 2; Karttunen 1992, p. 246. Not all morphological fields have been separately attested. Molina and Karttunen distinguish physical solar warmth, day, and culturally specific vital force.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "tonaltin",
+      "pluralStatus": "attested",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tonalli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Molina and Karttunen distinguish physical solar warmth, day, and culturally specific vital force. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tonalli",
+          "category": "Dictionary headword",
+          "gloss": "day",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tonalli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "tonaltin",
+          "category": "Recorded plural",
+          "gloss": "plural form of tonalli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tonalli",
+          "note": "Full plural given in Karttunen as cited on the linked entry; not an independently checked text manuscript."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tonalli",
+          "locator": "Molina 1571 II, fol. 149r col. 2; Karttunen 1992, p. 246",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tonalli",
+          "locator": "Molina 1571 II, fol. 149r col. 2; Karttunen 1992, p. 246",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tonalli",
+          "locator": "Molina 1571 II, fol. 149r col. 2; Karttunen 1992, p. 246",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tonalli",
+          "locator": "Molina 1571 II, fol. 149r col. 2; Karttunen 1992, p. 246",
+          "note": "Exact cited plural form appears in Karttunen section of linked lexicon. Not an obligatory plural in all contexts.",
+          "reviewer": "Tlahtōlli source review (AI assisted)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "yollotl",
+      "meaning": "heart; life; spirits",
+      "pos": "noun",
+      "stem": "",
+      "original": "yollotl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/yollotl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 40v; Karttunen 1992, pp. 342–343. Not all morphological fields have been separately attested. Usually possessed; see -yōllō. Do not infer that the 16th c. land-measure yollotli is identical to the physical heart lemma.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/yollotl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Usually possessed; see -yōllō. Do not infer that the 16th c. land-measure yollotli is identical to the physical heart lemma. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "yollotl",
+          "category": "Dictionary headword",
+          "gloss": "heart",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yollotl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yollotl",
+          "locator": "Molina 1571 II, fol. 40v; Karttunen 1992, pp. 342–343",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yollotl",
+          "locator": "Molina 1571 II, fol. 40v; Karttunen 1992, pp. 342–343",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/yollotl",
+          "locator": "Molina 1571 II, fol. 40v; Karttunen 1992, pp. 342–343",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "ichpochtli",
+      "meaning": "maiden; unmarried young woman; daughter",
+      "pos": "noun",
+      "stem": "",
+      "original": "ichpochtli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 32v col. 1; Karttunen 1992, p. 93. Not all morphological fields have been separately attested. Plural reduplicates -pōch-; not simply addition of a productive suffix.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "ichpōpōchtin",
+      "pluralStatus": "attested",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Plural reduplicates -pōch-; not simply addition of a productive suffix. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "ichpochtli",
+          "category": "Dictionary headword",
+          "gloss": "maiden",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "ichpōpōchtin",
+          "category": "Recorded plural",
+          "gloss": "plural form of ichpochtli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+          "note": "Full plural given in Karttunen as cited on the linked entry; not an independently checked text manuscript."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+          "locator": "Molina 1571 II, fol. 32v col. 1; Karttunen 1992, p. 93",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+          "locator": "Molina 1571 II, fol. 32v col. 1; Karttunen 1992, p. 93",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+          "locator": "Molina 1571 II, fol. 32v col. 1; Karttunen 1992, p. 93",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+          "locator": "Molina 1571 II, fol. 32v col. 1; Karttunen 1992, p. 93",
+          "note": "Exact cited plural form appears in Karttunen section of linked lexicon. Not an obligatory plural in all contexts.",
+          "reviewer": "Tlahtōlli source review (AI assisted)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tlatoani",
+      "meaning": "ruler; governor; authoritative speaker",
+      "pos": "noun",
+      "stem": "",
+      "original": "tlatoani",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlatoani",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 140v col. 1; Karttunen 1992, p. 266. Not all morphological fields have been separately attested. Suppletive base in some inflected forms; do not generate *tlatoanimeh as a default.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "none (agentive/locative)",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlatoani",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Suppletive base in some inflected forms; do not generate *tlatoanimeh as a default. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tlatoani",
+          "category": "Dictionary headword",
+          "gloss": "ruler",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatoani",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatoani",
+          "locator": "Molina 1571 II, fol. 140v col. 1; Karttunen 1992, p. 266",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatoani",
+          "locator": "Molina 1571 II, fol. 140v col. 1; Karttunen 1992, p. 266",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatoani",
+          "locator": "Molina 1571 II, fol. 140v col. 1; Karttunen 1992, p. 266",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tecpan",
+      "meaning": "palace; ruler’s household or headquarters",
+      "pos": "noun / relational-locative",
+      "stem": "",
+      "original": "tecpan",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpan",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 93r col. 2; Lockhart 2001, p. 233. Not all morphological fields have been separately attested. Also a locative/relational expression. ENL confirms organizational sense, not just building.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "none (agentive/locative)",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpan",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Also a locative/relational expression. ENL confirms organizational sense, not just building. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tecpan",
+          "category": "Dictionary headword",
+          "gloss": "palace",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpan",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpan",
+          "locator": "Molina 1571 II, fol. 93r col. 2; Lockhart 2001, p. 233",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpan",
+          "locator": "Molina 1571 II, fol. 93r col. 2; Lockhart 2001, p. 233",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpan",
+          "locator": "Molina 1571 II, fol. 93r col. 2; Lockhart 2001, p. 233",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tecpancalli",
+      "meaning": "royal residence; palace buildings",
+      "pos": "noun",
+      "stem": "",
+      "original": "tecpancalli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpancalli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 93r col. 2; Karttunen 1992, p. 217. Not all morphological fields have been separately attested. Compare tecpan; ENL Doc. 26 line 27 records institutional rather than necessarily architectural reference.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpancalli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Compare tecpan; ENL Doc. 26 line 27 records institutional rather than necessarily architectural reference. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tecpancalli",
+          "category": "Dictionary headword",
+          "gloss": "royal residence",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancalli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancalli",
+          "locator": "Molina 1571 II, fol. 93r col. 2; Karttunen 1992, p. 217",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancalli",
+          "locator": "Molina 1571 II, fol. 93r col. 2; Karttunen 1992, p. 217",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancalli",
+          "locator": "Molina 1571 II, fol. 93r col. 2; Karttunen 1992, p. 217",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "metztli",
+      "meaning": "moon; lunar month",
+      "pos": "noun",
+      "stem": "",
+      "original": "metztli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/metztli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 55v col. 1; Karttunen 1992, p. 144. Not all morphological fields have been separately attested. Homographic metztli meaning thigh/leg must be kept as a distinct lexical sense; do not conflate vowel length.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/metztli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Homographic metztli meaning thigh/leg must be kept as a distinct lexical sense; do not conflate vowel length. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "metztli",
+          "category": "Dictionary headword",
+          "gloss": "moon",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/metztli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/metztli",
+          "locator": "Molina 1571 II, fol. 55v col. 1; Karttunen 1992, p. 144",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/metztli",
+          "locator": "Molina 1571 II, fol. 55v col. 1; Karttunen 1992, p. 144",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/metztli",
+          "locator": "Molina 1571 II, fol. 55v col. 1; Karttunen 1992, p. 144",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "teocalli",
+      "meaning": "temple; church; chapel",
+      "pos": "noun",
+      "stem": "",
+      "original": "teocalli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/teocalli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 100r col. 2; Karttunen 1992, p. 227. Not all morphological fields have been separately attested. Church/temple usage varies by colonial period; this is a full building noun.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/teocalli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Church/temple usage varies by colonial period; this is a full building noun. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "teocalli",
+          "category": "Dictionary headword",
+          "gloss": "temple",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teocalli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teocalli",
+          "locator": "Molina 1571 II, fol. 100r col. 2; Karttunen 1992, p. 227",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teocalli",
+          "locator": "Molina 1571 II, fol. 100r col. 2; Karttunen 1992, p. 227",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/teocalli",
+          "locator": "Molina 1571 II, fol. 100r col. 2; Karttunen 1992, p. 227",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tlamantli",
+      "meaning": "thing; item; kind; counted unit",
+      "pos": "noun",
+      "stem": "",
+      "original": "tlamantli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlamantli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Lockhart 2001, p. 237; Launey 2011, p. 64. Not all morphological fields have been separately attested. Also appears in numeral/quantifier constructions; not a transparent regular plural paradigm.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlamantli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Also appears in numeral/quantifier constructions; not a transparent regular plural paradigm. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tlamantli",
+          "category": "Dictionary headword",
+          "gloss": "thing",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamantli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamantli",
+          "locator": "Lockhart 2001, p. 237; Launey 2011, p. 64",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamantli",
+          "locator": "Lockhart 2001, p. 237; Launey 2011, p. 64",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamantli",
+          "locator": "Lockhart 2001, p. 237; Launey 2011, p. 64",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tlatlacolli",
+      "meaning": "sin; fault; wrongdoing",
+      "pos": "noun",
+      "stem": "",
+      "original": "tlatlacolli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlatlacolli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 137r col. 2; Karttunen 1992, p. 263. Not all morphological fields have been separately attested. Patientive nominal derived from a verb; a mass/abstract use may lack overt plural.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlatlacolli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Patientive nominal derived from a verb; a mass/abstract use may lack overt plural. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tlatlacolli",
+          "category": "Dictionary headword",
+          "gloss": "sin",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatlacolli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatlacolli",
+          "locator": "Molina 1571 II, fol. 137r col. 2; Karttunen 1992, p. 263",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatlacolli",
+          "locator": "Molina 1571 II, fol. 137r col. 2; Karttunen 1992, p. 263",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatlacolli",
+          "locator": "Molina 1571 II, fol. 137r col. 2; Karttunen 1992, p. 263",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "conetl",
+      "meaning": "child; offspring",
+      "pos": "noun",
+      "stem": "",
+      "original": "conetl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/conetl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 24v col. 1; Karttunen 1992, p. 41. Not all morphological fields have been separately attested. Reduplicated plural explicitly recorded, not mechanically -meh.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "cōconeh",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/conetl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Reduplicated plural explicitly recorded, not mechanically -meh. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "conetl",
+          "category": "Dictionary headword",
+          "gloss": "child",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/conetl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "cōconeh",
+          "category": "Recorded plural",
+          "gloss": "plural form of conetl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/conetl",
+          "note": "Full plural given in Karttunen as cited on the linked entry; not an independently checked text manuscript."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/conetl",
+          "locator": "Molina 1571 II, fol. 24v col. 1; Karttunen 1992, p. 41",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/conetl",
+          "locator": "Molina 1571 II, fol. 24v col. 1; Karttunen 1992, p. 41",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/conetl",
+          "locator": "Molina 1571 II, fol. 24v col. 1; Karttunen 1992, p. 41",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/conetl",
+          "locator": "Molina 1571 II, fol. 24v col. 1; Karttunen 1992, p. 41",
+          "note": "Exact cited plural form appears in Karttunen section of linked lexicon. Not an obligatory plural in all contexts.",
+          "reviewer": "Tlahtōlli source review (AI assisted)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "paquiliztli",
+      "meaning": "joy; pleasure; happiness",
+      "pos": "noun",
+      "stem": "",
+      "original": "paquiliztli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 80r col. 1; Karttunen 1992, p. 188. Not all morphological fields have been separately attested. Abstract noun, not classified as a finite verb.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Abstract noun, not classified as a finite verb. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "paquiliztli",
+          "category": "Dictionary headword",
+          "gloss": "joy",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+          "locator": "Molina 1571 II, fol. 80r col. 1; Karttunen 1992, p. 188",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+          "locator": "Molina 1571 II, fol. 80r col. 1; Karttunen 1992, p. 188",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+          "locator": "Molina 1571 II, fol. 80r col. 1; Karttunen 1992, p. 188",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tequitl",
+      "meaning": "labor; duty; task; tribute obligation",
+      "pos": "noun",
+      "stem": "",
+      "original": "tequitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tequitl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 105v col. 1; Karttunen 1992, p. 233. Not all morphological fields have been separately attested. Source describes duty/office/tribute as well as physical work.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tequitl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Source describes duty/office/tribute as well as physical work. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tequitl",
+          "category": "Dictionary headword",
+          "gloss": "labor",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequitl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequitl",
+          "locator": "Molina 1571 II, fol. 105v col. 1; Karttunen 1992, p. 233",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequitl",
+          "locator": "Molina 1571 II, fol. 105v col. 1; Karttunen 1992, p. 233",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tequitl",
+          "locator": "Molina 1571 II, fol. 105v col. 1; Karttunen 1992, p. 233",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "xihuitl",
+      "meaning": "year; comet; grass or turquoise in other senses",
+      "pos": "noun",
+      "stem": "",
+      "original": "xihuitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/xihuitl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 159v col. 2. Not all morphological fields have been separately attested. Polysemous/homographic. Separate calendrical year from other possible lexical senses; grammatical animacy not established for all.",
+      "number": "singular",
+      "animacy": "contextual",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/xihuitl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Polysemous/homographic. Separate calendrical year from other possible lexical senses; grammatical animacy not established for all. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "xihuitl",
+          "category": "Dictionary headword",
+          "gloss": "year",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xihuitl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xihuitl",
+          "locator": "Molina 1571 II, fol. 159v col. 2",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xihuitl",
+          "locator": "Molina 1571 II, fol. 159v col. 2",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/xihuitl",
+          "locator": "Molina 1571 II, fol. 159v col. 2",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "chantli",
+      "meaning": "home; residence",
+      "pos": "noun",
+      "stem": "",
+      "original": "chantli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/chantli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 46; Lockhart 2001, p. 214. Not all morphological fields have been separately attested. Usually occurs possessed or as a locative; do not infer a regular bare plural just from -meh suffix notation.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/chantli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Usually occurs possessed or as a locative; do not infer a regular bare plural just from -meh suffix notation. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "chantli",
+          "category": "Dictionary headword",
+          "gloss": "home",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chantli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chantli",
+          "locator": "Karttunen 1992, p. 46; Lockhart 2001, p. 214",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chantli",
+          "locator": "Karttunen 1992, p. 46; Lockhart 2001, p. 214",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/chantli",
+          "locator": "Karttunen 1992, p. 46; Lockhart 2001, p. 214",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "camatl",
+      "meaning": "mouth",
+      "pos": "noun",
+      "stem": "",
+      "original": "camatl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/camatl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 12r col. 1; Karttunen 1992, p. 24. Not all morphological fields have been separately attested. Often possessed; alternate bound shapes -can and -camac need separate documentation.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/camatl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Often possessed; alternate bound shapes -can and -camac need separate documentation. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "camatl",
+          "category": "Dictionary headword",
+          "gloss": "mouth",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/camatl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/camatl",
+          "locator": "Molina 1571 II, fol. 12r col. 1; Karttunen 1992, p. 24",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/camatl",
+          "locator": "Molina 1571 II, fol. 12r col. 1; Karttunen 1992, p. 24",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/camatl",
+          "locator": "Molina 1571 II, fol. 12r col. 1; Karttunen 1992, p. 24",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "ixtli",
+      "meaning": "face; eye; surface",
+      "pos": "noun",
+      "stem": "",
+      "original": "ixtli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ixtli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 48v col. 1; Karttunen 1992, p. 121. Not all morphological fields have been separately attested. The combining element -īx is not a free nominative headword.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ixtli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. The combining element -īx is not a free nominative headword. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "ixtli",
+          "category": "Dictionary headword",
+          "gloss": "face",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ixtli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ixtli",
+          "locator": "Molina 1571 II, fol. 48v col. 1; Karttunen 1992, p. 121",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ixtli",
+          "locator": "Molina 1571 II, fol. 48v col. 1; Karttunen 1992, p. 121",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/ixtli",
+          "locator": "Molina 1571 II, fol. 48v col. 1; Karttunen 1992, p. 121",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "maitl",
+      "meaning": "hand; arm; unit of measure",
+      "pos": "noun",
+      "stem": "",
+      "original": "maitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/maitl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 51v col. 1; Karttunen 1992, pp. 133–134. Not all morphological fields have been separately attested. Arms/hands and measurement senses; alternating bound stem -mā; do not collapse into the separate land-measure matl.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/maitl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Arms/hands and measurement senses; alternating bound stem -mā; do not collapse into the separate land-measure matl. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "maitl",
+          "category": "Dictionary headword",
+          "gloss": "hand",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/maitl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/maitl",
+          "locator": "Molina 1571 II, fol. 51v col. 1; Karttunen 1992, pp. 133–134",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/maitl",
+          "locator": "Molina 1571 II, fol. 51v col. 1; Karttunen 1992, pp. 133–134",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/maitl",
+          "locator": "Molina 1571 II, fol. 51v col. 1; Karttunen 1992, pp. 133–134",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "icxitl",
+      "meaning": "foot; animal foot",
+      "pos": "noun",
+      "stem": "",
+      "original": "icxitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/icxitl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 34r col. 2; Karttunen 1992, p. 95. Not all morphological fields have been separately attested. Inalienable body-part vocabulary may show possessed stems, not a straightforward plural.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/icxitl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Inalienable body-part vocabulary may show possessed stems, not a straightforward plural. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "icxitl",
+          "category": "Dictionary headword",
+          "gloss": "foot",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/icxitl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/icxitl",
+          "locator": "Molina 1571 II, fol. 34r col. 2; Karttunen 1992, p. 95",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/icxitl",
+          "locator": "Molina 1571 II, fol. 34r col. 2; Karttunen 1992, p. 95",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/icxitl",
+          "locator": "Molina 1571 II, fol. 34r col. 2; Karttunen 1992, p. 95",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "nenepilli",
+      "meaning": "tongue",
+      "pos": "noun",
+      "stem": "",
+      "original": "nenepilli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nenepilli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 68r col. 1; Karttunen 1992, p. 168. Not all morphological fields have been separately attested. Karttunen lists plural suffix -tin; no independently checked full surface spelling in this batch.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nenepilli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Karttunen lists plural suffix -tin; no independently checked full surface spelling in this batch. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "nenepilli",
+          "category": "Dictionary headword",
+          "gloss": "tongue",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nenepilli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nenepilli",
+          "locator": "Molina 1571 II, fol. 68r col. 1; Karttunen 1992, p. 168",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nenepilli",
+          "locator": "Molina 1571 II, fol. 68r col. 1; Karttunen 1992, p. 168",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/nenepilli",
+          "locator": "Molina 1571 II, fol. 68r col. 1; Karttunen 1992, p. 168",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "chimalli",
+      "meaning": "shield; metaphor for war",
+      "pos": "noun",
+      "stem": "",
+      "original": "chimalli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/chimalli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52. Not all morphological fields have been separately attested. Shield noun, sometimes paired with arrow to refer metaphorically to war.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/chimalli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Shield noun, sometimes paired with arrow to refer metaphorically to war. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "chimalli",
+          "category": "Dictionary headword",
+          "gloss": "shield",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chimalli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chimalli",
+          "locator": "Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chimalli",
+          "locator": "Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/chimalli",
+          "locator": "Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "telpochtli",
+      "meaning": "youth; young man",
+      "pos": "noun",
+      "stem": "",
+      "original": "telpochtli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 96v col. 1; Karttunen 1992, p. 221. Not all morphological fields have been separately attested. Plural with reduplication of -pōch- recorded by Karttunen.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "tēlpōpōchtin",
+      "pluralStatus": "attested",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/telpochtli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Plural with reduplication of -pōch- recorded by Karttunen. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "telpochtli",
+          "category": "Dictionary headword",
+          "gloss": "youth",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "tēlpōpōchtin",
+          "category": "Recorded plural",
+          "gloss": "plural form of telpochtli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
+          "note": "Full plural given in Karttunen as cited on the linked entry; not an independently checked text manuscript."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
+          "locator": "Molina 1571 II, fol. 96v col. 1; Karttunen 1992, p. 221",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
+          "locator": "Molina 1571 II, fol. 96v col. 1; Karttunen 1992, p. 221",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
+          "locator": "Molina 1571 II, fol. 96v col. 1; Karttunen 1992, p. 221",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
+          "locator": "Molina 1571 II, fol. 96v col. 1; Karttunen 1992, p. 221",
+          "note": "Exact cited plural form appears in Karttunen section of linked lexicon. Not an obligatory plural in all contexts.",
+          "reviewer": "Tlahtōlli source review (AI assisted)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tlamatini",
+      "meaning": "sage; learned person",
+      "pos": "noun",
+      "stem": "",
+      "original": "tlamatini",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 126r col. 1; Karttunen 1992, p. 281. Not all morphological fields have been separately attested. Agent noun formed with -ni, not the finite verb mati.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "none (agentive/locative)",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlamatini",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Agent noun formed with -ni, not the finite verb mati. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tlamatini",
+          "category": "Dictionary headword",
+          "gloss": "sage",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
+          "locator": "Molina 1571 II, fol. 126r col. 1; Karttunen 1992, p. 281",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
+          "locator": "Molina 1571 II, fol. 126r col. 1; Karttunen 1992, p. 281",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
+          "locator": "Molina 1571 II, fol. 126r col. 1; Karttunen 1992, p. 281",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "teopixqui",
+      "meaning": "priest; religious specialist",
+      "pos": "noun",
+      "stem": "",
+      "original": "teopixqui",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/teopixqui",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 101r; Karttunen 1992, p. 227. Not all morphological fields have been separately attested. An agent noun; ritual/Christian reference may change with genre and period.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "none (agentive/locative)",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/teopixqui",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. An agent noun; ritual/Christian reference may change with genre and period. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "teopixqui",
+          "category": "Dictionary headword",
+          "gloss": "priest",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teopixqui",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teopixqui",
+          "locator": "Molina 1571 II, fol. 101r; Karttunen 1992, p. 227",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teopixqui",
+          "locator": "Molina 1571 II, fol. 101r; Karttunen 1992, p. 227",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/teopixqui",
+          "locator": "Molina 1571 II, fol. 101r; Karttunen 1992, p. 227",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "xocotl",
+      "meaning": "sour fruit; hog plum; fruit",
+      "pos": "noun",
+      "stem": "",
+      "original": "xocotl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/xocotl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 160v col. 2; Karttunen 1992, p. 329. Not all morphological fields have been separately attested. Can be generic fruit or specific sour fruit; keep senses separate in contextual analysis.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/xocotl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Can be generic fruit or specific sour fruit; keep senses separate in contextual analysis. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "xocotl",
+          "category": "Dictionary headword",
+          "gloss": "sour fruit",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xocotl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xocotl",
+          "locator": "Molina 1571 II, fol. 160v col. 2; Karttunen 1992, p. 329",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xocotl",
+          "locator": "Molina 1571 II, fol. 160v col. 2; Karttunen 1992, p. 329",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/xocotl",
+          "locator": "Molina 1571 II, fol. 160v col. 2; Karttunen 1992, p. 329",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "nochtli",
+      "meaning": "prickly pear fruit",
+      "pos": "noun",
+      "stem": "",
+      "original": "nochtli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nochtli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 72v col. 1; Karttunen 1992, p. 172. Not all morphological fields have been separately attested. Not automatically equivalent to the prickly pear cactus plant itself.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nochtli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Not automatically equivalent to the prickly pear cactus plant itself. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "nochtli",
+          "category": "Dictionary headword",
+          "gloss": "prickly pear fruit",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nochtli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nochtli",
+          "locator": "Molina 1571 II, fol. 72v col. 1; Karttunen 1992, p. 172",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nochtli",
+          "locator": "Molina 1571 II, fol. 72v col. 1; Karttunen 1992, p. 172",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/nochtli",
+          "locator": "Molina 1571 II, fol. 72v col. 1; Karttunen 1992, p. 172",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tzapotl",
+      "meaning": "sapote fruit",
+      "pos": "noun",
+      "stem": "",
+      "original": "tzapotl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tzapotl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 151v col. 1; Karttunen 1992, p. 311. Not all morphological fields have been separately attested. Karttunen lists -meh plural marking; exact full plural spelling not independently verified here.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tzapotl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Karttunen lists -meh plural marking; exact full plural spelling not independently verified here. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tzapotl",
+          "category": "Dictionary headword",
+          "gloss": "sapote fruit",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzapotl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzapotl",
+          "locator": "Molina 1571 II, fol. 151v col. 1; Karttunen 1992, p. 311",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzapotl",
+          "locator": "Molina 1571 II, fol. 151v col. 1; Karttunen 1992, p. 311",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tzapotl",
+          "locator": "Molina 1571 II, fol. 151v col. 1; Karttunen 1992, p. 311",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "etl",
+      "meaning": "bean; beans",
+      "pos": "noun",
+      "stem": "",
+      "original": "etl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/etl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 29r col. 2; Karttunen 1992, p. 78. Not all morphological fields have been separately attested. Ye-tl is an attested dialectal initial-glide variant; do not manufacture plural forms.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/etl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Ye-tl is an attested dialectal initial-glide variant; do not manufacture plural forms. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "etl",
+          "category": "Dictionary headword",
+          "gloss": "bean",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/etl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/etl",
+          "locator": "Molina 1571 II, fol. 29r col. 2; Karttunen 1992, p. 78",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/etl",
+          "locator": "Molina 1571 II, fol. 29r col. 2; Karttunen 1992, p. 78",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/etl",
+          "locator": "Molina 1571 II, fol. 29r col. 2; Karttunen 1992, p. 78",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "chilli",
+      "meaning": "chile pepper",
+      "pos": "noun",
+      "stem": "",
+      "original": "chilli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/chilli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52. Not all morphological fields have been separately attested. Historical form appears in ENL Don Juan document; not all uses denote a single pepper.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/chilli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Historical form appears in ENL Don Juan document; not all uses denote a single pepper. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "chilli",
+          "category": "Dictionary headword",
+          "gloss": "chile pepper",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chilli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chilli",
+          "locator": "Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chilli",
+          "locator": "Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/chilli",
+          "locator": "Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "milli",
+      "meaning": "cultivated field; milpa",
+      "pos": "noun",
+      "stem": "",
+      "original": "milli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/milli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 56v col. 1; Karttunen 1992, p. 147. Not all morphological fields have been separately attested. ENL Coyoacan document locates four worked fields, using this lexical item.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/milli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. ENL Coyoacan document locates four worked fields, using this lexical item. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "milli",
+          "category": "Dictionary headword",
+          "gloss": "cultivated field",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/milli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/milli",
+          "locator": "Molina 1571 II, fol. 56v col. 1; Karttunen 1992, p. 147",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/milli",
+          "locator": "Molina 1571 II, fol. 56v col. 1; Karttunen 1992, p. 147",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/milli",
+          "locator": "Molina 1571 II, fol. 56v col. 1; Karttunen 1992, p. 147",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "ocotl",
+      "meaning": "resinous pine; pine torch",
+      "pos": "noun",
+      "stem": "",
+      "original": "ocotl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ocotl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 75v col. 2; Karttunen 1992, p. 176. Not all morphological fields have been separately attested. Second-vowel length varies in sources; retained source spelling for headword.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ocotl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Second-vowel length varies in sources; retained source spelling for headword. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "ocotl",
+          "category": "Dictionary headword",
+          "gloss": "resinous pine",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ocotl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ocotl",
+          "locator": "Molina 1571 II, fol. 75v col. 2; Karttunen 1992, p. 176",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ocotl",
+          "locator": "Molina 1571 II, fol. 75v col. 2; Karttunen 1992, p. 176",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/ocotl",
+          "locator": "Molina 1571 II, fol. 75v col. 2; Karttunen 1992, p. 176",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "ehecatl",
+      "meaning": "wind; breeze; divine Wind in distinct sense",
+      "pos": "noun",
+      "stem": "",
+      "original": "ehecatl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ehecatl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 28r col. 2; Lockhart 2001, p. 217. Not all morphological fields have been separately attested. Ordinary meteorological wind inanimate, personified deity in a separate sense; do not impose a single animacy rule.",
+      "number": "singular",
+      "animacy": "contextual",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ehecatl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Ordinary meteorological wind inanimate, personified deity in a separate sense; do not impose a single animacy rule. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "ehecatl",
+          "category": "Dictionary headword",
+          "gloss": "wind",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ehecatl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ehecatl",
+          "locator": "Molina 1571 II, fol. 28r col. 2; Lockhart 2001, p. 217",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ehecatl",
+          "locator": "Molina 1571 II, fol. 28r col. 2; Lockhart 2001, p. 217",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/ehecatl",
+          "locator": "Molina 1571 II, fol. 28r col. 2; Lockhart 2001, p. 217",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "itzcuintli",
+      "meaning": "dog; calendrical Dog sign",
+      "pos": "noun",
+      "stem": "",
+      "original": "itzcuintli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 108; Carochi fol. 85v. Not all morphological fields have been separately attested. Animal noun; day-name use is proper-name context.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Animal noun; day-name use is proper-name context. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "itzcuintli",
+          "category": "Dictionary headword",
+          "gloss": "dog",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+          "locator": "Karttunen 1992, p. 108; Carochi fol. 85v",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+          "locator": "Karttunen 1992, p. 108; Carochi fol. 85v",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+          "locator": "Karttunen 1992, p. 108; Carochi fol. 85v",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tecuani",
+      "meaning": "fierce beast; predator",
+      "pos": "noun",
+      "stem": "",
+      "original": "tecuani",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecuani",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 104v col. 2; Karttunen 1992, p. 218. Not all morphological fields have been separately attested. Karttunen supplies plural suffix -meh; exact full spelling not independently checked.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "none (agentive/locative)",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecuani",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Karttunen supplies plural suffix -meh; exact full spelling not independently checked. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tecuani",
+          "category": "Dictionary headword",
+          "gloss": "fierce beast",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecuani",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecuani",
+          "locator": "Molina 1571 II, fol. 104v col. 2; Karttunen 1992, p. 218",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecuani",
+          "locator": "Molina 1571 II, fol. 104v col. 2; Karttunen 1992, p. 218",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tecuani",
+          "locator": "Molina 1571 II, fol. 104v col. 2; Karttunen 1992, p. 218",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "namictli",
+      "meaning": "spouse; husband or wife",
+      "pos": "noun",
+      "stem": "",
+      "original": "namictli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/namictli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 62v col. 2; Karttunen 1992, p. 158. Not all morphological fields have been separately attested. Reduplicated plural recorded explicitly by Karttunen.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "nānāmictin",
+      "pluralStatus": "attested",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/namictli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Reduplicated plural recorded explicitly by Karttunen. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "namictli",
+          "category": "Dictionary headword",
+          "gloss": "spouse",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "nānāmictin",
+          "category": "Recorded plural",
+          "gloss": "plural form of namictli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictli",
+          "note": "Full plural given in Karttunen as cited on the linked entry; not an independently checked text manuscript."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictli",
+          "locator": "Molina 1571 II, fol. 62v col. 2; Karttunen 1992, p. 158",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictli",
+          "locator": "Molina 1571 II, fol. 62v col. 2; Karttunen 1992, p. 158",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/namictli",
+          "locator": "Molina 1571 II, fol. 62v col. 2; Karttunen 1992, p. 158",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictli",
+          "locator": "Molina 1571 II, fol. 62v col. 2; Karttunen 1992, p. 158",
+          "note": "Exact cited plural form appears in Karttunen section of linked lexicon. Not an obligatory plural in all contexts.",
+          "reviewer": "Tlahtōlli source review (AI assisted)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "cahuitl",
+      "meaning": "time; duration",
+      "pos": "noun",
+      "stem": "",
+      "original": "cahuitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cahuitl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 13r; Karttunen 1992, p. 21. Not all morphological fields have been separately attested. Temporal noun, not a finite verb.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cahuitl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Temporal noun, not a finite verb. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "cahuitl",
+          "category": "Dictionary headword",
+          "gloss": "time",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cahuitl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cahuitl",
+          "locator": "Molina 1571 II, fol. 13r; Karttunen 1992, p. 21",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cahuitl",
+          "locator": "Molina 1571 II, fol. 13r; Karttunen 1992, p. 21",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cahuitl",
+          "locator": "Molina 1571 II, fol. 13r; Karttunen 1992, p. 21",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "mahuiliztli",
+      "meaning": "fear; apprehension",
+      "pos": "noun",
+      "stem": "",
+      "original": "mahuiliztli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/mahuiliztli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 132. Not all morphological fields have been separately attested. Lexical record cites Karttunen; no Molina citation was located in this specific entry.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/mahuiliztli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Lexical record cites Karttunen; no Molina citation was located in this specific entry. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "mahuiliztli",
+          "category": "Dictionary headword",
+          "gloss": "fear",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mahuiliztli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mahuiliztli",
+          "locator": "Karttunen 1992, p. 132",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mahuiliztli",
+          "locator": "Karttunen 1992, p. 132",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/mahuiliztli",
+          "locator": "Karttunen 1992, p. 132",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "neltiliztli",
+      "meaning": "truth",
+      "pos": "noun",
+      "stem": "",
+      "original": "neltiliztli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/neltiliztli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 66v col. 2; Karttunen 1992, p. 164. Not all morphological fields have been separately attested. Abstract noun derived from truth/being true.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/neltiliztli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Abstract noun derived from truth/being true. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "neltiliztli",
+          "category": "Dictionary headword",
+          "gloss": "truth",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/neltiliztli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/neltiliztli",
+          "locator": "Molina 1571 II, fol. 66v col. 2; Karttunen 1992, p. 164",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/neltiliztli",
+          "locator": "Molina 1571 II, fol. 66v col. 2; Karttunen 1992, p. 164",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/neltiliztli",
+          "locator": "Molina 1571 II, fol. 66v col. 2; Karttunen 1992, p. 164",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tocaitl",
+      "meaning": "name; reputation",
+      "pos": "noun",
+      "stem": "",
+      "original": "tocaitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 148r; Karttunen 1992, p. 242. Not all morphological fields have been separately attested. Do not confuse the name noun with tocatl spider; attached possessive i-toca is not an absolutive.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tocaitl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Do not confuse the name noun with tocatl spider; attached possessive i-toca is not an absolutive. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tocaitl",
+          "category": "Dictionary headword",
+          "gloss": "name",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
+          "locator": "Molina 1571 II, fol. 148r; Karttunen 1992, p. 242",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
+          "locator": "Molina 1571 II, fol. 148r; Karttunen 1992, p. 242",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
+          "locator": "Molina 1571 II, fol. 148r; Karttunen 1992, p. 242",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "yohualli",
+      "meaning": "night; nighttime",
+      "pos": "noun",
+      "stem": "",
+      "original": "yohualli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/yohualli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 41v col. 1; Karttunen 1992, p. 340. Not all morphological fields have been separately attested. Can occur in adverbial nighttime constructions.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/yohualli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Can occur in adverbial nighttime constructions. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "yohualli",
+          "category": "Dictionary headword",
+          "gloss": "night",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yohualli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yohualli",
+          "locator": "Molina 1571 II, fol. 41v col. 1; Karttunen 1992, p. 340",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yohualli",
+          "locator": "Molina 1571 II, fol. 41v col. 1; Karttunen 1992, p. 340",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/yohualli",
+          "locator": "Molina 1571 II, fol. 41v col. 1; Karttunen 1992, p. 340",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "ilhuitl",
+      "meaning": "day; feast day; holiday",
+      "pos": "noun",
+      "stem": "",
+      "original": "ilhuitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ilhuitl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 37v col. 1; Karttunen 1992, p. 104. Not all morphological fields have been separately attested. Not identical in meaning to tonalli, which also covers solar heat/ritual day-sign.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ilhuitl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Not identical in meaning to tonalli, which also covers solar heat/ritual day-sign. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "ilhuitl",
+          "category": "Dictionary headword",
+          "gloss": "day",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ilhuitl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ilhuitl",
+          "locator": "Molina 1571 II, fol. 37v col. 1; Karttunen 1992, p. 104",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ilhuitl",
+          "locator": "Molina 1571 II, fol. 37v col. 1; Karttunen 1992, p. 104",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/ilhuitl",
+          "locator": "Molina 1571 II, fol. 37v col. 1; Karttunen 1992, p. 104",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "nemiliztli",
+      "meaning": "life; conduct; manner of living",
+      "pos": "noun",
+      "stem": "",
+      "original": "nemiliztli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nemiliztli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 166; Lockhart 2001, p. 226. Not all morphological fields have been separately attested. A nominalization of nemi; not a finite verb.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nemiliztli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. A nominalization of nemi; not a finite verb. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "nemiliztli",
+          "category": "Dictionary headword",
+          "gloss": "life",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemiliztli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemiliztli",
+          "locator": "Karttunen 1992, p. 166; Lockhart 2001, p. 226",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemiliztli",
+          "locator": "Karttunen 1992, p. 166; Lockhart 2001, p. 226",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/nemiliztli",
+          "locator": "Karttunen 1992, p. 166; Lockhart 2001, p. 226",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "tlatquitl",
+      "meaning": "property; goods; belongings",
+      "pos": "noun",
+      "stem": "",
+      "original": "tlatquitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 142r col. 2; Karttunen 1992, p. 300. Not all morphological fields have been separately attested. Can be plural in English translation without implying a Nahuatl plural morpheme.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Can be plural in English translation without implying a Nahuatl plural morpheme. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "tlatquitl",
+          "category": "Dictionary headword",
+          "gloss": "property",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+          "locator": "Molina 1571 II, fol. 142r col. 2; Karttunen 1992, p. 300",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+          "locator": "Molina 1571 II, fol. 142r col. 2; Karttunen 1992, p. 300",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+          "locator": "Molina 1571 II, fol. 142r col. 2; Karttunen 1992, p. 300",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
+    },
+    {
+      "word": "piltzintli",
+      "meaning": "young child; son or daughter (honorific/diminutive)",
+      "pos": "noun",
+      "stem": "",
+      "original": "piltzintli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/piltzintli",
+      "example": "",
+      "translation": "",
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 82r col. 1; Karttunen 1992, p. 196. Not all morphological fields have been separately attested. Morphologically related to pilli but recorded as a distinct headword; do not conflate senses.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/piltzintli",
+      "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Morphologically related to pilli but recorded as a distinct headword; do not conflate senses. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
+      "inflections": [
+        {
+          "form": "piltzintli",
+          "category": "Dictionary headword",
+          "gloss": "young child",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/piltzintli",
+          "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        }
+      ],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/piltzintli",
+          "locator": "Molina 1571 II, fol. 82r col. 1; Karttunen 1992, p. 196",
+          "note": "Lexical headword supported by cited early dictionary or scholarly analytical entry; not automatically a corpus token.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/piltzintli",
+          "locator": "Molina 1571 II, fol. 82r col. 1; Karttunen 1992, p. 196",
+          "note": "Core English sense supported by the cited Online Nahuatl Dictionary compilation; polysemous entries require contextual interpretation.",
+          "reviewer": "Tlahtōlli source review (AI assisted; no specialist peer review)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "animacy",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/piltzintli",
+          "locator": "Molina 1571 II, fol. 82r col. 1; Karttunen 1992, p. 196",
+          "note": "Semantic referent-based working classification. This link documents lexical meaning, not a direct agreement diagnostic for the nominal animacy class. Needs grammatical review.",
+          "reviewer": "Tlahtōlli preliminary semantic analysis; not verified animacy",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     }
   ]
 }

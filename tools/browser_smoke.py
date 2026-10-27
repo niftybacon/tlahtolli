@@ -19,7 +19,7 @@ with sync_playwright() as pw:
     }""",[dictionary,paradigms])
     page.set_content((root/'index.html').read_text(encoding='utf8'),wait_until='load')
     page.wait_for_function("document.querySelector('#syncStatus')?.textContent.includes('Synced')")
-    assert page.locator('#total').inner_text()=='44'
+    assert page.locator('#total').inner_text()=='88'
     assert not page.locator('#workspaceTools').evaluate('(e)=>e.open')
     assert not page.locator('#analyzerDetails').evaluate('(e)=>e.open')
     page.locator('#quickLookup').fill('xōchitl')
@@ -30,7 +30,7 @@ with sync_playwright() as pw:
     assert page.locator('#quickLookup').evaluate('(e)=>document.activeElement===e')
     page.locator('#search').fill('')
     page.locator('#facetPOS').select_option('noun')
-    assert page.locator('button.result').count()==26
+    assert page.locator('button.result').count()==70
     page.locator('#facetAnimacy').select_option('animate')
     assert page.locator('button.result').count()>10
     page.locator('#facetAnimacy').select_option('all')
@@ -76,7 +76,7 @@ with sync_playwright() as pw:
     page.locator('#workspaceTools').evaluate('(e)=>e.open=true')
     with page.expect_download() as download:page.locator('#allBackup').click()
     backup=json.loads(Path(download.value.path()).read_text(encoding='utf-8-sig'))
-    assert len(backup['words'])==44 and len(backup['studyRecords'])==2 and any(k.startswith('paradigm§') for k in backup['studyRecords'])
+    assert len(backup['words'])==88 and len(backup['studyRecords'])==2 and any(k.startswith('paradigm§') for k in backup['studyRecords'])
     assert not errors,errors
     browser.close()
-print('PASS: v1.8 browser regressions including focused UI')
+print('PASS: v2.0 browser regressions including focused UI')

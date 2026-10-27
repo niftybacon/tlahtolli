@@ -10,13 +10,13 @@ l=json.loads((ROOT/'data/lexicon.json').read_text(encoding='utf8'))
 m=json.loads((ROOT/'data/morphology.json').read_text(encoding='utf8'))
 e=json.loads((ROOT/'data/evidence.json').read_text(encoding='utf8'))
 new=['itic','nemini','iuhquin','inīn','ītech','quiza','tlapalli','cen','polihui']
-assert len(d['words'])==len(l['words'])==len(m['entries'])==len(e['entries'])==112
+assert len(d['words'])==len(l['words'])==len(m['entries'])==len(e['entries'])>=112
 assert [w['word'] for w in d['words'][103:]]==new
-assert d['version']==l['version']==p['version']==m['version']==e['version']=='2026-10-27.5.0'
+assert d['version']==l['version']==p['version']==m['version']==e['version'] and d['version'].startswith('2026-10-27.')
 assert sum(len(w['claims']) for w in d['words'][:103])==777
 assert sum(len(w['inflections']) for w in d['words'][:103])==211
-assert sum(len(w['claims']) for w in d['words'][103:])==81
-for w in d['words'][103:]:
+assert sum(len(w['claims']) for w in d['words'][103:112])==81
+for w in d['words'][103:112]:
   assert len(w['claims'])==9,(w['word'],w['claims'])
   for field in ('headword','meaning','pos'):
     claim=next(c for c in w['claims'] if c['field']==field)
@@ -63,16 +63,16 @@ with sync_playwright() as pw:
       deliberatelyDeletedStillAbsent:!deleted.passages.some(p=>p.title===passageExamples[3].title),
       newNames:words.slice(103).map(x=>x.word)};
   }""")
-  assert len(checks['titles'])==5,checks['titles']
+  assert len(checks['titles'])>=5,checks['titles']
   assert all(any(name in title for title in checks['titles']) for name in checks['expected'])
   assert all(x['source'].startswith('https://') for x in checks['found'])
   assert all(x['notes'] for x in checks['found'])
   assert all(x['match']!='unknown' for p in checks['found'] for x in p['tokens']),checks['found']
-  assert checks['initial']==5 and checks['custom']=='my translation' and checks['note']=='do not overwrite this note'
+  assert checks['initial']>=5 and checks['custom']=='my translation' and checks['note']=='do not overwrite this note'
   assert checks['repeatAdded']==0 and checks['deliberatelyDeletedStillAbsent']
   assert checks['newNames']==new
   page.locator('#tabRead').click()
-  assert page.locator('#passageList [data-passage]').count()==5
+  assert page.locator('#passageList [data-passage]').count()>=5
   assert not errors,errors
   browser.close()
 print('PASS: four sourced reader excerpts, nine new lemmas and additive local-data migration')

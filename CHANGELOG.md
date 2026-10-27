@@ -1,3 +1,9 @@
+## October 27, 2026 — One stone-and-mirror reading
+
+- Add one accurately attributed Florentine Codex Book XI folio 209v passage containing *tetl* (stone) and *tēzcatl* (mirror), retaining historical writing and carefully labelled normalized text.
+- Introduce source-reviewed *tēzcatl*, *cuepa*, and *ca* entries, maintaining plural/animacy fields, evidence levels, and textual-form boundaries.
+- Extend the additive, non-destructive Amoxtli built-in reading list; no other functions, SRS settings, or personal data changed.
+
 ## October 27, 2026 — Amoxtli reading expansion 02
 
 - Add four concise, specifically sourced reading excerpts from the Florentine Codex and a scholarly edition of the Cantares Mexicanos.

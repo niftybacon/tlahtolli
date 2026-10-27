@@ -16,24 +16,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate dictionary, evidence and offline seed
+      - name: Validate published dictionary
         run: python tools/validate.py
-      - name: Test documented paradigm fixtures
+      - name: Regression checks on known documented forms
         run: python tools/test_data.py
-      - name: Syntax-check inline app JavaScript
+      - name: JavaScript syntax check
         run: |
           python - <<'PY'
-          from pathlib import Path
           from html.parser import HTMLParser
-          class S(HTMLParser):
-              def __init__(self):super().__init__();self.scripts=[];self.active=False
+          from pathlib import Path
+          class P(HTMLParser):
+              def __init__(self):super().__init__();self.inside=False;self.scripts=[]
               def handle_starttag(self,t,a):
-                  if t=='script':self.scripts.append('');self.active=True
+                  if t=='script':self.inside=True;self.scripts.append('')
               def handle_endtag(self,t):
-                  if t=='script':self.active=False
-              def handle_data(self,v):
-                  if self.active:self.scripts[-1]+=v
-          h=S();h.feed(Path('index.html').read_text(encoding='utf8'))
+                  if t=='script':self.inside=False
+              def handle_data(self,d):
+                  if self.inside:self.scripts[-1]+=d
+          h=P();h.feed(Path('index.html').read_text(encoding='utf8'))
           Path('/tmp/tlahtolli-app.js').write_text(h.scripts[-1],encoding='utf8')
           PY
           node --check /tmp/tlahtolli-app.js
+      - name: Install headless browser
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Run browser regressions
+        run: python tools/browser_smoke.py

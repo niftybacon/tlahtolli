@@ -20,6 +20,8 @@ jobs:
         run: python tools/validate.py
       - name: Regression checks on known documented forms
         run: python tools/test_data.py
+      - name: Audit claim-level source coverage
+        run: python tools/test_claim_audit.py
       - name: JavaScript syntax check
         run: |
           python - <<'PY'
@@ -43,6 +45,8 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Run browser regressions
         run: python tools/browser_smoke.py
+      - name: Verify evidence ledger in browser
+        run: python tools/test_claim_browser.py
       - name: Test cited token annotations and export safety
         run: python tools/test_interlinear.py
       - name: Validate source catalog and historical variety annotations

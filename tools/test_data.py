@@ -20,7 +20,7 @@ assert sum(len(x.get('claims',[])) for x in w.values())>=13
 print('PASS: selected documented-form regression fixtures. Not comprehensive peer review.')
 
 # v2.0 lexicographic expansion and explicitly uncertain animacy.
-new=json.loads((root/'dictionary.json').read_text(encoding='utf8'))['words'][44:]
+new=json.loads((root/'dictionary.json').read_text(encoding='utf8'))['words'][44:88]
 assert len(new)==44 and len({x['word'] for x in new})==44
 assert all(len(x.get('claims',[]))>=3 and x['source'].startswith('https://nahuatl.wired-humanities.org/content/') for x in new)
 assert all(any(c.get('field')=='animacy' and c.get('assessment') in ('grammar','inference','unverified') for c in x['claims']) for x in new)

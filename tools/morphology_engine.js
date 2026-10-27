@@ -105,6 +105,24 @@ const TlahtolliMorphEngine = (() => {
  function sourceClaim(w,field){
   return (w.claims||[]).find(c=>c.field===field&&['dictionary','grammar','text'].includes(c.assessment)&&c.locator);
  }
+ function segmentRecordedNounPlural(w,form){
+  if(!String(w.pos||'').toLowerCase().includes('noun'))return null;
+  // A documented plural token may be internally segmented when a matching
+  // entry-specific stem plus an overt ending exactly reconstructs that token.
+  // Never assume this ending applies to every noun of the same noun class.
+  const surface=normalize(form);
+  for(const stem of lexicalStems(w)){
+   const normalizedStem=normalize(stem);
+   if(!surface.startsWith(normalizedStem))continue;
+   const suffix=surface.slice(normalizedStem.length);
+   if(!['tin','meh','me','queh','h'].includes(suffix))continue;
+   return [
+    {surface:String(form).slice(0,normalizedStem.length),role:'Recorded noun stem; segmentation proposed'},
+    {surface:String(form).slice(normalizedStem.length),role:'Ending in this source-linked plural token; NOT a universal productive suffix'}
+   ];
+  }
+  return null;
+ }
  function fromForms(q,w,all){
   if(normalize(w.word)===q){
    all.push(make(w.word,'Dictionary headword','lemma',{partOfSpeech:w.pos},
@@ -122,8 +140,11 @@ const TlahtolliMorphEngine = (() => {
    if(f.evidence==='stem'||normalize(f.form)!==q)continue;
    const grade=f.evidence==='text'?'manuscript':f.evidence==='dictionary'?'lexical':
     f.evidence==='paradigm'?'paradigm':'unreviewed';
+   const plural=String(f.category||'').toLowerCase().includes('plural');
+   const parts=plural?segmentRecordedNounPlural(w,f.form):null;
    all.push(make(w.word,f.category||'Indexed form',grade,{partOfSpeech:w.pos,evidence:f.evidence},
-    [{surface:f.form,role:f.category||'Indexed form'}],f.source,'',f.note||''));
+    parts||[{surface:f.form,role:f.category||'Indexed form; internal segmentation not established'}],
+    f.source,'',(f.note||'')+(parts?' The plural segmentation describes only this recorded token.':'')));
   }
   // Complete possessed tokens in the editorial field are indexed separately.
   // A quoted bound stem (e.g., -tepēuh) is NOT a complete token.

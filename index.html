@@ -1161,6 +1161,88 @@ const previousFormProbe=renderFormProbe;
 renderFormProbe=function(){previousFormProbe();const box=$('formProbeOutput'),q=$('formProbeInput').value.trim();if(!q||/\s/.test(q))return;
  const newHtml=renderProposedParses(q);if(newHtml)box.insertAdjacentHTML('beforeend',newHtml);
 };
+// Research-grade bounded segmentation of already indexed forms. This runs
+// inside the standalone offline HTML and never modifies historical evidence.
+function segmentIndexedParadigm(model,ti,pi,augmented){
+ const cell=model.cells[ti][pi],parts=[];
+ let remainder=norm(cell);
+ if(augmented)parts.push({form:'ō',label:'Optional past augment (grammar pattern)'});
+ const imperative=(ti===7||ti===8)&&(pi===1||pi===4)&&remainder.startsWith('xi');
+ if(imperative){
+  parts.push({form:'xi',label:'Second-person imperative/optative marker'});
+  remainder=remainder.slice(2);
+ }else{
+  const prefixes=[['ni','n'],['ti','t'],[],['ti','t'],['an','am'],[]][pi];
+  const prefix=prefixes.find(p=>remainder.startsWith(p))||'';
+  parts.push({form:prefix||'Ø',label:PARADIGM_PERSONS[pi][0]+' subject '+(prefix?'prefix':'(zero prefix)')});
+  remainder=remainder.slice(prefix.length);
+ }
+ const stemBases=[...new Set([model.b1,model.b2s,model.b2p,model.b3].filter(Boolean).map(norm))];
+ // A prefix is selected only when the remainder begins with one of the
+ // model's EXISTING indexed stems. Otherwise we mark the boundary unknown.
+ if(model.trans){
+  const candidates=['quim','quin','qui','qu','c'];
+  const compatible=candidates.find(p=>remainder.startsWith(p)&&stemBases.some(st=>remainder.slice(p.length).startsWith(st)));
+  if(compatible){
+   parts.push({form:compatible,label:'Indexed third-person object prefix (surface allomorph)'});
+   remainder=remainder.slice(compatible.length);
+  }else{
+   parts.push({form:'?',label:'Object boundary unresolved; fixed 3sg-object paradigm'});
+  }
+ }
+ const best=stemBases.filter(st=>remainder.startsWith(st)).sort((a,b)=>b.length-a.length)[0];
+ if(best){
+  parts.push({form:remainder.slice(0,best.length),label:'Indexed verb base; model-specific'});
+  remainder=remainder.slice(best.length);
+  if(remainder)parts.push({form:remainder,label:'Remaining tense/person material; internal boundaries unverified'});
+ }else if(remainder)parts.push({form:remainder,label:'Residual inflected sequence; exact boundary unverified'});
+ return parts;
+}
+function morphologyAnalyses(value){
+ const query=norm(stripToken(value)).trim();if(!query)return [];
+ const out=[];
+ for(const [lemma,model] of Object.entries(FULL_VERB_PARADIGMS)){
+  const lexical=words.find(w=>w.word===lemma);
+  if(!lexical)continue;
+  for(let ti=0;ti<model.cells.length;ti++)for(let pi=0;pi<6;pi++){
+   const augmented=['Preterite','Pluperfect'].includes(VERB_TENSES[ti].name);
+   const surface=norm(model.cells[ti][pi]);
+   if(query!==surface&&!(augmented&&query===norm('ō'+model.cells[ti][pi])))continue;
+   const usedAugment=query!==surface;
+   out.push({lemma,type:'Indexed grammar cell',pattern:VERB_TENSES[ti].name+' · '+PARADIGM_PERSONS[pi][0],
+    parts:segmentIndexedParadigm(model,ti,pi,usedAugment),
+    source:model.lemmaSource,certainty:'rule-derived; NOT independently text-attested'});
+  }
+ }
+ for(const w of words){
+  if(!w.pos.toLowerCase().includes('noun')||norm(w.word)!==query)continue;
+  const stem=norm(w.stem||'').replace(/-$/,'');
+  const suffix=['tli','tl','li','in'].find(s=>stem&&query===stem+s);
+  if(!suffix)continue;
+  const evidence=(w.claims||[]).find(c=>c.field==='stem');
+  out.push({lemma:w.word,type:'Noun / absolutive segmentation',
+   pattern:'Citation-form hypothesis',parts:[
+    {form:w.stem,label:'Proposed noun stem ('+(evidence?.assessment||'unreviewed')+')'},
+    {form:suffix,label:'Absolutive ending; not a plural'}],
+   source:evidence?.source||w.source,
+   certainty:'morpheme boundary '+(evidence?.assessment==='dictionary'?'lexicographically located':'analytical only; not independently established')});
+ }
+ return out.slice(0,16);
+}
+function renderMorphologyBreakdown(value){
+ const analyses=morphologyAnalyses(value);if(!analyses.length)return '';
+ const cards=analyses.map(a=>'<div class="analysis-card"><h4>'+safe(a.lemma)+'</h4><p>'+safe(a.type)+' · '+safe(a.pattern)+'</p><div class="morpheme-list">'+a.parts.map(p=>'<div class="morpheme"><b>'+safe(p.form)+'</b><small>'+safe(p.label)+'</small></div>').join('')+'</div><small>'+safe(a.certainty)+'</small>'+(validUrl(a.source)?'<p>'+safeLink(a.source,'Morphology / lexicon source ↗')+'</p>':'')+'</div>').join('');
+ return '<section class="analysis-proposal"><h4>Morpheme-level analysis · source-sensitive</h4><p>Segmentation is restricted to a known dictionary lemma or one of the 720 indexed grammar-derived verb cells. Surface spelling, stem variation, person/object markers and remaining material are shown separately when they can be identified. Multiple analyses are retained.</p>'+cards+'<p class="analysis-caution">Boundaries may be disputed, especially with contraction or irregular stems. These explanations do not confer historical attestation on a generated paradigm form. See <a href="https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html" target="_blank" rel="noopener noreferrer">Classical Nahuatl affix notes</a>.</p></section>';
+}
+const phase4FormProbe=renderFormProbe;
+renderFormProbe=function(){
+ phase4FormProbe();
+ const query=$('formProbeInput').value.trim();
+ if(!query||/\s/.test(query))return;
+ const explanation=renderMorphologyBreakdown(query);
+ if(explanation)$('formProbeOutput').insertAdjacentHTML('beforeend',explanation);
+};
+
 renderSourceAtlas();syncSourceAtlas();render();
 
 </script>

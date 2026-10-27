@@ -18,7 +18,7 @@ const FIELDS=[
  ['maxInterval','Maximum interval · days'],['leechThreshold','Leech lapse threshold']
 ];
 const PRESETS={
- balanced:{...DEFAULT},intensive:{...DEFAULT,newLimit:20,reviewLimit:200,intervalModifier:.85},
+ balanced:{...DEFAULT},screenshot:{...DEFAULT,newLimit:2,reviewLimit:5},intensive:{...DEFAULT,newLimit:20,reviewLimit:200,intervalModifier:.85},
  gentle:{...DEFAULT,newLimit:5,reviewLimit:50,learning:'10m',intervalModifier:1.15}
 };
 function clamp(n,lo,hi,fallback){const value=Number(n);return Number.isFinite(value)?Math.max(lo,Math.min(hi,value)):fallback}

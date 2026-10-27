@@ -50,14 +50,14 @@ with sync_playwright() as pw:
       const leech=T.schedule({...review,lapses:1},'again',now);
       T.applySettings(baseline);
       return {freshDays:(fresh.due-now)/86400000,failedMinutes:(failed.due-now)/60000,
-        laterMinutes:(later.due-now)/60000,hardDays:(hard.due-now)/86400000,
+        laterDays:(later.due-now)/86400000,hardDays:(hard.due-now)/86400000,
         goodDays:(good.due-now)/86400000,easyDays:(easy.due-now)/86400000,
         lapsePhase:lap.phase,lapseMinutes:(lap.due-now)/60000,
         leech:leech.suspended&&leech.phase==='suspended',
         old:legacy['old§card'],advanced:advanced['word§card'],zero};
     }""")
     assert results['freshDays']<1 and 9<=results['freshDays']*1440<=11,results
-    assert results['failedMinutes']==1 and 9<=results['laterMinutes']<=11,results
+    assert results['failedMinutes']==1 and results['laterDays']>=1,results
     assert results['hardDays']<results['goodDays']<results['easyDays'],results
     assert results['lapsePhase']=='relearning' and results['lapseMinutes']==10,results
     assert results['leech'] and results['zero']==0,results

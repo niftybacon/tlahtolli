@@ -3,15 +3,37 @@ on:
   push:
     branches: [main]
   pull_request:
+permissions:
+  contents: read
 jobs:
   validate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate dictionary and verb data
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate dictionary, evidence and offline seed
         run: python tools/validate.py
+      - name: Test documented paradigm fixtures
+        run: python tools/test_data.py
+      - name: Syntax-check inline app JavaScript
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          class S(HTMLParser):
+              def __init__(self):super().__init__();self.scripts=[];self.active=False
+              def handle_starttag(self,t,a):
+                  if t=='script':self.scripts.append('');self.active=True
+              def handle_endtag(self,t):
+                  if t=='script':self.active=False
+              def handle_data(self,v):
+                  if self.active:self.scripts[-1]+=v
+          h=S();h.feed(Path('index.html').read_text(encoding='utf8'))
+          Path('/tmp/tlahtolli-app.js').write_text(h.scripts[-1],encoding='utf8')
+          PY
+          node --check /tmp/tlahtolli-app.js

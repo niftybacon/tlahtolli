@@ -1,0 +1,26 @@
+name: Research a Nahuatl word
+description: Request a headword, inflected form, or source audit
+title: "Research word: "
+body:
+  - type: input
+    id: word
+    attributes:
+      label: Nahuatl word / spelling
+      description: Macrons optional; please provide exact written form if known.
+      placeholder: "tlācatl"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Passage or historical source
+      description: Where did you encounter it? Reference, page or screenshot description.
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Review checklist
+      options:
+        - label: Confirm part of speech and historical variety
+        - label: Verify animacy and number only for nouns
+        - label: Distinguish historical forms from grammar-derived paradigms
+        - label: Provide source URL and precise location

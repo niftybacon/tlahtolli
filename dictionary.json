@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-26.3",
+  "version": "2026-10-26.4",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -109,7 +109,17 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171977",
+          "locator": "Karttunen 1992, p. 22; Lockhart 2001, p. 212",
+          "note": "Karttunen lists plural suffix -tin for CAL-LI, while Lockhart explicitly notes that calli can denote one or more houses without overt plural. Therefore do not treat caltin as obligatory.",
+          "reviewer": "Tlahtōlli AI-assisted citation audit; not scholarly peer review",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "cuīcatl",
@@ -191,7 +201,17 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://gdn.iib.unam.mx/diccionario/xochitl/76692",
+          "locator": "Wimmer entry citing Sahagún Book 11, p. 213; GDN context; Karttunen p.329",
+          "note": "The GDN lists the explicitly cited form xōchimeh (xôchimeh) and cross-references a Sahagún passage; Karttunen lists the plural -meh. This is an exceptional inanimate plural, not a universal noun pluralization rule.",
+          "reviewer": "Tlahtōlli AI-assisted citation audit; not scholarly peer review",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "tēpetl",
@@ -248,7 +268,26 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+          "locator": "Lockhart 2001, p. 234; Karttunen 1992, p. 230",
+          "note": "Lockhart records the exceptional absolute plural tētepeh; Karttunen lists plural suffix -meh. Morphological number marking of this mountain noun is exceptional and context-dependent.",
+          "reviewer": "Tlahtōlli AI-assisted citation audit; not scholarly peer review",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "possessed",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+          "locator": "Karttunen 1992, p.230",
+          "note": "Karttunen lists the possessed stem -TEPĒUH, as distinct from the absolutive tēpetl.",
+          "reviewer": "Tlahtōlli AI-assisted citation audit; not scholarly peer review",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "cītlalin",
@@ -289,7 +328,17 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "plural",
+          "assessment": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/citlalin",
+          "locator": "Codex Chimalpahin, vol. 2 pp. 140–141; Karttunen 1992, p.35",
+          "note": "The dictionary quotes cicitlaltin in an early-17th-century Chimalpahin context and Karttunen records the normalized plural CĪCĪTLALTIN. This supports a rare overt plural of an ordinarily inanimate referent.",
+          "reviewer": "Tlahtōlli AI-assisted citation audit; not scholarly peer review",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "tlālli",

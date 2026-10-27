@@ -1,28 +1,27 @@
 # Tlahtōlli — Living Classical Nahuatl Dictionary
 
-A growing Classical Nahuatl dictionary and source-aware reading notebook. [Open the website](https://niftybacon.github.io/tlahtolli/).
+[**Open Tlahtōlli**](https://niftybacon.github.io/tlahtolli/) · **Version 1.4** · Open research and learning notebook
 
-## v1.3 — Research edition
+Classical Nahuatl dictionary and text reader with source-aware forms, research audits, indexed inflection lookup, and browser-local vocabulary review. The project is independently maintained and **not scholarly peer-reviewed**.
 
-- **Form detective:** analyzes existing indexed forms and subject/tense paradigm cells; does not invent unattested forms.
-- **Research audit:** ranks missing citation evidence and exports a research queue.
-- **Evidence locators:** attach page/folio/entry information to grammatical claims.
-- **Reader coverage:** shows token indexing statistics and exports unknown tokens.
-- **Important fix:** ordinary edits to entries preserve saved field-level evidence records.
+## What's new in v1.4
 
-## Publish an update
+- **Momachtia · Study:** private spaced-repetition learning cards, Nahuatl–English or English–Nahuatl, due dates and CSV export.
+- **Full JSON backups now preserve study history.** Previous v1.3 project backups remain importable.
+- **Research requests:** turn an unknown word into a prefilled [GitHub issue](https://github.com/niftybacon/tlahtolli/issues/new) for evidence review.
+- **Source-level improvements:** five field-specific evidence claims for the exceptional plurals of *calli*, *xōchitl*, *tēpetl*, *cītlalin* and the possessed *tēpetl* stem.
+- **Release safeguards:** dictionary/HTML offline-seed consistency checks, verb-cell fixtures, evidence-source validation and JavaScript syntax tests in CI.
+- v1.3 features retained: form detective, research audit, claim source locators, reader coverage, full verb tables.
 
-Modify `dictionary.json` and, if necessary, `paradigms.json`. Keep their `version` values identical. Run `python tools/validate.py`, review the data and its sources, then publish to `main`. The website checks for updates on opening or when Sync is clicked. Adding words in ChatGPT requires an authorized edit to the GitHub repository: the website does not read your chats.
+## How publication works
 
-## Evidence policy
+The site loads `dictionary.json` and `paradigms.json` when opened or when the Sync button is pressed. The HTML includes an offline seed. The `version` field of the two JSON documents **must match**. Publishing requires a GitHub commit; the website does not read private ChatGPT conversations automatically. Existing locally edited words are protected during normal sync. No automatic sync of personal learning progress occurs between devices.
 
-A URL is a pointer, not independent verification. Distinguish dictionary lemmas, source-attested text forms, grammar-generated conjugations, alternative orthographies, and uncertain analyses. Attach **field-specific** notes and the exact location within the cited source. A morphological match does not prove a reading in a historical sentence. No specialist has peer-reviewed the current 44 entries.
+## Tests
 
-The app keeps personal notes and reading passages locally in your browser. Back up the full JSON workspace before migrating browsers or overwriting personal edits. Sync preserves locally modified entries.
+```sh
+python tools/validate.py
+python tools/test_data.py
+```
 
-### Suggested reference works
-
-- [Online Nahuatl Dictionary](https://nahuatl.wired-humanities.org/) (Wired Humanities Projects, University of Oregon)
-- [Launey, An Introduction to Classical Nahuatl](https://www.si.edu/object/siris_sil_970857) (Smithsonian bibliographic listing)
-- [D. K. Jordan, Nahuatl Grammar Notes](https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html)
-- [Pugh and Tyers, Highland Puebla Nahuatl morphological analyzer](https://aclanthology.org/2023.americasnlp-1.12/) (different variety; do not copy into Classical Nahuatl without validation)
+The structural validator is not linguistic peer review. The [editorial policy](docs/EDITORIAL_POLICY.md) explains why lexicon attestations, textbook paradigms and editorial inferences are tracked separately.

@@ -87,7 +87,8 @@ with sync_playwright() as pw:
     assert page.locator('.concordance-row').count()==1
     page.locator('#concordanceMode').select_option('lemma')
     page.locator('#concordanceInput').fill('xōchitl')
-    assert page.locator('.concordance-row').count()==1
+    # Both the founding teaching example and the new sourced pigment passage contain xōchitl.
+    assert page.locator('.concordance-row').count()>=2
     page.locator('#concordanceMode').select_option('exact')
     page.locator('#concordanceInput').fill('in')
     page.locator('.concordance-row').first.click()

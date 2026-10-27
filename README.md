@@ -1,3 +1,7 @@
+# Tlahtōlli Phase 1 — Reduced startup downloads and faster interactive search (2026-10-27)
+
+The published HTML retains all 88 headwords and 12 verb paradigms offline. On the website a cache-revalidated [release manifest](release.json) now avoids re-downloading already bundled dictionary/paradigm JSON when the edition is unchanged. Search input redraws are batched, preserving the detail pane when the selected headword is unchanged. See [implementation and compatibility notes](docs/PHASE1_PERFORMANCE.md). No lexical evidence classifications or locally saved personal edits were changed.
+
 # Tlahtōlli v2.3.1 — Historical evidence reassessment (2026-10-27)
 
 All 222 outstanding provisional/unverified field claims were inventoried and assigned individual evidence decisions and follow-up requirements. **16** gained source-located support, while **111** remain inference and **95** unverified. The 674-field ledger now contains **324 dictionary**, **129 grammar**, and **15 quoted historical-text** records. This is an AI-assisted research update, **not full historical verification or expert peer review**. See [full claim-by-claim reassessment](claim_reassessment_2026-10-27.csv) and [method and historical locators](docs/OUTSTANDING_CLAIMS_2026-10-27.md).

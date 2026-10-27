@@ -20,8 +20,6 @@ jobs:
         run: python tools/build_dictionary.py --check
       - name: Test Phase 2 source separation
         run: python tools/test_phase2.py
-      - name: Phase 4 historical-source and morpheme regressions
-        run: python tools/test_phase4.py
       - name: Validate published dictionary
         run: python tools/validate.py
       - name: Regression checks on known documented forms
@@ -49,6 +47,8 @@ jobs:
         run: |
           python -m pip install playwright==1.57.0
           python -m playwright install --with-deps chromium
+      - name: Phase 4 historical-source and morpheme regressions
+        run: python tools/test_phase4.py
       - name: Run browser regressions
         run: python tools/browser_smoke.py
       - name: Phase 3 scalable search and result-list parity

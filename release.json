@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-release-manifest",
   "schema": 1,
-  "version": "2026-10-27.3.1",
+  "version": "2026-10-27.3.2",
   "headwords": 88,
   "paradigms": 12,
   "notes": "Bump version whenever published dictionary, paradigms or references change; versioned URLs reuse browser cache. The complete bundled HTML continues to work offline."

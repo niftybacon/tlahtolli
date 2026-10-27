@@ -46,7 +46,9 @@ jobs:
       - name: Install headless browser
         run: |
           python -m pip install playwright==1.57.0
-          python -m playwright install --with-deps chromium
+          python -m playwright install chromium --only-shell
+      - name: Phase 4 historical-source and morpheme regressions
+        run: python tools/test_phase4.py
       - name: Run browser regressions
         run: python tools/browser_smoke.py
       - name: Phase 3 scalable search and result-list parity

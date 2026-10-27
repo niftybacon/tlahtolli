@@ -1,3 +1,7 @@
+# Existing-88-word historical research and advanced morphology (2026-10-27)
+
+Three combining bases (calli, tlālli, tēpetl) are now supported by field-specific lexical locators and published colonial compounds. The unchanged 674-claim ledger now has 327 dictionary, 129 grammar, 15 historical text, 108 inference and 95 unverified claims: **203 remaining unresolved fields**. The [complete existing-88 research queue](research/phase4_existing_88_claim_queue.csv) and [source-review/analyzer methodology](docs/PHASE4_SOURCE_REVIEW_AND_ANALYZER.md) preserve the scope and limits. New morpheme-level segmentation of indexed noun headwords and verb paradigm cells is analytical, not independent attestation. Earlier dated audit files remain historical snapshots.
+
 # Tlahtōlli Phase 3 — Scalable search and progressive results (2026-10-27)
 
 The browser now uses a local substring index to narrow evidence-aware search

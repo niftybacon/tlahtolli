@@ -49,7 +49,7 @@ jobs:
         run: |
           python -m pip install playwright==1.57.0
           python -m playwright install chromium --only-shell
-      - name: Advanced morphology: indexed and productive parse regressions
+      - name: "Advanced morphology: indexed and productive parse regressions"
         run: python tools/test_advanced_morphology.py
       - name: Phase 4 historical-source and morpheme regressions
         run: python tools/test_phase4.py

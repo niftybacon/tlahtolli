@@ -43,3 +43,5 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Run browser regressions
         run: python tools/browser_smoke.py
+      - name: Test cited token annotations and export safety
+        run: python tools/test_interlinear.py

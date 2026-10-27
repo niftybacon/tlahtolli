@@ -27,3 +27,9 @@ Priorities:
 ## External review
 
 Independent scholarly review would be valuable for disputes, rare forms, and editorial orthography. Until then, use transparent uncertainty levels and treat the app as a research notebook, not a final authoritative edition.
+
+## Annotation and historical-source research (v1.7)
+- Evidence that a manuscript contains a spelling is distinct from evidence that a particular grammatical interpretation is correct.
+- Cite edition + exact page, folio or line, rather than relying only on a generic dictionary URL.
+- Record alternative analyses and leave uncertain contextual readings unresolved.
+- The current TSV export contains local normalized tokens, not automatically aligned original manuscript tokens. A licensed corpus and true source alignment remain future research tasks.

@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.7 — Interlinear annotation, provenance and conservative ambiguity (2026-10-26)
+- Token-by-token interlinear research table inside the text reader, with safe TSV export and direct jump-to-token controls.
+- Separate per-token evidence classes: unreviewed, editorial inference, lexicon consulted, or passage cited. Cited statuses require a URL and exact locator; none imply peer review or attested grammatical interpretation.
+- Explicit competing indexed analyses where multiple lexical or paradigm readings are possible; suggestions remain unresolved until researched.
+- Manual historical-spelling links clearly labeled **proposals**, not verified variants.
+- Per-token annotation metadata survives the existing full-backup round-trip.
+- New browser regression tests for source/locator validation, persistence, download handling, formula-injection protection and uncertainty display.
+- The 44 headwords, 120 indexed form records, and 12 × 60 core paradigm cells remain unchanged.
+
 ## v1.6 · 2026-10-26
 - Three concordance methods: exact form, dictionary headword including indexed candidate forms, and short normalized phrase matching.
 - Optional source-URL filter for saved passages; URL presence is not historical verification.

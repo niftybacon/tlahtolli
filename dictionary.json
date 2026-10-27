@@ -375,7 +375,7 @@
       "word": "xōchitl",
       "meaning": "flower; flower(s); calendrical day sign",
       "pos": "noun",
-      "stem": "xōchi-",
+      "stem": "xōchi-; xōch- (attested combining variants)",
       "original": "xochitl",
       "variety": "Classical Nahuatl",
       "status": "Checked against source",
@@ -388,7 +388,7 @@
       "plural": "xōchimeh",
       "pluralStatus": "attested",
       "absolutive": "-tl",
-      "possessed": "",
+      "possessed": "noxōchiuh (Carochi 1645 §4.4.1)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/xochitl ; https://nahuatl.wired-humanities.org/content/tin ; https://gdn.iib.unam.mx/diccionario/xochitl/76692",
       "grammarNotes": "Important EXCEPTION: the flower noun is ordinarily inanimate but its plural xōchimeh is documented. Karttunen lists -meh; the UNAM Gran Diccionario Náhuatl cites xōchimeh in Sahagún, Book 11, p. 213. Not all inanimate nouns are categorically unpluralizable.",
       "inflections": [
@@ -407,6 +407,22 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/xochitl",
           "note": "Karttunen records the plural suffix -meh."
+        },
+        {
+          "form": "noxōchiuh",
+          "category": "Possessed (grammar example)",
+          "gloss": "my flower",
+          "evidence": "text",
+          "source": "https://tlachia.iib.unam.mx/glifos/xochicozcatl",
+          "note": "Carochi, Arte (1645) §4.4.1; grammar example, not separate archival manuscript."
+        },
+        {
+          "form": "xōch-",
+          "category": "Combining variant (bound)",
+          "gloss": "variant of xōchi-",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/content/xochitl",
+          "note": "Lockhart (2001), p.241."
         }
       ],
       "formsEdited": false,
@@ -467,20 +483,20 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/content/xochitl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "grammar",
+          "source": "https://tlachia.iib.unam.mx/glifos/xochicozcatl",
+          "locator": "Carochi (1645), Arte §4.4.1, GDN Carochi 'xochitl': noxöchiuh",
+          "note": "Carochi directly gives noxöchiuh ('the flower that I possess'), here normalized noxōchiuh. This is a printed grammar example, not a separately located archival folio.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "inference",
-          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
-          "locator": "Launey (2011), §2.2–2.3 p.19: nominal absolutive -tl/-tli/-li/-in",
-          "note": "Rule-derived candidate combining stem xōchi- by removing -tl from xōchitl. NOT an independently attested stem, inflected noun, or automatically valid possessed form. Do not silently add to historically attested forms.",
-          "reviewer": "Tlahtōlli AI-assisted grammar review; no independent expert review",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xochitl",
+          "locator": "Lockhart (2001), Nahuatl as Written, p.241: combining xōchi- and xōch-",
+          "note": "Both explicitly listed combining variants, not a rule-derived stem or a standalone inflected token.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
           "checkedAt": "2026-10-27"
         }
       ]
@@ -1316,7 +1332,7 @@
       "plural": "altepeme (late colonial attestation)",
       "pluralStatus": "attested",
       "absolutive": "-tl",
-      "possessed": "",
+      "possessed": "-āuh … -tepēuh (two bound possessed components)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/altepetl ; https://nahuatl.wired-humanities.org/content/tin",
       "grammarNotes": "Socio-political inanimate noun; Karttunen notes -meh and the Online Nahuatl Dictionary identifies altepeme in the late Techialoyan tradition and in Tlaxcala-Puebla annals. This is rare and late; singular-looking āltepētl can refer to multiple polities in earlier texts.",
       "inflections": [
@@ -1395,12 +1411,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/altepetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p.9: ĀLTEPĒ-TL possessed -ĀUH -TEPĒUH",
+          "note": "Possession generally separates two elements and affixes possessor to each. The hyphenated components are NOT complete attested possessive tokens.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -1786,12 +1802,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/172584",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pilli",
+          "locator": "Karttunen (1992), p.195: PIL-LI, possessed -PILLŌ; Lockhart (2001) p.230",
+          "note": "Lexicographic possessed bound form -pillō. In the possessed construction the primary sense is child of someone, not necessarily 'owned noble'. No full prefixed token implied.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -4968,7 +4984,7 @@
       "word": "tlatoani",
       "meaning": "ruler; governor; authoritative speaker",
       "pos": "noun",
-      "stem": "",
+      "stem": "tlahtoh- (suppletive inflected/combining base)",
       "original": "tlatoani",
       "variety": "Classical Nahuatl (historical dictionary lemma)",
       "status": "Checked against source",
@@ -4980,7 +4996,7 @@
       "animacy": "animate",
       "plural": "tlatoque",
       "pluralStatus": "attested",
-      "absolutive": "none (agentive/locative)",
+      "absolutive": "none (agentive -ni; NOT locative)",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/tlatoani",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Suppletive base in some inflected forms; do not generate *tlatoanimeh as a default. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
@@ -5061,21 +5077,21 @@
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlatoani",
-          "locator": "",
-          "note": "No independent combining stem or stem alternation checked in this batch.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p.266: TLAHTOĀNI/TLAHTOHQUI suppletion; Lockhart (2001), p.238",
+          "note": "Suppletive preterite-agentive tlahtoh- in inflected/compounded forms, not mechanical removal of -ni.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "other",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlatoani",
-          "locator": "",
-          "note": "Absolutive interpretation \"none (agentive/locative)\" has not been independently established by a source-specific morphological demonstration.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart (2001), p.238: tla- + ihtoa + -ni",
+          "note": "Free singular analyzed as agentive with -ni; the previous 'agentive/locative' label was overbroad. No -tl absolutive.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -5095,7 +5111,7 @@
       "animacy": "inanimate",
       "plural": "",
       "pluralStatus": "no_attested_form",
-      "absolutive": "none (agentive/locative)",
+      "absolutive": "none (locative/relational noun; NOT agentive)",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpan",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Also a locative/relational expression. ENL confirms organizational sense, not just building. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
@@ -5185,12 +5201,12 @@
         },
         {
           "field": "other",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tecpan",
-          "locator": "",
-          "note": "Absolutive interpretation \"none (agentive/locative)\" has not been independently established by a source-specific morphological demonstration.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart (2001), p.233: locative, complex relational word, full-fledged noun; Karttunen (1992), p.217",
+          "note": "Locative/relational AND noun, not agentive; this does not demonstrate singular-only reference, plural or possessive construction.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -5620,10 +5636,10 @@
           "field": "plural",
           "assessment": "unverified",
           "source": "https://nahuatl.wired-humanities.org/content/tlamantli",
-          "locator": "",
-          "note": "No independently checked complete plural spelling. This does not imply grammatical impossibility.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Launey (2011) p.64; counted classifier, NOT unrestricted nominal plural",
+          "note": "Launey (2011), p.64, prints 'ōntlamantin' in a numerical classifier meaning 'two kinds of people', not a freely generalizable plural 'things'. No unpossessed nominal plural established for all senses.",
+          "reviewer": "Source-limited review; unresolved",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -6139,7 +6155,7 @@
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "-tl",
-      "possessed": "",
+      "possessed": "inxiuh (their years; calendrical sense only)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/xihuitl",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Polysemous/homographic. Separate calendrical year from other possible lexical senses; grammatical animacy not established for all. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
       "inflections": [
@@ -6150,6 +6166,14 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/xihuitl",
           "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "inxiuh",
+          "category": "Possessed, colonial token",
+          "gloss": "their years",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/xihuitl",
+          "note": "Chimalpahin 1997, vol.1 pp.94–95; calendrical sense."
         }
       ],
       "formsEdited": false,
@@ -6210,12 +6234,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/xihuitl",
-          "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Codex Chimalpahin (Anderson/Schroeder 1997), vol.1 pp.94–95: yn inxiuh mexica",
+          "note": "Possessed inxiuh 'their years' in calendrical context. Does NOT cover herb/turquoise/comet senses, or establish an overt plural.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -6714,7 +6738,7 @@
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "-tl",
-      "possessed": "",
+      "possessed": "iicxi (his/her foot; colonial text)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/icxitl",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Inalienable body-part vocabulary may show possessed stems, not a straightforward plural. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
       "inflections": [
@@ -6725,6 +6749,14 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/icxitl",
           "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "iicxi",
+          "category": "Possessed, colonial token",
+          "gloss": "his/her foot",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/icxitl",
+          "note": "Sahagún Florentine Codex Book 10, p.161."
         }
       ],
       "formsEdited": false,
@@ -6778,19 +6810,19 @@
           "field": "plural",
           "assessment": "unverified",
           "source": "https://nahuatl.wired-humanities.org/content/icxitl",
-          "locator": "",
-          "note": "No independently checked complete plural spelling. This does not imply grammatical impossibility.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Launey (2011) p.97; Townsend (2010) p.51; no free plural located",
+          "note": "No general Classical absolutive plural confirmed. ODN quotes Launey (2011), p.97, 'tocxi/ticxi' as possessed 'our feet', and Townsend (2010), p.51, possessed '-huan' which may reflect an eastern or Spanish-influenced form. Neither establishes a default free plural.",
+          "reviewer": "Source-limited review; unresolved",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/icxitl",
-          "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Florentine Codex, Book 10 (Anderson/Dibble 1961), p.161: in iicxi, in anoço ima",
+          "note": "Sixteenth-century iicxi 'his/her foot' alongside ima 'his/her arm'. A possessed word token, not proof of an ordinary unpossessed plural.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -7181,7 +7213,7 @@
       "animacy": "animate",
       "plural": "",
       "pluralStatus": "no_attested_form",
-      "absolutive": "none (agentive/locative)",
+      "absolutive": "none (agentive -ni; NOT locative)",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/tlamatini",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Agent noun formed with -ni, not the finite verb mati. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
@@ -7271,12 +7303,12 @@
         },
         {
           "field": "other",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
-          "locator": "",
-          "note": "Absolutive interpretation \"none (agentive/locative)\" has not been independently established by a source-specific morphological demonstration.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart (2001), p.237: tla-, mati, -ni",
+          "note": "Agentive tla- + mati + -ni; not locative and no -tl absolutive. Does not license unverified plural/possessive forms.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -7296,7 +7328,7 @@
       "animacy": "animate",
       "plural": "teopixque",
       "pluralStatus": "attested",
-      "absolutive": "none (agentive/locative)",
+      "absolutive": "none (preterite agentive -qui; NOT locative)",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/teopixqui",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. An agent noun; ritual/Christian reference may change with genre and period. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
@@ -7386,12 +7418,12 @@
         },
         {
           "field": "other",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/teopixqui",
-          "locator": "",
-          "note": "Absolutive interpretation \"none (agentive/locative)\" has not been independently established by a source-specific morphological demonstration.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart (2001), p.234: teōtl + pia, preterite agentive",
+          "note": "Preterite agentive, not locative. Historical plural teopixque is separately sourced; no extra paradigm inferred.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -8329,10 +8361,10 @@
       "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 108; Carochi fol. 85v. Not all morphological fields have been separately attested. Animal noun; day-name use is proper-name context.",
       "number": "singular",
       "animacy": "animate",
-      "plural": "",
-      "pluralStatus": "no_attested_form",
+      "plural": "itzcuintin; itzcuinme (colonial variants)",
+      "pluralStatus": "attested",
       "absolutive": "-tli",
-      "possessed": "",
+      "possessed": "imitzcuinoan (their dogs; possessed plural)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/itzcuintli",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Animal noun; day-name use is proper-name context. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
       "inflections": [
@@ -8343,6 +8375,30 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
           "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "ytzcuintin",
+          "category": "Plural, colonial token",
+          "gloss": "dogs",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+          "note": "Townsend (2010), pp.132–133."
+        },
+        {
+          "form": "ytzcuinme",
+          "category": "Plural, colonial token",
+          "gloss": "dogs",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+          "note": "Chimalpahin, vol.1 pp.224–225 (1997)."
+        },
+        {
+          "form": "imitzcuinoan",
+          "category": "Possessed plural, colonial token",
+          "gloss": "their dogs",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+          "note": "Lockhart, We People Here (1993), p.96; plural only."
         }
       ],
       "formsEdited": false,
@@ -8394,21 +8450,21 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
-          "locator": "",
-          "note": "No independently checked complete plural spelling. This does not imply grammatical impossibility.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Townsend (2010), Here in This Year, pp.132–133: sa ytzcuintin; Codex Chimalpahin (1997), vol.1 pp.224–225: ytzcuinme",
+          "note": "Two distinct colonial spellings of overt plural dog forms; neither should be imposed on all varieties/periods.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
-          "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart (1993), We People Here, pp.80, 96: imitzcuioan / imitzcuinoan",
+          "note": "Documented possessed PLURAL 'their dogs'; does not confirm a possessed singular paradigm.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -9030,7 +9086,7 @@
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "-tl",
-      "possessed": "",
+      "possessed": "itoca (his/her name; colonial text)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/tocaitl",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Do not confuse the name noun with tocatl spider; attached possessive i-toca is not an absolutive. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
       "inflections": [
@@ -9041,6 +9097,14 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
           "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "itoca",
+          "category": "Possessed, colonial token",
+          "gloss": "his/her name",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
+          "note": "Sahagún Primeros Memoriales (1997), p.254."
         }
       ],
       "formsEdited": false,
@@ -9101,12 +9165,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
-          "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Sahagún, Primeros Memoriales (Sullivan ed.1997), p.254: quimaca yn itoca",
+          "note": "Sixteenth-century itoca 'his/her name'; do not conflate with modern Huastecan notocah.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -9477,7 +9541,7 @@
       "word": "tlatquitl",
       "meaning": "property; goods; belongings",
       "pos": "noun",
-      "stem": "",
+      "stem": "tlatqui- (combining stem documented in compound)",
       "original": "tlatquitl",
       "variety": "Classical Nahuatl (historical dictionary lemma)",
       "status": "Checked against source",
@@ -9490,7 +9554,7 @@
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "-tl",
-      "possessed": "",
+      "possessed": "itlatqui (his property; Coyoacan 1610)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/tlatquitl",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Can be plural in English translation without implying a Nahuatl plural morpheme. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
       "inflections": [
@@ -9501,6 +9565,22 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
           "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "ytlatqui",
+          "category": "Possessed, colonial token",
+          "gloss": "his property",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+          "note": "Coyoacan 1610 (Horn 1997), pp.164,320."
+        },
+        {
+          "form": "nochantlatqui",
+          "category": "Compound, colonial token",
+          "gloss": "my household gear",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+          "note": "Coyoacan 1575 (Beyond the Codices 1976), Doc.20 pp.114–115."
         }
       ],
       "formsEdited": false,
@@ -9561,20 +9641,20 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
-          "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Coyoacan, 1610 (Horn 1997), pp.164, 320: ca huel ytlatqui",
+          "note": "Colonial possessed ytlatqui, 'his property'; distinguish separate instrumental ytlatquitica in Molina 1552 ordinances.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "inference",
-          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
-          "locator": "Launey (2011), §2.2–2.3 p.19: nominal absolutive -tl/-tli/-li/-in",
-          "note": "Rule-derived candidate combining stem tlatqui- by removing -tl from tlatquitl. NOT an independently attested stem, inflected noun, or automatically valid possessed form. Do not silently add to historically attested forms.",
-          "reviewer": "Tlahtōlli AI-assisted grammar review; no independent expert review",
+          "assessment": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatquitl",
+          "locator": "Coyoacan, 1575 (Beyond the Codices 1976), Doc.20 pp.114–115: nochantlatqui",
+          "note": "The colonial compound supports a bound combining base tlatqui-; not a free lexical item.",
+          "reviewer": "Tlahtōlli source-specific AI-assisted review; not specialist peer reviewed",
           "checkedAt": "2026-10-27"
         },
         {

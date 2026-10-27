@@ -27,11 +27,11 @@ for name,plural in [('conetl','cōconeh'),('ichpochtli','ichpōpōchtin'),('telp
   assert w['plural']==plural and w['pluralStatus']=='attested'
 from collections import Counter
 counts=Counter(c['assessment'] for w in d['words'] for c in w['claims'])
-assert counts=={"dictionary":316,"grammar":128,"unverified":109,"inference":113,"text":8},counts
+assert counts=={"dictionary":324,"grammar":129,"unverified":95,"inference":111,"text":15},counts
 with (r/'claim_audit.csv').open(encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
 assert len(rows)==674
 assert 'function renderClaimLedger' in (r/'index.html').read_text(encoding='utf8')
-print('PASS: 88 headwords, 672 claim-level records, plural and source-grading safeguards')
+print('PASS: 88 headwords, 674 claim-level records, plural and source-grading safeguards')
 
 # v2.2 additional source checks in founding 44 entries.
 assert all(any(c.get('field')==f and c.get('assessment')!='unverified' and c.get('locator') for c in w['claims']) for w in d['words'][:44] for f in ('headword','meaning','pos'))
@@ -47,3 +47,16 @@ assert all(any(c['field']=='number' and c['assessment']=='grammar' for c in w['c
 for name in ('tlaxcalli','conetl','milli','teōtl'):
  w=next(w for w in d['words'] if w['word']==name)
  assert any(c['field']=='possessed' and c['assessment'] in ('grammar','text') and c['source'].startswith('https://') and c['locator'] for c in w['claims'])
+
+# October 27 field-specific reassessment: no blanket promotion of inferences.
+with (r/'claim_reassessment_2026-10-27.csv').open(encoding='utf-8',newline='') as f: review=list(csv.DictReader(f))
+assert len(review)==222
+assert sum(x['decision']=='upgraded_with_specific_evidence' for x in review)==16
+assert sum(x['current_status']=='unverified' for x in review)==95
+assert sum(x['current_status']=='inference' for x in review)==111
+for word,field in [('xōchitl','possessed'),('itzcuintli','plural'),('icxitl','possessed'),('āltepētl','possessed'),('tecpan','other')]:
+    w=next(x for x in d['words'] if x['word']==word)
+    c=next(x for x in w['claims'] if x['field']==field)
+    assert c['assessment']!='unverified' and c['locator'] and c['source'].startswith('https://')
+assert next(x for x in d['words'] if x['word']=='tecpan')['absolutive'].startswith('none (locative/relational')
+assert next(x for x in d['words'] if x['word']=='itzcuintli')['pluralStatus']=='attested'

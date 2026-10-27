@@ -7,7 +7,7 @@ visitors **cannot change the published dictionary or anyone else's reviews**.
 
 ## Scope and transparency
 
-**This is not Anki's FSRS algorithm.** It is an adaptive *SM-2-family* interval
+**The classic scheduler is not FSRS; opt-in FSRS-5 is now available alongside it.** It is an adaptive *SM-2-family* interval
 scheduler with Anki-like learning steps and practical controls. Its intervals
 are useful study reminders, **not** statistically calibrated predictions of
 future recall. Anki's FSRS optimizes stability/difficulty/retention from review

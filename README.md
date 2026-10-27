@@ -1,3 +1,7 @@
+# FSRS-5 Stage 2 (opt-in)
+
+This study panel now includes FSRS-5 scheduling (off by default to protect existing progress), independent vocabulary/reverse/conjugation retention targets, limited history-based calibration and 30-day forecasts. All data stays in browser localStorage, backed up with full-project JSON. Anki TSV contains note content and stable GUIDs, not scheduling history. [Full documentation](docs/FSRS_STAGE2.md).
+
 # Study upgrades — locally customizable repetition and Anki TSV interoperability (2026-10-27)
 
 Study settings now expose separate review/new ordering controls, timed optional answer reveal, real 30-day recall measurements, seven-day scheduled workload forecasts and stable Anki import GUIDs for forward/reverse vocabulary and conjugations. The engine remains an adjustable **SM-2-family scheduler, not Anki FSRS**, and does not sync Anki's scheduling state. Personal study records, settings, and review history remain only in this browser until explicitly backed up or exported. See [study settings and Anki export documentation](docs/STUDY_SYSTEM_V3.md).

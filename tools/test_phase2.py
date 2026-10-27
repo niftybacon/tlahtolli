@@ -51,7 +51,7 @@ from collections import Counter
 counts = Counter(row["review_level"] for row in reader)
 assert all(counts[grade] >= minimum for grade,minimum in {
     "dictionary": 324, "grammar": 129, "text": 15,
-    "inference": 111, "unverified": 95
+    "inference": 108, "unverified": 95
 }.items()), counts
 
 html = (ROOT / "index.html").read_text(encoding="utf-8")

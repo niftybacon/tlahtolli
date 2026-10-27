@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-27.3.1",
+  "version": "2026-10-27.3.2",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -248,11 +248,11 @@
         },
         {
           "field": "stem",
-          "assessment": "inference",
-          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
-          "locator": "Launey (2011), §2.2–2.3 p.19: nominal absolutive -tl/-tli/-li/-in",
-          "note": "Rule-derived candidate combining stem cal- by removing -li (surface -lli) from calli. NOT an independently attested stem, inflected noun, or automatically valid possessed form. Do not silently add to historically attested forms.",
-          "reviewer": "Tlahtōlli AI-assisted grammar review; no independent expert review",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/calli",
+          "locator": "Karttunen (1992), p.22, CAL-LI; Florentine Codex Book 11, Anderson/Dibble (1978), p.13: ichalchiuhcal / iteucujtlacal (ODN transcription)",
+          "note": "CAL-LI segmentation and cited sixteenth-century compounds support the combining base cal-. Not a separately free-standing token or a license to generalize possessed tokens.",
+          "reviewer": "AI-assisted exact source-location pass; no independent original-folio collation or expert peer review",
           "checkedAt": "2026-10-27"
         }
       ]
@@ -622,11 +622,11 @@
         },
         {
           "field": "stem",
-          "assessment": "inference",
-          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
-          "locator": "Launey (2011), §2.2–2.3 p.19: nominal absolutive -tl/-tli/-li/-in",
-          "note": "Rule-derived candidate combining stem tēpe- by removing -tl from tēpetl. NOT an independently attested stem, inflected noun, or automatically valid possessed form. Do not silently add to historically attested forms.",
-          "reviewer": "Tlahtōlli AI-assisted grammar review; no independent expert review",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+          "locator": "Karttunen (1992), p.230, TEPĒ-TL and possessed -TEPĒUH; Lockhart (2001), p.234",
+          "note": "Lexical segmentation and possessed -TEPĒUH support the tēpē- combining base (often unmarked for quantity in historical spellings); this is not a full possessed-token paradigm.",
+          "reviewer": "AI-assisted exact source-location pass; no independent original-folio collation or expert peer review",
           "checkedAt": "2026-10-27"
         }
       ]
@@ -858,11 +858,11 @@
         },
         {
           "field": "stem",
-          "assessment": "inference",
-          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
-          "locator": "Launey (2011), §2.2–2.3 p.19: nominal absolutive -tl/-tli/-li/-in",
-          "note": "Rule-derived candidate combining stem tlāl- by removing -li (surface -lli) from tlālli. NOT an independently attested stem, inflected noun, or automatically valid possessed form. Do not silently add to historically attested forms.",
-          "reviewer": "Tlahtōlli AI-assisted grammar review; no independent expert review",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlalli",
+          "locator": "Karttunen (1992), p.275, TLĀL-LI; Florentine Codex Book 3, Anderson/Dibble (1978), p.8: calpollali, chiauhtlalli, teuhtlalli (ODN transcription)",
+          "note": "TLĀL-LI segmentation and cited land compounds support the combining stem tlāl- in this lexeme. Vowel length in colonial spellings and exact sense still require context.",
+          "reviewer": "AI-assisted exact source-location pass; no independent original-folio collation or expert peer review",
           "checkedAt": "2026-10-27"
         }
       ]

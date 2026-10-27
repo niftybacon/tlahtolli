@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-27.4.0",
+  "version": "2026-10-27.5.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -1240,6 +1240,114 @@
       "example": "",
       "translation": "",
       "notes": "Expansion 01; lexical fields located in an identified published source. Irregular root alternation ya-/hui- is lexically explicit. No complete 10×6 matrix is inferred. Original manuscript spelling, contextual grammatical analysis and all inflected paradigms have NOT been independently verified."
+    },
+    {
+      "word": "itic",
+      "meaning": "inside (of); within; in its interior",
+      "pos": "relational noun / locative",
+      "original": "itic; itec; ihtic",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/itic",
+      "example": "",
+      "translation": "",
+      "notes": "Classical relational element; the Codex uses 'yitic', explicitly possessed (its interior); not simply a free English preposition."
+    },
+    {
+      "word": "nemini",
+      "meaning": "inhabitant; resident; one who lives in a place",
+      "pos": "noun (agentive; homophonous with verbal form)",
+      "original": "nemini; nemjnj",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nemini",
+      "example": "",
+      "translation": "",
+      "notes": "Resident/agent noun, but Karttunen warns cited usage can be homophonous with an inflected verb; context in Codex 11 f. 62r is a descriptive resident/dweller expression."
+    },
+    {
+      "word": "iuhquin",
+      "meaning": "like; as if; in the manner of",
+      "pos": "particle / comparative adverb",
+      "original": "iuhquin; iuhqujn",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+      "example": "",
+      "translation": "",
+      "notes": "Contraction of iuhqui + in; comparison marker, not a verb or an inflection of chimalli."
+    },
+    {
+      "word": "inīn",
+      "meaning": "this; this one (demonstrative)",
+      "pos": "demonstrative / particle",
+      "original": "inin; ynin; injn",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/inin",
+      "example": "",
+      "translation": "",
+      "notes": "This form can introduce a topic; distinguish from ordinary particle in. The vowel length in the headword is editorially normalized."
+    },
+    {
+      "word": "ītech",
+      "meaning": "on it; by it; concerning it; from it; attached to it",
+      "pos": "relational noun / locative",
+      "original": "itech; ytech",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/itech",
+      "example": "",
+      "translation": "",
+      "notes": "Already prefixed with third-person possessive ī-; its sense depends on governing construction. In this source 'itech quiza' explains the source of a name."
+    },
+    {
+      "word": "quiza",
+      "meaning": "to go out; emerge; come from; arise; issue forth",
+      "pos": "verb (intransitive)",
+      "original": "quiza; quiça",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/172619",
+      "example": "",
+      "translation": "",
+      "notes": "A versatile motion/emergence verb; 'comes from' in the cited pigment-name explanation. Do not extrapolate a full tense paradigm."
+    },
+    {
+      "word": "tlapalli",
+      "meaning": "color; paint; pigment; dye (frequently red)",
+      "pos": "noun",
+      "original": "tlapalli; tlapali",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+      "example": "",
+      "translation": "",
+      "notes": "Color/pigment in the 'xochipalli' etymology; does not specify an identical color sense across all contexts."
+    },
+    {
+      "word": "cen",
+      "meaning": "entirely; altogether; completely; for good",
+      "pos": "adverb / bound-form alternant",
+      "original": "cen; cem",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cen",
+      "example": "",
+      "translation": "",
+      "notes": "Cen can mean wholly/entirely; not necessarily the numeral 'one' used independently. Poetic nuance is contextual."
+    },
+    {
+      "word": "polihui",
+      "meaning": "to disappear; be lost; perish; die; be destroyed",
+      "pos": "verb (intransitive)",
+      "original": "polihui; poliui; polivi",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/polihui",
+      "example": "",
+      "translation": "",
+      "notes": "Second-conjugation intransitive, associated with disappearance and death; distinguish from transitive poloa."
     }
   ]
 }

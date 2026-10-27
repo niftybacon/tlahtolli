@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-27.4.0",
+  "version": "2026-10-27.5.0",
   "entries": [
     {
       "word": "ātl",
@@ -3335,6 +3335,278 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/yauh",
           "note": "Lockhart (2001), p. 242: future niyāz. A printed grammar/dictionary paradigm is not by itself an independently verified contextual manuscript token."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "itic",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "-itic / itic (relational)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/itic",
+      "grammarNotes": "Classical relational element; the Codex uses 'yitic', explicitly possessed (its interior); not simply a free English preposition. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "itic",
+          "category": "Dictionary headword",
+          "gloss": "inside (of)",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        },
+        {
+          "form": "yitic",
+          "category": "Historically transcribed relational spelling",
+          "gloss": "Possessed/locative form 'inside it', water context",
+          "evidence": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/62r",
+          "note": "Book 11, f. 62r: 'atl yitic nemjnj' — Possessed/locative form 'inside it', water context"
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "nemini",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "singular",
+      "animacy": "inference",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-ni (agent ending, analytical)",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nemini",
+      "grammarNotes": "Resident/agent noun, but Karttunen warns cited usage can be homophonous with an inflected verb; context in Codex 11 f. 62r is a descriptive resident/dweller expression. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "nemini",
+          "category": "Dictionary headword",
+          "gloss": "inhabitant",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        },
+        {
+          "form": "nemjnj",
+          "category": "Historical written occurrence",
+          "gloss": "Historical spelling for an inhabitant/dweller expression; segmentation remains context-sensitive",
+          "evidence": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/62r",
+          "note": "Book 11, f. 62r: 'atl yitic nemjnj' — Historical spelling for an inhabitant/dweller expression; segmentation remains context-sensitive"
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "iuhquin",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/iuhquin",
+      "grammarNotes": "Contraction of iuhqui + in; comparison marker, not a verb or an inflection of chimalli. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "iuhquin",
+          "category": "Dictionary headword",
+          "gloss": "like",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        },
+        {
+          "form": "iuhqujn",
+          "category": "Historical written occurrence",
+          "gloss": "Comparison 'like a shield'; quotation alone does not independently establish analysis",
+          "evidence": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/62r",
+          "note": "Book 11, f. 62r: 'iuhqujn chimalli' — Comparison 'like a shield'; quotation alone does not independently establish analysis"
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "inīn",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/inin",
+      "grammarNotes": "This form can introduce a topic; distinguish from ordinary particle in. The vowel length in the headword is editorially normalized. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "inīn",
+          "category": "Dictionary headword",
+          "gloss": "this",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        },
+        {
+          "form": "injn",
+          "category": "Historical written occurrence",
+          "gloss": "The cited source's j spelling of the demonstrative",
+          "evidence": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/217r",
+          "note": "Book 11, f. 217r: 'injn itoca itech qujça' — The cited source's j spelling of the demonstrative"
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "ītech",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "-tech (bound relational base)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/itech",
+      "grammarNotes": "Already prefixed with third-person possessive ī-; its sense depends on governing construction. In this source 'itech quiza' explains the source of a name. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "ītech",
+          "category": "Dictionary headword",
+          "gloss": "on it",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        },
+        {
+          "form": "itech",
+          "category": "Historically transcribed relational spelling",
+          "gloss": "Cited lexical relation in the etymological explanation",
+          "evidence": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/217r",
+          "note": "Book 11, f. 217r: 'itoca itech qujça' — Cited lexical relation in the etymological explanation"
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "quiza",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/172619",
+      "grammarNotes": "A versatile motion/emergence verb; 'comes from' in the cited pigment-name explanation. Do not extrapolate a full tense paradigm. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "quiza",
+          "category": "Dictionary headword",
+          "gloss": "to go out",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        },
+        {
+          "form": "qujça",
+          "category": "Historically transcribed finite form",
+          "gloss": "Original transcription j/ç orthography corresponds to modernized quiza",
+          "evidence": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/217r",
+          "note": "Book 11, f. 217r: 'itech qujça' — Original transcription j/ç orthography corresponds to modernized quiza"
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlapalli",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "singular",
+      "animacy": "inference",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-li",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlapalli",
+      "grammarNotes": "Color/pigment in the 'xochipalli' etymology; does not specify an identical color sense across all contexts. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "tlapalli",
+          "category": "Dictionary headword",
+          "gloss": "color",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "cen",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cen",
+      "grammarNotes": "Cen can mean wholly/entirely; not necessarily the numeral 'one' used independently. Poetic nuance is contextual. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "cen",
+          "category": "Dictionary headword",
+          "gloss": "entirely",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "polihui",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/polihui",
+      "grammarNotes": "Second-conjugation intransitive, associated with disappearance and death; distinguish from transitive poloa. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "inflections": [
+        {
+          "form": "polihui",
+          "category": "Dictionary headword",
+          "gloss": "to disappear",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "note": "Source-located citation lemma. Macrons and standardized orthography are editorial; no unprinted form claimed."
+        },
+        {
+          "form": "tipolihui",
+          "category": "Historically transcribed finite form",
+          "gloss": "Second-person singular present in a poem; secondary edition, not independently inspected manuscript",
+          "evidence": "text",
+          "source": "https://historicas.unam.mx/publicaciones/publicadigital/libros/filosofia/046_04_45_textos_IV.pdf",
+          "note": "UNAM (2017), León-Portilla, p. 408, Cantares Mexicanos f. 35r: 'tipolihui' — Second-person singular present in a poem; secondary edition, not independently inspected manuscript"
         }
       ],
       "formsEdited": false

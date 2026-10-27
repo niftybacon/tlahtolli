@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-27.4.0",
+  "version": "2026-10-27.5.0",
   "entries": [
     {
       "word": "ātl",
@@ -7610,6 +7610,789 @@
           "locator": "Molina (1571), II, f. 31v, col. 1: yauh ni, pret. onia",
           "note": "Source-located argument structure and/or particular recorded preterite forms. See individually listed inflections. No generalized paradigm or manuscript certification.",
           "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "itic",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Molina (1571), Vocabulario II, f. 42v col. 2: itic 'dentro de algo'",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Molina (1571), Vocabulario II, f. 42v col. 2: itic 'dentro de algo'",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Molina (1571), Vocabulario II, f. 42v col. 2: itic 'dentro de algo'",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
+          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal vs. nonnominal number",
+          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "",
+          "note": "Noun plural morphology is not applicable.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Molina (1571), Vocabulario II, f. 42v col. 2: itic 'dentro de algo'",
+          "note": "A relational/locative form uses possessive indexing; verify each contextual combination independently.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/62r",
+          "locator": "Book 11, f. 62r: 'atl yitic nemjnj'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. Possessed/locative form 'inside it', water context A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "nemini",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "locator": "Molina (1571), Vocabulario II, f. 67v col. 1; Karttunen (1992), p. 166",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "locator": "Molina (1571), Vocabulario II, f. 67v col. 1; Karttunen (1992), p. 166",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "locator": "Molina (1571), Vocabulario II, f. 67v col. 1; Karttunen (1992), p. 166",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "locator": "Molina (1571), Vocabulario II, f. 67v col. 1; Karttunen (1992), p. 166",
+          "note": "Agent noun likely animate or substance noun likely inanimate, but historical grammatical diagnostics still require checking.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "locator": "Molina (1571), Vocabulario II, f. 67v col. 1; Karttunen (1992), p. 166",
+          "note": "Citation form treated as singular, but no lexeme-specific plural paradigm has been verified.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "locator": "",
+          "note": "No independently checked overt lexeme-specific plural in this editorial pass; absence is not impossibility.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "locator": "",
+          "note": "No complete noun possessed token is verified here; no possessed paradigm is inferred.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/nemini",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/62r",
+          "locator": "Book 11, f. 62r: 'atl yitic nemjnj'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. Historical spelling for an inhabitant/dweller expression; segmentation remains context-sensitive A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "iuhquin",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "locator": "Karttunen (1992), p. 109; Lockhart (2001), p. 221; Launey (2011), p. 132",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "locator": "Karttunen (1992), p. 109; Lockhart (2001), p. 221; Launey (2011), p. 132",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "locator": "Karttunen (1992), p. 109; Lockhart (2001), p. 221; Launey (2011), p. 132",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
+          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal vs. nonnominal number",
+          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "locator": "",
+          "note": "Noun plural morphology is not applicable.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "locator": "",
+          "note": "No complete noun possessed token is verified here; no possessed paradigm is inferred.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/62r",
+          "locator": "Book 11, f. 62r: 'iuhqujn chimalli'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. Comparison 'like a shield'; quotation alone does not independently establish analysis A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "inīn",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "locator": "Molina (1571), Vocabulario II, f. 39r; Karttunen (1992), p. 106",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "locator": "Molina (1571), Vocabulario II, f. 39r; Karttunen (1992), p. 106",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "locator": "Molina (1571), Vocabulario II, f. 39r; Karttunen (1992), p. 106",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
+          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal vs. nonnominal number",
+          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "locator": "",
+          "note": "Noun plural morphology is not applicable.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "locator": "",
+          "note": "No complete noun possessed token is verified here; no possessed paradigm is inferred.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/217r",
+          "locator": "Book 11, f. 217r: 'injn itoca itech qujça'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. The cited source's j spelling of the demonstrative A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "ītech",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "locator": "Molina (1571), Vocabulario II, f. 42r; Karttunen (1992), p. 107",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "locator": "Molina (1571), Vocabulario II, f. 42r; Karttunen (1992), p. 107",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "locator": "Molina (1571), Vocabulario II, f. 42r; Karttunen (1992), p. 107",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
+          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal vs. nonnominal number",
+          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "locator": "",
+          "note": "Noun plural morphology is not applicable.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "locator": "Molina (1571), Vocabulario II, f. 42r; Karttunen (1992), p. 107",
+          "note": "A relational/locative form uses possessive indexing; verify each contextual combination independently.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/217r",
+          "locator": "Book 11, f. 217r: 'itoca itech qujça'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. Cited lexical relation in the etymological explanation A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "quiza",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "locator": "Molina (1571), Vocabulario II, f. 89v col. 1: niquiza, pret. oniquiz",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "locator": "Molina (1571), Vocabulario II, f. 89v col. 1: niquiza, pret. oniquiz",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "locator": "Molina (1571), Vocabulario II, f. 89v col. 1: niquiza, pret. oniquiz",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
+          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal vs. nonnominal number",
+          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "locator": "",
+          "note": "Noun plural morphology is not applicable.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "locator": "",
+          "note": "No complete noun possessed token is verified here; no possessed paradigm is inferred.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/217r",
+          "locator": "Book 11, f. 217r: 'itech qujça'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. Original transcription j/ç orthography corresponds to modernized quiza A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "tlapalli",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "locator": "Molina (1571), Vocabulario II, f. 130v col. 2: tlapalli; Florentine Codex XI, f. 217r",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "locator": "Molina (1571), Vocabulario II, f. 130v col. 2: tlapalli; Florentine Codex XI, f. 217r",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "locator": "Molina (1571), Vocabulario II, f. 130v col. 2: tlapalli; Florentine Codex XI, f. 217r",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "locator": "Molina (1571), Vocabulario II, f. 130v col. 2: tlapalli; Florentine Codex XI, f. 217r",
+          "note": "Agent noun likely animate or substance noun likely inanimate, but historical grammatical diagnostics still require checking.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "locator": "Molina (1571), Vocabulario II, f. 130v col. 2: tlapalli; Florentine Codex XI, f. 217r",
+          "note": "Citation form treated as singular, but no lexeme-specific plural paradigm has been verified.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "locator": "",
+          "note": "No independently checked overt lexeme-specific plural in this editorial pass; absence is not impossibility.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "locator": "",
+          "note": "No complete noun possessed token is verified here; no possessed paradigm is inferred.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapalli",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/book/11/folio/217r",
+          "locator": "Book 11, f. 217r: 'xochitl, ioan tlapalli'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. Lexical noun appearing in a source explanation; do not infer plural from one occurrence A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "cen",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "locator": "Molina (1571), Vocabulario II, f. 17r col. 1; Olmos Arte p. 181",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "locator": "Molina (1571), Vocabulario II, f. 17r col. 1; Olmos Arte p. 181",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "locator": "Molina (1571), Vocabulario II, f. 17r col. 1; Olmos Arte p. 181",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
+          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal vs. nonnominal number",
+          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "locator": "",
+          "note": "Noun plural morphology is not applicable.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "locator": "",
+          "note": "No complete noun possessed token is verified here; no possessed paradigm is inferred.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://historicas.unam.mx/publicaciones/publicadigital/libros/filosofia/046_04_45_textos_IV.pdf",
+          "locator": "UNAM (2017), León-Portilla, p. 408, quotation of Cantares Mexicanos f. 35r: 'cen tiyahui'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. Excerpt in a printed scholarly anthology (secondary transcript; original folio not independently inspected) A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "polihui",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "locator": "Molina (1571), Vocabulario II, f. 83r col. 1; Karttunen (1992), p. 202; Lockhart (2001), p. 230",
+          "note": "The cited dictionary entry identifies this lexeme and its citation spelling; source variants are not separate lemmas.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "locator": "Molina (1571), Vocabulario II, f. 83r col. 1; Karttunen (1992), p. 202; Lockhart (2001), p. 230",
+          "note": "The citation supports the main sense; the passage's contextual translation is a narrower editorial reading.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "locator": "Molina (1571), Vocabulario II, f. 83r col. 1; Karttunen (1992), p. 202; Lockhart (2001), p. 230",
+          "note": "Lexical class is based on source description (noun/verb/particle), not an English gloss alone.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
+          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/itic",
+          "locator": "Launey (2011), nominal vs. nonnominal number",
+          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "locator": "",
+          "note": "Noun plural morphology is not applicable.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "locator": "",
+          "note": "No complete noun possessed token is verified here; no possessed paradigm is inferred.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "locator": "",
+          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://historicas.unam.mx/publicaciones/publicadigital/libros/filosofia/046_04_45_textos_IV.pdf",
+          "locator": "UNAM (2017), León-Portilla, p. 408, Cantares Mexicanos f. 35r: 'tipolihui'",
+          "note": "A short original-spelling occurrence is transcribed in the named edition. Second-person singular present in a poem; secondary edition, not independently inspected manuscript A text form does not prove other conjugations, noun agreement, or period-universal usage.",
+          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         }
       ]

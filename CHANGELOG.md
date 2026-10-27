@@ -1,3 +1,12 @@
+## v2.3 — 2026-10-27: grammatical audit
+
+- Audited 349 pending claims with dated lexical witnesses and Classical Nahuatl grammar.
+- Explicitly distinguished citation-form number from referential number; added grammar source locations.
+- Distinguished 113 rule-derived proposals from located grammatical/lexicographic records.
+- Documented exceptions (mountains, stars) and retained ambiguity in polysemous nouns.
+- Added actual plurals tlatoque and teopixque with source context, plus three possessed examples.
+- Preserved still-missing plurals as unknown instead of claiming impossibility.
+
 ## v2.2 · 2026-10-27 — Founding vocabulary claim-level source audit
 
 - Checked the original 44 entries individually against dictionary headwords, primary senses and lexical-category evidence.

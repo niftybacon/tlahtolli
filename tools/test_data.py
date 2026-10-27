@@ -23,7 +23,7 @@ print('PASS: selected documented-form regression fixtures. Not comprehensive pee
 new=json.loads((root/'dictionary.json').read_text(encoding='utf8'))['words'][44:]
 assert len(new)==44 and len({x['word'] for x in new})==44
 assert all(len(x.get('claims',[]))>=3 and x['source'].startswith('https://nahuatl.wired-humanities.org/content/') for x in new)
-assert all(any(c.get('field')=='animacy' and c.get('assessment')=='unverified' for c in x['claims']) for x in new)
+assert all(any(c.get('field')=='animacy' and c.get('assessment') in ('grammar','inference','unverified') for c in x['claims']) for x in new)
 for lemma,plural in [('conetl','cōconeh'),('ichpochtli','ichpōpōchtin'),('telpochtli','tēlpōpōchtin'),('namictli','nānāmictin')]:
  x=next(x for x in new if x['word']==lemma)
  assert x['plural']==plural and x['pluralStatus']=='attested'

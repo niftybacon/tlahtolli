@@ -7,9 +7,11 @@ BEGIN='/* BEGIN TLAHTOLLI SRS V2 */'
 END='/* END TLAHTOLLI SRS V2 */'
 ANCHOR='renderSourceAtlas();syncSourceAtlas();render();'
 def bundled():
+    fsrs=(ROOT/'tools/fsrs_core.js').read_text(encoding='utf-8').rstrip()
     engine=(ROOT/'tools/srs_engine.js').read_text(encoding='utf-8').rstrip()
+    fsrs_ui=(ROOT/'tools/fsrs_ui.js').read_text(encoding='utf-8').rstrip()
     ui=(ROOT/'tools/srs_ui.js').read_text(encoding='utf-8').rstrip()
-    return BEGIN+'\n'+engine+'\n'+ui+'\n'+END
+    return BEGIN+'\n'+fsrs+'\n'+engine+'\n'+ui+'\n'+fsrs_ui+'\n'+END
 
 def generate(html):
     block=bundled()

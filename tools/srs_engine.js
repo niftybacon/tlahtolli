@@ -101,8 +101,11 @@ function sort(a,b,ka,kb){
 }
 function queueWords(now=Date.now()){
  const stats=usage(studyRecords,now),filter=$('studySubset').value;
- return words.filter(w=>w.word&&w.meaning&&allowed(studyKey(w),studyRecords[studyKey(w)],filter,stats,now))
+ const list=words.filter(w=>w.word&&w.meaning&&allowed(studyKey(w),studyRecords[studyKey(w)],filter,stats,now))
   .sort((a,b)=>sort(a.word,b.word,studyRecords[studyKey(a)],studyRecords[studyKey(b)]));
+ if(filter==='all')return list;
+ let remaining=Math.max(0,opts.newLimit-stats.introduced);
+ return list.filter(w=>studyRecords[studyKey(w)]||remaining-->0);
 }
 function siblingDone(lemma,key,now){
  const today=midnight(now);
@@ -120,7 +123,10 @@ function queueDrill(now=Date.now()){
    out.push({lemma,form,ti,pi,key,record:r});
   }
  }
- return out.sort((a,b)=>sort(a.lemma,b.lemma,a.record,b.record)||a.ti-b.ti||a.pi-b.pi);
+ out.sort((a,b)=>sort(a.lemma,b.lemma,a.record,b.record)||a.ti-b.ti||a.pi-b.pi);
+ if(filter==='all')return out;
+ let remaining=Math.max(0,opts.newLimit-stats.introduced);
+ return out.filter(x=>x.record||remaining-->0);
 }
 function interval(ms){return ms<3600000?Math.ceil(ms/MIN)+'m':ms<DAY?(ms/3600000).toFixed(1).replace(/\.0$/,'')+'h':Math.round(ms/DAY)+'d'}
 function preview(root,key){
@@ -155,10 +161,11 @@ function undoLast(){if(!undo)return;
  saveStudyRecords();renderStudy();renderDrill();message('Last graded review undone.');
 }
 function exportAnki(paradigms=false){
- const deck='Tlahtōlli::'+(paradigms?'Verb Paradigms':'Vocabulary');
+ const reverse=paradigms==='reverse',isParadigms=paradigms===true;
+ const deck='Tlahtōlli::'+(isParadigms?'Verb Paradigms':reverse?'Reverse Vocabulary':'Vocabulary');
  const head='#separator:Tab\r\n#html:true\r\n#notetype:Basic\r\n#deck:'+deck+'\r\n#columns:Front\tBack\tTags\r\n#tags column:3\r\n';
  const rows=[];
- if(paradigms){
+ if(isParadigms){
   for(const [lemma,model] of Object.entries(FULL_VERB_PARADIGMS))
    for(let ti=0;ti<model.cells.length;ti++)for(let pi=0;pi<6;pi++){
     const prompt=lemma+' · '+VERB_TENSES[ti].name+' · '+PARADIGM_PERSONS[pi][0];
@@ -171,11 +178,20 @@ function exportAnki(paradigms=false){
    '<br>Historic spelling: '+safe(w.original||'not recorded')+
    '<br>Verification: '+safe(w.status)+
    '<br>Source: '+safe(w.source)+(w.notes?'<br>Notes: '+safe(w.notes):'');
-  rows.push([w.word,back,'Nahuatl Tlahtolli Vocabulary '+String(w.pos||'').toLowerCase().replace(/[^a-z]+/g,'_')]);
+  rows.push([reverse?w.meaning:w.word,reverse?'<strong>'+safe(w.word)+'</strong><hr>'+back:back,
+   'Nahuatl Tlahtolli Vocabulary '+String(w.pos||'').toLowerCase().replace(/[^a-z]+/g,'_')]);
  }
- download(paradigms?'tlahtolli-anki-verb-paradigms.tsv':'tlahtolli-anki-vocabulary.tsv',
+ download(isParadigms?'tlahtolli-anki-verb-paradigms.tsv':reverse?'tlahtolli-anki-reverse-vocabulary.tsv':'tlahtolli-anki-vocabulary.tsv',
   head+rowsToText(rows,'\t'),'text/tab-separated-values');
  message('Exported '+rows.length+' Anki notes. Anki will schedule them independently; TSV does not transfer this browser’s review history.');
+}
+function resumeSuspended(){
+ const affected=Object.values(studyRecords).filter(r=>r.suspended===true);
+ if(!affected.length){message('No suspended study cards on this device.');return 0}
+ if(!confirm('Resume '+affected.length+' suspended cards now? Their past review history will be preserved.'))return 0;
+ for(const r of affected){r.suspended=false;r.leech=false;r.phase='review';r.due=Date.now();}
+ saveStudyRecords();renderStudy();renderDrill();message('Resumed '+affected.length+' suspended cards.');
+ return affected.length;
 }
 function applySettings(newSettings){
  opts=config(newSettings);saveConfig();
@@ -187,5 +203,5 @@ function applySettings(newSettings){
  renderStudy();renderDrill();statsText();
 }
 return {DEFAULT,PRESETS,FIELDS,config,steps,schedule,midnight,usage,queueWords,queueDrill,rate,undoLast,
- preview,statsText,applySettings,exportAnki,getSettings:()=>({...opts})};
+ preview,statsText,applySettings,exportAnki,resumeSuspended,getSettings:()=>({...opts})};
 })();

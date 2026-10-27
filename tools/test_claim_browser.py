@@ -10,9 +10,17 @@ with sync_playwright() as pw:
     b=pw.chromium.launch(headless=True,args=['--no-sandbox'])
     page=b.new_page(accept_downloads=True)
     errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
-    page.evaluate("""([d,p])=>{window.fetch=async url=>new Response(JSON.stringify(String(url).startsWith('dictionary.json')?d:p),{status:200,headers:{'Content-Type':'application/json'}})}""",[d,p])
+    page.evaluate("""([d,p])=>{
+      window.fetch=async url=>{
+        const name=String(url),value=name.startsWith('release.json')
+          ? {format:'tlahtolli-release-manifest',schema:1,version:d.version,
+             headwords:d.words.length,paradigms:Object.keys(p.paradigms).length}
+          : name.startsWith('dictionary.json')?d:p;
+        return new Response(JSON.stringify(value),{status:200,headers:{'Content-Type':'application/json'}});
+      };
+    }""",[d,p])
     page.set_content((root/'index.html').read_text(encoding='utf8'),wait_until='load')
-    page.wait_for_function("document.querySelector('#syncStatus')?.textContent.includes('Synced')")
+    page.wait_for_function("['Current','Synced'].some(s=>document.querySelector('#syncStatus')?.textContent.includes(s))")
     page.locator('#search').fill('tonalli')
     page.locator('button.result').first.click()
     page.locator('[data-entry-tab="verification"]').click()

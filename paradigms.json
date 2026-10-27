@@ -1,0 +1,1132 @@
+{
+  "format": "tlahtolli-verb-paradigms",
+  "schema": 1,
+  "version": "2026-10-26.1",
+  "patterns": [
+    "present",
+    "preterite",
+    "imperfect",
+    "future",
+    "conditional",
+    "pluperfect",
+    "habitual/quotidian",
+    "optative/imperative",
+    "past optative",
+    "admonitive/vetitive"
+  ],
+  "persons": [
+    "1sg",
+    "2sg",
+    "3sg",
+    "1pl",
+    "2pl",
+    "3pl"
+  ],
+  "evidence": "grammar-derived; not independently attested",
+  "paradigms": {
+    "tlahtoā": {
+      "cls": "3",
+      "trans": false,
+      "b1": "tlahtoā",
+      "b2s": "tlahtoh",
+      "b2p": "tlahtoh",
+      "b3": "tlahtō",
+      "note": "Class 3 -oā; base-2 tlahtoh from the classical grammar paradigm; compare Molina onitlato.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/node/172772",
+      "cells": [
+        [
+          "nitlahtoa",
+          "titlahtoa",
+          "tlahtoa",
+          "titlahtoah",
+          "antlahtoah",
+          "tlahtoah"
+        ],
+        [
+          "nitlahtoh",
+          "titlahtoh",
+          "tlahtoh",
+          "titlahtohqueh",
+          "antlahtohqueh",
+          "tlahtohqueh"
+        ],
+        [
+          "nitlahtoāya",
+          "titlahtoāya",
+          "tlahtoāya",
+          "titlahtoāyah",
+          "antlahtoāyah",
+          "tlahtoāyah"
+        ],
+        [
+          "nitlahtōz",
+          "titlahtōz",
+          "tlahtōz",
+          "titlahtōzqueh",
+          "antlahtōzqueh",
+          "tlahtōzqueh"
+        ],
+        [
+          "nitlahtōzquiya",
+          "titlahtōzquiya",
+          "tlahtōzquiya",
+          "titlahtōzquiyah",
+          "antlahtōzquiyah",
+          "tlahtōzquiyah"
+        ],
+        [
+          "nitlahtohca",
+          "titlahtohca",
+          "tlahtohca",
+          "titlahtohcah",
+          "antlahtohcah",
+          "tlahtohcah"
+        ],
+        [
+          "nitlahtoāni",
+          "titlahtoāni",
+          "tlahtoāni",
+          "titlahtoānih",
+          "antlahtoānih",
+          "tlahtoānih"
+        ],
+        [
+          "nitlahto",
+          "xitlahto",
+          "tlahto",
+          "titlahtōcān",
+          "xitlahtōcān",
+          "tlahtōcān"
+        ],
+        [
+          "nitlahtoāni",
+          "xitlahtoāni",
+          "tlahtoāni",
+          "titlahtoānih",
+          "xitlahtoānih",
+          "tlahtoānih"
+        ],
+        [
+          "nitlahtoh",
+          "titlahtoh",
+          "tlahtoh",
+          "titlahtohtin",
+          "antlahtohtin",
+          "tlahtohtin"
+        ]
+      ]
+    },
+    "chōca": {
+      "cls": "1-S",
+      "trans": false,
+      "b1": "chōca",
+      "b2s": "chōca",
+      "b2p": "chōca",
+      "b3": "chōca",
+      "note": "Class 1. The written ō- preterite augment is often present but not obligatory.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/choca",
+      "cells": [
+        [
+          "nichōca",
+          "tichōca",
+          "chōca",
+          "tichōcah",
+          "anchōcah",
+          "chōcah"
+        ],
+        [
+          "nichōcac",
+          "tichōcac",
+          "chōcac",
+          "tichōcaqueh",
+          "anchōcaqueh",
+          "chōcaqueh"
+        ],
+        [
+          "nichōcaya",
+          "tichōcaya",
+          "chōcaya",
+          "tichōcayah",
+          "anchōcayah",
+          "chōcayah"
+        ],
+        [
+          "nichōcaz",
+          "tichōcaz",
+          "chōcaz",
+          "tichōcazqueh",
+          "anchōcazqueh",
+          "chōcazqueh"
+        ],
+        [
+          "nichōcazquiya",
+          "tichōcazquiya",
+          "chōcazquiya",
+          "tichōcazquiyah",
+          "anchōcazquiyah",
+          "chōcazquiyah"
+        ],
+        [
+          "nichōcaca",
+          "tichōcaca",
+          "chōcaca",
+          "tichōcacah",
+          "anchōcacah",
+          "chōcacah"
+        ],
+        [
+          "nichōcani",
+          "tichōcani",
+          "chōcani",
+          "tichōcanih",
+          "anchōcanih",
+          "chōcanih"
+        ],
+        [
+          "nichōca",
+          "xichōca",
+          "chōca",
+          "tichōcacān",
+          "xichōcacān",
+          "chōcacān"
+        ],
+        [
+          "nichōcani",
+          "xichōcani",
+          "chōcani",
+          "tichōcanih",
+          "xichōcanih",
+          "chōcanih"
+        ],
+        [
+          "nichōcah",
+          "tichōcah",
+          "chōcah",
+          "tichōcahtin",
+          "anchōcahtin",
+          "chōcahtin"
+        ]
+      ]
+    },
+    "nemi": {
+      "cls": "2",
+      "trans": false,
+      "b1": "nemi",
+      "b2s": "nen",
+      "b2p": "nen",
+      "b3": "nemi",
+      "note": "Irregular preterite nen (Molina oninen); not the reduplicated verb nehnemi.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/nemi",
+      "cells": [
+        [
+          "ninemi",
+          "tinemi",
+          "nemi",
+          "tinemih",
+          "annemih",
+          "nemih"
+        ],
+        [
+          "ninen",
+          "tinen",
+          "nen",
+          "tinenqueh",
+          "annenqueh",
+          "nenqueh"
+        ],
+        [
+          "ninemiya",
+          "tinemiya",
+          "nemiya",
+          "tinemiyah",
+          "annemiyah",
+          "nemiyah"
+        ],
+        [
+          "ninemiz",
+          "tinemiz",
+          "nemiz",
+          "tinemizqueh",
+          "annemizqueh",
+          "nemizqueh"
+        ],
+        [
+          "ninemizquiya",
+          "tinemizquiya",
+          "nemizquiya",
+          "tinemizquiyah",
+          "annemizquiyah",
+          "nemizquiyah"
+        ],
+        [
+          "ninenca",
+          "tinenca",
+          "nenca",
+          "tinencah",
+          "annencah",
+          "nencah"
+        ],
+        [
+          "ninemini",
+          "tinemini",
+          "nemini",
+          "tineminih",
+          "anneminih",
+          "neminih"
+        ],
+        [
+          "ninemi",
+          "xinemi",
+          "nemi",
+          "tinemicān",
+          "xinemicān",
+          "nemicān"
+        ],
+        [
+          "ninemini",
+          "xinemini",
+          "nemini",
+          "tineminih",
+          "xineminih",
+          "neminih"
+        ],
+        [
+          "ninen",
+          "tinen",
+          "nen",
+          "tinentin",
+          "annentin",
+          "nentin"
+        ]
+      ]
+    },
+    "chīhua": {
+      "cls": "2",
+      "trans": true,
+      "b1": "chīhua",
+      "b2s": "chīuh",
+      "b2p": "chīuh",
+      "b3": "chīhua",
+      "note": "Transitive; Class 2. Past stem chīuh, e.g. Molina onicchiuh. Third-singular object -c-/qui- is fixed here.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/chihua",
+      "cells": [
+        [
+          "nicchīhua",
+          "ticchīhua",
+          "quichīhua",
+          "ticchīhuah",
+          "anquichīhuah",
+          "quichīhuah"
+        ],
+        [
+          "nicchīuh",
+          "ticchīuh",
+          "quichīuh",
+          "ticchīuhqueh",
+          "anquichīuhqueh",
+          "quichīuhqueh"
+        ],
+        [
+          "nicchīhuaya",
+          "ticchīhuaya",
+          "quichīhuaya",
+          "ticchīhuayah",
+          "anquichīhuayah",
+          "quichīhuayah"
+        ],
+        [
+          "nicchīhuaz",
+          "ticchīhuaz",
+          "quichīhuaz",
+          "ticchīhuazqueh",
+          "anquichīhuazqueh",
+          "quichīhuazqueh"
+        ],
+        [
+          "nicchīhuazquiya",
+          "ticchīhuazquiya",
+          "quichīhuazquiya",
+          "ticchīhuazquiyah",
+          "anquichīhuazquiyah",
+          "quichīhuazquiyah"
+        ],
+        [
+          "nicchīuhca",
+          "ticchīuhca",
+          "quichīuhca",
+          "ticchīuhcah",
+          "anquichīuhcah",
+          "quichīuhcah"
+        ],
+        [
+          "nicchīhuani",
+          "ticchīhuani",
+          "quichīhuani",
+          "ticchīhuanih",
+          "anquichīhuanih",
+          "quichīhuanih"
+        ],
+        [
+          "nicchīhua",
+          "xicchīhua",
+          "quichīhua",
+          "ticchīhuacān",
+          "xicchīhuacān",
+          "quichīhuacān"
+        ],
+        [
+          "nicchīhuani",
+          "xicchīhuani",
+          "quichīhuani",
+          "ticchīhuanih",
+          "xicchīhuanih",
+          "quichīhuanih"
+        ],
+        [
+          "nicchīuh",
+          "ticchīuh",
+          "quichīuh",
+          "ticchīuhtin",
+          "anquichīuhtin",
+          "quichīuhtin"
+        ]
+      ]
+    },
+    "mati": {
+      "cls": "2 (irregular)",
+      "trans": true,
+      "b1": "mati",
+      "b2s": "mah",
+      "b2p": "mat",
+      "b3": "mati",
+      "note": "Karttunen MAT(I), preterite MAH or MAT; Lockhart states the preterite plural always uses MAT. Here singular MAH and plural MAT. Alternatives are not exhaustively listed.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/mati",
+      "cells": [
+        [
+          "nicmati",
+          "ticmati",
+          "quimati",
+          "ticmatih",
+          "anquimatih",
+          "quimatih"
+        ],
+        [
+          "nicmah",
+          "ticmah",
+          "quimah",
+          "ticmatqueh",
+          "anquimatqueh",
+          "quimatqueh"
+        ],
+        [
+          "nicmatiya",
+          "ticmatiya",
+          "quimatiya",
+          "ticmatiyah",
+          "anquimatiyah",
+          "quimatiyah"
+        ],
+        [
+          "nicmatiz",
+          "ticmatiz",
+          "quimatiz",
+          "ticmatizqueh",
+          "anquimatizqueh",
+          "quimatizqueh"
+        ],
+        [
+          "nicmatizquiya",
+          "ticmatizquiya",
+          "quimatizquiya",
+          "ticmatizquiyah",
+          "anquimatizquiyah",
+          "quimatizquiyah"
+        ],
+        [
+          "nicmahca",
+          "ticmahca",
+          "quimahca",
+          "ticmatcah",
+          "anquimatcah",
+          "quimatcah"
+        ],
+        [
+          "nicmatini",
+          "ticmatini",
+          "quimatini",
+          "ticmatinih",
+          "anquimatinih",
+          "quimatinih"
+        ],
+        [
+          "nicmati",
+          "xicmati",
+          "quimati",
+          "ticmaticān",
+          "xicmaticān",
+          "quimaticān"
+        ],
+        [
+          "nicmatini",
+          "xicmatini",
+          "quimatini",
+          "ticmatinih",
+          "xicmatinih",
+          "quimatinih"
+        ],
+        [
+          "nicmah",
+          "ticmah",
+          "quimah",
+          "ticmattin",
+          "anquimattin",
+          "quimattin"
+        ]
+      ]
+    },
+    "itta": {
+      "cls": "1-S",
+      "trans": true,
+      "b1": "itta",
+      "b2s": "itta",
+      "b2p": "itta",
+      "b3": "itta",
+      "note": "Class 1 transitive. The initial short i in (i)tta may be elided with an object prefix: niquitta, quitta. Citation spelling not a bare finite transitive predicate.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/itta",
+      "cells": [
+        [
+          "niquitta",
+          "tiquitta",
+          "quitta",
+          "tiquittah",
+          "anquittah",
+          "quittah"
+        ],
+        [
+          "niquittac",
+          "tiquittac",
+          "quittac",
+          "tiquittaqueh",
+          "anquittaqueh",
+          "quittaqueh"
+        ],
+        [
+          "niquittaya",
+          "tiquittaya",
+          "quittaya",
+          "tiquittayah",
+          "anquittayah",
+          "quittayah"
+        ],
+        [
+          "niquittaz",
+          "tiquittaz",
+          "quittaz",
+          "tiquittazqueh",
+          "anquittazqueh",
+          "quittazqueh"
+        ],
+        [
+          "niquittazquiya",
+          "tiquittazquiya",
+          "quittazquiya",
+          "tiquittazquiyah",
+          "anquittazquiyah",
+          "quittazquiyah"
+        ],
+        [
+          "niquittaca",
+          "tiquittaca",
+          "quittaca",
+          "tiquittacah",
+          "anquittacah",
+          "quittacah"
+        ],
+        [
+          "niquittani",
+          "tiquittani",
+          "quittani",
+          "tiquittanih",
+          "anquittanih",
+          "quittanih"
+        ],
+        [
+          "niquitta",
+          "xiquitta",
+          "quitta",
+          "tiquittacān",
+          "xiquittacān",
+          "quittacān"
+        ],
+        [
+          "niquittani",
+          "xiquittani",
+          "quittani",
+          "tiquittanih",
+          "xiquittanih",
+          "quittanih"
+        ],
+        [
+          "niquittah",
+          "tiquittah",
+          "quittah",
+          "tiquittahtin",
+          "anquittahtin",
+          "quittahtin"
+        ]
+      ]
+    },
+    "tlacuā": {
+      "cls": "4",
+      "trans": false,
+      "b1": "tlacuā",
+      "b2s": "tlacuah",
+      "b2p": "tlacuah",
+      "b3": "tlacuā",
+      "note": "Class 4. Present singular tlacua, preterite singular tlacuah; these overlap other cells. Lexicalized tla- is part of the intransitive word.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/tlacua",
+      "cells": [
+        [
+          "nitlacua",
+          "titlacua",
+          "tlacua",
+          "titlacuah",
+          "antlacuah",
+          "tlacuah"
+        ],
+        [
+          "nitlacuah",
+          "titlacuah",
+          "tlacuah",
+          "titlacuahqueh",
+          "antlacuahqueh",
+          "tlacuahqueh"
+        ],
+        [
+          "nitlacuāya",
+          "titlacuāya",
+          "tlacuāya",
+          "titlacuāyah",
+          "antlacuāyah",
+          "tlacuāyah"
+        ],
+        [
+          "nitlacuāz",
+          "titlacuāz",
+          "tlacuāz",
+          "titlacuāzqueh",
+          "antlacuāzqueh",
+          "tlacuāzqueh"
+        ],
+        [
+          "nitlacuāzquiya",
+          "titlacuāzquiya",
+          "tlacuāzquiya",
+          "titlacuāzquiyah",
+          "antlacuāzquiyah",
+          "tlacuāzquiyah"
+        ],
+        [
+          "nitlacuahca",
+          "titlacuahca",
+          "tlacuahca",
+          "titlacuahcah",
+          "antlacuahcah",
+          "tlacuahcah"
+        ],
+        [
+          "nitlacuāni",
+          "titlacuāni",
+          "tlacuāni",
+          "titlacuānih",
+          "antlacuānih",
+          "tlacuānih"
+        ],
+        [
+          "nitlacua",
+          "xitlacua",
+          "tlacua",
+          "titlacuācān",
+          "xitlacuācān",
+          "tlacuācān"
+        ],
+        [
+          "nitlacuāni",
+          "xitlacuāni",
+          "tlacuāni",
+          "titlacuānih",
+          "xitlacuānih",
+          "tlacuānih"
+        ],
+        [
+          "nitlacuah",
+          "titlacuah",
+          "tlacuah",
+          "titlacuahtin",
+          "antlacuahtin",
+          "tlacuahtin"
+        ]
+      ]
+    },
+    "yōli": {
+      "cls": "2",
+      "trans": false,
+      "b1": "yōli",
+      "b2s": "yōl",
+      "b2p": "yōl",
+      "b3": "yōli",
+      "note": "Class 2, preterite yōl. This is separate from the similarly glossed nemi.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/node/176626",
+      "cells": [
+        [
+          "niyōli",
+          "tiyōli",
+          "yōli",
+          "tiyōlih",
+          "anyōlih",
+          "yōlih"
+        ],
+        [
+          "niyōl",
+          "tiyōl",
+          "yōl",
+          "tiyōlqueh",
+          "anyōlqueh",
+          "yōlqueh"
+        ],
+        [
+          "niyōliya",
+          "tiyōliya",
+          "yōliya",
+          "tiyōliyah",
+          "anyōliyah",
+          "yōliyah"
+        ],
+        [
+          "niyōliz",
+          "tiyōliz",
+          "yōliz",
+          "tiyōlizqueh",
+          "anyōlizqueh",
+          "yōlizqueh"
+        ],
+        [
+          "niyōlizquiya",
+          "tiyōlizquiya",
+          "yōlizquiya",
+          "tiyōlizquiyah",
+          "anyōlizquiyah",
+          "yōlizquiyah"
+        ],
+        [
+          "niyōlca",
+          "tiyōlca",
+          "yōlca",
+          "tiyōlcah",
+          "anyōlcah",
+          "yōlcah"
+        ],
+        [
+          "niyōlini",
+          "tiyōlini",
+          "yōlini",
+          "tiyōlinih",
+          "anyōlinih",
+          "yōlinih"
+        ],
+        [
+          "niyōli",
+          "xiyōli",
+          "yōli",
+          "tiyōlicān",
+          "xiyōlicān",
+          "yōlicān"
+        ],
+        [
+          "niyōlini",
+          "xiyōlini",
+          "yōlini",
+          "tiyōlinih",
+          "xiyōlinih",
+          "yōlinih"
+        ],
+        [
+          "niyōl",
+          "tiyōl",
+          "yōl",
+          "tiyōltin",
+          "anyōltin",
+          "yōltin"
+        ]
+      ]
+    },
+    "cui": {
+      "cls": "1-S",
+      "trans": true,
+      "b1": "cui",
+      "b2s": "cui",
+      "b2p": "cui",
+      "b3": "cui",
+      "note": "Class 1; preterite cuic. A third-person object prefix is required for this transitive sense.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/cui",
+      "cells": [
+        [
+          "niccui",
+          "ticcui",
+          "quicui",
+          "ticcuih",
+          "anquicuih",
+          "quicuih"
+        ],
+        [
+          "niccuic",
+          "ticcuic",
+          "quicuic",
+          "ticcuiqueh",
+          "anquicuiqueh",
+          "quicuiqueh"
+        ],
+        [
+          "niccuiya",
+          "ticcuiya",
+          "quicuiya",
+          "ticcuiyah",
+          "anquicuiyah",
+          "quicuiyah"
+        ],
+        [
+          "niccuiz",
+          "ticcuiz",
+          "quicuiz",
+          "ticcuizqueh",
+          "anquicuizqueh",
+          "quicuizqueh"
+        ],
+        [
+          "niccuizquiya",
+          "ticcuizquiya",
+          "quicuizquiya",
+          "ticcuizquiyah",
+          "anquicuizquiyah",
+          "quicuizquiyah"
+        ],
+        [
+          "niccuica",
+          "ticcuica",
+          "quicuica",
+          "ticcuicah",
+          "anquicuicah",
+          "quicuicah"
+        ],
+        [
+          "niccuini",
+          "ticcuini",
+          "quicuini",
+          "ticcuinih",
+          "anquicuinih",
+          "quicuinih"
+        ],
+        [
+          "niccui",
+          "xiccui",
+          "quicui",
+          "ticcuicān",
+          "xiccuicān",
+          "quicuicān"
+        ],
+        [
+          "niccuini",
+          "xiccuini",
+          "quicuini",
+          "ticcuinih",
+          "xiccuinih",
+          "quicuinih"
+        ],
+        [
+          "niccuih",
+          "ticcuih",
+          "quicuih",
+          "ticcuihtin",
+          "anquicuihtin",
+          "quicuihtin"
+        ]
+      ]
+    },
+    "pōhua": {
+      "cls": "2",
+      "trans": true,
+      "b1": "pōhua",
+      "b2s": "pōuh",
+      "b2p": "pōuh",
+      "b3": "pōhua",
+      "note": "Class 2; historical -hua class; base 2 pōuh. Keep apart from the lexicalized intransitive tlapōhua.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/pohua",
+      "cells": [
+        [
+          "nicpōhua",
+          "ticpōhua",
+          "quipōhua",
+          "ticpōhuah",
+          "anquipōhuah",
+          "quipōhuah"
+        ],
+        [
+          "nicpōuh",
+          "ticpōuh",
+          "quipōuh",
+          "ticpōuhqueh",
+          "anquipōuhqueh",
+          "quipōuhqueh"
+        ],
+        [
+          "nicpōhuaya",
+          "ticpōhuaya",
+          "quipōhuaya",
+          "ticpōhuayah",
+          "anquipōhuayah",
+          "quipōhuayah"
+        ],
+        [
+          "nicpōhuaz",
+          "ticpōhuaz",
+          "quipōhuaz",
+          "ticpōhuazqueh",
+          "anquipōhuazqueh",
+          "quipōhuazqueh"
+        ],
+        [
+          "nicpōhuazquiya",
+          "ticpōhuazquiya",
+          "quipōhuazquiya",
+          "ticpōhuazquiyah",
+          "anquipōhuazquiyah",
+          "quipōhuazquiyah"
+        ],
+        [
+          "nicpōuhca",
+          "ticpōuhca",
+          "quipōuhca",
+          "ticpōuhcah",
+          "anquipōuhcah",
+          "quipōuhcah"
+        ],
+        [
+          "nicpōhuani",
+          "ticpōhuani",
+          "quipōhuani",
+          "ticpōhuanih",
+          "anquipōhuanih",
+          "quipōhuanih"
+        ],
+        [
+          "nicpōhua",
+          "xicpōhua",
+          "quipōhua",
+          "ticpōhuacān",
+          "xicpōhuacān",
+          "quipōhuacān"
+        ],
+        [
+          "nicpōhuani",
+          "xicpōhuani",
+          "quipōhuani",
+          "ticpōhuanih",
+          "xicpōhuanih",
+          "quipōhuanih"
+        ],
+        [
+          "nicpōuh",
+          "ticpōuh",
+          "quipōuh",
+          "ticpōuhtin",
+          "anquipōuhtin",
+          "quipōuhtin"
+        ]
+      ]
+    },
+    "tlapōhua": {
+      "cls": "2",
+      "trans": false,
+      "b1": "tlapōhua",
+      "b2s": "tlapōuh",
+      "b2p": "tlapōuh",
+      "b3": "tlapōhua",
+      "note": "Derived from transitive pōhua with lexicalized nonspecific tla-. Historical paradigm includes nitlapoani, nitlapoazquia.",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/content/tlapohua",
+      "cells": [
+        [
+          "nitlapōhua",
+          "titlapōhua",
+          "tlapōhua",
+          "titlapōhuah",
+          "antlapōhuah",
+          "tlapōhuah"
+        ],
+        [
+          "nitlapōuh",
+          "titlapōuh",
+          "tlapōuh",
+          "titlapōuhqueh",
+          "antlapōuhqueh",
+          "tlapōuhqueh"
+        ],
+        [
+          "nitlapōhuaya",
+          "titlapōhuaya",
+          "tlapōhuaya",
+          "titlapōhuayah",
+          "antlapōhuayah",
+          "tlapōhuayah"
+        ],
+        [
+          "nitlapōhuaz",
+          "titlapōhuaz",
+          "tlapōhuaz",
+          "titlapōhuazqueh",
+          "antlapōhuazqueh",
+          "tlapōhuazqueh"
+        ],
+        [
+          "nitlapōhuazquiya",
+          "titlapōhuazquiya",
+          "tlapōhuazquiya",
+          "titlapōhuazquiyah",
+          "antlapōhuazquiyah",
+          "tlapōhuazquiyah"
+        ],
+        [
+          "nitlapōuhca",
+          "titlapōuhca",
+          "tlapōuhca",
+          "titlapōuhcah",
+          "antlapōuhcah",
+          "tlapōuhcah"
+        ],
+        [
+          "nitlapōhuani",
+          "titlapōhuani",
+          "tlapōhuani",
+          "titlapōhuanih",
+          "antlapōhuanih",
+          "tlapōhuanih"
+        ],
+        [
+          "nitlapōhua",
+          "xitlapōhua",
+          "tlapōhua",
+          "titlapōhuacān",
+          "xitlapōhuacān",
+          "tlapōhuacān"
+        ],
+        [
+          "nitlapōhuani",
+          "xitlapōhuani",
+          "tlapōhuani",
+          "titlapōhuanih",
+          "xitlapōhuanih",
+          "tlapōhuanih"
+        ],
+        [
+          "nitlapōuh",
+          "titlapōuh",
+          "tlapōuh",
+          "titlapōuhtin",
+          "antlapōuhtin",
+          "tlapōuhtin"
+        ]
+      ]
+    },
+    "tlami": {
+      "cls": "2",
+      "trans": false,
+      "b1": "tlami",
+      "b2s": "tlan",
+      "b2p": "tlan",
+      "b3": "tlami",
+      "note": "Class 2 with irregular m → n in short preterite base: tlami → tlan (Molina onitlan).",
+      "lemmaSource": "https://nahuatl.wired-humanities.org/node/176482",
+      "cells": [
+        [
+          "nitlami",
+          "titlami",
+          "tlami",
+          "titlamih",
+          "antlamih",
+          "tlamih"
+        ],
+        [
+          "nitlan",
+          "titlan",
+          "tlan",
+          "titlanqueh",
+          "antlanqueh",
+          "tlanqueh"
+        ],
+        [
+          "nitlamiya",
+          "titlamiya",
+          "tlamiya",
+          "titlamiyah",
+          "antlamiyah",
+          "tlamiyah"
+        ],
+        [
+          "nitlamiz",
+          "titlamiz",
+          "tlamiz",
+          "titlamizqueh",
+          "antlamizqueh",
+          "tlamizqueh"
+        ],
+        [
+          "nitlamizquiya",
+          "titlamizquiya",
+          "tlamizquiya",
+          "titlamizquiyah",
+          "antlamizquiyah",
+          "tlamizquiyah"
+        ],
+        [
+          "nitlanca",
+          "titlanca",
+          "tlanca",
+          "titlancah",
+          "antlancah",
+          "tlancah"
+        ],
+        [
+          "nitlamini",
+          "titlamini",
+          "tlamini",
+          "titlaminih",
+          "antlaminih",
+          "tlaminih"
+        ],
+        [
+          "nitlami",
+          "xitlami",
+          "tlami",
+          "titlamicān",
+          "xitlamicān",
+          "tlamicān"
+        ],
+        [
+          "nitlamini",
+          "xitlamini",
+          "tlamini",
+          "titlaminih",
+          "xitlaminih",
+          "tlaminih"
+        ],
+        [
+          "nitlan",
+          "titlan",
+          "tlan",
+          "titlantin",
+          "antlantin",
+          "tlantin"
+        ]
+      ]
+    }
+  }
+}

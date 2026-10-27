@@ -1,0 +1,2025 @@
+{
+  "format": "tlahtolli-published-dictionary",
+  "schema": 1,
+  "version": "2026-10-26.1",
+  "variety": "Classical Nahuatl",
+  "editorial_policy": "Source-checked is not specialist peer review. Paradigms are grammar-derived rather than independently attested manuscript forms. Read individual evidence labels.",
+  "words": [
+    {
+      "word": "ātl",
+      "meaning": "water; liquid; body of water",
+      "pos": "noun",
+      "stem": "ā-",
+      "original": "atl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/atl",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "-āuh (possessed stem; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/atl ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Mass noun; ātl can describe water without singular/plural morphology. Do not turn English “waters” into an assumed regular Nahuatl plural. No separate plural is recorded in the cited lexical entry. This is not proof that no plural occurs in any period or dialect.",
+      "inflections": [
+        {
+          "form": "ātl",
+          "category": "Dictionary headword",
+          "gloss": "water",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/atl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "-āuh",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/content/atl",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "calli",
+      "meaning": "house; building; dwelling",
+      "pos": "noun",
+      "stem": "cal-",
+      "original": "calli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/171977",
+      "example": "",
+      "translation": "",
+      "notes": "Source: Lockhart, Nahuatl as Written p. 212; Karttunen p. 22 (quoted in the linked entry).",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "caltin",
+      "pluralStatus": "attested",
+      "absolutive": "-li/-lli",
+      "possessed": "nocal (my house; regular possessed construction)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/171977 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Ordinary older Nahuatl calli has no obligatory number contrast: “house” and “houses” can both be calli. Karttunen lists a -tin plural and later/Spanish-influenced caltin is discussed in grammatical sources. Do not present caltin as the default classical plural in all contexts.",
+      "inflections": [
+        {
+          "form": "calli",
+          "category": "Dictionary headword",
+          "gloss": "house",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171977",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "caltin",
+          "category": "Plural; special/recorded form",
+          "gloss": "plural of calli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171977",
+          "note": "Lexicon lists -tin; ordinary calli may cover one or more houses. Do not infer default plural use."
+        },
+        {
+          "form": "nocal",
+          "category": "Possessed · 1st sg",
+          "gloss": "my house",
+          "evidence": "paradigm",
+          "source": "https://en.wikibooks.org/wiki/Classical_Nahuatl/Grammar",
+          "note": "Grammar example: no- + cal-."
+        },
+        {
+          "form": "mocal",
+          "category": "Possessed · 2nd sg",
+          "gloss": "your house",
+          "evidence": "paradigm",
+          "source": "https://en.wikibooks.org/wiki/Classical_Nahuatl/Grammar",
+          "note": "Grammar example: mo- + cal-."
+        },
+        {
+          "form": "īcal",
+          "category": "Possessed · 3rd sg",
+          "gloss": "his/her house",
+          "evidence": "paradigm",
+          "source": "https://en.wikibooks.org/wiki/Classical_Nahuatl/Grammar",
+          "note": "Grammar spelling; length of vowels not editorially supplied."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "cuīcatl",
+      "meaning": "song; singing; music",
+      "pos": "noun",
+      "stem": "cuīca-",
+      "original": "cuicatl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cuicatl",
+      "example": "Ilhuicacopa ēhua in nocuīc",
+      "translation": "My song rises up toward the sky.",
+      "notes": "",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "nocuīc (my song; Launey)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cuicatl ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Inanimate noun; unmarked form can mean song or songs. Lexicalized xōchitl cuīcatl denotes poetry. Do not confuse noun cuīcatl with the verb cuīca “to sing.” No separate plural is recorded in the cited lexical entry. This is not proof that no plural occurs in any period or dialect.",
+      "inflections": [
+        {
+          "form": "cuīcatl",
+          "category": "Dictionary headword",
+          "gloss": "song",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuicatl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "nocuīc",
+          "category": "Possessed · 1st sg",
+          "gloss": "my song",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/cuicatl",
+          "note": "Attested in the Launey example “Ilhuicacopa ēhua in nocuīc”."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "xōchitl",
+      "meaning": "flower; flower(s); calendrical day sign",
+      "pos": "noun",
+      "stem": "xōchi-",
+      "original": "xochitl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/xochitl",
+      "example": "",
+      "translation": "",
+      "notes": "Additional direct plural witness: https://gdn.iib.unam.mx/diccionario/xochitl/76692",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "xōchimeh",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/xochitl ; https://nahuatl.wired-humanities.org/content/tin ; https://gdn.iib.unam.mx/diccionario/xochitl/76692",
+      "grammarNotes": "Important EXCEPTION: the flower noun is ordinarily inanimate but its plural xōchimeh is documented. Karttunen lists -meh; the UNAM Gran Diccionario Náhuatl cites xōchimeh in Sahagún, Book 11, p. 213. Not all inanimate nouns are categorically unpluralizable.",
+      "inflections": [
+        {
+          "form": "xōchitl",
+          "category": "Dictionary headword",
+          "gloss": "flower",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xochitl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "xōchimeh",
+          "category": "Plural",
+          "gloss": "plural of xōchitl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xochitl",
+          "note": "Karttunen records the plural suffix -meh."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tēpetl",
+      "meaning": "hill; mountain; precipice",
+      "pos": "noun",
+      "stem": "tepē-",
+      "original": "tepetl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+      "example": "",
+      "translation": "",
+      "notes": "Animacy is flagged CONTEXTUAL, not simply “animate”: this is a noun-class exception associated with personification.",
+      "number": "singular",
+      "animacy": "contextual",
+      "plural": "tētepeh",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "-tepēuh (possessed stem; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tepetl ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Physically inanimate; exceptional grammatically pluralizable/quasi-animate mountain referent, sometimes personified. Lockhart explicitly records tētepeh, and Karttunen notes a -meh plural option. Neither is obligatorily used for ordinary mountain references.",
+      "inflections": [
+        {
+          "form": "tēpetl",
+          "category": "Dictionary headword",
+          "gloss": "hill",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "tētepeh",
+          "category": "Plural; exceptional",
+          "gloss": "plural of tēpetl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+          "note": "Lockhart explicitly records this absolute plural; the noun ordinarily denotes an inanimate mountain."
+        },
+        {
+          "form": "totepēuh",
+          "category": "Possessed · 1st pl",
+          "gloss": "our mountain / our town",
+          "evidence": "paradigm",
+          "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+          "note": "Karttunen reports “TOTĀUH TOTEPĒUH”, meaning our town; long vowel notation normalized here."
+        },
+        {
+          "form": "-tepēuh",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "cītlalin",
+      "meaning": "star; celestial star",
+      "pos": "noun",
+      "stem": "cītlal-",
+      "original": "citlalin",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/citlalin",
+      "example": "",
+      "translation": "",
+      "notes": "Orthographic variant citlalli is recorded in the same source; do not merge its form with all senses indiscriminately.",
+      "number": "singular",
+      "animacy": "contextual",
+      "plural": "cīcītlaltin",
+      "pluralStatus": "attested",
+      "absolutive": "-in",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/citlalin ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Physically inanimate, yet a canonical quasi-animate plural exception. Karttunen and Lockhart directly give cīcītlaltin; Chimalpahin records cicitlaltin. Distinguish plural of star from the plural meaning “stars” in English without an overt Nahuatl suffix.",
+      "inflections": [
+        {
+          "form": "cītlalin",
+          "category": "Dictionary headword",
+          "gloss": "star",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/citlalin",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "cīcītlaltin",
+          "category": "Plural; exceptional",
+          "gloss": "plural of cītlalin",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/citlalin",
+          "note": "The plural is explicitly documented by Karttunen, Lockhart and corpus examples."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlālli",
+      "meaning": "earth; soil; land; plot of land",
+      "pos": "noun",
+      "stem": "tlāl-",
+      "original": "tlalli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlalli",
+      "example": "",
+      "translation": "",
+      "notes": "The plural is a period-marked historical exception, NOT the basic productive classical paradigm.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "tlalme (colonial Spanish-influenced use)",
+      "pluralStatus": "attested",
+      "absolutive": "-li/-lli",
+      "possessed": "-tlāllō (inalienably possessed; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlalli ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "In Classical Nahuatl tlālli normally has no overt plural. A rare tlalme “lands” is explicitly documented in a 1755 Toluca testament and discussed as contact-induced Spanish influence. Do not teach tlalme as an ordinary precontact plural.",
+      "inflections": [
+        {
+          "form": "tlālli",
+          "category": "Dictionary headword",
+          "gloss": "earth",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlalli",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "tlalme",
+          "category": "Plural; colonial register",
+          "gloss": "plural of tlālli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlalli",
+          "note": "Period/register qualification: Spanish-influenced colonial use, not a universal classical form."
+        },
+        {
+          "form": "-tlāllō",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/content/tlalli",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tetl",
+      "meaning": "stone; hard object; counting classifier in certain uses",
+      "pos": "noun",
+      "stem": "te-",
+      "original": "tetl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tetl",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "-teuh (possessed stem; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tetl ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Ordinary inanimate noun; one or several stones can be described without noun-plural morphology. -tetl also functions as a numeral/classifying element, which is a different use from the singular noun. No separate plural is recorded in the cited lexical entry. This is not proof that no plural occurs in any period or dialect.",
+      "inflections": [
+        {
+          "form": "tetl",
+          "category": "Dictionary headword",
+          "gloss": "stone",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tetl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "-teuh",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/content/tetl",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "āmatl",
+      "meaning": "paper; letter; document",
+      "pos": "noun",
+      "stem": "āma-",
+      "original": "amatl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/171922",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-tl",
+      "possessed": "-āmauh (possessed stem; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/171922 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Older Classical Nahuatl āmatl does not require a distinct noun-plural suffix; modern and Spanish-influenced materials can list forms such as āmameh, but no older-manuscript citation for that form is established in this pack. No separate plural is recorded in the cited lexical entry. This is not proof that no plural occurs in any period or dialect.",
+      "inflections": [
+        {
+          "form": "āmatl",
+          "category": "Dictionary headword",
+          "gloss": "paper",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171922",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "-āmauh",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/node/171922",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "ilhuicatl",
+      "meaning": "sky; heaven; heavens",
+      "pos": "noun",
+      "stem": "ilhuica-",
+      "original": "ilhuicatl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ilhuicatl",
+      "example": "",
+      "translation": "",
+      "notes": "The linked entry cites Chimalpahin, Codex Chimalpahin vol. 2 pp. 140–141 and Annals of His Time pp. 178–179.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "ilhuicame (plural “heavens,” colonial text)",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ilhuicatl ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Ordinarily inanimate. The unusual ilhuicame is actually recorded in Chimalpahin describing multiple heavens/celestial strata. Its existence does not impose plural marking on everyday “sky.”",
+      "inflections": [
+        {
+          "form": "ilhuicatl",
+          "category": "Dictionary headword",
+          "gloss": "sky",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ilhuicatl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "ilhuicame",
+          "category": "Plural; colonial text",
+          "gloss": "plural of ilhuicatl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ilhuicatl",
+          "note": "Recorded colonial plural “heavens”; not a claim that the form is always pluralizable."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlaxcalli",
+      "meaning": "maize tortilla; bread",
+      "pos": "noun",
+      "stem": "tlaxcal-",
+      "original": "tlaxcalli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlaxcalli",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "-li/-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlaxcalli ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Ordinary inanimate food noun; tlaxcalli can translate as “tortilla(s)” or bread generally. The cited primary dictionary entry does not establish a distinct standard plural. No separate plural is recorded in the cited lexical entry. This is not proof that no plural occurs in any period or dialect.",
+      "inflections": [
+        {
+          "form": "tlaxcalli",
+          "category": "Dictionary headword",
+          "gloss": "maize tortilla",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlaxcalli",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "āltepētl",
+      "meaning": "town; polity; ethnically constituted community",
+      "pos": "noun",
+      "stem": "āltepē-",
+      "original": "altepetl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/altepetl",
+      "example": "",
+      "translation": "",
+      "notes": "Source page specifically cautions that altepeme/altepemeh is very scarce in colonial alphabetic texts.",
+      "number": "singular",
+      "animacy": "inanimate",
+      "plural": "altepeme (late colonial attestation)",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/altepetl ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Socio-political inanimate noun; Karttunen notes -meh and the Online Nahuatl Dictionary identifies altepeme in the late Techialoyan tradition and in Tlaxcala-Puebla annals. This is rare and late; singular-looking āltepētl can refer to multiple polities in earlier texts.",
+      "inflections": [
+        {
+          "form": "āltepētl",
+          "category": "Dictionary headword",
+          "gloss": "town",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/altepetl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "altepeme",
+          "category": "Plural; later colonial",
+          "gloss": "plural of āltepētl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/altepetl",
+          "note": "Later colonial attestation. Register/date matters."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlācatl",
+      "meaning": "person; human being; sometimes noble person",
+      "pos": "noun",
+      "stem": "tlāca-",
+      "original": "tlacatl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/172684",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "tlācah; variant tlātlācah",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "-tlācauh (possessed stem; special semantics)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/172684 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Human animate noun. Karttunen directly records TLĀCAH; Lockhart also records TLĀTLĀCAH. Distinguish tlācah “people” from tlahcah “at midday” and tlacah “that is to say.”",
+      "inflections": [
+        {
+          "form": "tlācatl",
+          "category": "Dictionary headword",
+          "gloss": "person",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172684",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "tlācah",
+          "category": "Plural",
+          "gloss": "plural of tlācatl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172684",
+          "note": "Listed plural for people."
+        },
+        {
+          "form": "tlātlācah",
+          "category": "Plural; reduplicated",
+          "gloss": "plural of tlācatl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172684",
+          "note": "Alternative plural listed in the source."
+        },
+        {
+          "form": "-tlācauh",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/node/172684",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "cihuātl",
+      "meaning": "woman; wife (possessed)",
+      "pos": "noun",
+      "stem": "cihuā-",
+      "original": "cihuatl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/172028",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "cihuah",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "-cihuāuh (possessed stem; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/172028 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Human animate noun. Dictionary lists cihuah, not a mechanically invented *cihuātlmeh. Possessed cihuātl frequently means “wife.”",
+      "inflections": [
+        {
+          "form": "cihuātl",
+          "category": "Dictionary headword",
+          "gloss": "woman",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172028",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "cihuah",
+          "category": "Plural",
+          "gloss": "plural of cihuātl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172028",
+          "note": "Explicit plural in Karttunen and Lockhart."
+        },
+        {
+          "form": "nocihuāuh",
+          "category": "Possessed · 1st sg",
+          "gloss": "my wife",
+          "evidence": "paradigm",
+          "source": "https://en.wikibooks.org/wiki/Classical_Nahuatl/Grammar",
+          "note": "Attested as grammatical example; -cihuāuh is the possessed stem in Karttunen."
+        },
+        {
+          "form": "-cihuāuh",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/node/172028",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "pilli",
+      "meaning": "noble person; child in possessed and honorific contexts",
+      "pos": "noun",
+      "stem": "pil-",
+      "original": "pilli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/172584",
+      "example": "",
+      "translation": "",
+      "notes": "Different from the suffix -pil “child.”",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "pīpiltin",
+      "pluralStatus": "attested",
+      "absolutive": "-li/-lli",
+      "possessed": "-pillō (possessed stem for noble; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/172584 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Human animate. Historical meaning depends heavily on possession and honorific context: bare pilli chiefly “noble person,” possessed form often “someone’s child.” Karttunen gives PĪPILTIN; vowel length varies across sources.",
+      "inflections": [
+        {
+          "form": "pilli",
+          "category": "Dictionary headword",
+          "gloss": "noble person",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172584",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "pīpiltin",
+          "category": "Plural; reduplicated",
+          "gloss": "plural of pilli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172584",
+          "note": "Reduplicated plural reported by the lexicon."
+        },
+        {
+          "form": "-pillō",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/node/172584",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "oquichtli",
+      "meaning": "man; male; husband when possessed",
+      "pos": "noun",
+      "stem": "oquich-",
+      "original": "oquichtli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "oquichtin; oquichmeh",
+      "pluralStatus": "attested",
+      "absolutive": "-tli",
+      "possessed": "-oquichhui (possessed stem; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/oquichtli ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Human animate. Karttunen explicitly provides alternate plurals using -tin and -meh. The prefixed toquichtin “we men” is a frequently recorded collective expression.",
+      "inflections": [
+        {
+          "form": "oquichtli",
+          "category": "Dictionary headword",
+          "gloss": "man",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "oquichtin",
+          "category": "Plural",
+          "gloss": "plural of oquichtli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
+          "note": "Recorded plural."
+        },
+        {
+          "form": "oquichmeh",
+          "category": "Plural; variant",
+          "gloss": "plural of oquichtli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
+          "note": "Recorded alternative plural."
+        },
+        {
+          "form": "-oquichhui",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tochtli",
+      "meaning": "rabbit; Rabbit calendrical day sign",
+      "pos": "noun",
+      "stem": "toch-",
+      "original": "tochtli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/173206",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "tōtōchtin",
+      "pluralStatus": "attested",
+      "absolutive": "-tli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/173206 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Animate rabbit noun; plural with initial reduplication plus -tin. The same spelling can denote the calendrical sign or a personal name; those uses should not inherit automatic animal plurals.",
+      "inflections": [
+        {
+          "form": "tochtli",
+          "category": "Dictionary headword",
+          "gloss": "rabbit",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/173206",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "tōtōchtin",
+          "category": "Plural; reduplicated",
+          "gloss": "plural of tochtli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/173206",
+          "note": "Reported reduplicated plural."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "michin",
+      "meaning": "fish",
+      "pos": "noun",
+      "stem": "mich-",
+      "original": "michin",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/michin",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "mīmichtin; alternate michimeh (regional/source variant)",
+      "pluralStatus": "attested",
+      "absolutive": "-in",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/michin ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Animate fish noun. Karttunen and Lockhart give mīmichtin, while Karttunen notes a michimeh variant in X; not a universally interchangeable spelling across historical varieties.",
+      "inflections": [
+        {
+          "form": "michin",
+          "category": "Dictionary headword",
+          "gloss": "fish",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/michin",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "mīmichtin",
+          "category": "Plural; reduplicated",
+          "gloss": "plural of michin",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/michin",
+          "note": "Reported plural."
+        },
+        {
+          "form": "michimeh",
+          "category": "Plural; variant",
+          "gloss": "plural of michin",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/michin",
+          "note": "Regional/source alternative; not interchangeable in all varieties."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "coyōtl",
+      "meaning": "coyote",
+      "pos": "noun",
+      "stem": "coyō-",
+      "original": "coyotl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/coyotl",
+      "example": "",
+      "translation": "",
+      "notes": "Secondary witness: https://gdn.iib.unam.mx/diccionario/coyome",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "coyōmeh; variant cōcoyoh",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/coyotl ; https://nahuatl.wired-humanities.org/content/tin ; https://gdn.iib.unam.mx/diccionario/coyome",
+      "grammarNotes": "Animate animal. Karttunen records both forms; coyōmeh is also given by the UNAM Gran Diccionario Náhuatl. The form coyōtl has additional historical figurative/personal-name senses; use animal plural only for the relevant sense.",
+      "inflections": [
+        {
+          "form": "coyōtl",
+          "category": "Dictionary headword",
+          "gloss": "coyote",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/coyotl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "coyōmeh",
+          "category": "Plural",
+          "gloss": "plural of coyōtl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/coyotl",
+          "note": "Reported plural."
+        },
+        {
+          "form": "cōcoyoh",
+          "category": "Plural; variant",
+          "gloss": "plural of coyōtl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/coyotl",
+          "note": "Reported alternative reduplicated plural."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tēuctli",
+      "meaning": "lord; hereditary noble title-holder",
+      "pos": "noun",
+      "stem": "tēuc-",
+      "original": "teuctli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/173032",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "tētēuctin",
+      "pluralStatus": "attested",
+      "absolutive": "-tli",
+      "possessed": "-tēcuiyō (possessed stem; Karttunen)",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/173032 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Animate noun with reduplicated plural tētēuctin (Karttunen and Lockhart). Historical spellings tecutli and tecuhtli may misleadingly suggest a different stem; preserve source spellings.",
+      "inflections": [
+        {
+          "form": "tēuctli",
+          "category": "Dictionary headword",
+          "gloss": "lord",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/173032",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "tētēuctin",
+          "category": "Plural; reduplicated",
+          "gloss": "plural of tēuctli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/173032",
+          "note": "Recorded plural for lords."
+        },
+        {
+          "form": "-tēcuiyō",
+          "category": "Possessed stem (bound)",
+          "gloss": "not a standalone word",
+          "evidence": "stem",
+          "source": "https://nahuatl.wired-humanities.org/node/173032",
+          "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "teōtl",
+      "meaning": "deity; divine force; god",
+      "pos": "noun",
+      "stem": "teō-",
+      "original": "teotl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/teotl",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "tēteoh",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/teotl ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Personal or personified deity is treated as animate for the documented plural tēteoh. The same word also means “divine/sacred force,” a sense not always countable in the same way as “gods.”",
+      "inflections": [
+        {
+          "form": "teōtl",
+          "category": "Dictionary headword",
+          "gloss": "deity",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teotl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "tēteoh",
+          "category": "Plural; reduplicated",
+          "gloss": "plural of teōtl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teotl",
+          "note": "Recorded plural for deities."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tōtōtl",
+      "meaning": "bird",
+      "pos": "noun",
+      "stem": "tōtō-",
+      "original": "tototl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/176563",
+      "example": "",
+      "translation": "",
+      "notes": "Florentine Codex Book 11 records toto(tl)/totome as singular/plural in the linked lexical record.",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "tōtōmeh",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/176563 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Animate animal noun, attested plural tōtōmeh. Do not confuse with tōtolin “domestic fowl,” which differs in vowel quantity.",
+      "inflections": [
+        {
+          "form": "tōtōtl",
+          "category": "Dictionary headword",
+          "gloss": "bird",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176563",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "tōtōmeh",
+          "category": "Plural",
+          "gloss": "plural of tōtōtl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176563",
+          "note": "Recorded plural for birds."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "mācēhualli",
+      "meaning": "commoner; subject; later an Indigenous person",
+      "pos": "noun",
+      "stem": "mācēhual-",
+      "original": "macehualli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/macehualli",
+      "example": "",
+      "translation": "",
+      "notes": "Direct plural headword: https://nahuatl.wired-humanities.org/content/macehualtin",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "mācēhualtin",
+      "pluralStatus": "attested",
+      "absolutive": "-li/-lli",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/macehualli ; https://nahuatl.wired-humanities.org/content/tin ; https://nahuatl.wired-humanities.org/content/macehualtin",
+      "grammarNotes": "Animate human noun. The plural is explicitly entered as macehualtin in the same Online Nahuatl Dictionary. Historical social meaning shifts by period; do not equate every instance with modern “Indigenous person.”",
+      "inflections": [
+        {
+          "form": "mācēhualli",
+          "category": "Dictionary headword",
+          "gloss": "commoner",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/macehualli",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "mācēhualtin",
+          "category": "Plural",
+          "gloss": "plural of mācēhualli",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/macehualli",
+          "note": "Explicitly included as a plural headword in the Online Nahuatl Dictionary."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "coātl",
+      "meaning": "snake; serpent; twin in a distinct extended sense",
+      "pos": "noun",
+      "stem": "coā-",
+      "original": "coatl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/coatl",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "cōcōah; cōāmeh",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/coatl ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Animate for snake/twin senses; Karttunen records both plural patterns. The lexical record cautions that vowel lengths and whether to write -oā- or -ohuā- are not entirely settled. Preserve that orthographic uncertainty.",
+      "inflections": [
+        {
+          "form": "coātl",
+          "category": "Dictionary headword",
+          "gloss": "snake",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/coatl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "cōcōah",
+          "category": "Plural; reduplicated",
+          "gloss": "plural of coātl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/coatl",
+          "note": "Recorded plural variant."
+        },
+        {
+          "form": "cōāmeh",
+          "category": "Plural; alternative",
+          "gloss": "plural of coātl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/coatl",
+          "note": "Recorded plural alternative."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "ōcēlōtl",
+      "meaning": "jaguar; sometimes ocelot; warrior metaphor",
+      "pos": "noun",
+      "stem": "ōcēlō-",
+      "original": "ocelotl",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ocelotl",
+      "example": "",
+      "translation": "",
+      "notes": "Exact historical plural: https://gdn.iib.unam.mx/diccionario/ocelome/154981",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "ocelomeh (historical spelling)",
+      "pluralStatus": "attested",
+      "absolutive": "-tl",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ocelotl ; https://nahuatl.wired-humanities.org/content/tin ; https://gdn.iib.unam.mx/diccionario/ocelome/154981",
+      "grammarNotes": "Animate large cat noun. Actual plural ocelomeh is documented in 1571 Molina and the Florentine Codex indexing as catalogued by UNAM. Do not silently choose “ocelot” over “jaguar” in every source.",
+      "inflections": [
+        {
+          "form": "ōcēlōtl",
+          "category": "Dictionary headword",
+          "gloss": "jaguar",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ocelotl",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "ocelomeh",
+          "category": "Plural; historical spelling",
+          "gloss": "plural of ōcēlōtl",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ocelotl",
+          "note": "Published historical spelling for plural ocelots; normalized macrons may differ."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "quimichin",
+      "meaning": "mouse; rodent",
+      "pos": "noun",
+      "stem": "quimich-",
+      "original": "quimichin",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/177192",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "singular",
+      "animacy": "animate",
+      "plural": "quimichtin; quiquimichtin; quimichimeh",
+      "pluralStatus": "attested",
+      "absolutive": "-in",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/177192 ; https://nahuatl.wired-humanities.org/content/tin",
+      "grammarNotes": "Animate noun. All three are explicitly listed by Karttunen. The third is tied to an alternate treatment of the -in-ending noun stem and is common in some regional traditions.",
+      "inflections": [
+        {
+          "form": "quimichin",
+          "category": "Dictionary headword",
+          "gloss": "mouse",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/177192",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "quimichtin",
+          "category": "Plural",
+          "gloss": "plural of quimichin",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/177192",
+          "note": "Reported plural."
+        },
+        {
+          "form": "quiquimichtin",
+          "category": "Plural; reduplicated",
+          "gloss": "plural of quimichin",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/177192",
+          "note": "Reported reduplicated variant."
+        },
+        {
+          "form": "quimichimeh",
+          "category": "Plural; variant",
+          "gloss": "plural of quimichin",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/177192",
+          "note": "Reported alternative plural."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlahtoā",
+      "meaning": "to speak; make a pronouncement; speak authoritatively",
+      "pos": "verb (intransitive)",
+      "stem": "tlahtoā",
+      "original": "tlatoa",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/172772",
+      "example": "",
+      "translation": "",
+      "notes": "Ortographic variants tlahtoa, tlatoa, tlahtohua.",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/172772",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. A fused tla- + verbal stem intransitive; the apparent object-like segment does not make the whole citation form a noun. Molina gives onitlato as a preterite first-person form.",
+      "inflections": [
+        {
+          "form": "tlahtoā",
+          "category": "Dictionary headword",
+          "gloss": "to speak",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172772",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "onitlato",
+          "category": "Preterite · 1st sg",
+          "gloss": "I spoke",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/node/172772",
+          "note": "Molina spelling; full subject marker ni-, past marker o-."
+        },
+        {
+          "form": "tlatoz",
+          "category": "Future · 3rd singular",
+          "gloss": "he/she will speak",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/node/172772",
+          "note": "In testament formula “nopan tlatoz”. Historical spelling."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "chōca",
+      "meaning": "to cry, weep; make animal cries",
+      "pos": "verb (intransitive)",
+      "stem": "chōca",
+      "original": "choca",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/choca",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/choca",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. Molina records onichocac (“I cried”, preterite), and Lockhart notes a class-1 form ōnichōac. Exact tense morphology varies in examples; no nominal plural form.",
+      "inflections": [
+        {
+          "form": "chōca",
+          "category": "Dictionary headword",
+          "gloss": "to cry, weep",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/choca",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "onichocac",
+          "category": "Preterite · 1st sg",
+          "gloss": "I cried",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/choca",
+          "note": "Molina gives this exact first-person preterite."
+        },
+        {
+          "form": "chōcah",
+          "category": "Present · 3rd plural",
+          "gloss": "they cry",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "chōcac",
+          "category": "Preterite · 3rd singular",
+          "gloss": "he/she cries [past]: cried",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "chōcaqueh",
+          "category": "Preterite · 3rd plural",
+          "gloss": "they cried",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "chōcaya",
+          "category": "Imperfect · 3rd singular",
+          "gloss": "he/she was crying",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "chōcaz",
+          "category": "Future · 3rd singular",
+          "gloss": "he/she will cry",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "chōcazqueh",
+          "category": "Future · 3rd plural",
+          "gloss": "they will cry",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "nemi",
+      "meaning": "to live; reside; go about doing",
+      "pos": "verb (intransitive)",
+      "stem": "nem(i)",
+      "original": "nemi",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nemi",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nemi",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. Karttunen gives irregular preterite NEN. Reduplicated nehnemi can mean “to walk, travel”; do not collapse simple nemi and derived nehnemi.",
+      "inflections": [
+        {
+          "form": "nemi",
+          "category": "Dictionary headword",
+          "gloss": "to live",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemi",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "oninen",
+          "category": "Preterite · 1st sg",
+          "gloss": "I lived",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/nemi",
+          "note": "Molina gives this first-person preterite; stem contraction nem(i) → nen."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "chīhua",
+      "meaning": "to make, do; produce",
+      "pos": "verb (transitive)",
+      "stem": "chīhu(a)",
+      "original": "chihua",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/chihua",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/chihua",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. Transitive (requires an object expression or marker); Molina gives onicchiuh “I made/did it”. Reflexive mo- gives lexicalized “happen, become.”",
+      "inflections": [
+        {
+          "form": "chīhua",
+          "category": "Dictionary headword",
+          "gloss": "to make, do",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chihua",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "onicchiuh",
+          "category": "Preterite · 1st sg",
+          "gloss": "I made/did it",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/chihua",
+          "note": "Transitive object prefix c- belongs to the form. Molina spelling."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "mati",
+      "meaning": "to know; perceive; think (with reflexive)",
+      "pos": "verb (transitive (basic use))",
+      "stem": "mat(i)",
+      "original": "mati",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/mati",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/mati",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. The basic “know something” sense takes an object prefix (e.g. nicmati); reflexive and other constructions have different meanings. Karttunen gives preterite MAH ~ MAT.",
+      "inflections": [
+        {
+          "form": "mati",
+          "category": "Dictionary headword",
+          "gloss": "to know",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mati",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "onicma",
+          "category": "Preterite · 1st sg",
+          "gloss": "I knew it",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/mati",
+          "note": "The c- object marker matters: “I knew it”, not unqualified “I knew”."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "itta",
+      "meaning": "to see; inspect; look at",
+      "pos": "verb (transitive (basic use); reflexive also)",
+      "stem": "(i)tta",
+      "original": "itta",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/itta",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/itta",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. The basic “see someone/something” sense is transitive; oniquittac is recorded for “I saw it”; nino- yields reflexive “see oneself”. Do not treat itta as a full first-person finite word.",
+      "inflections": [
+        {
+          "form": "itta",
+          "category": "Dictionary headword",
+          "gloss": "to see",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/itta",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "oniquittac",
+          "category": "Preterite · 1st sg",
+          "gloss": "I saw it",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/itta",
+          "note": "Molina records the form. Orthographic qu reflects object marker + verb."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlacuā",
+      "meaning": "to eat (intransitively)",
+      "pos": "verb (intransitive)",
+      "stem": "tlacuā",
+      "original": "tlacua",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlacua",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlacua",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. The intransitive lexicalized form combines nonspecific tla- with CUĀ “eat something”; its base CUĀ is transitive. Karttunen gives preterite TLACUAH.",
+      "inflections": [
+        {
+          "form": "tlacuā",
+          "category": "Dictionary headword",
+          "gloss": "to eat (intransitively)",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacua",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "tlacuah",
+          "category": "Present · 3rd plural",
+          "gloss": "they eat",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "tlacuah",
+          "category": "Preterite · 3rd singular",
+          "gloss": "he/she ate",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "tlacuahqueh",
+          "category": "Preterite · 3rd plural",
+          "gloss": "they ate",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "tlacuāya",
+          "category": "Imperfect · 3rd singular",
+          "gloss": "he/she was eating",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "tlacuāz",
+          "category": "Future · 3rd singular",
+          "gloss": "he/she will eat",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "tlacuāzqueh",
+          "category": "Future · 3rd plural",
+          "gloss": "they will eat",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "yōli",
+      "meaning": "to live; come to life; hatch",
+      "pos": "verb (intransitive)",
+      "stem": "yōl(i)",
+      "original": "yoli",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/176626",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/176626",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. Molina and Karttunen describe life/come-to-life senses. Do not confuse the verb with its associated nominal use “living thing.” Lockhart gives ōniyōl.",
+      "inflections": [
+        {
+          "form": "yōli",
+          "category": "Dictionary headword",
+          "gloss": "to live",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176626",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "ōniyōl",
+          "category": "Preterite · 1st sg",
+          "gloss": "I lived / came to life",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/node/176626",
+          "note": "Lockhart’s normalized spelling cited in the source."
+        },
+        {
+          "form": "yōlih",
+          "category": "Present · 3rd plural",
+          "gloss": "they live",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "yōl",
+          "category": "Preterite · 3rd singular",
+          "gloss": "he/she lived",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "yōlqueh",
+          "category": "Preterite · 3rd plural",
+          "gloss": "they lived",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "yōliya",
+          "category": "Imperfect · 3rd singular",
+          "gloss": "he/she was living",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "yōliz",
+          "category": "Future · 3rd singular",
+          "gloss": "he/she will live",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        },
+        {
+          "form": "yōlizqueh",
+          "category": "Future · 3rd plural",
+          "gloss": "they will live",
+          "evidence": "paradigm",
+          "source": "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+          "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "cui",
+      "meaning": "to take; fetch; get",
+      "pos": "verb (transitive)",
+      "stem": "cui",
+      "original": "cui",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cui",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cui",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. Object marker required in ordinary “take it” use (e.g., niccui); Karttunen gives preterite CUIC and Molina oniccuic.",
+      "inflections": [
+        {
+          "form": "cui",
+          "category": "Dictionary headword",
+          "gloss": "to take",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cui",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "oniccuic",
+          "category": "Preterite · 1st sg",
+          "gloss": "I took it",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/cui",
+          "note": "Molina and Lockhart give this form."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "pōhua",
+      "meaning": "to count; read; recount",
+      "pos": "verb (transitive)",
+      "stem": "pōhu(a)",
+      "original": "pohua",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/pohua",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/pohua",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. The cited lemma is the TRANSITIVE root: read/count something. A separate lexicalized intransitive counterpart is tlapōhua. Lockhart lists class-2 preterite ōnicpōuh.",
+      "inflections": [
+        {
+          "form": "pōhua",
+          "category": "Dictionary headword",
+          "gloss": "to count",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pohua",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "ōnicpōuh",
+          "category": "Preterite · 1st sg",
+          "gloss": "I counted/read it",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/pohua",
+          "note": "Lockhart’s normalized form cited in the lexicon."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlapōhua",
+      "meaning": "to count/read (without specifying object); also pray",
+      "pos": "verb (intransitive)",
+      "stem": "tlapōhu(a)",
+      "original": "tlapohua",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlapohua",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. Non-specific object prefix tla- is lexicalized into the intransitive verb. Distinguish tlapōhua “read/count” from tlapoā “open (something),” a separate transitive verb.",
+      "inflections": [
+        {
+          "form": "tlapōhua",
+          "category": "Dictionary headword",
+          "gloss": "to count/read (without specifying object)",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "nitlapoani",
+          "category": "Habitual · 1st singular",
+          "gloss": "I usually read",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
+          "note": "Antonio del Rincón 1595 as quoted in the headword page."
+        },
+        {
+          "form": "onitlapoato",
+          "category": "Directional past · 1st singular",
+          "gloss": "I went to read",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
+          "note": "Attested past directional construction; not the plain simple preterite."
+        },
+        {
+          "form": "nitlapoazquia",
+          "category": "Conditional · 1st singular",
+          "gloss": "I would read / wanted to read",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
+          "note": "Exact historical spelling in Rincón’s glossary quoted in the lexicon."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlami",
+      "meaning": "to end; finish; run out",
+      "pos": "verb (intransitive (basic use))",
+      "stem": "tlam(i)",
+      "original": "tlami",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/176482",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/176482",
+      "grammarNotes": "This is a verbal dictionary lemma, not a noun. Nominal animacy and nominal plural are not applicable; conjugated verbs can show number through subject agreement. Karttunen records preterite TLAN. May describe an activity ending or something becoming exhausted; construction-specific uses vary.",
+      "inflections": [
+        {
+          "form": "tlami",
+          "category": "Dictionary headword",
+          "gloss": "to end",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176482",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        },
+        {
+          "form": "onitlan",
+          "category": "Preterite · 1st sg",
+          "gloss": "I finished",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/node/176482",
+          "note": "Molina’s spelling as quoted in the lexicon."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "auh",
+      "meaning": "and; but; well; introduces another statement",
+      "pos": "conjunction / discourse particle",
+      "stem": "",
+      "original": "auh",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/171956",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/171956",
+      "grammarNotes": "Non-nominal grammatical word: noun animacy and noun pluralization do not apply. Frequently marks a new independent statement; often untranslated or rendered by punctuation (Lockhart and Carochi).",
+      "inflections": [
+        {
+          "form": "auh",
+          "category": "Dictionary headword",
+          "gloss": "and",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171956",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "in",
+      "meaning": "article-like marker; subordinator; discourse/syntactic marker",
+      "pos": "grammatical particle / subordinator",
+      "stem": "",
+      "original": "in, yn",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/in",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/in",
+      "grammarNotes": "Non-nominal grammatical word: noun animacy and noun pluralization do not apply. Not a one-to-one English “the.” Very important: the ONLINE DICTIONARY also discusses separate long-vowel īn “this/these,” which should not be uncritically conflated with article-like in. Mark exact occurrence from context.",
+      "inflections": [
+        {
+          "form": "in",
+          "category": "Dictionary headword",
+          "gloss": "article-like marker",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/in",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "ahmō",
+      "meaning": "no; not",
+      "pos": "negative particle",
+      "stem": "",
+      "original": "amo, ahmo",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/amo",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/amo",
+      "grammarNotes": "Non-nominal grammatical word: noun animacy and noun pluralization do not apply. Classical vowel quantity and glottal stop matter: Karttunen AHMŌ, Carochi àmō. Modern varieties often omit the internal glottal stop; this is not a singular/plural contrast.",
+      "inflections": [
+        {
+          "form": "ahmō",
+          "category": "Dictionary headword",
+          "gloss": "no",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/amo",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "īhuān",
+      "meaning": "and; together with",
+      "pos": "conjunction / postpositional construction",
+      "stem": "",
+      "original": "ihuan, yhuan, iuan",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/172223",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/172223",
+      "grammarNotes": "Non-nominal grammatical word: noun animacy and noun pluralization do not apply. Historically connected with third-person possessed -huān “with”. The lexicalized conjunction means “and” or “with” in context; no nominal plural.",
+      "inflections": [
+        {
+          "form": "īhuān",
+          "category": "Dictionary headword",
+          "gloss": "and",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172223",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "nicān",
+      "meaning": "here; around here",
+      "pos": "locative adverb / particle",
+      "stem": "",
+      "original": "nican",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nican",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nican",
+      "grammarNotes": "Non-nominal grammatical word: noun animacy and noun pluralization do not apply. Also used attributively in expressions such as nicān tlācatl “a person from here”; not itself an animate noun.",
+      "inflections": [
+        {
+          "form": "nicān",
+          "category": "Dictionary headword",
+          "gloss": "here",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nican",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "āxcān",
+      "meaning": "now; today; at present",
+      "pos": "temporal adverb",
+      "stem": "",
+      "original": "axcan",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/axcan",
+      "example": "",
+      "translation": "",
+      "notes": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/axcan",
+      "grammarNotes": "Non-nominal grammatical word: noun animacy and noun pluralization do not apply. Historical writing axcan/ascan; temporal adverb, not noun. In annalistic texts sometimes functions as a discourse marker meaning “at this point.”",
+      "inflections": [
+        {
+          "form": "āxcān",
+          "category": "Dictionary headword",
+          "gloss": "now",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/axcan",
+          "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
+        }
+      ],
+      "formsEdited": false
+    }
+  ]
+}

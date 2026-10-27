@@ -266,6 +266,9 @@ const seedByWord=new Map(examples.map(e=>[norm(e.word),e]));
 for(const w of words){if(w.variety!=='Classical Nahuatl')continue;const seed=seedByWord.get(norm(w.word))||seedByWord.get(norm(w.original));if(!seed)continue;for(const k of ['number','animacy','pluralStatus','absolutive','possessed','grammarSource','grammarNotes']){if(!w[k]&&seed[k])w[k]=seed[k];}if(!w.source&&seed.source)w.source=seed.source;if(w.status==='Draft'&&seed.status==='Checked against source'&&w.meaning===seed.meaning)w.status=seed.status;}
 
 let searchIndex=null;
+let searchBigrams=null;
+let resultLimit=100;
+let resultSignature='';
 function store(){searchIndex=null;try{localStorage.setItem(storageKey,JSON.stringify(words));return true}catch(e){message('Browser storage unavailable. Export a CSV backup so edits are not lost.');return false}}
 function message(s){$('message').textContent=s}
 function norm(s){return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
@@ -287,15 +290,41 @@ function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&
 function validUrl(s){try{const u=new URL(s);return /^https?:$/.test(u.protocol)?u.href:null}catch(e){return null}}
 // Evidence-aware search engine: literal spelling, documented forms, paradigm candidates, and fuzzy hints.
 // A normalized match is a spelling match, NOT proof of an attested form.
+// Rebuild this purely browser-local index when the dictionary changes. Bigrams
+// narrow expensive scoring without treating inferred forms as historical proof.
 function buildSearchIndex(){
+ const bigrams=new Map();
  searchIndex=words.map((w,i)=>{
   const variants=historicalSpellings(w).map(s=>norm(s));
   const forms=(w.inflections||[]).filter(f=>f.evidence!=='stem').map(f=>({spelling:norm(f.form),raw:f.form,evidence:f.evidence,category:f.category}));
   const stem=norm(w.stem).replace(/-$/,'');
   const model=FULL_VERB_PARADIGMS[w.word]||FULL_VERB_PARADIGMS[Object.keys(FULL_VERB_PARADIGMS).find(k=>norm(k)===norm(w.word))];
   const derived=model?[...new Set(model.cells.flat().map(x=>norm(x)))]:[];
-  return {index:i,lemma:norm(w.word),variants,forms,stem,meaning:norm(w.meaning),derived};
+  const ix={index:i,lemma:norm(w.word),variants,forms,stem,meaning:norm(w.meaning),derived};
+  const pairs=new Set();
+  // Index the same fields as scoreEntry, including plurals and English senses.
+  // Keep grams within each field: no accidental cross-field matches.
+  for(const field of [ix.lemma,...ix.variants,...ix.forms.map(f=>f.spelling),ix.stem,ix.meaning,...ix.derived,norm(w.plural)]){
+   for(let j=0;j+1<field.length;j++)pairs.add(field.slice(j,j+2));
+  }
+  for(const pair of pairs){
+   let hits=bigrams.get(pair);
+   if(!hits){hits=new Set();bigrams.set(pair,hits);}
+   hits.add(i);
+  }
+  return ix;
  });
+ searchBigrams=bigrams;
+}
+function searchCandidates(q){
+ if(q.length<3)return null; // tiny queries still scan every entry.
+ let smallest=null;
+ for(let j=0;j+1<q.length;j++){
+  const hits=searchBigrams.get(q.slice(j,j+2));
+  if(!hits)return new Set();
+  if(!smallest||hits.size<smallest.size)smallest=hits;
+ }
+ return smallest;
 }
 function editDistanceLimit(a,b,max){if(Math.abs(a.length-b.length)>max)return max+1;let prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){let curr=[i],minimum=i;for(let j=1;j<=b.length;j++){const v=Math.min(curr[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));curr.push(v);minimum=Math.min(minimum,v);}if(minimum>max)return max+1;prev=curr;}return prev[b.length];}
 function scoreEntry(w,ix,q){
@@ -323,7 +352,9 @@ function results(){
  const q=norm($('search').value.trim()),fil=$('filter').value,ver=$('verifyFilter')?.value||'all';
  const facetPos=$('facetPOS')?.value||'all',facetAnimacy=$('facetAnimacy')?.value||'all',facetEvidence=$('facetEvidence')?.value||'all';
  const available=searchIndex.filter(ix=>{const w=words[ix.index];const isN=(w.pos||'').includes('noun'),isV=(w.pos||'').includes('verb');const facetOK=(facetPos==='all'||(facetPos==='noun'&&isN)||(facetPos==='verb'&&isV)||(facetPos==='other'&&!isN&&!isV))&&(facetAnimacy==='all'||w.animacy===facetAnimacy)&&(facetEvidence==='all'||(facetEvidence==='field'&&(w.claims||[]).some(c=>c.assessment!=='unverified'&&validUrl(c.source)&&c.locator))||(facetEvidence==='gap'&&(!(w.claims||[]).some(c=>c.assessment!=='unverified'&&validUrl(c.source)&&c.locator)))||(facetEvidence==='forms'&&w.inflections?.length>0)||(facetEvidence==='exception'&&isN&&['inanimate','contextual'].includes(w.animacy)&&w.pluralStatus==='attested'));return facetOK && (fil==='all'||w.variety===fil||(fil==='Other'&&!['Classical Nahuatl','Michoacán Nahuatl','Huasteca Nahuatl'].includes(w.variety)))&&(ver==='all'||(ver==='source'&&validUrl(w.source)&&w.status!=='Draft')||(ver==='review'&&(!validUrl(w.source)||w.status==='Draft'||!w.pos)));});
- let matched=available.map(ix=>{const w=words[ix.index];const match=q?scoreEntry(w,ix,q):{score:0,label:'',type:''};return match?{...w,_idx:ix.index,_match:match}:null;}).filter(Boolean);
+ const possible=searchCandidates(q);
+ const shortlist=possible?available.filter(ix=>possible.has(ix.index)):available;
+ let matched=shortlist.map(ix=>{const w=words[ix.index];const match=q?scoreEntry(w,ix,q):{score:0,label:'',type:''};return match?{...w,_idx:ix.index,_match:match}:null;}).filter(Boolean);
  if(q&&matched.length===0&&q.length>=4){const max=q.length>6?2:1;matched=available.map(ix=>{const d=editDistanceLimit(q,ix.lemma,max);return d<=max?{...words[ix.index],_idx:ix.index,_match:{score:10-d,label:'Approximate spelling · suggestion only',type:'approx'}}:null}).filter(Boolean);}
  matched.sort((a,b)=>b._match.score-a._match.score||a.word.localeCompare(b.word));
  return matched;
@@ -395,12 +426,19 @@ $('cancelInflection').onclick=()=>$('inflectionEditor').close();
 $('inflectionForm').onsubmit=e=>{e.preventDefault();const w=words[selected];if(!w)return;const raw={};for(const k of ['form','category','gloss','evidence','source','note'])raw[k]=$('if_'+k).value.trim();const f=cleanForm(raw);if(!f.form||!f.category)return;if(f.evidence!=='review'&&!validUrl(f.source)){alert('Please provide a valid source link, or select “Provisional / needs verification”.');return;}if(w.inflections.some((old,i)=>i!==formEditing&&old.form===f.form&&old.category===f.category&&old.source===f.source)){alert('An identical form entry already exists.');return;}
  if(formEditing<0)w.inflections.push(f);else w.inflections[formEditing]=f;w.formsEdited=true;store();$('inflectionEditor').close();entryView='forms';render();message('Saved form '+f.form+' for '+w.word+'.');};
 let lastSearchResults=[];
-function render(searchOnly=false){const previousSelected=selected;const result=results();lastSearchResults=result;$('packCount').textContent=packCoverage()+' / '+VERIFIED_PACK_WORDS.length+' learning-pack words available';$('total').textContent=words.length;$('count').textContent=result.length+' matching entries';$('resultList').innerHTML=result.length?result.map(w=>`<button class="result ${selected===w._idx?'active':''}" data-select="${w._idx}"><div class="resrow"><strong>${safe(w.word)}</strong><span class="pill ${w.status==='Draft'?'draft':''}">${safe(w.status==='Checked against source'?'Source linked':w.status==='Expert reviewed'?'Reviewed':w.status==='Proposed / neologism'?'Proposed':'Draft')}</span></div><p>${safe(w.meaning)}</p><span>${safe(w.pos||'unclassified')} · ${safe(w.animacy==='not_applicable'?'animacy n/a':w.animacy||'animacy unverified')} · ${safe(w.number==='not_applicable'?'number n/a':w.number||'number unverified')}</span>${$('search').value.trim()?`<span class="search-match ${safe(w._match.type)}">${safe(w._match.label)}${w._match.form?' · '+safe(w._match.form):''}</span>`:''}</button>`).join(''):'<div class="empty">No matching entries.<br>Try another search, or add a word.</div>';if(selected<0||!words[selected]||!result.some(w=>w._idx===selected)){selected=result.length?result[0]._idx:-1;}const w=words[selected];if(!w){$('detail').innerHTML='<div class="empty">Select a word to explore its details.</div>';return}if(searchOnly&&previousSelected===selected)return;const show=(label,v)=>`<div><label>${label}</label><strong>${safe(({not_applicable:'Not applicable',inapplicable:'Not applicable',no_attested_form:'No attested form recorded',singular:'Singular (citation form)',plural:'Plural',inanimate:'Inanimate',animate:'Animate',contextual:'Context-dependent'}[v])||v||'Not recorded')}</strong></div>`;const sourceUrl=validUrl(w.source);const tabsHtml=`<div class="entrytabs" role="tablist" aria-label="Dictionary entry views"><button type="button" role="tab" data-entry-tab="overview" aria-selected="${entryView==='overview'}">Overview · Tlahtōlli</button><button type="button" role="tab" data-entry-tab="forms" aria-selected="${entryView==='forms'}">Forms / Inflections · ${w.inflections.length}${FULL_VERB_PARADIGMS[w.word]?" + 60 paradigm cells":""}</button><button type="button" role="tab" data-entry-tab="verification" aria-selected="${entryView==='verification'}">Evidence · Sources</button></div>`;
+function render(searchOnly=false){const previousSelected=selected;const result=results();lastSearchResults=result;
+ const signature=JSON.stringify([$('search').value,$('filter').value,$('verifyFilter')?.value,$('facetPOS')?.value,$('facetAnimacy')?.value,$('facetEvidence')?.value]);
+ if(signature!==resultSignature){resultSignature=signature;resultLimit=100;}
+ const visible=result.slice(0,resultLimit);
+ const active=result.find(w=>w._idx===selected);
+ if(active&&!visible.some(w=>w._idx===selected))visible.push(active);$('packCount').textContent=packCoverage()+' / '+VERIFIED_PACK_WORDS.length+' learning-pack words available';$('total').textContent=words.length;$('count').textContent=result.length+' matching entries';$('resultList').innerHTML=result.length?visible.map(w=>`<button class="result ${selected===w._idx?'active':''}" data-select="${w._idx}"><div class="resrow"><strong>${safe(w.word)}</strong><span class="pill ${w.status==='Draft'?'draft':''}">${safe(w.status==='Checked against source'?'Source linked':w.status==='Expert reviewed'?'Reviewed':w.status==='Proposed / neologism'?'Proposed':'Draft')}</span></div><p>${safe(w.meaning)}</p><span>${safe(w.pos||'unclassified')} · ${safe(w.animacy==='not_applicable'?'animacy n/a':w.animacy||'animacy unverified')} · ${safe(w.number==='not_applicable'?'number n/a':w.number||'number unverified')}</span>${$('search').value.trim()?`<span class="search-match ${safe(w._match.type)}">${safe(w._match.label)}${w._match.form?' · '+safe(w._match.form):''}</span>`:''}</button>`).join('')+(result.length>resultLimit?`<button type="button" class="btn result-more" data-load-more="true">Show next ${Math.min(100,result.length-resultLimit)} entries · ${result.length} matches total</button>`:''):'<div class="empty">No matching entries.<br>Try another search, or add a word.</div>';if(selected<0||!words[selected]||!result.some(w=>w._idx===selected)){selected=result.length?result[0]._idx:-1;}const w=words[selected];if(!w){$('detail').innerHTML='<div class="empty">Select a word to explore its details.</div>';return}if(searchOnly&&previousSelected===selected)return;const show=(label,v)=>`<div><label>${label}</label><strong>${safe(({not_applicable:'Not applicable',inapplicable:'Not applicable',no_attested_form:'No attested form recorded',singular:'Singular (citation form)',plural:'Plural',inanimate:'Inanimate',animate:'Animate',contextual:'Context-dependent'}[v])||v||'Not recorded')}</strong></div>`;const sourceUrl=validUrl(w.source);const tabsHtml=`<div class="entrytabs" role="tablist" aria-label="Dictionary entry views"><button type="button" role="tab" data-entry-tab="overview" aria-selected="${entryView==='overview'}">Overview · Tlahtōlli</button><button type="button" role="tab" data-entry-tab="forms" aria-selected="${entryView==='forms'}">Forms / Inflections · ${w.inflections.length}${FULL_VERB_PARADIGMS[w.word]?" + 60 paradigm cells":""}</button><button type="button" role="tab" data-entry-tab="verification" aria-selected="${entryView==='verification'}">Evidence · Sources</button></div>`;
 $('detail').innerHTML=`<span class="eyebrow">Word study · entry ${selected+1}</span><h2>${safe(w.word)}</h2><p class="meaning">${safe(w.meaning)}</p><div class="chips"><span class="chip">${safe(w.variety)}</span><span class="chip">${safe(w.pos||'Unclassified')}</span><span class="chip">${safe(w.status)}</span><span class="chip">${safe(w.animacy==='not_applicable'?'Animacy: n/a':'Animacy: '+(w.animacy||'unverified'))}</span><span class="chip">${safe(w.number==='not_applicable'?'Number: n/a':'Number: '+(w.number||'unverified'))}</span></div>${tabsHtml}${entryView==='forms'?renderForms(w):entryView==='verification'?renderVerification(w):`<div class="info">${show('Original spelling',w.original)}${show('Combining stem / morphology',w.stem)}${show('Grammatical number',w.number)}${show('Animacy / noun class',w.animacy)}${show('Attested plural spelling',w.plural)}${show('Plural evidence',w.pluralStatus)}${show('Absolutive ending',w.absolutive)}${show('Attested possessed form',w.possessed)}${show('Grammar evidence / citation',w.grammarSource)}</div>${w.grammarNotes?`<div class="note"><span class="subhead">Grammatical details & exceptions</span>${safe(w.grammarNotes)}</div>`:''}${w.example?`<div class="example"><span class="subhead">Example sentence</span><p>${safe(w.example)}</p><small>${safe(w.translation||'Translation not provided')}</small></div>`:''}${w.notes?`<div class="note"><span class="subhead">Study notes</span>${safe(w.notes)}</div>`:''}<div class="source"><span class="subhead">Source</span>${sourceUrl?`<a href="${safe(sourceUrl)}" target="_blank" rel="noopener noreferrer">${safe(w.source)}</a>`:safe(w.source||'Not yet recorded — verify before sharing')}</div>`}<div class="detailfoot"><button class="btn primary" data-edit="${selected}">Edit this entry</button><button class="btn warn" data-remove="${selected}">Delete</button></div><p class="badgefoot">You can edit the headword spelling here. Existing manually linked occurrences will follow a renamed entry.</p>`;
 for(const b of $('detail').querySelectorAll('[data-entry-tab]'))b.onclick=()=>{entryView=b.dataset.entryTab;render();};
 if(entryView==='forms')bindFormActions();if(entryView==='verification')bindVerificationActions();for(const el of $('detail').querySelectorAll('[data-edit]'))el.addEventListener('click',()=>openEditor(Number(el.dataset.edit)));for(const el of $('detail').querySelectorAll('[data-remove]'))el.addEventListener('click',()=>{const i=Number(el.dataset.remove);if(confirm('Delete '+words[i].word+'? Export a backup first if needed.')){suppressedPublished.add(pubKey(words[i]));persistPublished();words.splice(i,1);selected=-1;store();render();message('Entry deleted.')}})}
 // Delegate clicks once: per-keystroke list redraws no longer attach 88 handlers.
 $('resultList').addEventListener('click',event=>{
+ const more=event.target.closest('[data-load-more]');
+ if(more&&$('resultList').contains(more)){resultLimit+=100;render(true);return;}
  const button=event.target.closest('[data-select]');
  if(!button||!$('resultList').contains(button))return;
  selected=Number(button.dataset.select);

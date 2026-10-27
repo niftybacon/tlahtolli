@@ -1,3 +1,15 @@
+# Tlahtōlli Phase 3 — Scalable search and progressive results (2026-10-27)
+
+The browser now uses a local substring index to narrow evidence-aware search
+scoring for longer queries, without changing the ranking or whether a form is
+attested, inferred or still unverified. For larger dictionaries, result lists
+render 100 matches at a time with a **Show next** control while preserving the
+total match count and currently selected entry. Synthetic-data browser
+regressions test search parity, list paging, and index invalidation. The
+published 88 headwords, 178 indexed forms, 12 verb paradigms and 674 evidence
+records are unchanged. See the [Phase 3 technical guide](docs/PHASE3_SEARCH_SCALING.md).
+Performance gains have not been timed on end-user devices.
+
 # Tlahtōlli Phase 2 — Editorial data architecture (2026-10-27)
 
 The dictionary is now maintained in separate authoritative [lexicon](data/lexicon.json), [morphology](data/morphology.json), and [historical evidence](data/evidence.json) sources. A deterministic [builder](tools/build_dictionary.py) reconstructs the **unchanged public dictionary and standalone offline HTML seed**, with CI rejecting out-of-sync outputs. All **88 headwords, 178 forms, 12 verb paradigms, and 674 claim records** are preserved. Read the [architecture and editing guide](docs/PHASE2_ARCHITECTURE.md). This is a code/data maintainability upgrade, not a new historical verification claim or a measured speed improvement.

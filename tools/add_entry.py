@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare a source-documented dictionary entry. Checks structure, not historical truth."""
+"""Prepare a source-documented entry in the normalized Phase 2 sources."""
 from pathlib import Path
 import json, argparse, re, sys, unicodedata
 from datetime import date
@@ -48,27 +48,45 @@ def main():
     opts.add_argument('--apply',action='store_true')
     args=parser.parse_args()
     candidate=normalize(json.loads(args.candidate.read_text(encoding='utf8')))
-    dp=ROOT/'dictionary.json'; d=json.loads(dp.read_text(encoding='utf8'))
-    matched=[w for w in d['words'] if key(w)==key(candidate)]
+    # Phase 2: modify authoritative editorial sources, never the published outputs.
+    from build_dictionary import assemble, read_json, run as build_outputs, MORPH_KEYS
+    lexp=ROOT/'data'/'lexicon.json'
+    morph_p=ROOT/'data'/'morphology.json'
+    evid_p=ROOT/'data'/'evidence.json'
+    lex=read_json(lexp);morph=read_json(morph_p);evid=read_json(evid_p)
+    pp=ROOT/'paradigms.json';p=read_json(pp)
+    rp=ROOT/'references.json';r=read_json(rp)
+    release_p=ROOT/'release.json';release=read_json(release_p)
+    current=assemble(lex,morph,evid,p,r,release)
+    published=read_json(ROOT/'dictionary.json')
+    if current!=published:
+        fail('Published dictionary diverges from canonical data sources; repair before adding')
+    matched=[w for w in current['words'] if key(w)==key(candidate)]
     print(('ALREADY EXISTS' if matched else 'NEW ENTRY'),candidate['word'],'—',candidate['meaning'])
     print('Citations:',len(candidate['claims']),'Forms:',len(candidate['inflections']))
     if args.dry_run: print('Preview only; no files changed');return
     if matched:fail('Existing headwords must be edited through explicit reviewed changes; refusing overwrite')
-    pp=ROOT/'paradigms.json';p=json.loads(pp.read_text(encoding='utf8'))
     today=date.today().isoformat()
-    match=re.fullmatch(re.escape(today)+r'\.(\d+)',d.get('version',''))
+    match=re.fullmatch(re.escape(today)+r'\.(\d+)',current.get('version',''))
     version=today+'.'+str(int(match.group(1))+1 if match else 1)
-    d['words'].append(candidate);d['version']=version;p['version']=version
-    hp=ROOT/'index.html';html=hp.read_text(encoding='utf8')
-    marker=re.search(r'(window\.TLAHTOLLI_OFFLINE_SEED=)(.*?)(;\s*</script>)',html,re.S)
-    if not marker:fail('Offline dictionary seed missing; no changes made')
-    seed=json.loads(marker.group(2));seed['words']=d['words'];seed['version']=version
-    html=html[:marker.start(2)]+json.dumps(seed,ensure_ascii=False,separators=(',',':'))+html[marker.end(2):]
-    # Write publication files together in the local working tree. Review the Git diff before a commit.
-    dp.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-    pp.write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-    hp.write_text(html,encoding='utf8')
-    print('Prepared',version,'— now run python tools/validate.py and review the diff before publication.')
+    lex['words'].append({k:v for k,v in candidate.items()
+                         if k not in MORPH_KEYS and k!='claims'})
+    morphology={k:candidate[k] for k in MORPH_KEYS}
+    morph['entries'].append({'word':candidate['word'],'variety':candidate['variety'],**morphology})
+    evid['entries'].append({'word':candidate['word'],'variety':candidate['variety'],
+                            'claims':candidate['claims']})
+    for document in (lex,morph,evid,p,r,release):document['version']=version
+    release['headwords']=len(lex['words'])
+    release['paradigms']=len(p['paradigms'])
+    # Validate the entire assembled new edition in memory before touching disk.
+    assemble(lex,morph,evid,p,r,release)
+    for path,document in ((lexp,lex),(morph_p,morph),(evid_p,evid),
+                          (pp,p),(rp,r),(release_p,release)):
+        path.write_text(json.dumps(document,ensure_ascii=False,indent=2)+'\n',
+                        encoding='utf-8')
+    build_outputs(write=True)
+    print('Prepared',version,'from three canonical source files.')
+    print('Run python tools/validate.py and review the complete Git diff before publishing.')
 if __name__=='__main__':
     try:main()
     except (ValueError,KeyError,TypeError,json.JSONDecodeError) as exc:

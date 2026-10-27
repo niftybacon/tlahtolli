@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-26.1",
+  "version": "2026-10-26.2",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Source-checked is not specialist peer review. Paradigms are grammar-derived rather than independently attested manuscript forms. Read individual evidence labels.",
   "words": [
@@ -43,7 +43,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "calli",
@@ -107,7 +108,8 @@
           "note": "Grammar spelling; length of vowels not editorially supplied."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "cuīcatl",
@@ -147,7 +149,8 @@
           "note": "Attested in the Launey example “Ilhuicacopa ēhua in nocuīc”."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "xōchitl",
@@ -187,7 +190,8 @@
           "note": "Karttunen records the plural suffix -meh."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tēpetl",
@@ -243,7 +247,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "cītlalin",
@@ -283,7 +288,8 @@
           "note": "The plural is explicitly documented by Karttunen, Lockhart and corpus examples."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tlālli",
@@ -331,7 +337,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tetl",
@@ -371,7 +378,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "āmatl",
@@ -411,7 +419,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "ilhuicatl",
@@ -451,7 +460,8 @@
           "note": "Recorded colonial plural “heavens”; not a claim that the form is always pluralizable."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tlaxcalli",
@@ -483,7 +493,8 @@
           "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "āltepētl",
@@ -523,7 +534,8 @@
           "note": "Later colonial attestation. Register/date matters."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tlācatl",
@@ -579,7 +591,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "cihuātl",
@@ -635,7 +648,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "pilli",
@@ -683,7 +697,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "oquichtli",
@@ -739,7 +754,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tochtli",
@@ -779,7 +795,8 @@
           "note": "Reported reduplicated plural."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "michin",
@@ -827,7 +844,8 @@
           "note": "Regional/source alternative; not interchangeable in all varieties."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "coyōtl",
@@ -875,7 +893,8 @@
           "note": "Reported alternative reduplicated plural."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tēuctli",
@@ -923,7 +942,8 @@
           "note": "Hyphenated dictionary stem. A possessor prefix is needed; not a complete inflected word."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "teōtl",
@@ -963,7 +983,8 @@
           "note": "Recorded plural for deities."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tōtōtl",
@@ -1003,7 +1024,8 @@
           "note": "Recorded plural for birds."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "mācēhualli",
@@ -1043,7 +1065,8 @@
           "note": "Explicitly included as a plural headword in the Online Nahuatl Dictionary."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "coātl",
@@ -1091,7 +1114,8 @@
           "note": "Recorded plural alternative."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "ōcēlōtl",
@@ -1131,7 +1155,8 @@
           "note": "Published historical spelling for plural ocelots; normalized macrons may differ."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "quimichin",
@@ -1187,7 +1212,8 @@
           "note": "Reported alternative plural."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tlahtoā",
@@ -1235,7 +1261,8 @@
           "note": "In testament formula “nopan tlatoz”. Historical spelling."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "chōca",
@@ -1323,7 +1350,8 @@
           "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "nemi",
@@ -1363,7 +1391,8 @@
           "note": "Molina gives this first-person preterite; stem contraction nem(i) → nen."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "chīhua",
@@ -1403,7 +1432,8 @@
           "note": "Transitive object prefix c- belongs to the form. Molina spelling."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "mati",
@@ -1443,7 +1473,8 @@
           "note": "The c- object marker matters: “I knew it”, not unqualified “I knew”."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "itta",
@@ -1483,7 +1514,8 @@
           "note": "Molina records the form. Orthographic qu reflects object marker + verb."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tlacuā",
@@ -1563,7 +1595,8 @@
           "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "yōli",
@@ -1651,7 +1684,8 @@
           "note": "Grammar-table example; this is not a claim of a corpus occurrence in exactly this spelling."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "cui",
@@ -1691,7 +1725,8 @@
           "note": "Molina and Lockhart give this form."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "pōhua",
@@ -1731,7 +1766,8 @@
           "note": "Lockhart’s normalized form cited in the lexicon."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tlapōhua",
@@ -1787,7 +1823,8 @@
           "note": "Exact historical spelling in Rincón’s glossary quoted in the lexicon."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "tlami",
@@ -1827,7 +1864,8 @@
           "note": "Molina’s spelling as quoted in the lexicon."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "auh",
@@ -1859,7 +1897,8 @@
           "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "in",
@@ -1891,7 +1930,8 @@
           "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "ahmō",
@@ -1923,7 +1963,8 @@
           "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "īhuān",
@@ -1955,7 +1996,8 @@
           "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "nicān",
@@ -1987,7 +2029,8 @@
           "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     },
     {
       "word": "āxcān",
@@ -2019,7 +2062,8 @@
           "note": "Citation/lemma spelling in the historical lexicon; not a claim about every syntactic environment."
         }
       ],
-      "formsEdited": false
+      "formsEdited": false,
+      "claims": []
     }
   ]
 }

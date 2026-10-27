@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-27.5.0",
+  "version": "2026-10-27.6.0",
   "entries": [
     {
       "word": "ātl",
@@ -8393,6 +8393,267 @@
           "locator": "UNAM (2017), León-Portilla, p. 408, Cantares Mexicanos f. 35r: 'tipolihui'",
           "note": "A short original-spelling occurrence is transcribed in the named edition. Second-person singular present in a poem; secondary edition, not independently inspected manuscript A text form does not prove other conjugations, noun agreement, or period-universal usage.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "tēzcatl",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 112v col. 2: tezcatl; Karttunen (1992), p. 239 TĒZCA-TL, plural -MEH",
+          "note": "Lexical lemma is supported by a located historical/lexicographic source; do not equate normalized written length with manuscript transcription.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 112v col. 2: tezcatl; Karttunen (1992), p. 239 TĒZCA-TL, plural -MEH",
+          "note": "Sense supported by the lexicographic record. Interpretations about supernatural sight are contextual cultural history, not a literal translation of this word.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 112v col. 2: tezcatl; Karttunen (1992), p. 239 TĒZCA-TL, plural -MEH",
+          "note": "Lexical class is based on lexicographic grammatical descriptions, not inferred from English.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 112v col. 2: tezcatl; Karttunen (1992), p. 239 TĒZCA-TL, plural -MEH",
+          "note": "Inanimate mirror is editorially inferred from noun semantics; non-nouns have no noun animacy category.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 112v col. 2: tezcatl; Karttunen (1992), p. 239 TĒZCA-TL, plural -MEH",
+          "note": "Headword represents the singular; plural is separately recorded in a cited transcription.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "Florentine Codex Book 6, English Nahuatl transcription in Anderson–Dibble (ODN excerpt), p. 216: 'in tezcame'",
+          "note": "Attested written tezcame in a printed transcript, not a claim that every variety uses this plural.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "",
+          "note": "No independently checked full possessed noun form is provided; not applicable to particles and verbs.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 112v col. 2: tezcatl; Karttunen (1992), p. 239 TĒZCA-TL, plural -MEH",
+          "note": "Analytical lexicographic stem inferred from the citation form and cited paradigm; do not treat as a separately transcribed whole word.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
+          "locator": "Book 11, folio 209v, fifth paragraph (mirror stones): 'in mochioa tezcatl, in mocuepa ca tetl'",
+          "note": "Original transcription spells the mirror noun tezcatl (without an editorial macron). In this passage it is what the stone is fashioned into. The text describes manufacture of a mirror from stone; it does not assert seeing into hidden natures.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "cuepa",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 26r (Cuepa nino/nite/nitla); Karttunen (1992), p. 70; Lockhart (2001), p. 216",
+          "note": "Lexical lemma is supported by a located historical/lexicographic source; do not equate normalized written length with manuscript transcription.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 26r (Cuepa nino/nite/nitla); Karttunen (1992), p. 70; Lockhart (2001), p. 216",
+          "note": "Sense supported by the lexicographic record. Interpretations about supernatural sight are contextual cultural history, not a literal translation of this word.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 26r (Cuepa nino/nite/nitla); Karttunen (1992), p. 70; Lockhart (2001), p. 216",
+          "note": "Lexical class is based on lexicographic grammatical descriptions, not inferred from English.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "General nominal/non-nominal distinction",
+          "note": "Inanimate mirror is editorially inferred from noun semantics; non-nouns have no noun animacy category.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 26r (Cuepa nino/nite/nitla); Karttunen (1992), p. 70; Lockhart (2001), p. 216",
+          "note": "Noun number is not applicable to this nonnoun.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "locator": "",
+          "note": "Not a noun; plural forms of noun cannot be generated.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "locator": "",
+          "note": "No independently checked full possessed noun form is provided; not applicable to particles and verbs.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 26r (Cuepa nino/nite/nitla); Karttunen (1992), p. 70; Lockhart (2001), p. 216",
+          "note": "Analytical lexicographic stem inferred from the citation form and cited paradigm; do not treat as a separately transcribed whole word.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
+          "locator": "Book 11, folio 209v, fifth paragraph (mirror stones): 'in mochioa tezcatl, in mocuepa ca tetl'",
+          "note": "Source-located mo- reflexive/nonactive stem cuepa; form may signal transformation into a mirror. Precise syntactic analysis is editorial. The text describes manufacture of a mirror from stone; it does not assert seeing into hidden natures.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "ca",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/175904",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 10r col. 2 'ca, porque'; Karttunen (1992), CA particle",
+          "note": "Lexical lemma is supported by a located historical/lexicographic source; do not equate normalized written length with manuscript transcription.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/175904",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 10r col. 2 'ca, porque'; Karttunen (1992), CA particle",
+          "note": "Sense supported by the lexicographic record. Interpretations about supernatural sight are contextual cultural history, not a literal translation of this word.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/175904",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 10r col. 2 'ca, porque'; Karttunen (1992), CA particle",
+          "note": "Lexical class is based on lexicographic grammatical descriptions, not inferred from English.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "locator": "General nominal/non-nominal distinction",
+          "note": "Inanimate mirror is editorially inferred from noun semantics; non-nouns have no noun animacy category.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/node/175904",
+          "locator": "Molina (1571), Nahuatl-Spanish, f. 10r col. 2 'ca, porque'; Karttunen (1992), CA particle",
+          "note": "Noun number is not applicable to this nonnoun.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/node/175904",
+          "locator": "",
+          "note": "Not a noun; plural forms of noun cannot be generated.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/node/175904",
+          "locator": "",
+          "note": "No independently checked full possessed noun form is provided; not applicable to particles and verbs.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/node/175904",
+          "locator": "",
+          "note": "No independently validated segmentable inflection stem is supplied.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
+          "locator": "Book 11, folio 209v, fifth paragraph (mirror stones): 'in mochioa tezcatl, in mocuepa ca tetl'",
+          "note": "Source-located particle/copular-looking surface; ambiguous contextual syntactic function. Do not equate automatically with an independent English word. The text describes manufacture of a mirror from stone; it does not assert seeing into hidden natures.",
+          "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
           "checkedAt": "2026-10-27"
         }
       ]

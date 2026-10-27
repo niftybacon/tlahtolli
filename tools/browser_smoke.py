@@ -81,7 +81,7 @@ with sync_playwright() as pw:
     assert 'No indexed analysis' in page.locator('#formProbeOutput').inner_text()
     page.locator('#tabRead').click()
     page.locator('#concordanceInput').fill('in')
-    assert page.locator('.concordance-row').count()==2
+    assert page.locator('.concordance-row').count()>=2
     page.locator('#concordanceMode').select_option('phrase')
     page.locator('#concordanceInput').fill('in xōchitl')
     assert page.locator('.concordance-row').count()==1

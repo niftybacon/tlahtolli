@@ -1,3 +1,7 @@
+# Stone and the mirror — one new historical Amoxtli passage (October 27, 2026)
+
+Added a documented Florentine Codex Book 11 fol. 209v stone-to-mirror clause with original transcription, normalized reading, English interpretation and individual token analyses. The dictionary now has 115 headwords: three audited lexical records were added for **tēzcatl**, **cuepa**, and **ca**. The already-listed *tetl* (stone) and *chīhua* (make) are reused without overwriting or duplicating them. The text concerns stones crafted into mirrors; ideas of divination and seeing hidden things are cultural context **not** a purported translation of this passage. [Review note](docs/AMOXTLI_MIRROR_STONE.md).
+
 # Amoxtli — four cited reading excerpts and nine source-led dictionary entries (2026-10-27)
 
 Four compact historical text passages now appear in the reading desk, including Florentine Codex Book 11 and a Cantares Mexicanos excerpt identified in a UNAM edition. Nine new lexical entries are fully separated into their lexical, morphological and claim-level sources, for **112 total lemmas**. Previously saved personal passages and annotations receive the new public excerpts additively. No manuscript-level verification, universal morphology or new paradigm is inferred. [Research ledger](docs/AMOXTLI_EXPANSION_02.md).

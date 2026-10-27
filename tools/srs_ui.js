@@ -7,13 +7,15 @@
   '<div class="srs-actions"><span id="srsDaily" aria-live="polite"></span>'+
   '<button class="btn" type="button" id="srsUndo">Undo last review</button>'+
   '<button class="btn" type="button" id="srsAnkiVocab">↓ Anki vocabulary</button>'+
+  '<button class="btn" type="button" id="srsAnkiReverse">↓ Anki reverse cards</button>'+
   '<button class="btn" type="button" id="srsAnkiVerbs">↓ Anki conjugations</button></div>'+
   '<details class="srs-options" id="srsOptions"><summary>Advanced study options · scheduling, limits and difficulty</summary>'+
   '<p class="readerhint"><strong>Anki-inspired, not Anki FSRS.</strong> Learning steps, review intervals, daily limits and leeches are configurable. Settings and progress stay in this browser. Saving settings affects future reviews, not existing due dates.</p>'+
   '<div class="srs-settings-row"><label>Preset<select id="srsPreset">'+
   '<option value="custom">Current / custom</option><option value="balanced">Balanced</option>'+
   '<option value="intensive">Intensive</option><option value="gentle">Gentle</option></select></label>'+
-  '<button class="btn primary" id="srsSave" type="button">Save study options</button></div>'+
+  '<button class="btn primary" id="srsSave" type="button">Save study options</button>'+
+  '<button class="btn" id="srsResume" type="button">Resume suspended cards</button></div>'+
   '<div class="srs-fields" id="srsFields"></div>'+
   '<div class="srs-settings-row"><label>Card order<select id="srsOrder">'+
   '<option value="due">Earliest due first</option><option value="new">New cards first</option>'+
@@ -50,6 +52,8 @@
  };
  $('srsUndo').onclick=()=>S.undoLast();
  $('srsAnkiVocab').onclick=()=>S.exportAnki(false);
+ $('srsAnkiReverse').onclick=()=>S.exportAnki('reverse');
+ $('srsResume').onclick=()=>S.resumeSuspended();
  $('srsAnkiVerbs').onclick=()=>S.exportAnki(true);
  const priorStudyRender=renderStudy;
  studyQueue=()=>S.queueWords();

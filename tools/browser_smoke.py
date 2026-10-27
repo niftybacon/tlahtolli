@@ -46,7 +46,7 @@ with sync_playwright() as pw:
     page.locator('#studyReveal').click()
     page.locator('[data-study-grade="good"]').click()
     with page.expect_download() as download:page.locator('#allBackup').click()
-    backup=json.loads(Path(download.value.path()).read_text(encoding='utf8-sig'))
+    backup=json.loads(Path(download.value.path()).read_text(encoding='utf-8-sig'))
     assert len(backup['words'])==44 and len(backup['studyRecords'])==1
     assert not errors,errors
     browser.close()

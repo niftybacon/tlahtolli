@@ -14,6 +14,7 @@ Tlahtōlli v2.3.1 now avoids fetching the same 88-lemma dataset twice on normal 
 
 ## UI efficiency
 
+- On unchanged releases, skip writing the entire workspace and published baseline back to localStorage when no entries changed.
 - One browser animation-frame batch per burst of search input. Filtering still updates the results immediately on the next paint.
 - If the selected word did not change during typing, the detail pane, currently selected tab, evidence ledger and its event handlers are preserved instead of unnecessarily reconstructed.
 - Result-list selection is handled by one delegated click listener rather than recreating dozens of event handlers after each keystroke.

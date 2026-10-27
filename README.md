@@ -4,9 +4,9 @@
 
 ---
 
-# Tlahtōlli v2.3.1 — Historical evidence reassessment (2026-10-27)
+# Earlier audit snapshot — 16 source-located claims (superseded by expanded audit above)
 
-All 222 outstanding provisional/unverified field claims were inventoried and assigned individual evidence decisions and follow-up requirements. **16** gained source-located support, while **111** remain inference and **95** unverified. The 674-field ledger now contains **324 dictionary**, **129 grammar**, and **15 quoted historical-text** records. This is an AI-assisted research update, **not full historical verification or expert peer review**. See [full claim-by-claim reassessment](claim_reassessment_2026-10-27.csv) and [method and historical locators](docs/OUTSTANDING_CLAIMS_2026-10-27.md).
+In the first pass (before the four additional source checks above), all 222 outstanding provisional/unverified field claims were inventoried and assigned individual evidence decisions and follow-up requirements. **16** gained source-located support, while **111** remain inference and **95** unverified. The 674-field ledger now contains **324 dictionary**, **129 grammar**, and **15 quoted historical-text** records. This is an AI-assisted research update, **not full historical verification or expert peer review**. See [full claim-by-claim reassessment](claim_reassessment_2026-10-27.csv) and [method and historical locators](docs/OUTSTANDING_CLAIMS_2026-10-27.md).
 
 # Tlahtōlli v2.3.1 — Four additional located possessive forms
 

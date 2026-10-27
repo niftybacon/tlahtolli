@@ -23,7 +23,11 @@
   '<option value="alphabetical">Alphabetical</option></select></label>'+
   '<label>Leeches<select id="srsLeechAction"><option value="tag">Mark as difficult</option>'+
   '<option value="suspend">Suspend card</option></select></label>'+
-  '<label class="srs-checkbox"><input type="checkbox" id="srsBury"> Hide other conjugations of the same verb after reviewing one today</label></div>'+
+  '<label class="srs-checkbox"><input type="checkbox" id="srsBury"> Hide other conjugations of the same verb after reviewing one today</label></div>'+ 
+  '<div class="srs-settings-row"><label>New card order<select id="srs_newOrder"><option value="added">Dictionary order</option><option value="alphabetical">Alphabetical</option><option value="random">Daily stable shuffle</option></select></label>'+ 
+  '<label>Review card order<select id="srs_reviewOrder"><option value="due">Oldest due first</option><option value="hardest">Lowest ease first</option><option value="random">Daily stable shuffle</option></select></label>'+ 
+  '<label class="srs-checkbox"><input type="checkbox" id="srsReviewFirst"> Show due review cards before new cards</label>'+ 
+  '<label class="srs-checkbox"><input type="checkbox" id="srsAutoReveal"> Automatically reveal when answer timer expires (never auto-grade)</label></div>'+
   '<p class="readerhint" id="srsFeedback" role="status"></p></details>');
  const labels=S.FIELDS;
  $('srsFields').innerHTML=labels.map(pair=>{
@@ -35,6 +39,8 @@
  function fill(data){
   for(const [key] of labels)$('srs_'+key).value=data[key];
   $('srsOrder').value=data.order;$('srsLeechAction').value=data.leechAction;$('srsBury').checked=data.burySiblings;
+  $('srs_newOrder').value=data.newOrder;$('srs_reviewOrder').value=data.reviewOrder;
+  $('srsReviewFirst').checked=data.reviewFirst;$('srsAutoReveal').checked=data.autoReveal;
  }
  fill(S.getSettings());
  $('srsPreset').onchange=()=>{
@@ -47,6 +53,8 @@
   config.order=$('srsOrder').value;
   config.leechAction=$('srsLeechAction').value;
   config.burySiblings=$('srsBury').checked;
+  config.newOrder=$('srs_newOrder').value;config.reviewOrder=$('srs_reviewOrder').value;
+  config.reviewFirst=$('srsReviewFirst').checked;config.autoReveal=$('srsAutoReveal').checked;
   S.applySettings(config);fill(S.getSettings());
   $('srsPreset').value='custom';
   $('srsFeedback').textContent='Saved. Existing scheduled reviews have not been moved.';
@@ -85,3 +93,74 @@
  };
  renderStudy();renderDrill();
 })();
+/* BEGIN TLAHTOLLI SRS V3 INSIGHTS */
+(function initializeTlahtolliStudyInsights(){
+ const root=document.querySelector('#studyView .srs-actions'),options=$('srsOptions');
+ if(!root||!options)return;
+ const timer=document.createElement('span');
+ timer.id='srsTimer';timer.className='srs-timer';timer.setAttribute('aria-live','off');
+ timer.title='Optional study-card timer; never grades a card automatically.';
+ root.insertBefore(timer,root.querySelector('#srsUndo'));
+ const details=document.createElement('details');details.className='srs-options';details.id='srsInsights';
+ details.innerHTML='<summary>Study insights · retention and next 7 days</summary>'+
+  '<p class="readerhint">A descriptive forecast of scheduled due dates, not an FSRS memory prediction. Actual retention uses the first graded review on each day (Again = missed).</p>'+
+  '<div id="srsRetention" role="status" aria-live="polite"></div>'+
+  '<div id="srsForecast" class="srs-forecast" role="img" aria-label="Scheduled review counts over the next seven calendar days"></div>';
+ options.insertAdjacentElement('afterend',details);
+ const style=document.createElement('style');
+ style.textContent='.srs-timer{font-variant-numeric:tabular-nums;font-size:.86rem;color:var(--muted)}.srs-forecast{display:grid;gap:8px;margin:12px 0}.srs-forecast-row{display:grid;grid-template-columns:56px 1fr 36px;gap:8px;align-items:center;font-size:.82rem}.srs-forecast-track{height:10px;border-radius:8px;background:var(--line);overflow:hidden}.srs-forecast-fill{background:var(--accent);height:100%}.srs-insight-metrics{display:flex;flex-wrap:wrap;gap:12px;font-size:.88rem}.srs-insight-metrics b{font-variant-numeric:tabular-nums}';
+ document.head.appendChild(style);
+ function report(){
+  const now=Date.now(),today=TlahtolliSRS.midnight(now),days=Array.from({length:7},()=>0);
+  let correct=0,total=0,reviewed=0,difficult=0;
+  for(const rec of Object.values(studyRecords)){
+   if(!rec||rec.suspended)continue;
+   if(rec.last)reviewed++;
+   if(rec.leech)difficult++;
+   if(rec.due>=today&&rec.due<today+7*86400000&&rec.phase==='review'){
+    const day=Math.floor((rec.due-today)/86400000);days[day]++;
+   }
+   const seen=new Set();
+   for(const event of rec.history||[]){
+    if(!event.wasReview||event.at<now-30*86400000)continue;
+    const day=TlahtolliSRS.midnight(event.at);
+    if(seen.has(day))continue;seen.add(day);total++;
+    if(event.grade!=='again')correct++;
+   }
+  }
+  $('srsRetention').innerHTML='<div class="srs-insight-metrics">'+
+   '<span>30-day first-review retention: <b>'+(total?Math.round(100*correct/total)+'%':'Not enough data')+'</b> ('+total+' attempts)</span>'+
+   '<span>Cards reviewed: <b>'+reviewed+'</b></span>'+
+   '<span>Flagged difficult: <b>'+difficult+'</b></span></div>';
+  const maximum=Math.max(1,...days);
+  $('srsForecast').innerHTML=days.map((n,i)=>{
+   const d=new Date(today+i*86400000),label=d.toLocaleDateString(undefined,{weekday:'short'});
+   return '<div class="srs-forecast-row"><span>'+safe(label)+'</span>'+
+    '<div class="srs-forecast-track"><div class="srs-forecast-fill" style="width:'+Math.round(n/maximum*100)+'%"></div></div>'+
+    '<strong>'+n+'</strong></div>';
+  }).join('');
+ }
+ details.addEventListener('toggle',()=>{if(details.open)report()});
+ let key='',stage='',began=Date.now(),fired=false;
+ function tick(){
+  const opts=TlahtolliSRS.getSettings(),active=!$('studyView').classList.contains('hidden');
+  const selected=studyCurrentKey||'',shown=studyRevealed?'answer':'question';
+  if(!active||!selected||!opts.timerSeconds){timer.textContent='';key='';return;}
+  if(selected!==key||shown!==stage){key=selected;stage=shown;began=Date.now();fired=false;}
+  if(shown==='answer'){timer.textContent='';return;}
+  const elapsed=Math.floor((Date.now()-began)/1000),remaining=Math.max(0,opts.timerSeconds-elapsed);
+  timer.textContent='Time '+remaining+'s';
+  if(remaining===0&&opts.autoReveal&&!fired){
+   fired=true;const button=$('studyReveal');if(button)button.click();
+  }
+ }
+ window.setInterval(tick,1000);
+ const oldSave=$('srsSave').onclick;
+ $('srsSave').onclick=()=>{oldSave();key='';stage='';began=Date.now();report();};
+ const oldUndo=$('srsUndo').onclick;
+ $('srsUndo').onclick=()=>{oldUndo();report();};
+ const oldExport=$('studyExport').onclick;
+ $('studyExport').onclick=()=>{oldExport();};
+ report();
+})();
+ /* END TLAHTOLLI SRS V3 INSIGHTS */

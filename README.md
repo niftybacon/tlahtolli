@@ -1,3 +1,7 @@
+# Study upgrades — locally customizable repetition and Anki TSV interoperability (2026-10-27)
+
+Study settings now expose separate review/new ordering controls, timed optional answer reveal, real 30-day recall measurements, seven-day scheduled workload forecasts and stable Anki import GUIDs for forward/reverse vocabulary and conjugations. The engine remains an adjustable **SM-2-family scheduler, not Anki FSRS**, and does not sync Anki's scheduling state. Personal study records, settings, and review history remain only in this browser until explicitly backed up or exported. See [study settings and Anki export documentation](docs/STUDY_SYSTEM_V3.md).
+
 # Advanced spaced repetition and Anki interoperability (2026-10-27)
 
 The built-in vocabulary **and conjugation** study tools now share a configurable browser-local Anki-inspired scheduler: short-term learning/relearning steps, daily new/review limits, long-term ease and interval modifiers, leech suspension, sibling burying, independent forward/reverse recall, practice-only cram, grade-interval previews and one-step Undo. Three self-contained Anki TSV exports are available (vocabulary, reverse vocabulary, and 720 indexed conjugation prompts); Anki manages imported cards with **its own** review scheduler, and TSV does not transfer study history. Full-project JSON backups now preserve advanced settings and schedules. The implementation is **not FSRS**; see [advanced study and Anki guide](docs/ADVANCED_SRS_AND_ANKI.md).

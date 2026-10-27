@@ -14,4 +14,7 @@ assert p['chōca']['cells'][1][0]=='nichōcac'
 assert p['nemi']['b2s']=='nen'
 for lemma in ('calli','xōchitl','tēpetl','cītlalin'):
     assert any(c.get('field')=='plural' and c.get('locator') and c.get('source') for c in w[lemma]['claims'])
+for lemma,field in [('tlācatl','plural'),('pilli','plural'),('ōcēlōtl','plural'),('nemi','stem'),('cuīcatl','possessed')]:
+    assert any(c.get('field')==field and c.get('source','').startswith('https://') and c.get('locator') for c in w[lemma]['claims'])
+assert sum(len(x.get('claims',[])) for x in w.values())>=13
 print('PASS: selected documented-form regression fixtures. Not comprehensive peer review.')

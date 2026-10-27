@@ -1,16 +1,20 @@
-# Changelog
+# Tlahtōlli — changelog
 
-## v1.4 · 2026-10-26
+## v1.5 · 2026-10-26
+- Conservative paradigm alignment: when possible, identify the subject prefix and show the unsegmented remainder, without claiming a full morphological parse.
+- Dictionary filters for part of speech, noun animacy, and citation coverage.
+- Searchable, exportable KWIC-style concordance across *locally saved* passages, with direct navigation to matching tokens and form analysis.
+- Eight additional field-specific research claims with precise lexicographic/grammar locations: tlācatl (3), pilli (2), ōcēlōtl (1), nemi (1), cuīcatl (1). Now 13 in total.
+- Research entry preparation tool, expanded validation fixtures, and automated Chromium browser smoke tests.
+- No bulk corpus extraction, invented attestations, or language model calls from the website.
 
-- Added **Momachtia · Study** with local scheduling, reversible cards, CSV export, and backup restoration.
-- Added one-click GitHub research issue drafting from the form detective.
-- Added five sourced grammar claims with exact reference locators to four exceptional nouns.
-- Added stronger tests for JSON schemas, offline seed, per-claim references, paradigms, JS syntax, and regression fixtures.
-- Extended full project backups to version 5, retaining compatibility with older backups.
-- Kept uncertain linguistic analyses visibly provisional.
+## v1.4
+- Private spaced-repetition review cards and progress backup.
+- GitHub research request links, fixed personal citation persistence, five field-specific citations.
+- Integrity tests and documented editorial evidence policy.
 
-## v1.3 · 2026-10-26
+## v1.3
+- Form detective, research dashboard, reader token coverage and unknown-token CSV.
 
-- Exact indexed-form detective and research audit.
-- Reader indexed-coverage report and unknown-token CSV.
-- Fixed evidence-loss bug when editing dictionary entries.
+## v1.2
+- Ranked dictionary search, evidence ledger, safe published dictionary synchronization.

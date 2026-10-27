@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-26.4",
+  "version": "2026-10-26.5",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -160,7 +160,17 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "possessed",
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/cuicatl",
+          "note": "The complete example uses nocuīc “my song”; this supports this particular possessed form, not every possible possessive pattern.",
+          "locator": "Launey (2011), p. 117; example Ilhuicacopa ēhua in nocuīc",
+          "reviewer": "Tlahtōlli editorial check (AI-assisted; not peer reviewed)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "xōchitl",
@@ -641,7 +651,35 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172684",
+          "note": "Karttunen lists TLĀCAH as plural; Lockhart additionally records tlātlācah in some contexts. These are lexical records, not universal productive rules.",
+          "locator": "Karttunen (1992), p. 253; Lockhart (2001), pp. 235–236",
+          "reviewer": "Tlahtōlli editorial check (AI-assisted; not peer reviewed)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "possessed",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172684",
+          "note": "Lists the possessed form -TLĀCAUH; the dictionary warns that this form conventionally also has a specialized slave-related meaning. Do not assume it always means an ordinary possessed person.",
+          "locator": "Karttunen (1992), p. 253",
+          "reviewer": "Tlahtōlli editorial check (AI-assisted; not peer reviewed)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/172684",
+          "note": "Documented human-person sense; historical usage includes honorific and specialized contextual readings.",
+          "locator": "Molina (1571), f. 115v col. 2; Karttunen (1992), p. 253",
+          "reviewer": "Tlahtōlli editorial check (AI-assisted; not peer reviewed)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "cihuātl",
@@ -747,7 +785,26 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pilli",
+          "note": "Source lists PĪPILTIN as plural of PIL-LI, with vowel-length variation between sources.",
+          "locator": "Karttunen (1992), p. 195; Lockhart (2001), p. 230",
+          "reviewer": "Tlahtōlli editorial check (AI-assisted; not peer reviewed)",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pilli",
+          "note": "Meaning changes with context: an unpossessed noble person, or a child in particular possessed/reverential usages. Not every occurrence of pilli means child.",
+          "locator": "Karttunen (1992), p. 195; Lockhart (2001), p. 230",
+          "reviewer": "Tlahtōlli editorial check (AI-assisted; not peer reviewed)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "oquichtli",
@@ -1205,7 +1262,17 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "plural",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ocelotl",
+          "note": "Karttunen gives the plural ending -MEH. A Chimalpahin citation records a historical spelling ocellome; retain spelling variation and avoid assuming modern normalization is manuscript transcription.",
+          "locator": "Karttunen (1992), p. 176; Chimalpahin reference in attestations, pp. 38–39",
+          "reviewer": "Tlahtōlli editorial check (AI-assisted; not peer reviewed)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "quimichin",
@@ -1441,7 +1508,17 @@
         }
       ],
       "formsEdited": false,
-      "claims": []
+      "claims": [
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nemi",
+          "note": "NEM(I) has preterite stem NEN; source also records Molina preterite oninen. Keep distinct from nēn “in vain,” which contrasts in vowel length.",
+          "locator": "Karttunen (1992), p. 165; Molina (1571), f. 67r col. 2",
+          "reviewer": "Tlahtōlli editorial check (AI-assisted; not peer reviewed)",
+          "checkedAt": "2026-10-26"
+        }
+      ]
     },
     {
       "word": "chīhua",

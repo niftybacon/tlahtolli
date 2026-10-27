@@ -1,3 +1,7 @@
+# Advanced spaced repetition and Anki interoperability (2026-10-27)
+
+The built-in vocabulary **and conjugation** study tools now share a configurable browser-local Anki-inspired scheduler: short-term learning/relearning steps, daily new/review limits, long-term ease and interval modifiers, leech suspension, sibling burying, independent forward/reverse recall, practice-only cram, grade-interval previews and one-step Undo. Three self-contained Anki TSV exports are available (vocabulary, reverse vocabulary, and 720 indexed conjugation prompts); Anki manages imported cards with **its own** review scheduler, and TSV does not transfer study history. Full-project JSON backups now preserve advanced settings and schedules. The implementation is **not FSRS**; see [advanced study and Anki guide](docs/ADVANCED_SRS_AND_ANKI.md).
+
 # Expansion 01 — 103 sourced Classical Nahuatl lemmas (2026-10-27)
 
 Fifteen new historical-lexicon entries add **nine nouns and six verbs**, with individual Molina/Karttunen/Lockhart or colonial-edition locators. Includes source-quoted special verb forms and bounded noun stem analyses; no fabricated 10×6 paradigms or manuscript-attestation claims. All original 88 lemmas, 12 verb models, and 674 original field claims are preserved. The [15-entry research ledger](docs/EXPANSION01_SOURCE_LEDGER.md) states exact evidence boundaries, including unresolved plurals. The advanced offline morphology engine can now recognize the new cited tokens.

@@ -83,7 +83,8 @@ with sync_playwright() as pw:
     assert '720' in page.locator('#drillStats').inner_text()
     page.locator('#drillVerb').select_option('chōca')
     page.locator('#drillScope').select_option('core')
-    assert '24' in page.locator('#drillStats').inner_text()
+    # Core verb has 24 possible cells, but the SRS daily new-card limit is 10.
+    assert '10 current practice cards' in page.locator('#drillStats').inner_text()
     page.locator('#drillReveal').click()
     page.locator('[data-drill-grade=good]').click()
     page.locator('#studyReveal').click()

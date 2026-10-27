@@ -89,12 +89,15 @@ with sync_playwright() as pw:
       write:f('onitlacuilo').some(x=>x.lemma==='cuiloa'),
       wrote:f('onitlahcuiloh').some(x=>x.lemma==='tlacuiloa'&&x.grade==='manuscript'),
       go:f('ōniyah').some(x=>x.lemma==='yauh'),
+      sleepSegments:f('onicoch').some(x=>x.lemma==='cochi'&&x.parts.map(p=>p.surface).join('|')==='o|ni|coch'),
+      hearingSegments:f('onitlacac').some(x=>x.lemma==='caqui'&&x.parts.map(p=>p.surface).join('|')==='o|ni|tla|cac'),
+      motionSegments:f('ōniyah').some(x=>x.lemma==='yauh'&&x.parts.map(p=>p.surface).join('|')==='ō|ni|yah'),
       turtle:f('āyōmeh').some(x=>x.lemma==='āyōtl'&&x.grade==='manuscript'),
       corpusSize:words.length,
       totalClaims:words.reduce((n,w)=>n+(w.claims||[]).length,0)
      };
     }""")
-    assert all(parsed[k] for k in ('reed','salt','feather','scribes','slept','hear','love','write','wrote','go')),parsed
+    assert all(parsed[k] for k in ('reed','salt','feather','scribes','slept','hear','love','write','wrote','go','sleepSegments','hearingSegments','motionSegments')),parsed
     assert not parsed['turtle'],parsed
     assert parsed['corpusSize']==103 and parsed['totalClaims']==777,parsed
     page.locator('#analyzerDetails').evaluate('(el)=>el.open=true')

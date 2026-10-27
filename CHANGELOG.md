@@ -1,3 +1,11 @@
+## v2.2 · 2026-10-27 — Founding vocabulary claim-level source audit
+
+- Checked the original 44 entries individually against dictionary headwords, primary senses and lexical-category evidence.
+- Added source-specific grammatical notes for 29+ exceptional or irregular morphology/possession/plural records.
+- Distinguished late-colonial plurals of tlālli and āltepētl from unrestricted early-Classical number rules.
+- Preserved unresolved classifications and all existing 88 headwords, 12 verb tables and reference witnesses.
+- Updated research CSV and automated claim tests.
+
 # Changelog
 
 ## v2.1 — Claim-by-claim lexical source review (2026-10-27)

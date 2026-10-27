@@ -1,8 +1,14 @@
-# Tlahtōlli v2.1 · Field-by-field source audit
+# v2.2 source-by-source evidence expansion
+
+This AI-assisted pass checked the original 44 headwords against their Online Nahuatl Dictionary lemma, principal translation and lexical-class information, with exact entry sections and underlying works noted. It also added independent records for historically documented possessed stems, plural alternatives, verb stem changes and region-/period-bound plurals. **A dictionary citation is not independent manuscript attestation or expert peer review.** Inanimate/animate and number properties remain unresolved when these entries lack direct grammatical evidence. Local user edits are preserved by the published-data sync system.
+
+This release contains 674 claim records: 313 lexical references, 8 grammatical references, 4 text-specific references, and 349 unresolved records. Counts are editorial tracking, not probability of correctness.
+
+# Tlahtōlli v2.2 · Field-by-field source audit
 
 [Open Tlahtōlli](https://niftybacon.github.io/tlahtolli/)
 
-**88 Classical Nahuatl headwords, 672 claim-level research records.** The 44 v2.0 additions have had their lemmas and primary noun senses checked directly against the individual Online Nahuatl Dictionary entries; the older 44 retain their previously recorded evidence, with explicit review tasks for missing fields. This is AI-assisted source checking, **not specialist peer review**.
+**88 Classical Nahuatl headwords, 674 claim-level research records.** The 44 v2.0 additions have had their lemmas and primary noun senses checked directly against the individual Online Nahuatl Dictionary entries; the older 44 retain their previously recorded evidence, with explicit review tasks for missing fields. This is AI-assisted source checking, **not specialist peer review**.
 
 ## Evidence principles
 

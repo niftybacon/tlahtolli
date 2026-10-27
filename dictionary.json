@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-27.1",
+  "version": "2026-10-27.2",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -47,30 +47,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/atl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 13",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/atl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 13",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/atl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 13",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -101,12 +101,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/atl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 13: Ā-TL, possessed -ĀUH",
+          "note": "Possessed stem -āuh, not a full possessor-prefixed paradigm.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -194,30 +194,30 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/171977",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 22",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/171977",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 22",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/171977",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 22",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -308,30 +308,30 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cuicatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 71",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cuicatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 71",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cuicatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 71",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -362,12 +362,12 @@
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cuicatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart, Nahuatl as Written (2001), p. 216",
+          "note": "Combining stem cuīca-.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -422,30 +422,30 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/xochitl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 329",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/xochitl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 329",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/xochitl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 329",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -561,30 +561,30 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tepetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 230",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tepetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 230",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tepetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 230",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -666,30 +666,30 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/citlalin",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 35",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/citlalin",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 35",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/citlalin",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 35",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -779,30 +779,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 275",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 275",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 275",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -824,21 +824,21 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/tlalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN attestations → Pizzigoni, Testaments of Toluca (2007), p. 193, Calimaya 1755",
+          "note": "The plural tlalme belongs to late colonial Spanish-influenced usage, not early Classical productive number marking.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 275: TLĀL-LI, inalienably possessed -TLĀLLŌ",
+          "note": "Inalienably possessed form; do not assume it functions as an ordinary free possessive.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -893,30 +893,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 235",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 235",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 235",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -947,12 +947,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 235: TE-TL, possessed -TEUH",
+          "note": "Possessed stem -teuh.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -1007,30 +1007,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/171922",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 10",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/171922",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 10",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/171922",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 10",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -1061,12 +1061,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/171922",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 10: ĀMA-TL, possessed -ĀMAUH",
+          "note": "Possessed stem -āmauh.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -1121,30 +1121,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/ilhuicatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 104",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/ilhuicatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 104",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/ilhuicatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 104",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -1166,12 +1166,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/ilhuicatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN attestations → Codex Chimalpahin, Anderson/Schroeder (1997), vol. 2 pp. 140–141",
+          "note": "Text contains ilhuicame 'heavens'; historical context specifically noted.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -1227,30 +1227,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlaxcalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 303",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlaxcalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 303",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlaxcalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 303",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -1341,30 +1341,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/altepetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; entry's cited Molina or historical grammar record",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/altepetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; entry's cited Molina or historical grammar record",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/altepetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; entry's cited Molina or historical grammar record",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -1386,12 +1386,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/altepetl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN attestations → Techialoyan manuscript of Ocoyacac; Krug ch. 2, p. 73",
+          "note": "Rare later-colonial altepeme, not a universally productive Classical plural.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -1498,21 +1498,21 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/172684",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacatl",
+          "locator": "ODN → Headword; Karttunen (1992), p. 253",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/172684",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacatl",
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 253",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -1540,6 +1540,15 @@
           "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
           "reviewer": "Research unresolved",
           "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacatl",
+          "locator": "Karttunen (1992), p. 253; Lockhart (2001), pp. 235–236",
+          "note": "Possessed -tlācauh can conventionally mean 'slave'; it is not necessarily 'my person'.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -1601,30 +1610,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172028",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 35",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172028",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 35",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172028",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 35",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -1646,21 +1655,21 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172028",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 35: CIHUĀ-TL, plural CIHUAH",
+          "note": "Explicit full plural cihuah.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172028",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 35: CIHUĀ-TL, possessed -CIHUĀUH",
+          "note": "Possessed stem -cihuāuh.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -1741,21 +1750,21 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172584",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 196",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172584",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 196",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -1853,30 +1862,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 180",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 180",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 180",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -1898,21 +1907,21 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 180: OQUICH-TLI, pl. suffixes -TIN ~ -MEH",
+          "note": "Documented two suffix patterns; historical use varies.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/oquichtli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 180: OQUICH-TLI, possessed -OQUICHHUI",
+          "note": "Possessed -oquichhui; honorific derivatives are distinct.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -1967,30 +1976,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173206",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 239",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173206",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 239",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173206",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 239",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -2012,12 +2021,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173206",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart, Nahuatl as Written (2001), p. 239; Rincón (1595) f. 5v",
+          "note": "Plural tōtōchtin explicitly recorded.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -2089,30 +2098,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/michin",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 146",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/michin",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 146",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/michin",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 146",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -2134,12 +2143,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/michin",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 146; MICH-IN: MĪMICHTIN and regional MICHIMEH",
+          "note": "Multiple attested/lexicographic variants; regional scope matters.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -2211,30 +2220,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/coyotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 43",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/coyotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 43",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/coyotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 43",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -2256,12 +2265,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/coyotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 43; COYŌMEH ~ CŌCOYOH",
+          "note": "Two listed plural patterns.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -2333,30 +2342,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173032",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 237",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173032",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 237",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173032",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 237",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -2378,21 +2387,21 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173032",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 237: TĒTĒUCTIN",
+          "note": "Full plural form.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/173032",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 237: -TĒCUIYŌ and -TĒCŌ",
+          "note": "Varied possessed stems in the historical dictionaries.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -2447,30 +2456,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/teotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 228",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/teotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 228",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/teotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 228",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -2492,12 +2501,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/teotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 228: TĒTEOH",
+          "note": "Full reduplicated plural.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -2561,30 +2570,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176563",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 249",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176563",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 249",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176563",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 249",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -2606,12 +2615,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176563",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 249: TŌTŌ-TL -MEH; Sahagún Bk. 11",
+          "note": "Bird plural -meh / tōtōmeh. Not identical to tōtolin domestic fowl.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -2675,30 +2684,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/macehualli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 127",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/macehualli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 127",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/macehualli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 127",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -2720,12 +2729,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/macehualli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 127: MĀCĒHUAL-LI pl. -TIN",
+          "note": "Entry explicitly gives suffix -tin; full form needs separate occurrence confirmation.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -2797,30 +2806,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/coatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 36",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/coatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 36",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/coatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 36",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -2842,12 +2851,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/coatl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 36: CŌCŌAH ~ CŌĀMEH",
+          "note": "Two cited plural patterns, vowel length and snake/twin senses need contextual care.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -2920,30 +2929,30 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/ocelotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 176",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/ocelotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 176",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/ocelotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 176",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -3041,30 +3050,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/177192",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quimichin",
+          "locator": "ODN → Headword; Karttunen (1992), p. 211",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/177192",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quimichin",
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 211",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/177192",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quimichin",
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 211",
+          "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "animacy",
@@ -3086,12 +3095,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/177192",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quimichin",
+          "locator": "Karttunen (1992), p. 211: QUIMICHTIN ~ QUIQUIMICHTIN ~ QUIMICHIMEH",
+          "note": "Three listed plural variants; -meh usage is variety-sensitive.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -3163,39 +3172,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172772",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 266",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172772",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 266",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172772",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 266",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172772",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 266, TLAHTOĀ",
+          "note": "Nonspecific object tla- is fused into lexicalized intransitive verb.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -3289,30 +3298,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/choca",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 54",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/choca",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 54",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/choca",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 54",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -3376,30 +3385,30 @@
         },
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/nemi",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 165",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/nemi",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 165",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/nemi",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 165",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -3445,39 +3454,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/chihua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 51",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/chihua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 51",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/chihua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 51",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/chihua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 51; Lockhart (2001), p. 214: ōnicchīuh",
+          "note": "Preterite chīuh- shown in a transitive finite form.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -3523,39 +3532,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/mati",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 134",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/mati",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 134",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/mati",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 134",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/mati",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Molina (1571), f. 52v, onicma",
+          "note": "Preterite ma- inferred directly from cited verb example.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -3601,39 +3610,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/itta",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 108",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/itta",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 108",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/itta",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 108",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/itta",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Molina (1571), f. 43r; Lockhart (2001), p. 221: ōniquittac",
+          "note": "Preterite ittac within attested transitive verb form.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -3719,39 +3728,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlacua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; entry's cited Molina or historical grammar record",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlacua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; entry's cited Molina or historical grammar record",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlacua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; entry's cited Molina or historical grammar record",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlacua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen entry TLACUĀ, pret. TLACUAH",
+          "note": "Preterite form TLACUAH; intransitive verb with fused nonspecific object marker.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -3845,30 +3854,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176626",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 341",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176626",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 341",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176626",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 341",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -3923,39 +3932,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cui",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 71",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cui",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 71",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cui",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 71",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cui",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 71: pret. CUIC",
+          "note": "Preterite cuic; other derivations separately classified.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -4001,39 +4010,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/pohua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 201",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/pohua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 201",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/pohua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 201",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/pohua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart (2001), p. 230: ōnicpōuh",
+          "note": "Preterite pōuh from cited first-person transitive form.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -4095,39 +4104,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 292",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 292",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 292",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlapohua",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 292; Rincón (1595) ff. 16r–17r",
+          "note": "Intransitive use with fused nonspecific tla- described; not a claim about every derived form.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -4173,39 +4182,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176482",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 282",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176482",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 282",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176482",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 282",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/176482",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen (1992), p. 282; Lockhart (2001), p. 237: ōnitlan",
+          "note": "Preterite tlan; context of verbal agreement matters.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -4243,30 +4252,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/171956",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/auh",
+          "locator": "ODN → Headword; entry's cited Molina or historical grammar record",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/171956",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/auh",
+          "locator": "ODN → Principal English Translation; entry's cited Molina or historical grammar record",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/171956",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/auh",
+          "locator": "ODN → Molina / Karttunen / Lockhart grammatical label; entry's cited Molina or historical grammar record",
+          "note": "Grammatical-particle/adverb use grounded in entry. Orthographically overlapping functions may require separate analyses.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -4304,30 +4313,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/in",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 106",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/in",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 106",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/in",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Molina / Karttunen / Lockhart grammatical label; Karttunen (1992), p. 106",
+          "note": "Grammatical-particle/adverb use grounded in entry. Orthographically overlapping functions may require separate analyses.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -4365,30 +4374,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/amo",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 6",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/amo",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 6",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/amo",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Molina / Karttunen / Lockhart grammatical label; Karttunen (1992), p. 6",
+          "note": "Grammatical-particle/adverb use grounded in entry. Orthographically overlapping functions may require separate analyses.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -4426,30 +4435,39 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/172223",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ihuan",
+          "locator": "ODN → Headword; Karttunen (1992), p. 101",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/172223",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ihuan",
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 101",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/172223",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ihuan",
+          "locator": "ODN → Molina / Karttunen / Lockhart grammatical label; Karttunen (1992), p. 101",
+          "note": "Grammatical-particle/adverb use grounded in entry. Orthographically overlapping functions may require separate analyses.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ihuan",
+          "locator": "Karttunen (1992), p. 101, ĪHUĀN",
+          "note": "Historically formed from possessed relational/postpositional construction.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },
@@ -4487,30 +4505,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/nican",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 172",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/nican",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 172",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/nican",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 172",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -4557,30 +4575,30 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/axcan",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Headword; Karttunen (1992), p. 15",
+          "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "meaning",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/axcan",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 15",
+          "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "pos",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/axcan",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 15",
+          "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
+          "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",

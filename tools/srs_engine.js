@@ -1,4 +1,4 @@
-/* Source-controlled browser-local SRS. Adjustable SM-2-family scheduler, NOT Anki FSRS. */
+/* Source-controlled browser-local SRS. Classic SM-2-family scheduler with optional FSRS-5. */
 const TlahtolliSRS=(()=>{
 'use strict';
 const DAY=86400000,MIN=60000,KEY='tlahtolli_srs_settings_v2';

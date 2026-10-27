@@ -13,12 +13,27 @@ with sync_playwright() as pw:
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.evaluate("""([words,paradigms])=>{
       window.__data={words,paradigms};
-      window.fetch=async url=>new Response(JSON.stringify(
-        String(url).startsWith('dictionary.json')?window.__data.words:window.__data.paradigms),
-        {status:200,headers:{'Content-Type':'application/json'}});
+      window.__fetchCalls=[];
+      // The embedded edition is authoritative until release.json announces a
+      // newer published version. A same-version load must not fetch full JSON.
+      window.fetch=async url=>{
+        const name=String(url);window.__fetchCalls.push(name);
+        const data=name.startsWith('release.json')
+          ? {format:'tlahtolli-release-manifest',schema:1,
+             version:window.__data.words.version,headwords:window.__data.words.words.length,
+             paradigms:Object.keys(window.__data.paradigms.paradigms).length}
+          : name.startsWith('dictionary.json')?window.__data.words
+          : name.startsWith('paradigms.json')?window.__data.paradigms
+          : {format:'tlahtolli-source-atlas',schema:1,version:window.__data.words.version,sources:[],witnesses:[]};
+        return new Response(JSON.stringify(data),
+          {status:200,headers:{'Content-Type':'application/json'}});
+      };
     }""",[dictionary,paradigms])
     page.set_content((root/'index.html').read_text(encoding='utf8'),wait_until='load')
-    page.wait_for_function("document.querySelector('#syncStatus')?.textContent.includes('Synced')")
+    page.wait_for_function("['Current','Synced'].some(s=>document.querySelector('#syncStatus')?.textContent.includes(s))")
+    initial_calls=page.evaluate("window.__fetchCalls")
+    assert any(url.startswith('release.json') for url in initial_calls),initial_calls
+    assert not any(url.startswith(('dictionary.json','paradigms.json')) for url in initial_calls),initial_calls
     assert page.locator('#total').inner_text()=='88'
     assert not page.locator('#workspaceTools').evaluate('(e)=>e.open')
     assert not page.locator('#analyzerDetails').evaluate('(e)=>e.open')

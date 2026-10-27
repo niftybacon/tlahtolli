@@ -31,3 +31,7 @@ Tlahtōlli is an independently maintained, **non-peer-reviewed** Classical Nahua
 ## New-entry workflow
 
 Research the original spelling, meaning, part of speech and variety. Enter source URL **and an exact source locator**. Add appropriate grammatical classifications and each attested form with its own evidence level. Check alternate analyses, run the tests, review changes, and publish approved additions through GitHub. The site then synchronizes published entries; user notes and learning progress remain local.
+
+## Florentine Codex links and restricted transcriptions (v1.9)
+
+A folio-level pointer demonstrates the presence of a string in an identified edited Nahuatl transcription. It does not, without contextual research, prove word sense, noun animacy, number, or morphological segmentation. Each witness record stores its edition, original written form, precise folio, and limitation. The Getty Digital Florentine Codex's Anderson–Dibble texts are copyright-restricted; link out to the text instead of republishing bulk passages. General UNAM and lexicon portal links are research tools, not cited matches. Classify all new morphological constructions as proposals unless independently attested.

@@ -1,47 +1,22 @@
-# Tlahtōlli · A living Classical Nahuatl dictionary
+# Tlahtōlli v1.9 · Source Atlas and Bounded Morphology
 
-[**Open Tlahtōlli Online**](https://niftybacon.github.io/tlahtolli/)
+[Open the live website](https://niftybacon.github.io/tlahtolli/).
 
-**Version 1.8 · Focused interface and improved accessibility.** This is an independent, AI-assisted learning/research tool, **not** a scholarly peer-reviewed edition. Its evidence status is per claim, not per page; never infer that a lexicon URL verifies every field.
+## New in v1.9
+- **Source atlas:** six described external source collections with attribution, chronology and rights guidance.
+- **Getty folio witnesses:** eight researched folio locations recorded for ātl, calli, xōchitl, tlācatl, pilli, tēpetl, in, and auh. Each is evidence of a *written occurrence*, not automatically of its grammar or sense.
+- **Source explorer:** Evidence · Sources on every entry shows Getty occurrences where checked; Research Audit shows the complete bibliography. General source-site links are marked for exploration only.
+- **Limited morphotactic hypotheses:** proposals for a subject + object + indexed present-tense transitive stem, using the object-prefix inventory documented in Launey's grammar. Never marks a generated form historically attested.
+- **Better verification:** new sourced grammatical claims require specific page/folio/entry locations. Grammar-derived inferences no longer count as independently supported field claims.
 
-## Focused interface (v1.8)
+## How to add a genuine attestation
+Check the actual text and original spelling at a historical folio. Add a record to `references.json` with lemma, recorded form, exact folio URL and locator, edition rights and a caution about what is supported. Do **not** copy rights-restricted transcript passages into the repository.
 
-- **Quick lookup · Tlatemōlli:** search English or Nahuatl from the landing area; **Ctrl+K / ⌘+K** focuses the input.
-- **Manage data:** collapses full backups, learning-pack import and recovery options.
-- **Form detective** and dictionary CSV/Anki tools expand when you need them. The reader reveals the form analyzer automatically when sending a word.
-- Responsive navigation, improved text contrast, keyboard focus outlines, and reduced-motion support.
-- The dictionary, citations, study records, reading notes and browser-local storage format are unchanged.
+For a grammatical classification, use the entry's Evidence form with precise citation and source location. Historical examples and grammar paradigms should remain distinct.
 
-## Explore
+## Verify
+`python tools/validate.py`, `python tools/test_data.py`, `python tools/test_references.py`, and the GitHub Actions browser suite. Passing code checks does not constitute human scholarly review.
 
-- **Tlahtōlli · Dictionary:** search exact and alternate spellings, indexed inflections, 12 finite-verb paradigms, and English meanings. Filter noun/verb/particle, noun animacy, and evidence coverage.
-- **Tēntli · Form detective:** recognizes indexed forms and displays conservative subject-prefix alignment for matched paradigm cells, not a general finite-state parser or historical attestation.
-- **Āmoxtli · Reader:** annotate saved passages and search exact forms, indexed **candidate headwords**, or short 2–6-token phrases. **Interlinear annotation desk** offers per-token lemma, grammatical label, gloss, evidence level, exact locator and a TSV export. Candidate matches are not established readings or manuscript evidence.
-- **Momachtia · Study:** browser-local vocabulary review **plus 720-card indexed verb-paradigm practice** with selectable verbs, tense scopes and spaced-repetition scheduling. Form-level study records are included in full backups and CSV study exports.
-- **Tlāhcuīlōlli · Research audit:** source-specific field claims, a field-by-field citation coverage matrix, and an exportable research queue. Exact source locators are required for the matrix counts.
+Current coverage: 44 headwords, 120 indexed form records, 12 finite-verb paradigms, 13 previously recorded claim-level citations, and 8 located historical-form references. Most fields still need independent investigation.
 
-## Publishing additional vocabulary
-
-After researching a headword, prepare a single JSON record with the format described in [the schema](docs/SCHEMA.md). Run:
-
-```sh
-python tools/add_entry.py --candidate new-word.json --dry-run
-python tools/add_entry.py --candidate new-word.json --apply
-python tools/validate.py
-python tools/test_data.py
-python tools/test_interlinear.py
-```
-
-The preparation tool deliberately refuses to overwrite an existing headword. Inspect the Git diff, check all grammar references and spellings, then commit the three changed publication files together. The public website syncs the published data when loaded or on manual sync. With authorized GitHub access, a ChatGPT-assisted entry can also be prepared and committed without manual upload; nothing is added to the live dictionary merely by mentioning a word outside an active repository-editing session.
-
-## Verification and limitations
-
-- **13 field-level source records** across the founding 44 headwords at v1.7. Many other fields remain to be individually audited.
-- The 720 verb cells are *grammar-derived*, not individually confirmed manuscript attestations.
-- The concordance indexes local user-saved texts, **not a licensed historical corpus**. Lemma-mode matches are proposals assembled from known spellings, forms and grammar tables; even a matched form may have a different contextual analysis.
-- A morpheme interpretation is limited to evidence from explicitly indexed paradigms, with unsegmented elements labeled as such. Competing analyses are listed as candidates, not resolved contextual parses.
-- **Token citations require a source URL and exact locator.** Their presence documents an editorial research trail; it does not verify that a chosen analysis is correct. Old project backups are supported; new optional evidence fields default to unreviewed.
-- Historical forms and variation require context. Normalized matching strips vowel-length marks for discovery; it is not proof of the same lexical sense.
-- Your local vocabulary and conjugation study schedules, custom entries, notes and passages are **not uploaded to GitHub**. Export a full JSON backup before changing devices.
-
-Read [the editorial policy](docs/EDITORIAL_POLICY.md), [contribution guide](docs/CONTRIBUTING.md), [research backlog](docs/RESEARCH_BACKLOG.md), and [changelog](CHANGELOG.md).
+Personal notes, saved passages, edits and study progress remain browser-local; export a full JSON backup when moving between browsers.

@@ -1,0 +1,136 @@
+{
+  "format": "tlahtolli-source-atlas",
+  "schema": 1,
+  "version": "2026-10-26.9",
+  "policy": "A located text witness confirms a written form in a cited transcription; it does not certify a headword sense or grammatical paradigm. This non-peer-reviewed edition only links to rights-restricted transcripts.",
+  "sources": [
+    {
+      "id": "dfc",
+      "name": "Digital Florentine Codex",
+      "publisher": "Getty Research Institute / Biblioteca Medicea Laurenziana",
+      "kind": "Primary historical manuscript / critical digital edition",
+      "url": "https://florentinecodex.getty.edu/en/",
+      "rights": "Manuscript images CC BY-NC-ND; Anderson–Dibble Nahuatl transcriptions and translations used by permission; rights reserved. Links and brief identifying excerpts only.",
+      "note": "A linked folio is evidence for the spelling on that folio, not automatic confirmation of its part of speech, meaning, animacy or morphology."
+    },
+    {
+      "id": "ond",
+      "name": "Online Nahuatl Dictionary",
+      "publisher": "Stephanie Wood, ed.; Wired Humanities Projects, University of Oregon",
+      "kind": "Historical lexicographic database",
+      "url": "https://nahuatl.wired-humanities.org/",
+      "rights": "Link to entry and attribute editor; do not bulk copy entry text",
+      "note": "Each entry may aggregate sources from different periods and regional varieties. Verify the cited underlying passage."
+    },
+    {
+      "id": "gdn",
+      "name": "Gran Diccionario Náhuatl",
+      "publisher": "UNAM Instituto de Investigaciones Bibliográficas",
+      "kind": "Multi-dictionary historical lexicon",
+      "url": "https://gdn.iib.unam.mx/",
+      "rights": "Link and cite specific entry and source work; do not mirror database contents",
+      "note": "Contains dictionaries from different eras, regions and orthographic standards; a result is not automatically Classical Nahuatl."
+    },
+    {
+      "id": "molina",
+      "name": "Molina, Vocabulario (1571), digitized original",
+      "publisher": "University of Kansas Libraries / Primeros Libros de las Américas",
+      "kind": "Sixteenth-century printed dictionary",
+      "url": "https://digital.lib.ku.edu/ku-speccoll/3938",
+      "rights": "The library marks this historical work as free of known copyright restrictions; attribute transcription and edition",
+      "note": "Original historical spellings should be transcribed directly from the relevant page before claiming attestation."
+    },
+    {
+      "id": "amoxcalli",
+      "name": "Amoxcalli — Classical Nahuatl Lexicon",
+      "publisher": "Independent lexicon based on Rémi Siméon (1885) and other collections",
+      "kind": "Secondary aggregated dictionary",
+      "url": "https://amoxcalli.org/",
+      "rights": "Link and attribute original sources; identify machine-translated glosses",
+      "note": "Machine translations and aggregate lexical entries require independent review; do not use them as stand-alone manuscript evidence."
+    },
+    {
+      "id": "launey",
+      "name": "Launey, An Introduction to Classical Nahuatl",
+      "publisher": "Cambridge University Press, 2011",
+      "kind": "Modern linguistic grammar",
+      "url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "rights": "Limited-preview copyrighted academic text; link and cite page only",
+      "note": "Chapters 1 and 3 document the subject and object prefix paradigm. Applying the pattern to a specific verb remains a rule-derived hypothesis."
+    }
+  ],
+  "witnesses": [
+    {
+      "lemma": "ātl",
+      "form": "atl",
+      "locator": "Book 11, folio 62v · Nahuatl transcription, water in the fish description",
+      "url": "https://florentinecodex.getty.edu/book/11/folio/62v",
+      "sourceId": "dfc",
+      "evidence": "transcription-occurrence",
+      "note": "The orthographic form atl is written in the Nahuatl transcription; this alone does not verify animacy or a plural."
+    },
+    {
+      "lemma": "calli",
+      "form": "calli",
+      "locator": "Book 11, folio 243r · passage headed Colotic calli",
+      "url": "https://florentinecodex.getty.edu/en/book/11/folio/243r",
+      "sourceId": "dfc",
+      "evidence": "transcription-occurrence",
+      "note": "The form calli occurs in the section on buildings. A single instance cannot establish number behavior."
+    },
+    {
+      "lemma": "xōchitl",
+      "form": "xochitl",
+      "locator": "Book 11, folio 160v · plant description, Nahuatl transcription",
+      "url": "https://florentinecodex.getty.edu/book/11/folio/160v",
+      "sourceId": "dfc",
+      "evidence": "transcription-occurrence",
+      "note": "Original spelling xochitl is on the page; long vowel notation in the standardized headword is editorial."
+    },
+    {
+      "lemma": "tlācatl",
+      "form": "tlacatl",
+      "locator": "Book 10, folio 29v · heading Tlacatl",
+      "url": "https://florentinecodex.getty.edu/book/10/folio/29v",
+      "sourceId": "dfc",
+      "evidence": "transcription-occurrence",
+      "note": "The passage actually identifies tlacatl; no statement about full noun paradigm follows from this one passage."
+    },
+    {
+      "lemma": "pilli",
+      "form": "Pilli",
+      "locator": "Book 10, folio 10r · heading Pilli",
+      "url": "https://florentinecodex.getty.edu/book/10/folio/10r",
+      "sourceId": "dfc",
+      "evidence": "transcription-occurrence",
+      "note": "The lexical form Pilli is in the transcription. The contextual sense requires consulting the entire passage."
+    },
+    {
+      "lemma": "tēpetl",
+      "form": "tepetl",
+      "locator": "Book 6, folio 115r · Nahuatl transcription",
+      "url": "https://florentinecodex.getty.edu/book/6/folio/115r",
+      "sourceId": "dfc",
+      "evidence": "transcription-occurrence",
+      "note": "The transcription contains tepetl. This does not establish any exceptional plural form."
+    },
+    {
+      "lemma": "in",
+      "form": "in",
+      "locator": "Book 11, folio 62v · multiple occurrences in Nahuatl transcription",
+      "url": "https://florentinecodex.getty.edu/book/11/folio/62v",
+      "sourceId": "dfc",
+      "evidence": "transcription-occurrence",
+      "note": "A recorded particle spelling: the grammatical function of each occurrence requires contextual review."
+    },
+    {
+      "lemma": "auh",
+      "form": "Auh",
+      "locator": "Book 11, folio 62v · fish description, Nahuatl transcription",
+      "url": "https://florentinecodex.getty.edu/book/11/folio/62v",
+      "sourceId": "dfc",
+      "evidence": "transcription-occurrence",
+      "note": "This page writes Auh as a discourse connector; a specific clause relation requires contextual analysis."
+    }
+  ]
+}

@@ -617,8 +617,8 @@ function openPassageEditor(i=-1){editingPassage=i;const p=i>=0?passages[i]:clean
 $('addPassage').onclick=()=>openPassageEditor();$('cancelPassage').onclick=()=>$('passageEditor').close();
 $('passageForm').onsubmit=e=>{e.preventDefault();const p={};for(const f of passageFields)p[f]=$('p_'+f).value.trim();if(!p.title||!p.original||!p.normalized)return;const old=editingPassage>=0?passages[editingPassage]:null;p.links=old&&old.normalized===p.normalized?old.links:{};p.linkTypes=old&&old.normalized===p.normalized?old.linkTypes:{};p.analyses=old&&old.normalized===p.normalized?old.analyses:{};const cleanP=cleanPassage(p);if(editingPassage>=0){passages[editingPassage]=cleanP;passageIdx=editingPassage}else{passages.push(cleanP);passageIdx=passages.length-1}tokenIdx=0;savePassages();$('passageEditor').close();$('passageSearch').value='';renderReader();message('Passage saved. Click words to consult your dictionary.')};
 $('passageSearch').oninput=renderReader;
-$('allBackup').onclick=()=>{const data={format:'tlahtolli-project',version:6,exported:new Date().toISOString(),words,passages,publishedBaseline,suppressedPublished:[...suppressedPublished],studyRecords,srsSettings:TlahtolliSRS.getSettings()};download('tlahtolli-full-backup.json',JSON.stringify(data,null,2),'application/json');message('Downloaded full project backup: dictionary and passages together.');};
-$('allRestore').onclick=()=>$('projectFile').click();$('projectFile').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const content=JSON.parse((await file.text()).replace(/^\ufeff/,''));if(content.format!=='tlahtolli-project'||!Array.isArray(content.words)||!Array.isArray(content.passages))throw Error('Not a Tlahtōlli full project backup');if(content.words.length>20000||content.passages.length>5000)throw Error('Unusually large backup; import refused');if(!confirm('Restore backup? This REPLACES both the current dictionary and passages. Back up current work first.'))return;const cleanedWords=content.words.map(clean).filter(w=>w.word&&w.meaning);const cleanedPassages=content.passages.map(cleanPassage).filter(p=>p.title&&p.original&&p.normalized);words=cleanedWords; if(content.version>=4 && content.publishedBaseline && typeof content.publishedBaseline==='object' && !Array.isArray(content.publishedBaseline))publishedBaseline=content.publishedBaseline; if(content.version>=4 && Array.isArray(content.suppressedPublished))suppressedPublished=new Set(content.suppressedPublished);persistPublished();studyRecords=content.version>=5?sanitizeStudyRecords(content.studyRecords):{};saveStudyRecords();if(content.version>=6&&content.srsSettings)TlahtolliSRS.applySettings(content.srsSettings);const extraPackWords=addMissingPackWords();mergeBundledForms();passages=cleanedPassages;selected=-1;passageIdx=passages.length?0:-1;tokenIdx=0;store();savePassages();render();message('Full project restored: '+words.length+' dictionary entries ('+extraPackWords+' built-in pack words restored), '+passages.length+' passages.');}catch(err){alert('Unable to restore backup: '+err.message)}finally{e.target.value=''}};
+$('allBackup').onclick=()=>{const data={format:'tlahtolli-project',version:6,exported:new Date().toISOString(),words,passages,publishedBaseline,suppressedPublished:[...suppressedPublished],studyRecords,srsSettings:TlahtolliSRS.getSettings(),fsrsSettings:TlahtolliFSRS.getSettings()};download('tlahtolli-full-backup.json',JSON.stringify(data,null,2),'application/json');message('Downloaded full project backup: dictionary and passages together.');};
+$('allRestore').onclick=()=>$('projectFile').click();$('projectFile').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const content=JSON.parse((await file.text()).replace(/^\ufeff/,''));if(content.format!=='tlahtolli-project'||!Array.isArray(content.words)||!Array.isArray(content.passages))throw Error('Not a Tlahtōlli full project backup');if(content.words.length>20000||content.passages.length>5000)throw Error('Unusually large backup; import refused');if(!confirm('Restore backup? This REPLACES both the current dictionary and passages. Back up current work first.'))return;const cleanedWords=content.words.map(clean).filter(w=>w.word&&w.meaning);const cleanedPassages=content.passages.map(cleanPassage).filter(p=>p.title&&p.original&&p.normalized);words=cleanedWords; if(content.version>=4 && content.publishedBaseline && typeof content.publishedBaseline==='object' && !Array.isArray(content.publishedBaseline))publishedBaseline=content.publishedBaseline; if(content.version>=4 && Array.isArray(content.suppressedPublished))suppressedPublished=new Set(content.suppressedPublished);persistPublished();studyRecords=content.version>=5?sanitizeStudyRecords(content.studyRecords):{};saveStudyRecords();if(content.version>=6&&content.srsSettings)TlahtolliSRS.applySettings(content.srsSettings);if(content.fsrsSettings)TlahtolliFSRS.setSettings(content.fsrsSettings);const extraPackWords=addMissingPackWords();mergeBundledForms();passages=cleanedPassages;selected=-1;passageIdx=passages.length?0:-1;tokenIdx=0;store();savePassages();render();message('Full project restored: '+words.length+' dictionary entries ('+extraPackWords+' built-in pack words restored), '+passages.length+' passages.');}catch(err){alert('Unable to restore backup: '+err.message)}finally{e.target.value=''}};
 // Learning-pack merge: additive by default; replacement only with an explicit checkbox and confirmation.
 $('importLearningPack').onclick=()=>$('packFile').click();
 $('packFile').onchange=async e=>{
@@ -861,14 +861,21 @@ function sanitizeStudyRecords(input){
   const history=Array.isArray(v.history)?v.history.slice(-100).filter(h=>h&&typeof h==='object'&&Number.isFinite(Number(h.at)))
    .map(h=>({at:finite(h.at),grade:['again','hard','good','easy'].includes(h.grade)?h.grade:'good',
      wasReview:h.wasReview===true,interval:finite(h.interval),due:finite(h.due),
-     phase:phases.includes(h.phase)?h.phase:'review'})):[];
+     phase:phases.includes(h.phase)?h.phase:'review',
+     fsrsPredicted:Number.isFinite(Number(h.fsrsPredicted))?Number(h.fsrsPredicted):null,
+     fsrsElapsed:Number.isFinite(Number(h.fsrsElapsed))?Math.max(0,Number(h.fsrsElapsed)):null,
+     fsrsStabilityBefore:Number.isFinite(Number(h.fsrsStabilityBefore))?Math.max(0,Number(h.fsrsStabilityBefore)):null,
+     fsrsKind:['vocabulary','reverse','paradigm'].includes(h.fsrsKind)?h.fsrsKind:''})):[];
   clean[key]={reps, due:Number.isFinite(due)?Math.max(0,due):0,last:Number.isFinite(last)?Math.max(0,last):0,
    lapses:Math.min(500,Math.max(0,Math.floor(Number(v.lapses)||0))),
    phase:phases.includes(v.phase)?v.phase:'',step:Math.min(8,Math.floor(finite(v.step))),
    ease:Math.min(4,Math.max(1.3,finite(v.ease,2.5))),interval:Math.min(36500,
      Number(v.interval)>0?finite(v.interval):Math.max(0,(Number.isFinite(due)&&Number.isFinite(last)?due-last:0)/86400000)),
    introducedAt:finite(v.introducedAt),lastGrade:['again','hard','good','easy'].includes(v.lastGrade)?v.lastGrade:'',
-   leech:v.leech===true,suspended:v.suspended===true,history};
+   leech:v.leech===true,suspended:v.suspended===true,history,
+   fsrs:v.fsrs&&v.fsrs.version===5&&Number.isFinite(Number(v.fsrs.stability))&&Number(v.fsrs.stability)>0&&Number.isFinite(Number(v.fsrs.difficulty))?{
+    version:5,stability:Math.max(.05,Math.min(36500,Number(v.fsrs.stability))),
+    difficulty:Math.max(1,Math.min(10,Number(v.fsrs.difficulty))),lastReview:finite(v.fsrs.lastReview)}:null};
  }
  return clean;
 }
@@ -1598,6 +1605,127 @@ renderFormProbe=function(){
 };
 /* END SOURCE-CONTROLLED MORPHOLOGY ENGINE */
 /* BEGIN TLAHTOLLI SRS V2 */
+/* FSRS-5 compatibility scheduler; offline, no third-party runtime dependency.
+   Opt-in to protect existing schedules; review history remains locally owned. */
+const TlahtolliFSRS=(()=>{
+'use strict';
+const DAY=86400000, K=19/81, DECAY=-.5, KEY='tlahtolli_fsrs_v1';
+const W=[.40255,1.18385,3.173,15.69105,7.1949,.5345,1.4604,.0046,1.54575,.1192,1.01925,1.9395,.11,.29605,2.2698,.2315,2.9898,.51655,.6621];
+const grades={again:1,hard:2,good:3,easy:4};
+const kinds=['vocabulary','reverse','paradigm'];
+const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+function kind(key=''){return String(key).startsWith('paradigm§')?'paradigm':String(key).endsWith('§reverse')?'reverse':'vocabulary';}
+function configure(v={}){
+ const prior=v&&typeof v==='object'?v:{};
+ const targets={},scales={};
+ for(const type of kinds){
+  const r=Number(prior.targets&&prior.targets[type]);targets[type]=Number.isFinite(r)?clamp(r,.80,.97):.90;
+  const s=Number(prior.scales&&prior.scales[type]);scales[type]=Number.isFinite(s)?clamp(s,.55,1.8):1;
+ }
+ return {enabled:prior.enabled===true,targets,scales};
+}
+let opts;
+try{opts=configure(JSON.parse(localStorage.getItem(KEY)||'{}'));}catch{opts=configure();}
+function getSettings(){return JSON.parse(JSON.stringify(opts));}
+function setSettings(next){
+ opts=configure(next);
+ try{localStorage.setItem(KEY,JSON.stringify(opts));}catch{}
+ return getSettings();
+}
+function retrievability(s,elapsedDays){return Math.pow(1+K*Math.max(0,elapsedDays)/Math.max(.01,s),DECAY);}
+function interval(stability,retention,scale=1){
+ const raw=stability*scale/K*(Math.pow(retention,1/DECAY)-1);
+ return clamp(Math.round(raw),1,36500);
+}
+function initialD(g){return clamp(W[4]-Math.exp(W[5]*(g-1))+1,1,10);}
+function nextD(d,g){return clamp(W[7]*initialD(4)+(1-W[7])*(d-W[6]*(g-3)),1,10);}
+function nextS(s,d,r,g,elapsed){
+ if(elapsed<1)return clamp(s*Math.exp(W[17]*(g-3+W[18])),.05,36500);
+ if(g===1)return clamp(W[11]*Math.pow(d,-W[12])*(Math.pow(s+1,W[13])-1)*Math.exp((1-r)*W[14]),.05,36500);
+ const extra=Math.exp(W[8])*(11-d)*Math.pow(s,-W[9])*(Math.exp((1-r)*W[10])-1);
+ return clamp(s*(1+extra*(g===2?W[15]:1)*(g===4?W[16]:1)),.05,36500);
+}
+function seed(old,grade,now){
+ const known=old?.fsrs;
+ if(known?.version===5&&Number.isFinite(known.stability)&&Number.isFinite(known.difficulty)&&known.stability>0)
+  return {stability:clamp(known.stability,.05,36500),difficulty:clamp(known.difficulty,1,10),last:known.lastReview||old.last||now};
+ if(old?.reps&&old.last){
+  // Legacy estimate: never changes existing due dates until a graded review.
+  return {stability:clamp(Number(old.interval)||(old.due-old.last)/DAY||1,.1,36500),
+   difficulty:clamp(6-(Number(old.ease||2.5)-2.5)*2,1,10),last:old.last};
+ }
+ return {stability:W[grades[grade]-1],difficulty:initialD(grades[grade]),last:now,fresh:true};
+}
+function schedule(previous,grade,now=Date.now(),key=''){
+ if(!grades[grade])return null;
+ const old=previous||{},type=kind(key),g=grades[grade];
+ let state=old.phase||(!old.last?'new':old.reps?'review':'learning');
+ if(state==='suspended')return {...old};
+ const model=seed(old,grade,now),elapsed=Math.max(0,(now-model.last)/DAY);
+ const predicted=model.fresh?null:retrievability(model.stability,elapsed);
+ const s=model.fresh?model.stability:nextS(model.stability,model.difficulty,predicted,g,elapsed);
+ const d=model.fresh?model.difficulty:nextD(model.difficulty,g);
+ const wasReview=state==='review';
+ let phase=state,step=Math.max(0,Number(old.step)||0),due=now+60000;
+ let lapses=Math.max(0,Number(old.lapses)||0);
+ if(state==='new'||state==='learning'){
+  phase='learning';
+  if(grade==='again'){step=0;due=now+60000;}
+  else if(grade==='hard'){due=now+90000;}
+  else if(grade==='easy'){phase='review';step=0;due=now+interval(s,opts.targets[type],opts.scales[type])*DAY;}
+  else if(step<1){step=1;due=now+600000;}
+  else {phase='review';step=0;due=now+interval(s,opts.targets[type],opts.scales[type])*DAY;}
+ }else if(state==='relearning'){
+  if(grade==='again'){step=0;due=now+600000;}
+  else if(grade==='hard'){due=now+900000;}
+  else{phase='review';step=0;due=now+interval(s,opts.targets[type],opts.scales[type])*DAY;}
+ }else{
+  if(grade==='again'){phase='relearning';step=0;lapses++;due=now+600000;}
+  else{phase='review';step=0;due=now+interval(s,opts.targets[type],opts.scales[type])*DAY;}
+ }
+ const classic=typeof TlahtolliSRS==='undefined'?{leechThreshold:8,leechAction:'tag'}:TlahtolliSRS.getSettings();
+ const leech=old.leech===true||(wasReview&&grade==='again'&&lapses>=classic.leechThreshold);
+ const suspended=leech&&classic.leechAction==='suspend';
+ if(suspended)phase='suspended';
+ const entry={at:now,grade,wasReview,interval:Math.max(0,(due-now)/DAY),due,phase,
+  fsrsPredicted:predicted,fsrsElapsed:elapsed,fsrsStabilityBefore:model.stability,fsrsKind:type};
+ return {...old,reps:(Number(old.reps)||0)+1,lapses,phase,step,interval:Math.max(0,(due-now)/DAY),
+  last:now,due,introducedAt:old.introducedAt||now,lastGrade:grade,
+  leech,suspended,fsrs:{version:5,stability:s,difficulty:d,lastReview:now},
+  history:[...(Array.isArray(old.history)?old.history:[]).slice(-99),entry]};
+}
+function optimize(records=typeof studyRecords==='undefined'?{}:studyRecords){
+ const out={...opts.scales},results={};
+ for(const type of kinds){
+  const samples=[];
+  for(const [key,record] of Object.entries(records)){
+   if(kind(key)!==type)continue;
+   for(const item of record.history||[]){
+    if(item?.wasReview!==true||!grades[item.grade]||!Number.isFinite(item.fsrsStabilityBefore)||
+       !Number.isFinite(item.fsrsElapsed)||item.fsrsElapsed<.9)continue;
+    samples.push(item);
+   }
+  }
+  const misses=samples.filter(e=>e.grade==='again').length;
+  if(samples.length<30||misses<3){results[type]={count:samples.length,misses,updated:false};continue;}
+  let best=Infinity,scale=out[type];
+  for(let i=0;i<=50;i++){
+   const x=.55+i*.025;
+   let loss=.02*Math.pow(Math.log(x),2);
+   for(const e of samples){
+    const p=retrievability(e.fsrsStabilityBefore*x,e.fsrsElapsed);
+    loss+=Math.pow(p-(e.grade==='again'?0:1),2)/samples.length;
+   }
+   if(loss<best){best=loss;scale=x;}
+  }
+  out[type]=Number(scale.toFixed(3));
+  results[type]={count:samples.length,misses,updated:true,scale:out[type],brier:best};
+ }
+ setSettings({...opts,scales:out});
+ return results;
+}
+return {W,kind,configure,getSettings,setSettings,retrievability,interval,schedule,optimize};
+})();
 /* Source-controlled browser-local SRS. Adjustable SM-2-family scheduler, NOT Anki FSRS. */
 const TlahtolliSRS=(()=>{
 'use strict';
@@ -1658,7 +1786,8 @@ function usage(records=studyRecords,now=Date.now()){
  return {introduced,reviews};
 }
 function days(n){return Math.min(opts.maxInterval,Math.max(1,Math.round(n)))}
-function schedule(prior,grade,now=Date.now()){
+function schedule(prior,grade,now=Date.now(),cardKey=''){
+ if(TlahtolliFSRS.getSettings().enabled)return TlahtolliFSRS.schedule(prior,grade,now,cardKey);
  if(!['again','hard','good','easy'].includes(grade))return null;
  const prev=prior||{},state=phase(prev),learn=steps(opts.learning),relearn=steps(opts.relearning);
  const ease=clamp(prev.ease??opts.startingEase,1.3,4,opts.startingEase);
@@ -1745,10 +1874,10 @@ function preview(root,key){
  const el=$(root),box=el?.querySelector('.study-grades');if(!box)return;
  for(const button of box.querySelectorAll('[data-study-grade],[data-drill-grade]')){
   const grade=button.dataset.studyGrade||button.dataset.drillGrade;
-  const record=schedule(studyRecords[key],grade);
+  const record=schedule(studyRecords[key],grade,Date.now(),key);
   if(record)button.textContent=grade.slice(0,1).toUpperCase()+grade.slice(1)+' · '+interval(record.due-Date.now());
  }
- if(!el.querySelector('.srs-memo'))box.insertAdjacentHTML('beforebegin','<p class="readerhint srs-memo">Intervals follow your adjustable scheduler, not Anki FSRS.</p>');
+ if(!el.querySelector('.srs-memo'))box.insertAdjacentHTML('beforebegin','<p class="readerhint srs-memo">Intervals follow your adjustable scheduler, FSRS-5 is available as an opt-in.</p>');
 }
 function statsText(){
  const count=usage();$('srsDaily').textContent='New today '+count.introduced+'/'+opts.newLimit+' · Review grades '+count.reviews+'/'+opts.reviewLimit+
@@ -1760,7 +1889,7 @@ function rate(key,grade,filter){
  if(filter==='all'){excluded.add(key);message('Practice-only review: schedule unchanged.');}
  else{
   undo={key,before:studyRecords[key]?JSON.parse(JSON.stringify(studyRecords[key])):null};
-  studyRecords[key]=schedule(studyRecords[key],grade);saveStudyRecords();
+  studyRecords[key]=schedule(studyRecords[key],grade,Date.now(),key);saveStudyRecords();
   if(studyRecords[key].suspended)message('Leech card suspended after repeated lapses. Use a backup to restore or reset progress.');
  }
  if(key.startsWith('paradigm§')){drillCurrentKey='';drillRevealed=false;renderDrill();}
@@ -1987,6 +2116,35 @@ return {DEFAULT,PRESETS,FIELDS,config,steps,schedule,midnight,usage,queueWords,q
  report();
 })();
  /* END TLAHTOLLI SRS V3 INSIGHTS */
+/* Conservative FSRS opt-in. Stored browser-locally and included in full backup. */
+(function initializeFSRSOptions(){
+ const host=document.getElementById('srsOptions');if(!host)return;
+ const panel=document.createElement('details');panel.className='srs-options';panel.id='fsrsOptions';
+ panel.innerHTML='<summary>FSRS-5 · modern adaptive scheduling</summary>'+
+ '<p class="readerhint">Opt-in. Existing review dates are preserved until you grade the card. Learning steps, daily limits, Undo, leech handling, statistics, and Anki TSV export remain available. Classical ease/interval factors do not control FSRS.</p>'+
+ '<label class="srs-checkbox"><input type="checkbox" id="fsrsEnable"> Use FSRS-5 instead of the classic scheduler</label>'+
+ '<p class="readerhint">Target recall for future reviews (changes do not reschedule existing due dates):</p>'+
+ '<div class="srs-settings-row"><label>Vocabulary<select id="fsrsTargetVocabulary"></select></label>'+
+ '<label>Reverse vocabulary<select id="fsrsTargetReverse"></select></label>'+
+ '<label>Conjugations<select id="fsrsTargetParadigm"></select></label></div>'+
+ '<button class="btn primary" type="button" id="fsrsSave">Save FSRS settings</button>'+
+ '<p class="readerhint" id="fsrsFeedback" role="status"></p>';
+ host.insertAdjacentElement('afterend',panel);
+ const fields=[['vocabulary','fsrsTargetVocabulary'],['reverse','fsrsTargetReverse'],['paradigm','fsrsTargetParadigm']];
+ for(const [,id] of fields){const sel=document.getElementById(id);
+  for(let p=80;p<=97;p++){const opt=document.createElement('option');opt.value=(p/100).toFixed(2);opt.textContent=p+'%';sel.appendChild(opt);}
+ }
+ function fill(){const settings=TlahtolliFSRS.getSettings();document.getElementById('fsrsEnable').checked=settings.enabled;
+  for(const [kind,id] of fields)document.getElementById(id).value=settings.targets[kind].toFixed(2);}
+ fill();
+ document.getElementById('fsrsSave').onclick=()=>{
+  const existing=TlahtolliFSRS.getSettings(),targets={};
+  for(const [kind,id] of fields)targets[kind]=Number(document.getElementById(id).value);
+  TlahtolliFSRS.setSettings({...existing,enabled:document.getElementById('fsrsEnable').checked,targets});
+  document.getElementById('fsrsFeedback').textContent='Saved. Existing due dates are unchanged.';
+  studyCurrentKey='';drillCurrentKey='';renderStudy();renderDrill();
+ };
+})();
 /* END TLAHTOLLI SRS V2 */
 renderSourceAtlas();syncSourceAtlas();render();
 

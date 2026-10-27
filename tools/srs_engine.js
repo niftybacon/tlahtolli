@@ -58,7 +58,8 @@ function usage(records=studyRecords,now=Date.now()){
  return {introduced,reviews};
 }
 function days(n){return Math.min(opts.maxInterval,Math.max(1,Math.round(n)))}
-function schedule(prior,grade,now=Date.now()){
+function schedule(prior,grade,now=Date.now(),cardKey=''){
+ if(TlahtolliFSRS.getSettings().enabled)return TlahtolliFSRS.schedule(prior,grade,now,cardKey);
  if(!['again','hard','good','easy'].includes(grade))return null;
  const prev=prior||{},state=phase(prev),learn=steps(opts.learning),relearn=steps(opts.relearning);
  const ease=clamp(prev.ease??opts.startingEase,1.3,4,opts.startingEase);
@@ -145,10 +146,10 @@ function preview(root,key){
  const el=$(root),box=el?.querySelector('.study-grades');if(!box)return;
  for(const button of box.querySelectorAll('[data-study-grade],[data-drill-grade]')){
   const grade=button.dataset.studyGrade||button.dataset.drillGrade;
-  const record=schedule(studyRecords[key],grade);
+  const record=schedule(studyRecords[key],grade,Date.now(),key);
   if(record)button.textContent=grade.slice(0,1).toUpperCase()+grade.slice(1)+' · '+interval(record.due-Date.now());
  }
- if(!el.querySelector('.srs-memo'))box.insertAdjacentHTML('beforebegin','<p class="readerhint srs-memo">Intervals follow your adjustable scheduler, not Anki FSRS.</p>');
+ if(!el.querySelector('.srs-memo'))box.insertAdjacentHTML('beforebegin','<p class="readerhint srs-memo">Intervals follow your adjustable scheduler, FSRS-5 is available as an opt-in.</p>');
 }
 function statsText(){
  const count=usage();$('srsDaily').textContent='New today '+count.introduced+'/'+opts.newLimit+' · Review grades '+count.reviews+'/'+opts.reviewLimit+
@@ -160,7 +161,7 @@ function rate(key,grade,filter){
  if(filter==='all'){excluded.add(key);message('Practice-only review: schedule unchanged.');}
  else{
   undo={key,before:studyRecords[key]?JSON.parse(JSON.stringify(studyRecords[key])):null};
-  studyRecords[key]=schedule(studyRecords[key],grade);saveStudyRecords();
+  studyRecords[key]=schedule(studyRecords[key],grade,Date.now(),key);saveStudyRecords();
   if(studyRecords[key].suspended)message('Leech card suspended after repeated lapses. Use a backup to restore or reset progress.');
  }
  if(key.startsWith('paradigm§')){drillCurrentKey='';drillRevealed=false;renderDrill();}

@@ -1,6 +1,12 @@
-# Tlahtōlli v2.3.1 — Historical evidence reassessment (2026-10-27)
+# Tlahtōlli v2.3.1 — Expanded source-specific audit (2026-10-27)
 
-All 222 outstanding provisional/unverified field claims were inventoried and assigned individual evidence decisions and follow-up requirements. **16** gained source-located support, while **111** remain inference and **95** unverified. The 674-field ledger now contains **324 dictionary**, **129 grammar**, and **15 quoted historical-text** records. This is an AI-assisted research update, **not full historical verification or expert peer review**. See [full claim-by-claim reassessment](claim_reassessment_2026-10-27.csv) and [method and historical locators](docs/OUTSTANDING_CLAIMS_2026-10-27.md).
+**222** original outstanding records have row-specific decisions in [claim_reassessment_2026-10-27.csv](claim_reassessment_2026-10-27.csv). A second evidence pass located four additional claims. **20** now have source-scoped dictionary/grammar/text support; **202** retain inference or unverified labels. The complete 674-row ledger is now **325 dictionary, 129 grammar, 18 historical-text, 111 inference, 91 unverified**. Some attestations are honorific, metaphorical or limited to a particular historical meaning. See the [revised research notes](docs/OUTSTANDING_CLAIMS_2026-10-27.md). This work does not constitute direct examination of every original folio or expert peer review.
+
+---
+
+# Earlier audit snapshot — 16 source-located claims (superseded by expanded audit above)
+
+In the first pass (before the four additional source checks above), all 222 outstanding provisional/unverified field claims were inventoried and assigned individual evidence decisions and follow-up requirements. **16** gained source-located support, while **111** remain inference and **95** unverified. The 674-field ledger now contains **324 dictionary**, **129 grammar**, and **15 quoted historical-text** records. This is an AI-assisted research update, **not full historical verification or expert peer review**. See [full claim-by-claim reassessment](claim_reassessment_2026-10-27.csv) and [method and historical locators](docs/OUTSTANDING_CLAIMS_2026-10-27.md).
 
 # Tlahtōlli v2.3.1 — Four additional located possessive forms
 

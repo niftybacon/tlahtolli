@@ -1,14 +1,18 @@
+# Historical spellings and interface polish (October 27, 2026)
+
+Word overviews now display an evidence-aware **Historical spellings** section. Already linked transcriptions are shown with sources, including the Florentine Codex spellings `Jn` and `yn` for **in** (Book 1, folio 16r). These spellings are searchable. The rest of the dictionary, morphology, and study tools remain unchanged. See [the documentation](docs/HISTORICAL_SPELLINGS.md).
+
 # FSRS-5 Stage 2 (opt-in)
 
 This study panel now includes FSRS-5 scheduling (off by default to protect existing progress), independent vocabulary/reverse/conjugation retention targets, limited history-based calibration and 30-day forecasts. All data stays in browser localStorage, backed up with full-project JSON. Anki TSV contains note content and stable GUIDs, not scheduling history. [Full documentation](docs/FSRS_STAGE2.md).
 
 # Study upgrades — locally customizable repetition and Anki TSV interoperability (2026-10-27)
 
-Study settings now expose separate review/new ordering controls, timed optional answer reveal, real 30-day recall measurements, seven-day scheduled workload forecasts and stable Anki import GUIDs for forward/reverse vocabulary and conjugations. The engine remains an adjustable **SM-2-family scheduler, not Anki FSRS**, and does not sync Anki's scheduling state. Personal study records, settings, and review history remain only in this browser until explicitly backed up or exported. See [study settings and Anki export documentation](docs/STUDY_SYSTEM_V3.md).
+Study settings now expose separate review/new ordering controls, timed optional answer reveal, real 30-day recall measurements, seven-day scheduled workload forecasts and stable Anki import GUIDs for forward/reverse vocabulary and conjugations. The classic scheduler introduced then was SM-2-family; current versions also offer optional **FSRS-5**. Anki manages scheduling for TSV-imported notes independently. Personal study records, settings, and review history remain only in this browser until explicitly backed up or exported. See [study settings and Anki export documentation](docs/STUDY_SYSTEM_V3.md).
 
 # Advanced spaced repetition and Anki interoperability (2026-10-27)
 
-The built-in vocabulary **and conjugation** study tools now share a configurable browser-local Anki-inspired scheduler: short-term learning/relearning steps, daily new/review limits, long-term ease and interval modifiers, leech suspension, sibling burying, independent forward/reverse recall, practice-only cram, grade-interval previews and one-step Undo. Three self-contained Anki TSV exports are available (vocabulary, reverse vocabulary, and 720 indexed conjugation prompts); Anki manages imported cards with **its own** review scheduler, and TSV does not transfer study history. Full-project JSON backups now preserve advanced settings and schedules. The implementation is **not FSRS**; see [advanced study and Anki guide](docs/ADVANCED_SRS_AND_ANKI.md).
+The built-in vocabulary **and conjugation** study tools now share a configurable browser-local Anki-inspired scheduler: short-term learning/relearning steps, daily new/review limits, long-term ease and interval modifiers, leech suspension, sibling burying, independent forward/reverse recall, practice-only cram, grade-interval previews and one-step Undo. Three self-contained Anki TSV exports are available (vocabulary, reverse vocabulary, and 720 indexed conjugation prompts); Anki manages imported cards with **its own** review scheduler, and TSV does not transfer study history. Full-project JSON backups now preserve advanced settings and schedules. The classic scheduler from that release remains available alongside opt-in FSRS-5; see [advanced study and Anki guide](docs/ADVANCED_SRS_AND_ANKI.md).
 
 # Expansion 01 — 103 sourced Classical Nahuatl lemmas (2026-10-27)
 

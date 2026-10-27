@@ -95,6 +95,12 @@ with sync_playwright() as pw:
     assert len(rows)==len(dictionary['words']) and all(len(row)==3 for row in rows)
     assert any(row[0]=='xōchitl' for row in rows)
     with page.expect_download() as incoming:
+        page.locator('#srsAnkiReverse').click()
+    raw=Path(incoming.value.path()).read_text(encoding='utf-8-sig')
+    assert '#deck:Tlahtōlli::Reverse Vocabulary' in raw
+    reverse_rows=list(csv.reader((line for line in raw.splitlines() if not line.startswith('#')),delimiter='\t'))
+    assert len(reverse_rows)==len(dictionary['words']) and any('xōchitl' in row[1] for row in reverse_rows)
+    with page.expect_download() as incoming:
         page.locator('#srsAnkiVerbs').click()
     raw=Path(incoming.value.path()).read_text(encoding='utf-8-sig')
     assert '#deck:Tlahtōlli::Verb Paradigms' in raw

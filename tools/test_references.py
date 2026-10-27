@@ -16,9 +16,18 @@ with sync_playwright() as pw:
     page=browser.new_page()
     errors=[]
     page.on('pageerror',lambda err:errors.append(str(err)))
-    page.evaluate("""([d,p,r])=>{window.fetch=async u=>new Response(JSON.stringify(String(u).startsWith('dictionary.json')?d:String(u).startsWith('paradigms.json')?p:r),{status:200,headers:{'Content-Type':'application/json'}})}""",[d,p,r])
+    page.evaluate("""([d,p,r])=>{
+      window.fetch=async u=>{
+        const name=String(u),data=name.startsWith('release.json')
+          ? {format:'tlahtolli-release-manifest',schema:1,version:d.version,
+             headwords:d.words.length,paradigms:Object.keys(p.paradigms).length}
+          : name.startsWith('dictionary.json')?d
+          : name.startsWith('paradigms.json')?p:r;
+        return new Response(JSON.stringify(data),{status:200,headers:{'Content-Type':'application/json'}});
+      };
+    }""",[d,p,r])
     page.set_content((root/'index.html').read_text(encoding='utf-8'),wait_until='load')
-    page.wait_for_function("document.querySelector('#syncStatus')?.textContent.includes('Synced')")
+    page.wait_for_function("['Current','Synced'].some(s=>document.querySelector('#syncStatus')?.textContent.includes(s))")
     page.locator('#search').fill('xōchitl')
     page.locator('[data-entry-tab="verification"]').click()
     assert 'Book 11, folio 160v' in page.locator('#detail').inner_text()

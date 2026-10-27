@@ -1,16 +1,22 @@
-# Tlahtōlli v2.3 — Morphology and noun-class review
+# Tlahtōlli v2.3.1 — Four additional located possessive forms
+
+This patch adds **notlaxcal**, **noconeuh**, **nomil**, and **noteuh** as specifically located grammatical/historical occurrences, with manuscript date or grammar page in each evidence claim. There are now **674 claim records:** 316 dictionary, 128 grammar, 8 historical-text, 113 provisional inference and 109 still unverified. A located grammatical rule is not the same as independently attesting each derived form. No expert peer review is claimed.
+
+All 88 lemmas, 12 verb paradigms and locally protected edits are preserved. Read [noun number and animacy distinctions](docs/NOUN_CLASS_AND_NUMBER.md). Download `claim_audit.csv` for field-by-field status.
+
+# Tlahtōlli v2.3.1 — Morphology and noun-class review
 
 The 349 open field claims from v2.2 were reassessed through the published Classical Nahuatl grammar of Launey and individually cited lexicographic and historical forms. The research ledger now contains **316 dictionary, 127 grammar, 5 historical-text, 113 provisional analytical-inference and 113 unverified records** (total 674). **Inferences are not verified lexical facts.** See [grammatical guide](docs/NOUN_CLASS_AND_NUMBER.md).
 
 New historically recorded plurals: *tlatoani → tlatoque* and *teopixqui → teopixque*. The 88 lemma collection and all existing reading and study features remain available. The site synchronizes the published release and preserves browser-local personal edits. Always make a full backup before upgrading devices.
 
-# v2.3 source-by-source evidence expansion
+# v2.3.1 source-by-source evidence expansion
 
 This AI-assisted pass checked the original 44 headwords against their Online Nahuatl Dictionary lemma, principal translation and lexical-class information, with exact entry sections and underlying works noted. It also added independent records for historically documented possessed stems, plural alternatives, verb stem changes and region-/period-bound plurals. **A dictionary citation is not independent manuscript attestation or expert peer review.** Inanimate/animate and number properties remain unresolved when these entries lack direct grammatical evidence. Local user edits are preserved by the published-data sync system.
 
 This release contains 674 claim records: 313 lexical references, 8 grammatical references, 4 text-specific references, and 349 unresolved records. Counts are editorial tracking, not probability of correctness.
 
-# Tlahtōlli v2.3 · Field-by-field source audit
+# Tlahtōlli v2.3.1 · Field-by-field source audit
 
 [Open Tlahtōlli](https://niftybacon.github.io/tlahtolli/)
 

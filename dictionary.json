@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-27.3",
+  "version": "2026-10-27.3.1",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -1210,7 +1210,7 @@
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "-li/-lli",
-      "possessed": "",
+      "possessed": "notlaxcal (located grammar example; not a complete paradigm)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/tlaxcalli ; https://nahuatl.wired-humanities.org/content/tin",
       "grammarNotes": "Ordinary inanimate food noun; tlaxcalli can translate as “tortilla(s)” or bread generally. The cited primary dictionary entry does not establish a distinct standard plural. No separate plural is recorded in the cited lexical entry. This is not proof that no plural occurs in any period or dialect.",
       "inflections": [
@@ -1281,12 +1281,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/content/tlaxcalli",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "grammar",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepilia",
+          "locator": "Michel Launey, An Introduction to Classical Nahuatl (2011), p.203, 'Xinēchcuepili in notlaxcal'",
+          "note": "Example in a published grammar: notlaxcal ('my tortilla') in a clause. A grammar example is not by itself a manuscript occurrence.",
+          "reviewer": "Tlahtōlli dated-text review (AI-assisted; no specialist review)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -2431,7 +2431,7 @@
       "plural": "tēteoh",
       "pluralStatus": "attested",
       "absolutive": "-tl",
-      "possessed": "",
+      "possessed": "noteuh (located historical example; not a complete paradigm)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/teotl ; https://nahuatl.wired-humanities.org/content/tin",
       "grammarNotes": "Personal or personified deity is treated as animate for the documented plural tēteoh. The same word also means “divine/sacred force,” a sense not always countable in the same way as “gods.”",
       "inflections": [
@@ -2510,12 +2510,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/content/teotl",
-          "locator": "",
-          "note": "Requires field-specific source checking. A general lexical URL is not sufficient proof.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "assessment": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/quetzaltototl",
+          "locator": "Bernardino de Sahagún, Primeros Memoriales, ed. Nicholson (1997), p.152, 'Y yopuchi noteuh atlavaquetl'",
+          "note": "Historical transcription records noteuh 'my god' in a named deity context; the religious sense and possessed stem should not be generalized to unrelated contexts.",
+          "reviewer": "Tlahtōlli dated-text review (AI-assisted; no specialist review)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -5786,7 +5786,7 @@
       "plural": "cōconeh",
       "pluralStatus": "attested",
       "absolutive": "-tl",
-      "possessed": "",
+      "possessed": "noconeuh (located historical example; not a complete paradigm)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/conetl",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Reduplicated plural explicitly recorded, not mechanically -meh. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
       "inflections": [
@@ -5865,12 +5865,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/conetl",
-          "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Jonathan Truitt, Sustaining the Divine in Mexico Tenochtitlan (2018), pp.248,253, testament (Mexico City, 1673), 'yn noConeuh'",
+          "note": "Dated colonial will records the possessed spelling noConeuh 'my child'; spelling is normalized here as noconeuh, not a generalized possessive paradigm.",
+          "reviewer": "Tlahtōlli dated-text review (AI-assisted; no specialist review)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -7987,7 +7987,7 @@
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "-lli",
-      "possessed": "",
+      "possessed": "nomil (located historical example; not a complete paradigm)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/milli",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. ENL Coyoacan document locates four worked fields, using this lexical item. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
       "inflections": [
@@ -8058,12 +8058,12 @@
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/milli",
-          "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Vidas y bienes olvidados, vol.2 (1999), pp.264–265, Tetepango (Hidalgo), 1586, 'Yn nomil atlalli'",
+          "note": "Dated 1586 text records nomil 'my cultivated field'; the word denotes a specific property rather than a universally applicable semantic class.",
+          "reviewer": "Tlahtōlli dated-text review (AI-assisted; no specialist review)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",

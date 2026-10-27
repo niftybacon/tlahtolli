@@ -1,3 +1,9 @@
+## v2.3.1 (2026-10-27) — Historical possessive evidence
+
+- Located **notlaxcal** in Launey's grammar, **noconeuh** in a dated 1673 will, **nomil** in a 1586 land document, and **noteuh** in Sahagún's *Primeros Memoriales*.
+- Promoted four previously unresolved possession records with exact source locations; no paradigms were extrapolated.
+- Updated the online/offline records and tests; 109 claims remain unverified and 113 remain provisional.
+
 ## v2.3 — 2026-10-27: grammatical audit
 
 - Audited 349 pending claims with dated lexical witnesses and Classical Nahuatl grammar.

@@ -6,7 +6,7 @@ r=Path(__file__).resolve().parents[1]
 d=json.loads((r/'dictionary.json').read_text(encoding='utf8'))
 p=json.loads((r/'paradigms.json').read_text(encoding='utf8'))
 s=json.loads((r/'references.json').read_text(encoding='utf8'))
-assert d['version']==p['version']==s['version']=='2026-10-27.3'
+assert d['version']==p['version']==s['version']=='2026-10-27.3.1'
 assert len(d['words'])==88 and len(p['paradigms'])==12
 fields={'headword','meaning','pos'}
 for i,w in enumerate(d['words']):
@@ -27,7 +27,7 @@ for name,plural in [('conetl','cōconeh'),('ichpochtli','ichpōpōchtin'),('telp
   assert w['plural']==plural and w['pluralStatus']=='attested'
 from collections import Counter
 counts=Counter(c['assessment'] for w in d['words'] for c in w['claims'])
-assert counts=={"dictionary":316,"grammar":127,"unverified":113,"inference":113,"text":5},counts
+assert counts=={"dictionary":316,"grammar":128,"unverified":109,"inference":113,"text":8},counts
 with (r/'claim_audit.csv').open(encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
 assert len(rows)==674
 assert 'function renderClaimLedger' in (r/'index.html').read_text(encoding='utf8')
@@ -43,3 +43,7 @@ assert next(x for x in d['words'] if x['word']=='tlatoani')['plural']=='tlatoque
 assert next(x for x in d['words'] if x['word']=='teopixqui')['plural']=='teopixque'
 assert any(c['assessment']=='grammar' for c in next(x for x in d['words'] if x['word']=='tēpetl')['claims'] if c['field']=='animacy')
 assert all(any(c['field']=='number' and c['assessment']=='grammar' for c in w['claims']) for w in d['words'] if w['word'] in ('calli','tetl','ātl'))
+
+for name in ('tlaxcalli','conetl','milli','teōtl'):
+ w=next(w for w in d['words'] if w['word']==name)
+ assert any(c['field']=='possessed' and c['assessment'] in ('grammar','text') and c['source'].startswith('https://') and c['locator'] for c in w['claims'])

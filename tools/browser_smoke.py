@@ -37,6 +37,24 @@ with sync_playwright() as pw:
     assert int(page.locator('#total').inner_text())>=88
     assert not page.locator('#workspaceTools').evaluate('(e)=>e.open')
     assert not page.locator('#analyzerDetails').evaluate('(e)=>e.open')
+    # Vocabulary facet controls must share the panel's inset rather than hug its edges.
+    insets=page.locator('.grammar-facets').evaluate("""el=>{
+      const box=el.getBoundingClientRect();
+      const fields=[...el.querySelectorAll('select')].map(x=>x.getBoundingClientRect());
+      return {left:fields[0].left-box.left,right:box.right-fields[1].right,
+              firstRow:Math.abs(fields[0].top-fields[1].top)<2,
+              noOverflow:fields.every(r=>r.left>=box.left && r.right<=box.right)};
+    }""")
+    assert insets['left']>=16 and insets['right']>=16 and insets['firstRow'] and insets['noOverflow'],insets
+    page.set_viewport_size({'width':390,'height':844})
+    narrow=page.locator('.grammar-facets').evaluate("""el=>{
+      const fields=[...el.querySelectorAll('select')].map(x=>x.getBoundingClientRect());
+      const box=el.getBoundingClientRect();
+      return {stacked:fields[1].top>fields[0].bottom,
+              noOverflow:fields.every(r=>r.left>=box.left && r.right<=box.right)};
+    }""")
+    assert narrow['stacked'] and narrow['noOverflow'],narrow
+    page.set_viewport_size({'width':1280,'height':720})
     page.locator('#quickLookup').fill('xōchitl')
     page.locator('#quickLookupForm button[type="submit"]').click()
     assert page.locator('#search').input_value()=='xōchitl'

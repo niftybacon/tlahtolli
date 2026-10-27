@@ -12,7 +12,8 @@
   '<details class="srs-options" id="srsOptions"><summary>Advanced study options · scheduling, limits and difficulty</summary>'+
   '<p class="readerhint"><strong>Anki-inspired, not Anki FSRS.</strong> Learning steps, review intervals, daily limits and leeches are configurable. Settings and progress stay in this browser. Saving settings affects future reviews, not existing due dates.</p>'+
   '<div class="srs-settings-row"><label>Preset<select id="srsPreset">'+
-  '<option value="custom">Current / custom</option><option value="balanced">Balanced</option>'+
+  '<option value="custom">Current / custom</option><option value="balanced">Balanced</option>'+ 
+  '<option value="screenshot">Light · 2 new / 5 reviews</option>'+
   '<option value="intensive">Intensive</option><option value="gentle">Gentle</option></select></label>'+
   '<button class="btn primary" id="srsSave" type="button">Save study options</button>'+
   '<button class="btn" id="srsResume" type="button">Resume suspended cards</button></div>'+

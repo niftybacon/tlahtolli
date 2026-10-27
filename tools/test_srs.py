@@ -114,7 +114,7 @@ with sync_playwright() as pw:
     raw=Path(incoming.value.path()).read_text(encoding='utf-8-sig')
     assert '#deck:Tlahtōlli::Verb Paradigms' in raw
     rows=list(csv.reader((line for line in raw.splitlines() if not line.startswith('#')),delimiter='\t'))
-    assert len(rows)==720 and all(len(row)==3 for row in rows)
+    assert len(rows)==720 and all(len(row)==4 for row in rows)
     assert all('Grammar-derived' in row[2] for row in rows)
 
     with page.expect_download() as incoming:

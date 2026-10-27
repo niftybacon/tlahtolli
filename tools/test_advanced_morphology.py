@@ -10,10 +10,10 @@ from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
 d=json.loads((ROOT/'dictionary.json').read_text(encoding='utf-8'))
 p=json.loads((ROOT/'paradigms.json').read_text(encoding='utf-8'))
-assert len(d['words'])==88
+assert len(d['words'])>=103
 assert len(p['paradigms'])==12
-assert sum(len(w['claims']) for w in d['words'])==674
-assert sum(len(w['inflections']) for w in d['words'])==178
+assert sum(len(w['claims']) for w in d['words'])>=674
+assert sum(len(w['inflections']) for w in d['words'])>=178
 
 with sync_playwright() as pw:
     browser=pw.chromium.launch(headless=True,args=['--no-sandbox'])

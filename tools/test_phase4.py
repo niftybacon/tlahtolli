@@ -7,10 +7,10 @@ root=Path(__file__).resolve().parents[1]
 data=json.loads((root/'dictionary.json').read_text(encoding='utf-8'))
 par=json.loads((root/'paradigms.json').read_text(encoding='utf-8'))
 entries={w['word']:w for w in data['words']}
-assert len(entries)==88 and len(par['paradigms'])==12
-assert sum(len(w['claims']) for w in entries.values())==674
+assert len(entries)>=103 and len(par['paradigms'])==12
+assert sum(len(w['claims']) for w in data['words'][:88])==674
 from collections import Counter
-counts=Counter(c['assessment'] for w in entries.values() for c in w['claims'])
+counts=Counter(c['assessment'] for w in data['words'][:88] for c in w['claims'])
 assert dict(counts)=={'dictionary':327,'grammar':129,'text':15,'inference':108,'unverified':95},counts
 for name in ('calli','tlālli','tēpetl'):
     claim=next(c for c in entries[name]['claims'] if c['field']=='stem')

@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-27.3.2",
+  "version": "2026-10-27.4.0",
   "entries": [
     {
       "word": "ātl",
@@ -6593,6 +6593,1023 @@
           "locator": "Launey (2011), §2.2–2.3 p.19: nominal absolutive -tl/-tli/-li/-in",
           "note": "Regular absolutive analysis: piltzin- + -tli. Orthographic -lli corresponds to stem-final l plus -li; it is not a separate productive suffix -lli. This claim concerns citation morphology, not a documented plural.",
           "reviewer": "Tlahtōlli AI-assisted grammar review; no independent expert review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "ācatl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/acatl",
+          "locator": "Molina (1571), II, f. 1v, col. 2: acatl, caña",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/acatl",
+          "locator": "Molina (1571), II, f. 1v, col. 2: acatl, caña",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/acatl",
+          "locator": "Karttunen (1992), p. 1: ĀCA-TL; Lockhart (2001), p. 210",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/acatl",
+          "locator": "",
+          "note": "No individually checked complete overt plural token. Suffix-only notation (including āyōtl -MEH) does not establish a full cited plural.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/acatl",
+          "locator": "",
+          "note": "No individually verified full possessed token. Do not infer a full paradigm from a headword or general noun rule.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/acatl",
+          "locator": "Karttunen (1992), p. 1: ĀCA-TL; Lockhart (2001), p. 210",
+          "note": "Combining base is explicitly segmented or described in this specific historical dictionary entry. Alternants and context remain constrained; standalone stem token not implied.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "cuahuitl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuahuitl-1",
+          "locator": "Molina (1571), II, f. 88r, col. 1: quauitl, arbol, madero o palo",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuahuitl-1",
+          "locator": "Molina (1571), II, f. 88r, col. 1: quauitl, arbol, madero o palo",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuahuitl-1",
+          "locator": "Karttunen (1992), p. 58: CUAHU(I)-TL; Lockhart (2001), p. 230",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cuahuitl-1",
+          "locator": "",
+          "note": "No individually checked complete overt plural token. Suffix-only notation (including āyōtl -MEH) does not establish a full cited plural.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cuahuitl-1",
+          "locator": "",
+          "note": "No individually verified full possessed token. Do not infer a full paradigm from a headword or general noun rule.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuahuitl-1",
+          "locator": "Karttunen (1992), p. 58: CUAHU(I)-TL; Lockhart (2001), p. 230",
+          "note": "Combining base is explicitly segmented or described in this specific historical dictionary entry. Alternants and context remain constrained; standalone stem token not implied.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "iztatl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iztatl",
+          "locator": "Molina (1571), II, f. 49v, col. 1: iztatl, sal",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iztatl",
+          "locator": "Molina (1571), II, f. 49v, col. 1: iztatl, sal",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iztatl",
+          "locator": "Karttunen (1992), p. 124: IZTA-TL",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/iztatl",
+          "locator": "",
+          "note": "No individually checked complete overt plural token. Suffix-only notation (including āyōtl -MEH) does not establish a full cited plural.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/iztatl",
+          "locator": "Ruiz de Alarcón (1629), Andrews/Hassig ed. (1984), p. 98: polihui in noztauh",
+          "note": "noztauh 'my salt' in Ruiz de Alarcón (1629), Andrews/Hassig ed. (1984), p. 98, Atenango: polihui in noztauh.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iztatl",
+          "locator": "Karttunen (1992), p. 124: IZTA-TL",
+          "note": "Combining base is explicitly segmented or described in this specific historical dictionary entry. Alternants and context remain constrained; standalone stem token not implied.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "nacatl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nacatl",
+          "locator": "Molina (1571), II, f. 62r, col. 1: nacatl, carne",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nacatl",
+          "locator": "Molina (1571), II, f. 62r, col. 1: nacatl, carne",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nacatl",
+          "locator": "Karttunen (1992), p. 155: NAC(A)-TL, possessed -NACAYŌ; Lockhart (2001), p. 226: naca-",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/nacatl",
+          "locator": "",
+          "note": "No individually checked complete overt plural token. Suffix-only notation (including āyōtl -MEH) does not establish a full cited plural.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nacatl",
+          "locator": "Karttunen (1992), p. 155: inalienably possessed -NACAYŌ",
+          "note": "Only a bound inalienable-possessed base meaning one's own flesh/body, not a complete subject-prefixed token.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nacatl",
+          "locator": "Karttunen (1992), p. 155: NAC(A)-TL, possessed -NACAYŌ; Lockhart (2001), p. 226: naca-",
+          "note": "Combining base is explicitly segmented or described in this specific historical dictionary entry. Alternants and context remain constrained; standalone stem token not implied.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "tamalli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tamalli",
+          "locator": "Molina (1571), II, f. 90v, col. 2: tamalli",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tamalli",
+          "locator": "Molina (1571), II, f. 90v, col. 2: tamalli",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tamalli",
+          "locator": "Karttunen (1992), p. 214: TAMAL-LI; Lockhart (2001), p. 232",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tamalli",
+          "locator": "",
+          "note": "No individually checked complete overt plural token. Suffix-only notation (including āyōtl -MEH) does not establish a full cited plural.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tamalli",
+          "locator": "",
+          "note": "No individually verified full possessed token. Do not infer a full paradigm from a headword or general noun rule.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tamalli",
+          "locator": "Karttunen (1992), p. 214: TAMAL-LI; Lockhart (2001), p. 232",
+          "note": "Combining base is explicitly segmented or described in this specific historical dictionary entry. Alternants and context remain constrained; standalone stem token not implied.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "quetzalli",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quetzalli",
+          "locator": "Molina (1571), II, f. 89r, col. 2: quetzalli, pluma rica larga y verde",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quetzalli",
+          "locator": "Molina (1571), II, f. 89r, col. 2: quetzalli, pluma rica larga y verde",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quetzalli",
+          "locator": "Karttunen (1992), p. 210: QUETZAL-LI",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/quetzalli",
+          "locator": "",
+          "note": "No individually checked complete overt plural token. Suffix-only notation (including āyōtl -MEH) does not establish a full cited plural.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/quetzalli",
+          "locator": "García Quintana (1974), Estudios de Cultura Náhuatl 11, pp. 150–151: noquetzale",
+          "note": "A possessed poetic comparison addressed to a child; historical contextual reading, not universal ownership semantics.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quetzalli",
+          "locator": "Karttunen (1992), p. 210: QUETZAL-LI",
+          "note": "Combining base is explicitly segmented or described in this specific historical dictionary entry. Alternants and context remain constrained; standalone stem token not implied.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "āyōtl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ayotl",
+          "locator": "Molina (1571), II, f. 3v, col. 2: ayotl, tortuga; f. 4r, col. 1: ayutl",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ayotl",
+          "locator": "Molina (1571), II, f. 3v, col. 2: ayotl, tortuga; f. 4r, col. 1: ayutl",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ayotl",
+          "locator": "Karttunen (1992), p. 17: ĀYŌ-TL, plural suffix -MEH",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/ayotl",
+          "locator": "",
+          "note": "No individually checked complete overt plural token. Suffix-only notation (including āyōtl -MEH) does not establish a full cited plural.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/ayotl",
+          "locator": "",
+          "note": "No individually verified full possessed token. Do not infer a full paradigm from a headword or general noun rule.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ayotl",
+          "locator": "Karttunen (1992), p. 17: ĀYŌ-TL, plural suffix -MEH",
+          "note": "Combining base is explicitly segmented or described in this specific historical dictionary entry. Alternants and context remain constrained; standalone stem token not implied.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ayotl",
+          "locator": "Karttunen (1992), p. 17: plural noted as suffix-only -MEH (not full-word token)",
+          "note": "The dictionary gives a suffixal plural indicator only: it is NOT an attested full-word plural and cannot be inserted into the historical-form index.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "cacahuatl",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cacahuatl",
+          "locator": "Molina (1571), II, f. 10v, col. 2: cacauatl, grano de cacao",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cacahuatl",
+          "locator": "Molina (1571), II, f. 10v, col. 2: cacauatl, grano de cacao",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cacahuatl",
+          "locator": "Karttunen (1992), p. 18: CACAHUA-TL",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cacahuatl",
+          "locator": "",
+          "note": "No individually checked complete overt plural token. Suffix-only notation (including āyōtl -MEH) does not establish a full cited plural.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cacahuatl",
+          "locator": "",
+          "note": "No individually verified full possessed token. Do not infer a full paradigm from a headword or general noun rule.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cacahuatl",
+          "locator": "Karttunen (1992), p. 18: CACAHUA-TL",
+          "note": "Combining base is explicitly segmented or described in this specific historical dictionary entry. Alternants and context remain constrained; standalone stem token not implied.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "tlacuilo",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuilo",
+          "locator": "Molina (1571), II, f. 120r, col. 1: tlacuilo, escriuano o pintor",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuilo",
+          "locator": "Molina (1571), II, f. 120r, col. 1: tlacuilo, escriuano o pintor",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuilo",
+          "locator": "Karttunen (1992), p. 261: TLAHCUILOH",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "animacy",
+          "assessment": "inference",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.5–2.6 pp.20–21 (general noun-class discussion)",
+          "note": "Provisional noun-number-class label from the lexeme's meaning; no independently checked lexeme-specific agreement/number test. Personification or senses may change behavior.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "number",
+          "assessment": "grammar",
+          "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+          "locator": "Launey (2011), §§2.2–2.6 pp.19–21 (citation/absolutive description)",
+          "note": "The headword is represented as an unpossessed citation form; this does not prove that each referent is singular in a text.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "plural",
+          "assessment": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuilo",
+          "locator": "Cuauhtinchan ordinances (1559), Reyes García (1972), pp. 272–273, f. 6r: Yn tlacuiloque escrivanome",
+          "note": "Contextually witnessed scribes plural; same spelling can coincide with a finite verb form; retain both analyses.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "possessed",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuilo",
+          "locator": "",
+          "note": "No individually verified full possessed token. Do not infer a full paradigm from a headword or general noun rule.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuilo",
+          "locator": "",
+          "note": "No independently established combining base; not generated mechanically from an agentive noun.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        }
+      ]
+    },
+    {
+      "word": "cochi",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cochi",
+          "locator": "Molina (1571), II, f. 23r, col. 2: cochi ni, pret. onicoch",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cochi",
+          "locator": "Molina (1571), II, f. 23r, col. 2: cochi ni, pret. onicoch",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cochi",
+          "locator": "Karttunen (1992), p. 36: COCH(I); Lockhart (2001), p. 215, class 2 ōnicoch",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cochi",
+          "locator": "Karttunen (1992), p. 36: COCH(I); Lockhart (2001), p. 215, class 2 ōnicoch",
+          "note": "Lexeme-specific listed root/stem alternation; do not invent a full tense paradigm from it.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cochi",
+          "locator": "Molina (1571), II, f. 23r, col. 2: cochi ni, pret. onicoch",
+          "note": "Source-located argument structure and/or particular recorded preterite forms. See individually listed inflections. No generalized paradigm or manuscript certification.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "caqui",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171996",
+          "locator": "Molina (1571), II, f. 12v: Caqui nitla, pret. onitlacac",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171996",
+          "locator": "Molina (1571), II, f. 12v: Caqui nitla, pret. onitlacac",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171996",
+          "locator": "Karttunen (1992), p. 25: CAQU(I), pret. CAC; Lockhart (2001), p. 213 ōniccac",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171996",
+          "locator": "Karttunen (1992), p. 25: CAQU(I), pret. CAC; Lockhart (2001), p. 213 ōniccac",
+          "note": "Lexeme-specific listed root/stem alternation; do not invent a full tense paradigm from it.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/171996",
+          "locator": "Molina (1571), II, f. 12v: Caqui nitla, pret. onitlacac",
+          "note": "Source-located argument structure and/or particular recorded preterite forms. See individually listed inflections. No generalized paradigm or manuscript certification.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "tlazotla",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlazotla",
+          "locator": "Molina (1571), II, f. 119r, col. 2: tlazotla nino (pret. oninotlazotlac), tlazotla nite (pret. onitetlazotlac)",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlazotla",
+          "locator": "Molina (1571), II, f. 119r, col. 2: tlazotla nino (pret. oninotlazotlac), tlazotla nite (pret. onitetlazotlac)",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlazotla",
+          "locator": "Karttunen (1992), p. 306: TLAZOHTLA vt/vref",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlazotla",
+          "locator": "",
+          "note": "No independently checked productive stem/allomorph segmentation in this expansion.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlazotla",
+          "locator": "Molina (1571), II, f. 119r, col. 2: tlazotla nino (pret. oninotlazotlac), tlazotla nite (pret. onitetlazotlac)",
+          "note": "Source-located argument structure and/or particular recorded preterite forms. See individually listed inflections. No generalized paradigm or manuscript certification.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "cuiloa",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuiloa",
+          "locator": "Molina (1571), II, f. 26v, col. 2: cuiloa nitla, pret. onitlacuilo",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuiloa",
+          "locator": "Molina (1571), II, f. 26v, col. 2: cuiloa nitla, pret. onitlacuilo",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuiloa",
+          "locator": "ODN Cuiloa entry: Beyond the Codices (1976), p. 21: onitlacuilo",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/cuiloa",
+          "locator": "",
+          "note": "No independently checked productive stem/allomorph segmentation in this expansion.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuiloa",
+          "locator": "Molina (1571), II, f. 26v, col. 2: cuiloa nitla, pret. onitlacuilo",
+          "note": "Source-located argument structure and/or particular recorded preterite forms. See individually listed inflections. No generalized paradigm or manuscript certification.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "tlacuiloa",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuiloa",
+          "locator": "ODN tlacuiloa: Karttunen (1992), p. 261 TLAHCUILOĀ; Carochi distinguishes fused nonspecific tla-",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuiloa",
+          "locator": "ODN tlacuiloa: Karttunen (1992), p. 261 TLAHCUILOĀ; Carochi distinguishes fused nonspecific tla-",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuiloa",
+          "locator": "Karttunen (1992), p. 261: TLAHCUILOĀ (C) intransitive with fused tla-",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuiloa",
+          "locator": "",
+          "note": "No independently checked productive stem/allomorph segmentation in this expansion.",
+          "reviewer": "Research unresolved",
+          "checkedAt": ""
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacuiloa",
+          "locator": "ODN tlacuiloa: Karttunen (1992), p. 261 TLAHCUILOĀ; Carochi distinguishes fused nonspecific tla-",
+          "note": "Source-located argument structure and/or particular recorded preterite forms. See individually listed inflections. No generalized paradigm or manuscript certification.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "word": "yauh",
+      "variety": "Classical Nahuatl (historical dictionary lemma)",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yauh",
+          "locator": "Molina (1571), II, f. 31v, col. 1: yauh ni, pret. onia",
+          "note": "The historical lexical entry supports this headword (editorial vowel length may be normalized); not every variant or derived surface form is guaranteed.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yauh",
+          "locator": "Molina (1571), II, f. 31v, col. 1: yauh ni, pret. onia",
+          "note": "The printed lexicon supplies the core lexical sense. Additional contextual readings are kept separate.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yauh",
+          "locator": "Lockhart (2001), p. 242: suppletive roots ya/yā and hui, pret. ōniyah, future niyāz",
+          "note": "The entry's noun/verb category follows the specified lexicographic grammatical description, not automated English-gloss inference.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yauh",
+          "locator": "Lockhart (2001), p. 242: suppletive roots ya/yā and hui, pret. ōniyah, future niyāz",
+          "note": "Lexeme-specific listed root/stem alternation; do not invent a full tense paradigm from it.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
+          "checkedAt": "2026-10-27"
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yauh",
+          "locator": "Molina (1571), II, f. 31v, col. 1: yauh ni, pret. onia",
+          "note": "Source-located argument structure and/or particular recorded preterite forms. See individually listed inflections. No generalized paradigm or manuscript certification.",
+          "reviewer": "Tlahtōlli AI-assisted field-specific source-location review (ODN transcription); no original-folio collation or specialist peer review",
           "checkedAt": "2026-10-27"
         }
       ]

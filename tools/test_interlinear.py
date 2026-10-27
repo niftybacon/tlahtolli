@@ -32,6 +32,7 @@ with sync_playwright() as pw:
     assert len(tsv.splitlines())==5
     page.locator('[data-interlinear-token="0"]').click()
     assert page.evaluate('() => tokenIdx')==0
+    page.locator('#workspaceTools').evaluate('(e)=>e.open=true')
     with page.expect_download() as dl:page.locator('#allBackup').click()
     backup=json.loads(Path(dl.value.path()).read_text(encoding='utf-8-sig'))
     record=backup['passages'][0]['analyses']['1']

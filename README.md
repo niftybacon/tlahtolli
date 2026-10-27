@@ -2,7 +2,15 @@
 
 [**Open Tlahtōlli Online**](https://niftybacon.github.io/tlahtolli/)
 
-**Version 1.7 · Interlinear annotation and evidence-aware reading.** This is an independent, AI-assisted learning/research tool, **not** a scholarly peer-reviewed edition. Its evidence status is per claim, not per page; never infer that a lexicon URL verifies every field.
+**Version 1.8 · Focused interface and improved accessibility.** This is an independent, AI-assisted learning/research tool, **not** a scholarly peer-reviewed edition. Its evidence status is per claim, not per page; never infer that a lexicon URL verifies every field.
+
+## Focused interface (v1.8)
+
+- **Quick lookup · Tlatemōlli:** search English or Nahuatl from the landing area; **Ctrl+K / ⌘+K** focuses the input.
+- **Manage data:** collapses full backups, learning-pack import and recovery options.
+- **Form detective** and dictionary CSV/Anki tools expand when you need them. The reader reveals the form analyzer automatically when sending a word.
+- Responsive navigation, improved text contrast, keyboard focus outlines, and reduced-motion support.
+- The dictionary, citations, study records, reading notes and browser-local storage format are unchanged.
 
 ## Explore
 

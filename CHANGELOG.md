@@ -1,3 +1,12 @@
+## v1.8 — Cleaner interface and clearer navigation
+
+- Compact landing page with a visible English/Nahuatl search and shortcut.
+- Expandable import, backup, export, and advanced analysis controls.
+- Kept reader-to-form-detector navigation functional.
+- Mobile-first spacing, keyboard accessibility and reduced-motion styling.
+- No new speculative linguistic data; existing 44 entries, 120 form records and 720 finite-verb practice cells are preserved.
+- New browser and HTML validator regression coverage.
+
 # Changelog
 
 ## v1.7 — Interlinear annotation, provenance and conservative ambiguity (2026-10-26)

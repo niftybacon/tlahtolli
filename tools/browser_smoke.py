@@ -20,6 +20,15 @@ with sync_playwright() as pw:
     page.set_content((root/'index.html').read_text(encoding='utf8'),wait_until='load')
     page.wait_for_function("document.querySelector('#syncStatus')?.textContent.includes('Synced')")
     assert page.locator('#total').inner_text()=='44'
+    assert not page.locator('#workspaceTools').evaluate('(e)=>e.open')
+    assert not page.locator('#analyzerDetails').evaluate('(e)=>e.open')
+    page.locator('#quickLookup').fill('xōchitl')
+    page.locator('#quickLookupForm button[type="submit"]').click()
+    assert page.locator('#search').input_value()=='xōchitl'
+    assert page.locator('button.result').count()>0
+    page.keyboard.press('Control+k')
+    assert page.locator('#quickLookup').evaluate('(e)=>document.activeElement===e')
+    page.locator('#search').fill('')
     page.locator('#facetPOS').select_option('noun')
     assert page.locator('button.result').count()==26
     page.locator('#facetAnimacy').select_option('animate')
@@ -29,6 +38,7 @@ with sync_playwright() as pw:
     assert page.locator('button.result').count()>=5
     page.locator('#facetPOS').select_option('all')
     page.locator('#facetEvidence').select_option('all')
+    page.locator('#analyzerDetails').evaluate('(e)=>e.open=true')
     page.locator('#formProbeInput').fill('nichōcac')
     page.locator('#formProbeForm button[type="submit"]').click()
     analysis=page.locator('#formProbeOutput').inner_text()
@@ -48,7 +58,9 @@ with sync_playwright() as pw:
     page.locator('#concordanceMode').select_option('exact')
     page.locator('#concordanceInput').fill('in')
     page.locator('.concordance-row').first.click()
+    page.locator('#analyzerDetails').evaluate('(e)=>e.open=false')
     page.locator('#readerToAnalysis').click()
+    assert page.locator('#analyzerDetails').evaluate('(e)=>e.open')
     assert page.locator('#formProbeInput').input_value()=='in'
     page.locator('#tabAudit').click()
     assert 'Noun plural behavior' in page.locator('#auditCoverageMatrix').inner_text()
@@ -61,9 +73,10 @@ with sync_playwright() as pw:
     page.locator('[data-drill-grade=good]').click()
     page.locator('#studyReveal').click()
     page.locator('[data-study-grade="good"]').click()
+    page.locator('#workspaceTools').evaluate('(e)=>e.open=true')
     with page.expect_download() as download:page.locator('#allBackup').click()
     backup=json.loads(Path(download.value.path()).read_text(encoding='utf-8-sig'))
     assert len(backup['words'])==44 and len(backup['studyRecords'])==2 and any(k.startswith('paradigm§') for k in backup['studyRecords'])
     assert not errors,errors
     browser.close()
-print('PASS: browser search, analysis, concordance, study, backup regressions')
+print('PASS: v1.8 browser regressions including focused UI')

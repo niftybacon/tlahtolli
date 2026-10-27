@@ -1216,14 +1216,14 @@ function morphologyAnalyses(value){
  }
  for(const w of words){
   if(!w.pos.toLowerCase().includes('noun')||norm(w.word)!==query)continue;
-  const stem=norm(w.stem||'').replace(/-$/,'');
-  const suffix=['tli','tl','li','in'].find(s=>stem&&query===stem+s);
-  if(!suffix)continue;
+  const allStems=String(w.stem||'').split(/[;,]/).map(x=>x.trim().split(' ')[0]).filter(x=>x.endsWith('-'));
+  const matched=allStems.flatMap(st=>['tli','tl','li','in'].filter(s=>query===norm(st.slice(0,-1)+s)).map(s=>({stem:st,suffix:s})))[0];
+  if(!matched)continue;
   const evidence=(w.claims||[]).find(c=>c.field==='stem');
   out.push({lemma:w.word,type:'Noun / absolutive segmentation',
    pattern:'Citation-form hypothesis',parts:[
-    {form:w.stem,label:'Proposed noun stem ('+(evidence?.assessment||'unreviewed')+')'},
-    {form:suffix,label:'Absolutive ending; not a plural'}],
+    {form:matched.stem,label:'Proposed noun stem ('+(evidence?.assessment||'unreviewed')+')'},
+    {form:matched.suffix,label:'Absolutive ending; not a plural'}],
    source:evidence?.source||w.source,
    certainty:'morpheme boundary '+(evidence?.assessment==='dictionary'?'lexicographically located':'analytical only; not independently established')});
  }

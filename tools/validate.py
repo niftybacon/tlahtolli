@@ -5,12 +5,19 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from html.parser import HTMLParser
 from collections import Counter
+from build_dictionary import assemble, audit_csv, read_json
 root=Path(__file__).resolve().parents[1]
 d=json.loads((root/'dictionary.json').read_text(encoding='utf-8'))
 p=json.loads((root/'paradigms.json').read_text(encoding='utf-8'))
 s=json.loads((root/'references.json').read_text(encoding='utf-8'))
 release=json.loads((root/'release.json').read_text(encoding='utf-8'))
 errors=[]
+try:
+    canonical=assemble(read_json(root/'data/lexicon.json'),read_json(root/'data/morphology.json'),read_json(root/'data/evidence.json'),p,s,release)
+    if canonical!=d:errors.append('dictionary.json is stale relative to authoritative data sources')
+    if audit_csv(canonical)!=(root/'claim_audit.csv').read_text(encoding='utf-8'):errors.append('claim_audit.csv is stale relative to canonical evidence')
+except (ValueError,KeyError,TypeError) as exc:
+    errors.append('Canonical source validation failed: '+str(exc))
 def check(ok,msg):
     if not ok:errors.append(msg)
 def valid_url(s):

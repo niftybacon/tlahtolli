@@ -8,6 +8,8 @@ from collections import Counter
 root=Path(__file__).resolve().parents[1]
 d=json.loads((root/'dictionary.json').read_text(encoding='utf-8'))
 p=json.loads((root/'paradigms.json').read_text(encoding='utf-8'))
+s=json.loads((root/'references.json').read_text(encoding='utf-8'))
+release=json.loads((root/'release.json').read_text(encoding='utf-8'))
 errors=[]
 def check(ok,msg):
     if not ok:errors.append(msg)
@@ -19,6 +21,11 @@ def valid_url(s):
 check(d.get('schema')==1 and d.get('format')=='tlahtolli-published-dictionary','Invalid dictionary schema')
 check(p.get('schema')==1 and p.get('format')=='tlahtolli-verb-paradigms','Invalid verb schema')
 check(d.get('version')==p.get('version'),'Dictionary and paradigms are different versions')
+check(s.get('version')==d.get('version'),'References and dictionary are different versions')
+check(release.get('format')=='tlahtolli-release-manifest' and release.get('schema')==1,'Invalid release manifest')
+check(release.get('version')==d.get('version'),'Release manifest is stale: bump release.json with published JSON')
+check(release.get('headwords')==len(d.get('words',[])),'Release headword count mismatch')
+check(release.get('paradigms')==len(p.get('paradigms',{})),'Release paradigms count mismatch')
 words=d.get('words',[])
 check(isinstance(words,list) and len(words)>=88,'Missing founding headwords')
 seen=set(); forms=0
@@ -66,7 +73,16 @@ check('v2.3.1' in (root/'index.html').read_text(encoding='utf-8'),'App version h
 try:
     seed=json.loads(h.scripts[0].split('window.TLAHTOLLI_OFFLINE_SEED=',1)[1].strip().rstrip(';'))
     check(seed.get('words')==words,'Offline words differ from published words')
+    check(seed.get('paradigms')==p.get('paradigms'),'Offline paradigms differ from published paradigms')
+    check(seed.get('version')==release.get('version'),'Offline seed and release manifest versions differ')
 except (ValueError,IndexError,TypeError) as e:errors.append('Offline seed error: '+str(e))
+# Startup request policy and rendering guard invariants.
+source_html=(root/'index.html').read_text(encoding='utf-8')
+check("fetch('release.json',{cache:'no-cache'})" in source_html,'Missing conditional release check')
+check("manifest.version===embedded.version" in source_html,'Bundled data are not reused for matching releases')
+check("if(searchOnly&&previousSelected===selected)return;" in source_html,'Missing search-only detail preservation')
+check("$('search').oninput=scheduleSearchRender" in source_html,'Missing batched dictionary search')
+check("const oldBase=publishedBaseline[key]" in source_html and "else if(oldBase&&entriesIdentical" in source_html,'User-edit-safe published-data merge is missing')
 if errors:
     print('FAILED:\n'+'\n'.join(' - '+x for x in errors));sys.exit(1)
 print('PASS:',len(words),'lemmas,',forms,'forms,',len(models),'verb paradigms; matched offline seed.')

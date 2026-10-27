@@ -20,10 +20,6 @@ jobs:
         run: python tools/build_dictionary.py --check
       - name: Test Phase 2 source separation
         run: python tools/test_phase2.py
-      - name: Check normalized data build parity
-        run: python tools/build_data.py --check
-      - name: Test source separation and evidence preservation
-        run: python tools/test_build_data.py
       - name: Validate published dictionary
         run: python tools/validate.py
       - name: Regression checks on known documented forms

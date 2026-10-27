@@ -52,6 +52,8 @@ with sync_playwright() as pw:
       const preterite=q('nimitzchīuh');
       const analogy=q('moxōchiuh');
       const ambiguity=q('tlacuah').filter(h=>h.lemma==='tlacuā'&&h.grade==='paradigm');
+      const pluralHouse=q('caltin');
+      const pluralFlower=q('xōchimeh');
       const noun=q('calli');
       const flower=q('xōchitl');
       const diacritics=q('xochitl');
@@ -62,6 +64,8 @@ with sync_playwright() as pw:
        preterite:preterite.map(x=>({grade:x.grade,tense:x.features.tense})),
        analogy:analogy.map(x=>({grade:x.grade,kind:x.kind})),
        ambiguity:ambiguity.length,
+       pluralHouse:pluralHouse.filter(x=>x.kind.toLowerCase().includes('plural')).map(x=>({grade:x.grade,parts:x.parts.map(p=>p.surface)})),
+       pluralFlower:pluralFlower.filter(x=>x.kind.toLowerCase().includes('plural')).map(x=>({grade:x.grade,parts:x.parts.map(p=>p.surface)})),
        noun:noun.map(x=>({kind:x.kind,grade:x.grade,parts:x.parts.map(p=>p.surface)})),
        flower:flower.map(x=>({kind:x.kind,parts:x.parts.map(p=>p.surface)})),
        diacritics:diacritics.some(x=>x.lemma==='xōchitl'),
@@ -73,6 +77,8 @@ with sync_playwright() as pw:
     assert result['ambiguity']>=2,result
     assert any(x['kind']=='Noun citation-form segmentation' and x['grade']=='lexical' and x['parts']==['cal','li'] for x in result['noun']),result['noun']
     assert any(x['kind']=='Noun citation-form segmentation' and x['parts']==['xōchi','tl'] for x in result['flower']),result['flower']
+    assert any(x['parts']==['cal','tin'] and x['grade']=='lexical' for x in result['pluralHouse']),result['pluralHouse']
+    assert any(x['parts']==['xōchi','meh'] and x['grade']=='lexical' for x in result['pluralFlower']),result['pluralFlower']
     assert result['diacritics'],result
     assert result['unknown']==[] and result['rejected']==[],result
     assert any(x['grade']=='hypothesis' and x['object']=='2sg' for x in result['productive']),result['productive']

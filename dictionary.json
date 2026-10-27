@@ -1332,7 +1332,7 @@
       "plural": "altepeme (late colonial attestation)",
       "pluralStatus": "attested",
       "absolutive": "-tl",
-      "possessed": "-āuh … -tepēuh (two bound possessed components)",
+      "possessed": "-āltepēuh (normal bound form); -āuh … -tepēuh (separated variant)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/altepetl ; https://nahuatl.wired-humanities.org/content/tin",
       "grammarNotes": "Socio-political inanimate noun; Karttunen notes -meh and the Online Nahuatl Dictionary identifies altepeme in the late Techialoyan tradition and in Tlaxcala-Puebla annals. This is rare and late; singular-looking āltepētl can refer to multiple polities in earlier texts.",
       "inflections": [
@@ -5407,9 +5407,9 @@
           "assessment": "unverified",
           "source": "https://nahuatl.wired-humanities.org/content/metztli",
           "locator": "",
-          "note": "No independently checked complete plural spelling. This does not imply grammatical impossibility.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "note": "'yey metzintli' (three months) in Beyond the Codices (1976), Doc.23 pp.128–129 does not by itself prove an overt plural suffix. Moon/month differs from the unrelated 'leg' entry; unverified still.",
+          "reviewer": "Reviewed contextual distinction; unresolved",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -5457,7 +5457,7 @@
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "-lli",
-      "possessed": "",
+      "possessed": "iteocaltzin (reverential possessed; not plain stem)",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/teocalli",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Church/temple usage varies by colonial period; this is a full building noun. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
       "inflections": [
@@ -5468,6 +5468,14 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/teocalli",
           "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "iteocaltzin",
+          "category": "Possessed reverential; colonial text",
+          "gloss": "the revered church of St John the Baptist",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/teocalli",
+          "note": "Lockhart, We People Here (1993), pp.284–285: 'Inic momamal yn iteocaltzin ȳ sanct juº bapᵗª'; source-scoped only."
         }
       ],
       "formsEdited": false,
@@ -5522,18 +5530,18 @@
           "assessment": "unverified",
           "source": "https://nahuatl.wired-humanities.org/content/teocalli",
           "locator": "",
-          "note": "No independently checked complete plural spelling. This does not imply grammatical impossibility.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "note": "Townsend (2010), pp.164–165, translates 'deocalli' as 'some churches', but the cited Nahuatl noun is unmarked; no general overt plural spelling established.",
+          "reviewer": "Reviewed contextual distinction; unresolved",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/teocalli",
-          "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Lockhart, We People Here (1993), pp.284–285: 'Inic momamal yn iteocaltzin ȳ sanct juº bapᵗª'",
+          "note": "A colonial annal records the possessed reverential form iteocaltzin referring to the church of St John the Baptist. -tzin is reverential; this does not establish the simple unhonorified possessive or all senses.",
+          "reviewer": "Field-specific public-source reassessment (AI-assisted; no expert review)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -7211,8 +7219,8 @@
       "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 126r col. 1; Karttunen 1992, p. 281. Not all morphological fields have been separately attested. Agent noun formed with -ni, not the finite verb mati.",
       "number": "singular",
       "animacy": "animate",
-      "plural": "",
-      "pluralStatus": "no_attested_form",
+      "plural": "tlamatinime (Chimalpahin, 1611)",
+      "pluralStatus": "attested",
       "absolutive": "none (agentive -ni; NOT locative)",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/tlamatini",
@@ -7225,6 +7233,14 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
           "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "tlamatinime",
+          "category": "Plural; Chimalpahin 1611",
+          "gloss": "wise men",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
+          "note": "Chimalpahin, Annals of His Time, ed. Lockhart, Schroeder & Namala (2006), pp.184–185, central Mexico 1611: 'yn tlamatinime in Astrologos.me'; source-scoped only."
         }
       ],
       "formsEdited": false,
@@ -7276,12 +7292,12 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/tlamatini",
-          "locator": "",
-          "note": "No independently checked complete plural spelling. This does not imply grammatical impossibility.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Chimalpahin, Annals of His Time, ed. Lockhart, Schroeder & Namala (2006), pp.184–185, central Mexico 1611: 'yn tlamatinime in Astrologos.me'",
+          "note": "Explicit historical word-form tlamatinime 'wise men' appears in a 1611 annal quoted in the edition. This is a dated text occurrence, not proof all regional paradigms share the same plural.",
+          "reviewer": "Field-specific public-source reassessment (AI-assisted; no expert review)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
@@ -8131,8 +8147,8 @@
       "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 75v col. 2; Karttunen 1992, p. 176. Not all morphological fields have been separately attested. Second-vowel length varies in sources; retained source spelling for headword.",
       "number": "singular",
       "animacy": "inanimate",
-      "plural": "",
-      "pluralStatus": "no_attested_form",
+      "plural": "ocome (figurative torches only; not a default pine plural)",
+      "pluralStatus": "attested",
       "absolutive": "-tl",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/ocotl",
@@ -8145,6 +8161,14 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/ocotl",
           "note": "ON Dictionary records this headword with historical lexicographic citations. Spelling is unaccented as in the cited headword; long vowels not silently reconstructed."
+        },
+        {
+          "form": "ocome",
+          "category": "Plural; sixteenth-century figurative text",
+          "gloss": "torches (figurative)",
+          "evidence": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/ocotl",
+          "note": "Florentine Codex Book 6, ed. Anderson & Dibble (1961), p.216: 'in tlaviltin, in ocome, in tezcame'; source-scoped only."
         }
       ],
       "formsEdited": false,
@@ -8196,21 +8220,21 @@
         },
         {
           "field": "plural",
-          "assessment": "unverified",
+          "assessment": "text",
           "source": "https://nahuatl.wired-humanities.org/content/ocotl",
-          "locator": "",
-          "note": "No independently checked complete plural spelling. This does not imply grammatical impossibility.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Florentine Codex Book 6, ed. Anderson & Dibble (1961), p.216: 'in tlaviltin, in ocome, in tezcame'",
+          "note": "The plural ocome is quoted in a sixteenth-century metaphor describing people as lights/torches/mirrors; attests a figurative torch sense, NOT a general literal plural for pine trees. Other ocome homographs exist.",
+          "reviewer": "Field-specific public-source reassessment (AI-assisted; no expert review)",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "possessed",
           "assessment": "unverified",
           "source": "https://nahuatl.wired-humanities.org/content/ocotl",
           "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "note": "Florentine Codex Book 6 p.216 supports figurative plural ocome, not an independently checked possessed ocotl; retain unverified.",
+          "reviewer": "Reviewed contextual distinction; unresolved",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -8323,9 +8347,9 @@
           "assessment": "unverified",
           "source": "https://nahuatl.wired-humanities.org/content/ehecatl",
           "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "note": "The cited lexicon presents wind, deity, ghost, and calendrical senses; no located possessed token in this audit discriminates those senses, so leave unverified.",
+          "reviewer": "Reviewed contextual distinction; unresolved",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -8502,7 +8526,7 @@
       "animacy": "animate",
       "plural": "",
       "pluralStatus": "no_attested_form",
-      "absolutive": "none (agentive/locative)",
+      "absolutive": "none (agentive -ni; not locative)",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/tecuani",
       "grammarNotes": "Animacy is a provisional semantic/editorial classification; not separately proved by an agreement example. Karttunen supplies plural suffix -meh; exact full spelling not independently checked. When no plural is listed, this means no exact independent plural was verified in this batch, NOT that plural is impossible.",
@@ -8577,9 +8601,9 @@
           "assessment": "unverified",
           "source": "https://nahuatl.wired-humanities.org/content/tecuani",
           "locator": "",
-          "note": "Possessed form not independently verified in this batch. No impossibility is implied.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "note": "Karttunen (1992), p.218, establishes the noun and a plural suffix, not a source-located possessive wordform; retain unverified.",
+          "reviewer": "Reviewed contextual distinction; unresolved",
+          "checkedAt": "2026-10-27"
         },
         {
           "field": "stem",
@@ -8592,12 +8616,12 @@
         },
         {
           "field": "other",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/tecuani",
-          "locator": "",
-          "note": "Absolutive interpretation \"none (agentive/locative)\" has not been independently established by a source-specific morphological demonstration.",
-          "reviewer": "Research unresolved",
-          "checkedAt": ""
+          "locator": "Karttunen, Analytical Dictionary (1992), p.218 'literal sense ... maneater'; ODN IDIEZ 'morfología tē1, cuā, ni2'",
+          "note": "Explicit morpheme breakdown tē- + cuā + agentive -ni, and Karttunen's etymological commentary, support agentive classification, not locative. This is grammatical/lexical source evidence, not manuscript proof of a possessive stem.",
+          "reviewer": "Field-specific public-source reassessment (AI-assisted; no expert review)",
+          "checkedAt": "2026-10-27"
         }
       ]
     },

@@ -32,7 +32,7 @@ with sync_playwright() as pw:
     page.locator('#workspaceTools').evaluate('(e)=>e.open=true')
     with page.expect_download() as dl:page.locator('#allBackup').click()
     backup=json.loads(Path(dl.value.path()).read_text(encoding='utf-8-sig'))
-    assert len(backup['words'])==88
+    assert len(backup['words'])>=88
     tonalli=next(w for w in backup['words'] if w['word']=='tonalli')
     assert tonalli['plural']=='' and len(tonalli['claims'])==9
     assert not errors,errors

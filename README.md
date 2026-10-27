@@ -1,3 +1,7 @@
+# Advanced source-aware Classical Nahuatl morphology engine (2026-10-27)
+
+Tlahtōlli now includes a bounded reverse morphological analyzer using all 720 indexed grammar-derived verb cells, evidence-specific lexical inflections, careful noun stem/absolutive segmentation, and guarded transitive/possessive hypotheses. It retains ambiguous analyses, labels rule generation as **unverified**, and explains what each matched morpheme does. The standalone HTML works offline, with the engine now maintained in `tools/morphology_engine.js` and checked against the embedded copy by CI. This does **not** increase the 88 headwords or imply manuscript attestation of generated forms. See the [engine's research boundaries and architecture](docs/ADVANCED_MORPHOLOGY_ENGINE.md).
+
 # Existing-88-word historical research and advanced morphology (2026-10-27)
 
 Three combining bases (calli, tlālli, tēpetl) are now supported by field-specific lexical locators and published colonial compounds. The unchanged 674-claim ledger now has 327 dictionary, 129 grammar, 15 historical text, 108 inference and 95 unverified claims: **203 remaining unresolved fields**. The [complete existing-88 research queue](research/phase4_existing_88_claim_queue.csv) and [source-review/analyzer methodology](docs/PHASE4_SOURCE_REVIEW_AND_ANALYZER.md) preserve the scope and limits. New morpheme-level segmentation of indexed noun headwords and verb paradigm cells is analytical, not independent attestation. Earlier dated audit files remain historical snapshots.

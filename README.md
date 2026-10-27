@@ -2,15 +2,15 @@
 
 [**Open Tlahtōlli Online**](https://niftybacon.github.io/tlahtolli/)
 
-**Version 1.5 · Research, morphology and reading tools.** This is an independent, AI-assisted learning/research tool, **not** a scholarly peer-reviewed edition. Its evidence status is per claim, not per page; never infer that a lexicon URL verifies every field.
+**Version 1.6 · Paradigm trainer and deeper source-aware reading.** This is an independent, AI-assisted learning/research tool, **not** a scholarly peer-reviewed edition. Its evidence status is per claim, not per page; never infer that a lexicon URL verifies every field.
 
 ## Explore
 
 - **Tlahtōlli · Dictionary:** search exact and alternate spellings, indexed inflections, 12 finite-verb paradigms, and English meanings. Filter noun/verb/particle, noun animacy, and evidence coverage.
 - **Tēntli · Form detective:** recognizes indexed forms and displays conservative subject-prefix alignment for matched paradigm cells, not a general finite-state parser or historical attestation.
-- **Āmoxtli · Reader:** annotate saved passages, inspect tokens, and search an exact-word *concordance* across your saved passages. Uncited teaching examples are not historical witnesses.
-- **Momachtia · Study:** browser-local review scheduling (two directions, CSV export, and full-project backup support).
-- **Tlāhcuīlōlli · Research audit:** source-specific field claims, citation gaps, and downloadable research queue.
+- **Āmoxtli · Reader:** annotate saved passages and search exact forms, indexed **candidate headwords**, or short 2–6-token phrases; filter passages by presence of a source URL. Candidate matches are not established readings or manuscript evidence.
+- **Momachtia · Study:** browser-local vocabulary review **plus 720-card indexed verb-paradigm practice** with selectable verbs, tense scopes and spaced-repetition scheduling. Form-level study records are included in full backups and CSV study exports.
+- **Tlāhcuīlōlli · Research audit:** source-specific field claims, a field-by-field citation coverage matrix, and an exportable research queue. Exact source locators are required for the matrix counts.
 
 ## Publishing additional vocabulary
 
@@ -27,11 +27,11 @@ The preparation tool deliberately refuses to overwrite an existing headword. Ins
 
 ## Verification and limitations
 
-- **13 field-level source records** across the founding 44 headwords at v1.5. Many other fields remain to be individually audited.
+- **13 field-level source records** across the founding 44 headwords at v1.6. Many other fields remain to be individually audited.
 - The 720 verb cells are *grammar-derived*, not individually confirmed manuscript attestations.
-- The word-concordance indexes local user-saved text, not a licensed scholarly corpus.
+- The concordance indexes local user-saved texts, **not a licensed historical corpus**. Lemma-mode matches are proposals assembled from known spellings, forms and grammar tables; even a matched form may have a different contextual analysis.
 - A morpheme interpretation is limited to evidence from explicitly indexed paradigms, with unsegmented elements labeled as such.
 - Historical forms and variation require context. Normalized matching strips vowel-length marks for discovery; it is not proof of the same lexical sense.
-- Your local study schedule, custom entries, notes and passages are **not uploaded to GitHub**. Export a full JSON backup before changing devices.
+- Your local vocabulary and conjugation study schedules, custom entries, notes and passages are **not uploaded to GitHub**. Export a full JSON backup before changing devices.
 
 Read [the editorial policy](docs/EDITORIAL_POLICY.md), [contribution guide](docs/CONTRIBUTING.md), [research backlog](docs/RESEARCH_BACKLOG.md), and [changelog](CHANGELOG.md).

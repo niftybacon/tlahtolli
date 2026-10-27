@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
-<title>Tlahtōlli v1.5 — Living Nahuatl Dictionary</title>
+<title>Tlahtōlli v1.6 — Living Nahuatl Dictionary</title>
 
 
 
@@ -52,11 +52,17 @@
 .grammar-facets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}.grammar-facets label{font-size:.74rem;color:var(--muted);font-weight:650}.grammar-facets select{font-size:.79rem;margin-top:4px;width:100%;padding:7px 5px}.grammar-facets label:last-child{grid-column:1/-1}
 .concordance-box{border:1px solid var(--line);border-radius:18px;background:var(--paper);padding:20px;margin:12px 0 22px}.concordance-head{display:flex;justify-content:space-between;gap:24px;align-items:start}.concordance-head h3{font:400 1.5rem Georgia,serif;margin:4px 0}.concordance-head p{font-size:.85rem;line-height:1.5;color:var(--muted);max-width:550px;margin:4px 0}.concordance-controls{display:flex;flex-direction:column;min-width:265px;gap:8px;font-size:.8rem;color:var(--muted)}.concordance-controls input{padding:10px;border:1px solid var(--line);border-radius:9px}.concordance-hint{font-size:.83rem;color:var(--muted);margin:14px 0 3px}.concordance-list{display:grid;gap:7px;margin-top:10px;max-height:350px;overflow:auto}.concordance-row{border:1px solid var(--line);border-radius:9px;background:white;text-align:left;padding:9px 12px;color:var(--ink);line-height:1.5;font-family:Georgia,serif}.concordance-row:hover{background:var(--pale)}.concordance-row span{color:var(--muted)}.concordance-row strong{background:#e9f1db;padding:3px 5px}.concordance-row small{display:block;font:400 .75rem ui-sans-serif,sans-serif;color:var(--muted);margin-top:5px}
 .morph-pieces{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.morph-piece{display:flex;flex-direction:column;background:#eff4ef;border:1px solid #ceddd2;border-radius:9px;padding:8px 10px;gap:3px;max-width:280px}.morph-piece strong{font:600 1.12rem Georgia,serif;color:var(--accent)}.morph-piece small{font-size:.74rem;font-weight:700}.morph-piece span{font-size:.7rem;line-height:1.3;color:var(--muted)}.morph-caution{font-size:.75rem;color:#895522;line-height:1.4;margin:7px 0 0}@media(max-width:750px){.concordance-head{flex-direction:column}.concordance-controls{min-width:0;width:100%}}
+
+/* v1.6: locally-sourced concordance and paradigm practice */
+.concordance-filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:9px 0}.concordance-filters label,.drill-controls label{font-size:.76rem;color:var(--muted);font-weight:700}.concordance-filters select,.drill-controls select{display:block;margin-top:5px;min-width:0}.drill-panel{margin-top:20px}.drill-inner{padding:20px}.drill-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}.drill-panel .study-card{max-width:none}.drill-panel .study-prompt h3{font-size:2rem}.drill-panel .readerhint{line-height:1.5}
+@media(max-width:700px){.concordance-filters,.drill-controls{grid-template-columns:1fr}}
+
+.audit-matrix{padding:14px 0 20px}.audit-matrix h4{font:400 1.22rem Georgia,serif;margin:0 0 4px}.audit-matrix-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.audit-matrix-row{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--paper)}.audit-matrix-row small{display:block;color:var(--muted);margin:6px 0;font-size:.75rem}.audit-matrix-row .coverage-bar{height:7px}@media(max-width:650px){.audit-matrix-grid{grid-template-columns:1fr}}
 </style>
 <meta name="description" content="Tlahtōlli Classical Nahuatl dictionary, documented inflections, and text reader">
 </head>
 <body>
-<header><div class="wrap bar"><div class="brand"><div class="logo">T</div><div><h1>Tlahtōlli</h1><small>Classical Nahuatl Dictionary & Reader · v1.5 · Online edition</small></div></div><span class="eyebrow">An open learning notebook</span></div></header>
+<header><div class="wrap bar"><div class="brand"><div class="logo">T</div><div><h1>Tlahtōlli</h1><small>Classical Nahuatl Dictionary & Reader · v1.6 · Online edition</small></div></div><span class="eyebrow">An open learning notebook</span></div></header>
 <main class="wrap"><section class="hero"><div><span class="eyebrow">A language is more than a word list</span><h2>Collect the words.<br>Read the sources.</h2><p>An integrated dictionary and historical-text reader. Add documented vocabulary once, then explore the same entries while reading Nahuatl passages. Anki remains optional.</p></div><div class="stat"><strong id="total">0</strong><span>entries in your collection</span></div></section>
 <nav class="tabs" role="tablist" aria-label="Main sections"><button type="button" id="tabDict" role="tab" aria-selected="true" aria-controls="dictionaryView">Tlahtōlli · Dictionary</button><button type="button" id="tabRead" role="tab" aria-selected="false" aria-controls="readerView">Āmoxtli · Text reader</button><button id="tabStudy" type="button" role="tab" aria-controls="studyView" aria-selected="false">Momachtia · Study</button><button aria-controls="auditView" aria-selected="false" id="tabAudit" role="tab" type="button">Tlāhcuīlōlli · Research audit</button><button aria-controls="helpView" aria-selected="false" id="tabHelp" role="tab" type="button">Tlamachtiliztli · Guide</button></nav>
 <div class="projecttools"><button class="btn" type="button" id="allBackup">↓ Back up · Tlahtōlli + āmoxtli</button><button class="btn primary" type="button" id="importLearningPack">＋ Import · Learning pack</button><input type="file" id="packFile" class="sr" accept=".json,application/json"><label class="packrefresh" title="Optional: replace matching dictionary entries with source-checked information from the pack"><input type="checkbox" id="packUpdateExisting"> Refresh matching entries · update existing</label><button class="btn" type="button" id="allRestore">↑ Restore · Full backup</button><input type="file" id="projectFile" class="sr" accept=".json,application/json"><small>Import adds new material by default. The optional refresh checkbox replaces matching entries (including edited forms); back up first. Restore full backup replaces everything.</small></div>
@@ -70,7 +76,7 @@
 <section class="bottom"><article class="hint"><h4>Designed for trustworthy learning</h4><p>Keep attested historical forms separate from modern varieties, reconstruction, and your own proposed words. A word without a source is a research lead, not a verified dictionary entry. Do not infer a plural merely from regular morphology; cite each actual form. Inanimate nouns sometimes have exceptional plural behavior.</p></article><article class="hint"><h4>You own your vocabulary</h4><p>Personal edits and passages stay in this browser; the public dictionary is fetched from the hosting site. Export a full project backup regularly. No account is required. Backups must be restored when moving from the offline file to the website.</p></article></section></section>
 <section id="readerView" class="hidden" role="tabpanel" aria-labelledby="tabRead">
 <div class="subtabs"><button class="btn primary" type="button" id="addPassage">＋ Āmoxtli · Add passage</button><span class="readerhint">Exact headwords, listed historical spellings, and proposed analyses are now distinguished. Click any token to edit its spelling, grammar, and dictionary link.</span></div>
-<section class="concordance-box" aria-label="Saved-text concordance"><div class="concordance-head"><div><span class="eyebrow">Tlahtōlīxtli · Concordance</span><h3>Search your saved passages</h3><p>Shows word occurrences in your personal text library, including drafts and teaching examples. These matches are <strong>not independent manuscript attestations</strong>.</p></div><div class="concordance-controls"><label for="concordanceInput">Exact word or documented form</label><input id="concordanceInput" placeholder="e.g. in, cuīcatl, nichōcac" spellcheck="false" maxlength="160"/><button type="button" class="btn" id="concordanceCsv">↓ Export contexts · CSV</button></div></div><div id="concordanceResults" role="status" aria-live="polite"></div></section><div class="readerlayout"><div class="panel"><div class="panelhead"><h3>Passage library</h3><p id="passageCount">Texts in your project</p><input id="passageSearch" class="searchbox" placeholder="Search passages or sources…"></div><div class="readlist" id="passageList"></div></div><div class="panel"><div id="passageDetail" class="readerbody"></div></div></div>
+<section class="concordance-box" aria-label="Saved-text concordance"><div class="concordance-head"><div><span class="eyebrow">Tlahtōlīxtli · Concordance</span><h3>Search your saved passages</h3><p>Shows word occurrences in your personal text library, including drafts and teaching examples. These matches are <strong>not independent manuscript attestations</strong>.</p></div><div class="concordance-controls"><label for="concordanceInput">Word, headword, or short phrase</label><input id="concordanceInput" placeholder="e.g. in, chōca, in xōchitl" spellcheck="false" maxlength="160"/><div class="concordance-filters"><label for="concordanceMode">Matching method<select id="concordanceMode"><option value="exact">Exact form</option><option value="lemma">Headword · candidate forms</option><option value="phrase">Exact phrase (2–6 words)</option></select></label><label for="concordanceSource">Passage sources<select id="concordanceSource"><option value="all">All saved passages</option><option value="linked">With a source URL</option></select></label></div><button type="button" class="btn" id="concordanceCsv">↓ Export contexts · CSV</button></div></div><div id="concordanceResults" role="status" aria-live="polite"></div></section><div class="readerlayout"><div class="panel"><div class="panelhead"><h3>Passage library</h3><p id="passageCount">Texts in your project</p><input id="passageSearch" class="searchbox" placeholder="Search passages or sources…"></div><div class="readlist" id="passageList"></div></div><div class="panel"><div id="passageDetail" class="readerbody"></div></div></div>
 </section>
 
 <section id="studyView" class="hidden" role="tabpanel" aria-labelledby="tabStudy">
@@ -82,8 +88,9 @@
     <p class="readerhint">Repeat intervals are approximate learning reminders, not an assessment of vocabulary mastery. Review records are included in full-project JSON backups; they aren't synchronized to GitHub or other devices.</p>
    </div>
  </div>
+<div class="panel drill-panel" id="drillPanel" aria-label="Verb paradigm practice"><div class="panelhead"><span class="eyebrow">Tlachīhualiztli · Conjugation practice</span><h3>Practice documented paradigms</h3><p>Recall a form using an indexed tense, person and verb. All 720 cells are grammar-derived; this is <strong>not</strong> proof of independent historical attestation. No new forms are generated.</p></div><div class="drill-inner"><div class="drill-controls"><label for="drillVerb">Verb<select id="drillVerb"><option value="all">All 12 indexed verbs</option></select></label><label for="drillScope">Patterns<select id="drillScope"><option value="core">Core four patterns</option><option value="all">All ten patterns</option></select></label><label for="drillSubset">Cards<select id="drillSubset"><option value="active">New + due</option><option value="due">Due reviews only</option><option value="all">Practice any</option></select></label></div><p id="drillStats" class="readerhint" aria-live="polite"></p><div id="drillCard" class="study-card" aria-live="polite"></div><p class="readerhint">Your conjugation review schedule is saved locally and included in project backups. If a published form is corrected, it becomes a fresh review card rather than falsely retaining mastery of the old spelling.</p></div></div>
 </section>
-<section aria-labelledby="tabAudit" class="hidden" id="auditView" role="tabpanel"><div class="panel audit-panel"><div class="panelhead"><span class="eyebrow">Tlāhcuīlōlli · Evidence first</span><h3>Research and verification audit</h3><p>Evidence completeness is not proof of linguistic correctness. A general dictionary link does not verify every grammatical field. These checks identify where human review is still needed.</p></div><div class="audit-inner"><div id="auditMetrics" class="audit-metrics"></div><div class="audit-toolbar"><select id="auditFilter" aria-label="Filter research gaps"><option value="all">All entries</option><option value="priority">Priority research gaps</option><option value="source">Missing lexical source</option><option value="fields">Missing field-specific citation</option><option value="forms">Forms needing checking</option><option value="verbs">Verb paradigms</option></select><input id="auditSearch" aria-label="Search research audit" placeholder="Search headword or issue…"><button id="auditDownload" class="btn" type="button">↓ Export research queue · CSV</button></div><div id="auditList" class="audit-results"></div><p class="readerhint">Use the Evidence tab to cite a particular grammatical claim with a page, folio, section, or dictionary entry. No claims here are independently peer-reviewed.</p></div></div></section>
+<section aria-labelledby="tabAudit" class="hidden" id="auditView" role="tabpanel"><div class="panel audit-panel"><div class="panelhead"><span class="eyebrow">Tlāhcuīlōlli · Evidence first</span><h3>Research and verification audit</h3><p>Evidence completeness is not proof of linguistic correctness. A general dictionary link does not verify every grammatical field. These checks identify where human review is still needed.</p></div><div class="audit-inner"><div id="auditMetrics" class="audit-metrics"></div><div id="auditCoverageMatrix" class="audit-matrix" aria-label="Field-level citation coverage"></div><div class="audit-toolbar"><select id="auditFilter" aria-label="Filter research gaps"><option value="all">All entries</option><option value="priority">Priority research gaps</option><option value="source">Missing lexical source</option><option value="fields">Missing field-specific citation</option><option value="forms">Forms needing checking</option><option value="verbs">Verb paradigms</option></select><input id="auditSearch" aria-label="Search research audit" placeholder="Search headword or issue…"><button id="auditDownload" class="btn" type="button">↓ Export research queue · CSV</button></div><div id="auditList" class="audit-results"></div><p class="readerhint">Use the Evidence tab to cite a particular grammatical claim with a page, folio, section, or dictionary entry. No claims here are independently peer-reviewed.</p></div></div></section>
 <section aria-labelledby="tabHelp" class="hidden" id="helpView" role="tabpanel"><div class="helpgrid"><article><span class="eyebrow">1 · Dictionary</span><h3>Document a word</h3><p>Add meanings, explicit number and animate/inanimate classifications, attested plurals, original spellings and citations. Every entry has Forms / Inflections and Evidence tabs for documented forms and claim-specific sourcing. The Research audit tab prioritizes missing evidence. Blank grammar fields mean unknown—not automatically inanimate or singular. A draft word is not historically verified. Keep different regional varieties distinct.</p></article><article><span class="eyebrow">2 · Reader</span><h3>Read a text</h3><p>Add an original manuscript passage and a carefully checked normalized transcription. Click words to look up, edit, and annotate their forms without leaving the reader. Exact headwords and listed historical spellings are matched automatically; the reader shows indexed-coverage counts and an exportable list of unknown tokens; manually linked words remain suggested analyses until reviewed. Source-linked forms can match tokens automatically, but ambiguous grammatical analyses require manual checking.</p></article><article><span class="eyebrow">3 · Anki & safety</span><h3>Learn and back up</h3><p>Anki handles repetition; export cards only if useful. Back up dictionary plus passages as a JSON file regularly. All your edits remain local to this browser unless exported.</p></article></div><p class="readerhint" style="margin-top:22px">A manuscript's transcription, vowel lengths, and translation should be attributed to a source. Do not present an automatically matched form as proof of historical morphology, and do not publish sample entries as verified research.</p></section>
 <div class="statusbar" id="message" role="status" aria-live="polite">Dictionary includes source-checked grammatical labels; unsourced fields remain visibly unverified.</div></main>
 
@@ -322,7 +329,7 @@ function cleanPassage(raw){const p={};for(const key of passageFields)p[key]=Stri
 let passages;try{const stored=JSON.parse(localStorage.getItem(passageStorageKey));passages=Array.isArray(stored)?stored.map(cleanPassage):passageExamples.map(cleanPassage)}catch(e){passages=passageExamples.map(cleanPassage)}
 let passageIdx=passages.length?0:-1,tokenIdx=1,editingPassage=-1;
 function savePassages(){try{localStorage.setItem(passageStorageKey,JSON.stringify(passages));return true}catch(err){message('Browser storage unavailable. Save a full project backup to preserve changes.');return false;}}
-function setTab(t){for(const [name,id,button] of [['dictionary','dictionaryView','tabDict'],['reader','readerView','tabRead'],['audit','auditView','tabAudit'],['study','studyView','tabStudy'],['help','helpView','tabHelp']]){const active=t===name;$(id).classList.toggle('hidden',!active);$(button).setAttribute('aria-selected',String(active));}if(t==='reader'){renderReader();renderConcordance();}if(t==='audit')renderAudit();if(t==='study')renderStudy();}
+function setTab(t){for(const [name,id,button] of [['dictionary','dictionaryView','tabDict'],['reader','readerView','tabRead'],['audit','auditView','tabAudit'],['study','studyView','tabStudy'],['help','helpView','tabHelp']]){const active=t===name;$(id).classList.toggle('hidden',!active);$(button).setAttribute('aria-selected',String(active));}if(t==='reader'){renderReader();renderConcordance();}if(t==='audit')renderAudit();if(t==='study'){renderStudy();renderDrill();}}
 $('tabDict').onclick=()=>setTab('dictionary');$('tabRead').onclick=()=>setTab('reader');$('tabHelp').onclick=()=>setTab('help');$('tabAudit').onclick=()=>setTab('audit');$('tabStudy').onclick=()=>setTab('study');
 function stripToken(token){return String(token).replace(/^[^\p{L}\p{M}]+|[^\p{L}\p{M}]+$/gu,'').toLowerCase()}
 function getTokens(str){return String(str).match(/\S+/gu)||[]}
@@ -441,7 +448,7 @@ const renderDictionary=render;
 render=function(){renderDictionary();renderReader()};
 
 render();
-message('Tlahtōlli v1.5 ready. Checking for published vocabulary updates…');
+message('Tlahtōlli v1.6 ready. Checking for published vocabulary updates…');
 // Online synchronization. A static published JSON file is the sole authoritative source.
 // No browser-side AI classification or automatic guessed morphology.
 
@@ -506,10 +513,22 @@ function auditEntry(w,index){
  const priority=!lex||flags.some(f=>/unclassified|claimed plural/i.test(f))?'high':flags.some(f=>/citation|checking/i.test(f))?'medium':'low';
  return {word:w.word,index,meaning:w.meaning,flags,lex,noun,verb,doubtful:doubtful.length,verified,priority};
 }
+function renderEvidenceMatrix(){
+ const root=$('auditCoverageMatrix');if(!root)return;
+ const nouns=words.filter(w=>(w.pos||'').toLowerCase().includes('noun'));
+ const verbs=words.filter(w=>(w.pos||'').toLowerCase().includes('verb'));
+ const categories=[['Meaning',words,'meaning'],['Part of speech',words,'pos'],['Noun animacy',nouns,'animacy'],['Noun plural behavior',nouns,'plural'],['Noun possession',nouns,'possessed'],['Verb stem',verbs,'stem']];
+ root.innerHTML='<h4>Claim-level research coverage</h4><p class="readerhint">Only claims with a URL and exact source locator count below. A link to the entire dictionary entry does not count as evidence for a particular field.</p><div class="audit-matrix-grid">'+categories.map(([label,eligible,field])=>{
+  const count=eligible.filter(w=>(w.claims||[]).some(c=>c.field===field&&c.assessment!=='unverified'&&validUrl(c.source)&&c.locator)).length;
+  const total=eligible.length,percent=total?Math.round(100*count/total):0;
+  return `<div class="audit-matrix-row"><div><strong>${safe(label)}</strong><small>${count} of ${total} entries · ${percent}% with located evidence</small></div><div class="coverage-bar" aria-label="${safe(label)} ${percent} percent"><div class="coverage-fill" style="width:${percent}%"></div></div></div>`;
+ }).join('')+'</div>';
+}
 function auditItems(){return words.map((w,i)=>auditEntry(w,i))}
 function renderAudit(){const metrics=$('auditMetrics'),root=$('auditList');if(!metrics||!root)return;
  const all=auditItems(),cited=all.filter(x=>x.lex).length,missing=all.filter(x=>x.flags.some(f=>/field-specific/.test(f))).length,unchecked=all.reduce((n,x)=>n+x.doubtful,0),paradigms=all.filter(x=>x.verb&&FULL_VERB_PARADIGMS[x.word]).length;
  metrics.innerHTML=[[all.length,'Total local entries'],[cited,'Lexical links (not proof)'],[missing,'Need specific grammar citations'],[unchecked,'Provisional / uncited forms'],[paradigms,'Indexed verb paradigms']].map(([n,label])=>`<div class="audit-metric"><strong>${n}</strong><span>${safe(label)}</span></div>`).join('');
+ renderEvidenceMatrix();
  const q=norm($('auditSearch').value||''),filter=$('auditFilter').value;
  const filtered=all.filter(x=>{if(filter==='priority'&&x.priority!=='high')return false;if(filter==='source'&&x.lex)return false;if(filter==='fields'&&!x.flags.some(f=>/citation/.test(f)))return false;if(filter==='forms'&&!x.doubtful)return false;if(filter==='verbs'&&!x.verb)return false;return !q||norm(x.word+' '+x.meaning+' '+x.flags.join(' ')).includes(q)}).sort((a,b)=>({high:0,medium:1,low:2}[a.priority]-{high:0,medium:1,low:2}[b.priority])||a.word.localeCompare(b.word));
  root.innerHTML=filtered.length?filtered.map(x=>`<div class="audit-row"><div><strong>${safe(x.word)}</strong><p>${safe(x.meaning)}</p><div class="audit-flags">${safe(x.flags.slice(0,3).join(' · ')||'No automated structural gaps identified (not proof of correctness)')}${x.flags.length>3?' · +'+(x.flags.length-3)+' more':''}</div></div><button class="btn" type="button" data-audit-idx="${x.index}">Review evidence</button></div>`).join(''):'<p class="analysis-unknown">No entries match this research filter.</p>';
@@ -584,7 +603,7 @@ async function syncPublished(silent=false){
   }
   VERIFIED_PACK_WORDS=nextWords;
   FULL_VERB_PARADIGMS=nextModels;
-  persistPublished();store();render();renderFormProbe();if(!$('auditView').classList.contains('hidden'))renderAudit();
+  persistPublished();store();render();renderFormProbe();if(!$('auditView').classList.contains('hidden'))renderAudit();if(!$('studyView').classList.contains('hidden')){renderStudy();renderDrill();}
   try{localStorage.setItem(syncMetaKey,JSON.stringify({version:remoteWordDoc.version,checked:new Date().toISOString()}));}catch{}
   showSyncState('Published edition '+remoteWordDoc.version+' · Synced',`${nextWords.length} published lemmas · ${added} added · ${updated} updated · ${protectedEdits} local edits protected${hidden?' · '+hidden+' intentionally hidden':''}`,'ok');
   if(!silent||added||updated)message('Dictionary synced: '+added+' new words, '+updated+' untouched entries updated. '+protectedEdits+' edited entries preserved.');
@@ -655,41 +674,137 @@ function gradeStudy(grade){const key=studyCurrentKey;if(!key)return;
 $('studyDirection').onchange=()=>{studyRevealed=false;renderStudy()};
 $('studySubset').onchange=()=>{studyCurrentKey='';studyRevealed=false;renderStudy()};
 $('studyExport').onclick=()=>{const rows=[['Lemma key','Headword','Reviews','Lapses','Last reviewed (ISO)','Next due (ISO)']];
- for(const w of words){const key=studyKey(w),r=studyRecords[key];if(!r)continue;rows.push([key,w.word,r.reps,r.lapses,r.last?new Date(r.last).toISOString():'',new Date(r.due).toISOString()]);}
+ for(const w of words){const key=studyKey(w),r=studyRecords[key];if(!r)continue;rows.push([key,w.word,r.reps,r.lapses,r.last?new Date(r.last).toISOString():'',new Date(r.due).toISOString()]);} for(const [key,r] of Object.entries(studyRecords).filter(([k])=>k.startsWith('paradigm§'))){rows.push([key,'Paradigm card',r.reps,r.lapses,r.last?new Date(r.last).toISOString():'',new Date(r.due).toISOString()]);}
  download('tlahtolli-study-records.csv',rowsToText(rows,','),'text/csv');};
-$('studyReset').onclick=()=>{if(!confirm('Delete ALL study scheduling records on this browser? Back up your workspace first. Dictionary entries are not affected.'))return;studyRecords={};studyCurrentKey='';studyRevealed=false;saveStudyRecords();renderStudy();message('Local study schedule reset.');};
+$('studyReset').onclick=()=>{if(!confirm('Delete ALL vocabulary AND conjugation study schedules on this browser? Back up first. Dictionary entries are not affected.'))return;studyRecords={};studyCurrentKey='';studyRevealed=false;drillCurrentKey='';drillRevealed=false;saveStudyRecords();renderStudy();renderDrill();message('Local vocabulary and conjugation study schedules reset.');};
 
 
 
 
-// v1.5: provenance-aware concordance over this user's saved texts ONLY.
+// v1.6: practice ONLY precomputed, explicitly grammar-derived conjugation cells.
+let drillCurrentKey='',drillRevealed=false;
+function drillKey(lemma,ti,pi,form){return 'paradigm§'+norm(lemma)+'§'+ti+'§'+pi+'§'+norm(form);}
+function drillQueue(){
+ const selectedVerb=$('drillVerb').value,scope=$('drillScope').value,subset=$('drillSubset').value,now=Date.now(),out=[];
+ for(const [lemma,m] of Object.entries(FULL_VERB_PARADIGMS)){
+  if(selectedVerb!=='all'&&selectedVerb!==lemma)continue;
+  for(let ti=0;ti< (scope==='core'?4:10);ti++)for(let pi=0;pi<6;pi++){
+   const form=m.cells[ti]?.[pi];if(!form)continue;
+   const key=drillKey(lemma,ti,pi,form),record=studyRecords[key];
+   if(subset==='due'&&(!record||record.due>now))continue;
+   if(subset==='active'&&record&&record.due>now)continue;
+   out.push({lemma,form,ti,pi,key,record});
+  }
+ }
+ return out.sort((a,b)=>(a.record?.due||0)-(b.record?.due||0)||a.lemma.localeCompare(b.lemma)||a.ti-b.ti||a.pi-b.pi);
+}
+function populateDrillVerbs(){
+ const s=$('drillVerb');if(!s)return;
+ const former=s.value||'all',names=Object.keys(FULL_VERB_PARADIGMS).sort((a,b)=>a.localeCompare(b));
+ s.innerHTML='<option value="all">All indexed verbs</option>'+names.map(x=>`<option value="${safe(x)}">${safe(x)}</option>`).join('');
+ s.value=names.includes(former)?former:'all';
+}
+function renderDrill(){
+ const card=$('drillCard'),stats=$('drillStats');if(!card||!stats)return;
+ populateDrillVerbs();
+ const queue=drillQueue(),current=queue.find(x=>x.key===drillCurrentKey)||queue[0];
+ if(!current||current.key!==drillCurrentKey){drillRevealed=false;drillCurrentKey=current?.key||'';}
+ const total=Object.entries(FULL_VERB_PARADIGMS).reduce((sum,[,m])=>sum+m.cells.reduce((x,row)=>x+row.length,0),0);
+ const learned=Object.keys(studyRecords).filter(x=>x.startsWith('paradigm§')).length;
+ stats.textContent=total+' indexed paradigm cells · '+learned+' forms previously practiced · '+queue.length+' current practice cards (filter-dependent).';
+ if(!current){card.innerHTML='<h3>No conjugation cards currently due.</h3><p>Switch to “Practice any” to review forms without waiting, or change the verb/pattern filters.</p>';return;}
+ const model=FULL_VERB_PARADIGMS[current.lemma],w=words.find(x=>x.word===current.lemma);
+ card.innerHTML=`<div class="study-progress">${queue.length} cards in current queue · ${current.record?'Previously reviewed':'First attempt'}</div>
+  <div class="study-prompt"><span>Recall the indexed form for ${safe(PARADIGM_PERSONS[current.pi][1])}</span><h3>${safe(current.lemma)}</h3><p>${safe(w?.meaning||'Meaning unrecorded')} · ${safe(VERB_TENSES[current.ti].name)} · ${safe(PARADIGM_PERSONS[current.pi][0])}</p><p class="readerhint">${model.trans?'Transitive table fixes one third-person singular object; this is not an object-free form.':'Intransitive paradigm: subject agreement.'}</p></div>
+  ${drillRevealed?`<div class="study-answer"><strong>${safe(current.form)}</strong><p>Indexed grammar-derived form; individual historical attestation not established.</p>${validUrl(model.lemmaSource)?`<a href="${safe(validUrl(model.lemmaSource))}" target="_blank" rel="noopener noreferrer">Lemma dictionary reference ↗</a>`:''}</div><div class="study-grades"><button class="btn warn" type="button" data-drill-grade="again">Again</button><button class="btn" type="button" data-drill-grade="hard">Hard</button><button class="btn primary" type="button" data-drill-grade="good">Good</button><button class="btn" type="button" data-drill-grade="easy">Easy</button></div>`:
+   '<button class="btn primary" type="button" id="drillReveal">Reveal indexed form · Xitlachia</button>'}`;
+ const b=$('drillReveal');if(b)b.onclick=()=>{drillRevealed=true;renderDrill()};
+ for(const b of card.querySelectorAll('[data-drill-grade]'))b.onclick=()=>gradeDrill(b.dataset.drillGrade);
+}
+function gradeDrill(grade){
+ if(!drillCurrentKey||!drillRevealed)return;
+ const now=Date.now(),p=studyRecords[drillCurrentKey]||{reps:0,lapses:0};let reps=p.reps||0,lapses=p.lapses||0,days=0;
+ if(grade==='again'){reps=0;lapses++;days=0;}
+ else if(grade==='hard'){reps++;days=1;}
+ else if(grade==='good'){reps++;days=[1,3,7,14,30,60,120][Math.min(reps-1,6)];}
+ else if(grade==='easy'){reps++;days=[3,7,14,30,60,120,240][Math.min(reps-1,6)];}
+ else return;
+ studyRecords[drillCurrentKey]={reps,lapses,last:now,due:now+(days?days*86400000:600000)};
+ saveStudyRecords();drillCurrentKey='';drillRevealed=false;renderDrill();
+}
+for(const id of ['drillVerb','drillScope','drillSubset'])$(id).onchange=()=>{drillCurrentKey='';drillRevealed=false;renderDrill();};
+
+// v1.6: phrase and conservative lemma-candidate concordance over LOCAL, user-saved passages only.
 const concordanceMaxResults=300;
-function searchConcordance(query){
- const raw=String(query||'').trim();if(!raw||/\s/.test(raw))return [];
- const target=norm(stripToken(raw));if(!target)return [];
+function concordanceForms(w){
+ const values=new Map(),put=(raw,kind)=>{const x=norm(stripToken(raw));if(x&&!values.has(x))values.set(x,kind);};
+ put(w.word,'Headword (normalized spelling)');
+ historicalSpellings(w).forEach(x=>put(x,'Listed historical spelling; verify context'));
+ for(const f of w.inflections||[]){if(f.evidence==='stem')continue;
+  put(f.form,(['dictionary','text'].includes(f.evidence)?'Source-linked form; check context':f.evidence==='paradigm'?'Grammar-table form; not manuscript-attested':'Provisional form; unverified'));}
+ const model=FULL_VERB_PARADIGMS[w.word];
+ if(model)for(let ti=0;ti<model.cells.length;ti++)for(const cell of model.cells[ti]){
+  put(cell,'Grammar-derived conjugation; not manuscript-attested');
+  if(['Preterite','Pluperfect'].includes(VERB_TENSES[ti].name))put('ō'+cell,'Optional augment + grammar-derived form');
+ }
+ return values;
+}
+function concordancePassageEligible(p){return $('concordanceSource').value==='all'||Boolean(validUrl(p.source));}
+function searchConcordance(query,mode=$('concordanceMode').value){
+ const raw=String(query||'').trim(),terms=raw.split(/\s+/).map(x=>norm(stripToken(x))).filter(Boolean);
+ if(!terms.length)return [];
+ if(mode==='exact'&&terms.length!==1)return [];
+ if(mode==='lemma'&&terms.length!==1)return [];
+ if(mode==='phrase'&&(terms.length<2||terms.length>6))return [];
+ let lemmaMatches=[];
+ if(mode==='lemma')lemmaMatches=words.filter(w=>norm(w.word)===terms[0]);
+ if(mode==='lemma'&&!lemmaMatches.length)return [];
+ const candidateSets=lemmaMatches.map(w=>({w,forms:concordanceForms(w)}));
  const found=[];
  for(let pi=0;pi<passages.length;pi++){
-  const passage=passages[pi],tokens=getTokens(passage.normalized);
+  const passage=passages[pi];if(!concordancePassageEligible(passage))continue;
+  const tokens=getTokens(passage.normalized),normalized=tokens.map(x=>norm(stripToken(x)));
   for(let ti=0;ti<tokens.length;ti++){
-   if(norm(stripToken(tokens[ti]))!==target)continue;
-   found.push({passageIndex:pi,tokenIndex:ti,raw:tokens[ti],title:passage.title,source:passage.source,status:passage.status,
-    left:tokens.slice(Math.max(0,ti-6),ti).join(' '),right:tokens.slice(ti+1,ti+7).join(' ')});
+   let size=1,matching='',form='';
+   if(mode==='phrase'){
+    size=terms.length;if(ti+size>tokens.length||!terms.every((term,j)=>normalized[ti+j]===term))continue;
+    matching='Exact normalized phrase (not a grammatical parse)';form=tokens.slice(ti,ti+size).join(' ');
+   }else if(mode==='exact'){
+    if(normalized[ti]!==terms[0])continue;
+    matching='Exact form / spelling only';form=tokens[ti];
+   }else{
+    const options=candidateSets.filter(x=>x.w.variety===passage.variety&&x.forms.has(normalized[ti]));
+    if(!options.length)continue;
+    // Do not treat coincidental homographs as established lemmatizations.
+    const otherLemmas=words.filter(w=>w.variety===passage.variety&& !options.some(x=>x.w===w) && (norm(w.word)===normalized[ti]|| (w.inflections||[]).some(f=>f.evidence!=='stem'&&norm(f.form)===normalized[ti])));
+    matching=options.map(x=>x.w.word+': '+x.forms.get(normalized[ti])).join(' / ');
+    if(otherLemmas.length)matching+=' · AMBIGUOUS: other indexed headwords share the spelling';
+    if(passage.links?.[ti])matching+=' · manually linked in passage (not independent historical proof)';
+    form=tokens[ti];
+   }
+   found.push({passageIndex:pi,tokenIndex:ti,raw:form,title:passage.title,source:passage.source,status:passage.status,
+    analysis:matching,left:tokens.slice(Math.max(0,ti-6),ti).join(' '),right:tokens.slice(ti+size,ti+size+6).join(' ')});
   }
  }
  return found;
 }
 function renderConcordance(){const root=$('concordanceResults');if(!root)return;
- const raw=$('concordanceInput').value.trim();if(!raw){root.innerHTML='<p class="concordance-hint">Search a word to see its occurrences in your saved passages. Spelling matching ignores vowel-length marks; it does not prove identical grammatical senses.</p>';return;}
- if(/\s/.test(raw)){root.innerHTML='<p class="concordance-hint">Enter one form, without spaces, to search exact word tokens.</p>';return;}
- const all=searchConcordance(raw),truncated=all.length>concordanceMaxResults;
- root.innerHTML=`<p class="concordance-hint">${all.length} occurrence${all.length===1?'':'s'} in ${new Set(all.map(x=>x.passageIndex)).size} saved passage(s). ${truncated?'Showing first '+concordanceMaxResults+'.':''} Drafts and teaching examples are included, so this is not an independently verified historical corpus.</p>`+
- (all.length?`<div class="concordance-list">${all.slice(0,concordanceMaxResults).map(x=>`<button type="button" class="concordance-row" data-corpus-passage="${x.passageIndex}" data-corpus-token="${x.tokenIndex}"><span>${safe(x.left)}</span> <strong>${safe(x.raw)}</strong> <span>${safe(x.right)}</span><small>${safe(x.title)} · ${safe(x.status)}${validUrl(x.source)?' · Source URL listed':' · Source unverified'}</small></button>`).join('')}</div>`:'<p class="concordance-hint">No matching token in saved passages. This does not establish that the form is unattested elsewhere.</p>');
+ const raw=$('concordanceInput').value.trim(),mode=$('concordanceMode').value;
+ if(!raw){root.innerHTML='<p class="concordance-hint">Search a form, dictionary headword, or phrase across your own saved texts. These are not verified historical corpus records.</p>';return;}
+ const terms=raw.split(/\s+/).filter(Boolean);
+ if((mode!=='phrase'&&terms.length!==1)||(mode==='phrase'&&(terms.length<2||terms.length>6))){root.innerHTML='<p class="concordance-hint">Exact form and lemma searches use one token; phrase searches use 2–6 tokens.</p>';return;}
+ if(mode==='lemma'&&!words.some(w=>norm(w.word)===norm(stripToken(raw)))){root.innerHTML='<p class="concordance-hint">No headword matches this spelling. Choose a dictionary lemma; do not assume an unknown form has been lemmatized.</p>';return;}
+ const all=searchConcordance(raw,mode),truncated=all.length>concordanceMaxResults;
+ root.innerHTML=`<p class="concordance-hint">${all.length} candidate occurrence${all.length===1?'':'s'} across ${new Set(all.map(x=>x.passageIndex)).size} local passage(s). ${truncated?'Showing first '+concordanceMaxResults+'.':''} Mode: ${safe(mode)}. Vowel-length-insensitive matches and paradigm matches are discovery aids, NOT established contextual readings. Drafts and teaching examples may appear.</p>`+
+  (all.length?`<div class="concordance-list">${all.slice(0,concordanceMaxResults).map(x=>`<button type="button" class="concordance-row" data-corpus-passage="${x.passageIndex}" data-corpus-token="${x.tokenIndex}"><span>${safe(x.left)}</span> <strong>${safe(x.raw)}</strong> <span>${safe(x.right)}</span><small>${safe(x.title)} · ${safe(x.status)}${validUrl(x.source)?' · Source URL provided':' · No source URL'}</small><small>${safe(x.analysis)}</small></button>`).join('')}</div>`:'<p class="concordance-hint">No matching tokens in the current passage/source filter.</p>');
  for(const b of root.querySelectorAll('[data-corpus-passage]'))b.onclick=()=>{passageIdx=Number(b.dataset.corpusPassage);tokenIdx=Number(b.dataset.corpusToken);renderReader();$('tokenDetail')?.scrollIntoView({behavior:'smooth',block:'nearest'});};
 }
-$('concordanceInput').addEventListener('input',renderConcordance);
+for(const id of ['concordanceInput','concordanceMode','concordanceSource'])$(id).addEventListener(id==='concordanceInput'?'input':'change',renderConcordance);
 $('concordanceCsv').onclick=()=>{
- const q=$('concordanceInput').value.trim();if(!q||/\s/.test(q)){alert('Enter one word or form before exporting.');return;}
- const rows=[['Query','Left context','Matched form','Right context','Passage title','Passage status','Source / bibliographic note'],...searchConcordance(q).map(x=>[q,x.left,x.raw,x.right,x.title,x.status,x.source])];
+ const q=$('concordanceInput').value.trim(),mode=$('concordanceMode').value;
+ if(!q){alert('Enter a word, headword or phrase.');return;}
+ const rows=[['Query','Search mode','Matched status / analysis','Left context','Matched form','Right context','Passage title','Passage status','Source / bibliographic note'],
+   ...searchConcordance(q,mode).map(x=>[q,mode,x.analysis,x.left,x.raw,x.right,x.title,x.status,x.source])];
  download('tlahtolli-concordance.csv',rowsToText(rows,','),'text/csv');
 };
 // v1.5: constrained surface segmentation. Derived only from the existing indexed person-by-tense table.

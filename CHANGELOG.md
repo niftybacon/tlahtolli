@@ -1,3 +1,14 @@
+# Changelog
+
+## v1.6 · 2026-10-26
+- Three concordance methods: exact form, dictionary headword including indexed candidate forms, and short normalized phrase matching.
+- Optional source-URL filter for saved passages; URL presence is not historical verification.
+- Export candidate labels and contextual search evidence to CSV.
+- Indexed conjugation practice across the existing 720 paradigm cells, with core/all pattern selection, per-form review scheduling and local backup support.
+- Research-audit coverage matrix showing field-specific citation gaps, requiring a URL and exact locator.
+- Browser regressions for phrase and lemma lookups, evidence labels, conjugation practice and backup integrity.
+- Historical uncertainty safeguards preserved; no additional forms claimed to be text-attested.
+
 # Tlahtōlli — changelog
 
 ## v1.5 · 2026-10-26

@@ -1,13 +1,29 @@
-# Open research backlog
-Our initial 44-word set has **13 field-specific source records**, not comprehensive grammatical verification. Many other fields only have general headword links. Export the current audit queue from the Research audit tab.
+# Active research priorities
 
-Near-term priorities:
-- Recheck exceptional plural behavior of inanimate/context-dependent nouns against exact source spellings.
-- Verify noun classification, noun possession, headword vowel length and multiple possible senses.
-- Audit each of the 12 verbs' stems, transitivity and 10-by-six finite forms against historical grammars.
-- Build an independently licensed passage catalogue with precise source folios and transcription provenance. Saved teaching examples are not manuscript witnesses.
-- Increase grammar regression fixtures and test ambiguities caused by macron-insensitive matching.
-- Develop a proper finite-state morphological analyzer only after gathering sufficient verified Classical Nahuatl examples; modern-dialect morphology cannot be copied wholesale.
-- Add persistent lemma IDs and versioned schema migrations to avoid ambiguous renaming when words change spelling.
+## Primary: audit the founding 44 entries
 
-Independent scholarly review would increase confidence. Until then, explicitly record uncertainty and disputed claims rather than inferring certainty from software tests.
+Only 13 specific claims have independently locatable references in the initial release. General dictionary links exist for many entries, but these do not independently support every part of speech, animacy classification, plural, or stem form. Use the Research audit tab to export a current per-word queue (including local edits).
+
+Priorities:
+- Audit exceptional inanimate/contextual plural entries (mountains, stars, colonial loans) against exact source spellings and historical usage.
+- Recheck each noun's plural behavior and distinguish regular productive endings from lexically specific or personified plurals.
+- Check all verb preterite and imperative stems. The 10 by 6 tables are *grammar-derived* and may differ by period, register and transitivity.
+- Review possessive constructions with complete source examples, not just combining stems.
+- Check vowel length (including distinctions potentially erased by macron-insensitive search).
+
+## Engineering
+
+- Review the new lemma-candidate concordance on actual historically sourced texts. Automatic matching is not syntactic or semantic disambiguation.
+- Audit the 720 grammar-derived forms and especially the transitive fixed-object assumptions before treating the paradigm trainer as a grammatical authority.
+- Maintain separate source and entry-level provenance; a passage marked "with source URL" is not independently manuscript-verified.
+
+
+- Extend the corpus model to attach per-token original orthography, source folio/page and independent transcription provenance.
+- Expand the morphological analyzer with an explicit finite-state rule set *only after* assembling source-backed tests; do not copy rules directly from a different modern Nahuatl variety.
+- Implement stable lemma IDs, sense-level citations and explicit duplicate/renaming migrations.
+- Improve keyboard accessibility and offline caching without interfering with update checking or leaking browser-private study records.
+- Add a dedicated manuscript edition catalogue, respecting source licenses and transcription rights.
+
+## External review
+
+Independent scholarly review would be valuable for disputes, rare forms, and editorial orthography. Until then, use transparent uncertainty levels and treat the app as a research notebook, not a final authoritative edition.

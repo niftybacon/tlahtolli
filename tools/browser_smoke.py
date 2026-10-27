@@ -39,15 +39,31 @@ with sync_playwright() as pw:
     page.locator('#tabRead').click()
     page.locator('#concordanceInput').fill('in')
     assert page.locator('.concordance-row').count()==2
+    page.locator('#concordanceMode').select_option('phrase')
+    page.locator('#concordanceInput').fill('in xōchitl')
+    assert page.locator('.concordance-row').count()==1
+    page.locator('#concordanceMode').select_option('lemma')
+    page.locator('#concordanceInput').fill('xōchitl')
+    assert page.locator('.concordance-row').count()==1
+    page.locator('#concordanceMode').select_option('exact')
+    page.locator('#concordanceInput').fill('in')
     page.locator('.concordance-row').first.click()
     page.locator('#readerToAnalysis').click()
     assert page.locator('#formProbeInput').input_value()=='in'
+    page.locator('#tabAudit').click()
+    assert 'Noun plural behavior' in page.locator('#auditCoverageMatrix').inner_text()
     page.locator('#tabStudy').click()
+    assert '720' in page.locator('#drillStats').inner_text()
+    page.locator('#drillVerb').select_option('chōca')
+    page.locator('#drillScope').select_option('core')
+    assert '24' in page.locator('#drillStats').inner_text()
+    page.locator('#drillReveal').click()
+    page.locator('[data-drill-grade=good]').click()
     page.locator('#studyReveal').click()
     page.locator('[data-study-grade="good"]').click()
     with page.expect_download() as download:page.locator('#allBackup').click()
     backup=json.loads(Path(download.value.path()).read_text(encoding='utf-8-sig'))
-    assert len(backup['words'])==44 and len(backup['studyRecords'])==1
+    assert len(backup['words'])==44 and len(backup['studyRecords'])==2 and any(k.startswith('paradigm§') for k in backup['studyRecords'])
     assert not errors,errors
     browser.close()
 print('PASS: browser search, analysis, concordance, study, backup regressions')

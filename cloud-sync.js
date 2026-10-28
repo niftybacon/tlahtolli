@@ -7,6 +7,8 @@ const TABLE='tlahtolli_study_cards';
 const GUEST='tlahtolli_guest_study_backup_v1';
 const ACTIVE='tlahtolli_active_cloud_user_v1';
 let api=null,user=null,ready=false,inFlight=false,pending=false,clock=null;
+// Read-only bridge for account-scoped advanced study preferences.
+window.TlahtolliCloudSession={get client(){return api},get user(){return user},get ready(){return ready}};
 const isConfigured=()=>/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(cfg.url||'') && /^sb_publishable_|^eyJ/.test(cfg.publishableKey||'');
 const status=s=>{const el=$('cloudStatus');if(el)el.textContent=s};
 const byId=id=>$(id);
@@ -38,7 +40,7 @@ async function pull(){
  const {data,error}=await api.from(TABLE).select('card_key,record').eq('user_id',user.id).limit(20000);
  if(error)throw error;
  const records={};
- for(const row of data||[])if(typeof row.card_key==='string'&&row.record&&typeof row.record==='object')records[row.card_key]=row.record;
+ for(const row of data||[])if(typeof row.card_key==='string'&&row.record&&typeof row.record==='object'&&row.card_key!=='__tlahtolli_preferences_v1__')records[row.card_key]=row.record;
  return sanitizeStudyRecords(records);
 }
 async function activate(account){
@@ -55,6 +57,7 @@ async function activate(account){
  const combined=merge(local,remote);
  install(combined);localStorage.setItem(ACTIVE,user.id);
  ready=true;
+ window.dispatchEvent(new Event('tlahtolli:accountReady'));
  if(byId('cloudImport'))byId('cloudImport').hidden=!Object.keys(parse(localStorage.getItem(GUEST))).length;
  status('Account connected · '+Object.keys(combined).length+' saved review cards. Changes sync automatically.');
  if(same && Object.keys(local).some(k=>!remote[k]||stamp(local[k])>stamp(remote[k])))queue();
@@ -106,6 +109,7 @@ async function signOut(){
  try{
   ready=false;const {error}=await api.auth.signOut();if(error)throw error;
   localStorage.removeItem(ACTIVE);user=null;install(parse(localStorage.getItem(GUEST)));renderUser();
+  window.dispatchEvent(new Event('tlahtolli:accountSignedOut'));
   if(byId('cloudImport'))byId('cloudImport').hidden=true;
   status('Signed out; the original guest reviews have been restored on this device.');
  }catch(e){status('Could not sign out: '+(e?.message||'Unknown error'))}

@@ -173,14 +173,39 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
 .historical-spelling-cite{font-size:.79rem;line-height:1.5;color:var(--muted);flex:1 1 210px;overflow-wrap:anywhere}
 .historical-spelling-cite a{color:var(--accent);text-underline-offset:3px}
 .historical-spelling-cite a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+/* Native, research-only Classical Nahuatl Translation Desk (v0.2). */
+.translator-surface{padding:24px;margin:18px 0 28px}
+.translator-surface .panelhead{margin-bottom:17px}
+.translator-surface label{display:block;font-weight:700;font-size:.87rem;margin-bottom:7px}
+.translator-surface select,.translator-surface textarea{color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:10px 12px;width:100%;font:inherit}
+.translator-surface textarea{min-height:145px;resize:vertical;line-height:1.6;margin:8px 0}
+.translator-surface .translator-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+.translator-surface .translator-controls>div{min-width:220px;flex:1}
+.translator-surface .translator-actions{display:flex;flex-wrap:wrap;gap:9px;margin:8px 0 12px}
+.translator-surface .translator-stats{color:var(--muted);font-size:.86rem;line-height:1.5;min-height:1.5em}
+.translator-result{border:1px solid var(--line);border-radius:14px;padding:17px;margin-top:16px;background:var(--paper)}
+.translator-result h4{margin:0 0 12px}
+.translator-gloss{background:var(--pale);border-radius:10px;padding:16px;white-space:pre-wrap;word-wrap:break-word;font-size:1.08rem;line-height:1.6}
+.translator-word{padding:13px 0;border-bottom:1px solid var(--line)}
+.translator-word:last-child{border-bottom:0}
+.translator-word p{margin:6px 0}
+.translator-headword{font-size:1.08rem}
+.translator-analysis{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:14px;row-gap:2px;padding:6px 0;line-height:1.5}
+.translator-analysis small{display:block;flex-basis:100%}
+.translator-meta{font-size:.82rem;color:var(--muted);line-height:1.5}
+.translator-caution{color:#8b5627;font-size:.86rem;line-height:1.45}
+.translator-candidate{border:1px solid #c7d8ca;padding:14px;border-radius:12px;background:var(--pale);margin:9px 0}
+.translator-candidate p{margin:7px 0}
+.translator-surface .translator-privacy{color:var(--muted);font-size:.83rem;line-height:1.5}
+@media(max-width:650px){.translator-surface{padding:15px}.translator-surface .translator-actions .btn{flex:1 1 auto}}
 </style>
 <meta name="description" content="Tlahtōlli Classical Nahuatl dictionary, documented inflections, and text reader">
 </head>
 <body>
 <header><div class="wrap bar"><div class="brand"><div class="logo">T</div><div><h1>Tlahtōlli</h1><small>Classical Nahuatl Dictionary & Reader · v2.4.0 · Online edition</small></div></div><span class="eyebrow">An open learning notebook</span></div></header>
 <main class="wrap"><section class="hero" aria-label="Dictionary introduction"><div class="hero-copy"><span class="eyebrow">Tlahtōlli · An open Classical Nahuatl notebook</span><h2>Read deeply. Learn with evidence.</h2><p>Explore words, inflections, original texts, and their sources. Unverified analyses remain clearly labeled.</p><form id="quickLookupForm" class="quick-lookup" role="search"><label for="quickLookup">Quick lookup · Tlatemōlli</label><div class="quick-row"><input id="quickLookup" type="search" autocomplete="off" spellcheck="false" placeholder="Try xōchitl, nichōcac, or ‘flower’" aria-label="Quick dictionary lookup"><button type="submit" class="btn primary">Search <span aria-hidden="true">↗</span></button></div><small>Search Classical Nahuatl or English · <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd></small></form></div><div class="stat"><span class="stat-label">Dictionary collection</span><strong id="total">0</strong><span>documented headwords</span></div></section>
-<nav class="tabs" role="tablist" aria-label="Main sections"><button type="button" id="tabDict" role="tab" aria-selected="true" aria-controls="dictionaryView">Tlahtōlli · Dictionary</button><button type="button" id="tabRead" role="tab" aria-selected="false" aria-controls="readerView">Āmoxtli · Text reader</button><button id="tabStudy" type="button" role="tab" aria-controls="studyView" aria-selected="false">Momachtia · Study</button><button aria-controls="auditView" aria-selected="false" id="tabAudit" role="tab" type="button">Tlāhcuīlōlli · Research audit</button><button aria-controls="helpView" aria-selected="false" id="tabHelp" role="tab" type="button">Tlamachtiliztli · Guide</button></nav>
-<p style="margin:10px 0 16px"><a class="btn" href="translator.html" style="display:inline-block;text-decoration:none">Tlahtōlli · Translation desk (research preview)</a></p>
+<nav class="tabs" role="tablist" aria-label="Main sections"><button type="button" id="tabDict" role="tab" aria-selected="true" aria-controls="dictionaryView">Tlahtōlli · Dictionary</button><button type="button" id="tabRead" role="tab" aria-selected="false" aria-controls="readerView">Āmoxtli · Text reader</button><button type="button" id="tabTranslator" role="tab" aria-selected="false" aria-controls="translatorView">Tlahtōlli · Translator</button><button id="tabStudy" type="button" role="tab" aria-controls="studyView" aria-selected="false">Momachtia · Study</button><button aria-controls="auditView" aria-selected="false" id="tabAudit" role="tab" type="button">Tlāhcuīlōlli · Research audit</button><button aria-controls="helpView" aria-selected="false" id="tabHelp" role="tab" type="button">Tlamachtiliztli · Guide</button></nav>
 <div class="syncbox" role="region" aria-label="Published dictionary updates"><div><strong id="syncStatus">Preparing dictionary sync…</strong><p id="syncDetail">Your private edits are never uploaded during synchronization.</p></div><button class="btn primary" type="button" id="syncNow">↻ Sync dictionary · Yancuīc tlahtōlli</button></div>
 <details class="workspace-tools" id="workspaceTools"><summary><span class="summary-icon" aria-hidden="true">⚙</span><span class="summary-label">Manage data · Tlahtōlli</span><span class="summary-help">Imports, full backups &amp; recovery</span><span class="summary-arrow" aria-hidden="true">⌄</span></summary><div class="workspace-body"><div class="projecttools"><button class="btn" type="button" id="allBackup">↓ Back up · Tlahtōlli + āmoxtli</button><button class="btn primary" type="button" id="importLearningPack">＋ Import · Learning pack</button><input type="file" id="packFile" class="sr" accept=".json,application/json"><label class="packrefresh" title="Optional: replace matching dictionary entries with source-checked information from the pack"><input type="checkbox" id="packUpdateExisting"> Refresh matching entries · update existing</label><button class="btn" type="button" id="allRestore">↑ Restore · Full backup</button><input type="file" id="projectFile" class="sr" accept=".json,application/json"><small>Import adds new material by default. The optional refresh checkbox replaces matching entries (including edited forms); back up first. Restore full backup replaces everything.</small></div>
 <div class="packcheck" role="group" aria-label="Learning pack status"><div><strong id="packCount">Checking published dictionary…</strong><p>Published entries sync automatically when online. Personal edits remain local, and edited entries are protected from replacement.</p></div><div class="checkactions"><button class="btn primary" type="button" id="packSync">↻ Restore missing published words</button><button class="btn" type="button" id="packRefresh">Overwrite local edits with published entries…</button></div></div></div></details>
@@ -193,6 +218,44 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
 <section id="readerView" class="hidden" role="tabpanel" aria-labelledby="tabRead">
 <div class="subtabs"><button class="btn primary" type="button" id="addPassage">＋ Āmoxtli · Add passage</button><span class="readerhint">Exact headwords, listed historical spellings, and proposed analyses are now distinguished. Click any token to edit its spelling, grammar, and dictionary link.</span></div>
 <section class="concordance-box" aria-label="Saved-text concordance"><div class="concordance-head"><div><span class="eyebrow">Tlahtōlīxtli · Concordance</span><h3>Search your saved passages</h3><p>Shows word occurrences in your personal text library, including drafts and teaching examples. These matches are <strong>not independent manuscript attestations</strong>.</p></div><div class="concordance-controls"><label for="concordanceInput">Word, headword, or short phrase</label><input id="concordanceInput" placeholder="e.g. in, chōca, in xōchitl" spellcheck="false" maxlength="160"/><div class="concordance-filters"><label for="concordanceMode">Matching method<select id="concordanceMode"><option value="exact">Exact form</option><option value="lemma">Headword · candidate forms</option><option value="phrase">Exact phrase (2–6 words)</option></select></label><label for="concordanceSource">Passage sources<select id="concordanceSource"><option value="all">All saved passages</option><option value="linked">With a source URL</option></select></label></div><button type="button" class="btn" id="concordanceCsv">↓ Export contexts · CSV</button></div></div><div id="concordanceResults" role="status" aria-live="polite"></div></section><div class="readerlayout"><div class="panel"><div class="panelhead"><h3>Passage library</h3><p id="passageCount">Texts in your project</p><input id="passageSearch" class="searchbox" placeholder="Search passages or sources…"></div><div class="readlist" id="passageList"></div></div><div class="panel"><div id="passageDetail" class="readerbody"></div></div></div>
+</section>
+
+<section id="translatorView" class="hidden" role="tabpanel" aria-labelledby="tabTranslator">
+ <div class="panel translator-surface">
+  <div class="panelhead">
+   <span class="eyebrow">Tlahtōlli · Historical translation research</span>
+   <h3>Translation Desk</h3>
+   <p>Read and investigate Classical Nahuatl inside Tlahtōlli. This research preview provides dictionary-backed glosses and sourced passage candidates, <strong>not fluent AI sentence translations</strong>. Unknown or ambiguous forms are clearly marked.</p>
+  </div>
+  <form id="translatorForm">
+   <div class="translator-controls">
+    <div><label for="translatorDirection">Translation direction</label><select id="translatorDirection">
+     <option value="nh-en">Classical Nahuatl → English evidence-backed gloss</option>
+     <option value="en-nh">English → Classical Nahuatl dictionary lookup</option>
+    </select></div>
+   </div>
+   <label for="translatorInput" style="margin-top:14px">Text to investigate</label>
+   <textarea id="translatorInput" spellcheck="false" maxlength="7000" placeholder="in xōchitl in cuīcatl" aria-describedby="translatorStatus"></textarea>
+   <div class="translator-actions">
+    <button class="btn primary" type="submit">Analyze text</button>
+    <button class="btn" type="button" id="translatorExample">Try historical passage</button>
+    <button class="btn" type="button" id="translatorClear">Clear</button>
+    <button class="btn" type="button" id="translatorCopy">Copy gloss</button>
+    <button class="btn" type="button" id="translatorExport">Export research note</button>
+   </div>
+  </form>
+  <p id="translatorStatus" class="translator-stats" role="status" aria-live="polite">Loading Classical Nahuatl sources…</p>
+  <div class="translator-result">
+   <span class="eyebrow">Literal working gloss</span>
+   <div id="translatorGloss" class="translator-gloss" aria-live="polite">Enter a word or short passage and choose Analyze.</div>
+   <div id="translatorPassages" aria-live="polite"></div>
+  </div>
+  <div class="translator-result">
+   <h4>Word-by-word evidence</h4>
+   <div id="translatorAnalyses" aria-live="polite"></div>
+  </div>
+  <p class="translator-privacy">Research only: the analyzer runs in your browser and does not send text to an external AI translator. Historical passage interpretations and dictionary entries may require further scholarly review. Modern Huasteca Nahuatl is not silently mixed into Classical Nahuatl.</p>
+ </div>
 </section>
 
 <section id="studyView" class="hidden" role="tabpanel" aria-labelledby="tabStudy">
@@ -534,8 +597,8 @@ try{
 }catch(e){/* Keep saved passages and the new passages in memory; never clear learner edits. */}
 let passageIdx=passages.length?0:-1,tokenIdx=1,editingPassage=-1;
 function savePassages(){try{localStorage.setItem(passageStorageKey,JSON.stringify(passages));return true}catch(err){message('Browser storage unavailable. Save a full project backup to preserve changes.');return false;}}
-function setTab(t){for(const [name,id,button] of [['dictionary','dictionaryView','tabDict'],['reader','readerView','tabRead'],['audit','auditView','tabAudit'],['study','studyView','tabStudy'],['help','helpView','tabHelp']]){const active=t===name;$(id).classList.toggle('hidden',!active);$(button).setAttribute('aria-selected',String(active));}if(t==='reader'){renderReader();renderConcordance();}if(t==='audit')renderAudit();if(t==='study'){renderStudy();renderDrill();}}
-$('tabDict').onclick=()=>setTab('dictionary');$('tabRead').onclick=()=>setTab('reader');$('tabHelp').onclick=()=>setTab('help');$('tabAudit').onclick=()=>setTab('audit');$('tabStudy').onclick=()=>setTab('study');
+function setTab(t){for(const [name,id,button] of [['dictionary','dictionaryView','tabDict'],['reader','readerView','tabRead'],['translator','translatorView','tabTranslator'],['audit','auditView','tabAudit'],['study','studyView','tabStudy'],['help','helpView','tabHelp']]){const active=t===name;$(id).classList.toggle('hidden',!active);$(button).setAttribute('aria-selected',String(active));}if(t==='reader'){renderReader();renderConcordance();}if(t==='audit')renderAudit();if(t==='study'){renderStudy();renderDrill();}}
+$('tabDict').onclick=()=>setTab('dictionary');$('tabRead').onclick=()=>setTab('reader');$('tabTranslator').onclick=()=>setTab('translator');$('tabHelp').onclick=()=>setTab('help');$('tabAudit').onclick=()=>setTab('audit');$('tabStudy').onclick=()=>setTab('study');
 function stripToken(token){return String(token).replace(/^[^\p{L}\p{M}]+|[^\p{L}\p{M}]+$/gu,'').toLowerCase()}
 function getTokens(str){return String(str).match(/\S+/gu)||[]}
 function findWordKey(k){return words.find(w=>w.variety+'§'+w.word===k)||null}
@@ -2316,6 +2379,8 @@ return {DEFAULT,PRESETS,FIELDS,config,steps,schedule,midnight,usage,queueWords,q
 renderSourceAtlas();syncSourceAtlas();render();
 
 </script>
+<script src="./translator-engine.js"></script>
+<script defer src="./translator-integrated.js"></script>
 <script src="./cloud-config.js"></script>
 <script defer src="./cloud-sync.js"></script>
 <script defer src="./cloud-preferences.js"></script>

@@ -100,6 +100,7 @@ function makeEngine(parser,lookup,corpus,lukeCorpus){
     if(seen.has(k))continue;seen.add(k);
     found.push({lemma:a.lemma||'',kind:a.kind||'Morphological proposal',
      grade:a.grade||'unreviewed',source:a.source||'',locator:a.locator||'',
+     sources:Array.isArray(a.sources)?a.sources.slice(0,8):[],
      features:a.features||{},parts:Array.isArray(a.parts)?a.parts:[],
      surface:item.form,original:token,rule:item.rule,changed:item.changed,
      note:a.note||'',meaning:''});

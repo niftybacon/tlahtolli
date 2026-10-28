@@ -16,13 +16,13 @@ for i in [0,3,5,7,9,11,13,15,17,20,24,30,50,90,140,151]:
  txt=' '.join(doc[i].get_text().split())
  print('PAGE_TEXT',i,'chars',len(txt),'opening',repr(txt[:75]))
 # Sample a few pages around the beginning of the Nahuatl text; no uploads.
-for i in [7,9,11,14,16,20]:
+for i in [8,10,12,13,15]:
  if i>=len(doc):continue
- pix=doc[i].get_pixmap(matrix=fitz.Matrix(1.25,1.25),alpha=False)
+ pix=doc[i].get_pixmap(matrix=fitz.Matrix(2.2,2.2),alpha=False)
  from PIL import Image
  im=Image.frombytes('RGB',[pix.width,pix.height],pix.samples)
- im.thumbnail((460,690))
- output=io.BytesIO();im.save(output,format='JPEG',quality=55,optimize=True)
+ im.thumbnail((580,900))
+ output=io.BytesIO();im.save(output,format='JPEG',quality=62,optimize=True)
  data=base64.b64encode(output.getvalue()).decode('ascii')
  print('SAMPLE_IMAGE_'+str(i)+'_BEGIN'+data+'END_SAMPLE_IMAGE_'+str(i))
 print('Facsimile sample pages generated solely for review.')

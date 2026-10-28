@@ -41,12 +41,14 @@ function showResult(){
   for(const clause of result.clauses){
    const block=el('article','translator-candidate');
    block.append(el('h4','','Sentence analysis'),el('p','',clause.text));
+   if(clause.roleAmbiguous)block.append(el('p','translator-caution','Subject/object roles remain ambiguous. Alternatives below are not ranked.'));
    if(!clause.complete)block.append(el('p','translator-caution',clause.reason));
    for(const candidate of clause.candidates){
     const f=candidate.frame;
     block.append(el('p','',candidate.english.join(' / ')||f.subject+' — '+(f.negative?'not ':'')+f.lexicalMeaning+(f.object?' — object: '+f.object:'')),
-     el('p','translator-meta','Predicate: '+f.predicate+' · present · subject: '+f.subject+' · object: '+(f.object||'none')+' · '+candidate.grade),
+     el('p','translator-meta','Predicate: '+f.predicate+' · '+f.tense+' · subject: '+f.subject+' · object: '+(f.object||'none')+' · '+candidate.grade),
      el('p','translator-caution',candidate.note));
+    for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
    }
    passages.append(block);

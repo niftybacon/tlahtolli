@@ -20,13 +20,15 @@ No user passwords or private reviews should ever be stored in public GitHub file
 
 ## What syncs / does not sync yet
 
-**Synced:** per-card vocabulary, reverse, and conjugation study progress, including card-level review history and FSRS fields.
+**Synced:** per-card vocabulary, reverse, and conjugation review history (including card-level FSRS history). **Advanced SRS and FSRS settings now also sync**: daily new/review limits, learning steps, scheduling options, queue order, timer, optional answer reveal, FSRS opt-in, and separate retention targets/scales.
 
-**Not yet synced:** locally edited dictionaries, reading passages, annotations, and global SRS/FSRS preferences. Continue exporting a **full project backup JSON** before changing devices, clearing browser data, or editing accounts.
+**First-time settings setup:** Sign in on the device with the settings you want to keep. In **Momachtia · Study → Private study account**, click **Save device settings to account** once. Thereafter, saving SRS or FSRS settings automatically queues a cloud update. On a second device, sign in and reload or click **Sync now** to load saved preferences. If two customized devices disagree, the app asks you to choose **Load account settings** or **Save device settings** before replacing anything. Settings are stored in the existing RLS-protected `tlahtolli_study_cards` table under a reserved non-card key; **no SQL migration is needed.**
 
-**Offline:** the existing local schedule works even without cloud access. After reconnecting, **Sync now** can upload newer reviews. Never clear your browser data before unsynced reviews have uploaded.
+**Not yet synced:** locally edited dictionaries, reading passages, and annotations. Continue exporting a **full project backup JSON** before changing devices, clearing browser data, or editing accounts.
 
-**Safety:** the first sign-in does not silently upload guest history. The explicit import button keeps personal data isolated. Cloud records are merged by last review time; **concurrent edits to the same card and Undo/reset/delete across multiple devices are not fully conflict-resolved yet.** Resetting local reviews is not a cloud deletion; cloud records can reappear. Treat the cloud feature as beta until tested with two devices.
+**Offline:** the existing local schedule and settings work even without cloud access. After reconnecting, **Sync now** can upload newer reviews and saved preferences. Never clear your browser data before unsynced reviews have uploaded.
+
+**Safety:** the first sign-in does not silently upload guest history. Initial preferences are saved only when the account owner selects the save action or later changes a setting while signed in. The explicit import button keeps personal data isolated. Cloud records are merged by last review time; **concurrent edits to the same card and Undo/reset/delete across multiple devices are not fully conflict-resolved yet.** Resetting local reviews is not a cloud deletion; cloud records can reappear. Treat the cloud feature as beta until tested with two devices.
 
 ## Test security
 
@@ -42,3 +44,7 @@ With two separate confirmed Supabase accounts, check that account A's card rows 
 - **After sign-out** — original guest records are restored locally. Public dictionary and research data remain available.
 
 For security architecture consult: https://supabase.com/docs/guides/auth and https://supabase.com/docs/guides/database/postgres/row-level-security
+
+### Settings-sync limitations
+
+Preferences are saved as one versioned object per account, not merged per individual field. Simultaneous writes from two devices are not transactionally serialized and can still race; avoid editing the same preference on two devices at exactly the same time. Existing due dates are not rewritten merely by loading settings. After publishing, test with a real account in two browsers and verify Supabase RLS is enabled before broad use.

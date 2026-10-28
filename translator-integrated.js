@@ -51,6 +51,45 @@ function showResult(){
     for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
    }
+   if(clause.locativeInterpretations?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-locative-interpretations';
+    panel.append(el('summary','','Classical locative & relational phrase · '+
+     clause.locativeInterpretations.length+' nonfinite hypothesis'+
+     (clause.locativeInterpretations.length===1?'':'es')+' (NOT a sentence)'));
+    panel.append(el('p','translator-caution',
+     'The relational possessor, proposed place noun, and optional final word are separate analytical roles. No sentence translation, automatic historical-spelling repair, or verified co-reference is claimed.'));
+    for(const reading of clause.locativeInterpretations.slice(0,5)){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',reading.sourceSpelling+' · '+reading.construction),
+      el('p','translator-meta',reading.grade),
+      el('p','',reading.potentialLocation),
+      el('p','translator-meta','Place '+reading.place.lemma+
+       (reading.place.article?' · article '+reading.place.article:'')+
+       ' · '+reading.place.evidence),
+      el('p','translator-meta','Relational '+reading.relation.lemma+
+       ' · '+reading.relation.evidence+
+       ' · '+reading.relation.possessorStatus),
+      el('p','translator-caution',reading.note));
+     if(reading.extra){
+      item.append(el('p','translator-meta','Trailing '+reading.extra.written+
+       ' → '+reading.extra.lemma+' · '+reading.extra.meaning),
+       el('p','translator-caution',reading.extra.syntacticRole));
+     }
+     if(reading.editorialComparison){
+      item.append(el('p','translator-meta',
+       'Published contextual note for this EXACT historical fragment: '+
+       reading.editorialComparison.reading),
+       el('p','translator-caution','Published editorial reading consulted; NOT held-out evaluation or a verified token-by-token translation.'));
+     }
+     for(const url of reading.sources||[]){
+      const link=safeLink(url,'Inspect locative evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.fragmentInterpretations?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-contextual-fragments';
@@ -381,6 +420,7 @@ async function init(){
   model=window.TlahtolliTranslator.create(document,corpus);
   if(window.TlahtolliSourceMorphology&&sourceReview.status==='fulfilled'&&sourceReview.value)
    sourceMorphology=window.TlahtolliSourceMorphology.create(sourceReview.value);
+  const locative=window.TlahtolliLocative?.create(document,corpus)||null;
   const explainMorphology=token=>[
    ...(typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token)),
    ...(sourceMorphology?.analyze(token)||[])
@@ -393,7 +433,7 @@ async function init(){
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
    if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(
     document,await response.json(),
-    explainMorphology,corpus);
+    explainMorphology,corpus,locative);
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(

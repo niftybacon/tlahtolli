@@ -48,6 +48,21 @@ with sync_playwright() as pw:
     assert 'Siméon' in page.locator('#archiveResults').inner_text()
     page.locator('#tabTranslator').click()
     page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('115')")
+    def expand_archive_evidence():
+        # Exercise the actual disclosure UI, rather than accidentally asserting
+        # against invisible textContent in a collapsed <details> element.
+        opened=page.evaluate("""() => {
+          let count=0;
+          for(const detail of document.querySelectorAll('#translatorAnalyses details')){
+            const header=detail.querySelector(':scope > summary');
+            if(header?.textContent.includes('Additional lexical evidence')){
+              detail.open=true;count++;
+            }
+          }
+          return count;
+        }""")
+        assert opened>=1,'Expected an expandable lexical evidence section'
+
     # Archive rows are source evidence only; an OCR section marker is not a
     # verified Classical Nahuatl word and must remain unknown in the gloss.
     page.locator('#translatorInput').fill('LXVIIT')
@@ -57,6 +72,7 @@ with sync_playwright() as pw:
       return !!root && root.textContent.includes('Additional lexical evidence')
         && root.textContent.includes('LXVIIT [headword]');
     }""")
+    expand_archive_evidence()
     unknown=page.locator('#translatorAnalyses').inner_text()
     assert 'Unindexed form' in unknown,unknown
     assert 'Additional lexical evidence' in unknown,unknown
@@ -74,6 +90,7 @@ with sync_playwright() as pw:
       return !!root && root.textContent.includes('Additional lexical evidence')
         && root.textContent.includes('Matched source form: in [headword]');
     }""")
+    expand_archive_evidence()
     known=page.locator('#translatorAnalyses').inner_text()
     assert 'Additional lexical evidence' in known
     assert 'Matched source form: in [headword]' in known
@@ -90,6 +107,7 @@ with sync_playwright() as pw:
         && root.textContent.includes('alomeh [source-listed form; source labels: plural]')
         && root.textContent.includes('alomeh [headword]');
     }""")
+    expand_archive_evidence()
     plural=page.locator('#translatorAnalyses').inner_text()
     assert 'alo' in plural
     assert 'source labels: plural' in plural
@@ -100,9 +118,9 @@ with sync_playwright() as pw:
     # The archive is explicitly source-separated: an Eastern Huasteca
     # entry can be queried only when opting out of classicalOnly.
     dialect=page.evaluate("""() => ({
-      classical:window.TlahtolliArchive.lookupEvidence('peso').hits
+      classical:window.TlahtolliArchive.lookupEvidence('peso',{limit:50}).hits
         .some(h=>h.variety==='Eastern Huasteca Nahuatl'),
-      unrestricted:window.TlahtolliArchive.lookupEvidence('peso',{classicalOnly:false}).hits
+      unrestricted:window.TlahtolliArchive.lookupEvidence('peso',{classicalOnly:false,limit:50}).hits
         .some(h=>h.variety==='Eastern Huasteca Nahuatl')
     })""")
     assert not dialect['classical'] and dialect['unrestricted'],dialect

@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-luke1833-chapter-audit",
   "schema": 1,
-  "created_utc": "2026-10-28T16:55:44+00:00",
+  "created_utc": "2026-10-28T16:56:07+00:00",
   "source": "https://archive.org/details/elevangeliodeslu00pazy",
   "original_publication_year": 1833,
   "input_ocr_sha256": "9c437d486619e68c8c20f07b5e030c09ffcc77696ffd3e5ce7eb81b30ed428d4",
@@ -13,7 +13,9 @@
     "chapters_located": 24,
     "reference_verse_count": 1151,
     "chapter_headings_needing_review": 5,
-    "verse_marker_positions_requiring_review": 86
+    "verse_marker_positions_requiring_review": 54,
+    "chapters_with_facsimile_numbering_checks": 2,
+    "chapters_with_full_wording_proofread": 0
   },
   "chapters": [
     {
@@ -25,12 +27,8 @@
       "expected_verse_count": 80,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 76,
-      "verses_needing_marker_review": [
-        51,
-        54,
-        56
-      ],
+      "distinct_verse_numbers_seen_2_to_end": 79,
+      "verses_needing_marker_review": [],
       "suspected_split_numerals": [],
       "duplicate_verse_marker_candidates": [],
       "out_of_range_marker_candidates": [],
@@ -73,10 +71,21 @@
           "printed_digits": "80"
         }
       ],
-      "facsimile_pages_checked": [],
-      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "facsimile_pages_checked": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "chapter_status": "PRINTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD",
       "verse_text_verified": false,
-      "review_priority": "normal"
+      "review_priority": "normal",
+      "verse_numbering_print_checked": true
     },
     {
       "chapter": 2,
@@ -142,8 +151,10 @@
           "printed_digits": "52"
         }
       ],
-      "facsimile_pages_checked": [],
-      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "facsimile_pages_checked": [
+        21
+      ],
+      "chapter_status": "SELECTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD",
       "verse_text_verified": false,
       "review_priority": "normal"
     },
@@ -360,15 +371,13 @@
       "expected_verse_count": 49,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 41,
+      "distinct_verse_numbers_seen_2_to_end": 43,
       "verses_needing_marker_review": [
         18,
         25,
-        26,
         31,
         41,
-        42,
-        48
+        42
       ],
       "suspected_split_numerals": [
         {
@@ -409,16 +418,16 @@
           "printed_digits": "4"
         },
         {
-          "verse": 46,
-          "absolute_offset": 50082,
-          "first_word_ocr": "Matel",
-          "printed_digits": "46"
-        },
-        {
           "verse": 47,
           "absolute_offset": 50203,
           "first_word_ocr": "Mochi",
           "printed_digits": "47"
+        },
+        {
+          "verse": 48,
+          "absolute_offset": 50347,
+          "first_word_ocr": "Y",
+          "printed_digits": "48"
         },
         {
           "verse": 49,
@@ -430,7 +439,7 @@
       "facsimile_pages_checked": [],
       "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
       "verse_text_verified": false,
-      "review_priority": "high"
+      "review_priority": "normal"
     },
     {
       "chapter": 7,
@@ -441,13 +450,11 @@
       "expected_verse_count": 50,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 44,
+      "distinct_verse_numbers_seen_2_to_end": 46,
       "verses_needing_marker_review": [
-        2,
         18,
         25,
-        26,
-        34
+        26
       ],
       "suspected_split_numerals": [
         {
@@ -463,6 +470,12 @@
       "out_of_order_number_transitions": 0,
       "marker_samples": [
         {
+          "verse": 2,
+          "absolute_offset": 51062,
+          "first_word_ocr": "O",
+          "printed_digits": "2"
+        },
+        {
           "verse": 3,
           "absolute_offset": 51217,
           "first_word_ocr": "lea",
@@ -473,12 +486,6 @@
           "absolute_offset": 51445,
           "first_word_ocr": "Auh",
           "printed_digits": "4"
-        },
-        {
-          "verse": 5,
-          "absolute_offset": 51566,
-          "first_word_ocr": "Ipampa",
-          "printed_digits": "5"
         },
         {
           "verse": 48,
@@ -513,14 +520,8 @@
       "expected_verse_count": 56,
       "heading_status": "recognized_unverified",
       "verse_1_status": "explicit_ocr_marker_unverified",
-      "distinct_verse_numbers_seen_2_to_end": 50,
-      "verses_needing_marker_review": [
-        5,
-        9,
-        24,
-        53,
-        55
-      ],
+      "distinct_verse_numbers_seen_2_to_end": 55,
+      "verses_needing_marker_review": [],
       "suspected_split_numerals": [],
       "duplicate_verse_marker_candidates": [],
       "out_of_range_marker_candidates": [
@@ -550,16 +551,16 @@
           "printed_digits": "4"
         },
         {
-          "verse": 52,
-          "absolute_offset": 70029,
-          "first_word_ocr": "Mochtin",
-          "printed_digits": "52"
-        },
-        {
           "verse": 54,
           "absolute_offset": 70248,
           "first_word_ocr": "In",
           "printed_digits": "54"
+        },
+        {
+          "verse": 55,
+          "absolute_offset": 70379,
+          "first_word_ocr": "O",
+          "printed_digits": "55"
         },
         {
           "verse": 56,
@@ -582,20 +583,16 @@
       "expected_verse_count": 62,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 52,
+      "distinct_verse_numbers_seen_2_to_end": 57,
       "verses_needing_marker_review": [
-        10,
-        14,
         25,
-        33,
-        40,
         47,
-        49,
         52,
         57
       ],
       "suspected_split_numerals": [],
       "duplicate_verse_marker_candidates": [
+        6,
         51
       ],
       "out_of_range_marker_candidates": [],
@@ -652,11 +649,10 @@
       "expected_verse_count": 42,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 37,
+      "distinct_verse_numbers_seen_2_to_end": 38,
       "verses_needing_marker_review": [
         13,
         15,
-        34,
         36
       ],
       "suspected_split_numerals": [
@@ -861,16 +857,13 @@
       "expected_verse_count": 35,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 26,
+      "distinct_verse_numbers_seen_2_to_end": 29,
       "verses_needing_marker_review": [
         4,
         5,
-        7,
         11,
-        14,
         15,
-        26,
-        34
+        26
       ],
       "suspected_split_numerals": [
         {
@@ -904,16 +897,16 @@
           "printed_digits": "6"
         },
         {
-          "verse": 32,
-          "absolute_offset": 115772,
-          "first_word_ocr": "Auh",
-          "printed_digits": "32"
-        },
-        {
           "verse": 33,
           "absolute_offset": 116063,
           "first_word_ocr": "Tel",
           "printed_digits": "33"
+        },
+        {
+          "verse": 34,
+          "absolute_offset": 116208,
+          "first_word_ocr": "A",
+          "printed_digits": "34"
         },
         {
           "verse": 35,
@@ -925,7 +918,7 @@
       "facsimile_pages_checked": [],
       "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
       "verse_text_verified": false,
-      "review_priority": "high"
+      "review_priority": "normal"
     },
     {
       "chapter": 14,
@@ -996,12 +989,10 @@
       "expected_verse_count": 32,
       "heading_status": "recognized_ocr_damaged",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 27,
+      "distinct_verse_numbers_seen_2_to_end": 29,
       "verses_needing_marker_review": [
         8,
-        9,
-        20,
-        28
+        9
       ],
       "suspected_split_numerals": [],
       "duplicate_verse_marker_candidates": [],
@@ -1117,12 +1108,11 @@
       "expected_verse_count": 37,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 32,
+      "distinct_verse_numbers_seen_2_to_end": 33,
       "verses_needing_marker_review": [
         7,
         9,
-        11,
-        27
+        11
       ],
       "suspected_split_numerals": [
         {
@@ -1249,9 +1239,8 @@
       "expected_verse_count": 48,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 45,
+      "distinct_verse_numbers_seen_2_to_end": 46,
       "verses_needing_marker_review": [
-        42,
         44
       ],
       "suspected_split_numerals": [],
@@ -1310,10 +1299,9 @@
       "expected_verse_count": 47,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 43,
+      "distinct_verse_numbers_seen_2_to_end": 44,
       "verses_needing_marker_review": [
         4,
-        7,
         22
       ],
       "suspected_split_numerals": [],
@@ -1440,15 +1428,11 @@
       "expected_verse_count": 71,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 63,
+      "distinct_verse_numbers_seen_2_to_end": 67,
       "verses_needing_marker_review": [
-        7,
         11,
-        13,
         29,
-        54,
-        57,
-        64
+        57
       ],
       "suspected_split_numerals": [
         {
@@ -1505,7 +1489,7 @@
       "facsimile_pages_checked": [],
       "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
       "verse_text_verified": false,
-      "review_priority": "high"
+      "review_priority": "normal"
     },
     {
       "chapter": 23,
@@ -1516,9 +1500,8 @@
       "expected_verse_count": 56,
       "heading_status": "recognized_ocr_damaged",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 53,
+      "distinct_verse_numbers_seen_2_to_end": 54,
       "verses_needing_marker_review": [
-        9,
         18
       ],
       "suspected_split_numerals": [
@@ -1585,10 +1568,8 @@
       "expected_verse_count": 53,
       "heading_status": "recognized_unverified",
       "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
-      "distinct_verse_numbers_seen_2_to_end": 51,
-      "verses_needing_marker_review": [
-        28
-      ],
+      "distinct_verse_numbers_seen_2_to_end": 52,
+      "verses_needing_marker_review": [],
       "suspected_split_numerals": [],
       "duplicate_verse_marker_candidates": [],
       "out_of_range_marker_candidates": [],

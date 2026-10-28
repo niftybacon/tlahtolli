@@ -34,6 +34,11 @@ jobs:
           python tools/test_remaining_audit.py
       - name: Audit claim-level source coverage
         run: python tools/test_claim_audit.py
+      - name: Validate imported Amoxcalli lexical archive and script syntax
+        run: |
+          python tools/test_amoxcalli_archive.py
+          node --check amoxcalli-archive.js
+          node --check translator-integrated.js
       - name: JavaScript syntax check
         run: |
           python - <<'PY'

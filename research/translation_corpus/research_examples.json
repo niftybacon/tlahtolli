@@ -1,0 +1,59 @@
+{
+  "format": "tlahtolli-translation-research-examples",
+  "schema": 1,
+  "purpose": "Research display and evaluation design ONLY. Not licensed or approved for machine training.",
+  "entries": [
+    {
+      "id": "FC11-209v-mirror",
+      "source_id": "FC",
+      "source_title": "Florentine Codex, Book 11, folio 209v",
+      "source_url": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
+      "original": "in mochioa tezcatl, in mocuepa ca tetl",
+      "normalized": "in mochīhua tēzcatl in mocuepa ca tetl",
+      "english_interpretation": "A stone from which a mirror is made; a stone transformed into a mirror.",
+      "passage_type": "descriptive clause (editorial interpretation, not word-for-word translation)",
+      "variety": "Classical Nahuatl",
+      "date": "16th century",
+      "orthography": "source-era transcription and editorial normalization",
+      "source_note": "Copied from our existing research note docs/AMOXTLI_MIRROR_STONE.md; verify alignment against source edition before any training claim.",
+      "transcription_rights": "unconfirmed",
+      "translation_rights": "editorial paraphrase; review provenance",
+      "review_status": "candidate",
+      "train_eligible": false
+    },
+    {
+      "id": "FC11-62r-fish-water",
+      "source_id": "FC",
+      "source_title": "Florentine Codex, Book 11, folio 62r",
+      "source_url": "https://florentinecodex.getty.edu/es/book/11/folio/62r",
+      "original": "atl yitic nemjnj",
+      "normalized": "ātl yitic nemini",
+      "english_interpretation": "In water / within water — the form nemini requires contextual interpretation.",
+      "passage_type": "fragment; intentionally not a complete translated sentence",
+      "variety": "Classical Nahuatl",
+      "date": "16th century",
+      "source_note": "From docs/AMOXTLI_EXPANSION_02.md; nemini nominal/verbal status ambiguous in isolation.",
+      "transcription_rights": "unconfirmed",
+      "translation_rights": "editorial explanatory note",
+      "review_status": "candidate",
+      "train_eligible": false
+    },
+    {
+      "id": "FC11-62r-chimalli",
+      "source_id": "FC",
+      "source_title": "Florentine Codex, Book 11, folio 62r",
+      "source_url": "https://florentinecodex.getty.edu/es/book/11/folio/62r",
+      "original": "iuhqujn chimalli",
+      "normalized": "iuhquin chimalli",
+      "english_interpretation": "Like a shield.",
+      "passage_type": "comparison fragment, not finite sentence",
+      "variety": "Classical Nahuatl",
+      "date": "16th century",
+      "source_note": "From docs/AMOXTLI_EXPANSION_02.md; short editorial reading only.",
+      "transcription_rights": "unconfirmed",
+      "translation_rights": "editorial gloss; verify source",
+      "review_status": "candidate",
+      "train_eligible": false
+    }
+  ]
+}

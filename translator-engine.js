@@ -22,7 +22,7 @@ function confidence(match){
 }
 function create(dictionary,passages){
  const list=(dictionary&&Array.isArray(dictionary.words)?dictionary.words:[]).filter(
-  w=>w&&w.variety==='Classical Nahuatl'&&typeof w.word==='string'&&w.word.trim());
+  w=>w&&['Classical Nahuatl','Classical Nahuatl (historical dictionary lemma)'].includes(w.variety)&&typeof w.word==='string'&&w.word.trim());
  const index=new Map(),english=new Map();
  function push(k,m,map=index){
   k=norm(k);if(!k)return;const a=map.get(k)||[];

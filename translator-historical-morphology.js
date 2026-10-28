@@ -46,7 +46,7 @@ function variants(token,profile='general'){
  }
  return out;
 }
-function makeEngine(parser,lookup,corpus){
+function makeEngine(parser,lookup,corpus,lukeCorpus){
  const corpusIndex=new Map();
  if(corpus?.format==='tlahtolli-codex-aggregate-analysis'&&
     corpus.verbatim_source_text_in_output===false&&Array.isArray(corpus.books)){
@@ -57,8 +57,18 @@ function makeEngine(parser,lookup,corpus){
     const count=Number(pair[1]);
     if(!form||!Number.isInteger(count)||count<1)continue;
     if(!corpusIndex.has(form))corpusIndex.set(form,[]);
-    corpusIndex.get(form).push({book:book.book,count});
+    corpusIndex.get(form).push({source:'codex',book:book.book,count});
    }
+  }
+ }
+ if(lukeCorpus?.format==='tlahtolli-luke1833-aggregate-analysis'&&
+     lukeCorpus.training_ready===false&&lukeCorpus.text_redistributed===false){
+  for(const pair of lukeCorpus.frequent_written_forms||[]){
+   const form=String(pair[0]||'').toLocaleLowerCase('en');
+   const count=Number(pair[1]);
+   if(!form||!Number.isInteger(count)||count<1)continue;
+   if(!corpusIndex.has(form))corpusIndex.set(form,[]);
+   corpusIndex.get(form).push({source:'luke1833',count});
   }
  }
  const cache=new Map();
@@ -103,7 +113,7 @@ function makeEngine(parser,lookup,corpus){
   for(const entry of forms){
    const books=corpusIndex.get(entry.form)||[];
    for(const hit of books)observed.push({form:entry.form,original:token,
-    book:hit.book,count:hit.count,changed:entry.changed});
+    book:hit.book||null,source:hit.source,count:hit.count,changed:entry.changed});
   }
   const result={original:token,profile,variants:forms,
    corpusObservations:observed.slice(0,24),

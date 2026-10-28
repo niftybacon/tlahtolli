@@ -1,0 +1,23 @@
+name: Spot-check public-domain 1833 Luke facsimile pages
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - tools/sample_luke_facsimile.py
+      - .github/workflows/sample-luke-facsimile.yml
+permissions:
+  contents: read
+jobs:
+  sample-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install rendering modules
+        run: python -m pip install pymupdf pillow
+      - name: Inspect original public-domain edition transiently
+        run: python tools/sample_luke_facsimile.py

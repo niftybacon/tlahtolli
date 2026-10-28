@@ -55,6 +55,8 @@ jobs:
         run: node tools/test_translator_morphology.js
       - name: Test all-twelve-book Codex research aggregation
         run: python tools/test_florentine_analysis.py
+      - name: Test conservative 1833 Luke OCR correction and segmentation
+        run: python tools/test_luke_ocr.py
       - name: Test FSRS Stage 1 and Stage 2 engine
         run: node tools/test_fsrs.js
       - name: Install headless browser

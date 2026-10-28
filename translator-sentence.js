@@ -24,7 +24,61 @@ const nouns={'cihuātl':'woman','tlācatl':'person','conetl':'child','calli':'ho
  'chimalli':'shield','tlaxcalli':'tortilla','tepētl':'hill'};
 const grammar='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
 const tenseSource='https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html';
-function create(dictionary,paradigms){
+function create(dictionary,paradigms,morphology){
+ // Reuse existing source-sensitive morphology, never a new guessed conjugator.
+ // This optional provider is the canonical morphology engine's analyze(token).
+ const parseMorph=typeof morphology==='function'?morphology:()=>[];
+ const PERSON_CODES=['1sg','2sg','3sg','1pl','2pl','3pl'];
+ const EVIDENCE_GRADES=new Set(['manuscript','lexical','grammar','lemma','paradigm','hypothesis','analogy','unreviewed']);
+ function exactMorphology(token){
+  if(!/^[\p{L}\p{M}’'-]{1,120}$/u.test(token))return [];
+  try{
+   const matches=parseMorph(token);
+   return Array.isArray(matches)?matches.filter(m=>m&&EVIDENCE_GRADES.has(m.grade)&&
+    typeof m.lemma==='string'&&typeof m.kind==='string'&&
+    m.parts&&Array.isArray(m.parts)).slice(0,20):[];
+  }catch{return [];} // A morphology failure must never manufacture a sentence reading.
+ }
+ function partialClues(tokens){
+  return tokens.slice(0,24).flatMap((token,index)=>exactMorphology(token).slice(0,3)
+   .map(m=>({token,index,lemma:m.lemma,kind:m.kind,grade:m.grade,
+    source:m.source||'',features:m.features||{},parts:m.parts.slice(0,8)})));
+ }
+ function exactFiniteReadings(token,morphs){
+  const proposals=[];
+  for(const m of morphs){
+   // Never sentence-translate productive guesses, spelling repairs, headwords,
+   // or a lexeme whose precise source-listed finite form is missing.
+   if(!['lexical','manuscript'].includes(m.grade))continue;
+   const w=words.filter(w=>w.word===m.lemma&&String(w.pos).includes('verb'));
+   if(w.length!==1)continue;
+   for(const f of w[0].inflections||[]){
+    if(norm(f.form)!==norm(token)||m.kind!==f.category||
+       !['dictionary','text'].includes(f.evidence)||!f.source||
+       m.source!==f.source||m.features?.evidence!==f.evidence||
+       typeof f.gloss!=='string'||!f.gloss.trim())continue;
+    // Only explicit, source-labeled finite person/tense combinations.
+    const match=/^(Preterite|Present|Future)\s+(1sg|2sg|3sg|1pl|2pl|3pl)\b/i.exec(f.category);
+    const historic=f.category==='Historical first-person completed writing';
+    if(!match&&!historic)continue;
+    const person=historic?'1sg':match[2].toLowerCase();
+    const tense=historic?'completed (source label)':match[1].toLowerCase();
+    const code=PERSON_CODES.indexOf(person);
+    if(code<0)continue;
+    const frame={subject:people[code],subjectPerson:code,subjectNoun:null,
+     predicate:w[0].word,tense,negative:false,object:null,objectNoun:null,
+     lexicalMeaning:w[0].meaning,sourceForm:f.form};
+    if(proposals.some(p=>p.frame.predicate===frame.predicate&&p.frame.tense===tense&&
+      p.frame.subjectPerson===code&&p.english[0]===f.gloss))continue;
+    proposals.push({frame,english:[f.gloss],coverage:1,nounSenses:[],
+     sources:[...new Set([f.source,w[0].source,m.source].filter(Boolean))],
+     grade:'source-listed finite-form gloss (unverified in context)',
+     note:'An EXACT source-listed finite verb form and a matching source-graded morphology analysis. The English is the entry\'s recorded gloss, NOT a generated sentence translation, manuscript attestation or contextual judgment. No extra words, negation, or noun arguments are inferred.',
+     evidenceKind:m.kind,morphologyParts:m.parts.slice(0,8)});
+   }
+  }
+  return proposals.slice(0,5);
+ }
  const words=dictionary.words.filter(w=>String(w.variety).startsWith('Classical Nahuatl'));
  const index=new Map();
  for(const [lemma,p] of Object.entries(paradigms.paradigms||{})){
@@ -92,9 +146,15 @@ function create(dictionary,paradigms){
       note:'Illustrative English sense choices, not exhaustive translations. Noun articles, lexical senses, aspect and third-person referents require context; candidate order is not a ranking.'});
     }
    }
+   // Only an isolated, explicitly source-labeled finite token can contribute
+   // a new gloss. No words on either side may be silently discarded.
+   if(!candidates.length&&!negative&&tokens.length===1){
+    candidates.push(...exactFiniteReadings(tokens[0],exactMorphology(tokens[0])));
+   }
    return {text,tokens:original,candidates,complete:candidates.length>0,
+    morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,
-    reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded.'};
+    reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.'};
   });
   return {clauses,complete:clauses.length>0&&clauses.every(c=>c.complete)};
  }

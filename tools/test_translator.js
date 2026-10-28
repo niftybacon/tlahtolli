@@ -16,6 +16,7 @@ const lookup=model.lookup('xōchitl','nh-en');
 assert.equal(lookup.candidates[0].lemma,'xōchitl');
 assert.match(lookup.candidates[0].meaning,/flower/i);
 assert.equal(model.lookup('flower','en-nh').candidates[0].lemma,'xōchitl');
+assert.equal(model.lookup('yhuan','nh-en').candidates[0].lemma,'īhuān');
 const normalized=model.analyze('in mochīhua tēzcatl in mocuepa ca tetl','nh-en');
 assert.equal(normalized.passages[0].id,'FC11-209v-mirror');
 assert.equal(normalized.passages[0].trainEligible,false);

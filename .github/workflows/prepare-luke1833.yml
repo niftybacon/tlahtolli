@@ -44,7 +44,7 @@ jobs:
           assert chapter['totals']['reference_verse_count']==1151
           assert chapter['facsimile_review_completed_chapters']==0
           inspected=json.loads((base/'luke_1833_facsimile_number_checks.json').read_text(encoding='utf8'))
-          assert len(inspected['patches'])==7
+          assert len(inspected['patches'])==8
           assert inspected['chapter_1_verse_wording_verified'] is False
           assert all(c['verse_text_verified'] is False for c in chapter['chapters'])
           print('Draft OCR preparation validated:',r['counts'])

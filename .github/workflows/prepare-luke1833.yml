@@ -6,6 +6,7 @@ on:
     paths:
       - tools/clean_segment_luke1833.py
       - tools/verify_luke1833_chapters.py
+      - tools/apply_luke1833_verified_numbers.py
       - .github/workflows/prepare-luke1833.yml
 permissions:
   contents: write
@@ -20,6 +21,8 @@ jobs:
           python-version: '3.12'
       - name: Download public-domain historical edition and prepare draft
         run: python tools/clean_segment_luke1833.py --download-archive
+      - name: Apply visually checked chapter 1 printed numeral corrections only
+        run: python tools/apply_luke1833_verified_numbers.py
       - name: Verify chapter headings and audit verse marker gaps
         run: python tools/verify_luke1833_chapters.py
       - name: Verify provenance and unreviewed statuses
@@ -40,6 +43,9 @@ jobs:
           assert chapter['totals']['chapters_located']==24
           assert chapter['totals']['reference_verse_count']==1151
           assert chapter['facsimile_review_completed_chapters']==0
+          inspected=json.loads((base/'luke_1833_facsimile_number_checks.json').read_text(encoding='utf8'))
+          assert len(inspected['patches'])==5
+          assert inspected['chapter_1_verse_wording_verified'] is False
           assert all(c['verse_text_verified'] is False for c in chapter['chapters'])
           print('Draft OCR preparation validated:',r['counts'])
           print('All 24 chapter headings located; verse gaps flagged, no facsimile review claimed.')
@@ -48,7 +54,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/translation_corpus/luke_1833_working_ocr.txt research/translation_corpus/luke_1833_review_queue.json research/translation_corpus/luke_1833_chapter_audit.json
+          git add research/translation_corpus/luke_1833_working_ocr.txt research/translation_corpus/luke_1833_review_queue.json research/translation_corpus/luke_1833_chapter_audit.json research/translation_corpus/luke_1833_facsimile_number_checks.json
           if ! git diff --cached --quiet; then
             git commit -m "Prepare 1833 Luke working OCR and candidate verse/correction review queue"
             git push

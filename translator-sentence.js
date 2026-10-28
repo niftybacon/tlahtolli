@@ -59,7 +59,7 @@ function create(dictionary,paradigms,morphology){
        typeof f.gloss!=='string'||!f.gloss.trim())continue;
     // Only explicit, source-labeled finite person/tense combinations.
     const match=/^(Preterite|Present|Future)\s+(1sg|2sg|3sg|1pl|2pl|3pl)\b/i.exec(f.category);
-    const historic=f.category==='Historical first-person completed writing';
+    const historic=/^Historical first-person completed writing(?:\s*\(|$)/i.test(f.category);
     if(!match&&!historic)continue;
     const person=historic?'1sg':match[2].toLowerCase();
     const tense=historic?'completed (source label)':match[1].toLowerCase();

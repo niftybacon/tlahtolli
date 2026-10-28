@@ -199,6 +199,7 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
 .translator-candidate p{margin:7px 0}
 .translator-surface .translator-privacy{color:var(--muted);font-size:.83rem;line-height:1.5}
 @media(max-width:650px){.translator-surface{padding:15px}.translator-surface .translator-actions .btn{flex:1 1 auto}}
+.codex-scroll{overflow-x:auto}.codex-table{width:100%;border-collapse:collapse;min-width:600px}.codex-table th,.codex-table td{padding:9px 8px;text-align:left;border-bottom:1px solid var(--line);font-size:.87rem}.codex-book-button{border:0;background:transparent;color:var(--accent);text-decoration:underline;text-align:left;font:inherit;cursor:pointer;padding:0}.codex-meter{height:9px;background:var(--pale);width:100%;min-width:70px;border-radius:12px;overflow:hidden}.codex-meter-fill{height:100%;background:var(--accent);border-radius:12px}.codex-token{display:inline-block;padding:5px 9px;margin:3px;border:1px solid var(--line);border-radius:14px;font-size:.84rem}
 </style>
 <meta name="description" content="Tlahtōlli Classical Nahuatl dictionary, documented inflections, and text reader">
 </head>
@@ -256,6 +257,23 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
   </div>
   <p class="translator-privacy">Research only: the analyzer runs in your browser and does not send text to an external AI translator. Historical passage interpretations and dictionary entries may require further scholarly review. Modern Huasteca Nahuatl is not silently mixed into Classical Nahuatl.</p>
  </div>
+ <details id="codexAtlas" class="panel" style="margin-top:22px">
+  <summary><strong>Āmoxtli · Florentine Codex corpus atlas</strong> — 12-book research scan</summary>
+  <div style="padding:18px 6px">
+   <h3>All twelve books · language measurements</h3>
+   <p>Examine preliminary word-form patterns across the historical transcription. The statistics do not reproduce source passages, imply rights to AI training, or constitute a full translation.</p>
+   <p id="codexAtlasStatus" class="readerhint" role="status">Loading full-corpus research measurements…</p>
+   <p id="codexSummary"><em>Analyzing available research records…</em></p>
+   <div class="codex-scroll"><table class="codex-table" aria-label="Florentine Codex per-book lexical statistics">
+    <thead><tr><th>Book</th><th>Topic</th><th>Approx. units</th><th>Index match</th><th>Relative length</th></tr></thead>
+    <tbody id="codexBookRows"></tbody>
+   </table></div>
+   <label for="codexBookSelect" style="display:block;margin-top:20px">Inspect one book</label>
+   <select id="codexBookSelect" style="width:100%;max-width:480px;padding:10px;border-radius:9px;border:1px solid var(--line)"></select>
+   <div id="codexBookDetail" class="translator-result" aria-live="polite"></div>
+   <p class="readerhint">Source: Valery A. Berthoud F., <a href="https://doi.org/10.5281/zenodo.7213020" target="_blank" rel="noopener noreferrer">2022 Zenodo transcription</a>. This is an exploratory transcription with missing diacritics and line-wrapped word fragments. See the <a href="https://florentinecodex.getty.edu/about/3_Citations_and_Permissions" target="_blank" rel="noopener noreferrer">Digital Florentine Codex permissions</a>. No raw manuscript text is hosted here.</p>
+  </div>
+ </details>
 </section>
 
 <section id="studyView" class="hidden" role="tabpanel" aria-labelledby="tabStudy">
@@ -2381,6 +2399,7 @@ renderSourceAtlas();syncSourceAtlas();render();
 </script>
 <script src="./translator-engine.js"></script>
 <script defer src="./translator-integrated.js"></script>
+<script defer src="./codex-atlas.js"></script>
 <script src="./cloud-config.js"></script>
 <script defer src="./cloud-sync.js"></script>
 <script defer src="./cloud-preferences.js"></script>

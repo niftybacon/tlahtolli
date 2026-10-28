@@ -87,8 +87,35 @@ function show(data){
   container.append(panel);
  }
  host.append(container);
+ const crosscheck=data.source_crosschecked_morphology;
+ if(crosscheck?.schema==='tlahtolli-morpheme-evidence-v1'&&
+  crosscheck?.training_eligible===false&&crosscheck?.heldout_evaluation_eligible===false&&
+  crosscheck?.independent_facsimile_collation===false&&Array.isArray(crosscheck.claims)){
+  const panel=el('details','translator-morph-panel');
+  panel.id='manuscriptMorphCrosscheck';
+  panel.append(el('summary','','Independent lexical and grammar cross-check · '+
+   crosscheck.claims.length+' morpheme-level claims'));
+  panel.append(el('p','translator-caution',
+   'The analyses below were checked against named outside references. They have NOT been verified against a readable facsimile or by a human specialist, and they are NOT gold translation data.'));
+  panel.append(el('p','translator-meta',crosscheck.segmentation));
+  for(const claim of crosscheck.claims.slice(0,16)){
+   const line=el('div','translator-analysis');
+   line.append(el('strong','',claim.surface+' · '+claim.role),
+    el('p','translator-meta','Assessment: '+claim.confidence),
+    el('p','',Array.isArray(claim.functions)?claim.functions.join(' / '):''));
+   if(claim.unresolved)line.append(el('p','translator-caution','Still uncertain: '+claim.unresolved));
+   for(const evidence of (Array.isArray(claim.evidence)?claim.evidence:[]).slice(0,3)){
+    const item=el('p','readerhint',evidence.basis||'Consult independent evidence');
+    const link=citeLink(evidence.url,'Open source');
+    if(link)item.append(document.createTextNode(' · '),link);
+    line.append(item);
+   }
+   panel.append(line);
+  }
+  host.append(panel);
+ }
  host.append(el('p','translator-meta',
-  'Source-review record is development-only, not a training or test pair. Ambiguous written abbreviations are deliberately preserved. No complete letter-by-letter facsimile collation has been done.'));
+  'Source-review record is development-only, not a training or test pair. Scribal expansions remain proposals; the original overbar is never silently changed. No complete letter-by-letter facsimile collation has been done.'));
 }
 fetch('./research/translation_corpus/source_reviews/ENL_BC16_1573.json',{cache:'default'})
  .then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();})

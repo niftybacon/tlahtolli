@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-luke1833-facsimile-number-checks",
   "schema": 1,
-  "created_utc": "2026-10-28T16:58:29+00:00",
+  "created_utc": "2026-10-28T17:01:54+00:00",
   "source": "https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf",
   "source_pdf_page_count": 152,
   "chapter_1_pdf_pages_checked_1based": [
@@ -29,11 +29,26 @@
   "chapter_1_verse_numeral_sequence": "1–80 visually checked across printed pages 1–9; not a line-by-line reading of Nahuatl wording",
   "chapter_1_verse_numbering_status": "pages_checked_numbering_only",
   "chapter_1_verse_wording_verified": false,
-  "chapter_2_partial_pdf_pages_checked_1based": [
-    21
+  "chapter_2_pdf_pages_checked_1based": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
   ],
-  "chapter_2_partial_observation": "Printed page 13 displays verses 27–35; the numeral 28 is present in print but was missed by OCR marker detection.",
-  "other_23_chapters_fully_verified": false,
+  "chapter_2_printed_pages_checked_1based": [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "chapter_2_verse_numeral_sequence": "1–52 visually checked across printed pages 10–15, not a line-by-line correction of Nahuatl wording",
+  "chapter_2_verse_numbering_status": "pages_checked_numbering_only",
+  "chapter_2_partial_observation": "Printed page 11 confirms verse 11; printed page 13 confirms verse 28, both OCR numeral errors.",
+  "other_22_chapters_verse_numerals_not_fully_checked": true,
   "patches": [
     {
       "chapter": 1,
@@ -78,6 +93,15 @@
       "after": "67  Auh  in  Zacharias",
       "pdf_page_1based": 16,
       "printed_page": 8,
+      "verification": "original_1833_scanned_image_verified_number_only"
+    },
+    {
+      "chapter": 2,
+      "verse": 11,
+      "before": "1 1  lpampa",
+      "after": "11  lpampa",
+      "pdf_page_1based": 19,
+      "printed_page": 11,
       "verification": "original_1833_scanned_image_verified_number_only"
     },
     {

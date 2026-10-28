@@ -51,6 +51,36 @@ function showResult(){
     for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
    }
+   if(clause.fragmentInterpretations?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-contextual-fragments';
+    panel.append(el('summary','','Classical Nahuatl contextual fragments · '+
+     clause.fragmentInterpretations.length+' source-aware comparison'+
+     (clause.fragmentInterpretations.length===1?'':'s')+' (NOT a sentence)'));
+    panel.append(el('p','translator-caution',
+     'A comparative phrase is not a finite clause. Exact historical examples and newly composed grammar hypotheses are kept separate; no phrase is scored as a verified model translation.'));
+    for(const reading of clause.fragmentInterpretations){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',reading.sourceSpelling+' · '+reading.construction),
+      el('p','translator-meta',reading.grade),
+      el('p','',reading.compositionalReading),
+      el('p','translator-meta','Comparative '+reading.cue.lemma+' ('+reading.cue.evidence+
+       ') · noun '+reading.noun.lemma+' · '+reading.noun.senseStatus),
+      el('p','translator-caution',reading.note));
+     if(reading.editorialComparison){
+      item.append(el('p','translator-meta',
+       'Published contextual reading of this exact historical fragment: '+
+       reading.editorialComparison.reading),
+       el('p','translator-caution','Editorial and in-sample; NOT independent held-out translation evidence.'));
+     }
+     for(const url of reading.sources){
+      const link=safeLink(url,'Inspect comparative evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.agreementProposals?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-agreement-proposals';
@@ -363,7 +393,7 @@ async function init(){
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
    if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(
     document,await response.json(),
-    explainMorphology);
+    explainMorphology,corpus);
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(

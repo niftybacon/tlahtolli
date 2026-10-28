@@ -24,7 +24,7 @@ const nouns={'cihuātl':'woman','tlācatl':'person','conetl':'child','calli':'ho
  'chimalli':'shield','tlaxcalli':'tortilla','tepētl':'hill'};
 const grammar='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
 const tenseSource='https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html';
-function create(dictionary,paradigms,morphology){
+function create(dictionary,paradigms,morphology,researchExamples){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -182,6 +182,71 @@ function create(dictionary,paradigms,morphology){
   return hits.length===1?hits[0]:null;
  }
  const nounLabel=n=>'the '+(nouns[n.word]||'['+n.meaning+']');
+
+ // General Classical-period comparative-fragment rule. The morphological
+ // composition is reusable for *unique curated nouns*, not restricted to the
+ // one Florentine Codex example that first motivated it. It is not a clause.
+ // Explicitly source-listed historical cue spellings may participate without
+ // silently treating arbitrary j/i substitutions as orthographic equivalents.
+ const comparisonCue=words.filter(w=>w.word==='iuhquin'&&
+  w.pos==='particle / comparative adverb'&&
+  w.source==='https://nahuatl.wired-humanities.org/content/iuhquin');
+ const comparisonExamples=Array.isArray(researchExamples?.entries)?
+  researchExamples.entries.filter(e=>e&&e.review_status==='candidate'&&
+   e.train_eligible===false&&e.variety==='Classical Nahuatl'&&
+   String(e.passage_type||'').startsWith('comparison fragment')&&
+   /^https:\/\/florentinecodex\.getty\.edu\/(?:es\/)?book\/11\/folio\/62r$/.test(e.source_url||'')&&
+   typeof e.original==='string'&&typeof e.english_interpretation==='string'): [];
+ function comparativeCue(token){
+  if(comparisonCue.length!==1)return null;
+  const w=comparisonCue[0];
+  if(norm(token)===norm(w.word))
+   return {word:w,exactHeadword:true,source:w.source};
+  const forms=(w.inflections||[]).filter(f=>norm(f.form)===norm(token)&&
+   f.evidence==='text'&&
+   /^https:\/\/florentinecodex\.getty\.edu\/(?:es\/)?book\/11\/folio\/62r$/.test(f.source||''));
+  if(forms.length!==1)return null;
+  return {word:w,exactHeadword:false,source:forms[0].source};
+ }
+ function fragmentInterpretations(tokens,negative){
+  // Even a well-supported nonfinite comparison must not be fed to the
+  // sentence constructor as a finite verb or evaluated as translation gold.
+  if(negative||tokens.length!==2)return [];
+  const cue=comparativeCue(tokens[0]);
+  if(!cue)return [];
+  const n=noun(tokens[1]);
+  if(!n||n.pos!=='noun'||!/^https:\/\//.test(n.source||'')||
+   typeof n.meaning!=='string'||!n.meaning.trim())return [];
+  const exactAttestation=comparisonExamples.filter(e=>
+   norm(e.original.trim().replace(/\s+/gu,' '))===norm(tokens.join(' '))&&
+   e.source_url.replace('/es/','/')===cue.source.replace('/es/','/'));
+  // An attested example is editorial, in-sample, and non-gold, never an
+  // independent model-performance result.
+  const attested=exactAttestation.length===1?exactAttestation[0]:null;
+  return [{
+   construction:'Comparative particle + source-checked noun phrase',
+   grade:attested?'source-attested editorial comparison (not blind)':
+    'compositional comparison hypothesis (not independently attested)',
+   sourceSpelling:tokens.join(' '),
+   cue:{written:tokens[0],lemma:cue.word.word,meaning:cue.word.meaning,
+    evidence:cue.exactHeadword?'curated headword':'source-located historical spelling'},
+   noun:{written:tokens[1],lemma:n.word,meaning:n.meaning,
+    senseStatus:'dictionary sense(s) not resolved from context'},
+   compositionalReading:'like / as if + ['+n.meaning+']',
+   editorialComparison:attested?{
+    reading:attested.english_interpretation,source_id:attested.source_id,
+    source_url:attested.source_url,review_status:'candidate; not independently evaluated'}:null,
+   coverage:2,
+   sources:[...new Set([cue.word.source,cue.source,n.source,
+    ...(attested?[attested.source_url]:[])].filter(Boolean))],
+   note:'A reusable comparative-fragment relation, not a finite sentence. '+
+    'The bracketed meanings come from a cited dictionary, with senses unresolved. '+
+    'The source-aligned editorial reading is shown only when the EXACT source-spelled '+
+    'two-word fragment matches an existing non-training candidate. '+
+    'All other combinations are grammar hypotheses; no historical attestation or accuracy is implied.'
+  }];
+ }
+
  function assignments(parse,phrases){
   if(!phrases.length)return [[null,null]];
   if(!parse.transitive)return parse.person===2&&phrases.length===1?[[phrases[0],null]]:[];
@@ -240,6 +305,7 @@ function create(dictionary,paradigms,morphology){
     candidates.push(...exactFiniteReadings(tokens[0],exactMorphology(tokens[0])));
    }
    return {text,tokens:original,candidates,complete:candidates.length>0,
+    fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,

@@ -1,0 +1,47 @@
+name: Classical Nahuatl translator regressions
+
+on:
+  push:
+    paths:
+      - 'amoxcalli-archive.js'
+      - 'translator-*.js'
+      - 'tools/test_translator*.js'
+      - 'tools/test_archive_lexical.js'
+      - 'dictionary.json'
+      - 'paradigms.json'
+      - 'research/amoxcalli_archive/**'
+      - 'research/translation_corpus/research_examples.json'
+      - '.github/workflows/translator-regressions.yml'
+  pull_request:
+    paths:
+      - 'amoxcalli-archive.js'
+      - 'translator-*.js'
+      - 'tools/test_translator*.js'
+      - 'tools/test_archive_lexical.js'
+      - 'dictionary.json'
+      - 'paradigms.json'
+      - 'research/amoxcalli_archive/**'
+      - 'research/translation_corpus/research_examples.json'
+      - '.github/workflows/translator-regressions.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  translation-evidence:
+    name: Lexicon, morphology and sentence tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Use Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Curated lexical and passage regressions
+        run: node tools/test_translator.js
+      - name: Sentence grammar regressions
+        run: node tools/test_translator_sentence.js
+      - name: Archive form evidence and morphology cross-check regressions
+        run: node tools/test_archive_lexical.js

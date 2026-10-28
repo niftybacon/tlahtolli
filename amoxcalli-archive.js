@@ -122,7 +122,7 @@ function bindPanel(){
  function render(){
   results.replaceChildren();
   const query=input.value.trim();
-  if(query.length<2){status.textContent='Loaded. Enter at least two letters to search the unreviewed archive.';return;}
+  if(query.length<2){status.textContent='36,543 source records loaded. Enter at least two letters to search the unreviewed archive.';return;}
   const match=search(query,filter.value);
   status.textContent=match.total+' source records found; showing '+match.hits.length+'. These are not additions to the verified dictionary.';
   for(const entry of match.hits)results.append(renderRecord(entry));

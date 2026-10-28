@@ -154,8 +154,11 @@ function crossCheckMorphology(token,analyses,opts={}){
   // Many form-of tags do not encode a syntactic role; leave those unresolved.
   const category=String(candidate.features?.category||'').toLowerCase();
   const kind=String(candidate.kind).toLowerCase();
-  const expectedPos=category==='noun'||/\bnoun\b|possessed form/.test(kind)?'noun':
-   category==='verb'||/conjugation|transitive parse/.test(kind)?'verb':null;
+  const categoryPos=['noun','verb'].includes(category)?category:null;
+  const kindPos=/\bnoun\b|possessed form/.test(kind)?'noun':
+   /conjugation|transitive parse/.test(kind)?'verb':null;
+  if(categoryPos&&kindPos&&categoryPos!==kindPos)continue;
+  const expectedPos=categoryPos||kindPos;
   for(const rec of archive){
    if(norm(rec.word)!==lemma||(expectedPos&&rec.pos!==expectedPos))continue;
    const forms=matchingFormEvidence(rec,key,false);

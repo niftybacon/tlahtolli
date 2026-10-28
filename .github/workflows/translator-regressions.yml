@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'amoxcalli-archive.js'
+      - 'manuscript-reading-desk.js'
+      - 'index.html'
       - 'translator-*.js'
       - 'tools/test_translator*.js'
       - 'tools/test_archive_lexical.js'
@@ -17,6 +19,8 @@ on:
   pull_request:
     paths:
       - 'amoxcalli-archive.js'
+      - 'manuscript-reading-desk.js'
+      - 'index.html'
       - 'translator-*.js'
       - 'tools/test_translator*.js'
       - 'tools/test_archive_lexical.js'
@@ -43,6 +47,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Manuscript reading aid JavaScript syntax
+        run: node --check manuscript-reading-desk.js
       - name: Curated lexical and passage regressions
         run: node tools/test_translator.js
       - name: Sentence grammar regressions

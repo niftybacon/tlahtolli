@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tlahtōlli · Translation Desk (Research Preview)</title>
+<style>
+:root{color-scheme:light;--bg:#f6f4ed;--paper:#fffefa;--ink:#242c27;--muted:#63736b;--line:#dedfd5;--accent:#285c50;--pale:#e7f0eb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+header{background:var(--paper);border-bottom:1px solid var(--line)}main,.wrap{max-width:980px;margin:auto;padding:22px}header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+a{color:var(--accent)}.brand{font-weight:800;font-size:1.25rem;text-decoration:none}.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-size:.72rem;font-weight:800}
+h1{font-size:clamp(1.75rem,4vw,2.6rem);line-height:1.15;margin:.6rem 0}p{max-width:800px}
+.panel{background:var(--paper);border:1px solid var(--line);padding:22px;border-radius:18px;margin:16px 0;box-shadow:0 5px 23px #2233290a}
+label{font-weight:700;display:block;margin:0 0 6px}select,textarea,button{font:inherit}select,textarea{width:100%;border:1px solid #b7c5ba;border-radius:10px;padding:10px;background:#fff;color:var(--ink)}
+textarea{resize:vertical;min-height:120px}button,.btn{border:1px solid var(--accent);border-radius:10px;padding:10px 15px;cursor:pointer;background:var(--accent);color:#fff;font-weight:700}button.secondary{background:transparent;color:var(--accent)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.row>div{flex:1;min-width:190px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.small{font-size:.87rem;color:var(--muted)}#status{min-height:26px}#gloss{background:var(--pale);border-radius:10px;padding:15px;min-height:55px;font-size:1.08rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.item{border-bottom:1px solid var(--line);padding:13px 0}.item:last-child{border-bottom:0}.token{font-size:1.1rem;font-weight:800}.match{font-size:.9rem;margin:5px 0 0}.tag{display:inline-block;border-radius:100px;padding:2px 8px;background:#eef1eb;color:#476453;font-size:.7rem;font-weight:700}.unknown{color:#a24f2c}.sources{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;font-size:.85rem}
+footer{max-width:980px;margin:auto;padding:10px 22px 40px;font-size:.84rem;color:var(--muted)}
+@media(max-width:600px){header .wrap,main{padding:16px}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="./">Tlahtōlli</a><a href="./">← Return to dictionary</a></div></header>
+<main>
+<div class="eyebrow">Research preview · Translation desk v0.1</div>
+<h1>Understand Classical Nahuatl, one attested form at a time.</h1>
+<p>A <strong>source-aware interlinear gloss assistant</strong>, not a fluent sentence translator. Results come from the Tlahtōlli dictionary and its documented inflections. Ambiguity and unknown words are shown rather than guessed.</p>
+<section class="panel" aria-label="Translator">
+<div class="row"><div><label for="direction">Direction</label><select id="direction"><option value="nh-en">Classical Nahuatl → English gloss</option><option value="en-nh">English → Classical Nahuatl lookup</option></select></div></div>
+<label for="sourceText" style="margin-top:14px">Enter text</label>
+<textarea id="sourceText" spellcheck="false" placeholder="in xōchitl in cuīcatl" maxlength="7000"></textarea>
+<div class="actions"><button id="run" type="button">Analyze text</button><button class="secondary" id="copy" type="button">Copy gloss</button><button class="secondary" id="sample" type="button">Try example</button></div>
+<div id="status" class="small" role="status" aria-live="polite">Loading the published dictionary…</div>
+</section>
+<section class="panel" aria-label="Gloss results">
+<div class="eyebrow">Working gloss — not a full translation</div>
+<div id="gloss" aria-live="polite">Enter text and choose Analyze.</div>
+<div id="matches" aria-live="polite"></div>
+</section>
+<section class="panel">
+<h2>Using Modern Nahuatl as a comparison</h2>
+<p>Google Translate includes <strong>Eastern Huasteca Nahuatl</strong>, a modern variety, not the sixteenth-century language variety this desk targets. You can compare it manually, but its outputs must not be treated as Classical Nahuatl translations.</p>
+<p><a href="https://translate.google.com/" target="_blank" rel="noopener noreferrer">Open Google Translate (select Eastern Huasteca Nahuatl)</a></p>
+<h2>Audio: evidence first</h2>
+<p>Speech playback is not enabled in this preview. Recordings of present-day speech or modern readings of historical texts are not historical audio recordings of sixteenth-century speakers. Future playback should show the recorded variety, speaker/usage permissions, and whether a reading is reconstructed.</p>
+</section>
+</main>
+<footer>Experimental research assistant. Dictionary sources and editorial assessments are shown per item; the presence of a lemma does not prove a sentence analysis. No text is sent to a translation service; lexical lookup runs in your browser.</footer>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+let words=[],nh=new Map(),en=new Map();
+const safeLink=s=>{try{const x=new URL(s);return ['https:','http:'].includes(x.protocol)?x.href:null}catch{return null}};
+const tidy=s=>String(s||'').normalize('NFC').trim().toLocaleLowerCase();
+const loose=s=>tidy(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const split=s=>String(s||'').split(/[;,]/).map(x=>x.trim()).filter(Boolean);
+const add=(map,k,record)=>{if(!k)return;const a=map.get(k)||[];if(!a.some(x=>x.entry.word===record.entry.word&&x.kind===record.kind&&x.form===record.form))a.push(record);map.set(k,a)};
+function build(data){
+ words=Array.isArray(data.words)?data.words:[];
+ for(const w of words){
+  if(w.variety!=='Classical Nahuatl')continue;
+  const entry={entry:w,kind:'dictionary headword',form:w.word,evidence:'dictionary'};
+  add(nh,tidy(w.word),entry);
+  if(w.original&&loose(w.original)!==loose(w.word))add(nh,tidy(w.original),{...entry,kind:'historical spelling'});
+  for(const f of Array.isArray(w.inflections)?w.inflections:[]){
+   const s=String(f.form||'').trim();
+   if(!s||/[-\s]/.test(s)||!['dictionary','grammar','text'].includes(f.evidence))continue;
+   add(nh,tidy(s),{entry:w,kind:f.category||'documented form',form:s,evidence:f.evidence,source:f.source});
+  }
+  for(const meaning of split(w.meaning)){
+   const token=tidy(meaning.replace(/\([^)]*\)/g,'').trim());
+   if(token)add(en,token,entry);
+  }
+ }
+}
+function lookup(q,dir){
+ const query=tidy(q),map=dir==='nh-en'?nh:en;
+ const exact=map.get(query)||[];
+ if(exact.length)return {found:exact,approx:false};
+ if(dir==='nh-en'){
+  const hits=[];for(const [k,arr] of map)if(loose(k)===loose(query))hits.push(...arr);
+  return {found:hits.slice(0,8),approx:hits.length>0};
+ }
+ return {found:[],approx:false};
+}
+function text(tag,cls,value){const el=document.createElement(tag);if(cls)el.className=cls;el.textContent=value;return el}
+function sourceAnchor(url,label){const u=safeLink(url);if(!u)return null;const a=document.createElement('a');a.href=u;a.textContent=label;a.target='_blank';a.rel='noopener noreferrer';return a}
+function run(){
+ const input=$('sourceText').value.trim(),dir=$('direction').value,out=$('matches');out.replaceChildren();
+ if(!words.length){$('status').textContent='Dictionary is unavailable. Reload while online.';return}
+ if(!input){$('gloss').textContent='Enter text and choose Analyze.';return}
+ const parts=input.match(/[\p{L}\p{M}’'-]+|[^\p{L}\p{M}’'-]+/gu)||[];
+ const gloss=[];
+ let matched=0,unknown=0;
+ for(const part of parts){
+  if(!/[\p{L}]/u.test(part)){gloss.push(part);continue}
+  const hit=lookup(part,dir),matches=hit.found;
+  const box=document.createElement('div');box.className='item';box.append(text('div','token',part));
+  if(!matches.length){unknown++;box.append(text('div','match unknown','Not established in the current lexical index. Do not infer a translation.'));gloss.push('[?'+part+']')}
+  else {
+   matched++;
+   const primary=matches[0].entry;
+   gloss.push(dir==='nh-en'?'['+split(primary.meaning)[0]+']':'['+primary.word+']');
+   if(hit.approx)box.append(text('div','small unknown','Approximate spelling match: vowel length or diacritics differ. Verify before using.'));
+   for(const m of matches.slice(0,6)){
+    const w=m.entry;box.append(text('div','match',(dir==='nh-en'?w.word+' — '+w.meaning:w.word+' — '+w.meaning)+' · '+m.kind+(m.evidence?' · '+m.evidence:'')));
+    const sources=document.createElement('div');sources.className='sources';
+    const s=sourceAnchor(m.source||w.source,'Lexical source');if(s)sources.append(s);
+    const provenance=Array.isArray(w.claims)?w.claims.find(x=>x.field==='meaning'):null;
+    if(provenance?.assessment) sources.append(text('span','tag','Meaning: '+provenance.assessment));
+    box.append(sources);
+   }
+   if(matches.length>6)box.append(text('div','small','Additional possible matches omitted.'));
+  }
+  out.append(box);
+ }
+ $('gloss').textContent=gloss.join('');
+ $('status').textContent=matched+' recognized tokens; '+unknown+' unknown. '+words.length+' published entries loaded. Lexical matches are not grammatical sentence translations.';
+}
+$('run').addEventListener('click',run);
+$('direction').addEventListener('change',run);
+$('sample').addEventListener('click',()=>{$('sourceText').value='in xōchitl in cuīcatl';$('direction').value='nh-en';run()});
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('gloss').textContent);$('status').textContent='Working gloss copied.'}catch{$('status').textContent='Copy unavailable in this browser. Select the gloss text instead.'}});
+fetch('./dictionary.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{build(data);$('status').textContent=words.length+' dictionary entries loaded. Ready.'}).catch(e=>{$('status').textContent='Cannot load dictionary: '+e.message+'. Open from the published website while online.'});
+})();
+</script>
+</body></html>

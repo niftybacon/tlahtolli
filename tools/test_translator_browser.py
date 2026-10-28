@@ -56,7 +56,7 @@ with sync_playwright() as pw:
     assert "[?ticnamaca]" in page.locator("#translatorGloss").inner_text()
     assert "[?totlal]" in page.locator("#translatorGloss").inner_text()
     # Source interpretation must not become a confident contextual sentence.
-    assert "not a verified" in reading.lower() or "not a translation" in reading.lower()
+    assert "No automatically inferred reading here is a verified historical word" in reading
     page.locator("#translatorInput").fill("in xōchitl in cuīcatl")
     page.locator("#translatorForm button[type=submit]").click()
     assert "[?xōchitl: multiple dictionary senses]" in page.locator("#translatorGloss").inner_text()

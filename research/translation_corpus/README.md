@@ -42,3 +42,11 @@ Only an explicit `approved` status and verified permissions authorize training u
 - [Gran Diccionario Náhuatl](https://gdn.iib.unam.mx/) — bibliographic/lexicographic cross-references.
 
 **Do not bulk scrape.** Begin with small, individually reviewed passages, proper attribution, and explicit permission checks.
+
+## New source: historical Gospel of Luke (1833)
+
+Mariano Paz y Sánchez, *El Evangelio de S. Lucas: del Latín al Mexicano ó mejor Nahuatl* (1833), [public-domain original scan](https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf). Source metadata in [luke_1833_source.json](luke_1833_source.json). Cambridge University Library identifies this historical variety with southern Puebla around 1830; it is **not automatically identical** to sixteenth-century central Mexican Nahuatl.
+
+The reproducible [1833 Luke analyzer](../../tools/analyze_luke1833.py) has successfully scanned the Internet Archive plain-text OCR and stores only [derived aggregate measurements](luke_1833_analysis.json): **26,201 approximate OCR letter-runs**, **5,404 distinct OCR forms**, **4,589 direct dictionary-form occurrences**, and **1,217 additional tentative matches after guarded historical spelling substitutions**. Counts are not corrected words, morphological parses, or translation accuracy. The source is public domain, but the OCR has not been manually checked, paired with an English translation, or judged training-ready. The modern Bible.com digital transcription and recent Nahuatl Bible versions are not used as interchangeable originals.
+
+The **Tlahtōlli → Translator** tab now offers a **Luke 1833** orthographic profile, an original-print title sample, original-form dictionary matching (including historically documented `yhuan`), tentative normalization, existing Tēntli morphology analysis, and comparison with frequent source spellings. Historical forms remain on screen as written; proposals and derived corpus counts are separately labeled.

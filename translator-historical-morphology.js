@@ -46,7 +46,21 @@ function variants(token,profile='general'){
  }
  return out;
 }
-function makeEngine(parser,lookup){
+function makeEngine(parser,lookup,corpus){
+ const corpusIndex=new Map();
+ if(corpus?.format==='tlahtolli-codex-aggregate-analysis'&&
+    corpus.verbatim_source_text_in_output===false&&Array.isArray(corpus.books)){
+  for(const book of corpus.books){
+   if(!Number.isInteger(book.book)||book.book<1||book.book>12)continue;
+   for(const pair of book.top_orthographic_forms||[]){
+    const form=String(pair[0]||'').toLocaleLowerCase('en');
+    const count=Number(pair[1]);
+    if(!form||!Number.isInteger(count)||count<1)continue;
+    if(!corpusIndex.has(form))corpusIndex.set(form,[]);
+    corpusIndex.get(form).push({book:book.book,count});
+   }
+  }
+ }
  const cache=new Map();
  const morph=typeof parser==='function'?parser:()=>[];
  const dictionary=typeof lookup==='function'?lookup:()=>({candidates:[]});
@@ -85,7 +99,14 @@ function makeEngine(parser,lookup){
     paradigm:50,hypothesis:20,analogy:15,unreviewed:10};
   found.sort((a,b)=>(rank[b.grade]||0)-(rank[a.grade]||0)||
     Number(a.changed)-Number(b.changed));
+  const observed=[];
+  for(const entry of forms){
+   const books=corpusIndex.get(entry.form)||[];
+   for(const hit of books)observed.push({form:entry.form,original:token,
+    book:hit.book,count:hit.count,changed:entry.changed});
+  }
   const result={original:token,profile,variants:forms,
+   corpusObservations:observed.slice(0,24),
    analyses:found.slice(0,8),analyzed:found.length>0,
    uncertain:found.some(x=>x.changed||['hypothesis','analogy','paradigm','unreviewed','orthographic'].includes(x.grade))};
   if(cache.size>300)cache.clear();

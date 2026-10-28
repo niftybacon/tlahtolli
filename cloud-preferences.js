@@ -65,6 +65,7 @@ async function sync(){
  if(!current()||loading||busy){if(busy)pending=true;return}
  busy=true;
  const activeId=id,startedRevision=revision;
+ let followup=false;
  try{
   const remote=await fetchPreferences();
   if(!current()||id!==activeId)return;
@@ -95,7 +96,7 @@ async function sync(){
      status('Downloaded advanced SRS options and FSRS retention targets from your account.');
     }
    }else if(equal(remote,base)){
-    pending=true;status('Device settings changed while offline. Uploading changes…');
+    pending=true;followup=true;status('Device settings changed while offline. Uploading changes…');
    }else{
     conflict=true;status('Settings changed on both devices. Choose which version to keep.');
    }
@@ -106,7 +107,7 @@ async function sync(){
   status('Settings sync unavailable: '+(e?.message||String(e))+'. Your existing local settings are intact; try Sync now.');
  }finally{
   busy=false;
-  if(pending&&!conflict&&current())schedule();
+  if(pending&&!conflict&&current()&&(followup||revision!==startedRevision))schedule();
  }
 }
 async function activate(){

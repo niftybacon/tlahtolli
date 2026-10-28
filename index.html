@@ -298,6 +298,18 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
    <p id="lukeSummary"></p>
    <h4>Frequent OCR spellings</h4>
    <div id="lukeFrequent"></div>
+   <div id="lukeChapterAudit" class="translator-result">
+    <h4>Chapter-by-chapter verification checklist</h4>
+    <p id="lukeChapterSummary" class="readerhint">Loading 24-chapter structural audit…</p>
+    <div class="codex-scroll"><table class="codex-table" aria-label="1833 Luke OCR chapter-by-chapter verification audit">
+     <thead><tr><th>Chapter</th><th>Expected verses</th><th>OCR markers 2–end</th><th>Gaps</th><th>Status</th></tr></thead>
+     <tbody id="lukeChapterRows"></tbody>
+    </table></div>
+    <label for="lukeChapterPicker">Examine a chapter</label>
+    <select id="lukeChapterPicker" style="padding:10px;width:100%;max-width:500px;border:1px solid var(--line);border-radius:9px"></select>
+    <div id="lukeChapterDetail" class="translator-result" aria-live="polite"></div>
+    <p class="readerhint"><strong>Verification levels:</strong> OCR heading detected ≠ verse boundary confirmed ≠ text compared against facsimile. The status remains provisional until the scanned original is checked.</p>
+   </div>
    <div class="translator-result" aria-label="Public-domain OCR correction and segmentation">
     <h4>1833 Luke · Text correction and verse segmentation</h4>
     <p>Machine-prepared working OCR with conservatively repaired line-breaks, separate unresolved corrections, and candidate verse boundaries. Nothing here is confirmed without checking the original scan.</p>
@@ -2459,6 +2471,7 @@ renderSourceAtlas();syncSourceAtlas();render();
 <script defer src="./translator-integrated.js"></script>
 <script defer src="./codex-atlas.js"></script>
 <script defer src="./luke-atlas.js"></script>
+<script defer src="./luke-chapter-audit.js"></script>
 <script defer src="./luke-ocr-review.js"></script>
 <script src="./cloud-config.js"></script>
 <script defer src="./cloud-sync.js"></script>

@@ -9,7 +9,7 @@ on:
       - tools/apply_luke1833_verified_numbers.py
       - .github/workflows/prepare-luke1833.yml
 permissions:
-  contents: write
+  contents: read
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -50,12 +50,12 @@ jobs:
           print('Draft OCR preparation validated:',r['counts'])
           print('All 24 chapter headings located; verse gaps flagged, no facsimile review claimed.')
           PY
-      - name: Commit public-domain working OCR and provenance-rich review queue
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/translation_corpus/luke_1833_working_ocr.txt research/translation_corpus/luke_1833_review_queue.json research/translation_corpus/luke_1833_chapter_audit.json research/translation_corpus/luke_1833_facsimile_number_checks.json
-          if ! git diff --cached --quiet; then
-            git commit -m "Prepare 1833 Luke working OCR and candidate verse/correction review queue"
-            git push
-          fi
+      # Generated proposals require review before replacing published evidence.
+      - name: Upload generated research for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: luke-1833-draft-review
+          path: |
+            research/translation_corpus/luke_1833_*.json
+            research/translation_corpus/luke_1833_working_ocr.txt
+          if-no-files-found: error

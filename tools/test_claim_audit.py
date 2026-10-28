@@ -6,7 +6,7 @@ r=Path(__file__).resolve().parents[1]
 d=json.loads((r/'dictionary.json').read_text(encoding='utf8'))
 p=json.loads((r/'paradigms.json').read_text(encoding='utf8'))
 s=json.loads((r/'references.json').read_text(encoding='utf8'))
-assert d['version']==p['version']==s['version']=='2026-10-27.6.0'
+assert d['version']==p['version']==s['version']=='2026-10-28.1.0'
 assert len(d['words'])>=88 and len(p['paradigms'])>=12
 fields={'headword','meaning','pos'}
 for i,w in enumerate(d['words']):
@@ -42,7 +42,7 @@ assert any(c['field']=='plural' and 'late' in c['note'].lower() and c['assessmen
 # v2.3: contextual exceptions and reliable witnessed plurals.
 assert next(x for x in d['words'] if x['word']=='tlatoani')['plural']=='tlatoque'
 assert next(x for x in d['words'] if x['word']=='teopixqui')['plural']=='teopixque'
-assert any(c['assessment']=='grammar' for c in next(x for x in d['words'] if x['word']=='tēpetl')['claims'] if c['field']=='animacy')
+assert any(c['assessment']=='grammar' for c in next(x for x in d['words'] if x['word']=='tepētl')['claims'] if c['field']=='animacy')
 assert all(any(c['field']=='number' and c['assessment']=='grammar' for c in w['claims']) for w in d['words'] if w['word'] in ('calli','tetl','ātl'))
 
 for name in ('tlaxcalli','conetl','milli','teōtl'):

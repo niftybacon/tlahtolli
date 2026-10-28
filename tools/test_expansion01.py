@@ -21,7 +21,7 @@ names=['ācatl','cuahuitl','iztatl','nacatl','tamalli','quetzalli','āyōtl',
 assert len(d['words'])==len(e['entries'])==len(m['entries'])==len(l['words'])>=103
 assert [w['word'] for w in d['words'][88:103]]==names
 assert len(p['paradigms'])==12
-assert d['version']==p['version']==e['version']==m['version']==l['version'] and d['version'].startswith('2026-10-27.')
+assert d['version']==p['version']==e['version']==m['version']==l['version']
 assert sum(len(w['claims']) for w in d['words'][:88])==674
 assert sum(len(w['inflections']) for w in d['words'][:88])==178
 assert sum(len(w['claims']) for w in d['words'][:103])==777

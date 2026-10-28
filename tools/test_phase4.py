@@ -12,7 +12,7 @@ assert sum(len(w['claims']) for w in data['words'][:88])==674
 from collections import Counter
 counts=Counter(c['assessment'] for w in data['words'][:88] for c in w['claims'])
 assert dict(counts)=={'dictionary':327,'grammar':129,'text':15,'inference':108,'unverified':95},counts
-for name in ('calli','tlālli','tēpetl'):
+for name in ('calli','tlālli','tepētl'):
     claim=next(c for c in entries[name]['claims'] if c['field']=='stem')
     assert claim['assessment']=='dictionary' and claim['locator'] and claim['source'].startswith('https://')
 for name,field in [('ātl','plural'),('cuīcatl','plural'),('ilhuicatl','possessed'),('cītlalin','possessed')]:

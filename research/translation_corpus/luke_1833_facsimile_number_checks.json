@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-luke1833-facsimile-number-checks",
   "schema": 1,
-  "created_utc": "2026-10-28T17:01:54+00:00",
+  "created_utc": "2026-10-28T17:04:29+00:00",
   "source": "https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf",
   "source_pdf_page_count": 152,
   "chapter_1_pdf_pages_checked_1based": [
@@ -47,8 +47,24 @@
   ],
   "chapter_2_verse_numeral_sequence": "1–52 visually checked across printed pages 10–15, not a line-by-line correction of Nahuatl wording",
   "chapter_2_verse_numbering_status": "pages_checked_numbering_only",
+  "chapter_3_pdf_pages_checked_1based": [
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "chapter_3_printed_pages_checked_1based": [
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "chapter_3_verse_numeral_sequence": "1–38 visually checked across printed pages 16–20; not a line-by-line correction of Nahuatl wording",
+  "chapter_3_verse_numbering_status": "pages_checked_numbering_only",
   "chapter_2_partial_observation": "Printed page 11 confirms verse 11; printed page 13 confirms verse 28, both OCR numeral errors.",
-  "other_22_chapters_verse_numerals_not_fully_checked": true,
+  "other_21_chapters_verse_numerals_not_fully_checked": true,
   "patches": [
     {
       "chapter": 1,
@@ -111,6 +127,15 @@
       "after": "28  Auh  in  Simeón",
       "pdf_page_1based": 21,
       "printed_page": 13,
+      "verification": "original_1833_scanned_image_verified_number_only"
+    },
+    {
+      "chapter": 3,
+      "verse": 7,
+      "before": ".  7  Yhuan  o  qui  milhuiaya",
+      "after": "7  Yhuan  o  qui  milhuiaya",
+      "pdf_page_1based": 24,
+      "printed_page": 16,
       "verification": "original_1833_scanned_image_verified_number_only"
     }
   ],

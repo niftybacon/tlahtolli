@@ -23,7 +23,7 @@ const safeLink=(value,title)=>{
 };
 const form=$('translatorForm');
 if(!form)return;
-let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null;
+let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null,sourceMorphology=null;
 const input=$('translatorInput'),direction=$('translatorDirection');
 const note=$('translatorStatus'),gloss=$('translatorGloss');
 const parts=$('translatorAnalyses'),passages=$('translatorPassages');
@@ -185,6 +185,11 @@ function showResult(){
      if(proposal.note)line.append(el('p','translator-meta',proposal.note));
      const link=safeLink(proposal.source,'Inspect morphology source');
      if(link)line.append(link);
+     for(const evidenceURL of (Array.isArray(proposal.sources)?proposal.sources:[]).slice(0,6)){
+      if(evidenceURL===proposal.source)continue;
+      const reference=safeLink(evidenceURL,'Inspect independent morpheme reference');
+      if(reference)line.append(reference);
+     }
      panel.append(line);
     }
     block.append(panel);
@@ -297,9 +302,11 @@ async function init(){
    fetch('./research/florentine_codex/analysis.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./research/translation_corpus/luke_1833_analysis.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./research/translation_corpus/source_reviews/ENL_BC16_1573.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -308,6 +315,12 @@ async function init(){
   }else throw Error('No published or bundled dictionary data found');
   const corpus=candidates.status==='fulfilled'?candidates.value:{entries:[]};
   model=window.TlahtolliTranslator.create(document,corpus);
+  if(window.TlahtolliSourceMorphology&&sourceReview.status==='fulfilled'&&sourceReview.value)
+   sourceMorphology=window.TlahtolliSourceMorphology.create(sourceReview.value);
+  const explainMorphology=token=>[
+   ...(typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token)),
+   ...(sourceMorphology?.analyze(token)||[])
+  ];
   try{
    if(!window.TlahtolliSentence)await new Promise((resolve,reject)=>{
     const script=window.document.createElement('script');script.src='./translator-sentence.js';
@@ -316,11 +329,11 @@ async function init(){
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
    if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(
     document,await response.json(),
-    token=>typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token));
+    explainMorphology);
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(
-    token=>typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token),
+    explainMorphology,
     token=>model.lookup(token,'nh-en'),
     codexStats.status==='fulfilled'?codexStats.value:null,
     lukeStats.status==='fulfilled'?lukeStats.value:null

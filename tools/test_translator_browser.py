@@ -61,6 +61,17 @@ with sync_playwright() as pw:
     page.locator("#lukeAtlas").evaluate("(e)=>e.open=true")
     page.wait_for_function("document.querySelector('#lukeSummary')?.textContent.includes('26,201')")
     assert '1833' in page.locator('#lukeAtlas').inner_text()
+    page.locator('#lukeReviewLoad').click()
+    page.wait_for_function("document.querySelectorAll('#lukeReviewItems .luke-review-card').length === 15")
+    assert '315 mechanically joined' in page.locator('#lukeReviewCounts').inner_text()
+    assert '400 unresolved' in page.locator('#lukeReviewCounts').inner_text()
+    assert page.locator('#lukeVersePicker option').count() >= 700
+    assert 'not verified' in page.locator('#lukeVersePreview').inner_text().lower()
+    page.locator('#lukeReviewItems .luke-review-card').first.locator('button').first.click()
+    assert 'Local review: accept' in page.locator('#lukeReviewItems .luke-review-card').first.inner_text()
+    page.locator('#lukeReviewType').select_option('possible_spaced_word')
+    assert page.locator('#lukeReviewItems .luke-review-card').count() >= 1
+
     page.locator("#translatorInput").fill("yhuan")
     page.locator("#translatorOrthography").select_option('luke1833')
     page.locator("#translatorForm button[type=submit]").click()

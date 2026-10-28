@@ -64,7 +64,7 @@ invalid([record(),record({pair_id:'second',split:'train',source_id:'OTHER',
   original_orthography:'unique input',normalized_nahuatl:'unique normalized'})],'split_group crosses train/dev/test');
 invalid([record(),record({pair_id:'second',split:'train',source_id:'OTHER',split_group:'OTHER',
   original_orthography:'Ticchihua tlacatl',normalized_nahuatl:'unrelated token'})],'original surface crosses train/dev/test');
-invalid([record(),record({pair_id:'second'})],'missing or duplicate ID');
+invalid([record(),record({pair_id:'independent-1'})],'missing or duplicate ID');
 const csvHeader=raw.split(/\r?\n/u)[0];
 const values=csvHeader.split(',').map(x=>record()[x]);
 const quoted=values.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',');

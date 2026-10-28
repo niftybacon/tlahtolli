@@ -167,12 +167,37 @@ function probeExamples(examples){
    stored_passage_match_count:result.passages.length};
  });
 }
+function probeDevelopmentSources(reviews){
+ // Orthographic tokenization and lookup only. We have already seen published
+ // commentary for these sources; none is independent sentence-level gold.
+ const dictionary=JSON.parse(fs.readFileSync(path.join(ROOT,'dictionary.json'),'utf8'));
+ const lex=loadModel('translator-engine.js','TlahtolliTranslator').create(dictionary,{entries:[]});
+ return reviews.map(r=>{
+  const fragment=r.image_inspection?.minimum_assisted_excerpt||'';
+  const result=lex.analyze(fragment,'nh-en');
+  return {id:r.id,source_id:r.source_id,
+   classification:'EDITORIAL-ASSISTED DEVELOPMENT DIAGNOSTIC; NOT BLIND; NEVER GOLD',
+   excerpt_basis:r.image_inspection?.excerpt_basis||'',
+   abbreviation_unresolved:/[¯\u0304]/u.test(fragment),
+   fragment,
+   tokenization:result.parts.filter(part=>part.kind==='word')
+    .map(part=>({written_token:part.value,lookup_status:part.status,
+     candidate_count:part.candidates.length,orthographyConflict:!!part.orthographyConflict})),
+   dictionary_matches:result.stats.matched,
+   dictionary_unknown:result.stats.unknown,
+   translation_accuracy:null,
+   caution:'The shorthand y¯ has unresolved abbreviation/segmentation. Token counts are mechanical, not verified word or grammatical coverage. Translation not assessed.'};
+ });
+}
 function main(){
  const pairs=parseCsv(fs.readFileSync(path.join(BASE,'pairs.csv'),'utf8'));
  const examples=JSON.parse(fs.readFileSync(path.join(BASE,'research_examples.json'),'utf8'));
  const reviews=loadSourceReviews();
  const report={format:'tlahtolli-evaluation-readiness-v1',...audit(pairs,examples,reviews)};
- if(!report.errors.length)report.in_sample_diagnostics=probeExamples(examples);
+ if(!report.errors.length){
+  report.in_sample_diagnostics=probeExamples(examples);
+  report.development_source_diagnostics=probeDevelopmentSources(reviews);
+ }
  if(process.argv.includes('--json'))console.log(JSON.stringify(report,null,2));
  else {
   console.log('Independent translation-quality readiness: '+report.readiness);
@@ -183,10 +208,14 @@ function main(){
   if(report.in_sample_diagnostics)for(const r of report.in_sample_diagnostics)
    console.log('Preview-only '+r.id+': curated lexical matches '+r.curated_matched+'/'+r.lexical_total+
     ', grammar candidate '+r.grammar_candidate_available+'; NOT a translation-quality score');
+  if(report.development_source_diagnostics)for(const r of report.development_source_diagnostics)
+   console.log('Editorial-assisted, non-blind '+r.source_id+': mechanical dictionary matches '+
+    r.dictionary_matches+'/'+(r.dictionary_matches+r.dictionary_unknown)+
+    ', abbreviation unresolved '+r.abbreviation_unresolved+'; NOT translation accuracy');
   for(const err of report.errors)console.error('ERROR: '+err);
  }
  if(report.errors.length)process.exitCode=1;
  return report;
 }
 if(require.main===module)main();
-module.exports={parseCsv,fingerprint,audit,probeExamples,loadSourceReviews};
+module.exports={parseCsv,fingerprint,audit,probeExamples,probeDevelopmentSources,loadSourceReviews};

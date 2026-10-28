@@ -51,6 +51,27 @@ function showResult(){
     for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
    }
+   if(clause.morphologicalClues?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.append(el('summary','','Partial morphology only · '+clause.morphologicalClues.length+
+     ' proposed analysis'+(clause.morphologicalClues.length===1?'':'es')+
+     ' (NOT a sentence translation)'));
+    panel.append(el('p','translator-caution',
+     'These are token-level morphological possibilities from the existing Tēntli engine. The clause remains unsupported; no grammatical roles or whole-sentence English have been established.'));
+    for(const clue of clause.morphologicalClues.slice(0,12)){
+     const item=el('div','translator-morph-candidate');
+     item.append(el('strong','',clue.token+' → '+clue.lemma+' · '+clue.kind),
+      el('p','translator-meta','Evidence grade: '+clue.grade+'; morphology only, not contextual certainty.'));
+     if(clue.parts?.length)item.append(el('p','translator-meta',
+      clue.parts.map(part=>part.surface+' ('+part.role+')').join(' · ')));
+     const source=safeLink(clue.source,'Inspect source of morphological proposal');
+     if(source)item.append(source);
+     panel.append(item);
+    }
+    if(clause.morphologicalClues.length>12)panel.append(el('p','translator-caution',
+     'Further unranked proposals omitted to keep the reading bounded.'));
+    block.append(panel);
+   }
    passages.append(block);
   }
  }
@@ -293,7 +314,9 @@ async function init(){
     script.onload=resolve;script.onerror=reject;window.document.head.append(script);
    });
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
-   if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(document,await response.json());
+   if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(
+    document,await response.json(),
+    token=>typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token));
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(

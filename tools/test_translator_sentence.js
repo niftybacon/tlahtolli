@@ -110,9 +110,9 @@ for(const input of ['ahmo onicoch','onicoch in cihuātl','onicoch zzz','onicoch,
  const result=bridged.analyze(input);
  assert.equal(result.complete,false,'No unsupported extra words or negative source-form reinterpretation: '+input);
 }
-const partial=bridged.analyze('onicoch in cihuātl').clauses[0];
-assert(partial.morphologicalClues.some(x=>x.token==='onicoch'&&x.lemma==='cochi'));
-assert.equal(partial.candidates.length,0);
+const partiallyBridged=bridged.analyze('onicoch in cihuātl').clauses[0];
+assert(partiallyBridged.morphologicalClues.some(x=>x.token==='onicoch'&&x.lemma==='cochi'));
+assert.equal(partiallyBridged.candidates.length,0);
 assert.equal(bridged.analyze('onicoch. zzz').complete,false);
 const noProofs=[
  {kind:'Dictionary headword'},

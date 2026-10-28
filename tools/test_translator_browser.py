@@ -48,6 +48,13 @@ with sync_playwright() as pw:
     page.locator("#translatorInput").fill("zzzyxxy")
     page.locator("#translatorForm button[type=submit]").click()
     assert "Unindexed form" in page.locator("#translatorAnalyses").inner_text()
+    page.locator("#codexAtlas").evaluate("(e)=>e.open=true")
+    page.wait_for_function("document.querySelectorAll('#codexBookRows tr').length === 12")
+    assert '291,900' in page.locator('#codexSummary').inner_text()
+    page.locator('#codexBookSelect').select_option('6')
+    assert 'Rhetoric' in page.locator('#codexBookDetail').inner_text()
+    assert 'Not' not in page.locator('#codexSummary').inner_text()
+
     page.locator("#tabStudy").click()
     assert page.locator("#translatorView").is_hidden()
     assert page.locator("#studyView").is_visible()

@@ -7,6 +7,7 @@
 const base='./research/amoxcalli_archive/';
 const kinds={nci:'Classical Nahuatl',nhn:'Central Nahuatl',nch:'Central Huasteca Nahuatl',nhe:'Eastern Huasteca Nahuatl'};
 const norm=s=>String(s||'').normalize('NFC').trim().toLocaleLowerCase('en');
+const fold=s=>norm(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const $=id=>document.getElementById(id);
 const el=(tag,txt,cls)=>{
  const node=document.createElement(tag);
@@ -14,13 +15,16 @@ const el=(tag,txt,cls)=>{
  if(txt!==undefined)node.textContent=String(txt);
  return node;
 };
-let loaded=false,pending=null,records=[],byForm=new Map(),manifest=null;
+let loaded=false,pending=null,records=[],byForm=new Map(),byFold=new Map(),manifest=null;
 function addForm(word,rec){
  const key=norm(word);
  if(!key||key.length>160)return;
  const found=byForm.get(key)||[];
  if(!found.includes(rec))found.push(rec);
  byForm.set(key,found);
+ const folded=fold(key),alternatives=byFold.get(folded)||[];
+ if(!alternatives.includes(rec))alternatives.push(rec);
+ byFold.set(folded,alternatives);
 }
 function addRecord(rec,forms=[]){
  records.push(rec);
@@ -49,7 +53,7 @@ async function readAll(){
    next.push({kind:task.kind,rows:doc.rows});
   });
  }
- records=[];byForm=new Map();
+ records=[];byForm=new Map();byFold=new Map();
  for(const part of next){
   for(const row of part.rows){
    if(part.kind==='simeon'){
@@ -76,7 +80,7 @@ async function readAll(){
 }
 function ensureLoaded(){
  if(loaded)return Promise.resolve({total:records.length});
- if(!pending)pending=readAll().catch(e=>{pending=null;loaded=false;records=[];byForm=new Map();throw e;});
+ if(!pending)pending=readAll().catch(e=>{pending=null;loaded=false;records=[];byForm=new Map();byFold=new Map();throw e;});
  return pending;
 }
 function lookup(form,opts={}){
@@ -85,6 +89,25 @@ function lookup(form,opts={}){
  const classicalOnly=opts.classicalOnly!==false;
  return hits.filter(x=>!classicalOnly||x.sourceKey==='simeon'||x.variety==='Classical Nahuatl')
   .slice(0,opts.limit||10);
+}
+// A separate, evidence-only lookup: do not silently promote archive rows into
+// curated lexical candidates or into the working translation gloss.
+function lookupEvidence(form,opts={}){
+ const empty={hits:[],total:0,approximateCount:0,truncated:false};
+ if(!loaded)return empty;
+ const key=norm(form);
+ if(!key)return empty;
+ const classicalOnly=opts.classicalOnly!==false;
+ const allow=rec=>!classicalOnly||rec.sourceKey==='simeon'||rec.variety==='Classical Nahuatl';
+ const exact=(byForm.get(key)||[]).filter(allow);
+ const approximate=(byFold.get(fold(key))||[]).filter(rec=>allow(rec)&&!exact.includes(rec));
+ const limit=Number.isInteger(opts.limit)?Math.min(50,Math.max(1,opts.limit)):8;
+ const hits=[
+  ...exact.map(rec=>({...rec,matchKind:'exact'})),
+  ...approximate.map(rec=>({...rec,matchKind:'diacritic-variant'}))
+ ];
+ return {hits:hits.slice(0,limit),total:hits.length,
+  approximateCount:approximate.length,truncated:hits.length>limit};
 }
 function search(query,source='all',limit=60){
  if(!loaded)return {hits:[],total:0};
@@ -139,7 +162,7 @@ function bindPanel(){
  input.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(render,180);});
  filter.addEventListener('change',render);
 }
-root.TlahtolliArchive={ensureLoaded,lookup,search,renderRecord,get ready(){return loaded;},get manifest(){return manifest;}};
+root.TlahtolliArchive={ensureLoaded,lookup,lookupEvidence,search,renderRecord,get ready(){return loaded;},get manifest(){return manifest;}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindPanel,{once:true});
 else bindPanel();
 })(window);

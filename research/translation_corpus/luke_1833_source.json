@@ -1,0 +1,22 @@
+{
+  "id": "LUKE-1833-PAZ-SANCHEZ",
+  "title": "El Evangelio de S. Lucas: del Latín al Mexicano ó mejor Nahuatl",
+  "author": "Mariano Paz y Sánchez",
+  "work": "Gospel of Luke (historical Nahuatl translation)",
+  "original_publication_year": 1833,
+  "source_variety": "Historical Nahuatl (southern Puebla, c. 1830; not the same source variety as the sixteenth-century Florentine Codex)",
+  "primary_scan": "https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf",
+  "archive_source": "https://archive.org/details/elevangeliodeslu00pazy",
+  "edition_reference": "https://openlibrary.org/books/OL25266006M/El_Evangelio_de_S._Lucas",
+  "scholarly_context": "https://specialcollections-blog.lib.cam.ac.uk/?p=30409",
+  "biblesociety_online_edition": "https://www.bible.com/versions/4612-nci1833-san-lucan-1833",
+  "rights_original": "1833 print identified as public domain on Wikimedia Commons in the United States; scan source credited to the John Carter Brown Library.",
+  "rights_modern_transcription": "Separate editorial and digital text rights require independent review. The source scan and the digital Bible.com edition are not interchangeable for bulk ingestion.",
+  "morphology_profile": "luke1833",
+  "editorial_status": "source-located; transcription quality not audited",
+  "training_eligibility": "original 1833 source is public domain; no reviewed aligned parallel-text training set yet",
+  "text_import_status": "not imported; require OCR/text validation and passage alignment",
+  "manuscript_distinction": "Bible source from south Puebla c.1830, not a sixteenth-century central Mexican manuscript",
+  "example_original_title_tokens": "Yacuic iyec tenonotzaltzin",
+  "notes": "Store original spelling and a separately attributed tentative normalized analysis; never silently rewrite the historical text or assign generated morphological hypotheses the status of attested forms."
+}

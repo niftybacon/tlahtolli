@@ -81,8 +81,10 @@ with sync_playwright() as pw:
     all_words=page.locator("#translatorAnalyses").inner_text()
     assert "namaca" in all_words and "tlalli" in all_words
     assert "Source-crosschecked token hypothesis" in all_words
+    page.locator("#translatorAnalyses details.translator-morph-panel").evaluate_all(
+        "(nodes)=>nodes.forEach(node=>node.open=true)")
     assert page.locator("#translatorAnalyses").get_by_role("link",name="Inspect independent morpheme reference").count()>0
-    page.locator("#translatorInput").fill("ticnamacas y¯ totlalli")
+    page.locator("#translatorInput").fill("ticnamacas yn totlalli")
     page.locator("#translatorForm button[type=submit]").click()
     changed=page.locator("#translatorAnalyses").inner_text()
     assert "Source-crosschecked token hypothesis" not in changed

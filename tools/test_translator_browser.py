@@ -66,7 +66,7 @@ with sync_playwright() as pw:
     assert '315 mechanically joined' in page.locator('#lukeReviewCounts').inner_text()
     assert '400 unresolved' in page.locator('#lukeReviewCounts').inner_text()
     assert page.locator('#lukeVersePicker option').count() >= 700
-    assert 'not verified' in page.locator('#lukeVersePreview').inner_text().lower()
+    assert 'unverified' in page.locator('#lukeVersePreview').inner_text().lower()
     page.locator('#lukeReviewItems .luke-review-card').first.locator('button').first.click()
     assert 'Local review: accept' in page.locator('#lukeReviewItems .luke-review-card').first.inner_text()
     page.locator('#lukeReviewType').select_option('possible_spaced_word')

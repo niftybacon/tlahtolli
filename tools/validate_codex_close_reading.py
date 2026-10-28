@@ -85,6 +85,41 @@ def validate(path=SOURCE):
                 errors.append(f"{ident}: token {j} invalid lexicon URL")
         if expected != got:
             errors.append(f"{ident}: token order/surfaces do not match source reading: {expected} != {got}")
+    # Independent visual comparison records MUST NOT silently become training data.
+    visual_path=Path(path).with_name("folio_visual_collation.json")
+    if visual_path.exists():
+        try:
+            evidence=json.loads(visual_path.read_text(encoding="utf-8"))
+            if evidence.get("format")!="tlahtolli-manuscript-visual-collation" or evidence.get("schema")!=1:
+                errors.append("visual collation schema unrecognized")
+            if evidence.get("train_eligible") is not False or evidence.get("gold_standard") is not False or evidence.get("certified_lines")!=0:
+                errors.append("partial visual page observations cannot be marked verified/training approved")
+            refs=set()
+            for folio in evidence.get("folios",[]):
+                if not FOLIO.fullmatch(folio.get("folio","")) or not url_good(folio.get("source_url")) or not url_good(folio.get("manuscript_image_reference")):
+                    errors.append("visual evidence missing folio/HTTPS image locator")
+                if folio.get("status")!="visual_partial_not_certified":
+                    errors.append("visual evidence status is overstated")
+                for block in folio.get("regions",[]):
+                    ref=block.get("id")
+                    if not ref or ref in refs:
+                        errors.append("missing or duplicate visual evidence region ID")
+                    refs.add(ref)
+                    if not block.get("visual_observation") or not block.get("uncertain_characters") or not block.get("locator"):
+                        errors.append(f"{ref}: visual uncertainty/locator missing")
+                    if block.get("word_boundary_certified") is not False or block.get("interpretation_certified") is not False:
+                        errors.append(f"{ref}: visually checked excerpt falsely certified")
+            stats["partial_visual_regions"]=len(refs)
+            for p in passages:
+                ref=p.get("visual_evidence_ref")
+                if ref and ref not in refs:
+                    errors.append(f"{p['id']}: visual evidence reference does not resolve")
+                if p.get("facsimile_visual_comparison")=="partial_image_inspection_not_line_certified" and not ref:
+                    errors.append(f"{p['id']}: missing visual comparison locator")
+        except (ValueError,OSError,TypeError,AttributeError) as exc:
+            errors.append(f"visual collation could not be validated: {exc}")
+    else:
+        errors.append("folio_visual_collation.json is missing")
     return errors,stats
 
 def main():
@@ -93,7 +128,9 @@ def main():
     args=ap.parse_args()
     errors,stats=validate(args.path)
     print(f"Close readings: {stats.get('passages',0)} excerpts; {stats.get('word_occurrences',0)} word analyses; "
-          f"{stats.get('facsimile_checked',0)} independently certified lines; {stats.get('approved_pairs',0)} approved training pairs.")
+          f"{stats.get('facsimile_checked',0)} independently certified lines; "
+          f"{stats.get('partial_visual_regions',0)} partial folio-image observations; "
+          f"{stats.get('approved_pairs',0)} approved training pairs.")
     for e in errors: print("ERROR:",e)
     if not errors: print("PASS: source-linked preliminary examples, all excluded from training.")
     return 1 if errors else 0

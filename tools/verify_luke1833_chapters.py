@@ -12,7 +12,7 @@ BASE=ROOT/'research/translation_corpus'
 EXPECTED=[80,52,38,44,39,49,50,56,62,42,54,59,35,35,32,31,37,43,48,47,38,71,56,53]
 HEADING=re.compile(r'\b(?:IC|1C)\s+([^\n]{1,90}?)\s+(?:QUAITL|CUAITL)\b',re.IGNORECASE)
 WORD=r'[^\W\d_]'
-VERSE=re.compile(r'(?m)^[ \t]*(\d{1,3})[ \t]+('+WORD+r'{2,})',re.UNICODE)
+VERSE=re.compile(r'(?m)^[ \t]*(\d{1,3})[ \t]+('+WORD+r'{1,})',re.UNICODE)
 SPLIT_NUMBER=re.compile(r'(?m)^[ \t]*(\d)[ \t]+(\d)[ \t]+('+WORD+r'{2,})',re.UNICODE)
 def analyze(content):
  headings=[]
@@ -90,6 +90,20 @@ def main():
  p.add_argument('--output',type=Path,default=BASE/'luke_1833_chapter_audit.json')
  args=p.parse_args()
  report=analyze(args.input.read_text(encoding='utf8'))
+ checked=BASE/'luke_1833_facsimile_number_checks.json'
+ if checked.exists():
+  review=json.loads(checked.read_text(encoding='utf8'))
+  if review.get('format')=='tlahtolli-luke1833-facsimile-number-checks' and len(review.get('patches',[]))==5:
+   first=report['chapters'][0]
+   first['facsimile_pages_checked']=review['chapter_1_pdf_pages_checked_1based']
+   first['chapter_status']='PRINTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'
+   first['verse_numbering_print_checked']=True
+   first['verse_text_verified']=False
+   second=report['chapters'][1]
+   second['facsimile_pages_checked']=review['chapter_2_partial_pdf_pages_checked_1based']
+   second['chapter_status']='SELECTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'
+   report['totals']['chapters_with_facsimile_numbering_checks']=2
+   report['totals']['chapters_with_full_wording_proofread']=0
  args.output.parent.mkdir(exist_ok=True,parents=True)
  args.output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
  print('Audit: '+str(report['totals']))

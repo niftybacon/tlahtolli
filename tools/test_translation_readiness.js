@@ -8,8 +8,17 @@ const base=path.join(__dirname,'..','research','translation_corpus');
 const examples=JSON.parse(fs.readFileSync(path.join(base,'research_examples.json'),'utf8'));
 const raw=fs.readFileSync(path.join(base,'pairs.csv'),'utf8');
 const pairs=mod.parseCsv(raw);
+const reviews=mod.loadSourceReviews();
+assert.equal(reviews.length,1,'Expected one inspectable, non-gold source intake as of 2026-10-28');
+const reviewedSource=reviews[0];
+assert.equal(reviewedSource.source_id,'ENL-BC16-1573');
+assert.equal(reviewedSource.evaluation_eligible,false);
+assert.equal(reviewedSource.train_eligible,false);
+assert.equal(reviewedSource.knowledge_contamination.published_translation_consulted,true);
+assert.equal(reviewedSource.knowledge_contamination.independent_test_eligible,false);
+assert.equal(reviewedSource.image_inspection.snippet_translation,null);
 assert.equal(pairs.length,0,'If actual reviewed pairs are added, update the evaluation test expectations');
-const clean=mod.audit(pairs,examples);
+const clean=mod.audit(pairs,examples,reviews);
 assert.deepEqual(clean.errors,[]);
 assert.equal(clean.readiness,'no_heldout_gold');
 assert.equal(clean.translation_accuracy,null);
@@ -40,11 +49,11 @@ function record(overrides={}){
  };
 }
 function invalid(rows,needle){
- const result=mod.audit(rows,examples);
+ const result=mod.audit(rows,examples,reviews);
  assert(result.errors.some(e=>e.includes(needle)),needle+': '+result.errors.join(' | '));
  assert.equal(result.translation_accuracy,null);
 }
-const admitted=mod.audit([record()],examples);
+const admitted=mod.audit([record()],examples,reviews);
 assert.equal(admitted.errors.length,0);
 assert.equal(admitted.readiness,'metadata_eligible_unscored');
 assert.equal(admitted.counts.approved_test,1);
@@ -56,6 +65,12 @@ invalid([record({transcription_reviewed_by:'model'})],'named independent human')
 invalid([record({nahuatl_variety:'Eastern Huasteca Nahuatl'})],'non-Classical variety');
 invalid([record({review_status:'candidate'})],'unapproved record assigned');
 invalid([record({source_id:'FC'})],'test source_id occurs in public');
+invalid([record({source_id:'ENL-BC16-1573'})],'already inspected and contaminated as a development source');
+assert(mod.audit(pairs,examples,[{...reviewedSource,train_eligible:true}]).errors.some(
+ e=>e.includes('cannot be promoted')));
+assert(mod.audit(pairs,examples,[{...reviewedSource,knowledge_contamination:{
+ ...reviewedSource.knowledge_contamination,published_translation_consulted:false
+}}]).errors.some(e=>e.includes('published translation')));
 invalid([record({original_orthography:'iuhqujn chimalli'})],'test input overlaps public');
 invalid([record({original_orthography:'Iuhqujn, CHIMALLI!'})],'test input overlaps public');
 invalid([record(),record({pair_id:'second',split:'train',split_group:'other',
@@ -78,4 +93,4 @@ assert.equal(parsed[0].notes,'test, "quoted"\nline');
 assert.throws(()=>mod.parseCsv(csvHeader+'\n"broken'),/Unclosed CSV/);
 assert.throws(()=>mod.parseCsv(csvHeader+'\n1,2'),/columns/);
 assert.equal(mod.fingerprint('īuhquīn, Chimalli!'),'iuhquin chimalli');
-console.log('PASS evaluation readiness: no invented accuracy, 3 in-sample-only diagnostics, source-heldout and provenance gates, rights/review failures, CSV edge cases and leakage negatives.');
+console.log('PASS evaluation readiness: non-blind 1573 source quarantined, no invented accuracy, 3 in-sample-only diagnostics, source-heldout and provenance gates, rights/review failures, CSV edge cases and leakage negatives.');

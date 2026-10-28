@@ -201,6 +201,13 @@ function showResult(){
         el('p','translator-meta',hit.source+' · definition language: '+hit.language));
        if(hit.matchKind==='diacritic-variant')record.append(el('p','translator-caution',
         'UNCERTAIN SPELLING: macron/accent differs from the input. This is an unverified orthographic possibility, not a selected meaning.'));
+       const forms=hit.matchedForms||[];
+       if(forms.length){
+        const labels=forms.slice(0,8).map(f=>f.form+' ['+f.role+
+         (f.tags.length?'; source labels: '+f.tags.join(', '):'')+']');
+        record.append(el('p','translator-meta','Matched source form: '+labels.join(' / ')+
+         (forms.length>8?' / …':'')+'. Grammatical labels are source-reported, not verified parses.'));
+       }
        const definition=el('p','',hit.meaning||'No usable imported definition');
        if(definition.textContent.length>600){
         const full=el('details');

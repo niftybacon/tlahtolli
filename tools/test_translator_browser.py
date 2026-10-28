@@ -111,6 +111,26 @@ with sync_playwright() as pw:
     assert "Compositional comparison reading" in page.locator("#translatorPassages").inner_text()
     assert "like shield" in page.locator("#translatorPassages").inner_text()
     assert "not a verified passage translation" in page.locator("#translatorPassages").inner_text()
+    # The native sentence tab now reuses canonical source-located morphology:
+    # source-listed finite forms can show their exact recorded glosses, but a
+    # following noun does not become a magically parsed sentence.
+    page.locator("#translatorInput").fill("onicoch")
+    page.locator("#translatorForm button[type=submit]").click()
+    finite=page.locator("#translatorPassages").inner_text()
+    assert "I slept" in finite
+    assert "source-listed finite-form gloss (unverified in context)" in finite
+    assert "NOT a generated sentence translation" in finite
+    page.locator("#translatorInput").fill("onicoch in cihuātl")
+    page.locator("#translatorForm button[type=submit]").click()
+    partial=page.locator("#translatorPassages").inner_text()
+    assert "Outside supported clause grammar" in partial
+    assert "Partial morphology only" in partial
+    assert "NOT a sentence translation" in partial
+    assert "I slept" not in partial
+    page.locator("#translatorInput").fill("ahmo onicoch")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
+    assert "I did not sleep" not in page.locator("#translatorPassages").inner_text()
     page.locator("#translatorInput").fill("ahmo nichōca")
     page.locator("#translatorForm button[type=submit]").click()
     assert "I do not cry" in page.locator("#translatorPassages").inner_text()

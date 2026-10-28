@@ -45,7 +45,7 @@ with sync_playwright() as pw:
     assert "facsimile checked: NO" in panel.inner_text()
     panel.locator(".codex-clr-row").first.get_by_role("button",name="Analyze this excerpt").click()
     assert "atl yitic nemini" in page.locator("#translatorInput").input_value()
-    page.wait_for_function("'Codex contextual grammar notes' in document.querySelector('#codexContextMatches').textContent",timeout=10000)
+    page.wait_for_function("document.querySelector('#codexContextMatches').textContent.includes('Codex contextual grammar notes')",timeout=10000)
     assert "yitic" in page.locator("#codexContextMatches").inner_text()
     page.locator("#corpusIntegrity").evaluate("(x)=>x.open=true")
     page.wait_for_function("document.querySelectorAll('#corpusIntegrityMount .ci-entry').length>=3")

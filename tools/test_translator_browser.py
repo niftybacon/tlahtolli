@@ -2,6 +2,7 @@
 """Browser regression: translator is a native Tlahtōlli tab, not a separate page."""
 from pathlib import Path
 from urllib.parse import urlsplit
+import json
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,6 +58,48 @@ with sync_playwright() as pw:
     assert "[?totlal]" in page.locator("#translatorGloss").inner_text()
     # Source interpretation must not become a confident contextual sentence.
     assert "No automatically inferred reading here is a verified historical word" in reading
+    # Personal parallel reading: NOTHING bundled or automatically aligned.
+    panel=page.locator("#parallelReadingPanel")
+    assert panel.count()==1
+    panel.evaluate("(node)=>node.open=true")
+    assert page.locator("#parallelAddPair").is_disabled()
+    assert not page.locator("#parallelNahuatl").input_value()
+    assert not page.locator("#parallelEnglish").input_value()
+    page.locator("#parallelNahuatl").fill("ticnamaca y¯ totlal\nnoce")
+    page.locator("#parallelEnglish").fill("We are selling our land\nor something else")
+    page.locator("#parallelPrepare").click()
+    assert page.locator("#parallelNhChoice option").count()==2
+    assert page.locator("#parallelEnChoice option").count()==2
+    assert page.locator("#parallelPairs article").count()==0
+    assert page.locator("#parallelStatus").inner_text().find("no automatic alignment")>=0
+    page.locator("#parallelNote").fill("Editorial text; phrase correspondence not verified")
+    page.locator("#parallelAddPair").click()
+    assert page.locator("#parallelPairs article").count()==1
+    assert "User-proposed relation" in page.locator("#parallelPairs").inner_text()
+    page.locator("#parallelInspect").click()
+    assert page.locator("#translatorInput").input_value()=="ticnamaca y¯ totlal"
+    assert "[?ticnamaca]" in page.locator("#translatorGloss").inner_text()
+    with page.expect_download() as downloaded:
+        page.locator("#parallelDownload").click()
+    payload=json.loads(Path(downloaded.value.path()).read_text(encoding="utf-8"))
+    assert payload["source_id"]=="ENL-BC16-1573"
+    assert payload["alignments"][0]["nahuatl_text"]=="ticnamaca y¯ totlal"
+    assert payload["alignments"][0]["status"]=="user_proposed_alignment_unverified"
+    assert payload["translation_verified"] is False
+    assert payload["train_eligible"] is False
+    assert payload["evaluation_eligible"] is False
+    assert payload["published_translation_rights"]=="not_verified"
+    # Editing invalidates old alignments until the user re-prepares; no stale export.
+    page.locator("#parallelEnglish").fill("some other text")
+    assert page.locator("#parallelDownload").is_disabled()
+    # Import the prior personal export without publishing it anywhere.
+    page.once("dialog",lambda dlg:dlg.accept())
+    page.locator("#parallelImport").set_input_files(downloaded.value.path())
+    page.wait_for_function("""() => document.querySelector('#parallelStatus')
+      ?.textContent.includes('Personal reading imported locally')""")
+    assert page.locator("#parallelPairs article").count()==1
+    assert page.locator("#parallelEnglish").input_value().startswith("We are selling our land")
+    assert not page.locator("#parallelDownload").is_disabled()
     page.locator("#translatorInput").fill("in xōchitl in cuīcatl")
     page.locator("#translatorForm button[type=submit]").click()
     assert "[?xōchitl: multiple dictionary senses]" in page.locator("#translatorGloss").inner_text()

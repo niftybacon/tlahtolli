@@ -954,7 +954,7 @@ function sanitizeStudyRecords(input){
 }
 let studyRecords=sanitizeStudyRecords(readLocalJson(studyStorageKey,{}));
 let studyCurrentKey='',studyRevealed=false;
-function saveStudyRecords(){try{localStorage.setItem(studyStorageKey,JSON.stringify(studyRecords));return true;}catch{message('Study progress could not be saved. Export a full project backup.');return false;}}
+function saveStudyRecords(){try{localStorage.setItem(studyStorageKey,JSON.stringify(studyRecords));window.dispatchEvent(new Event('tlahtolli:studySaved'));return true;}catch{message('Study progress could not be saved. Export a full project backup.');return false;}}
 function studyKey(w){return pubKey(w)+($('studyDirection')?.value==='en-nh'?'§reverse':'')}
 function studyQueue(){const now=Date.now();const mode=$('studySubset').value;
  const arr=words.filter(w=>w.word&&w.meaning).filter(w=>{
@@ -2316,4 +2316,7 @@ return {DEFAULT,PRESETS,FIELDS,config,steps,schedule,midnight,usage,queueWords,q
 renderSourceAtlas();syncSourceAtlas();render();
 
 </script>
+<script src="./cloud-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script defer src="./cloud-sync.js"></script>
 </body></html>

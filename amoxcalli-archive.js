@@ -145,12 +145,19 @@ function crossCheckMorphology(token,analyses,opts={}){
  const archive=(byForm.get(key)||[]).filter(rec=>rec.sourceKey==='kaikki'&&rec.variety==='Classical Nahuatl');
  const out=[],seen=new Set();
  for(const candidate of analyses.slice(0,40)){
-  if(!candidate||candidate.changed||candidate.kind==='Dictionary matching form'||
+  if(!candidate||candidate.changed||!candidate.kind||
+    ['Dictionary matching form','Dictionary headword','Spelling variant'].includes(candidate.kind)||
     norm(candidate.surface)!==key||candidate.original&&norm(candidate.original)!==key)continue;
   const lemma=norm(candidate.lemma);
   if(!lemma)continue;
+  // Reject contradictory parts of speech when the proposal gives a category.
+  // Many form-of tags do not encode a syntactic role; leave those unresolved.
+  const category=String(candidate.features?.category||'').toLowerCase();
+  const kind=String(candidate.kind).toLowerCase();
+  const expectedPos=category==='noun'||/\bnoun\b|possessed form/.test(kind)?'noun':
+   category==='verb'||/conjugation|transitive parse/.test(kind)?'verb':null;
   for(const rec of archive){
-   if(norm(rec.word)!==lemma)continue;
+   if(norm(rec.word)!==lemma||(expectedPos&&rec.pos!==expectedPos))continue;
    const forms=matchingFormEvidence(rec,key,false);
    for(const form of forms){
     const unique=[lemma,form.form,form.role,(form.tags||[]).join('|'),candidate.kind].join('\u0000');

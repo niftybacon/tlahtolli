@@ -101,6 +101,22 @@ function audit(pairs,examples,sourceReviews=[]){
      claim.evidence.some(e=>!isUrl(e?.url)||!clean(e?.basis)))
      errors.push('External morphology claim lacks provenance or unresolved constraints: '+id+' claim '+(j+1));
    }
+   const tokenAnalyses=checked.token_analyses;
+   const witnessed=new Set(String(checked.excerpt||'').split(/\s+/u).map(x=>x.normalize('NFC').toLowerCase()));
+   const claimIds=new Set((Array.isArray(checked.claims)?checked.claims:[]).map(x=>x.surface));
+   if(!Array.isArray(tokenAnalyses)||!tokenAnalyses.length||tokenAnalyses.length>40)
+    errors.push('External source must declare bounded, incomplete token-level morphology: '+id);
+   else for(const [j,analysis] of tokenAnalyses.entries()){
+    const fragments=analysis?.parts,refs=analysis?.claim_ids;
+    if(!clean(analysis?.surface)||!witnessed.has(clean(analysis.surface).normalize('NFC').toLowerCase())||
+     !clean(analysis?.lemma)||!clean(analysis?.reading)||!clean(analysis?.note)||
+     !Array.isArray(fragments)||!fragments.length||fragments.length>8||
+     !Array.isArray(refs)||refs.length!==fragments?.length||
+     fragments.join('')!==analysis.surface||fragments.some((part,k)=>refs[k]!==part||!claimIds.has(part))||
+     !analysis.features||typeof analysis.features!=='object'||Array.isArray(analysis.features)||
+     Object.values(analysis.features).some(v=>typeof v!=='string'||v.length>250))
+     errors.push('Morphological token proposal is ungrounded in source spellings or morpheme claims: '+id+' analysis '+(j+1));
+   }
   }
  }
  for(const e of candidates){

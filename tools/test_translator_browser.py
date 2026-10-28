@@ -166,6 +166,33 @@ with sync_playwright() as pw:
     assert "Compositional comparison reading" in page.locator("#translatorPassages").inner_text()
     assert "like shield" in page.locator("#translatorPassages").inner_text()
     assert "not a verified passage translation" in page.locator("#translatorPassages").inner_text()
+    # Independent Florentine Codex comparison fragment; generalized to other
+    # curated Classical noun lexemes, never a complete finite sentence.
+    page.locator("#translatorInput").fill("iuhqujn chimalli")
+    page.locator("#translatorForm button[type=submit]").click()
+    fragment=page.locator("#translatorPassages .translator-contextual-fragments")
+    assert fragment.count()==1
+    fragment.evaluate("(node)=>node.open=true")
+    source_reading=fragment.inner_text()
+    assert "Comparative particle + source-checked noun phrase" in source_reading
+    assert "source-attested editorial comparison (not blind)" in source_reading
+    assert "like / as if + [shield; metaphor for war]" in source_reading
+    assert "Published contextual reading of this exact historical fragment: Like a shield." in source_reading
+    assert "NOT independent held-out translation evidence" in source_reading
+    assert fragment.get_by_role("link",name="Inspect comparative evidence").count()>=3
+    page.locator("#translatorInput").fill("iuhquin calli")
+    page.locator("#translatorForm button[type=submit]").click()
+    fragment=page.locator("#translatorPassages .translator-contextual-fragments")
+    assert fragment.count()==1
+    fragment.evaluate("(node)=>node.open=true")
+    general=fragment.inner_text()
+    assert "compositional comparison hypothesis (not independently attested)" in general
+    assert "like / as if + [house; building; dwelling]" in general
+    assert "Published contextual reading" not in general
+    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
+    page.locator("#translatorInput").fill("atl yitic nemjnj")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-contextual-fragments").count()==0
     # The native sentence tab now reuses canonical source-located morphology:
     # source-listed finite forms can show their exact recorded glosses, but a
     # following noun does not become a magically parsed sentence.

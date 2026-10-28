@@ -16,7 +16,7 @@ for i in [0,3,5,7,9,11,13,15,17,20,24,30,50,90,140,151]:
  txt=' '.join(doc[i].get_text().split())
  print('PAGE_TEXT',i,'chars',len(txt),'opening',repr(txt[:75]))
 # Sample a few pages around the beginning of the Nahuatl text; no uploads.
-for i in [17,18,19,21,22]:
+for i in [23,24,25,26,27]:
  if i>=len(doc):continue
  pix=doc[i].get_pixmap(matrix=fitz.Matrix(2.2,2.2),alpha=False)
  from PIL import Image

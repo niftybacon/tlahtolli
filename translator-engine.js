@@ -33,7 +33,7 @@ function create(dictionary,passages){
    variety:w.variety,form:w.word,form_type:'headword',evidence:'lexicon',
    context:'An isolated dictionary entry is not a sentence-level translation.'};
   push(w.word,base);
-  for(const variant of String(w.original||'').split('/')){
+  for(const variant of String(w.original||'').split(/[\/;,]/)){
    const v=variant.trim();if(v&&wordsOnly(v).length===1&&norm(v)!==norm(w.word))
     push(v,{...base,form:v,form_type:'historical spelling',evidence:'orthography'});
   }

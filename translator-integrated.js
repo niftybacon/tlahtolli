@@ -41,6 +41,14 @@ function showResult(){
   ' approximate · '+latest.stats.orthographyConflicts+
   ' unresolved vowel-length contrasts. Working lexical clues, not a sentence translation.'+
   (dataMode==='offline'?' (Offline dictionary fallback.)':''));
+ for(const reading of latest.contextReadings||[]){
+  const block=el('article','translator-candidate');
+  block.append(el('h4','','Compositional comparison reading'),
+   el('p','',reading.readings.join(' / ')),el('p','translator-meta',reading.evidence),
+   el('p','translator-caution',reading.limitation));
+  for(const source of reading.sources){const link=safeLink(source,'Inspect lexical basis');if(link)block.append(link);}
+  passages.append(block);
+ }
  if(latest.passages.length){
   passages.append(el('h4','','Historical passage interpretation candidates'));
   for(const item of latest.passages){

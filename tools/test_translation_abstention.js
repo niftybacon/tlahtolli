@@ -90,3 +90,16 @@ assert.equal(crowded.lookup('same').totalCandidates,10);
 assert.equal(crowded.lookup('same').truncated,true);
 assert.match(crowded.analyze('same').gloss,/multiple entries/);
 console.log('PASS: unresolved sense lists, input-order independence, same-headword collisions, provenance preservation, duplicate and single-sense controls.');
+// Context rule controls: constructed examples, not manuscript attestations.
+const comparison=mk([{word:'iuhquin',original:'iuhqujn',meaning:'like; as if',pos:'particle'},
+ {word:'object',meaning:'stone; hard object'},{word:'verb',meaning:'run',pos:'verb'}]);
+assert.equal(comparison.analyze('iuhquin object').contextReadings[0].readings.join('|'),'like stone|like hard object');
+assert.equal(comparison.analyze('IUHQUJN object.').contextReadings.length,1);
+for(const text of ['object iuhquin','iuhquin verb','iuhquin unknown','iuhquin, object','iuhquin\nobject','iuhquin object extra','extra iuhquin object']){
+ assert.equal(comparison.analyze(text).contextReadings.length,0,text);
+}
+assert.equal(comparison.analyze('iuhquin object','en-nh').contextReadings.length,0);
+const ambiguousComparison=mk([{word:'iuhquin',meaning:'like',pos:'particle'},
+ {word:'object',meaning:'one'},{word:'object',meaning:'two'}]);
+assert.equal(ambiguousComparison.analyze('iuhquin object').contextReadings.length,0);
+console.log('PASS: bounded comparison composition, alternatives, order, punctuation, clause extent and lexical conflict controls.');

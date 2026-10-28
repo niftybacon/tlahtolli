@@ -44,6 +44,11 @@ with sync_playwright() as pw:
     assert "UNRESOLVED DICTIONARY SENSES" in page.locator("#translatorAnalyses").inner_text()
     assert "calendrical day sign" in page.locator("#translatorAnalyses").inner_text()
     assert page.locator("#translatorAnalyses .translator-word").count() == 4
+    page.locator("#translatorInput").fill("iuhquin chimalli")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert "Compositional comparison reading" in page.locator("#translatorPassages").inner_text()
+    assert "like shield" in page.locator("#translatorPassages").inner_text()
+    assert "not a verified passage translation" in page.locator("#translatorPassages").inner_text()
     page.locator("#translatorExample").click()
     assert "mirror" in page.locator("#translatorPassages").inner_text().lower()
     assert "Not an approved translation training pair" in page.locator("#translatorPassages").inner_text()

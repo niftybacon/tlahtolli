@@ -81,6 +81,24 @@ function create(dictionary,passages){
    approximate:unique.length>0,alternatives:[],orthographyConflict:false,totalCandidates:unique.length,truncated:unique.length>8};
  }
 
+ function contextReadings(input,direction){
+  if(direction!=='nh-en')return [];
+  // Deliberately bounded to a complete two-word fragment, not arbitrary adjacency.
+  const tokens=tokenize(String(input||'').trim());
+  if(tokens.length===4&&/^[.!?]$/.test(tokens[3]))tokens.pop();
+  if(tokens.length!==3||!/^ +$/.test(tokens[1]))return [];
+  const marker=lookup(tokens[0]),noun=lookup(tokens[2]);
+  const usable=r=>!r.approximate&&!r.orthographyConflict&&!r.truncated&&distinctLexical(r.candidates).length===1;
+  if(!usable(marker)||!usable(noun))return [];
+  const m=marker.candidates[0],n=noun.candidates[0];
+  if(m.lemma!=='iuhquin'||n.pos!=='noun'||!m.source||!n.source||!n.senses.length)return [];
+  return [{rule:'comparison-iuhquin-noun-v1',input:String(input),
+   readings:[...new Set(n.senses)].map(sense=>'like '+sense),
+   relation:'comparison',complement:n.lemma,
+   evidence:'Editorial composition from cited lexical records; not a verified passage translation.',
+   sources:[...new Set([m.source,n.source])],
+   limitation:'English articles, noun sense, figurative force and wider clause scope remain unresolved.'}];
+ }
  function passageMatches(input){
   const all=wordsOnly(input).map(norm).join(' ');
   if(!all)return [];
@@ -131,6 +149,7 @@ function create(dictionary,passages){
    return '['+value+']';
   }).join('');
   return {parts:annotated,gloss,stats:{matched,unknown,ambiguous,senseAmbiguities,approximate,orthographyConflicts,truncated,total:matched+unknown},
+   contextReadings:contextReadings(input,direction),
    passages:direction==='nh-en'?passageMatches(input):[],
    disclaimer:'Bracketed meanings are dictionary lookups, not contextual translations. Uncertain spelling, multiple lexical candidates and multiple dictionary senses are not auto-resolved.'};
  }

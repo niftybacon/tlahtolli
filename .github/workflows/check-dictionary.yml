@@ -59,6 +59,7 @@ jobs:
         run: |
           python tools/validate_codex_close_reading.py
           node --check codex-close-reading.js
+          node --check codex-facsimile-review.js
           node --check codex-context-bridge.js
 
       - name: Test conservative 1833 Luke OCR correction and segmentation

@@ -51,7 +51,7 @@ for(const word of ['calli','conetl','cihuātl','xōchitl','ātl']){
 for(const text of [
  'iuhqujn unknown','iuhquin nonword','iuhquin nimitzchīhua',
  'iuhquin iuhquin','iuhqujn chimalli extra','iuhqujn in chimalli',
- 'iuhquin xochitl','iuhqujn. chimalli','ahmo iuhqujn chimalli',
+ 'iuhquin xochitll','iuhqujn. chimalli','ahmo iuhqujn chimalli',
  'iuhqujn chimalli atl','atl yitic nemjnj','in mochioa tezcatl in mocuepa ca tetl'
 ]){
  const c=analyze(text).clauses;

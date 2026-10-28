@@ -57,7 +57,7 @@ invalid([record({nahuatl_variety:'Eastern Huasteca Nahuatl'})],'non-Classical va
 invalid([record({review_status:'candidate'})],'unapproved record assigned');
 invalid([record({source_id:'FC'})],'test source_id occurs in public');
 invalid([record({original_orthography:'iuhqujn chimalli'})],'test input overlaps public');
-invalid([record({original_orthography:'I U H Q U J N   CHIMALLI'})],'test input overlaps public')===undefined;
+invalid([record({original_orthography:'Iuhqujn, CHIMALLI!'})],'test input overlaps public');
 invalid([record(),record({pair_id:'second',split:'train',split_group:'other',
   original_orthography:'unique input',normalized_nahuatl:'unique normalized'})],'source_id crosses train/dev/test');
 invalid([record(),record({pair_id:'second',split:'train',source_id:'OTHER',

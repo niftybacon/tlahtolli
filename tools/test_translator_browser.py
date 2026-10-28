@@ -68,6 +68,24 @@ with sync_playwright() as pw:
     assert page.locator("#translatorInput").input_value()=="ticnamaca y¯ totlal"
     assert "[?ticnamaca]" in page.locator("#translatorGloss").inner_text()
     assert "[?totlal]" in page.locator("#translatorGloss").inner_text()
+    # Source-level morphology is now visible inside the actual translator but
+    # cannot upgrade an unknown dictionary word or a complete sentence.
+    sentence=page.locator("#translatorPassages").inner_text()
+    assert "Outside supported clause grammar" in sentence
+    assert "Partial morphology only" in sentence
+    assert "NOT a sentence translation" in sentence
+    assert "ticnamaca" in sentence and "totlal" in sentence and "y¯" in sentence
+    assert "1pl" in sentence and "2sg" in sentence
+    assert "yn/in proposed, NOT source-spelled" in sentence
+    assert "We are selling our land" not in sentence
+    all_words=page.locator("#translatorAnalyses").inner_text()
+    assert "namaca" in all_words and "tlalli" in all_words
+    assert "Source-crosschecked token hypothesis" in all_words
+    assert page.locator("#translatorAnalyses").get_by_role("link",name="Inspect independent morpheme reference").count()>0
+    page.locator("#translatorInput").fill("ticnamacas y¯ totlalli")
+    page.locator("#translatorForm button[type=submit]").click()
+    changed=page.locator("#translatorAnalyses").inner_text()
+    assert "Source-crosschecked token hypothesis" not in changed
     # Source interpretation must not become a confident contextual sentence.
     assert "No automatically inferred reading here is a verified historical word" in reading
     # Personal parallel reading: NOTHING bundled or automatically aligned.

@@ -1,0 +1,298 @@
+{
+  "format": "tlahtolli-codex-close-reading",
+  "schema": 1,
+  "created_on": "2026-10-28",
+  "purpose": "Small, cited grammatical close readings; no model training or claim of manuscript verification",
+  "facsimile_base": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+  "rules": [
+    "Source spelling is an editorial transcription candidate, not an independently examined manuscript line.",
+    "The 1577 original is public domain. The Getty edited text and Anderson–Dibble English remain rights-reserved.",
+    "No supplied candidate is a rights-cleared Nahuatl–English training pair.",
+    "Segmentation is morphological explanation, not proof that isolated morphemes are separated in manuscript writing."
+  ],
+  "train_eligible": false,
+  "passages": [
+    {
+      "id": "FC11-62r-water-interior",
+      "book": 11,
+      "folio": "62r",
+      "locator": "Fish description, Nahuatl column",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "source_reading": "atl yitic nemini",
+      "normalized": "ātl yitic nemini",
+      "provisional_english": "one living within water / an inhabitant of water",
+      "type": "descriptive nominal phrase",
+      "notes": "The original source edition can mean a water-dweller; do not force a complete finite sentence. y- marks possession in yitic; nemini may be agent/inhabitant and is not simply an English finite verb.",
+      "tokens": [
+        {
+          "surface": "atl",
+          "lemma": "ātl",
+          "gloss": "water",
+          "morph": "ā- + -tl",
+          "role": "noun, absolutive",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/atl",
+          "certainty": "lexicon_supported"
+        },
+        {
+          "surface": "yitic",
+          "lemma": "itic",
+          "gloss": "inside it / within",
+          "morph": "y- (possessive) + itic",
+          "role": "possessed relational noun",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/itic",
+          "certainty": "lexicon_supported"
+        },
+        {
+          "surface": "nemini",
+          "lemma": "nemini",
+          "gloss": "one who lives / resident",
+          "morph": "related to nemi 'live, move'; avoid unverified suffix boundary",
+          "role": "agent/resident; potentially nominal",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/nemini",
+          "certainty": "lexicon_supported"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false
+    },
+    {
+      "id": "FC11-62r-shield-comparison",
+      "book": 11,
+      "folio": "62r",
+      "locator": "Chimalmichin description, Nahuatl column",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "source_reading": "iuhquin chimalli",
+      "normalized": "iuhquin chīmalli",
+      "provisional_english": "like a shield",
+      "type": "comparison phrase",
+      "notes": "iuhquin is a comparative particle, not a conjugated verb; chīmalli here participates in a simile for the creature's shape.",
+      "tokens": [
+        {
+          "surface": "iuhquin",
+          "lemma": "iuhquin",
+          "gloss": "like / as if",
+          "morph": "lexicalized comparative particle",
+          "role": "comparison",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "certainty": "lexicon_supported"
+        },
+        {
+          "surface": "chimalli",
+          "lemma": "chīmalli",
+          "gloss": "shield",
+          "morph": "chīmal- + -li (absolutive)",
+          "role": "comparison complement",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/chimalli",
+          "certainty": "lexicon_supported"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false
+    },
+    {
+      "id": "FC11-62r-resident-in-water",
+      "book": 11,
+      "folio": "62r",
+      "locator": "Fish description, Nahuatl column",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "source_reading": "atlan nemini",
+      "normalized": "ātlān nemini",
+      "provisional_english": "an inhabitant of the water",
+      "type": "locative + resident",
+      "notes": "The locative's internal segmentation and vowel length need examination in a grammar; retain uncertainty rather than inventing an -an derivation.",
+      "tokens": [
+        {
+          "surface": "atlan",
+          "lemma": "ātlān",
+          "gloss": "in the water / at the water",
+          "morph": "locative expression; analysis pending",
+          "role": "locative",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/atl",
+          "certainty": "provisional"
+        },
+        {
+          "surface": "nemini",
+          "lemma": "nemini",
+          "gloss": "one who lives somewhere",
+          "morph": "nemini (no forced segmentation)",
+          "role": "resident/agent noun",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/nemini",
+          "certainty": "lexicon_supported"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false
+    },
+    {
+      "id": "FC11-62r-coamichi",
+      "book": 11,
+      "folio": "62r",
+      "locator": "Fish entry heading, Nahuatl column",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "source_reading": "Coamjchi",
+      "normalized": "coāmichin [hypothesis; ending requires check]",
+      "provisional_english": "snake-fish (name for an eel-like fish)",
+      "type": "compound noun (hypothesized)",
+      "notes": "The spelling and final -n must be read against the manuscript; do not generate coāmichin as a verified manuscript form. coātl has multiple senses, with snake intended in this fish term.",
+      "tokens": [
+        {
+          "surface": "Coamjchi",
+          "lemma": "coāmichin?",
+          "gloss": "snake-fish",
+          "morph": "coā- (snake; uncertain compound allomorph) + mich- (fish; final ending unresolved)",
+          "role": "compound noun candidate",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/node/175895",
+          "certainty": "provisional"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false
+    },
+    {
+      "id": "FC11-62r-chimalmichi",
+      "book": 11,
+      "folio": "62r",
+      "locator": "Sea turtle entry heading, Nahuatl column",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "source_reading": "Chimalmjchi",
+      "normalized": "chīmalmichin [hypothesis; ending requires check]",
+      "provisional_english": "shield-fish (a sea turtle)",
+      "type": "compound noun (hypothesized)",
+      "notes": "The heading is a historical animal name, not proof that every instance of -michi means a separate word. Compare with chīmalli 'shield' and michin 'fish'.",
+      "tokens": [
+        {
+          "surface": "Chimalmjchi",
+          "lemma": "chīmalmichin?",
+          "gloss": "shield-fish",
+          "morph": "chīmal- + mich- (compound; exact stem ending unresolved)",
+          "role": "compound animal name",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/chimalli",
+          "certainty": "provisional"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false
+    },
+    {
+      "id": "FC11-209v-mirror",
+      "book": 11,
+      "folio": "209v",
+      "locator": "Mirror/stone description (precise manuscript line pending)",
+      "source_url": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
+      "source_reading": "in mochioa tezcatl, in mocuepa ca tetl",
+      "normalized": "in mochīhua tēzcatl, in mocuepa ca tetl",
+      "provisional_english": "a mirror is made; a stone turns into (or is made into) a mirror — full syntax unresolved",
+      "type": "clause fragment requiring source-context check",
+      "notes": "Existing Tlahtōlli candidate retained with an explicit warning: the supplied fragment may not represent a complete coherent sentence; independently verify word boundaries, relation of clauses, and the source's Spanish column before trusting translation.",
+      "tokens": [
+        {
+          "surface": "in",
+          "lemma": "in",
+          "gloss": "article / relativizing or discourse marker",
+          "morph": "uninflected particle",
+          "role": "determiner/relative; function contextual",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/in",
+          "certainty": "provisional"
+        },
+        {
+          "surface": "mochioa",
+          "lemma": "mochīhua",
+          "gloss": "is made / occurs",
+          "morph": "mo- + chīhua; medial/reflexive",
+          "role": "verb",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/mochihua",
+          "certainty": "lexicon_supported"
+        },
+        {
+          "surface": "tezcatl",
+          "lemma": "tēzcatl",
+          "gloss": "mirror",
+          "morph": "noun; vowel length pending",
+          "role": "nominal",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/tezcatl",
+          "certainty": "provisional"
+        },
+        {
+          "surface": "in",
+          "lemma": "in",
+          "gloss": "article / relative marker",
+          "morph": "particle",
+          "role": "context-dependent",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/in",
+          "certainty": "provisional"
+        },
+        {
+          "surface": "mocuepa",
+          "lemma": "mo-cuepa",
+          "gloss": "turns / changes itself",
+          "morph": "mo- (reflexive) + cuepa",
+          "role": "verb",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "certainty": "lexicon_supported"
+        },
+        {
+          "surface": "ca",
+          "lemma": "ca",
+          "gloss": "is / it is",
+          "morph": "copula/affirmative? context check",
+          "role": "particle? unresolved",
+          "dictionary_url": "",
+          "certainty": "provisional"
+        },
+        {
+          "surface": "tetl",
+          "lemma": "tetl",
+          "gloss": "stone",
+          "morph": "te- + -tl (noun absolutive; needs check)",
+          "role": "nominal",
+          "dictionary_url": "",
+          "certainty": "provisional"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false
+    }
+  ]
+}

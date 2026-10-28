@@ -40,7 +40,9 @@ with sync_playwright() as pw:
     assert page.locator("#tabTranslator").get_attribute("aria-selected") == "true"
     page.locator("#translatorInput").fill("in xōchitl in cuīcatl")
     page.locator("#translatorForm button[type=submit]").click()
-    assert "[flower]" in page.locator("#translatorGloss").inner_text()
+    assert "[?xōchitl: multiple dictionary senses]" in page.locator("#translatorGloss").inner_text()
+    assert "UNRESOLVED DICTIONARY SENSES" in page.locator("#translatorAnalyses").inner_text()
+    assert "calendrical day sign" in page.locator("#translatorAnalyses").inner_text()
     assert page.locator("#translatorAnalyses .translator-word").count() == 4
     page.locator("#translatorExample").click()
     assert "mirror" in page.locator("#translatorPassages").inner_text().lower()

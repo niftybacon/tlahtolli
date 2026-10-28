@@ -10,13 +10,14 @@ Tlahtōlli uses historical lexical records and grammar candidates; it is **not**
 | Only a macron-/diacritic-folded candidate | `[?form: spelling uncertain]` | An orthographic approximation does not establish exact historical identity. |
 | Exact form maps to multiple genuinely distinct entries | `[?form: multiple entries]` | No first-result disambiguation. |
 | Unmarked exact form has a known distinct macron-bearing competitor | `[?form: vowel length ambiguous]` | Vowel length is contrastive in Classical Nahuatl; traditional orthography often omits it. |
+| Exact entry lists several gloss segments | `[?form: multiple dictionary senses]` | Dictionary order is not evidence for contextual sense selection. |
 | Not indexed | `[?form]` | Unknown to this **limited dictionary**, not necessarily an unattested or impossible word. |
 
 The interface still lists source links and candidate interpretations, including competing orthographies; morphological hypotheses remain separate from source-attested text. “Orthography conflicts” are counted separately from ordinary ambiguous lemma matches. Reverse English lookup also abstains if several entries match a word.
 
 ## Boundaries and limitations
 
-This change improves **how uncertainty is communicated**, not language-model accuracy. A single dictionary lemma with several senses still previews its first listed sense inside brackets; this does *not* establish which sense is correct in a complete sentence. A word without competing lemmas in our 115-entry dictionary may have competing senses or homographs **not yet indexed**. Therefore absence of a displayed conflict is not proof of unambiguous Nahuatl.
+This change improves **how uncertainty is communicated**, not language-model accuracy. A single dictionary lemma with several comma- or semicolon-separated gloss segments now abstains with `[?form: multiple dictionary senses]`. These segments can include synonyms or editorial notes as well as distinct senses; the engine deliberately does not infer semantic equivalence from English wording. The full dictionary meaning and its source remain visible. A single unsplit gloss can still hide polysemy, so this is a conservative formatting-based safeguard, not a complete sense inventory or contextual disambiguator. A word without competing lemmas in our 115-entry dictionary may have competing senses or homographs **not yet indexed**. Therefore absence of a displayed conflict is not proof of unambiguous Nahuatl.
 
 No fabricated training pairs were added; no neural training was performed. This is not a claim of modern Nahuatl speaker validation or Classical Nahuatl expert review.
 
@@ -44,3 +45,13 @@ These synthetic controls test **software behavior**, not historical truth. `toca
 2. Evaluate coverage and ambiguity rates on these unseen texts, separating lexical recognition, orthographic normalization, morphological parsing, and **actual translation meaning**.
 3. Introduce context-based disambiguation only where supported by reliable examples and grammar rules; keep abstention as the fallback when evidence is absent.
 4. Expand source-located vocabulary and morphology through transparent independent checks, rather than treating analyzer output as ground truth.
+
+## Sense preservation follow-up (2026-10-28)
+
+Repository inspection identified two remaining first-result paths: the working gloss selected the first segment of a multi-part meaning, and index insertion discarded same-headword records even when their meanings or parts of speech differed. The engine now retains competing records, preserves distinct source URLs/evidence/context for otherwise identical claims, and collapses only duplicate records. Identical lexical claims from different sources remain visible without being counted as competing lexical analyses (subject to the existing conservative display limit).
+
+Each lookup candidate exposes a derived `senses` array using the existing comma/semicolon segmentation. This is editorial parsing of the repository's meaning field, not newly verified dictionary sense numbering. `senseAmbiguous` and `stats.senseAmbiguities` describe unresolved lists in Nahuatl-to-English mode. The stats count tokens, not meanings or measured translation error. Repeated identical segments do not introduce ambiguity. Reverse lookup remains retrieval of a supplied English gloss; it does not select a Nahuatl contextual sense or generate sentences.
+
+Provenance: dictionary.json and its existing cited lexical records are the sole lexical input; no entries, source readings, translations, or review grades were added or promoted. The historical spelling background remains Launey's preliminary lesson, pp. 3–6, linked above; that reference does not validate the synthetic controls or this software's sense segmentation. Tests cover both record orders, colliding headwords and historical aliases, competing parts of speech, provenance retention, display overflow, duplicate records, single glosses, and comma/semicolon lists. The integrated browser regression uses the existing xōchitl record to check that full alternatives and the caution remain visible. These are behavior regressions, not a held-out historical translation evaluation.
+
+This favors abstention for many common words, including synonym lists. More informative context-sensitive output requires source-located sense records, grammatical constraints and independently checked clause examples before any automatic selection can be justified. No model training, expert review or accuracy improvement measurement is claimed.

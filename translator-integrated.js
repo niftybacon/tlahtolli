@@ -37,7 +37,7 @@ function showResult(){
  latest=model.analyze(content,direction.value);
  gloss.textContent=latest.gloss;
  status(latest.stats.matched+' recognized · '+latest.stats.unknown+' unknown · '+
-  latest.stats.ambiguous+' ambiguous · '+latest.stats.approximate+
+  latest.stats.ambiguous+' ambiguous entries · '+latest.stats.senseAmbiguities+' unresolved sense lists · '+latest.stats.approximate+
   ' approximate · '+latest.stats.orthographyConflicts+
   ' unresolved vowel-length contrasts. Working lexical clues, not a sentence translation.'+
   (dataMode==='offline'?' (Offline dictionary fallback.)':''));
@@ -66,6 +66,7 @@ function showResult(){
    if(entry.status==='approximate')block.append(el('p','translator-caution','SPELLING UNCERTAIN: candidates are only diacritic-folded matches. No meaning has been selected for the working gloss.'));
    if(entry.orthographyConflict)block.append(el('p','translator-caution','UNRESOLVED VOWEL LENGTH: the unmarked spelling matches this entry but also a different macron-bearing lemma. The working gloss deliberately abstains.'));
    if(entry.ambiguous)block.append(el('p','translator-caution','MULTIPLE LEXICAL ANALYSES: no preferred meaning is selected automatically.'));
+   if(entry.senseAmbiguous)block.append(el('p','translator-caution','UNRESOLVED DICTIONARY SENSES: the indexed gloss lists alternatives. Context has not selected a sense; inspect the full meaning and cited source below.'));
    if(entry.truncated)block.append(el('p','translator-caution','Additional candidates exist beyond those shown; not all possibilities are displayed.'));
    if(entry.alternatives?.length){
     const alt=el('details','translator-morph-panel');

@@ -34,6 +34,11 @@ jobs:
           python tools/test_remaining_audit.py
       - name: Audit claim-level source coverage
         run: python tools/test_claim_audit.py
+      - name: Validate imported Amoxcalli lexical archive and script syntax
+        run: |
+          python tools/test_amoxcalli_archive.py
+          node --check amoxcalli-archive.js
+          node --check translator-integrated.js
       - name: JavaScript syntax check
         run: |
           python - <<'PY'
@@ -81,6 +86,8 @@ jobs:
           python -m playwright install chromium --only-shell
       - name: Integrated translator browser and tab regression
         run: python tools/test_translator_browser.py
+      - name: Test expanded Amoxcalli archive search and cautious translator fallback
+        run: python tools/test_amoxcalli_browser.py
       - name: Test Florentine Codex grammar reader and manuscript verification safeguards
         run: python tools/test_codex_close_reading_browser.py
       - name: Test independent two-pass manuscript collation and safe export

@@ -171,6 +171,47 @@ function showResult(){
   }
   parts.append(block);
  }
+
+  // Supplement unsupported words with an independent archive lookup.
+  // Preserve unknown/ambiguous status in the curated translator; never certify OCR.
+  if(direction.value==='nh-en'&&window.TlahtolliArchive){
+   const current=latest;
+   const wordEntries=current.parts.filter(item=>item.kind==='word');
+   if(wordEntries.some(item=>item.status==='unknown')){
+    const blocks=[...parts.querySelectorAll('article.translator-word')];
+    window.TlahtolliArchive.ensureLoaded().then(()=>{
+     if(latest!==current)return;
+     let supplemented=0;
+     wordEntries.forEach((item,i)=>{
+      if(item.status!=='unknown'||!blocks[i])return;
+      const hits=window.TlahtolliArchive.lookup(item.value,{classicalOnly:true,limit:8});
+      if(!hits.length)return;
+      supplemented++;
+      const section=el('details','translator-morph-panel');
+      section.append(el('summary','','Extended source archive · '+hits.length+' matching records (not verified)'));
+      section.append(el('p','translator-caution','Supplemental lexical references only. Siméon is historical French OCR; Wiktionary candidates are separately labeled. A dictionary match is not a complete translation.'));
+      for(const hit of hits){
+       const record=el('div','translator-analysis');
+       record.append(el('strong','',hit.word+' · '+hit.pos+' · '+hit.variety),
+        el('p','translator-meta',hit.source+' · definition language: '+hit.language));
+       const definition=el('p','',hit.meaning||'No usable imported definition');
+       if(definition.textContent.length>600){
+        const full=el('details');
+        full.append(el('summary','','Read complete source definition ('+definition.textContent.length+' characters)'));
+        full.append(definition);record.append(full);
+       }else record.append(definition);
+       const link=safeLink(hit.sourceUrl,'Inspect imported source and licensing');
+       if(link)record.append(link);
+       section.append(record);
+      }
+      blocks[i].append(section);
+     });
+     if(supplemented)status(note.textContent+' · '+supplemented+' unreviewed archive lookups available below.');
+    }).catch(error=>{
+     if(latest===current)status(note.textContent+' · Supplementary archive not available: '+error.message);
+    });
+   }
+  }
  if(morphStatus){
   morphStatus.textContent=direction.value==='en-nh'?
    'Morphological reverse parsing applies to Nahuatl input only. English mode remains dictionary lookup.':

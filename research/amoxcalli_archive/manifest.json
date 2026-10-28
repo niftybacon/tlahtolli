@@ -1,0 +1,55 @@
+{
+  "format": "tlahtolli-amoxcalli-archive-manifest-v1",
+  "published": "2026-10-28",
+  "description": "Source-separated unreviewed lexical reference archive; not merged into curated Tlahtolli vocabulary and not model training.",
+  "source_rows": {
+    "simeon": 28709,
+    "kaikki": 7834,
+    "total": 36543
+  },
+  "distinct_master_count_claim": 37146,
+  "master_database_imported": false,
+  "why_master_missing": "Upstream 37,146-row canonical SQLite is hosted separately; these are all available parsed Siméon records and Kaikki raw source rows, not the full master.",
+  "simeon": {
+    "source": "Rémi Siméon, Dictionnaire de la langue nahuatl ou mexicaine (1885), parsed/OCR by Flor y Canto Nahuatl",
+    "source_url": "https://github.com/samvillasmith/amoxcalli-nahuatl-project/blob/main/simeon_parsed.json",
+    "license": "Amoxcalli derived data CC BY-SA 4.0, original dictionary public domain",
+    "language": "French",
+    "review_status": "OCR unreviewed",
+    "files": [
+      "simeon_00.json",
+      "simeon_01.json",
+      "simeon_02.json",
+      "simeon_03.json",
+      "simeon_04.json",
+      "simeon_05.json",
+      "simeon_06.json",
+      "simeon_07.json",
+      "simeon_08.json",
+      "simeon_09.json",
+      "simeon_10.json",
+      "simeon_11.json",
+      "simeon_12.json",
+      "simeon_13.json",
+      "simeon_14.json"
+    ]
+  },
+  "kaikki": {
+    "source": "English Wiktionary via Kaikki/Wiktextract, Flor y Canto Nahuatl raw import",
+    "source_url": "https://github.com/samvillasmith/amoxcalli-nahuatl-project/blob/main/source_data/nahuatl_kaikki_raw.jsonl",
+    "license": "Wiktionary CC BY-SA 3.0/GFDL; Amoxcalli derived parsing CC BY-SA 4.0",
+    "review_status": "Community lexicon, not historical source certification",
+    "files": [
+      "kaikki_00.json",
+      "kaikki_01.json",
+      "kaikki_02.json",
+      "kaikki_03.json"
+    ],
+    "variety_codes": {
+      "nci": "Classical Nahuatl",
+      "nhn": "Central Nahuatl",
+      "nch": "Central Huasteca Nahuatl",
+      "nhe": "Eastern Huasteca Nahuatl"
+    }
+  }
+}

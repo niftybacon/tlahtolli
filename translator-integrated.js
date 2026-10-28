@@ -76,6 +76,19 @@ function showResult(){
   if(morphBridge&&direction.value==='nh-en'&&morphTokens<90){
    morphTokens++;
    const result=morphBridge.examine(entry.value,orthography?.value||'general');
+   if(result.corpusObservations.length){
+    const exact=result.corpusObservations.filter(o=>!o.changed);
+    const tentative=result.corpusObservations.filter(o=>o.changed);
+    const used=exact.length?exact:tentative;
+    const books=[...new Set(used.map(o=>o.book))].sort((a,b)=>a-b);
+    const appearances=used.reduce((n,o)=>n+o.count,0);
+    block.append(el('p','translator-meta',
+     'Codex aggregate observation: '+appearances.toLocaleString()+
+     ' appearances among the most frequent transcribed forms in Book'+
+     (books.length===1?' ':'s ')+books.join(', ')+'. '+
+     (exact.length?'Original spelling matched; ':'Only a proposed spelling matched; ')+
+     'not proof of a specific grammatical reading.'));
+   }
    if(result.analyses.length){
     const panel=el('details','translator-morph-panel');
     const preferred=result.analyses[0];
@@ -131,9 +144,11 @@ async function init(){
     if(!r.ok)throw Error('Dictionary fetch '+r.status);return r.json();
    }),
    fetch('./research/translation_corpus/research_examples.json',{cache:'no-cache'})
-    .then(r=>r.ok?r.json():{entries:[]}).catch(()=>({entries:[]}))
+    .then(r=>r.ok?r.json():{entries:[]}).catch(()=>({entries:[]})),
+   fetch('./research/florentine_codex/analysis.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -145,7 +160,8 @@ async function init(){
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(
     token=>typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token),
-    token=>model.lookup(token,'nh-en')
+    token=>model.lookup(token,'nh-en'),
+    codexStats.status==='fulfilled'?codexStats.value:null
    );
   }
   status(model.stats.headwords+' Classical Nahuatl headwords · '+

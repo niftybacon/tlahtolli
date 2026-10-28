@@ -16,6 +16,18 @@ This directory begins our own accountable, non-expert engagement with source-era
 
 **Contamination and permissions:** The English translation by James Lockhart was consulted while identifying the document. Therefore **BC16 is permanently excluded from our planned blind evaluation** unless a genuinely independent evaluation protocol is devised by someone not exposed to the answer. The physical sixteenth-century original, the modern photograph, editorial transcript, and English translation are **distinct reuse-rights objects**. Image, transcription and translation permissions are not established by their public URLs. No modern translation has been copied into this source file or `pairs.csv`.
 
+## Personal parallel-text reading workspace
+
+The Translator tab also includes **Parallel Nahuatl reading desk · your own pasted source text**. This is the practical way to read ENL's two text columns without copying a whole published transcription or Lockhart's English translation into our public repository. Open the [ENL transcription and translation page](https://enl.wired-humanities.org/bc16/elements/bc16a/000), copy the passages **you personally wish to examine**, and paste them into the two fields in your browser.
+
+1. Manually insert line breaks to identify small phrases or passages. The printed transcription contains abbreviations and punctuation, so an automatic sentence splitter would introduce false alignment.
+2. Click **Prepare numbered reading lines**. The tool only numbers your lines; it never guesses which translations correspond.
+3. Select a Nahuatl line and an English line, record a note about missing subjects, editorial paraphrase or ambiguity, and click **Add selected manual pairing**.
+4. Click **Inspect selected Nahuatl phrase** for the existing source-linked dictionary/morphology proposals. The source English line is not used as a generated or verified answer.
+5. **Export personal reading notes** as a JSON file and **Import saved personal reading** later. Data lives in the open browser page and only goes to your disk when you export; it is not silently synced to Tlahtōlli or submitted to any model. Without an export, reload discards the text and annotations.
+
+The exported record is always `personal_unverified`; it carries `train_eligible:false`, `evaluation_eligible:false`, `alignment_verified:false`, and `published_translation_rights:not_verified`. It is **not** a `pairs.csv` record. A later learner cannot import a modified file that promotes those review flags. These safeguards do not adjudicate fair use, licensing, scholarly correctness, or permission to redistribute the published translation: review those separately before distributing personal exports.
+
 ## How to continue without an academic supervisor
 
 1. Open the facsimile at its highest available resolution and save **page and line coordinates**, not just copied modern text.

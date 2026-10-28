@@ -117,16 +117,16 @@
       "normalized": "ātlān nemini",
       "provisional_english": "an inhabitant of the water",
       "type": "locative + resident",
-      "notes": "The locative's internal segmentation and vowel length need examination in a grammar; retain uncertainty rather than inventing an -an derivation.",
+      "notes": "The form atlan is independently documented as a locative relational word in Lockhart's Nahuatl as Written (cited in the Online Nahuatl Dictionary). However, the fragment's exact full-sentence grammatical context still needs paleographic analysis.",
       "tokens": [
         {
           "surface": "atlan",
-          "lemma": "ātlān",
-          "gloss": "in the water / at the water",
-          "morph": "locative expression; analysis pending",
-          "role": "locative",
-          "dictionary_url": "https://nahuatl.wired-humanities.org/content/atl",
-          "certainty": "provisional"
+          "lemma": "ātlan",
+          "gloss": "in/into/under the water",
+          "morph": "ātl + -tlan, documented as a complex relational/locative word",
+          "role": "locative relational expression",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/atlan",
+          "certainty": "lexicon_supported"
         },
         {
           "surface": "nemini",
@@ -157,10 +157,10 @@
       "locator": "Fish entry heading, Nahuatl column",
       "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
       "source_reading": "Coamjchi",
-      "normalized": "coāmichin [hypothesis; ending requires check]",
+      "normalized": "coamichin [lexical hypothesis; vowel length and final -n not manuscript-certified]",
       "provisional_english": "snake-fish (name for an eel-like fish)",
       "type": "compound noun (hypothesized)",
-      "notes": "The spelling and final -n must be read against the manuscript; do not generate coāmichin as a verified manuscript form. coātl has multiple senses, with snake intended in this fish term.",
+      "notes": "The spelling and final -n must be read against the manuscript; do not generate coāmichin as a verified manuscript form. coātl has multiple senses, with snake intended in this fish term. The compound's first element may be coātl 'snake', but the length of its vowels and the ending cannot be certified from this word's heading alone.",
       "tokens": [
         {
           "surface": "Coamjchi",
@@ -252,10 +252,10 @@
           "surface": "tezcatl",
           "lemma": "tēzcatl",
           "gloss": "mirror",
-          "morph": "noun; vowel length pending",
-          "role": "nominal",
+          "morph": "tēzca- + -tl, supported by Karttunen's lexical entry (not a contextual syntax proof)",
+          "role": "noun, mirror",
           "dictionary_url": "https://nahuatl.wired-humanities.org/content/tezcatl",
-          "certainty": "provisional"
+          "certainty": "lexicon_supported"
         },
         {
           "surface": "in",
@@ -288,10 +288,10 @@
           "surface": "tetl",
           "lemma": "tetl",
           "gloss": "stone",
-          "morph": "te- + -tl (noun absolutive; needs check)",
-          "role": "nominal",
-          "dictionary_url": "",
-          "certainty": "provisional"
+          "morph": "te- + -tl, nominal absolutive (independent lexical reference)",
+          "role": "noun, stone",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/tetl",
+          "certainty": "lexicon_supported"
         }
       ],
       "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",

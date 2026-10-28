@@ -13,15 +13,17 @@ PATCHES=[
  dict(verse=38,find='\n.38  Auh  in  Maria',replace='\n38  Auh  in  Maria',pdf_page=13,printed_page=5),
  dict(verse=57,find='\n51  Auh  in  Isabel',replace='\n57  Auh  in  Isabel',pdf_page=15,printed_page=7),
  dict(verse=67,find='\n61  Auh  in  Zacharias',replace='\n67  Auh  in  Zacharias',pdf_page=16,printed_page=8),
+ dict(chapter=2,verse=28,find='\n.  28  Auh  in  Simeón',replace='\n28  Auh  in  Simeón',pdf_page=21,printed_page=13),
 ]
 def apply(text):
  changes=[]
  for p in PATCHES:
   if text.count(p['find'])!=1:raise ValueError('Expected exactly one OCR marker for Luke 1:'+str(p['verse']))
   start=text.index(p['find'])
-  if start>13000:raise ValueError('Patch fell outside Luke chapter 1')
+  if p.get('chapter',1)==1 and start>13000:raise ValueError('Chapter 1 patch fell outside chapter')
+  if p.get('chapter',1)==2 and not 12200<start<20600:raise ValueError('Chapter 2 patch outside chapter')
   text=text.replace(p['find'],p['replace'],1)
-  changes.append({'verse':p['verse'],'before':p['find'].strip(),'after':p['replace'].strip(),
+  changes.append({'chapter':p.get('chapter',1),'verse':p['verse'],'before':p['find'].strip(),'after':p['replace'].strip(),
    'pdf_page_1based':p['pdf_page'],'printed_page':p['printed_page'],
    'verification':'original_1833_scanned_image_verified_number_only'})
  return text,changes
@@ -52,5 +54,5 @@ def main():
   'training_approved':False,
  }
  args.report.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
- print('Chapter 1: confirmed 1–80 in 9 printed pages; applied '+str(len(changes))+' numeral-only corrections. Wording remains unreviewed.')
+ print('Chapter 1: printed 1–80 page-checked. Chapter 2 verse 28 spot-checked. '+str(len(changes))+' numeral corrections; wording remains unreviewed.')
 if __name__=='__main__':main()

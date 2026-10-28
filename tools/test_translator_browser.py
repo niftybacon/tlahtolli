@@ -50,7 +50,7 @@ with sync_playwright() as pw:
     assert "NOT independent evaluation data" in reading
     assert "abbreviation unresolved" in reading
     assert page.locator("#manuscriptReadingContent").get_by_role("link",name="Open original manuscript image").count()==1
-    assert page.locator("#manuscriptReadingContent a[href*='/bc16/elements/']").count()==1
+    assert page.locator("#manuscriptReadingContent").get_by_role("link",name="Read the editorial transcript on ENL").count()==1
     page.locator("#manuscriptReadingContent .translator-actions button").click()
     assert page.locator("#translatorInput").input_value()=="ticnamaca y¯ totlal"
     assert "[?ticnamaca]" in page.locator("#translatorGloss").inner_text()

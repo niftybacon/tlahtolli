@@ -3,7 +3,7 @@
   "schema": 1,
   "source": "https://archive.org/details/elevangeliodeslu00pazy",
   "year": 1833,
-  "created_utc": "2026-10-28T16:30:37+00:00",
+  "created_utc": "2026-10-28T16:31:53+00:00",
   "variety": "historic southern Puebla Nahuatl (not automatically equivalent to Classical Nahuatl)",
   "original_ocr_hash": "fd60e87f4126332ab239a550d1e57d955aba60d7e65d052a84e8337ccd4f99b4",
   "working_draft_hash": "d3abb343d5642d2e554dfec6cee493f19107b71b882b8e5d409c51107b9538de",
@@ -14,6 +14,7 @@
   "counts": {
     "unresolved_hyphen": 400,
     "applied_hyphen": 315,
+    "possible_space_joins": 99,
     "header_candidates": 117,
     "verse_start_candidates": 1051
   },
@@ -15887,8 +15888,449 @@
       "reason": "repeated_unsplit_in_ocr",
       "lexical_references": [],
       "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 193563,
+      "original": "paca- \nyeliztli",
+      "proposed": "pacayeliztli",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 193804,
+      "original": "yol- \ncuetlani",
+      "proposed": "yolcuetlani",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 194028,
+      "original": "na- \ncatl",
+      "proposed": "nacatl",
+      "status": "mechanical_applied",
+      "reason": "published_form",
+      "lexical_references": [
+        {
+          "lemma": "nacatl",
+          "source": "https://nahuatl.wired-humanities.org/content/nacatl",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "nacatl",
+          "source": "https://nahuatl.wired-humanities.org/content/nacatl",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 194255,
+      "original": "neltocaz- \nnequiá",
+      "proposed": "neltocaznequiá",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 194408,
+      "original": "tla- \ncotoctli",
+      "proposed": "tlacotoctli",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 194719,
+      "original": "quex- \nquich",
+      "proposed": "quexquich",
+      "status": "mechanical_applied",
+      "reason": "repeated_unsplit_in_ocr",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 194892,
+      "original": "tla- \nmatilizhuan",
+      "proposed": "tlamatilizhuan",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 195014,
+      "original": "ícui- \nlitoc",
+      "proposed": "ícuilitoc",
+      "status": "mechanical_applied",
+      "reason": "repeated_unsplit_in_ocr",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 195181,
+      "original": "tla- \nmácehualiztli",
+      "proposed": "tlamácehualiztli",
+      "status": "mechanical_applied",
+      "reason": "repeated_unsplit_in_ocr",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 195410,
+      "original": "tlatene- \nhual",
+      "proposed": "tlatenehual",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 195839,
+      "original": "ohuico- \naya",
+      "proposed": "ohuicoaya",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 195905,
+      "original": "moteo- \ntíque",
+      "proposed": "moteotíque",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 195957,
+      "original": "pa- \nquiliztli",
+      "proposed": "paquiliztli",
+      "status": "mechanical_applied",
+      "reason": "published_form",
+      "lexical_references": [
+        {
+          "lemma": "paquiliztli",
+          "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "paquiliztli",
+          "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 196014,
+      "original": "moyec- \ntene",
+      "proposed": "moyectene",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "line_hyphen_join",
+      "offset": 196061,
+      "original": "panilhuili- \nayá",
+      "proposed": "panilhuiliayá",
+      "status": "needs_review",
+      "reason": "not_supported",
+      "lexical_references": [],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 2711,
+      "original": "in  in",
+      "proposed": "inin",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "inīn",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "inīn",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 14399,
+      "original": "ma  ti",
+      "proposed": "mati",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "mati",
+          "source": "https://nahuatl.wired-humanities.org/content/mati",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "mati",
+          "source": "https://nahuatl.wired-humanities.org/content/mati",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 16790,
+      "original": "Ax  can",
+      "proposed": "Axcan",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "āxcān",
+          "source": "https://nahuatl.wired-humanities.org/content/axcan",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "āxcān",
+          "source": "https://nahuatl.wired-humanities.org/content/axcan",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 17218,
+      "original": "i  huan",
+      "proposed": "ihuan",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "īhuān",
+          "source": "https://nahuatl.wired-humanities.org/node/172223",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "īhuān",
+          "source": "https://nahuatl.wired-humanities.org/node/172223",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 48161,
+      "original": "a  mo",
+      "proposed": "amo",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "ahmō",
+          "source": "https://nahuatl.wired-humanities.org/content/amo",
+          "evidence": "published_lemma_or_spelling"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 62786,
+      "original": "mo  cuepá",
+      "proposed": "mocuepá",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "cuepa",
+          "source": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
+          "evidence": "text"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 79894,
+      "original": "ne  mi",
+      "proposed": "nemi",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "nemi",
+          "source": "https://nahuatl.wired-humanities.org/content/nemi",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "nemi",
+          "source": "https://nahuatl.wired-humanities.org/content/nemi",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 95011,
+      "original": "qui  ca",
+      "proposed": "quica",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "quiza",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "evidence": "published_lemma_or_spelling"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 106504,
+      "original": "y  huan",
+      "proposed": "yhuan",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "īhuān",
+          "source": "https://nahuatl.wired-humanities.org/node/172223",
+          "evidence": "published_lemma_or_spelling"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 117355,
+      "original": "Ni  can",
+      "proposed": "Nican",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "nicān",
+          "source": "https://nahuatl.wired-humanities.org/content/nican",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "nicān",
+          "source": "https://nahuatl.wired-humanities.org/content/nican",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 127649,
+      "original": "In   in",
+      "proposed": "Inin",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "inīn",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "inīn",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 135572,
+      "original": "ihu  an",
+      "proposed": "ihuan",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "īhuān",
+          "source": "https://nahuatl.wired-humanities.org/node/172223",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "īhuān",
+          "source": "https://nahuatl.wired-humanities.org/node/172223",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 153802,
+      "original": "i  Auh",
+      "proposed": "iAuh",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "yauh",
+          "source": "https://nahuatl.wired-humanities.org/content/yauh",
+          "evidence": "published_lemma_or_spelling"
+        }
+      ],
+      "source_review_required": true
+    },
+    {
+      "kind": "possible_spaced_word",
+      "offset": 162581,
+      "original": "in    in",
+      "proposed": "inin",
+      "status": "needs_review",
+      "reason": "complete_form_in_published_dictionary_but_spacing_may_be_real",
+      "lexical_references": [
+        {
+          "lemma": "inīn",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "evidence": "published_lemma_or_spelling"
+        },
+        {
+          "lemma": "inīn",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "evidence": "dictionary"
+        }
+      ],
+      "source_review_required": true
     }
   ],
-  "queue_capped": true,
+  "queue_capped": false,
   "note": "Numbers and header markers may be page numbers; no chapter/verse alignment has been verified. OCR previews are from a public-domain 1833 printed work."
 }

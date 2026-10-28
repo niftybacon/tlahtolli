@@ -55,6 +55,25 @@ New `translator-source-morphology.js` is a **generic, fail-closed adapter** for 
 
 **Next priority after this milestone:** implement small, independently grammar-licensed noun-phrase and agreement rules that consume vetted candidate analyses while preserving alternative subject roles and failures for incomplete clauses. That requires positive *and* negative historical examples, not simply copying Lockhart's English interpretation.
 
+## Agreement-constrained noun-phrase composition milestone
+
+The clause analyzer (`translator-sentence.js`) now has a **separate, explicitly incomplete** `agreementProposals` result. It combines the separately sourced, exact-token `translator-source-morphology.js` analysis with one noun phrase, but it deliberately **does not** add a complete English sentence candidate or set `complete:true`. This is a genuinely reusable agreement filter, not a static match for the 1573 excerpt or a new neural model.
+
+The constraints, all enforced before a proposal appears:
+
+- An exact-token **source-crosschecked verb hypothesis** must carry explicit non-third-person singular/plural subject agreement (`1sg`, `2sg`, `1pl`, `2pl`), **3sg object** agreement, original reconstructed morpheme parts and direct external source links. A guessed/generated verb, unindexed inflection, or incompatible 3pl object **cannot** pass.
+- Exactly one **source-crosschecked possessed-noun form** OR **unique, curated lexical noun headword** must be fully consumed. Bare unmarked nouns are not silently assigned roles; for a curated noun, an explicit `in` marker is required.
+- A noun phrase can be introduced by written `in` or by a **source-crosschecked abbreviation** carrying the *specific proposed* `yn/in` expansion. The original `y¯` remains unchanged, clearly flagged **HYPOTHESIS**. The possessed source-noun form can also occur without an article.
+- Every written token must participate in the single verb + one noun phrase construction. There is **no support yet** for extra constituents, non-initial negation, unlisted noun forms, two noun phrases, or punctuation embedded in a token. Matching other word orders is possible only if the NP remains contiguous.
+- The nominal may be labeled **possible direct object** (not categorical object) when it is compatible with the verb's explicit 3sg object slot and the subject is independently first/second person. A noun's `1pl` *possessor* is not used to force a `1pl` **verb subject**.
+- Every available source-licensed `ti-` reading stays visible, including both `1pl` and `2sg`; candidate order is not a ranking. No contextual English is generated, the original lexical gloss still marks unknowns, and the results are not translation quality scores.
+
+Typical supported **argument-linking proposals**, not gold sentences: `ticnamaca y¯ totlal`, `totlal ticnamaca`, `ticnamaca in cihuātl`. The older sentence parser's independently supported 12-verb present/future grammar remains unchanged. Negative tests include `ahmo ticnamaca y¯ totlal`, `ticnamaca cihuātl`, multiple NPs, a missing noun, and forged morphology with wrong agreement or source provenance.
+
+**Tests:** `node tools/test_source_morphology.js` checks exact-form and person ambiguities, 1-NP agreement, marker and word-order permutations, and explicit failure cases. The Translator Chromium regression checks that both readings and their source links are visible in the **Provisional agreement and noun-phrase links** disclosure, without a complete English sentence.
+
+**Remaining constraint:** using the agreement of an externally supported morphological token is not independent verification of its parsing. New constructions require independent historical positive and negative evidence; no original handwriting was newly deciphered during this milestone.
+
 ## Highest-impact next work
 
 1. Extend source-linked grammar **only** from independent Classical-era citation/negative evidence, not templates derived from modern dialects or the published English answer.

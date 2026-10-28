@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-27.6.0",
+  "version": "2026-10-28.1.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -54,7 +54,7 @@
       "notes": "Additional direct plural witness: https://gdn.iib.unam.mx/diccionario/xochitl/76692"
     },
     {
-      "word": "tēpetl",
+      "word": "tepētl",
       "meaning": "hill; mountain; precipice",
       "pos": "noun",
       "original": "tepetl",
@@ -63,7 +63,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/tepetl",
       "example": "",
       "translation": "",
-      "notes": "Animacy is flagged CONTEXTUAL, not simply “animate”: this is a noun-class exception associated with personification."
+      "notes": "Animacy is flagged CONTEXTUAL, not simply “animate”: this is a noun-class exception associated with personification. Normalized headword corrected from legacy tēpetl to tepētl: OND Karttunen (1992), p.230, TEPĒ-TL. Historical spellings and independently cited plural retained. Orthography review: Source-specific normalized citation: tepētl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 230.",
+      "orthography_review": {
+        "word": "tepētl",
+        "legacy_word": "tēpetl",
+        "source": "https://nahuatl.wired-humanities.org/content/tepetl",
+        "locator": "Karttunen (1992), p. 230",
+        "source_notation": "TEPĒ-TL",
+        "normalized_citation": "tepētl",
+        "decision": "canonical_correction_already_applied",
+        "note": "Source-specific normalized citation: tepētl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "cītlalin",
@@ -483,7 +495,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/in",
       "example": "",
       "translation": "",
-      "notes": ""
+      "notes": "Orthography review: Keep subordinating/article-like in distinct from proximal īn. The source aggregates both functions; vowel length cannot be transferred between them. Lockhart (2001), pp.164 and 220; Karttunen (1992), p.106.",
+      "orthography_review": {
+        "word": "in",
+        "legacy_word": "in",
+        "source": "https://nahuatl.wired-humanities.org/content/in",
+        "locator": "Lockhart (2001), pp.164 and 220; Karttunen (1992), p.106",
+        "source_notation": "ĪN",
+        "normalized_citation": null,
+        "decision": "distinct_function_do_not_merge",
+        "note": "Keep subordinating/article-like in distinct from proximal īn. The source aggregates both functions; vowel length cannot be transferred between them.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "ahmō",
@@ -543,7 +567,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/tonalli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 149r col. 2; Karttunen 1992, p. 246. Not all morphological fields have been separately attested. Molina and Karttunen distinguish physical solar warmth, day, and culturally specific vital force."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 149r col. 2; Karttunen 1992, p. 246. Not all morphological fields have been separately attested. Molina and Karttunen distinguish physical solar warmth, day, and culturally specific vital force. Orthography review: Source-specific normalized citation: tōnalli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 246.",
+      "orthography_review": {
+        "word": "tonalli",
+        "legacy_word": "tonalli",
+        "source": "https://nahuatl.wired-humanities.org/content/tonalli",
+        "locator": "Karttunen (1992), p. 246",
+        "source_notation": "TŌNAL-LI",
+        "normalized_citation": "tōnalli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: tōnalli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "yollotl",
@@ -555,7 +591,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/yollotl",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 40v; Karttunen 1992, pp. 342–343. Not all morphological fields have been separately attested. Usually possessed; see -yōllō. Do not infer that the 16th c. land-measure yollotli is identical to the physical heart lemma."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 40v; Karttunen 1992, pp. 342–343. Not all morphological fields have been separately attested. Usually possessed; see -yōllō. Do not infer that the 16th c. land-measure yollotli is identical to the physical heart lemma. Orthography review: Source-specific normalized citation: yōllōtl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 342–343.",
+      "orthography_review": {
+        "word": "yollotl",
+        "legacy_word": "yollotl",
+        "source": "https://nahuatl.wired-humanities.org/content/yollotl",
+        "locator": "Karttunen (1992), p. 342–343",
+        "source_notation": "YŌLLŌTL",
+        "normalized_citation": "yōllōtl",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: yōllōtl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "ichpochtli",
@@ -567,7 +615,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 32v col. 1; Karttunen 1992, p. 93. Not all morphological fields have been separately attested. Plural reduplicates -pōch-; not simply addition of a productive suffix."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 32v col. 1; Karttunen 1992, p. 93. Not all morphological fields have been separately attested. Plural reduplicates -pōch-; not simply addition of a productive suffix. Orthography review: Source-specific normalized citation: ichpōchtli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Parentheses in the source notation indicate optional/alternating material; no new productive stem is inferred. Karttunen (1992), p. 93.",
+      "orthography_review": {
+        "word": "ichpochtli",
+        "legacy_word": "ichpochtli",
+        "source": "https://nahuatl.wired-humanities.org/content/ichpochtli",
+        "locator": "Karttunen (1992), p. 93",
+        "source_notation": "(I)CHPŌCH-TLI",
+        "normalized_citation": "ichpōchtli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: ichpōchtli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Parentheses in the source notation indicate optional/alternating material; no new productive stem is inferred.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "tlatoani",
@@ -591,7 +651,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/tecpan",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 93r col. 2; Lockhart 2001, p. 233. Not all morphological fields have been separately attested. Also a locative/relational expression. ENL confirms organizational sense, not just building."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 93r col. 2; Lockhart 2001, p. 233. Not all morphological fields have been separately attested. Also a locative/relational expression. ENL confirms organizational sense, not just building. Orthography review: Source-specific normalized citation: tēcpan. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 217.",
+      "orthography_review": {
+        "word": "tecpan",
+        "legacy_word": "tecpan",
+        "source": "https://nahuatl.wired-humanities.org/content/tecpan",
+        "locator": "Karttunen (1992), p. 217",
+        "source_notation": "TĒCPAN",
+        "normalized_citation": "tēcpan",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: tēcpan. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "tecpancalli",
@@ -603,7 +675,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/tecpancalli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 93r col. 2; Karttunen 1992, p. 217. Not all morphological fields have been separately attested. Compare tecpan; ENL Doc. 26 line 27 records institutional rather than necessarily architectural reference."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 93r col. 2; Karttunen 1992, p. 217. Not all morphological fields have been separately attested. Compare tecpan; ENL Doc. 26 line 27 records institutional rather than necessarily architectural reference. Orthography review: Source-specific normalized citation: tēcpancalli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 217.",
+      "orthography_review": {
+        "word": "tecpancalli",
+        "legacy_word": "tecpancalli",
+        "source": "https://nahuatl.wired-humanities.org/content/tecpancalli",
+        "locator": "Karttunen (1992), p. 217",
+        "source_notation": "TĒCPANCAL-LI",
+        "normalized_citation": "tēcpancalli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: tēcpancalli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "metztli",
@@ -615,7 +699,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/metztli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 55v col. 1; Karttunen 1992, p. 144. Not all morphological fields have been separately attested. Homographic metztli meaning thigh/leg must be kept as a distinct lexical sense; do not conflate vowel length."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 55v col. 1; Karttunen 1992, p. 144. Not all morphological fields have been separately attested. Homographic metztli meaning thigh/leg must be kept as a distinct lexical sense; do not conflate vowel length. Orthography review: Source-specific normalized citation: mētztli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 144.",
+      "orthography_review": {
+        "word": "metztli",
+        "legacy_word": "metztli",
+        "source": "https://nahuatl.wired-humanities.org/content/metztli",
+        "locator": "Karttunen (1992), p. 144",
+        "source_notation": "MĒTZ-TLI",
+        "normalized_citation": "mētztli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: mētztli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "teocalli",
@@ -663,7 +759,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/conetl",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 24v col. 1; Karttunen 1992, p. 41. Not all morphological fields have been separately attested. Reduplicated plural explicitly recorded, not mechanically -meh."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 24v col. 1; Karttunen 1992, p. 41. Not all morphological fields have been separately attested. Reduplicated plural explicitly recorded, not mechanically -meh. Orthography review: Source-specific normalized citation: conētl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 41.",
+      "orthography_review": {
+        "word": "conetl",
+        "legacy_word": "conetl",
+        "source": "https://nahuatl.wired-humanities.org/content/conetl",
+        "locator": "Karttunen (1992), p. 41",
+        "source_notation": "CONĒ-TL",
+        "normalized_citation": "conētl",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: conētl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "paquiliztli",
@@ -675,7 +783,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 80r col. 1; Karttunen 1992, p. 188. Not all morphological fields have been separately attested. Abstract noun, not classified as a finite verb."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 80r col. 1; Karttunen 1992, p. 188. Not all morphological fields have been separately attested. Abstract noun, not classified as a finite verb. Orthography review: Source-specific normalized citation: pāquiliztli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 188.",
+      "orthography_review": {
+        "word": "paquiliztli",
+        "legacy_word": "paquiliztli",
+        "source": "https://nahuatl.wired-humanities.org/content/paquiliztli",
+        "locator": "Karttunen (1992), p. 188",
+        "source_notation": "PĀQUILIZ-TLI",
+        "normalized_citation": "pāquiliztli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: pāquiliztli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "tequitl",
@@ -711,7 +831,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/chantli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 46; Lockhart 2001, p. 214. Not all morphological fields have been separately attested. Usually occurs possessed or as a locative; do not infer a regular bare plural just from -meh suffix notation."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 46; Lockhart 2001, p. 214. Not all morphological fields have been separately attested. Usually occurs possessed or as a locative; do not infer a regular bare plural just from -meh suffix notation. Orthography review: Source-specific normalized citation: chāntli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 46.",
+      "orthography_review": {
+        "word": "chantli",
+        "legacy_word": "chantli",
+        "source": "https://nahuatl.wired-humanities.org/content/chantli",
+        "locator": "Karttunen (1992), p. 46",
+        "source_notation": "CHĀN-TLI",
+        "normalized_citation": "chāntli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: chāntli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "camatl",
@@ -735,7 +867,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/ixtli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 48v col. 1; Karttunen 1992, p. 121. Not all morphological fields have been separately attested. The combining element -īx is not a free nominative headword."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 48v col. 1; Karttunen 1992, p. 121. Not all morphological fields have been separately attested. The combining element -īx is not a free nominative headword. Orthography review: Source-specific normalized citation: īxtli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 121.",
+      "orthography_review": {
+        "word": "ixtli",
+        "legacy_word": "ixtli",
+        "source": "https://nahuatl.wired-humanities.org/content/ixtli",
+        "locator": "Karttunen (1992), p. 121",
+        "source_notation": "ĪX-TLI",
+        "normalized_citation": "īxtli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: īxtli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "maitl",
@@ -747,7 +891,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/maitl",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 51v col. 1; Karttunen 1992, pp. 133–134. Not all morphological fields have been separately attested. Arms/hands and measurement senses; alternating bound stem -mā; do not collapse into the separate land-measure matl."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 51v col. 1; Karttunen 1992, pp. 133–134. Not all morphological fields have been separately attested. Arms/hands and measurement senses; alternating bound stem -mā; do not collapse into the separate land-measure matl. Orthography review: Source-specific normalized citation: māitl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Parentheses in the source notation indicate optional/alternating material; no new productive stem is inferred. Karttunen (1992), p. 133–134.",
+      "orthography_review": {
+        "word": "maitl",
+        "legacy_word": "maitl",
+        "source": "https://nahuatl.wired-humanities.org/content/maitl",
+        "locator": "Karttunen (1992), p. 133–134",
+        "source_notation": "MĀ(I)-TL",
+        "normalized_citation": "māitl",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: māitl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Parentheses in the source notation indicate optional/alternating material; no new productive stem is inferred.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "icxitl",
@@ -783,7 +939,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/chimalli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52. Not all morphological fields have been separately attested. Shield noun, sometimes paired with arrow to refer metaphorically to war."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52. Not all morphological fields have been separately attested. Shield noun, sometimes paired with arrow to refer metaphorically to war. Orthography review: Source-specific normalized citation: chīmalli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 52.",
+      "orthography_review": {
+        "word": "chimalli",
+        "legacy_word": "chimalli",
+        "source": "https://nahuatl.wired-humanities.org/content/chimalli",
+        "locator": "Karttunen (1992), p. 52",
+        "source_notation": "CHĪMAL-LI",
+        "normalized_citation": "chīmalli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: chīmalli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "telpochtli",
@@ -795,7 +963,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 96v col. 1; Karttunen 1992, p. 221. Not all morphological fields have been separately attested. Plural with reduplication of -pōch- recorded by Karttunen."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 96v col. 1; Karttunen 1992, p. 221. Not all morphological fields have been separately attested. Plural with reduplication of -pōch- recorded by Karttunen. Orthography review: Source-specific normalized citation: tēlpōchtli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 221.",
+      "orthography_review": {
+        "word": "telpochtli",
+        "legacy_word": "telpochtli",
+        "source": "https://nahuatl.wired-humanities.org/content/telpochtli",
+        "locator": "Karttunen (1992), p. 221",
+        "source_notation": "TĒLPŌCH-TLI",
+        "normalized_citation": "tēlpōchtli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: tēlpōchtli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "tlamatini",
@@ -819,7 +999,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/teopixqui",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 101r; Karttunen 1992, p. 227. Not all morphological fields have been separately attested. An agent noun; ritual/Christian reference may change with genre and period."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 101r; Karttunen 1992, p. 227. Not all morphological fields have been separately attested. An agent noun; ritual/Christian reference may change with genre and period. Orthography review: Source-specific normalized citation: teōpixqui. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 227.",
+      "orthography_review": {
+        "word": "teopixqui",
+        "legacy_word": "teopixqui",
+        "source": "https://nahuatl.wired-humanities.org/content/teopixqui",
+        "locator": "Karttunen (1992), p. 227",
+        "source_notation": "TEŌPIXQUI",
+        "normalized_citation": "teōpixqui",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: teōpixqui. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "xocotl",
@@ -843,7 +1035,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/nochtli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 72v col. 1; Karttunen 1992, p. 172. Not all morphological fields have been separately attested. Not automatically equivalent to the prickly pear cactus plant itself."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 72v col. 1; Karttunen 1992, p. 172. Not all morphological fields have been separately attested. Not automatically equivalent to the prickly pear cactus plant itself. Orthography review: Source-specific normalized citation: nōchtli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 172.",
+      "orthography_review": {
+        "word": "nochtli",
+        "legacy_word": "nochtli",
+        "source": "https://nahuatl.wired-humanities.org/content/nochtli",
+        "locator": "Karttunen (1992), p. 172",
+        "source_notation": "NŌCH-TLI",
+        "normalized_citation": "nōchtli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: nōchtli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "tzapotl",
@@ -879,7 +1083,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/chilli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52. Not all morphological fields have been separately attested. Historical form appears in ENL Don Juan document; not all uses denote a single pepper."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 21r col. 1; Karttunen 1992, p. 52. Not all morphological fields have been separately attested. Historical form appears in ENL Don Juan document; not all uses denote a single pepper. Orthography review: Source-specific normalized citation: chīlli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 52.",
+      "orthography_review": {
+        "word": "chilli",
+        "legacy_word": "chilli",
+        "source": "https://nahuatl.wired-humanities.org/content/chilli",
+        "locator": "Karttunen (1992), p. 52",
+        "source_notation": "CHĪL-LI",
+        "normalized_citation": "chīlli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: chīlli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "milli",
@@ -891,7 +1107,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/milli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 56v col. 1; Karttunen 1992, p. 147. Not all morphological fields have been separately attested. ENL Coyoacan document locates four worked fields, using this lexical item."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 56v col. 1; Karttunen 1992, p. 147. Not all morphological fields have been separately attested. ENL Coyoacan document locates four worked fields, using this lexical item. Orthography review: Source-specific normalized citation: mīlli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 147.",
+      "orthography_review": {
+        "word": "milli",
+        "legacy_word": "milli",
+        "source": "https://nahuatl.wired-humanities.org/content/milli",
+        "locator": "Karttunen (1992), p. 147",
+        "source_notation": "MĪL-LI",
+        "normalized_citation": "mīlli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: mīlli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "ocotl",
@@ -915,7 +1143,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/ehecatl",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 28r col. 2; Lockhart 2001, p. 217. Not all morphological fields have been separately attested. Ordinary meteorological wind inanimate, personified deity in a separate sense; do not impose a single animacy rule."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 28r col. 2; Lockhart 2001, p. 217. Not all morphological fields have been separately attested. Ordinary meteorological wind inanimate, personified deity in a separate sense; do not impose a single animacy rule. Orthography review: Source-specific normalized citation: ehēcatl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 76.",
+      "orthography_review": {
+        "word": "ehecatl",
+        "legacy_word": "ehecatl",
+        "source": "https://nahuatl.wired-humanities.org/content/ehecatl",
+        "locator": "Karttunen (1992), p. 76",
+        "source_notation": "EHĒCA-TL",
+        "normalized_citation": "ehēcatl",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: ehēcatl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "itzcuintli",
@@ -927,7 +1167,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 108; Carochi fol. 85v. Not all morphological fields have been separately attested. Animal noun; day-name use is proper-name context."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Karttunen 1992, p. 108; Carochi fol. 85v. Not all morphological fields have been separately attested. Animal noun; day-name use is proper-name context. Orthography review: Source-specific normalized citation: itzcuīntli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 108.",
+      "orthography_review": {
+        "word": "itzcuintli",
+        "legacy_word": "itzcuintli",
+        "source": "https://nahuatl.wired-humanities.org/content/itzcuintli",
+        "locator": "Karttunen (1992), p. 108",
+        "source_notation": "ITZCUĪN-TLI",
+        "normalized_citation": "itzcuīntli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: itzcuīntli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "tecuani",
@@ -939,7 +1191,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/tecuani",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 104v col. 2; Karttunen 1992, p. 218. Not all morphological fields have been separately attested. Karttunen supplies plural suffix -meh; exact full spelling not independently checked."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 104v col. 2; Karttunen 1992, p. 218. Not all morphological fields have been separately attested. Karttunen supplies plural suffix -meh; exact full spelling not independently checked. Orthography review: Source-specific normalized citation: tēcuāni. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 218.",
+      "orthography_review": {
+        "word": "tecuani",
+        "legacy_word": "tecuani",
+        "source": "https://nahuatl.wired-humanities.org/content/tecuani",
+        "locator": "Karttunen (1992), p. 218",
+        "source_notation": "TĒCUĀNI",
+        "normalized_citation": "tēcuāni",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: tēcuāni. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "namictli",
@@ -951,7 +1215,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/namictli",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 62v col. 2; Karttunen 1992, p. 158. Not all morphological fields have been separately attested. Reduplicated plural recorded explicitly by Karttunen."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 62v col. 2; Karttunen 1992, p. 158. Not all morphological fields have been separately attested. Reduplicated plural recorded explicitly by Karttunen. Orthography review: Source-specific normalized citation: nāmictli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Karttunen (1992), p. 158.",
+      "orthography_review": {
+        "word": "namictli",
+        "legacy_word": "namictli",
+        "source": "https://nahuatl.wired-humanities.org/content/namictli",
+        "locator": "Karttunen (1992), p. 158",
+        "source_notation": "NĀMIC-TLI",
+        "normalized_citation": "nāmictli",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: nāmictli. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "cahuitl",
@@ -963,7 +1239,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/cahuitl",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 13r; Karttunen 1992, p. 21. Not all morphological fields have been separately attested. Temporal noun, not a finite verb."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 13r; Karttunen 1992, p. 21. Not all morphological fields have been separately attested. Temporal noun, not a finite verb. Orthography review: Source-specific normalized citation: cāhuitl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Parentheses in the source notation indicate optional/alternating material; no new productive stem is inferred. Karttunen (1992), p. 21.",
+      "orthography_review": {
+        "word": "cahuitl",
+        "legacy_word": "cahuitl",
+        "source": "https://nahuatl.wired-humanities.org/content/cahuitl",
+        "locator": "Karttunen (1992), p. 21",
+        "source_notation": "CĀHU(I)-TL",
+        "normalized_citation": "cāhuitl",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: cāhuitl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Parentheses in the source notation indicate optional/alternating material; no new productive stem is inferred.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "mahuiliztli",
@@ -999,7 +1287,19 @@
       "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
       "example": "",
       "translation": "",
-      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 148r; Karttunen 1992, p. 242. Not all morphological fields have been separately attested. Do not confuse the name noun with tocatl spider; attached possessive i-toca is not an absolutive."
+      "notes": "Lexical meaning and lemma checked against Online Nahuatl Dictionary; Molina 1571 II, fol. 148r; Karttunen 1992, p. 242. Not all morphological fields have been separately attested. Do not confuse the name noun with tocatl spider; attached possessive i-toca is not an absolutive. Orthography review: Source-specific normalized citation: tōcāitl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Parentheses in the source notation indicate optional/alternating material; no new productive stem is inferred. Karttunen (1992), p. 242.",
+      "orthography_review": {
+        "word": "tocaitl",
+        "legacy_word": "tocaitl",
+        "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
+        "locator": "Karttunen (1992), p. 242",
+        "source_notation": "TŌCĀ(I)-TL",
+        "normalized_citation": "tōcāitl",
+        "decision": "source_normalization_recorded",
+        "note": "Source-specific normalized citation: tōcāitl. Historical source spelling and existing lookup identity retained. This does not normalize compounds, plurals or manuscript tokens. Parentheses in the source notation indicate optional/alternating material; no new productive stem is inferred.",
+        "reviewed_on": "2026-10-28",
+        "review_type": "AI-assisted source comparison; not specialist certification"
+      }
     },
     {
       "word": "yohualli",

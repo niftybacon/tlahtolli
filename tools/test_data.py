@@ -7,12 +7,12 @@ w={x['word']:x for x in json.loads((root/'dictionary.json').read_text(encoding='
 p=json.loads((root/'paradigms.json').read_text(encoding='utf8'))['paradigms']
 assert w['calli']['plural']=='caltin'
 assert w['xōchitl']['plural']=='xōchimeh'
-assert w['tēpetl']['plural']=='tētepeh'
+assert w['tepētl']['plural']=='tētepeh'
 assert w['cītlalin']['plural']=='cīcītlaltin'
 assert w['ātl']['animacy']=='inanimate'
 assert p['chōca']['cells'][1][0]=='nichōcac'
 assert p['nemi']['b2s']=='nen'
-for lemma in ('calli','xōchitl','tēpetl','cītlalin'):
+for lemma in ('calli','xōchitl','tepētl','cītlalin'):
     assert any(c.get('field')=='plural' and c.get('locator') and c.get('source') for c in w[lemma]['claims'])
 for lemma,field in [('tlācatl','plural'),('pilli','plural'),('ōcēlōtl','plural'),('nemi','stem'),('cuīcatl','possessed')]:
     assert any(c.get('field')==field and c.get('source','').startswith('https://') and c.get('locator') for c in w[lemma]['claims'])

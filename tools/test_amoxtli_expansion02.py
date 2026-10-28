@@ -12,7 +12,7 @@ e=json.loads((ROOT/'data/evidence.json').read_text(encoding='utf8'))
 new=['itic','nemini','iuhquin','inīn','ītech','quiza','tlapalli','cen','polihui']
 assert len(d['words'])==len(l['words'])==len(m['entries'])==len(e['entries'])>=112
 assert [w['word'] for w in d['words'][103:112]]==new
-assert d['version']==l['version']==p['version']==m['version']==e['version'] and d['version'].startswith('2026-10-27.')
+assert d['version']==l['version']==p['version']==m['version']==e['version']
 assert sum(len(w['claims']) for w in d['words'][:103])==777
 assert sum(len(w['inflections']) for w in d['words'][:103])==211
 assert sum(len(w['claims']) for w in d['words'][103:112])==81

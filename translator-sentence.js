@@ -21,7 +21,7 @@ const verbs={
 // Readable selected senses; the full original meaning is always carried alongside.
 const nouns={'cihuātl':'woman','tlācatl':'person','conetl':'child','calli':'house',
  'ātl':'water','āmatl':'document','tetl':'stone','xōchitl':'flower','cuīcatl':'song',
- 'chimalli':'shield','tlaxcalli':'tortilla','tēpetl':'hill'};
+ 'chimalli':'shield','tlaxcalli':'tortilla','tepētl':'hill'};
 const grammar='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
 const tenseSource='https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html';
 function create(dictionary,paradigms){

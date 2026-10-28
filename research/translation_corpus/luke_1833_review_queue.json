@@ -3,10 +3,10 @@
   "schema": 1,
   "source": "https://archive.org/details/elevangeliodeslu00pazy",
   "year": 1833,
-  "created_utc": "2026-10-28T17:04:29+00:00",
+  "created_utc": "2026-10-28T19:38:27+00:00",
   "variety": "historic southern Puebla Nahuatl (not automatically equivalent to Classical Nahuatl)",
   "original_ocr_hash": "fd60e87f4126332ab239a550d1e57d955aba60d7e65d052a84e8337ccd4f99b4",
-  "working_draft_hash": "d3abb343d5642d2e554dfec6cee493f19107b71b882b8e5d409c51107b9538de",
+  "working_draft_hash": "75af1f42631f31fa4cdf454b51e721073170911d57471a5e34d96dfa6dd35943",
   "status": "draft_only",
   "training_approved": false,
   "specialist_reviewed": false,
@@ -8605,8 +8605,2520 @@
       "text_preview": "43 Ipampa hualazqué tonaltin mo tlacopa icuac in motecocolí cahuan mitz yehual tlatz- acuilotizqué, tetica tlaltica tlatzacuili mitz yehualótiez, yhuan ic mochcan ti nenmictiloz. _ 44 Tlalpan mitz mayahuizqué té yhuan mo pilhuan in motee ca té, yhuan amo qui ca- huazqué motech tetl ipan tetl : ipampati",
       "text_length": 409,
       "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-154400",
+      "raw_offset": 154400,
+      "number_candidate": 45,
+      "first_word": "Orno",
+      "preceding_heading": "XIX",
+      "text_preview": "45 Orno calaquí teopan yhuan orno pehuiti quin mo quixtilia in tlanamacaqué yhuan in- tlacóqué ocatca ítec.",
+      "text_length": 126,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-154526",
+      "raw_offset": 154526,
+      "number_candidate": 46,
+      "first_word": "Oquim",
+      "preceding_heading": "XIX",
+      "text_preview": "46 Oquim ilhui : icuilitica : in nochan tía- tlatlátiliz calli. Auh in amehuan o anqui cuepqué ichteca oztotl.",
+      "text_length": 130,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-154656",
+      "raw_offset": 154656,
+      "number_candidate": 47,
+      "first_word": "Centetl",
+      "preceding_heading": "XIX",
+      "text_preview": "47 Centetl tonali otemachtiticatca teocali- tec„ In Teopixca tlátóqué in tlatecpanmatinl 110 SAN LUCAS, XX. yhuan itlatóqué atltepe mamanani oqui ne- quiá qui mictizqué : a",
+      "text_length": 209,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-154865",
+      "raw_offset": 154865,
+      "number_candidate": 48,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "48 Auh orno oqui ázia tlen qui chihuazque ipampa mochi Atl tepetl onezia ye omic inic oqui caquia in itzátzica temachtiltzin. IC CEMPOALI TENONOTZAL QUAITL. YHUAN orno chí ipan ce tonali quim mo machtilitica in atl tepetlacateopan yhuan quin ian cuic yec tlamachiltilia, orno nechi- cóqué in tlátóca t",
+      "text_length": 423,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-155288",
+      "raw_offset": 155288,
+      "number_candidate": 2,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "2 Yhuan yúquin otlátóqué : Xi tech ilhuí ica tlen huelitiliztlí ticchihua inin : nozo : aquin omitz tequi macac. _",
+      "text_length": 136,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-155424",
+      "raw_offset": 155424,
+      "number_candidate": 3,
+      "first_word": "In",
+      "preceding_heading": "XX",
+      "text_preview": "3 In Jesús oquin nanquili quim ilhuia in yéhuantin no yuqui in nehuatl namech tlátla- niz ce tlátoli xi nech ilhuican. 4 ¿ In i tlaqua atequiliz in Juan o hualya ilhuicac no zo intech tlaca ohual quiz ?",
+      "text_length": 244,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-155668",
+      "raw_offset": 155668,
+      "number_candidate": 5,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "5 Auh in yehuan im itec oqui nemihaya, oquítoayá : in tía tic ítozque ilhuicac ohualla, quitoz, tel ¿ tle ipampa amo ó an qui neltoca-",
+      "text_length": 162,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-155830",
+      "raw_offset": 155830,
+      "number_candidate": 6,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "6 Auh in tía tic ítoz qué intech tlaca ohual quiz, centetl atltepetl tech temomotlaz : ca- neltiliztli mochtin oqui matia in Juan Profeta o catcaya. 7 O tlanan quillqué téhuantin amo tic raa- ti campa oquiz.",
+      "text_length": 247,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-156077",
+      "raw_offset": 156077,
+      "number_candidate": 8,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "8 Yhuan in Jesús oquim ilhiíi : no íhuan SA\"N LUCAS, XX. 111 tietmatl amo na mech ilhuia tlen huelitiliztii ica nic chihua in tlen nic chihua.",
+      "text_length": 178,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-156255",
+      "raw_offset": 156255,
+      "number_candidate": 9,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "9 Yhuan opéqui qui ilhuia in atltepetl inin tlanenehuiliz nonotzali : ce tlacatl oqui tlalt- zinyoti xocomeca amil yhuan oquin tlanéti cequi tequitinimé : yhuan yéhuatl oya miee xihuitl ac onezia.",
+      "text_length": 229,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-156484",
+      "raw_offset": 156484,
+      "number_candidate": 10,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "10 Yhuan o ázic cahuitl oqui titlan ce it- laca in nahuac in xocomeca mil tlané qué quítlaniti in ytlaquilo in xocomecamilli. Auh in in oqui cocóqué yhuan oquititlanqué, atleo- qui huicac.",
+      "text_length": 222,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-156706",
+      "raw_offset": 156706,
+      "number_candidate": 11,
+      "first_word": "Oc",
+      "preceding_heading": "XX",
+      "text_preview": "11 Oc cepa oqui titlan occe itlaca. Auh in yéhuan zan no yuqui oqui tecocóca polóque, oqui ilihuiz tlá tolhuíque yhuan oqui titlanqué mapilcati.",
+      "text_length": 170,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-156876",
+      "raw_offset": 156876,
+      "number_candidate": 12,
+      "first_word": "Oqui",
+      "preceding_heading": "XX",
+      "text_preview": "12 Oqui titlan in ic yey : aquin zan no yuqui o qui tlalilíqué yhuan oqui tótocaqué.",
+      "text_length": 103,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-156979",
+      "raw_offset": 156979,
+      "number_candidate": 13,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "13 Auh o quito in xocomeca tlátoani : ¿ tlen nic chihuaz ? nic titlaniz in no tlazo coné : ázotel icuac qui ittazqué qui ipantla- chializqué.",
+      "text_length": 170,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-157149",
+      "raw_offset": 157149,
+      "number_candidate": 14,
+      "first_word": "Icuac",
+      "preceding_heading": "XX",
+      "text_preview": "14 Icuac oqui ittaqué in tequitqué in ítec oqui nemiliqué, yhuan oqui tenquixtíqué : Inin yé in axcahuá yez, matic mictican inic to axca mo chihuaz in itlacacahuil.",
+      "text_length": 193,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-157342",
+      "raw_offset": 157342,
+      "number_candidate": 15,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "15 Yhuan oqui quixtíque xo come ca amil quiahuac yhuan oqui mictíqué. ¿ Tlen tel quichihuaz ica yéhuan in xocomeca amil Tlá- toani ?",
+      "text_length": 157,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-157499",
+      "raw_offset": 157499,
+      "number_candidate": 16,
+      "first_word": "Hualyaz",
+      "preceding_heading": "XX",
+      "text_preview": "16 Hualyaz yhuan quin pópoloz inin te- 112 SAN LUCAS, XX. quitqué, yhuan in xocomeca amil quin macaz oceequintin. In ye oqui cacqué in yéhuantin oqui ítóqué : ma caic yúcon mo chihua.",
+      "text_length": 227,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-157726",
+      "raw_offset": 157726,
+      "number_candidate": 17,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "17 Auh in yéhuatzin quim itztica oquito : ¿ tel in, in ícuilítoc : in tetl, amo tlen ipano- quittaqué in amantecamé, orno chihuaco, i tlápaltil tzacuillo in cal nacaztli ?",
+      "text_length": 204,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-157930",
+      "raw_offset": 157930,
+      "number_candidate": 18,
+      "first_word": "Mochi",
+      "preceding_heading": "XX",
+      "text_preview": "18 Mochi tlacatl in huetzin ipan Inecatetl chicahualiz quixtilililoz auh in aquin yé in tetl ipan huetziz qui cen o yaz.",
+      "text_length": 143,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-158073",
+      "raw_offset": 158073,
+      "number_candidate": 19,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "19 Yhuan in on cahuitl in teopixca tlátóqué yhuan i tlatecpan matini oqui nequia qui quitzquizqué in Jesús : tel oqui mahuilíqué in atltepetlaca : ipampa oqui ázica matque ca in huicopa yéhuantin oquítóca in nénéca tenonotzali.",
+      "text_length": 265,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-158338",
+      "raw_offset": 158338,
+      "number_candidate": 20,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "20 Yhuan in oquix piaya in Jesús o quin titlanqué te yeyecoani in mo cual tlamítihué, in ic qui anazqué icamacpa itlá tlátoli ic qui teilhuizque ixpan in Presidente.",
+      "text_length": 196,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-158534",
+      "raw_offset": 158534,
+      "number_candidate": 21,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "21 Yhuan oqui tlátlaníqué, quítótihué : Temachtiani é, tic matí ca titíatoa yhuan ti yectemachtia yhuan amo aquin ipan ti mo ilihuiz mana tel zan yé in melahuac yhuan in i óhui in Dios tic temachtia. 22 ¿ Cuix qualli, cuix totech pohuitic raa- cazqué tlacalaquili in Cesar, nozo amo ?",
+      "text_length": 337,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-158871",
+      "raw_offset": 158871,
+      "number_candidate": 23,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "23 Auh in yéhuatzin oqui ázicamat in in tenéyecol tlátol oquim ilhui : ¿ tle ica an nech yeyecoa ?",
+      "text_length": 119,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-158990",
+      "raw_offset": 158990,
+      "number_candidate": 24,
+      "first_word": "Xi",
+      "preceding_heading": "XX",
+      "text_preview": "24 Xi nech ittican in tlatemantli : ¿ aquin SAN LUCAS, XX. 113 inénéca in in, yhuan aquin yhuaxca in tlá- cuiloli quipia? oqui nanquilíqué in Jesús, quítoá Cesar inénéca yhuan itoca.",
+      "text_length": 225,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-159215",
+      "raw_offset": 159215,
+      "number_candidate": 25,
+      "first_word": "In",
+      "preceding_heading": "XX",
+      "text_preview": "25 In yéhuatzin oquim ilhui : xic macacan tel in Cesar tlen yhuaxca in Cesar yhuan xic macacan in Dios tlen i huaxca in Dios.",
+      "text_length": 151,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-159366",
+      "raw_offset": 159366,
+      "number_candidate": 26,
+      "first_word": "Ac",
+      "preceding_heading": "XX",
+      "text_preview": "26 Ac o huelitiqué qui ixcopaca ítozqué in i tlátol ixpan in atltepeti : te] omizahuíqué in itlátoitzin, yhuan orno camatzacqué.",
+      "text_length": 151,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-159517",
+      "raw_offset": 159517,
+      "number_candidate": 27,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "27 Auh o áziqué cequi Saduceómé in ac- quineltocá in in neizcaliliz in tlacayomé yhuan oqui tlátlanique in yéhuatzin,",
+      "text_length": 138,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-159655",
+      "raw_offset": 159655,
+      "number_candidate": 28,
+      "first_word": "Qui",
+      "preceding_heading": "XX",
+      "text_preview": "28 Qui ítoá : Temachtiani é, in Moyses o tech ícuilhuilitehuac : in tía in icní acá tlacatl mi quiz, quipia inamic yhuan inin amo oqui pix ipilhuan raa monamicti inahuac in huepol yhuan maqui yoliti in ixinachyo in icni :",
+      "text_length": 262,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-159917",
+      "raw_offset": 159917,
+      "number_candidate": 29,
+      "first_word": "Tel",
+      "preceding_heading": "XX",
+      "text_preview": "29 Tel ocatcá chicóme icnimé yhuan teach- cá orno namicti yhuan omic atle i pilhuan.",
+      "text_length": 101,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-160018",
+      "raw_offset": 160018,
+      "number_candidate": 30,
+      "first_word": "Inte",
+      "preceding_heading": "XX",
+      "text_preview": "30 Inte iccá oquimo namicti ini icnozoa in icní, y huan no yéhuatl omic atle ipilhuan.",
+      "text_length": 104,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-160122",
+      "raw_offset": 160122,
+      "number_candidate": 31,
+      "first_word": "In",
+      "preceding_heading": "XX",
+      "text_preview": "31 In ic yey tlacatl oqui mona micti inízoatl. Yhuan yucon mochi in chicóme, yhuan ayac oqui caú i xinacho yhuan o miqué.",
+      "text_length": 146,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-160268",
+      "raw_offset": 160268,
+      "number_candidate": 32,
+      "first_word": "Za",
+      "preceding_heading": "XX",
+      "text_preview": "32 Za tlatzonco in mochtin omic in zoatl.",
+      "text_length": 51,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-160319",
+      "raw_offset": 160319,
+      "number_candidate": 33,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "33 Auh ipan in neiz cáliz ilhuitl ac yé intla in inqué yez ynamic ca melahuac chicomentin in zoa omochi.",
+      "text_length": 126,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-160445",
+      "raw_offset": 160445,
+      "number_candidate": 34,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "34 Auh in Jesús oquim ilhui : in i pilhuan inin cahuitl mo namictiá yhuan motemacá necetiliztica : l3 114 SAN LUCAS. XX.",
+      "text_length": 149,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-160594",
+      "raw_offset": 160594,
+      "number_candidate": 35,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "35 Auh in ix machozqué ichopiléque itechin ñeca cahuitl, yhuan qui mace huazqué in nez- caliliz tli intla in mímiqué, amo monamictiz- que nion temacozqué ica nenamictiliztli :",
+      "text_length": 204,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-160798",
+      "raw_offset": 160798,
+      "number_candidate": 36,
+      "first_word": "Ipampa",
+      "preceding_heading": "XX",
+      "text_preview": "36 Ipampa ayocmo occepa huelitiz miquiz- qué : ca melácayopan yezqué nénéque in Angeles yhuan ipilhuan in Dios : icuac mo chítoque ipilhuan in neizcaliliztli.",
+      "text_length": 183,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-160981",
+      "raw_offset": 160981,
+      "number_candidate": 37,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "37 Yhuan ca mozcalizqué in mimiqué in Moyses no oqui tecaquiztili ícuac huitz meca xí nahuac oqui mo tocayotili in Tlátoani i Teo in Abraham iteo in Isac, iteo in Jacob.",
+      "text_length": 202,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161183",
+      "raw_offset": 161183,
+      "number_candidate": 38,
+      "first_word": "Amo",
+      "preceding_heading": "XX",
+      "text_preview": "38 Amo in Teo mimi qué tel yolqué in Teo : ipampa mochtin yolticate ica yéhuatzin.",
+      "text_length": 100,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161283",
+      "raw_offset": 161283,
+      "number_candidate": 39,
+      "first_word": "Otlananquilíqué",
+      "preceding_heading": "XX",
+      "text_preview": "39 Otlananquilíqué cequi Escrivátin qui ilhuia, Temachtiani é, cualli o tic ító.",
+      "text_length": 94,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161377",
+      "raw_offset": 161377,
+      "number_candidate": 40,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "40 Auh ayocmo occepa o rnixehuíqué itla qui tlátlanizqué.",
+      "text_length": 68,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161445",
+      "raw_offset": 161445,
+      "number_candidate": 41,
+      "first_word": "In",
+      "preceding_heading": "XX",
+      "text_preview": "41 In yéhuatzin oqui milhui : ¿ Quenin quítoá in Cristo i piltzin in David ?",
+      "text_length": 93,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161538",
+      "raw_offset": 161538,
+      "number_candidate": 42,
+      "first_word": "Yhuan",
+      "preceding_heading": "XX",
+      "text_preview": "42 Yhuan zan no ye in David qui toa itech in cuica amochtzin : In tlátoani oquilhui in no tlátocá xi mo yehuatlali no mayeccampa,",
+      "text_length": 156,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161694",
+      "raw_offset": 161694,
+      "number_candidate": 43,
+      "first_word": "In",
+      "preceding_heading": "XX",
+      "text_preview": "43 In oc ic ni quin tlaliz in mo tecocolica- huan i tlapichhuan in mo icxihuan.",
+      "text_length": 97,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161791",
+      "raw_offset": 161791,
+      "number_candidate": 44,
+      "first_word": "Intla",
+      "preceding_heading": "XX",
+      "text_preview": "44 Intla in David qui ilhuia itlátócá ¿ auh quenin ipiltzin ?",
+      "text_length": 75,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161866",
+      "raw_offset": 161866,
+      "number_candidate": 45,
+      "first_word": "Auh",
+      "preceding_heading": "XX",
+      "text_preview": "45 Auh qui cactoqué mo chi in atltepetlaca oquim ilhui in Jesús in i tlamachtilhuan,",
+      "text_length": 101,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-161967",
+      "raw_offset": 161967,
+      "number_candidate": 46,
+      "first_word": "Ximo",
+      "preceding_heading": "XX",
+      "text_preview": "46 Ximo piacan inhuic in Escrivátin qui nequi hueyac tlaquemitl qui huilanazqué, — SAN LUCAS, XXI. 115 yhuan quin pactia tianquizco tlápalolozqué yhuan icnopil yeyantli itech tlaca necetililiztli, yhuan in achto necehuili itech paquiliz tla- cualiztli :",
+      "text_length": 308,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-162275",
+      "raw_offset": 162275,
+      "number_candidate": 47,
+      "first_word": "In",
+      "preceding_heading": "XXI",
+      "text_preview": "47 In quin toloá in in chanhuan in icnozi- zihuá mo tlamiá quichihuá hueyac tlatlátiliztli. In inqué qui celizqué ocachi hueye tlatelchi hualiztli. IC CEMPOALI YHUAN CE TONONOTZAL CUAITL. MO tlachialtítica oquim itac in tlatlacamé tlatquihuáqué oqui tlalíticatcá in in tlamanal tecomi ítec.",
+      "text_length": 342,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-162617",
+      "raw_offset": 162617,
+      "number_candidate": 2,
+      "first_word": "Tel",
+      "preceding_heading": "XXI",
+      "text_preview": "2 Tel no yú oquittac ce icnozoatl huel motoliniani oquitlali orne tepitzitzin tlate- mantli.",
+      "text_length": 108,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-162725",
+      "raw_offset": 162725,
+      "number_candidate": 3,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "3 Yhuan oquíto : melácayopan na mech ilhuia, ca in in motoliniani icnozoatl oc achi oqui tlali amo mochtin.",
+      "text_length": 128,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-162853",
+      "raw_offset": 162853,
+      "number_candidate": 4,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXI",
+      "text_preview": "4 Ipampa mochtin in inqué oqui tlalíqué ica tlamatiali ixpan in Teotl in tlen tepitó quin cahuilia in in chan tlapópololiz : auh in in zoatl oqui tlali mochi inquexquich itech omonequia ica tlacuaz.",
+      "text_length": 234,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-163087",
+      "raw_offset": 163087,
+      "number_candidate": 5,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "5 Yhuan oquim ilhui cequintin in oquítoaya ica in Teocalli, ca ochíchíticatca ica cuáquali temé yhuan tlatquitl.",
+      "text_length": 131,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-163218",
+      "raw_offset": 163218,
+      "number_candidate": 6,
+      "first_word": "In",
+      "preceding_heading": "XXI",
+      "text_preview": "6 In in tlamanmé in an qui ittá hualyaz tonali in ícuac amo mocahuaz tetl ipan tetl in amo texiliztlamiloz.",
+      "text_length": 129,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-163347",
+      "raw_offset": 163347,
+      "number_candidate": 7,
+      "first_word": "Auh",
+      "preceding_heading": "XXI",
+      "text_preview": "7 Auh oqui tlátlaníqué, quítoá : Temachti- 116 SAN LUCAS, XXI. ani é, ¿ quenman mo chihuaz in in ? ¿ yhuan tlen machiotl yezqui ícuac pehuaz mochihuaz ?",
+      "text_length": 191,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-163538",
+      "raw_offset": 163538,
+      "number_candidate": 8,
+      "first_word": "In",
+      "preceding_heading": "XXI",
+      "text_preview": "8 In yéhuatzin oquim ilhui: xic ittacan amo an cayahualozqué : melácayopan mie- quintin hualyazqué notocatica quítótihuitze ye néhuatl : yhuan yeoncan in cahuitl : xi mo piacan tel amo xiquin tepotz tocacan.",
+      "text_length": 239,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-163777",
+      "raw_offset": 163777,
+      "number_candidate": 9,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "9 Yhuan ícuac anquí caquizqué in yahuiotl yhuan nexeloliztli amo xi mo maútican : monequi inin achtó mochihuaz, áuh amo zan niman motocaz tlancáyotl.",
+      "text_length": 174,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-163951",
+      "raw_offset": 163951,
+      "number_candidate": 10,
+      "first_word": "Yhquac",
+      "preceding_heading": "XXI",
+      "text_preview": "10 Yhquac on, oquin ilhuiaya: mácoquiz tlacatl yhuicopa tlacatl yhuan tlátócayotl y huicopa tlátócayotl.",
+      "text_length": 120,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-164071",
+      "raw_offset": 164071,
+      "number_candidate": 11,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "11 Yhuan yezqui ic no huian chicahuac tlalolinaliztli, yhuan cocoliztli, apiztli, yhuan tema máti tlamantli yhuan huéhuey machiomé mottazqué ithuicachuic.",
+      "text_length": 176,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-164247",
+      "raw_offset": 164247,
+      "number_candidate": 12,
+      "first_word": "Auh",
+      "preceding_heading": "XXI",
+      "text_preview": "12 Auh achto ayamo mochihua inin an mech quitzquizqué an cocol tlatepotz toquili- lozque,an mech huicazque necetililoyan yhuan teilpiloyan, an mech huicazque im ixpan reyes- tin in mixpan in Governadortin ipampa in no toca :",
+      "text_length": 261,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-164508",
+      "raw_offset": 164508,
+      "number_candidate": 13,
+      "first_word": "Auh",
+      "preceding_heading": "XXI",
+      "text_preview": "13 Auh amopan mochihuaz ica tlaneltilili- liztli.",
+      "text_length": 58,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-164566",
+      "raw_offset": 164566,
+      "number_candidate": 14,
+      "first_word": "Xictlalican",
+      "preceding_heading": "XXI",
+      "text_preview": "14 Xictlalican anmoyolloítecamoantlach- to nemilizqué qi;e nin an quin nanquilizqué.",
+      "text_length": 96,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-164662",
+      "raw_offset": 164662,
+      "number_candidate": 15,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXI",
+      "text_preview": "15 Ipampa néhuatl na mech nacaz anmo camac yhuan tlamatiliztl in amo huelitizqué qui ixopaca ítozqué in an motecocolícahuan. HHHH SAN LUCAS, XXI. 117",
+      "text_length": 186,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-164848",
+      "raw_offset": 164848,
+      "number_candidate": 16,
+      "first_word": "An",
+      "preceding_heading": "XXI",
+      "text_preview": "16 An temactilozqué in matica in amo tá- huan yhuan in matica in amo tlacatca icni- huan, inamohuayolcahuan, in amo tlazótman y huan amech mictizqué.",
+      "text_length": 176,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-165024",
+      "raw_offset": 165024,
+      "number_candidate": 17,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "17 Yhuan mochtin an mech cocolizqué ipampa in no toca : 1 8 Auh amo polihuiz ce tzontli itech amo tzontecon.",
+      "text_length": 131,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-165155",
+      "raw_offset": 165155,
+      "number_candidate": 19,
+      "first_word": "lea",
+      "preceding_heading": "XXI",
+      "text_preview": "19 lea in amo tlapacca íyahuilizan qui piazqué in an mo yolia.",
+      "text_length": 76,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-165231",
+      "raw_offset": 165231,
+      "number_candidate": 20,
+      "first_word": "Ihcuac",
+      "preceding_heading": "XXI",
+      "text_preview": "20 Ihcuac anqui itazqué yaúolochol tla- catica yehualolo in Jerasalem ícuac on xic matican ye ohual ázic ini pópololoca :",
+      "text_length": 143,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-165374",
+      "raw_offset": 165374,
+      "number_candidate": 21,
+      "first_word": "Icuac",
+      "preceding_heading": "XXI",
+      "text_preview": "21 Icuac on in caté Judea ma motlalocan ompa quátla : yhuan aquin itlacotian cate maquizacan : yhuan aquin quiahuac cate raa- camo calaquican tlátec.",
+      "text_length": 175,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-165549",
+      "raw_offset": 165549,
+      "number_candidate": 22,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXI",
+      "text_preview": "22 Ipampa in inque tonal tin, tonal tin ne- macuepaloliztli, in ic moneltiliz mochi in quexquich ícuilítica.",
+      "text_length": 126,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-165675",
+      "raw_offset": 165675,
+      "number_candidate": 23,
+      "first_word": "Nonqua",
+      "preceding_heading": "XXI",
+      "text_preview": "23 Nonqua ¡ Ai ica in yoyotztin, yhuan ica in zizihuá tlachíchitóqué in onque tonaltin ! ipampa yezqui huey tecapatzoli ipan in tlalli yhuan tlahueli ihuicopa in in Atltepetl.",
+      "text_length": 206,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-165881",
+      "raw_offset": 165881,
+      "number_candidate": 24,
+      "first_word": "Huetzizqué",
+      "preceding_heading": "XXI",
+      "text_preview": "24 Huetzizqué itenco in hueyac tlateconi yhuan tlamaltin huicozqué mochi tlalpan, yhuan in Jerusalem qui tlátlaczazque in xentiltin in oc ic tzon maniz in in cahui in occan tlatlacatini.",
+      "text_length": 217,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-166098",
+      "raw_offset": 166098,
+      "number_candidate": 25,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "25 Yhuan yezqui machiotl itech in tonati, in Metztli, yhuan in tzitlalimé, ihuan in tlal- 118 SAN LUCAS, XXI. pan in in yol nemiquiliz in tlatlacamé ipampa in ico co moniloca in itonhuitzoloca in huei atenantli :",
+      "text_length": 261,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-166359",
+      "raw_offset": 166359,
+      "number_candidate": 26,
+      "first_word": "Icuac",
+      "preceding_heading": "XXI",
+      "text_preview": "26 Icuac in tlaca ye ocozíque quenami mi- quemí ica mahuiliztli yhuan i chialoca in tlen mochihuaz ipan mochi cemanahuactli : ipam- pa in tlápaltilizequé ilhuicac molinizqué.",
+      "text_length": 201,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-166560",
+      "raw_offset": 166560,
+      "number_candidate": 27,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "27 Yhuan ícuac on quitazqué in i Piltzin in tlacatl hual yátehuaz mix ipan ica huey hue litiliztli yhuan tlátócayotl.",
+      "text_length": 139,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-166699",
+      "raw_offset": 166699,
+      "number_candidate": 28,
+      "first_word": "Tel",
+      "preceding_heading": "XXI",
+      "text_preview": "28 Tel icuac pehuaz qué neltizquein in tla- mantin xic ittacan yhuan xic ácoquican in amo tzontecohuan : ipampa ayocmo hueca cá in amo nemaquiztiliz.",
+      "text_length": 176,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-166875",
+      "raw_offset": 166875,
+      "number_candidate": 29,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "29 Yhuan noyú oquim ilhui tlátolnéné- cayotl : xic itta can in icox quáxihuitl yhuan mochi quáxihui me :",
+      "text_length": 125,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-167000",
+      "raw_offset": 167000,
+      "number_candidate": 30,
+      "first_word": "Iquac",
+      "preceding_heading": "XXI",
+      "text_preview": "30 Iquac ye intech quiza tlaquilotl, an qui matizqué ca ye oncan cá in toxcatl.",
+      "text_length": 96,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-167096",
+      "raw_offset": 167096,
+      "number_candidate": 31,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "31 Yhuan no yúcon in améhuantin ícuac an quitazqué yé mochihua inin xic matican ca ye oemo huécacá in itlátócayo in Dios.",
+      "text_length": 145,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-167241",
+      "raw_offset": 167241,
+      "number_candidate": 32,
+      "first_word": "Melácayopan",
+      "preceding_heading": "XXI",
+      "text_preview": "32 Melácayopan na mech ilhuia ca amo tlamiz in in tlacamecayotl in oc ic mo chihuaz mochi inin.",
+      "text_length": 115,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-167356",
+      "raw_offset": 167356,
+      "number_candidate": 33,
+      "first_word": "In",
+      "preceding_heading": "XXI",
+      "text_preview": "33 In ithuicatl yhuan tlalticpatli panozqué, auh in no tlátol amo panoz.",
+      "text_length": 86,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-167442",
+      "raw_offset": 167442,
+      "number_candidate": 34,
+      "first_word": "Tel",
+      "preceding_heading": "XXI",
+      "text_preview": "34 Tel xi mimatca yecan amo con chihuaz yetiazqué in an mo yollohuan ica xolotla- cualiztli yhuan xocomiquiliztli, yhuan ica tlalticpac nenmiquiliztli : yhuan amo an SAN LUCAS, YXI1. 119 monématilizpan hualyaz an rao pan in non- tonali :",
+      "text_length": 298,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-167740",
+      "raw_offset": 167740,
+      "number_candidate": 35,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXI",
+      "text_preview": "35 Ipampa quenami mecatl hualyaz impan mochtin in tlacá caté ixco in tlalli.",
+      "text_length": 91,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-167831",
+      "raw_offset": 167831,
+      "number_candidate": 36,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "36 Yhuan ica on xi ízatiecan mochi cahuitl, xi tlatlatlátican ica an qui icno pilhuizqué an quitlacolhuizqué mochi in in mochihuaz yhuan anmo quetzaqué ixpan in i Piltzin in tlacatl.",
+      "text_length": 214,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-168045",
+      "raw_offset": 168045,
+      "number_candidate": 37,
+      "first_word": "Cemithuitl",
+      "preceding_heading": "XXI",
+      "text_preview": "37 Cemithuitl orno te machtiliaya teocal Itec : auh in yoaltica o rao quixtiaya orno huicaya quátla in tocayozilo Olivete.",
+      "text_length": 144,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-168189",
+      "raw_offset": 168189,
+      "number_candidate": 38,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "38 Yhuan mochi atltepetl huel minan o calaquia teopan in io qui caquiz que in i te- machtil. IC CEMPOAL YHUAN OME TENONOTZAL QUAITL. AUH ye oncan in ilhuitl Azimoz in to- cay otilo Pascua :",
+      "text_length": 227,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-168416",
+      "raw_offset": 168416,
+      "number_candidate": 2,
+      "first_word": "Oqui",
+      "preceding_heading": "XXI",
+      "text_preview": "2 Oqui temoayá í Teopixcatlátóqué yhuan in tlatecpan tlamatinimé quenin quimictizqué in Jesús : áúh oqui mahuiliayá in atltepetl.",
+      "text_length": 150,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-168566",
+      "raw_offset": 168566,
+      "number_candidate": 3,
+      "first_word": "Auh",
+      "preceding_heading": "XXI",
+      "text_preview": "3 Auh ocalac in diablo y yollo ítec in Judas tocayotilo Iscariote cerne in mahtlac- tlamome Apostóles.",
+      "text_length": 121,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-168687",
+      "raw_offset": 168687,
+      "number_candidate": 4,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "4 Yhuan oyá orno notzato in nahuac in Teopixcatlátóqué yhuan in tequipianimé quenin qui tlaliz in Jesús in matlan.",
+      "text_length": 135,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-168822",
+      "raw_offset": 168822,
+      "number_candidate": 5,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXI",
+      "text_preview": "5 Yhuan in yéhuantin opacqué yhuan oqui namictíqué tlátolli qui macazqué tomin.",
+      "text_length": 93,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-168915",
+      "raw_offset": 168915,
+      "number_candidate": 6,
+      "first_word": "Auh",
+      "preceding_heading": "XXI",
+      "text_preview": "6 Auh in yéhuatl orno nétoltíqui temactiz. 120 SAN LUCAS, XXII. Yhuan oqui temoayá cahuitl ica qui temac tiz tcuac ayac in tlaca olocholh 7 O ázic in ithuitl Ázimos in ipan omone- quia miquiz in Pasqua.",
+      "text_length": 250,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-169165",
+      "raw_offset": 169165,
+      "number_candidate": 8,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "8 Yhuan oqui tillan i Jesús in Pedro yhuan in Juan quin ilhuitiá : xi huian xi tech mani- líti'in Pasqua in ic ti tlacuaz qué.",
+      "text_length": 154,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-169319",
+      "raw_offset": 169319,
+      "number_candidate": 9,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "9 Auh in yéhuantin oqui ilhuíqué : cam pa tic nequi tic manazqué.",
+      "text_length": 80,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-169399",
+      "raw_offset": 169399,
+      "number_candidate": 10,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "10 Yhuan oquim ilhui : xic ittacan ícuac an calactiazque ciudad, an qui namiquizqué ce tlacatl qui memetia ce huícoli ica atl : xic tocacan oc itech calli campa calaquiz, 1 1 Yhuan xic il huican inchane : in Te- machtiani mitz ilhuia : ¿ campa catqui in calli in ítec nic cuaz in Pascua tihuan in",
+      "text_length": 378,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-169777",
+      "raw_offset": 169777,
+      "number_candidate": 12,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "12 Auh yéhuatl an mech ittitiz ce huey sala cualmamantoc, ompa xi tía maman acan. 13 O yaque yhuan oqui áziqué quenami oquim ilhui, yhuan ó tíatlátlalique ica in Pascua.",
+      "text_length": 202,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-169979",
+      "raw_offset": 169979,
+      "number_candidate": 14,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "14 Auh in yé o ázic cahuitl, orno tlali yhuan in mátlacmomé Apostóles i nahuac.",
+      "text_length": 96,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-170075",
+      "raw_offset": 170075,
+      "number_candidate": 15,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "15 Yhuan o quim ilhui tlail chuiliztica o nic elchui ipan in in Pascua ni tlacuaz an mo nahuac in oc ic ayamo nitláíyahuia.",
+      "text_length": 149,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-170224",
+      "raw_offset": 170224,
+      "number_candidate": 16,
+      "first_word": "Melacayopan",
+      "preceding_heading": "XXII",
+      "text_preview": "16 Melacayopan na mech ilhuia ca ayocmo nic cuaz i inacayo oc ic cen maniz itlátoca chan in Dios.",
+      "text_length": 118,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-170342",
+      "raw_offset": 170342,
+      "number_candidate": 17,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "17 Yhuan oqui an in tecomatl yhuan oqui ^M SAN LUCAS, XX1T. 121 temacac yectenehualiztli yhuan oquíto xic anacan yhuan xic xéxelocan amotlan :",
+      "text_length": 184,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-170526",
+      "raw_offset": 170526,
+      "number_candidate": 18,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXII",
+      "text_preview": "18 Ipampa namech ilhuia ca ocmo nic iz occeppa in itlaquilo in xocomecatl oc ic hual- yaz in itlátocayo in Dios*",
+      "text_length": 135,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-170661",
+      "raw_offset": 170661,
+      "number_candidate": 19,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "19 Yhuan in ye oqui an in pantzin, oqui- temacac yectenehualiztli, oqui tlapan yhuan oquin macac qui itótiá Yé in in notlacayo, amo panpatica temaco : in in xic chihuacan nolnamicocatica.",
+      "text_length": 220,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-170881",
+      "raw_offset": 170881,
+      "number_candidate": 20,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "20 Yhuan zan no yuqui in Calix, icuac ye otlacuá oquito : inin Calix ye in yancuic tes- tamento itech in no yezzo intoyahuiloz amo pampatica.",
+      "text_length": 168,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-171049",
+      "raw_offset": 171049,
+      "number_candidate": 21,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "21 Auh tel xic ittacan ni can in ima ino tlatemactícá no nahuac catqui mesa pan.",
+      "text_length": 98,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-171147",
+      "raw_offset": 171147,
+      "number_candidate": 22,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "22 Yhuan neltilizpan in i coné in tlacatl yahui quenami ye tlatecpani : nonqua, ¡ Ay ica in non tlacatl aquin quitemactiz !",
+      "text_length": 147,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-171294",
+      "raw_offset": 171294,
+      "number_candidate": 23,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "23 Auh in yéhuantin opéque mo nehuan tlatlátlaniá, aquin oyez quia intlan in oqui chihuazquia.",
+      "text_length": 111,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-171405",
+      "raw_offset": 171405,
+      "number_candidate": 24,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "24 Yhuan no yuqui omolini tlátoli intlan yéhuantin itechpa aquin intlan yéhuantin oyezquia ocachi teachcá.",
+      "text_length": 123,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-171528",
+      "raw_offset": 171528,
+      "number_candidate": 25,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "25 Auh in yéhuatzin oquim ilhui : in i tlá- tócahuan in tlatlacamé mo tlátocayotiá ipam- pa yéhuantin : yhuan in aquíqué qui pia hueíitiliztli impan yéhuan, tocayotilo cualtla- chihuani.",
+      "text_length": 215,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-171743",
+      "raw_offset": 171743,
+      "number_candidate": 26,
+      "first_word": "In",
+      "preceding_heading": "XXII",
+      "text_preview": "26 In a mehuantin amo yúcon: tel in M 122 SAN LUCAS, XXII. aquin oc achí huey catqui amo tlan mamochí- hua quenami te iccá : yhuan in aquin tlama- mana quenami aquin tlatequipanoa.",
+      "text_length": 232,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-171975",
+      "raw_offset": 171975,
+      "number_candidate": 27,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXII",
+      "text_preview": "27 Ipampa ¿ a quin oc achi huey catqui cuix yé in yehuatoc mesapan nozo in aquin tlatequi paño a ? ¿ amo yé in yehuatoc meza- nahuac ? Auh in néhuatl ni cá amo tlácotian quenami in aquin tlatequipanoa.",
+      "text_length": 243,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-172218",
+      "raw_offset": 172218,
+      "number_candidate": 28,
+      "first_word": "Nonqua",
+      "preceding_heading": "XXII",
+      "text_preview": "28 Nonqua améhuantin in oan catea cerní» cae no nahuac itech in no tenéyecoltilizhuan. ^ 29 Yhuan ica in néhuatl nic mana in tlá~ tócayotl ica a mé huan quenami in no tátzin o quimo manili i ca néhuatl,",
+      "text_length": 244,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-172462",
+      "raw_offset": 172462,
+      "number_candidate": 30,
+      "first_word": "In",
+      "preceding_heading": "XXII",
+      "text_preview": "30 In ic an tlacuazqué yhuan ama tlizqué no mesapan no tlátóca chanco: yhuan an mo tlalizqué ipan in in tlátóca iepali in ic an quitlatzotequilizqué in mátlactlamomé tla- camecayome Israel.",
+      "text_length": 222,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-172684",
+      "raw_offset": 172684,
+      "number_candidate": 31,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "31 Auh oc achi oquító in Tlátoani : Simón Simón xic itta ca in tlacatecolotl o an mech Itlan in ic amech tzetzeloz quenami zacatla- yoh (trigo)",
+      "text_length": 171,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-172855",
+      "raw_offset": 172855,
+      "number_candidate": 32,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "32 Auh in néhuatl o ni tlatlatláti ica té- huatl ínic amo xicahuizin mo tlaneltoquiliz : noyú in tehuatl in yé ic ceppa oti mo yolcuep xi quin chicahuaca tlaneltocti in moenihuan.",
+      "text_length": 213,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-173068",
+      "raw_offset": 173068,
+      "number_candidate": 33,
+      "first_word": "In",
+      "preceding_heading": "XXII",
+      "text_preview": "33 In yéhuatl oqui ilhui : Tlátoani é, ye orne centlali niaz monahuac mayé in teil piloyan, mayé in miquiliz yeyampan.",
+      "text_length": 140,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-173208",
+      "raw_offset": 173208,
+      "number_candidate": 34,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "34 Auh in yéhuatzin oqui ilhui : ni mitz lumia, Pedro, ca ayamo tzátzi in quanacatl SAN LUCAS, XXII. 123 icuac téhuatl ye yexpa otic itó amo ti nech ix mati. Yhuan o qui ilhuí :",
+      "text_length": 222,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-173430",
+      "raw_offset": 173430,
+      "number_candidate": 35,
+      "first_word": "Icuac",
+      "preceding_heading": "XXII",
+      "text_preview": "35 Icuac ona mech titlan améhuantin atle coxtali, i atle nepaníqui coxtali, atle cacmé cuix itla ó anmech polo ?",
+      "text_length": 134,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-173564",
+      "raw_offset": 173564,
+      "number_candidate": 36,
+      "first_word": "In",
+      "preceding_heading": "XXII",
+      "text_preview": "36 In yéhuantia otlananquilíque : atle otechpolo. Niman oquim ilhuí : tel in axcan aquin quipia poxátli ma cana zan no yuqui in nepaníqui coxtal : yhuan aquin amo qui pia, maqui ne maca in ihueyac tlaquen yhuan ma- quicoa tepoz matlateconí.",
+      "text_length": 281,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-173845",
+      "raw_offset": 173845,
+      "number_candidate": 37,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXII",
+      "text_preview": "37 Ipampa na mech ilhuia camo nequi motaz ye oneltic ica néhuatl noyú in tlen ícuilítoc no ca. Yhuan opoaloc intlan in ac- cualtin. Ipampa mochi in quexquich no tech pohui qui pia itl anca y neltililoca.",
+      "text_length": 241,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-174086",
+      "raw_offset": 174086,
+      "number_candidate": 38,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "38 Auh in yéhuantin o tlananquilíqué : Tlátoani é, nican xic itta orne tepoztlateconi : yhuan yéhuatzin oquim ilhui, aocmo occequi monequi.",
+      "text_length": 162,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-174248",
+      "raw_offset": 174248,
+      "number_candidate": 39,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "39 Yhuan mo quix títia omohuicac quena- mi itlatlaliltzin quátla Olívete quitocatihué in itlamachtilhuan.",
+      "text_length": 121,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-174369",
+      "raw_offset": 174369,
+      "number_candidate": 40,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "40 Yhuan icuac ye orno áxiti itech in ye- yantli, o quim ilhui xi tlatlatlátican amo con- chihuaz an huetzizque tenéyecoltilizpan.",
+      "text_length": 153,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-174522",
+      "raw_offset": 174522,
+      "number_candidate": 41,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "41 Yhuan yéhuatzin orno xelo inhuic que- nami ce tetlamotlali ic hueca yhuan tlanqua- icac orno tlatlatlautilia ya,",
+      "text_length": 135,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-174657",
+      "raw_offset": 174657,
+      "number_candidate": 42,
+      "first_word": "Quimítoltia",
+      "preceding_heading": "XXII",
+      "text_preview": "42 Quimítoltia : no tatzin é, in ti amo tía- 124 SAN LUCAS, XXII. nequilitzin manic cuec xolhui in cáliz : auh tel ma camo mo chihua in no tlanequiliz ; tel ma mo chihua in mo tlanequilitzin.",
+      "text_length": 237,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-174894",
+      "raw_offset": 174894,
+      "number_candidate": 43,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "43 Yhuan oqui mo nextili ce Ángel ilhui- cae in oqui yoltlapaltiliaya.",
+      "text_length": 84,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-174978",
+      "raw_offset": 174978,
+      "number_candidate": 44,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "44 Yhuan orno zotlácamiquilízicatca auh ocachi orno chica-yhuan omitoni quenami yez chipictli orno tía loaya ipan tlalli.",
+      "text_length": 140,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-175118",
+      "raw_offset": 175118,
+      "number_candidate": 45,
+      "first_word": "Ihcuac",
+      "preceding_heading": "XXII",
+      "text_preview": "45 Ihcuac orné i tlatlatlátiliz yeyampan yhuan ohual mohuicac campa ocatca in itla- machtilhuan óquim ázic cócochtimané tlaocol- tica.",
+      "text_length": 155,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-175273",
+      "raw_offset": 175273,
+      "number_candidate": 46,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "46 Yhuan oquin mil hui : Tle ica an cochi, xi mehuacan, xi tlatlatlátican amo con chi- huaz an huetzizqué tetlapololtiliz ítec.",
+      "text_length": 150,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-175423",
+      "raw_offset": 175423,
+      "number_candidate": 47,
+      "first_word": "Ayamo",
+      "preceding_heading": "XXII",
+      "text_preview": "47 Ayamo tlami tlátoa onhual nez in teco- colíca olocholi : yhuan in tlamachtili tocayo- tilo Judas quin hual yecana, yhuan orno pacho inahuan in Jesús in ic qui ixtennami- quiz.",
+      "text_length": 210,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-175633",
+      "raw_offset": 175633,
+      "number_candidate": 48,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "48 Auh in Jesús o quilhui in Judas : Ju- das, ¿ ica ixten namiquiliztli tic te mactia in ipiltzin intlacatl ?",
+      "text_length": 132,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-175765",
+      "raw_offset": 175765,
+      "number_candidate": 49,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "49 Yhuan icuac o quitaqué in inahuac o catcaya in tlen oyaya mochihuati, oqui il- huíqué in Jesús, Tlátoani é, ¿ti tlahuitequi ica tepoz maquahuitl ?",
+      "text_length": 177,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-175942",
+      "raw_offset": 175942,
+      "number_candidate": 50,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "50 Yhuan cerne in yéhuantin oquihuitec in i tlacá in teopixcatlátóqui, yhuan oqui tequili in i yecan nacaz.",
+      "text_length": 127,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-176069",
+      "raw_offset": 176069,
+      "number_candidate": 51,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "51 Auh in Jesús otlananquili quin ilhuia SAN LUCAS, XXII. 125 xi monactican. Yhuan oqui ma tocac in inacaz intlacatl yhuan o qui pátí.",
+      "text_length": 179,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-176248",
+      "raw_offset": 176248,
+      "number_candidate": 52,
+      "first_word": "In",
+      "preceding_heading": "XXII",
+      "text_preview": "52 In Jesús oquim ilhui in Teopixca tláto- qué, in teocaltequipixqué yhuan in huehué- tlaca ohual yaca i nahuac : quenami ihuicopa ichtequi o an quizqué ica tepoz tlateconimé yhuan ica cuahuimé.",
+      "text_length": 228,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-176476",
+      "raw_offset": 176476,
+      "number_candidate": 53,
+      "first_word": "Ihcuac",
+      "preceding_heading": "XXII",
+      "text_preview": "53 Ihcuac mó moztla an motlan o ni cat- caya teocal ítec amo o anqui zoque in an mo mahuan nopan : nonqua yé in in amo cahui yhuan i huelitiliz in tlayo huilotl. 54 O qui quitz quíqué, oqui huicaqué i chan in intlátócá in Teopixqué : yhuan in Pedro huécahuic oqui tepotztocatiaya.",
+      "text_length": 337,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-176813",
+      "raw_offset": 176813,
+      "number_candidate": 55,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "55 Auh oqui xotlaltíqué tletl itlácoyan in calquiahuatl yhuan oqui y ehu aloqué in in tle xochtli, in Pedro ocatca in tlan yéhuantin.",
+      "text_length": 156,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-176969",
+      "raw_offset": 176969,
+      "number_candidate": 56,
+      "first_word": "In",
+      "preceding_heading": "XXII",
+      "text_preview": "56 In aquin zan quenami oquittac ce te zoapil yhuatica i nahuac in tletl, in ye oquix- mat : oquító : in in no ocatcaya i nahuac.",
+      "text_length": 157,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-177126",
+      "raw_offset": 177126,
+      "number_candidate": 51,
+      "first_word": "Auh",
+      "preceding_heading": "XXII",
+      "text_preview": "51 Auh in yehuatl oqui tlati, quítoa, Zoatl, amo nic ixmati aquin onon.",
+      "text_length": 86,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-177212",
+      "raw_offset": 177212,
+      "number_candidate": 58,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "58 Yhuan zauctepan occe tlacatl quitztia oqui ilhui : yhuan téhuatl no ti im icní. Auh in Pedro oquító : tlacatl é, amo ni im icní.",
+      "text_length": 158,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-177370",
+      "raw_offset": 177370,
+      "number_candidate": 59,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "59 Yhuan oc achi zauctepan quenami ce ora ipan occe tlacatl orno chicahuaya quíto- tiá : neltiliztli no in inahuac ocatcaya : ipam- pa no yuqui Galileo.",
+      "text_length": 181,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-177551",
+      "raw_offset": 177551,
+      "number_candidate": 60,
+      "first_word": "In",
+      "preceding_heading": "XXII",
+      "text_preview": "60 In Pedro oquító, tlacatl, amo nic mati m 3 126 SAN LUCAS, XXII. tlen tic itoa. Yhuan zan niman ayamo tlamí tlátoa o tzátzic in quanacatl.",
+      "text_length": 181,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-177732",
+      "raw_offset": 177732,
+      "number_candidate": 61,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "61 Yhuan orno cuep in Tlátoani oqui ittac in Pedro. Yhuan oqui il namic in Pedro in itlátoltzin in tlátoani quenami oqui molhuilí- ca : ca ayamo tzátzi in cuanacatl ye yexpa otic íto amo ti nech ixmati.",
+      "text_length": 242,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-177974",
+      "raw_offset": 177974,
+      "number_candidate": 62,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "62 Yhuan in Pedro oquiz quiahuac cenca otlaocol chocac.",
+      "text_length": 66,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-178040",
+      "raw_offset": 178040,
+      "number_candidate": 63,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "63 Yhuan in tlaca oqui piayá in Jesús oqui ilihuiz notzayá yhuan oqui huihuitequia. 64 O qui tlapachoayá in ixtelolohuan yhuan oqui ixhuitequia : yhuan oqui tlátlani- ayá, qui ilhuiá ¿ xic achtopa íto aquin omitz ix tlatzini ?",
+      "text_length": 268,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-178308",
+      "raw_offset": 178308,
+      "number_candidate": 65,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "65 Yhuan occequi miec teomahuiz polo- liztli oquítoayá ihuicopa in yéhuatzin.",
+      "text_length": 90,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-178398",
+      "raw_offset": 178398,
+      "number_candidate": 66,
+      "first_word": "Icuac",
+      "preceding_heading": "XXII",
+      "text_preview": "66 Icuac ye otlanez orno cetilíqué in atlte- pe-huehuitqué, in teopixca tlátóque yhuan in tlatecpan tlamatini yhuan oqui huí caqué in necetiliz cal ítec",
+      "text_length": 178,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-178576",
+      "raw_offset": 178576,
+      "number_candidate": 67,
+      "first_word": "Qui",
+      "preceding_heading": "XXII",
+      "text_preview": "67 Qui ilhuiá : ¿ in tía téhuatl ti Christo xi tech ilhui ? In yéhuatzin oquim ilhui : in tía na mech ilhuiz, amo an nech neltocazqué.",
+      "text_length": 162,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-178738",
+      "raw_offset": 178738,
+      "number_candidate": 68,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXII",
+      "text_preview": "68 Yhuan in tía no na mech tlátlaniz amo an nech nanquilizqué, ni on an nech cahuaz- qué.",
+      "text_length": 109,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-178847",
+      "raw_offset": 178847,
+      "number_candidate": 69,
+      "first_word": "Nonqua",
+      "preceding_heading": "XXII",
+      "text_preview": "69 Nonqua oc ic axcan in ipiltzin intlacatl yehuatiez i ma yec campa in itlápaltiliz ín Dios.",
+      "text_length": 112,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-178959",
+      "raw_offset": 178959,
+      "number_candidate": 70,
+      "first_word": "Yhcuac",
+      "preceding_heading": "XXII",
+      "text_preview": "70 Yhcuac on mochtin oquítóqué : in tía SAN LUCAS, XXIII. 127 yúcon, in téhuatl ti ipiltzin in Dios. Yn yé- huatzin oquító an méhuan an qui itoá, ca yúcon.",
+      "text_length": 197,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-179156",
+      "raw_offset": 179156,
+      "number_candidate": 71,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "71 Auh in yéhuantin oqui ítóqué : ¿Tlen oc totech monequi oc aclii tlaneltililiztli ? to nómá otic cacque ica matica oquíto. IC CEMPOALI YHUAN YEY TENOSTOTZAL QUAITL. YHUAN mochtin mieque oméqué oquihui caqué i chan in Pilato.",
+      "text_length": 280,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-179436",
+      "raw_offset": 179436,
+      "number_candidate": 2,
+      "first_word": "Opéqué",
+      "preceding_heading": "XXIII",
+      "text_preview": "2 Opéqué qui teilhuia, quítoá : in in tla- catl otic áziqué quin yolcueptinemi in to icni- huan, yhuan qui te cahual tia temacoz in tía- calaquili ynahuac in Cesar yhuan quítoa ca yehuatl Cristo tlátoni huey yetoc.",
+      "text_length": 253,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-179689",
+      "raw_offset": 179689,
+      "number_candidate": 3,
+      "first_word": "In",
+      "preceding_heading": "XXIII",
+      "text_preview": "3 In Pilato oqui tlátlani in Jesús qui ilhuia : ¿Téhuatl ti in tlátóca in Judióme? Yhuan yéhuatzin oqui nanquili qui ilhuia : Téhuatl tic ítoa.",
+      "text_length": 170,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-179859",
+      "raw_offset": 179859,
+      "number_candidate": 4,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "4 Auh in Pilato oquin ilhui in teopixca tlátóqué yhuan in tlaca olocholi amo tlen tlátlacoli nic azi itech in in tlacatl.",
+      "text_length": 145,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-180004",
+      "raw_offset": 180004,
+      "number_candidate": 5,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "5 Auh in yéhuantin omochicahuaya, oquí- toayá qui ácomana in atltepetl, temachtítine mi mochi tlalli Judea ohual peútia tlalli Ga- lilea oc ic nican o ázico.",
+      "text_length": 184,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-180188",
+      "raw_offset": 180188,
+      "number_candidate": 6,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "6 Auh in Pilato in oquicac quitoa Galilea o tlátlan cuix tlacatl Galilea o catcaya in Jesús.",
+      "text_length": 111,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-180299",
+      "raw_offset": 180299,
+      "number_candidate": 7,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "7 Yhuan zan quenami oqui ázicamat ca i ^ 128 SAN LUCAS, XXIII. huelitiliz tlalpan in Erodes ichan ocatcaya in Jesús oqui titlan ixpan in Erodes in no yuqui ocatca in onqué tonal tin Jerusalem.",
+      "text_length": 237,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-180536",
+      "raw_offset": 180536,
+      "number_candidate": 8,
+      "first_word": "In",
+      "preceding_heading": "XXIII",
+      "text_preview": "8 In Erodes in ye oquittac in Jesús opac zan cemi miec, ipampaye tonaltin oquielchu- aya qui ittaz, ipampa oqui cae ca huel miec tlamahuizoltin oqui chihuaya yhuan oqui ne- quia qui itaz qui chihuaz in teotl ixpan. 9 O qui tlátlani cuel in Jesús miec tlaman- tli, auh in yéhuatzin amo ce tlátoli",
+      "text_length": 372,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-180908",
+      "raw_offset": 180908,
+      "number_candidate": 10,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "10 Auh in teopixea tlátóqué yhuan in Escrivatin amo o mo nactiaya in in neteil- huitz ilhuicopa in yéhuatzin.",
+      "text_length": 130,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-181038",
+      "raw_offset": 181038,
+      "number_candidate": 11,
+      "first_word": "In",
+      "preceding_heading": "XXIII",
+      "text_preview": "11 In Erodes yhuan in yaú quizcahuan amo tlen ipan oquipoüque in Jesús: yhuan oqui tlatlanahuili, iztac tlaquemitl oqui quen- ti yhuan oqui titlan ixpan Pilato.",
+      "text_length": 188,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-181226",
+      "raw_offset": 181226,
+      "number_candidate": 12,
+      "first_word": "Ypan",
+      "preceding_heading": "XXIII",
+      "text_preview": "12 Ypan in on tonali orno chiqué amigotin in Erodes yhuan in Pilato : ipampa achto orno nehuan cocoliayá.",
+      "text_length": 126,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-181352",
+      "raw_offset": 181352,
+      "number_candidate": 13,
+      "first_word": "In",
+      "preceding_heading": "XXIII",
+      "text_preview": "13 In Pilato ícuac ye orno nechicóqué in teopixcatlátoqué, in tequipixqué yhuan in atltepetl,",
+      "text_length": 109,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-181461",
+      "raw_offset": 181461,
+      "number_candidate": 14,
+      "first_word": "Oquim",
+      "preceding_heading": "XXIII",
+      "text_preview": "14 Oquim ilhui, o an nech ixpantíqué in intlacatl quenami atltepe ixcuepani, yhuan xic ittacan nican nictlatlanítica amixpan ac tlátla coli onic ázic itech in in tlacatl itechpa in tlen zá ic an quiteilhuia.",
+      "text_length": 243,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-181704",
+      "raw_offset": 181704,
+      "number_candidate": 15,
+      "first_word": "Nononqua",
+      "preceding_heading": "XXIII",
+      "text_preview": "15 Nononqua nioninHerodes: ica on ona mech titlan ixpan yhuan no yuqui xic ittacan SAN LUCAS, XXIII. 129 amo tlen tlatlacoli oqui áxili, qui ítlani mi- quiliztli.",
+      "text_length": 201,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-181905",
+      "raw_offset": 181905,
+      "number_candidate": 16,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "16 Yhuan ica on in tía ye o nic tlatzacu- iltí nic cácahuaz.",
+      "text_length": 75,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-181980",
+      "raw_offset": 181980,
+      "number_candidate": 17,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "17 Yhuan intech opohuia quin cácahuiliz- qué ce tlacatl ipan in ilhuitl. 1 8 Mochi atltepetl otzátzia zan ce tlátolti- ca oquítoaya : xic micti in Jesús yhuan xi tech cácahuili in Barrabás,",
+      "text_length": 223,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-182203",
+      "raw_offset": 182203,
+      "number_candidate": 19,
+      "first_word": "Inin",
+      "preceding_heading": "XXIII",
+      "text_preview": "19 Inin o tzacticatca ipampa neácoquiliz- tli oquichi itech ciudad yhuan ce tlaca mic- tiliztli.",
+      "text_length": 113,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-182316",
+      "raw_offset": 182316,
+      "number_candidate": 20,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "20 Auh in Pilato occeppa oquin ilhui qui nequi qui cácahuaz in Jesús.",
+      "text_length": 84,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-182400",
+      "raw_offset": 182400,
+      "number_candidate": 21,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "21 Yhuan in yéhuan oc ceppa otzátzia, qui ítoa xic pilo cruz itech, xic pilo cruz itech.",
+      "text_length": 107,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-182507",
+      "raw_offset": 182507,
+      "number_candidate": 22,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "22 Auh in yéhuatl ic yexpa o quim ilhui, l tlen tlatlacoli oqui chí inin tlacatl ? amo nic azi itech yéhuatl itlan tlamantli ica huelitiz mictiloz.",
+      "text_length": 176,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-182683",
+      "raw_offset": 182683,
+      "number_candidate": 23,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "23 Auh in yéhuan tzatziliz tlátoltica otla- tiliniaya in ic quánepanol itech piloloz : yhuan cenca oqui ácoquiá in tozqui.",
+      "text_length": 143,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-182826",
+      "raw_offset": 182826,
+      "number_candidate": 24,
+      "first_word": "In",
+      "preceding_heading": "XXIII",
+      "text_preview": "24 In Pilato oqui yéyeco ma chihualo in intlaítlaniliz.",
+      "text_length": 66,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-182892",
+      "raw_offset": 182892,
+      "number_candidate": 25,
+      "first_word": "Oquin",
+      "preceding_heading": "XXIII",
+      "text_preview": "25 Oquin cácahuili in tlacatl, in ipampa miquiliztl yhuan atltepe neácoquiliz ó tlalilo- ca te ilpiloyan, in oqui ítlaniá ;\" auh in Jesús oqui tlali in matlan.",
+      "text_length": 188,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-183080",
+      "raw_offset": 183080,
+      "number_candidate": 26,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "26 Yhuan ícuac ye quihuicá oqui quitzquí- qué ce tlacatl itoca Simón Cyrenécatl ye hual 130 SAN LUCAS, XXIII. mo cueptiá amilpan : yhuan i tepotzco in Jesús oqui tlalíqué qui memez no yuqui in quánepali Cruz.",
+      "text_length": 253,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-183333",
+      "raw_offset": 183333,
+      "number_candidate": 27,
+      "first_word": "Oqui",
+      "preceding_heading": "XXIII",
+      "text_preview": "27 Oqui tepotztocayá in Jesús miec tlatla- cayotl, yhuan zizihuá, in aquiqué orno tlao- colnotzayá yhuan ochocayá.",
+      "text_length": 133,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-183466",
+      "raw_offset": 183466,
+      "number_candidate": 28,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "28 Auh in Jesús orno cuep inhulc yhuan 6 quim ilhui, zoamé ichpoch huan in Jerusalem, amo xi nech choquilican tel xi chocacan amo panpatica yhuan ipampa in an mo pilhuan.",
+      "text_length": 203,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-183669",
+      "raw_offset": 183669,
+      "number_candidate": 29,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXIII",
+      "text_preview": "29 Ipampa hualyaz tonali in ícuac qui- tozqué : quemach huel yehuantin in tet- zaccamé yhuan in zizihuá amo oquipixqué inpilhuan yhuan in chichihualtin amo o tlachichitiqué.",
+      "text_length": 202,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-183871",
+      "raw_offset": 183871,
+      "number_candidate": 30,
+      "first_word": "ícuac",
+      "preceding_heading": "XXIII",
+      "text_preview": "30 ícuac on pehuazqui quim ilhuizqué in tepemí xi huetzican to pan, yhuan in inquech- huan quim ilhuizqué xitech tlapachocan.",
+      "text_length": 147,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-184018",
+      "raw_offset": 184018,
+      "number_candidate": 31,
+      "first_word": "Ipampa",
+      "preceding_heading": "XXIII",
+      "text_preview": "31 Ipampa in tía in in mochihua ica in quáxoxoctli ¿ tlen oc achi mochihuaz ica in- huacqui quahuitl?",
+      "text_length": 122,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-184140",
+      "raw_offset": 184140,
+      "number_candidate": 32,
+      "first_word": "No",
+      "preceding_heading": "XXIII",
+      "text_preview": "32 No ihuan o huicoayá oc orne, ocatcaya ac cual tía chihuaní in ic inahuac o mictiloz- quiá.",
+      "text_length": 113,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-184253",
+      "raw_offset": 184253,
+      "number_candidate": 33,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "33 Yhuan ícuac yé o áziqué in yeyantli itoca quaxicala nozo quaxical tepec ompa oqui cuánepanol tzecóca pilóqué in Jesús yhuan orne íchtequé ce imayec campa, yhuan in occe ima opochpan.",
+      "text_length": 218,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-184471",
+      "raw_offset": 184471,
+      "number_candidate": 34,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "34 Auh in Jesús oquítoaya : notátzin é, xi quin tlapópolhui: ipampa amo quimatí in tlen SAN LUCAS, XXIII. 131 qui chihuá. Yhuan quimococotonítihué in itlaquen ipan orno papatíhuiqué.",
+      "text_length": 226,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-184697",
+      "raw_offset": 184697,
+      "number_candidate": 35,
+      "first_word": "In",
+      "preceding_heading": "XXIII",
+      "text_preview": "35 In atltepetl otlachixticatea yhuan in tlá- toqué in cepan o quihuetzquUiayá yhuan quitlatlanahuilia o quítoaya occequin oquin ma quixtiaya axcan ma mo nómamaquixti in tía ye in Cristo i tía pépenal in Dios.",
+      "text_length": 245,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-184942",
+      "raw_offset": 184942,
+      "number_candidate": 36,
+      "first_word": "No",
+      "preceding_heading": "XXIII",
+      "text_preview": "36 No yuqui oqui tlatlanahuiliayá in yaú- quizqué o áziá inahuac yhuan oquimacayá chichicatl",
+      "text_length": 108,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-185050",
+      "raw_offset": 185050,
+      "number_candidate": 37,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "37 Yhuan oqui ilhuiayá : in tía téhuatl ti in tlátóca in Judióme xi mo maquixti té monóma.",
+      "text_length": 110,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-185160",
+      "raw_offset": 185160,
+      "number_candidate": 38,
+      "first_word": "No",
+      "preceding_heading": "XXIII",
+      "text_preview": "38 No ihuan ocatcaya ipan quánepanoli cruz tlácuili Griego, Latin, yhuan Ebreo tlá- toltica oquítoaya JESÚS NAZARENO IN TLÁTÓCA IN JUDIÓME.",
+      "text_length": 163,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-185323",
+      "raw_offset": 185323,
+      "number_candidate": 39,
+      "first_word": "Cemé",
+      "preceding_heading": "XXIII",
+      "text_preview": "39 Cemé in onqué ichtequé quánepanol titech o pilcayá, o ilihuiz tlátoaya inahuac o quilhuiaya in tía téhuatl ti Christo xi mo lio- rna ma quixti yhuan no yuqui xi tech ma- quixti in tehuantin.",
+      "text_length": 228,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-185551",
+      "raw_offset": 185551,
+      "number_candidate": 40,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "40 Auh in occé oquitlaquá nanqui li in icni, quilhuitia : yhuan noyúqui in té amo tic maca itta in Dios, ícuac ti cá ipan nénéqui tetlatza- cuiltiliztl.",
+      "text_length": 182,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-185733",
+      "raw_offset": 185733,
+      "number_candidate": 41,
+      "first_word": "In",
+      "preceding_heading": "XXIII",
+      "text_preview": "41 In téhuan neltiliztli tic ixtlahuá in tlen otic chiqué quenami itechpohui in to tlá- tlacol : auh in in amo tlen acqualli oqui chí.",
+      "text_length": 162,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-185895",
+      "raw_offset": 185895,
+      "number_candidate": 42,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "42 Yhuan oqui molhuiliaya in Jesús : Tlá- toani e, xi nech ilnamiqui ícuac ti áziz mo tlatoca chan. 132 SAN LUCAS, XXIII.",
+      "text_length": 155,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-186050",
+      "raw_offset": 186050,
+      "number_candidate": 43,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "43 Auh in Jesús oquilhui in ichtequi : me- lácayopan ni mitz ilhuia ax can ti ez no nahuac xochi tlalpan itec.",
+      "text_length": 133,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-186183",
+      "raw_offset": 186183,
+      "number_candidate": 44,
+      "first_word": "Auh",
+      "preceding_heading": "XXIII",
+      "text_preview": "44 Auh in ye con azi tlaco tonali, orno zo tlayohuilotl ipan mochi in cemanahuactli oc ic oázic nona. .",
+      "text_length": 125,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-186308",
+      "raw_offset": 186308,
+      "number_candidate": 45,
+      "first_word": "Ocualoc",
+      "preceding_heading": "XXIII",
+      "text_preview": "45 Ocualoc in tonali : yhuan in tilmatl ica oixtzac toya in teocali o tlacotzayan. ^",
+      "text_length": 107,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-186415",
+      "raw_offset": 186415,
+      "number_candidate": 46,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "46 Yhuan in Jesús orno chicahuaca tzatziti qui mítalhuitia: No Tátzin e, mo mactzinco nic tlalia in no anima yhuan quitotia in m tlátoli omic. ,",
+      "text_length": 172,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-186587",
+      "raw_offset": 186587,
+      "number_candidate": 47,
+      "first_word": "Tel",
+      "preceding_heading": "XXIII",
+      "text_preview": "47 Tel in yaú quizca tzontecomatl tocayo- tilo centurión ícuac oquittac in tlen omochica oqui yec tené in Dios quítótia m m tlacatl neltilizpan Santo o catcayá. ^ '",
+      "text_length": 202,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-186789",
+      "raw_offset": 186789,
+      "number_candidate": 48,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "48 Yhuan mochi tlatlacamé in omazique itech in in tlamahuizoli, yhuan oquitayá in tlen orno chihuaya orno cuepaya ciudad qui- huitectihué in in melchi quíhuan.",
+      "text_length": 186,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-186975",
+      "raw_offset": 186975,
+      "number_candidate": 49,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "49 Yhuan mochtin in oqum íxmatia in Jesús : yhuan in zozoá Galilea o quizque oqui tocayan no yuqui, huécahuic ocatcayá quitzti catcaya mochi in. ■",
+      "text_length": 174,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-187149",
+      "raw_offset": 187149,
+      "number_candidate": 50,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIII",
+      "text_preview": "50 Yhuan nican xic ítta ce tlacatl itoca Joseph in o catcaya teachcá in tocayotilo cenador, . ,",
+      "text_length": 121,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-187270",
+      "raw_offset": 187270,
+      "number_candidate": 51,
+      "first_word": "Cuali",
+      "preceding_heading": "XXIII",
+      "text_preview": "51 Cuali tlacatl yhuan m intlacati amo tlen orno calaquí itech in imilihuiz tlachihual in Judióme, ichan abarimatea ciudad Judea in oqui chiaya no yú in itlátocayo m Dios. SAN LUCAS, XXIV. 133",
+      "text_length": 234,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-187504",
+      "raw_offset": 187504,
+      "number_candidate": 52,
+      "first_word": "In",
+      "preceding_heading": "XXIV",
+      "text_preview": "52 In in o ázic ixpan in Pilato yhuan oqui ítlan in itlacayotzin in Jesús :",
+      "text_length": 93,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-187597",
+      "raw_offset": 187597,
+      "number_candidate": 53,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "53 Yhuan in ye oquitemohui cruz itech oqui tetzilo ica ce sabana yhuan oquitlali ítec ce micque tecochtli itech tetl tlacuicuitl in campa ayamo occe tlacayotl o tlaliloca.",
+      "text_length": 201,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-187798",
+      "raw_offset": 187798,
+      "number_candidate": 54,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "54 Yhuan in on tonali ocatcaya tlatlaliloni in tlen omonequia tonali sábado.",
+      "text_length": 90,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-187888",
+      "raw_offset": 187888,
+      "number_candidate": 55,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "55 Yhuan no yuqui ohualyáque in zizihuá o quihual tocaqué in Jesús neppa o quizque Galilea oquittaqué in miqué tecochtli yhuan quenami o tlaliloc in itlacayotzin in Jesús.",
+      "text_length": 201,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-188089",
+      "raw_offset": 188089,
+      "number_candidate": 56,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "56 Yhuan orno cuep qué oqui tlalíque in áhuiaca pátli, yhuan chiahuaca ózaloni yhuan orno cehuíqué in sábado quenami tlanahuatili ocatcaya. IC CEMPOALI YHUAN NAHUI TENONOTZAL QUAITL. YHUAN ipan in ce tonali in semana, huel oc inman ohual yaque micque te- cochco, qui hual huicatihué in á",
+      "text_length": 382,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-188471",
+      "raw_offset": 188471,
+      "number_candidate": 2,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "2 Auh oqui ázico in tehuepal tlatzacuiloní ye cueptoc yhuan tlapótoc in mique te- cochtli.",
+      "text_length": 107,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-188578",
+      "raw_offset": 188578,
+      "number_candidate": 3,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "3 Yhuan in yé o calacqué amo oqui áziqué in itlacayotzin in Jesús.",
+      "text_length": 81,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-188659",
+      "raw_offset": 188659,
+      "number_candidate": 4,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "4 Yhuan omochí icua in zizihuá otlaocoxti- catea ica in, nican xic itta ohualmo quetzque N 134 SAN LUCAS, XXIV. orne tlatlacame in nahuac pepetlaca tlaquenti- cate.",
+      "text_length": 204,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-188863",
+      "raw_offset": 188863,
+      "number_candidate": 5,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "5 Auh quenami o mahuiá yhuan oqui tla- líqué in in tlachializ tlalpan oquim il hinqué: ¿ tle ipampa an qui temo í intlan in micquemé in aquin yoltica ?",
+      "text_length": 183,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-189046",
+      "raw_offset": 189046,
+      "number_candidate": 6,
+      "first_word": "Amo",
+      "preceding_heading": "XXIV",
+      "text_preview": "6 Amo catqui nican, tel ye omozcali : xic ilnamiquican quenami ó an mech ilhul icuac oc ocatca Galilea,",
+      "text_length": 123,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-189169",
+      "raw_offset": 189169,
+      "number_candidate": 7,
+      "first_word": "Oqui",
+      "preceding_heading": "XXIV",
+      "text_preview": "7 Oqui ítoaya monequi in piltzin in tlacatl temactiloz in nahuac in tlacá tlátlacoaní, yhuan cruz itech tzecahuiloz yhuan yey ithu- itica mozcaliz.",
+      "text_length": 172,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-189341",
+      "raw_offset": 189341,
+      "number_candidate": 8,
+      "first_word": "Oqui",
+      "preceding_heading": "XXIV",
+      "text_preview": "8 Oqui ilnamiqué in itlátoltzin.",
+      "text_length": 39,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-189380",
+      "raw_offset": 189380,
+      "number_candidate": 9,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "9 Yhuan oquizque mioque tecoch huic oquin machixtilíqué in matlactlance yhuan mo chi occequin in in.",
+      "text_length": 118,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-189498",
+      "raw_offset": 189498,
+      "number_candidate": 10,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "10 Auh in zizihuá oquin pohuiliqué in Apostóles in in tlamámé ocatca Maria Magda- lena, in Juana, yhuan in Maria in an in Santiago, yhuan occequi in ocatca in nahuac.",
+      "text_length": 197,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-189695",
+      "raw_offset": 189695,
+      "number_candidate": 11,
+      "first_word": "In",
+      "preceding_heading": "XXIV",
+      "text_preview": "11 In yéhuantin oquimatiá quenami tlá- matiliz tzontecon itech otlacatia in in tlátoltin : yhuan ac oqui neltocaqué.",
+      "text_length": 135,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-189830",
+      "raw_offset": 189830,
+      "number_candidate": 12,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "12 Auh in Pedro ométiá omotlalótehuac micque tecochco : yhuan otemotehuac o quit- tac zan yé in tilmátin ompa caté, yhuan o mo cuep ítec mizahuica tlanemilítia itech in tlen omochíca.",
+      "text_length": 216,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-190046",
+      "raw_offset": 190046,
+      "number_candidate": 13,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "13 Yhuan omentin in yéhuantin in on to- nali oyaya ce atltepetontli itoca Emaus in SAN LUCAS, XXIV. 135 ocatcaya hueca in Jerusalen yey poali estadi- otin.",
+      "text_length": 191,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-190237",
+      "raw_offset": 190237,
+      "number_candidate": 14,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "14 Yhuan yéhuantin orno nehuan notzayá itechpa in quexquicho mo chica.",
+      "text_length": 83,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-190320",
+      "raw_offset": 190320,
+      "number_candidate": 15,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "15 Yhuan omoehí, icuac orno no notztiaya : oázic in nahuac i nómática in Jesús yhuan in nahuac ó ótocaya :",
+      "text_length": 127,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-190447",
+      "raw_offset": 190447,
+      "number_candidate": 16,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "16 Auh in imixtelolohuan o nactiloayá in ic amoqui ixmatizqué.",
+      "text_length": 74,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-190521",
+      "raw_offset": 190521,
+      "number_candidate": 17,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "17 Yhuan oquim ilhui : ¿tlen tlátoltin in onqué anquimo pohuilitihué itech in an mo ótoquiliz, yhuan tle ipampa an tlaocoyá?",
+      "text_length": 146,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-190667",
+      "raw_offset": 190667,
+      "number_candidate": 18,
+      "first_word": "Cerne",
+      "preceding_heading": "XXIV",
+      "text_preview": "18 Cerne in yéhuantin itoca Cleophasoqui ilhui : zante mo cel amoti chañé Jerusalem yhuan amo tic mati in tlen omochí in inque tonaltin ompa.",
+      "text_length": 167,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-190834",
+      "raw_offset": 190834,
+      "number_candidate": 19,
+      "first_word": "In",
+      "preceding_heading": "XXIV",
+      "text_preview": "19 In yéhuatzin o quilhui ¿tlen orno chí? Yhuan otlananquilíqué : itechpa in Jesús Nazareno : ca ocatca Propheta huelitilice ica itlachihual yhuan ica tlátol ixpan in Dios, yhuan mochi atltepetl :",
+      "text_length": 229,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-191063",
+      "raw_offset": 191063,
+      "number_candidate": 20,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "20 Yhuan quemi inTeopixcatlátóqué yhuan in to tlátócahuan oquitemactiqué mique tlat- zotequiliz itech, yhuan cruz itech oqui pilóqué :",
+      "text_length": 152,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-191215",
+      "raw_offset": 191215,
+      "number_candidate": 21,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "21 Auh in téhuantin otic temachiayá ca yéhuatl oqui maquixtizquia in Israel : yhuan axcan ipan mochi in yé yey tonali orno chí mochi in.",
+      "text_length": 162,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-191377",
+      "raw_offset": 191377,
+      "number_candidate": 22,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "22 Auh no ihuan cequi zizihuá to icnihuan o tech mótiqué, in ayamo tlanezi o yaque micque tecochco. 136 SAN LUCAS, XXIV.",
+      "text_length": 153,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-191530",
+      "raw_offset": 191530,
+      "number_candidate": 23,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "23 Yhuan amo oqui áziqué in itlacayo, ohual mo cuepqué qui ítotihuitze ca no yuqui yéhuantin oquim mittaqué Angeles in quítoa cayolticá.",
+      "text_length": 160,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-191690",
+      "raw_offset": 191690,
+      "number_candidate": 24,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "24 Yhuan cequi to icnihuan oyáque mique tecochco^ yhuan yúcon oqui áziqué quenami in zizihuá oquítóqué, auh in yéhuatzin amo oqui áziqué.",
+      "text_length": 161,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-191851",
+      "raw_offset": 191851,
+      "number_candidate": 25,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "25 Yhuan in Jesús oquim ilhui ¡ Yyo an yoltompochtin yhuan yetec in an mo yollo ica anqui neltocazqué mochi in quexquich oqui tenquixtiqué in Achtopa ítoanimé !",
+      "text_length": 190,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-192041",
+      "raw_offset": 192041,
+      "number_candidate": 26,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "26 Auh tlen ¿amo omonee tláyahuiz in Christo yhuan yúcon calaquiz i necuiltonoliz yeyampan ?",
+      "text_length": 109,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-192150",
+      "raw_offset": 192150,
+      "number_candidate": 27,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "27 Yhuan opéqui quin totomilia oc itech Moyses yhuan mochi Achtopa ittani in tlá- cuílolhuan in tlen ica yéhuatl oquítóqué. 28 O áziqué itech atltepetontli campa o yaya : yhuan in yéhuatl mo chihua oc achi hueca yanui.",
+      "text_length": 258,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-192408",
+      "raw_offset": 192408,
+      "number_candidate": 29,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "29 Auh chicahualiztica o qui nactíque, qui ilhuiá : xi mo cahua to nahuac ipampa ye teotlaquia, xic ita in tonali ye orno piló, tel ocalac in nahuac.",
+      "text_length": 179,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-192587",
+      "raw_offset": 192587,
+      "number_candidate": 30,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "30 Auh omochí, ícuac ye cate mesápan in mochtin oqui an in tlaxcali, oqui teochí, oqui tlapan yhuan oquin macaya.",
+      "text_length": 135,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-192722",
+      "raw_offset": 192722,
+      "number_candidate": 31,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "31 Yhuan ícuac on orno tlapóqué in im ixteloloan yhuan oquix matqué : yhuan zan niman on ohual poli im ixpan. SAN LUCAS, XXIV. 137",
+      "text_length": 161,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-192883",
+      "raw_offset": 192883,
+      "number_candidate": 32,
+      "first_word": "Opéque",
+      "preceding_heading": "XXIV",
+      "text_preview": "32 Opéque qui mo nehuan ilhuá ¿Amo melahuac in to yollo otlatlaya to ítec, ícuac ótlipan otlátoa yhuan otech totomiliaya in teoamoch tlácuiloli ?",
+      "text_length": 171,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-193054",
+      "raw_offset": 193054,
+      "number_candidate": 33,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "33 Yhuan o- miqué in on cahuitl yhuan orno cuep qué Jerusalem : yhuan oquim ázitó cetiticate in mátlactlamome, yhuan occequin in nahuac ocatcayá.",
+      "text_length": 170,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-193224",
+      "raw_offset": 193224,
+      "number_candidate": 34,
+      "first_word": "Oquítoayá",
+      "preceding_heading": "XXIV",
+      "text_preview": "34 Oquítoayá ca melahuac omozcali in Tlátoani, yhuan o qui mottiti in Simón.",
+      "text_length": 91,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-193315",
+      "raw_offset": 193315,
+      "number_candidate": 35,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "35 Auh in yéhuan oqui poayá in quex- quich ótlipan omochi: yhuan quenin oqui ixmatqué in yéhuatzin ícuac oqui tlapan in tlaxcali.",
+      "text_length": 153,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-193468",
+      "raw_offset": 193468,
+      "number_candidate": 36,
+      "first_word": "Ihcuac",
+      "preceding_heading": "XXIV",
+      "text_preview": "36 Ihcuac otlá tóticatcá in Jesús ohual mo quetz in tlácotian yhuan oquim ilhui, paca- yeliztli ma ye amo tloc : ye Néhuatl amo xi mo mátican.",
+      "text_length": 170,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-193638",
+      "raw_offset": 193638,
+      "number_candidate": 37,
+      "first_word": "Nonqua",
+      "preceding_heading": "XXIV",
+      "text_preview": "37 Nonqua in yéhuan quenami cuetlanqué in yollo yhuan o mahuiliz catea oqui nemiliaya yáyecatl oquittaya.",
+      "text_length": 123,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-193761",
+      "raw_offset": 193761,
+      "number_candidate": 38,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "38 Yhuan oqui milhui ¿ tlen ica an yol- cuetlani, yhuan ixquich tlanemililiztli eco amo yollo ítec ?",
+      "text_length": 120,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-193881",
+      "raw_offset": 193881,
+      "number_candidate": 39,
+      "first_word": "Xic",
+      "preceding_heading": "XXIV",
+      "text_preview": "39 Xic ittacan in no mahuan yhuan in no icxihuan, caye nehuatl : xic matocacan yhuan xic ittacan ca in yáyecatl amo qui pia na- catl nion omití, quenami in néhuatl an quittsl nic pia.",
+      "text_length": 219,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-194100",
+      "raw_offset": 194100,
+      "number_candidate": 40,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "40 Yhuan inyé o quito inin oquim mittiti in imahuan ihuan in icxihuan. 138 SAN LUCAS, XXIV.",
+      "text_length": 119,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-194219",
+      "raw_offset": 194219,
+      "number_candidate": 41,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "41 Auh ica mochi in amo oqui neltocaz- nequiá, yhuan paquiliztica omizahuiticatcá, oquim ilhuí ¿ an qui piá itlá rao cuaz ?",
+      "text_length": 147,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-194366",
+      "raw_offset": 194366,
+      "number_candidate": 42,
+      "first_word": "In",
+      "preceding_heading": "XXIV",
+      "text_preview": "42 In yéhuantin oquim anquilíqué ce tla- cotoctli mich tlatlehuatzali yhuan zaol miahua necutli.",
+      "text_length": 112,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-194478",
+      "raw_offset": 194478,
+      "number_candidate": 43,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "43 Yhuan in ye otlacuá im ixpan o qui an intlen orno cá yhuan oquin macti.",
+      "text_length": 92,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-194570",
+      "raw_offset": 194570,
+      "number_candidate": 44,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "44 Yhuan oquim ilhui : ye in in tlátoli in o na mech ilhuí ícuac o nicatca an mo nahuac, ipampa orno nequia neltiz mochi in quex- quich ícuilitoc ica néhuatl itech in i tiatecpan in Moysés, yhuan in Achtopa ítoanimé yhuan in Psalmos.",
+      "text_length": 278,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-194848",
+      "raw_offset": 194848,
+      "number_candidate": 45,
+      "first_word": "Yhcuac",
+      "preceding_heading": "XXIV",
+      "text_preview": "45 Yhcuac on oquin tlapolhuili in in tla- matilizhuan in ic oqui ázica mat qué in teo amoch tlácuiloltin.",
+      "text_length": 126,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-194974",
+      "raw_offset": 194974,
+      "number_candidate": 46,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "46 Yhuan oquim ilhui ipampa yúcon ícui- litoc yhuan yúcon orno nequia qui panoz in Cristo yhuan yey ithuitica ó mozcalizquia mimiqué intlan.",
+      "text_length": 164,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-195138",
+      "raw_offset": 195138,
+      "number_candidate": 47,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "47 Yhuan temachtiloz y tocayotica in tla- mácehualiztli yhuan ipópolhuiloca intlátlacoli intlan mochi in tlacá, on hual pétiaz ompa Jerusalem.",
+      "text_length": 164,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-195302",
+      "raw_offset": 195302,
+      "number_candidate": 48,
+      "first_word": "Tel",
+      "preceding_heading": "XXIV",
+      "text_preview": "48 Tel an méhuantin ica in an yezqué an tlaneltilíqué.",
+      "text_length": 66,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-195368",
+      "raw_offset": 195368,
+      "number_candidate": 49,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "49 Yhuan néhuatl nic titlaniz in i tlatene- hual in no tátzin an mo pan : auh in améhuan zan ipan in in ciudad xi yecan inoc ic an qui mo quentizqué in tlápaltiliztli acopa hual yaz. SAN LUCAS, XXIV. 139",
+      "text_length": 255,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-195623",
+      "raw_offset": 195623,
+      "number_candidate": 50,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "50 Yhuan oquin quixti quia huac oc ompa Betania o yaque : yhuan oqui ácoc in imahuan yhuan oquin teochi.",
+      "text_length": 126,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-195749",
+      "raw_offset": 195749,
+      "number_candidate": 51,
+      "first_word": "Auh",
+      "preceding_heading": "XXIV",
+      "text_preview": "51 Auh omochi, icuac ó quin te ochí ti catcaya in yéhuantin oquin cá yhuan ohuico- aya ilhuicac.",
+      "text_length": 116,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-195865",
+      "raw_offset": 195865,
+      "number_candidate": 52,
+      "first_word": "Yhuan",
+      "preceding_heading": "XXIV",
+      "text_preview": "52 Yhuan in yéhuantin in ye oqui moteo- tíque orno cuepque Jerusalem yca huey pa- quiliztli.",
+      "text_length": 110,
+      "status": "unverified_ocr_segmentation"
+    },
+    {
+      "id": "ocr-195975",
+      "raw_offset": 195975,
+      "number_candidate": 53,
+      "first_word": "Cemícac",
+      "preceding_heading": "XXIV",
+      "text_preview": "53 Cemícac ocatca teocalítec oqui moyec- tene huiliayá, yhuan óquimo hueca panilhuili- ayá in Dios Yúcon melahuan. Londres.: Impresso por S. Bagster, 14, Bartholomew Cióse, S^3 <-■■:. W. ■■■■;._ : . • \"■■ ■ | , g i'l V ■■I ¡HHyHHIK m Wm ; ■ ' SKI tinHSfik J7>^nnffil",
+      "text_length": 375,
+      "status": "unverified_ocr_segmentation"
     }
   ],
+  "verse_candidates_total": 1051,
+  "verse_candidates_truncated": false,
   "review_queue": [
     {
       "kind": "line_hyphen_join",
@@ -16332,5 +18844,6 @@
     }
   ],
   "queue_capped": false,
-  "note": "Numbers and header markers may be page numbers; no chapter/verse alignment has been verified. OCR previews are from a public-domain 1833 printed work."
+  "note": "Numbers and header markers may be page numbers; no chapter/verse alignment has been verified. OCR previews are from a public-domain 1833 printed work.",
+  "hash_convention": "UTF-8 decoded text with universal newlines, including draft header"
 }

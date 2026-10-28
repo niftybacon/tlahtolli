@@ -1,0 +1,45 @@
+name: Scan 1833 Nahuatl Gospel of Luke (public-domain original)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - tools/analyze_luke1833.py
+      - .github/workflows/analyze-luke1833.yml
+permissions:
+  contents: write
+jobs:
+  historical-luke-aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read archival OCR from 1833 Gospel of Luke
+        run: python tools/analyze_luke1833.py --download-archive
+      - name: Validate derived corpus summary (no raw OCR or translations)
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('research/translation_corpus/luke_1833_analysis.json').read_text(encoding='utf-8'))
+          assert r['format']=='tlahtolli-luke1833-aggregate-analysis'
+          assert r['text_redistributed'] is False
+          assert r['training_ready'] is False
+          assert r['parallel_aligned'] is False
+          assert r['stats']['approximate_ocr_letter_runs']>1800
+          assert len(r['source_sha256'])==64
+          assert len(r['frequent_written_forms'])<=25
+          print('Only aggregate data; no 1833 text or modern translations distributed')
+          PY
+      - name: Commit derived research statistics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/translation_corpus/luke_1833_analysis.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record provisional orthography statistics from public-domain 1833 Luke"
+            git push
+          fi

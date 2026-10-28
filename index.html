@@ -207,7 +207,7 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
 .translator-morphemes{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}
 .translator-morpheme{border:1px solid var(--line);background:var(--paper);border-radius:7px;padding:6px 8px;display:flex;flex-direction:column;gap:3px}
 .translator-morpheme small{font-size:.73rem;color:var(--muted)}
-</style>
+.luke-review-card{border-bottom:1px solid var(--line);padding:14px 0}.luke-review-comparison{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:10px 0}.luke-review-comparison code{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--line);padding:9px;border-radius:8px;background:var(--paper)}.luke-review-card .translator-actions .btn{font-size:.8rem;padding:7px 9px}.luke-review-card>a{display:inline-block;font-size:.84rem;margin:2px 0 5px}</style>
 <meta name="description" content="Tlahtōlli Classical Nahuatl dictionary, documented inflections, and text reader">
 </head>
 <body>
@@ -298,6 +298,36 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
    <p id="lukeSummary"></p>
    <h4>Frequent OCR spellings</h4>
    <div id="lukeFrequent"></div>
+   <div class="translator-result" aria-label="Public-domain OCR correction and segmentation">
+    <h4>1833 Luke · Text correction and verse segmentation</h4>
+    <p>Machine-prepared working OCR with conservatively repaired line-breaks, separate unresolved corrections, and candidate verse boundaries. Nothing here is confirmed without checking the original scan.</p>
+    <p><a href="./research/translation_corpus/luke_1833_working_ocr.txt" target="_blank" rel="noopener noreferrer">Read mechanically prepared OCR working text</a> · <a href="https://archive.org/details/elevangeliodeslu00pazy" target="_blank" rel="noopener noreferrer">Compare with original 1833 scan</a></p>
+    <button type="button" class="btn primary" id="lukeReviewLoad">Load correction and verse review queue</button>
+    <p id="lukeReviewStatus" class="readerhint" role="status">Review queue has not been loaded. It is fetched only when requested.</p>
+    <div id="lukeReviewWorkspace" hidden>
+     <p id="lukeReviewCounts" class="readerhint"></p>
+     <h4>Inspect potential verse boundaries</h4>
+     <label for="lukeVersePicker">OCR-derived verse marker (not verified)</label>
+     <select id="lukeVersePicker" style="width:100%;max-width:700px;padding:10px;border-radius:9px;border:1px solid var(--line)"></select>
+     <div id="lukeVersePreview" class="translator-result" aria-live="polite"></div>
+     <h4>Review possible corrections</h4>
+     <label for="lukeReviewType">Candidate type</label>
+     <select id="lukeReviewType" style="width:100%;max-width:500px;padding:10px;border-radius:9px;border:1px solid var(--line)">
+      <option value="all">All candidates</option>
+      <option value="line_hyphen_join">Printed line-break joins</option>
+      <option value="possible_spaced_word">Possible spaced words</option>
+     </select>
+     <div id="lukeReviewItems" aria-live="polite"></div>
+     <div class="translator-actions">
+      <button type="button" class="btn" id="lukeReviewBack">Previous</button>
+      <span id="lukeReviewPage" class="readerhint"></span>
+      <button type="button" class="btn" id="lukeReviewForward">Next</button>
+      <button type="button" class="btn" id="lukeReviewExport">Export my local review decisions</button>
+     </div>
+     <p class="readerhint">Approving a suggestion here saves a personal annotation only. It does not silently rewrite the text, publish an attestation, or train a model.</p>
+    </div>
+   </div>
+
    <p class="readerhint">These are uncorrected OCR spellings, not confirmed grammatical words or validated sentence-level translations. Spelling suggestions never replace the original edition without review. Source: <a target="_blank" rel="noopener noreferrer" href="https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf">1833 public-domain original scan</a>.</p>
   </div>
  </details>
@@ -2429,6 +2459,7 @@ renderSourceAtlas();syncSourceAtlas();render();
 <script defer src="./translator-integrated.js"></script>
 <script defer src="./codex-atlas.js"></script>
 <script defer src="./luke-atlas.js"></script>
+<script defer src="./luke-ocr-review.js"></script>
 <script src="./cloud-config.js"></script>
 <script defer src="./cloud-sync.js"></script>
 <script defer src="./cloud-preferences.js"></script>

@@ -1,0 +1,49 @@
+name: Daily Florentine Codex evidence audit
+on:
+  schedule:
+    - cron: "23 13 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "research/florentine_codex/**"
+      - "research/translation_corpus/**"
+      - "tools/validate_codex_close_reading.py"
+      - "tools/validate_translation_corpus.py"
+      - "tools/test_florentine_analysis.py"
+      - ".github/workflows/codex-evidence-daily.yml"
+permissions:
+  contents: read
+jobs:
+  evidence-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify Codex annotations remain non-certifying
+        run: python tools/validate_codex_close_reading.py
+      - name: Verify all-twelve-book statistics do not contain raw licensed text
+        run: python tools/test_florentine_analysis.py
+      - name: Verify bilingual training-pair permissions and split rules
+        run: python tools/validate_translation_corpus.py
+      - name: Publish evidence status summary
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+          root=Path("research/florentine_codex")
+          reading=json.loads((root/"close_reading.json").read_text(encoding="utf-8"))
+          visual=json.loads((root/"folio_visual_collation.json").read_text(encoding="utf-8"))
+          print("## Tlahtōlli evidence audit")
+          print("A scheduled validation run is **not** independent expert review or manuscript transcription.")
+          print(f"- Preliminary excerpt candidates: {len(reading.get('passages', []))}")
+          print(f"- Bounded visual observations: {sum(len(f.get('regions', [])) for f in visual.get('folios', []))}")
+          print(f"- Certified handwritten lines: {visual.get('certified_lines', 'unknown')}")
+          print(f"- Gold-standard dataset: {visual.get('gold_standard', 'unknown')}")
+          print(f"- Eligible Codex training examples: {sum(1 for p in reading.get('passages', []) if p.get('train_eligible') is True)}")
+          print("- No automatic promotion, historical-text revision, or model fitting occurs.")
+          PY

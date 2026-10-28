@@ -1,10 +1,10 @@
 # Translation Desk v0.2 — evidence-aware research preview (October 28, 2026)
 
-[Open Tlahtōlli's Translation Desk](https://niftybacon.github.io/tlahtolli/translator.html) · [Corpus Stage 1 workspace](research/translation_corpus/README.md)
+[Open Tlahtōlli](https://niftybacon.github.io/tlahtolli/) and select **Tlahtōlli · Translator** in the main navigation · [Corpus Stage 1 workspace](research/translation_corpus/README.md)
 
-The desk now indexes **115 Classical Nahuatl headwords**, their explicitly recorded historical spellings and sourced standalone forms, and **three source-linked historical passage candidates**. It shows bracketed lexical glosses, ambiguity/unknown-word warnings, and researcher notes with source links. These are **not AI-generated complete translations** and the three interpretive examples are **not cleared or approved for machine training**.
+The translator is now a **native tab within Tlahtōlli**, not a separate website. It indexes **115 Classical Nahuatl headwords**, their explicitly recorded historical spellings and sourced standalone forms, and **three source-linked historical passage candidates**. It shows bracketed lexical glosses, ambiguity/unknown-word warnings, and researcher notes with source links. These are **not AI-generated complete translations** and the three interpretive examples are **not cleared or approved for machine training**.
 
-Stage 1 collection gates and testing: `python tools/validate_translation_corpus.py` and `node tools/test_translator.js`. The translator's analysis engine is maintained in [translator-engine.js](translator-engine.js). Existing dictionary, reader, and SRS features remain unchanged.
+Stage 1 collection gates and testing: `python tools/validate_translation_corpus.py` and `node tools/test_translator.js`. The translator's analysis engine is maintained in [translator-engine.js](translator-engine.js), with the embedded tab interface in [translator-integrated.js](translator-integrated.js). The previous standalone `translator.html` link remains available for old bookmarks. Existing dictionary, reader, and SRS features remain unchanged.
 
 ---
 

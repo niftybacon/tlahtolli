@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-luke1833-facsimile-number-checks",
   "schema": 1,
-  "created_utc": "2026-10-28T16:56:06+00:00",
+  "created_utc": "2026-10-28T16:58:29+00:00",
   "source": "https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf",
   "source_pdf_page_count": 152,
   "chapter_1_pdf_pages_checked_1based": [
@@ -36,6 +36,7 @@
   "other_23_chapters_fully_verified": false,
   "patches": [
     {
+      "chapter": 1,
       "verse": 13,
       "before": "1 3  Auh  in  Ángel",
       "after": "13  Auh  in  Ángel",
@@ -44,6 +45,7 @@
       "verification": "original_1833_scanned_image_verified_number_only"
     },
     {
+      "chapter": 1,
       "verse": 31,
       "before": "131  Xic  itanican",
       "after": "31  Xic  itanican",
@@ -52,6 +54,7 @@
       "verification": "original_1833_scanned_image_verified_number_only"
     },
     {
+      "chapter": 1,
       "verse": 38,
       "before": ".38  Auh  in  Maria",
       "after": "38  Auh  in  Maria",
@@ -60,6 +63,7 @@
       "verification": "original_1833_scanned_image_verified_number_only"
     },
     {
+      "chapter": 1,
       "verse": 57,
       "before": "51  Auh  in  Isabel",
       "after": "57  Auh  in  Isabel",
@@ -68,11 +72,21 @@
       "verification": "original_1833_scanned_image_verified_number_only"
     },
     {
+      "chapter": 1,
       "verse": 67,
       "before": "61  Auh  in  Zacharias",
       "after": "67  Auh  in  Zacharias",
       "pdf_page_1based": 16,
       "printed_page": 8,
+      "verification": "original_1833_scanned_image_verified_number_only"
+    },
+    {
+      "chapter": 2,
+      "verse": 28,
+      "before": ".  28  Auh  in  Simeón",
+      "after": "28  Auh  in  Simeón",
+      "pdf_page_1based": 21,
+      "printed_page": 13,
       "verification": "original_1833_scanned_image_verified_number_only"
     }
   ],

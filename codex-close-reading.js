@@ -26,6 +26,7 @@ fetch('./research/florentine_codex/close_reading.json',{cache:'no-store'})
    row.append(elem('p','Editorial normalization: '+p.normalized,'ci-meta'));
    row.append(elem('p','Provisional sense: '+p.provisional_english));
    row.append(elem('p','Review: '+p.review_level.replace(/_/g,' ')+' · facsimile checked: '+(p.facsimile_checked?'yes':'NO')+' · training approved: NO','codex-clr-status'));
+   row.append(elem('p','Visual page comparison: '+(p.facsimile_visual_comparison==='partial_image_inspection_not_line_certified'?'partial; line-level certification NOT completed':'not yet inspected')+'. Editorial readings and grammatical roles still require review.','codex-clr-status'));
    const tokens=elem('div',undefined,'codex-clr-tokens');
    for(const t of p.tokens){
     const card=elem('div',undefined,'codex-clr-token');
@@ -34,6 +35,7 @@ fetch('./research/florentine_codex/close_reading.json',{cache:'no-store'})
     tokens.append(card);
    }
    row.append(tokens,elem('p','Review note: '+p.notes,'ci-meta'));
+   if(p.visual_evidence_ref){row.append(elem('p','Visual collation record: '+p.visual_evidence_ref+' (see linked JSON research record; NOT a certified diplomatic line)','codex-clr-status'));}
    const actions=elem('div',undefined,'codex-clr-actions');
    const folio=href(p.source_url,'View source folio ↗');if(folio)actions.append(folio);
    const fac=href(p.source_facsimile,'View original manuscript scan ↗');if(fac)actions.append(fac);

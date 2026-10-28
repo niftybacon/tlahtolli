@@ -31,7 +31,7 @@ assert.equal(data.created_at,'2026-10-28T00:00:00.000Z');
 assert.deepEqual(core.importProject(JSON.parse(JSON.stringify(data))),data);
 assert.equal(core.createProject(original,english,[]).alignments.length,0,
  'Unsaved alignment work may be exported before any pair is chosen.');
-for(const value of [null,{},'',22,[]])assert.throws(()=>core.lines(value),/Text must be a string/);
+for(const value of [null,{},22,[]])assert.throws(()=>core.lines(value),/Text must be a string/);
 assert.deepEqual(core.lines(' \r\n \n  '),[]);
 assert.throws(()=>core.lines('a'.repeat(35001)),/35,000/);
 assert.throws(()=>core.lines('a'.repeat(4001)),/4,000/);

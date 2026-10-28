@@ -73,6 +73,14 @@ with sync_playwright() as pw:
     page.locator("#translatorPassages details.translator-morph-panel").evaluate_all(
         "(nodes)=>nodes.forEach(node=>node.open=true)")
     sentence=page.locator("#translatorPassages").inner_text()
+    proposals=page.locator("#translatorPassages .translator-agreement-proposals")
+    assert proposals.count()==1
+    assert proposals.locator(".translator-analysis").count()==2
+    assert "subject 1pl" in sentence and "subject 2sg" in sentence
+    assert "possible direct object: y¯ totlal" in sentence
+    assert "Particle: editorial nasal expansion HYPOTHESIS" in sentence
+    assert "NOT a translation" in sentence
+    assert proposals.get_by_role("link",name="Inspect agreement and noun evidence").count()>=4
     assert "Outside supported clause grammar" in sentence
     assert "Partial morphology only" in sentence
     assert "NOT a sentence translation" in sentence
@@ -90,6 +98,19 @@ with sync_playwright() as pw:
     page.locator("#translatorForm button[type=submit]").click()
     changed=page.locator("#translatorAnalyses").inner_text()
     assert "Source-crosschecked token hypothesis" not in changed
+    page.locator("#translatorInput").fill("ticnamaca in cihuātl")
+    page.locator("#translatorForm button[type=submit]").click()
+    page.locator("#translatorPassages details.translator-morph-panel").evaluate_all(
+        "(nodes)=>nodes.forEach(node=>node.open=true)")
+    applied=page.locator("#translatorPassages").inner_text()
+    assert "possible direct object: in cihuātl" in applied
+    assert "unique curated noun headword" in applied
+    assert "subject 1pl" in applied and "subject 2sg" in applied
+    assert "Outside supported clause grammar" in applied
+    page.locator("#translatorInput").fill("ahmo ticnamaca y¯ totlal")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-agreement-proposals").count()==0
+    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
     # Source interpretation must not become a confident contextual sentence.
     assert "No automatically inferred reading here is a verified historical word" in reading
     # Personal parallel reading: NOTHING bundled or automatically aligned.

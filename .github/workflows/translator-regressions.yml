@@ -5,6 +5,8 @@ on:
     paths:
       - 'amoxcalli-archive.js'
       - 'manuscript-reading-desk.js'
+      - 'translator-source-morphology.js'
+      - 'tools/test_source_morphology.js'
       - 'parallel-reading-*.js'
       - 'tools/test_parallel_reading.js'
       - 'index.html'
@@ -22,6 +24,8 @@ on:
     paths:
       - 'amoxcalli-archive.js'
       - 'manuscript-reading-desk.js'
+      - 'translator-source-morphology.js'
+      - 'tools/test_source_morphology.js'
       - 'parallel-reading-*.js'
       - 'tools/test_parallel_reading.js'
       - 'index.html'
@@ -61,6 +65,8 @@ jobs:
         run: node tools/test_translator.js
       - name: Sentence grammar regressions
         run: node tools/test_translator_sentence.js
+      - name: Source-linked morphology bridge syntax and provenance regressions
+        run: node --check translator-source-morphology.js && node tools/test_source_morphology.js
       - name: Archive form evidence and morphology cross-check regressions
         run: node tools/test_archive_lexical.js
       - name: Translation quality readiness and independent-holdout checks

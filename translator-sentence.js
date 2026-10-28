@@ -45,6 +45,93 @@ function create(dictionary,paradigms,morphology){
     source:m.source||'',sources:Array.isArray(m.sources)?m.sources.slice(0,6):[],
     features:m.features||{},parts:m.parts.slice(0,8)})));
  }
+ // A partial construction is distinct from a complete sentence candidate.
+ // It only connects a source-crosschecked verb to ONE fully consumed noun phrase
+ // when the recorded subject/object agreement is explicit. Hypothetical morphological
+ // person, editorial abbreviation and unattested word order remain unresolved.
+ function sourceAgreement(tokens,negative){
+  if(negative||tokens.length<2||tokens.length>12)return [];
+  const canUse=m=>m?.grade==='unreviewed'&&
+   typeof m.kind==='string'&&m.kind.startsWith('Source-crosschecked token hypothesis:')&&
+   typeof m.source==='string'&&/^https?:\/\//.test(m.source)&&
+   Array.isArray(m.sources)&&m.sources.length>0&&
+   m.parts?.length>0&&typeof m.lemma==='string'&&
+   m.parts.every(p=>typeof p?.surface==='string');
+  const linked=(word,m)=>canUse(m)&&norm(m.parts.map(p=>p.surface).join(''))===norm(word);
+  const nounAt=i=>{
+   const sourceNouns=exactMorphology(tokens[i]).filter(m=>linked(tokens[i],m)&&
+    m.features?.category==='noun'&&
+    ['1sg','2sg','3sg','1pl','2pl','3pl'].includes(m.features.possessor));
+   // A single source-backed possessed reading, or one unambiguous headword
+   // in the existing curated lexicon. No guessed free noun from bound stems.
+   if(sourceNouns.length===1)return [{
+    lemma:sourceNouns[0].lemma,written:tokens[i],kind:'source-crosschecked possessed noun',
+    possessor:sourceNouns[0].features.possessor,
+    evidence:[sourceNouns[0].source,...sourceNouns[0].sources]}];
+   if(sourceNouns.length>1)return [];
+   const found=noun(tokens[i]);
+   if(!found||!['noun'].includes(found.pos))return [];
+   return [{lemma:found.word,written:tokens[i],kind:'unique curated noun headword',
+    possessor:null,evidence:[found.source].filter(Boolean)}];
+  };
+  const markerAt=i=>{
+   if(norm(tokens[i])==='in')return {written:tokens[i],status:'exact lexical particle',sources:[]};
+   const abbreviated=exactMorphology(tokens[i]).filter(m=>linked(tokens[i],m)&&
+    m.features?.category==='particle'&&
+    m.features?.expansion==='yn/in proposed, NOT source-spelled');
+   if(abbreviated.length!==1)return null;
+   return {written:tokens[i],status:'editorial nasal expansion HYPOTHESIS (not source-spelled in)',
+    sources:[abbreviated[0].source,...abbreviated[0].sources]};
+  };
+  const matches=[];
+  for(let vi=0;vi<tokens.length;vi++){
+   const verbs=exactMorphology(tokens[vi]).filter(m=>linked(tokens[vi],m)&&
+    m.features?.category==='verb'&&m.features?.object==='3sg'&&
+    ['1sg','2sg','1pl','2pl'].includes(m.features.subject));
+   if(!verbs.length)continue;
+   const leftover=[];
+   for(let i=0;i<tokens.length;i++)if(i!==vi)leftover.push(i);
+   // Precisely one NP: either a source-listed possessed noun by itself,
+   // or an exact 'in'/sourced-abbreviation marker followed by one noun.
+   let np=null,marker=null;
+   if(leftover.length===1){
+    const readings=nounAt(leftover[0]);
+    if(readings.length===1&&readings[0].kind==='source-crosschecked possessed noun')
+     np=readings[0];
+   }else if(leftover.length===2&&leftover[1]===leftover[0]+1){
+    marker=markerAt(leftover[0]);
+    if(marker){
+     const readings=nounAt(leftover[1]);
+     if(readings.length===1)np=readings[0];
+    }
+   }
+   if(!np)continue;
+   for(const verb of verbs){
+    const subject=verb.features.subject;
+    const sources=[...new Set([...verb.sources,verb.source,...np.evidence,
+     ...(marker?.sources||[])].filter(Boolean))];
+    matches.push({
+     grade:'source-backed agreement proposal (unverified; NOT a sentence translation)',
+     verb:{written:tokens[vi],lemma:verb.lemma,subject,object:'3sg',
+      personStatus:verb.features.person_resolution||'Not independently adjudicated'},
+     nounPhrase:{written:(marker?marker.written+' ':'')+np.written,
+      lemma:np.lemma,possessor:np.possessor,kind:np.kind,
+      marker:marker?.written||null,markerStatus:marker?.status||'no particle written'},
+     agreement:{overtVerbObject:'3sg',nominalRole:'possible direct object',
+      constraint:'Non-third-person verb subject; one nominal NP compatible with 3sg object agreement'},
+     coverage:tokens.length,sources:sources.slice(0,16),
+     note:'All source-spelled tokens are consumed, but this is ONLY an argument-linking hypothesis. '+
+      'The 1pl/2sg ti- ambiguity is preserved; possessed to- does NOT independently settle verb subject. '+
+      (marker&&marker.status.includes('HYPOTHESIS')?
+       'The y¯ → yn/in expansion is unverified. ':'')+
+      'No historical sentence attestation, contextual sense, tense certainty or English translation is established.'
+    });
+   }
+  }
+  // Do not prioritize a more plausible interpretation based on the translation
+  // or the historical context: that would introduce answer leakage.
+  return matches.slice(0,8);
+ }
  function exactFiniteReadings(token,morphs){
   const proposals=[];
   for(const m of morphs){
@@ -153,6 +240,7 @@ function create(dictionary,paradigms,morphology){
     candidates.push(...exactFiniteReadings(tokens[0],exactMorphology(tokens[0])));
    }
    return {text,tokens:original,candidates,complete:candidates.length>0,
+    agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,
     reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.'};

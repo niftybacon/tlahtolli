@@ -7,6 +7,20 @@
 - The Translator tab's **Corpus integrity and Florentine Codex review** section loads these fragments, preserves original versus normalized readings separately, records morphological hypotheses and interpretation, and lets a reviewer export local annotations.
 - **No model has been fitted or fine-tuned on the Codex**. No passage is marked train-eligible simply because it appears in the manuscript, on Getty, or in a Zenodo deposit.
 
+## Public-domain facsimiles located (2026-10-28)
+
+Wikimedia Commons hosts scans of **all 12 books** (original 1577 manuscript) from the Library of Congress / former World Digital Library collection, each labeled **Public Domain Mark 1.0** and free of known copyright restrictions in the United States:
+
+- [Volume I — Books 1–5](https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._1.pdf)
+- [Volume II — Books 6–9](https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._II.pdf)
+- [Volume III — Books 10–12](https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf)
+
+This is the preferred evidence source for an **independent transcription**. The manuscript text is public domain; however, Getty's separately produced digital images are marked CC BY-NC-ND 4.0, and University of Utah Press's edited transcription and English rendering remain rights-reserved. Do not conflate their licenses. Commons' status is a source claim, not individualized legal advice.
+
+The Getty Digital Florentine Codex also makes its new **Spanish-to-English translation of the Spanish column for Books 1–11** and **Nahuatl-to-Spanish translation for Book 12** available as **CC BY 4.0**. Attribution is required and these cannot be assumed word-aligned Nahuatl→English equivalents. [Getty permission matrix](https://florentinecodex.getty.edu/about/3_Citations_and_Permissions).
+
+Early bilingual reference with its own public-domain status: [Daniel Brinton, *Rig Veda Americanus* (1890)](https://www.gutenberg.org/ebooks/14993), containing Nahuatl hymns and interpretative English paraphrases. **This derives from Sahagún's earlier hymn manuscripts, not a verified complete Florentine Codex bilingual text;** treat as a separate historical corpus and manually verify correspondences.
+
 ## Source and rights checks
 
 - Historical original: *Florentine Codex*, Ms. Mediceo Palatino 218–220, Biblioteca Medicea Laurenziana, completed 1577. [Getty Digital Florentine Codex](https://florentinecodex.getty.edu/).

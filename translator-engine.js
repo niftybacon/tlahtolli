@@ -31,10 +31,10 @@ function create(dictionary,passages){
  const index=new Map(),english=new Map();
  function push(k,m,map=index){
   k=norm(k);if(!k)return;const a=map.get(k)||[];
-  if(!a.some(x=>x.lemma===m.lemma&&x.form_type===m.form_type&&x.form===m.form)){a.push(m);map.set(k,a);}
+  if(!a.some(x=>lexicalKey(x)===lexicalKey(m)&&x.source===m.source&&x.evidence===m.evidence&&x.context===m.context&&x.form_type===m.form_type&&x.form===m.form)){a.push(m);map.set(k,a);}
  }
  for(const w of list){
-  const base={lemma:w.word,meaning:w.meaning||'',pos:w.pos||'',source:safeURL(w.source),
+  const base={lemma:w.word,meaning:w.meaning||'',senses:splitGloss(w.meaning),pos:w.pos||'',source:safeURL(w.source),
    variety:w.variety,form:w.word,form_type:'headword',evidence:'lexicon',
    context:'An isolated dictionary entry is not a sentence-level translation.'};
   push(w.word,base);
@@ -99,7 +99,7 @@ function create(dictionary,passages){
  }
  function analyze(input,direction='nh-en'){
   const parts=tokenize(String(input||'').slice(0,7000));
-  let matched=0,unknown=0,ambiguous=0,approximate=0,orthographyConflicts=0,truncated=0;
+  let matched=0,unknown=0,ambiguous=0,senseAmbiguities=0,approximate=0,orthographyConflicts=0,truncated=0;
   const annotated=parts.map(part=>{
    if(!isWord(part))return {kind:'separator',value:part};
    const result=lookup(part,direction),hits=result.candidates;
@@ -107,12 +107,14 @@ function create(dictionary,passages){
    matched++;
    const ambiguousSense=distinctLexical(hits).length>1||result.totalCandidates>8;
    if(ambiguousSense)ambiguous++;
+   const senseAmbiguous=direction==='nh-en'&&hits.some(hit=>new Set(hit.senses.map(norm)).size>1);
+   if(senseAmbiguous)senseAmbiguities++;
    if(result.approximate)approximate++;
    if(result.orthographyConflict)orthographyConflicts++;
    if(result.truncated)truncated++;
    return {kind:'word',value:part,status:result.approximate?'approximate':'matched',
     candidates:hits,alternatives:result.alternatives,
-    ambiguous:ambiguousSense,orthographyConflict:result.orthographyConflict,
+    ambiguous:ambiguousSense,senseAmbiguous,orthographyConflict:result.orthographyConflict,
     truncated:result.truncated};
   });
   const gloss=annotated.map(x=>{
@@ -124,12 +126,13 @@ function create(dictionary,passages){
    if(x.orthographyConflict)return '[?'+x.value+': vowel length ambiguous]';
    if(x.status==='approximate')return '[?'+x.value+': spelling uncertain]';
    if(x.ambiguous)return '[?'+x.value+': multiple entries]';
+   if(x.senseAmbiguous)return '[?'+x.value+': multiple dictionary senses]';
    const value=direction==='nh-en'?(splitGloss(first.meaning)[0]||'?'):first.lemma;
    return '['+value+']';
   }).join('');
-  return {parts:annotated,gloss,stats:{matched,unknown,ambiguous,approximate,orthographyConflicts,truncated,total:matched+unknown},
+  return {parts:annotated,gloss,stats:{matched,unknown,ambiguous,senseAmbiguities,approximate,orthographyConflicts,truncated,total:matched+unknown},
    passages:direction==='nh-en'?passageMatches(input):[],
-   disclaimer:'Bracketed meanings are dictionary lookups, not contextual translations. Uncertain spelling and multiple lexical candidates are not auto-resolved.'};
+   disclaimer:'Bracketed meanings are dictionary lookups, not contextual translations. Uncertain spelling, multiple lexical candidates and multiple dictionary senses are not auto-resolved.'};
  }
 
  return {analyze,lookup,passageMatches,stats:{headwords:list.length,wordForms:index.size,passageCandidates:candidates.length}};

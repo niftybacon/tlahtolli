@@ -48,7 +48,7 @@ const exact=mk([
 assert.equal(exact.stats.matched,2);
 assert.equal(exact.stats.unknown,1);
 assert.equal(exact.stats.orthographyConflicts,0);
-assert.equal(exact.gloss,'[water]! [water]? [?zzzz]');
+assert.equal(exact.gloss,'[?atl: multiple dictionary senses]! [?ātl: multiple dictionary senses]? [?zzzz]');
 const punct=mk([{word:'ah',meaning:'yes'}]).analyze('Ah,\nah.');
 assert.equal(punct.gloss,'[yes],\n[yes].');
 const target=mk([
@@ -57,3 +57,36 @@ const target=mk([
 assert.equal(target.stats.approximate,0,'Explicit documented historical spellings remain exact dictionary-form matches');
 assert.equal(target.gloss,'[resides]');
 console.log('PASS: exact historical forms, macron contrast, candidate ambiguity, reverse ambiguity, diacritic abstention, punctuation and unknown-word refusal.');
+// Sense-list controls are synthetic software fixtures, not linguistic attestations.
+const senses=mk([{word:'sample',meaning:'first sense; contextual sense, another sense'}]);
+assert.equal(senses.analyze('sample').parts[0].senseAmbiguous,true);
+assert.equal(senses.analyze('sample').stats.senseAmbiguities,1);
+assert.equal(senses.analyze('sample').gloss,'[?sample: multiple dictionary senses]');
+assert.equal(senses.lookup('sample').candidates[0].senses.join('|'),'first sense|contextual sense|another sense');
+assert.equal(senses.analyze('first sense','en-nh').stats.senseAmbiguities,0);
+assert.equal(mk([{word:'sample',meaning:'single sense'}]).analyze('sample').gloss,'[single sense]');
+assert.equal(mk([{word:'sample',meaning:'same; same'}]).analyze('sample').gloss,'[same]');
+const collisionWords=[
+ {word:'same',original:'alias',meaning:'sense A',source:'https://example.org/a'},
+ {word:'same',original:'alias',meaning:'sense B',source:'https://example.org/b'}
+];
+for(const words of [collisionWords,[...collisionWords].reverse()]){
+ const collision=mk(words);
+ for(const form of ['same','alias']){
+  assert.equal(collision.lookup(form).candidates.length,2);
+  assert.equal(collision.analyze(form).gloss,'[?'+form+': multiple entries]');
+ }
+}
+const duplicate=mk([collisionWords[0],collisionWords[0]]);
+assert.equal(duplicate.lookup('same').candidates.length,1);
+assert.equal(duplicate.analyze('same').gloss,'[sense A]');
+const corroborated=mk([collisionWords[0],{...collisionWords[0],source:'https://example.org/independent'}]);
+assert.equal(corroborated.lookup('same').candidates.length,2,'Keep separate source records visible');
+assert.equal(corroborated.analyze('same').gloss,'[sense A]','Same lexical claim from two sources is not a competing sense');
+const pos=mk([{word:'same',meaning:'one',pos:'noun'},{word:'same',meaning:'one',pos:'verb'}]);
+assert.match(pos.analyze('same').gloss,/multiple entries/);
+const crowded=mk(Array.from({length:10},(_,i)=>({word:'same',meaning:'sense '+i})));
+assert.equal(crowded.lookup('same').totalCandidates,10);
+assert.equal(crowded.lookup('same').truncated,true);
+assert.match(crowded.analyze('same').gloss,/multiple entries/);
+console.log('PASS: unresolved sense lists, input-order independence, same-headword collisions, provenance preservation, duplicate and single-sense controls.');

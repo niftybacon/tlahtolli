@@ -200,6 +200,13 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
 .translator-surface .translator-privacy{color:var(--muted);font-size:.83rem;line-height:1.5}
 @media(max-width:650px){.translator-surface{padding:15px}.translator-surface .translator-actions .btn{flex:1 1 auto}}
 .codex-scroll{overflow-x:auto}.codex-table{width:100%;border-collapse:collapse;min-width:600px}.codex-table th,.codex-table td{padding:9px 8px;text-align:left;border-bottom:1px solid var(--line);font-size:.87rem}.codex-book-button{border:0;background:transparent;color:var(--accent);text-decoration:underline;text-align:left;font:inherit;cursor:pointer;padding:0}.codex-meter{height:9px;background:var(--pale);width:100%;min-width:70px;border-radius:12px;overflow:hidden}.codex-meter-fill{height:100%;background:var(--accent);border-radius:12px}.codex-token{display:inline-block;padding:5px 9px;margin:3px;border:1px solid var(--line);border-radius:14px;font-size:.84rem}
+.translator-morph-panel{padding:10px;margin-top:9px;border-radius:10px;background:var(--pale);border:1px solid var(--line)}
+.translator-morph-panel summary{cursor:pointer;color:var(--accent);font-weight:700}
+.translator-morph-candidate{border-top:1px solid var(--line);padding:10px 0;margin-top:8px}
+.translator-morph-candidate p{margin:4px 0}
+.translator-morphemes{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}
+.translator-morpheme{border:1px solid var(--line);background:var(--paper);border-radius:7px;padding:6px 8px;display:flex;flex-direction:column;gap:3px}
+.translator-morpheme small{font-size:.73rem;color:var(--muted)}
 </style>
 <meta name="description" content="Tlahtōlli Classical Nahuatl dictionary, documented inflections, and text reader">
 </head>
@@ -234,12 +241,18 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
      <option value="nh-en">Classical Nahuatl → English evidence-backed gloss</option>
      <option value="en-nh">English → Classical Nahuatl dictionary lookup</option>
     </select></div>
+    <div><label for="translatorOrthography">Historical orthography profile</label><select id="translatorOrthography">
+     <option value="general">General historical spellings (suggestions only)</option>
+     <option value="codex">Florentine Codex · sixteenth-century transcription</option>
+     <option value="luke1833">Gospel of Luke · 1833 southern Puebla</option>
+    </select></div>
    </div>
    <label for="translatorInput" style="margin-top:14px">Text to investigate</label>
    <textarea id="translatorInput" spellcheck="false" maxlength="7000" placeholder="in xōchitl in cuīcatl" aria-describedby="translatorStatus"></textarea>
    <div class="translator-actions">
     <button class="btn primary" type="submit">Analyze text</button>
-    <button class="btn" type="button" id="translatorExample">Try historical passage</button>
+    <button class="btn" type="button" id="translatorExample">Try Codex passage</button>
+    <button class="btn" type="button" id="translatorLukeExample">Try 1833 Luke title</button>
     <button class="btn" type="button" id="translatorClear">Clear</button>
     <button class="btn" type="button" id="translatorCopy">Copy gloss</button>
     <button class="btn" type="button" id="translatorExport">Export research note</button>
@@ -254,6 +267,7 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
   <div class="translator-result">
    <h4>Word-by-word evidence</h4>
    <div id="translatorAnalyses" aria-live="polite"></div>
+   <p id="translatorMorphStatus" class="readerhint">Preparing existing Tēntli morphology engine…</p>
   </div>
   <p class="translator-privacy">Research only: the analyzer runs in your browser and does not send text to an external AI translator. Historical passage interpretations and dictionary entries may require further scholarly review. Modern Huasteca Nahuatl is not silently mixed into Classical Nahuatl.</p>
  </div>
@@ -2398,6 +2412,7 @@ renderSourceAtlas();syncSourceAtlas();render();
 
 </script>
 <script src="./translator-engine.js"></script>
+<script src="./translator-historical-morphology.js"></script>
 <script defer src="./translator-integrated.js"></script>
 <script defer src="./codex-atlas.js"></script>
 <script src="./cloud-config.js"></script>

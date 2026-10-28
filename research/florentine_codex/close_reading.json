@@ -11,6 +11,8 @@
     "Segmentation is morphological explanation, not proof that isolated morphemes are separated in manuscript writing."
   ],
   "train_eligible": false,
+  "collation_link": "folio_visual_collation.json",
+  "review_notice": "Five preliminary visual observations on two folios. No fully diplomatic line transcription or independently expert-reviewed passage. Full Codex not trained.",
   "passages": [
     {
       "id": "FC11-62r-water-interior",
@@ -18,7 +20,7 @@
       "folio": "62r",
       "locator": "Fish description, Nahuatl column",
       "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
-      "source_reading": "atl yitic nemini",
+      "source_reading": "atl yitic nemjnj",
       "normalized": "ātl yitic nemini",
       "provisional_english": "one living within water / an inhabitant of water",
       "type": "descriptive nominal phrase",
@@ -43,13 +45,14 @@
           "certainty": "lexicon_supported"
         },
         {
-          "surface": "nemini",
+          "surface": "nemjnj",
           "lemma": "nemini",
           "gloss": "one who lives / resident",
           "morph": "Compare nemi and nominal nemini; do not infer a complete inflectional parse from surface form",
           "role": "context-dependent noun 'resident' OR homophonous verbal form; unresolved",
           "dictionary_url": "https://nahuatl.wired-humanities.org/content/nemini",
-          "certainty": "provisional"
+          "certainty": "provisional",
+          "prior_editorial_surface": "nemini"
         }
       ],
       "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
@@ -62,7 +65,9 @@
       "reviewed_by": null,
       "train_eligible": false,
       "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
-      "visual_evidence_ref": "fc11-62r-water"
+      "visual_evidence_ref": "fc11-62r-water",
+      "source_reading_layer": "edited transcription candidate; not diplomatic manuscript certification",
+      "canonical_passage_id": "passage-1"
     },
     {
       "id": "FC11-62r-shield-comparison",
@@ -70,20 +75,21 @@
       "folio": "62r",
       "locator": "Chimalmichin description, Nahuatl column",
       "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
-      "source_reading": "iuhquin chimalli",
-      "normalized": "iuhquin chīmalli",
+      "source_reading": "iuhqujn chimalli",
+      "normalized": "iuhquin chimalli",
       "provisional_english": "like a shield",
       "type": "comparison phrase",
       "notes": "The manuscript image visually suggests a physical line break within chimalli (chimal / li). This is not a morpheme boundary. iuhquin is a comparative particle; no certainty about surrounding clause syntax is claimed.",
       "tokens": [
         {
-          "surface": "iuhquin",
+          "surface": "iuhqujn",
           "lemma": "iuhquin",
           "gloss": "like / as if",
           "morph": "lexicalized comparative particle",
           "role": "comparison",
           "dictionary_url": "https://nahuatl.wired-humanities.org/content/iuhquin",
-          "certainty": "lexicon_supported"
+          "certainty": "lexicon_supported",
+          "prior_editorial_surface": "iuhquin"
         },
         {
           "surface": "chimalli",
@@ -105,118 +111,9 @@
       "reviewed_by": null,
       "train_eligible": false,
       "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
-      "visual_evidence_ref": "fc11-62r-shield"
-    },
-    {
-      "id": "FC11-62r-resident-in-water",
-      "book": 11,
-      "folio": "62r",
-      "locator": "Fish description, Nahuatl column",
-      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
-      "source_reading": "atlan nemini",
-      "normalized": "ātlān nemini",
-      "provisional_english": "an inhabitant of the water",
-      "type": "locative + resident",
-      "notes": "The form atlan is independently documented as a locative relational word in Lockhart's Nahuatl as Written (cited in the Online Nahuatl Dictionary). However, the fragment's exact full-sentence grammatical context still needs paleographic analysis.",
-      "tokens": [
-        {
-          "surface": "atlan",
-          "lemma": "ātlan",
-          "gloss": "in/into/under the water",
-          "morph": "ātl + -tlan, documented as a complex relational/locative word",
-          "role": "locative relational expression",
-          "dictionary_url": "https://nahuatl.wired-humanities.org/content/atlan",
-          "certainty": "lexicon_supported"
-        },
-        {
-          "surface": "nemini",
-          "lemma": "nemini",
-          "gloss": "one who lives somewhere",
-          "morph": "nemini (no forced segmentation)",
-          "role": "resident/agent noun",
-          "dictionary_url": "https://nahuatl.wired-humanities.org/content/nemini",
-          "certainty": "lexicon_supported"
-        }
-      ],
-      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
-      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
-      "facsimile_checked": false,
-      "manuscript_line_number": null,
-      "training_status": "not_approved",
-      "translation_rights": "not_cleared",
-      "review_level": "lexical_crosscheck_only",
-      "reviewed_by": null,
-      "train_eligible": false,
-      "facsimile_visual_comparison": "not_inspected",
-      "visual_evidence_ref": null
-    },
-    {
-      "id": "FC11-62r-coamichi",
-      "book": 11,
-      "folio": "62r",
-      "locator": "Fish entry heading, Nahuatl column",
-      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
-      "source_reading": "Coamjchi",
-      "normalized": "coamichin [lexical hypothesis; vowel length and final -n not manuscript-certified]",
-      "provisional_english": "snake-fish (name for an eel-like fish)",
-      "type": "compound noun (hypothesized)",
-      "notes": "The spelling and final -n must be read against the manuscript; do not generate coāmichin as a verified manuscript form. coātl has multiple senses, with snake intended in this fish term. The compound's first element may be coātl 'snake', but the length of its vowels and the ending cannot be certified from this word's heading alone.",
-      "tokens": [
-        {
-          "surface": "Coamjchi",
-          "lemma": "coāmichin?",
-          "gloss": "snake-fish",
-          "morph": "coā- (snake; uncertain compound allomorph) + mich- (fish; final ending unresolved)",
-          "role": "compound noun candidate",
-          "dictionary_url": "https://nahuatl.wired-humanities.org/node/175895",
-          "certainty": "provisional"
-        }
-      ],
-      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
-      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
-      "facsimile_checked": false,
-      "manuscript_line_number": null,
-      "training_status": "not_approved",
-      "translation_rights": "not_cleared",
-      "review_level": "lexical_crosscheck_only",
-      "reviewed_by": null,
-      "train_eligible": false,
-      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
-      "visual_evidence_ref": "fc11-62r-snakefish"
-    },
-    {
-      "id": "FC11-62r-chimalmichi",
-      "book": 11,
-      "folio": "62r",
-      "locator": "Sea turtle entry heading, Nahuatl column",
-      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
-      "source_reading": "Chimalmjchi",
-      "normalized": "chīmalmichin [hypothesis; ending requires check]",
-      "provisional_english": "shield-fish (a sea turtle)",
-      "type": "compound noun (hypothesized)",
-      "notes": "The heading is a historical animal name, not proof that every instance of -michi means a separate word. Compare with chīmalli 'shield' and michin 'fish'.",
-      "tokens": [
-        {
-          "surface": "Chimalmjchi",
-          "lemma": "chīmalmichin?",
-          "gloss": "shield-fish",
-          "morph": "chīmal- + mich- (compound; exact stem ending unresolved)",
-          "role": "compound animal name",
-          "dictionary_url": "https://nahuatl.wired-humanities.org/content/chimalli",
-          "certainty": "provisional"
-        }
-      ],
-      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
-      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
-      "facsimile_checked": false,
-      "manuscript_line_number": null,
-      "training_status": "not_approved",
-      "translation_rights": "not_cleared",
-      "review_level": "lexical_crosscheck_only",
-      "reviewed_by": null,
-      "train_eligible": false,
-      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
-      "visual_evidence_ref": "fc11-62r-shieldfish"
+      "visual_evidence_ref": "fc11-62r-shield",
+      "source_reading_layer": "edited transcription candidate; not diplomatic manuscript certification",
+      "canonical_passage_id": "passage-2"
     },
     {
       "id": "FC11-209v-mirror",
@@ -225,7 +122,7 @@
       "locator": "Mirror/stone description (precise manuscript line pending)",
       "source_url": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
       "source_reading": "in mochioa tezcatl, in mocuepa ca tetl",
-      "normalized": "in mochīhua tēzcatl, in mocuepa ca tetl",
+      "normalized": "in mochīhua tēzcatl in mocuepa ca tetl",
       "provisional_english": "A passage about a stone used for making a mirror; exact Nahuatl clause relations and the role of ca are unresolved.",
       "type": "clause fragment requiring source-context check",
       "notes": "Folio 209v visibly contains the phrase near the bottom of the Nahuatl column. The existing short excerpt may be read as a description of a mirror-making stone, but grammar and segmentation are not independently verified. The source's Spanish column is not a word-aligned Nahuatl translation.",
@@ -304,9 +201,126 @@
       "reviewed_by": null,
       "train_eligible": false,
       "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
-      "visual_evidence_ref": "fc11-209v-mirror"
+      "visual_evidence_ref": "fc11-209v-mirror",
+      "source_reading_layer": "edited transcription candidate; not diplomatic manuscript certification",
+      "canonical_passage_id": "passage-5"
+    },
+    {
+      "id": "FC11-62r-resident-in-water",
+      "book": 11,
+      "folio": "62r",
+      "locator": "Fish description, Nahuatl column",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "source_reading": "atlan nemini",
+      "normalized": "ātlān nemini",
+      "provisional_english": "an inhabitant of the water",
+      "type": "locative + resident",
+      "notes": "The form atlan is independently documented as a locative relational word in Lockhart's Nahuatl as Written (cited in the Online Nahuatl Dictionary). However, the fragment's exact full-sentence grammatical context still needs paleographic analysis.",
+      "tokens": [
+        {
+          "surface": "atlan",
+          "lemma": "ātlan",
+          "gloss": "in/into/under the water",
+          "morph": "ātl + -tlan, documented as a complex relational/locative word",
+          "role": "locative relational expression",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/atlan",
+          "certainty": "lexicon_supported"
+        },
+        {
+          "surface": "nemini",
+          "lemma": "nemini",
+          "gloss": "one who lives somewhere",
+          "morph": "nemini (no forced segmentation)",
+          "role": "resident/agent noun",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/nemini",
+          "certainty": "lexicon_supported"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false,
+      "facsimile_visual_comparison": "not_inspected",
+      "visual_evidence_ref": null,
+      "source_reading_layer": "edited transcription candidate; not diplomatic manuscript certification",
+      "canonical_passage_id": "passage-close-FC11-62r-resident-in-water"
+    },
+    {
+      "id": "FC11-62r-coamichi",
+      "book": 11,
+      "folio": "62r",
+      "locator": "Fish entry heading, Nahuatl column",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "source_reading": "Coamjchi",
+      "normalized": "coamichin [lexical hypothesis; vowel length and final -n not manuscript-certified]",
+      "provisional_english": "snake-fish (name for an eel-like fish)",
+      "type": "compound noun (hypothesized)",
+      "notes": "The spelling and final -n must be read against the manuscript; do not generate coāmichin as a verified manuscript form. coātl has multiple senses, with snake intended in this fish term. The compound's first element may be coātl 'snake', but the length of its vowels and the ending cannot be certified from this word's heading alone.",
+      "tokens": [
+        {
+          "surface": "Coamjchi",
+          "lemma": "coāmichin?",
+          "gloss": "snake-fish",
+          "morph": "coā- (snake; uncertain compound allomorph) + mich- (fish; final ending unresolved)",
+          "role": "compound noun candidate",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/node/175895",
+          "certainty": "provisional"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false,
+      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
+      "visual_evidence_ref": "fc11-62r-snakefish",
+      "source_reading_layer": "edited transcription candidate; not diplomatic manuscript certification",
+      "canonical_passage_id": "passage-close-FC11-62r-coamichi"
+    },
+    {
+      "id": "FC11-62r-chimalmichi",
+      "book": 11,
+      "folio": "62r",
+      "locator": "Sea turtle entry heading, Nahuatl column",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "source_reading": "Chimalmjchi",
+      "normalized": "chīmalmichin [hypothesis; ending requires check]",
+      "provisional_english": "shield-fish (a sea turtle)",
+      "type": "compound noun (hypothesized)",
+      "notes": "The heading is a historical animal name, not proof that every instance of -michi means a separate word. Compare with chīmalli 'shield' and michin 'fish'.",
+      "tokens": [
+        {
+          "surface": "Chimalmjchi",
+          "lemma": "chīmalmichin?",
+          "gloss": "shield-fish",
+          "morph": "chīmal- + mich- (compound; exact stem ending unresolved)",
+          "role": "compound animal name",
+          "dictionary_url": "https://nahuatl.wired-humanities.org/content/chimalli",
+          "certainty": "provisional"
+        }
+      ],
+      "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
+      "source_facsimile": "https://commons.wikimedia.org/wiki/File:C%C3%B3dice_Florentino,_Vol._III.pdf",
+      "facsimile_checked": false,
+      "manuscript_line_number": null,
+      "training_status": "not_approved",
+      "translation_rights": "not_cleared",
+      "review_level": "lexical_crosscheck_only",
+      "reviewed_by": null,
+      "train_eligible": false,
+      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
+      "visual_evidence_ref": "fc11-62r-shieldfish",
+      "source_reading_layer": "edited transcription candidate; not diplomatic manuscript certification",
+      "canonical_passage_id": "passage-close-FC11-62r-chimalmichi"
     }
-  ],
-  "collation_link": "folio_visual_collation.json",
-  "review_notice": "Five preliminary visual observations on two folios. No fully diplomatic line transcription or independently expert-reviewed passage. Full Codex not trained."
+  ]
 }

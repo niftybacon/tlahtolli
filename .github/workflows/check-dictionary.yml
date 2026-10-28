@@ -27,7 +27,10 @@ jobs:
       - name: Validate published dictionary
         run: python tools/validate.py
       - name: Regression checks on known documented forms
-        run: python tools/test_data.py
+        run: |
+          python tools/test_data.py
+          python tools/test_audit_repairs.py
+          python tools/test_remaining_audit.py
       - name: Audit claim-level source coverage
         run: python tools/test_claim_audit.py
       - name: JavaScript syntax check

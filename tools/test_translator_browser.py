@@ -77,7 +77,7 @@ with sync_playwright() as pw:
     assert '1833' in page.locator('#lukeAtlas').inner_text()
     page.locator('#lukeReviewLoad').click()
     page.wait_for_function("document.querySelectorAll('#lukeReviewItems .luke-review-card').length === 15")
-    assert '315 mechanically joined' in page.locator('#lukeReviewCounts').inner_text()
+    assert '0 mechanically joined' in page.locator('#lukeReviewCounts').inner_text()
     assert '400 unresolved' in page.locator('#lukeReviewCounts').inner_text()
     assert page.locator('#lukeVersePicker option').count() >= 700
     assert 'unverified' in page.locator('#lukeVersePreview').inner_text().lower()

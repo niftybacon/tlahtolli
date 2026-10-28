@@ -20,7 +20,8 @@
     "books_checked": 12,
     "approximate_orthographic_units": 291900,
     "lexicon_approximate_hits": 38338,
-    "lexicon_headwords_indexed": 116
+    "lexicon_headwords_indexed": 115,
+    "lexicon_matching_strings_indexed": 116
   },
   "books": [
     {

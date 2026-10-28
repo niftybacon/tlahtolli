@@ -93,7 +93,7 @@ def prepare(raw,ref,max_queue=1300):
   'status':'draft_only','training_approved':False,'specialist_reviewed':False,
   'automatic_policy':'Only join line-ending hyphens when published forms or >=2 unsplit occurrences support the join; no automatic merge of spaced prefixes, normalization or emendation.',
   'counts':dict(stats),'running_headers':headings[:140],
-  'verse_candidates':sections[:800],
+  'verse_candidates':sections, 'verse_candidates_total':len(sections), 'verse_candidates_truncated':False,
   'review_queue':queue,'queue_capped':len(queue)>=max_queue,
   'note':'Numbers and header markers may be page numbers; no chapter/verse alignment has been verified. OCR previews are from a public-domain 1833 printed work.'}
  return working,report
@@ -114,6 +114,8 @@ def main():
  text,review=prepare(raw,references(dic))
  args.working_file.parent.mkdir(parents=True,exist_ok=True)
  args.working_file.write_text('# UNREVIEWED AUTOMATIC OCR WORKING DRAFT. Source: '+SOURCE+'\n'+text,encoding='utf8')
+ review['working_draft_hash']=hashlib.sha256(args.working_file.read_text(encoding='utf8').encode('utf8')).hexdigest()
+ review['hash_convention']='UTF-8 decoded text with universal newlines, including draft header'
  args.review_file.write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
  print('1833 Luke draft prepared: '+str(review['counts']))
  return 0

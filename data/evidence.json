@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-27.6.0",
+  "version": "2026-10-28.1.0",
   "entries": [
     {
       "word": "ātl",
@@ -316,7 +316,7 @@
       ]
     },
     {
-      "word": "tēpetl",
+      "word": "tepētl",
       "variety": "Classical Nahuatl",
       "claims": [
         {
@@ -1130,7 +1130,7 @@
           "field": "headword",
           "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172584",
-          "locator": "ODN → Headword; Karttunen (1992), p. 196",
+          "locator": "ODN → Headword; Karttunen (1992), p. 195",
           "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
           "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
           "checkedAt": "2026-10-27"
@@ -1139,7 +1139,7 @@
           "field": "pos",
           "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/node/172584",
-          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 196",
+          "locator": "ODN → noun gloss and Karttunen lexical entry; Karttunen (1992), p. 195",
           "note": "Nominal lexical category grounded in substantive headword and noun gloss; not independent proof of grammatical animacy or number.",
           "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
           "checkedAt": "2026-10-27"
@@ -2216,7 +2216,7 @@
           "field": "headword",
           "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/mati",
-          "locator": "ODN → Headword; Karttunen (1992), p. 134",
+          "locator": "ODN → Headword; Karttunen (1992), p. 138",
           "note": "The online entry identifies this lemma; editorial vowel length and saltillo need not occur in manuscript spellings.",
           "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
           "checkedAt": "2026-10-27"
@@ -2225,7 +2225,7 @@
           "field": "meaning",
           "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/mati",
-          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 134",
+          "locator": "ODN → Principal English Translation; Karttunen (1992), p. 138",
           "note": "Directly checked principal dictionary sense, not every listed polysemous/contextual use.",
           "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
           "checkedAt": "2026-10-27"
@@ -2234,7 +2234,7 @@
           "field": "pos",
           "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/mati",
-          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 134",
+          "locator": "ODN → Karttunen / Molina verb construction; Karttunen (1992), p. 138",
           "note": "Verb category is grounded in the cited verb entry; individual valency and conjugations require distinct evidence.",
           "reviewer": "Tlahtōlli editorial source check (AI-assisted, not specialist reviewed)",
           "checkedAt": "2026-10-27"
@@ -7647,19 +7647,19 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
+          "assessment": "inference",
           "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
-          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
         {
           "field": "number",
-          "assessment": "grammar",
+          "assessment": "inference",
           "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal vs. nonnominal number",
-          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
@@ -7670,7 +7670,8 @@
           "locator": "",
           "note": "Noun plural morphology is not applicable.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -7821,19 +7822,19 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
-          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
         {
           "field": "number",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal vs. nonnominal number",
-          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/iuhquin",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
@@ -7844,7 +7845,8 @@
           "locator": "",
           "note": "Noun plural morphology is not applicable.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -7908,19 +7910,19 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
-          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
         {
           "field": "number",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal vs. nonnominal number",
-          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/inin",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
@@ -7931,7 +7933,8 @@
           "locator": "",
           "note": "Noun plural morphology is not applicable.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -7995,19 +7998,19 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
-          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
         {
           "field": "number",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal vs. nonnominal number",
-          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/itech",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
@@ -8018,7 +8021,8 @@
           "locator": "",
           "note": "Noun plural morphology is not applicable.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -8082,19 +8086,19 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
-          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
         {
           "field": "number",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal vs. nonnominal number",
-          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/node/172619",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
@@ -8105,7 +8109,8 @@
           "locator": "",
           "note": "Noun plural morphology is not applicable.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -8256,19 +8261,19 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
-          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
         {
           "field": "number",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal vs. nonnominal number",
-          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/cen",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
@@ -8279,7 +8284,8 @@
           "locator": "",
           "note": "Noun plural morphology is not applicable.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -8343,19 +8349,19 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal classes vs. nonnominal parts of speech",
-          "note": "Noun animacy is inapplicable to this non-nominal lexeme; not a claim that its meaning denotes no living thing.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
         {
           "field": "number",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/itic",
-          "locator": "Launey (2011), nominal vs. nonnominal number",
-          "note": "Noun singular/plural classification is not applied to a verb, particle or relational.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
           "checkedAt": "2026-10-27"
         },
@@ -8366,7 +8372,8 @@
           "locator": "",
           "note": "Noun plural morphology is not applicable.",
           "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -8462,7 +8469,8 @@
           "locator": "",
           "note": "No independently checked full possessed noun form is provided; not applicable to particles and verbs.",
           "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "stem",
@@ -8517,10 +8525,10 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
-          "locator": "General nominal/non-nominal distinction",
-          "note": "Inanimate mirror is editorially inferred from noun semantics; non-nouns have no noun animacy category.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/content/cuepa",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
           "checkedAt": "2026-10-27"
         },
@@ -8540,7 +8548,8 @@
           "locator": "",
           "note": "Not a noun; plural forms of noun cannot be generated.",
           "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -8549,7 +8558,8 @@
           "locator": "",
           "note": "No independently checked full possessed noun form is provided; not applicable to particles and verbs.",
           "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "stem",
@@ -8604,10 +8614,10 @@
         },
         {
           "field": "animacy",
-          "assessment": "grammar",
-          "source": "https://nahuatl.wired-humanities.org/content/tezcatl",
-          "locator": "General nominal/non-nominal distinction",
-          "note": "Inanimate mirror is editorially inferred from noun semantics; non-nouns have no noun animacy category.",
+          "assessment": "inference",
+          "source": "https://nahuatl.wired-humanities.org/node/175904",
+          "locator": "Editorial applicability decision; precise grammatical source pending",
+          "note": "Editorial applicability inference; this lexical link identifies the entry and does not prove the grammatical decision. Exact grammar citation pending.",
           "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
           "checkedAt": "2026-10-27"
         },
@@ -8627,7 +8637,8 @@
           "locator": "",
           "note": "Not a noun; plural forms of noun cannot be generated.",
           "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "possessed",
@@ -8636,7 +8647,8 @@
           "locator": "",
           "note": "No independently checked full possessed noun form is provided; not applicable to particles and verbs.",
           "reviewer": "Tlahtōlli source-led editorial review (AI-assisted; historical digital transcription, no independent manuscript-folio collation)",
-          "checkedAt": "2026-10-27"
+          "checkedAt": "2026-10-27",
+          "applicability": "not_applicable_pending_review"
         },
         {
           "field": "stem",

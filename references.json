@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-source-atlas",
   "schema": 1,
-  "version": "2026-10-27.6.0",
+  "version": "2026-10-28.1.0",
   "policy": "A cited occurrence demonstrates a written form in one source, not automatic verification of its grammatical classification. ENL Coyoacan records are mid-sixteenth-century; the Gospel of Luke (1833) reflects nineteenth-century Puebla-area Nahuatl. Period and dialect must remain explicit.",
   "sources": [
     {
@@ -124,7 +124,7 @@
       "note": "The lexical form Pilli is in the transcription. The contextual sense requires consulting the entire passage."
     },
     {
-      "lemma": "tēpetl",
+      "lemma": "tepētl",
       "form": "tepetl",
       "locator": "Book 6, folio 115r · Nahuatl transcription",
       "url": "https://florentinecodex.getty.edu/book/6/folio/115r",

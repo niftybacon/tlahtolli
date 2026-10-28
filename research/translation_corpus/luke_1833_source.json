@@ -15,7 +15,7 @@
   "morphology_profile": "luke1833",
   "editorial_status": "source-located; transcription quality not audited",
   "training_eligibility": "original 1833 source is public domain; no reviewed aligned parallel-text training set yet",
-  "text_import_status": "not imported; require OCR/text validation and passage alignment",
+  "text_import_status": "Working OCR imported; unreviewed, not aligned or approved for training",
   "manuscript_distinction": "Bible source from south Puebla c.1830, not a sixteenth-century central Mexican manuscript",
   "example_original_title_tokens": "Yacuic iyec tenonotzaltzin",
   "notes": "Store original spelling and a separately attributed tentative normalized analysis; never silently rewrite the historical text or assign generated morphological hypotheses the status of attested forms."

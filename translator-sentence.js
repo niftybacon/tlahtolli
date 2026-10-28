@@ -31,7 +31,7 @@ function create(dictionary,paradigms,morphology){
  const PERSON_CODES=['1sg','2sg','3sg','1pl','2pl','3pl'];
  const EVIDENCE_GRADES=new Set(['manuscript','lexical','grammar','lemma','paradigm','hypothesis','analogy','unreviewed']);
  function exactMorphology(token){
-  if(!/^[\p{L}\p{M}’'-]{1,120}$/u.test(token))return [];
+  if(!/^[\p{L}\p{M}’'\-\u00AF]{1,120}$/u.test(token))return []; // spacing overbar is a source-recorded abbreviation, not vowel length
   try{
    const matches=parseMorph(token);
    return Array.isArray(matches)?matches.filter(m=>m&&EVIDENCE_GRADES.has(m.grade)&&
@@ -42,7 +42,8 @@ function create(dictionary,paradigms,morphology){
  function partialClues(tokens){
   return tokens.slice(0,24).flatMap((token,index)=>exactMorphology(token).slice(0,3)
    .map(m=>({token,index,lemma:m.lemma,kind:m.kind,grade:m.grade,
-    source:m.source||'',features:m.features||{},parts:m.parts.slice(0,8)})));
+    source:m.source||'',sources:Array.isArray(m.sources)?m.sources.slice(0,6):[],
+    features:m.features||{},parts:m.parts.slice(0,8)})));
  }
  function exactFiniteReadings(token,morphs){
   const proposals=[];

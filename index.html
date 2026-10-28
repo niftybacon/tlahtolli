@@ -272,7 +272,11 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
   </div>
   <p class="translator-privacy">Research only: the analyzer runs in your browser and does not send text to an external AI translator. Historical passage interpretations and dictionary entries may require further scholarly review. Modern Huasteca Nahuatl is not silently mixed into Classical Nahuatl.</p>
  </div>
- <details id="corpusIntegrity" class="panel" style="margin-top:22px">
+ <details id="codexCloseReadingPanel" class="panel" style="margin-top:22px">
+ <summary><strong>Florentine Codex · Close readings</strong> — historical words, grammar, and uncertainty</summary>
+ <div id="codexCloseReading" style="padding:18px 6px">Loading cited Nahuatl readings…</div>
+</details>
+<details id="corpusIntegrity" class="panel" style="margin-top:22px">
  <summary><strong>Tlahcuilōlli · Corpus integrity and Florentine Codex review</strong> — sourced passages and training preparation</summary>
  <div id="corpusIntegrityMount" style="padding:18px 6px" aria-live="polite">Preparing source-review workspace…</div>
 </details>
@@ -2474,6 +2478,7 @@ renderSourceAtlas();syncSourceAtlas();render();
 <script src="./translator-historical-morphology.js"></script>
 <script defer src="./translator-integrated.js"></script>
 <script defer src="./corpus-integrity.js"></script>
+<script defer src="./codex-close-reading.js"></script>
 <script defer src="./codex-atlas.js"></script>
 <script defer src="./luke-atlas.js"></script>
 <script defer src="./luke-chapter-audit.js"></script>

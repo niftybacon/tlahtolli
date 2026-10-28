@@ -21,7 +21,11 @@ function renderChapter(ch){
  }
  if(ch.out_of_order_number_transitions||ch.duplicate_verse_marker_candidates.length)
   detail.append(el('p','Out-of-order transitions: '+ch.out_of_order_number_transitions+'; duplicate candidate numerals: '+ch.duplicate_verse_marker_candidates.join(', ')+'.','translator-caution'));
- detail.append(el('p','Status: structural audit only. No original-page-by-page transcription verification has been completed for this chapter.','translator-caution'));
+ if(ch.chapter_status==='PRINTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'){
+  detail.append(el('p','Printed chapter 1 verse numerals 1–80 were visually checked across PDF pages 9–17. OCR numeral corrections are documented separately. The Nahuatl wording and spelling are NOT proofread.','translator-meta'));
+ }else if(ch.chapter_status==='SELECTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'){
+  detail.append(el('p','A selected printed page has been examined (PDF page 21), confirming the numeral for verse 28. The chapter has NOT received a complete page-by-page reading.','translator-meta'));
+ }else detail.append(el('p','Status: OCR structural audit only. No facsimile page was visually checked for this chapter.','translator-caution'));
  const a=el('a','Check against the scanned 1833 Gospel of Luke');
  a.href='https://archive.org/details/elevangeliodeslu00pazy';a.target='_blank';a.rel='noopener noreferrer';detail.append(a);
 }

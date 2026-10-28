@@ -2,6 +2,7 @@
 """Browser regression: translator is a native Tlahtōlli tab, not a separate page."""
 from pathlib import Path
 from urllib.parse import urlsplit
+import json
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +39,122 @@ with sync_playwright() as pw:
     assert page.locator("#translatorView").is_visible(), "Translator tab did not open"
     assert page.locator("#dictionaryView").is_hidden(), "Dictionary remained visible"
     assert page.locator("#tabTranslator").get_attribute("aria-selected") == "true"
+    # The 1573 manuscript reading aid uses only a tiny editorial-assisted
+    # excerpt. It must never claim that the low-resolution image was deciphered.
+    desk=page.locator("#manuscriptReadingDesk")
+    assert desk.count()==1
+    desk.evaluate("(node)=>node.open=true")
+    page.wait_for_function("""() => document.querySelector('#manuscriptReadingContent')
+      ?.textContent.includes('ticnamaca y¯ totlal')""")
+    reading=page.locator("#manuscriptReadingContent").inner_text()
+    assert "NOT a decipherment" in reading
+    assert "NOT independent evaluation data" in reading
+    assert "abbreviation unresolved" in reading
+    morph_review=page.locator("#manuscriptMorphCrosscheck")
+    assert morph_review.count()==1
+    morph_review.evaluate("(node)=>node.open=true")
+    source_review=morph_review.inner_text()
+    assert "morpheme-level claims" in source_review
+    assert "ti · Verbal subject agreement" in source_review
+    assert "1pl / 2sg" in source_review
+    assert "y¯ · Historical scribal nasal abbreviation" in source_review
+    assert "1563" in source_review
+    assert "NOT been verified against a readable facsimile" in source_review
+    assert morph_review.get_by_role("link",name="Open source").count()>=6
+
+    assert page.locator("#manuscriptReadingContent").get_by_role("link",name="Open original manuscript image").count()==1
+    assert page.locator("#manuscriptReadingContent").get_by_role("link",name="Read the editorial transcript on ENL").count()==1
+    page.locator("#manuscriptReadingContent .translator-actions button").click()
+    assert page.locator("#translatorInput").input_value()=="ticnamaca y¯ totlal"
+    assert "[?ticnamaca]" in page.locator("#translatorGloss").inner_text()
+    assert "[?totlal]" in page.locator("#translatorGloss").inner_text()
+    # Source-level morphology is now visible inside the actual translator but
+    # cannot upgrade an unknown dictionary word or a complete sentence.
+    page.locator("#translatorPassages details.translator-morph-panel").evaluate_all(
+        "(nodes)=>nodes.forEach(node=>node.open=true)")
+    sentence=page.locator("#translatorPassages").inner_text()
+    proposals=page.locator("#translatorPassages .translator-agreement-proposals")
+    assert proposals.count()==1
+    assert proposals.locator(".translator-analysis").count()==2
+    assert "subject 1pl" in sentence and "subject 2sg" in sentence
+    assert "possible direct object: y¯ totlal" in sentence
+    assert "Particle: editorial nasal expansion HYPOTHESIS" in sentence
+    assert "NOT a translation" in sentence
+    assert proposals.get_by_role("link",name="Inspect agreement and noun evidence").count()>=4
+    assert "Outside supported clause grammar" in sentence
+    assert "Partial morphology only" in sentence
+    assert "NOT a sentence translation" in sentence
+    assert "ticnamaca" in sentence and "totlal" in sentence and "y¯" in sentence
+    assert "1pl" in sentence and "2sg" in sentence
+    assert "yn/in proposed, NOT source-spelled" in sentence
+    assert "We are selling our land" not in sentence
+    page.locator("#translatorAnalyses details.translator-morph-panel").evaluate_all(
+        "(nodes)=>nodes.forEach(node=>node.open=true)")
+    all_words=page.locator("#translatorAnalyses").inner_text()
+    assert "namaca" in all_words and "tlalli" in all_words
+    assert "Source-crosschecked token hypothesis" in all_words
+    assert page.locator("#translatorAnalyses").get_by_role("link",name="Inspect independent morpheme reference").count()>0
+    page.locator("#translatorInput").fill("ticnamacas yn totlalli")
+    page.locator("#translatorForm button[type=submit]").click()
+    changed=page.locator("#translatorAnalyses").inner_text()
+    assert "Source-crosschecked token hypothesis" not in changed
+    page.locator("#translatorInput").fill("ticnamaca in cihuātl")
+    page.locator("#translatorForm button[type=submit]").click()
+    page.locator("#translatorPassages details.translator-morph-panel").evaluate_all(
+        "(nodes)=>nodes.forEach(node=>node.open=true)")
+    applied=page.locator("#translatorPassages").inner_text()
+    assert "possible direct object: in cihuātl" in applied
+    assert "unique curated noun headword" in applied
+    assert "subject 1pl" in applied and "subject 2sg" in applied
+    assert "Outside supported clause grammar" in applied
+    page.locator("#translatorInput").fill("ahmo ticnamaca y¯ totlal")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-agreement-proposals").count()==0
+    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
+    # Source interpretation must not become a confident contextual sentence.
+    assert "No automatically inferred reading here is a verified historical word" in reading
+    # Personal parallel reading: NOTHING bundled or automatically aligned.
+    panel=page.locator("#parallelReadingPanel")
+    assert panel.count()==1
+    panel.evaluate("(node)=>node.open=true")
+    assert page.locator("#parallelAddPair").is_disabled()
+    assert not page.locator("#parallelNahuatl").input_value()
+    assert not page.locator("#parallelEnglish").input_value()
+    page.locator("#parallelNahuatl").fill("ticnamaca y¯ totlal\nnoce")
+    page.locator("#parallelEnglish").fill("We are selling our land\nor something else")
+    page.locator("#parallelPrepare").click()
+    assert page.locator("#parallelNhChoice option").count()==2
+    assert page.locator("#parallelEnChoice option").count()==2
+    assert page.locator("#parallelPairs article").count()==0
+    assert page.locator("#parallelStatus").inner_text().find("no automatic alignment")>=0
+    page.locator("#parallelNote").fill("Editorial text; phrase correspondence not verified")
+    page.locator("#parallelAddPair").click()
+    assert page.locator("#parallelPairs article").count()==1
+    assert "User-proposed relation" in page.locator("#parallelPairs").inner_text()
+    page.locator("#parallelInspect").click()
+    assert page.locator("#translatorInput").input_value()=="ticnamaca y¯ totlal"
+    assert "[?ticnamaca]" in page.locator("#translatorGloss").inner_text()
+    with page.expect_download() as downloaded:
+        page.locator("#parallelDownload").click()
+    payload=json.loads(Path(downloaded.value.path()).read_text(encoding="utf-8"))
+    assert payload["source_id"]=="ENL-BC16-1573"
+    assert payload["alignments"][0]["nahuatl_text"]=="ticnamaca y¯ totlal"
+    assert payload["alignments"][0]["status"]=="user_proposed_alignment_unverified"
+    assert payload["translation_verified"] is False
+    assert payload["train_eligible"] is False
+    assert payload["evaluation_eligible"] is False
+    assert payload["published_translation_rights"]=="not_verified"
+    # Editing invalidates old alignments until the user re-prepares; no stale export.
+    page.locator("#parallelEnglish").fill("some other text")
+    assert page.locator("#parallelDownload").is_disabled()
+    # Import the prior personal export without publishing it anywhere.
+    page.once("dialog",lambda dlg:dlg.accept())
+    page.locator("#parallelImport").set_input_files(downloaded.value.path())
+    page.wait_for_function("""() => document.querySelector('#parallelStatus')
+      ?.textContent.includes('Personal reading imported locally')""")
+    assert page.locator("#parallelPairs article").count()==1
+    assert page.locator("#parallelEnglish").input_value().startswith("We are selling our land")
+    assert not page.locator("#parallelDownload").is_disabled()
     page.locator("#translatorInput").fill("in xōchitl in cuīcatl")
     page.locator("#translatorForm button[type=submit]").click()
     assert "[?xōchitl: multiple dictionary senses]" in page.locator("#translatorGloss").inner_text()
@@ -49,6 +166,26 @@ with sync_playwright() as pw:
     assert "Compositional comparison reading" in page.locator("#translatorPassages").inner_text()
     assert "like shield" in page.locator("#translatorPassages").inner_text()
     assert "not a verified passage translation" in page.locator("#translatorPassages").inner_text()
+    # The native sentence tab now reuses canonical source-located morphology:
+    # source-listed finite forms can show their exact recorded glosses, but a
+    # following noun does not become a magically parsed sentence.
+    page.locator("#translatorInput").fill("onicoch")
+    page.locator("#translatorForm button[type=submit]").click()
+    finite=page.locator("#translatorPassages").inner_text()
+    assert "I slept" in finite
+    assert "source-listed finite-form gloss (unverified in context)" in finite
+    assert "NOT a generated sentence translation" in finite
+    page.locator("#translatorInput").fill("onicoch in cihuātl")
+    page.locator("#translatorForm button[type=submit]").click()
+    partial=page.locator("#translatorPassages").inner_text()
+    assert "Outside supported clause grammar" in partial
+    assert "Partial morphology only" in partial
+    assert "NOT a sentence translation" in partial
+    assert "I slept" not in partial
+    page.locator("#translatorInput").fill("ahmo onicoch")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
+    assert "I did not sleep" not in page.locator("#translatorPassages").inner_text()
     page.locator("#translatorInput").fill("ahmo nichōca")
     page.locator("#translatorForm button[type=submit]").click()
     assert "I do not cry" in page.locator("#translatorPassages").inner_text()

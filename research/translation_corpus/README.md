@@ -26,7 +26,12 @@ When a translation is behind copyright or other reuse restrictions, contribute o
 - [research_examples.json](research_examples.json) — three short historical passage candidates for the translator preview, explicitly **not approved for training**.
 - [tools/validate_translation_corpus.py](../../tools/validate_translation_corpus.py) — checks approved-pair provenance, permissions, document-grouped holdouts, and rejects any unapproved rows assigned to a training split.
 - [tools/test_translator.js](../../tools/test_translator.js) — regression checks for phrase provenance, lexical index, dialect isolation, and unknown-word behavior.
+- [EVALUATION.md](EVALUATION.md) — independent held-out translation-quality admission protocol, explicit zero-score baseline, and contamination rules.
+- [tools/evaluate_translation_readiness.js](../../tools/evaluate_translation_readiness.js) — measures **only** in-sample engineering coverage while enforcing fail-closed held-out-data readiness; accuracy stays null until human-scored test cases exist.
+- [tools/test_translation_readiness.js](../../tools/test_translation_readiness.js) — adversarial checks for leakage, rights, variety, reviewer, and CSV-safety gates.
 - [source_candidates.csv](source_candidates.csv) — bibliographic leads that require rights and alignment assessment.
+- [source_reviews/ENL_BC16_1573.json](source_reviews/ENL_BC16_1573.json) — the first 1573 central Mexican Nahuatl manuscript actually located and image-inspected, explicitly **not blind** because we consulted a modern transcription and translation. A short editorial-assisted excerpt is marked uncertain, never gold.
+- [source_reviews/README.md](source_reviews/README.md) — an achievable step-by-step manuscript reading process without claiming scholarly certification.
 
 ## Review workflow
 

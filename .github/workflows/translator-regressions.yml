@@ -1,0 +1,75 @@
+name: Classical Nahuatl translator regressions
+
+on:
+  push:
+    paths:
+      - 'amoxcalli-archive.js'
+      - 'manuscript-reading-desk.js'
+      - 'translator-source-morphology.js'
+      - 'tools/test_source_morphology.js'
+      - 'parallel-reading-*.js'
+      - 'tools/test_parallel_reading.js'
+      - 'index.html'
+      - 'translator-*.js'
+      - 'tools/test_translator*.js'
+      - 'tools/test_archive_lexical.js'
+      - 'dictionary.json'
+      - 'paradigms.json'
+      - 'research/amoxcalli_archive/**'
+      - 'research/translation_corpus/**'
+      - 'tools/evaluate_translation_readiness.js'
+      - 'tools/test_translation_readiness.js'
+      - '.github/workflows/translator-regressions.yml'
+  pull_request:
+    paths:
+      - 'amoxcalli-archive.js'
+      - 'manuscript-reading-desk.js'
+      - 'translator-source-morphology.js'
+      - 'tools/test_source_morphology.js'
+      - 'parallel-reading-*.js'
+      - 'tools/test_parallel_reading.js'
+      - 'index.html'
+      - 'translator-*.js'
+      - 'tools/test_translator*.js'
+      - 'tools/test_archive_lexical.js'
+      - 'dictionary.json'
+      - 'paradigms.json'
+      - 'research/amoxcalli_archive/**'
+      - 'research/translation_corpus/**'
+      - 'tools/evaluate_translation_readiness.js'
+      - 'tools/test_translation_readiness.js'
+      - '.github/workflows/translator-regressions.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  translation-evidence:
+    name: Lexicon, morphology and sentence tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Use Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Manuscript reading aid JavaScript syntax
+        run: node --check manuscript-reading-desk.js
+      - name: Parallel reading desk JavaScript syntax
+        run: node --check parallel-reading-core.js && node --check parallel-reading-desk.js
+      - name: Personal parallel text and manual-only alignment regressions
+        run: node tools/test_parallel_reading.js
+      - name: Curated lexical and passage regressions
+        run: node tools/test_translator.js
+      - name: Sentence grammar regressions
+        run: node tools/test_translator_sentence.js
+      - name: Source-linked morphology bridge syntax and provenance regressions
+        run: node --check translator-source-morphology.js && node tools/test_source_morphology.js
+      - name: Archive form evidence and morphology cross-check regressions
+        run: node tools/test_archive_lexical.js
+      - name: Translation quality readiness and independent-holdout checks
+        run: node tools/test_translation_readiness.js
+      - name: Evaluation audit (no invented accuracy)
+        run: node tools/evaluate_translation_readiness.js

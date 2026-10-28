@@ -23,7 +23,7 @@ const safeLink=(value,title)=>{
 };
 const form=$('translatorForm');
 if(!form)return;
-let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null;
+let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null,sourceMorphology=null;
 const input=$('translatorInput'),direction=$('translatorDirection');
 const note=$('translatorStatus'),gloss=$('translatorGloss');
 const parts=$('translatorAnalyses'),passages=$('translatorPassages');
@@ -50,6 +50,61 @@ function showResult(){
      el('p','translator-caution',candidate.note));
     for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
+   }
+   if(clause.agreementProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-agreement-proposals';
+    panel.append(el('summary','','Provisional agreement and noun-phrase links · '+
+     clause.agreementProposals.length+' alternatives (NOT a translation)'));
+    panel.append(el('p','translator-caution',
+     'The following structures use source-crosschecked morphological candidates and one fully consumed noun phrase. Their verb subject and noun-object linking are proposals only; neither English text nor full-clause certainty is inferred.'));
+    for(const proposal of clause.agreementProposals.slice(0,8)){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',proposal.verb.written+' · subject '+proposal.verb.subject+
+      ' · possible direct object: '+proposal.nounPhrase.written),
+      el('p','translator-meta','Verb '+proposal.verb.lemma+
+       ' · 3sg object agreement · noun '+proposal.nounPhrase.lemma+
+       ' · '+proposal.nounPhrase.kind+
+       (proposal.nounPhrase.possessor?' · possessor '+proposal.nounPhrase.possessor:'')+
+       ' · '+proposal.grade),
+      el('p','translator-caution','Particle: '+proposal.nounPhrase.markerStatus),
+      el('p','translator-caution',proposal.note));
+     for(const url of proposal.sources||[]){
+      const link=safeLink(url,'Inspect agreement and noun evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
+   if(clause.morphologicalClues?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.append(el('summary','','Partial morphology only · '+clause.morphologicalClues.length+
+     ' proposed analysis'+(clause.morphologicalClues.length===1?'':'es')+
+     ' (NOT a sentence translation)'));
+    panel.append(el('p','translator-caution',
+     'These are token-level morphological possibilities from the existing Tēntli engine. The clause remains unsupported; no grammatical roles or whole-sentence English have been established.'));
+    for(const clue of clause.morphologicalClues.slice(0,12)){
+     const item=el('div','translator-morph-candidate');
+     item.append(el('strong','',clue.token+' → '+clue.lemma+' · '+clue.kind),
+      el('p','translator-meta','Evidence grade: '+clue.grade+'; morphology only, not contextual certainty.'));
+     const features=Object.entries(clue.features||{}).filter(([k,v])=>v!==null&&v!==undefined&&typeof v==='string')
+      .slice(0,8).map(([k,v])=>k+': '+v).join(' · ');
+     if(features)item.append(el('p','translator-meta',features));
+     if(clue.parts?.length)item.append(el('p','translator-meta',
+      clue.parts.map(part=>part.surface+' ('+part.role+')').join(' · ')));
+     const source=safeLink(clue.source,'Inspect source of morphological proposal');
+     if(source)item.append(source);
+     for(const url of (clue.sources||[]).slice(0,6)){
+      if(url===clue.source)continue;
+      const evidence=safeLink(url,'Inspect independent morphology evidence');
+      if(evidence)item.append(evidence);
+     }
+     panel.append(item);
+    }
+    if(clause.morphologicalClues.length>12)panel.append(el('p','translator-caution',
+     'Further unranked proposals omitted to keep the reading bounded.'));
+    block.append(panel);
    }
    passages.append(block);
   }
@@ -164,6 +219,11 @@ function showResult(){
      if(proposal.note)line.append(el('p','translator-meta',proposal.note));
      const link=safeLink(proposal.source,'Inspect morphology source');
      if(link)line.append(link);
+     for(const evidenceURL of (Array.isArray(proposal.sources)?proposal.sources:[]).slice(0,6)){
+      if(evidenceURL===proposal.source)continue;
+      const reference=safeLink(evidenceURL,'Inspect independent morpheme reference');
+      if(reference)line.append(reference);
+     }
      panel.append(line);
     }
     block.append(panel);
@@ -172,43 +232,85 @@ function showResult(){
   parts.append(block);
  }
 
-  // Supplement unsupported words with an independent archive lookup.
-  // Preserve unknown/ambiguous status in the curated translator; never certify OCR.
+  // Compare every analyzed token with the separately licensed archive.
+  // The published dictionary alone controls the working gloss and recognition status.
   if(direction.value==='nh-en'&&window.TlahtolliArchive){
    const current=latest;
-   const wordEntries=current.parts.filter(item=>item.kind==='word');
-   if(wordEntries.some(item=>item.status==='unknown')){
+   const wordEntries=current.parts.filter(item=>item.kind==='word').slice(0,90);
+   if(wordEntries.length){
     const blocks=[...parts.querySelectorAll('article.translator-word')];
     window.TlahtolliArchive.ensureLoaded().then(()=>{
      if(latest!==current)return;
-     let supplemented=0;
+     let supplemented=0,approximate=0;
      wordEntries.forEach((item,i)=>{
-      if(item.status!=='unknown'||!blocks[i])return;
-      const hits=window.TlahtolliArchive.lookup(item.value,{classicalOnly:true,limit:8});
-      if(!hits.length)return;
+      if(!blocks[i])return;
+      const evidence=window.TlahtolliArchive.lookupEvidence(item.value,{classicalOnly:true,limit:8});
+      if(!evidence.hits.length)return;
       supplemented++;
+      approximate+=evidence.approximateCount;
       const section=el('details','translator-morph-panel');
-      section.append(el('summary','','Extended source archive · '+hits.length+' matching records (not verified)'));
-      section.append(el('p','translator-caution','Supplemental lexical references only. Siméon is historical French OCR; Wiktionary candidates are separately labeled. A dictionary match is not a complete translation.'));
-      for(const hit of hits){
+      section.append(el('summary','','Additional lexical evidence · '+
+       evidence.total+' source record'+(evidence.total===1?'':'s')+' (unreviewed)'));
+      section.append(el('p','translator-caution',
+       'Independent historical/community dictionary comparisons. No archive meaning changes the reviewed lexical lookup, resolves a sense, or becomes an attested translation. Siméon definitions are French OCR.'));
+      if(evidence.truncated)section.append(el('p','translator-caution',
+       'Only the first '+evidence.hits.length+' matches are shown; other source records may differ.'));
+      for(const hit of evidence.hits){
        const record=el('div','translator-analysis');
        record.append(el('strong','',hit.word+' · '+hit.pos+' · '+hit.variety),
         el('p','translator-meta',hit.source+' · definition language: '+hit.language));
+       if(hit.matchKind==='diacritic-variant')record.append(el('p','translator-caution',
+        'UNCERTAIN SPELLING: macron/accent differs from the input. This is an unverified orthographic possibility, not a selected meaning.'));
+       const forms=hit.matchedForms||[];
+       if(forms.length){
+        const labels=forms.slice(0,8).map(f=>f.form+' ['+f.role+
+         (f.tags.length?'; source labels: '+f.tags.join(', '):'')+']');
+        record.append(el('p','translator-meta','Matched source form: '+labels.join(' / ')+
+         (forms.length>8?' / …':'')+'. Grammatical labels are source-reported, not verified parses.'));
+       }
        const definition=el('p','',hit.meaning||'No usable imported definition');
        if(definition.textContent.length>600){
         const full=el('details');
-        full.append(el('summary','','Read complete source definition ('+definition.textContent.length+' characters)'));
+        full.append(el('summary','','Read original definition ('+definition.textContent.length+' characters)'));
         full.append(definition);record.append(full);
        }else record.append(definition);
+       const tags=[...new Set((hit.senses||[]).flatMap(s=>Array.isArray(s[2])?s[2]:[]))].slice(0,12);
+       if(tags.length)record.append(el('p','translator-meta','Source sense labels: '+tags.join(', ')));
+       if(hit.etymology)record.append(el('p','translator-meta','Source etymology: '+hit.etymology));
        const link=safeLink(hit.sourceUrl,'Inspect imported source and licensing');
        if(link)record.append(link);
        section.append(record);
       }
+      if(morphBridge){
+       // This independent cross-check never modifies morphBridge's proposed
+       // analyses, their evidence grades, or any English candidate.
+       const proposals=morphBridge.examine(item.value,orthography?.value||'general').analyses;
+       const overlaps=window.TlahtolliArchive.crossCheckMorphology(item.value,proposals,{limit:8});
+       if(overlaps.length){
+        const extra=el('details','translator-morph-panel');
+        extra.append(el('summary','','Source-form overlap · '+overlaps.length+' unreviewed cross-reference'+
+         (overlaps.length===1?'':'s')));
+        extra.append(el('p','translator-caution',
+         'A source dictionary lists the same surface under the proposed lemma. This does not verify the grammatical analysis, sentence meaning, or historical use; other analyses may remain possible.'));
+        for(const overlap of overlaps){
+         const line=el('div','translator-analysis');
+         line.append(el('strong','',overlap.lemma+' · '+overlap.kind),
+          el('p','translator-meta','Matched '+overlap.role+': '+overlap.form+
+           (overlap.tags.length?' · source labels: '+overlap.tags.join(', '):'')+
+           ' · '+overlap.sourcePartOfSpeech+' · proposal grade: '+overlap.grade));
+         const link=safeLink(overlap.sourceUrl,'Inspect archive source');
+         if(link)line.append(link);
+         extra.append(line);
+        }
+        section.append(extra);
+       }
+      }
       blocks[i].append(section);
      });
-     if(supplemented)status(note.textContent+' · '+supplemented+' unreviewed archive lookups available below.');
+     if(supplemented)status(note.textContent+' · '+supplemented+
+      ' tokens have unreviewed lexical comparisons'+(approximate?' (including uncertain spellings)':'')+'.');
     }).catch(error=>{
-     if(latest===current)status(note.textContent+' · Supplementary archive not available: '+error.message);
+     if(latest===current)status(note.textContent+' · Supplementary archive unavailable: '+error.message);
     });
    }
   }
@@ -234,9 +336,11 @@ async function init(){
    fetch('./research/florentine_codex/analysis.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./research/translation_corpus/luke_1833_analysis.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./research/translation_corpus/source_reviews/ENL_BC16_1573.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -245,17 +349,25 @@ async function init(){
   }else throw Error('No published or bundled dictionary data found');
   const corpus=candidates.status==='fulfilled'?candidates.value:{entries:[]};
   model=window.TlahtolliTranslator.create(document,corpus);
+  if(window.TlahtolliSourceMorphology&&sourceReview.status==='fulfilled'&&sourceReview.value)
+   sourceMorphology=window.TlahtolliSourceMorphology.create(sourceReview.value);
+  const explainMorphology=token=>[
+   ...(typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token)),
+   ...(sourceMorphology?.analyze(token)||[])
+  ];
   try{
    if(!window.TlahtolliSentence)await new Promise((resolve,reject)=>{
     const script=window.document.createElement('script');script.src='./translator-sentence.js';
     script.onload=resolve;script.onerror=reject;window.document.head.append(script);
    });
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
-   if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(document,await response.json());
+   if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(
+    document,await response.json(),
+    explainMorphology);
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(
-    token=>typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token),
+    explainMorphology,
     token=>model.lookup(token,'nh-en'),
     codexStats.status==='fulfilled'?codexStats.value:null,
     lukeStats.status==='fulfilled'?lukeStats.value:null

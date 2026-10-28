@@ -67,3 +67,77 @@ assert.equal(context.window.TlahtolliSentence.create(clone,p).analyze('niquitta 
 const separate=analyze('ahmo niquittaz in cihuātl. nitlacua.');
 assert(separate.complete);assert.equal(separate.clauses[1].candidates[0].frame.negative,false);
 console.log('PASS: '+rendered+' affirmative/negative tense renderings, named objects, reversible third-person roles, source and sense retention, phrase boundaries.');
+
+
+// Source-graded morphological bridge tests. Existing sentence model remains
+// unchanged unless the canonical morphological provider is explicitly passed.
+const locatedForm=(lemma,form)=>{
+ const word=d.words.find(w=>w.word===lemma);
+ const item=word?.inflections?.find(f=>f.form===form);
+ assert(word&&item,lemma+' '+form);
+ return {lemma,kind:item.category,grade:item.evidence==='text'?'manuscript':'lexical',
+  features:{partOfSpeech:word.pos,evidence:item.evidence},
+  source:item.source,parts:[{surface:form,role:'Source-listed complete form'}]};
+};
+const finiteList=[
+ ['cochi','onicoch'],['cochi','ōnicoch'],
+ ['caqui','onitlacac'],['caqui','ōniccac'],
+ ['yauh','onia'],['yauh','ōniyah'],['yauh','niauh'],
+ ['tlacuiloa','onitlahcuiloh']
+];
+const finiteLookup=Object.fromEntries(finiteList.map(([lemma,form])=>[form,locatedForm(lemma,form)]));
+const provider=token=>finiteLookup[token]?[finiteLookup[token]]:[];
+const bridged=context.window.TlahtolliSentence.create(d,p,provider);
+const isolated=form=>bridged.analyze(form).clauses[0];
+for(const [lemma,form] of finiteList){
+ const c=isolated(form);
+ assert(c.complete,'Source-recorded isolated finite form should show a gloss: '+form);
+ assert.equal(c.candidates.length,1);
+ const interpretation=c.candidates[0];
+ assert.equal(interpretation.frame.predicate,lemma);
+ assert.equal(interpretation.frame.sourceForm,form);
+ assert.equal(interpretation.english[0],d.words.find(w=>w.word===lemma).inflections.find(f=>f.form===form).gloss);
+ assert.equal(interpretation.grade,'source-listed finite-form gloss (unverified in context)');
+ assert.match(interpretation.note,/NOT a generated sentence translation/);
+ assert.equal(interpretation.coverage,1);
+ assert.equal(interpretation.sources.includes(finiteLookup[form].source),true);
+ assert.equal(analyze(form).complete,false,'Default sentence engine must not silently expand when no morphology provider exists');
+}
+assert.equal(isolated('onicoch').candidates[0].frame.tense,'preterite');
+assert.equal(isolated('niauh').candidates[0].frame.subjectPerson,0);
+assert.equal(isolated('onitlahcuiloh').candidates[0].frame.tense,'completed (source label)');
+for(const input of ['ahmo onicoch','onicoch in cihuātl','onicoch zzz','onicoch,','onicoch?','onicoch onia']){
+ const result=bridged.analyze(input);
+ assert.equal(result.complete,false,'No unsupported extra words or negative source-form reinterpretation: '+input);
+}
+const partiallyBridged=bridged.analyze('onicoch in cihuātl').clauses[0];
+assert(partiallyBridged.morphologicalClues.some(x=>x.token==='onicoch'&&x.lemma==='cochi'));
+assert.equal(partiallyBridged.candidates.length,0);
+assert.equal(bridged.analyze('onicoch. zzz').complete,false);
+const noProofs=[
+ {kind:'Dictionary headword'},
+ {kind:'Spelling variant'},
+ {kind:'Productive transitive parse',grade:'hypothesis'},
+ {grade:'paradigm'},
+ {grade:'analogy'},
+ {grade:'unreviewed'},
+ {lemma:'itta'},
+ {source:'https://invalid.example'},
+ {features:{evidence:'generated'}},
+ {kind:'Preterite 2sg (fake)'},
+ {parts:null},
+];
+for(const edited of noProofs){
+ const item={...locatedForm('cochi','onicoch'),...edited};
+ assert.equal(context.window.TlahtolliSentence.create(d,p,()=>[item]).analyze('onicoch').complete,false,
+  'Reject unverified source/morphological mismatch: '+JSON.stringify(edited));
+}
+const corrupt=JSON.parse(JSON.stringify(d));
+corrupt.words.find(w=>w.word==='cochi').inflections.find(x=>x.form==='onicoch').source='';
+assert.equal(context.window.TlahtolliSentence.create(corrupt,p,provider).analyze('onicoch').complete,false);
+const unrelated=JSON.parse(JSON.stringify(d));
+unrelated.words.find(w=>w.word==='cochi').inflections.find(x=>x.form==='onicoch').category='Dictionary headword';
+assert.equal(context.window.TlahtolliSentence.create(unrelated,p,provider).analyze('onicoch').complete,false);
+assert.equal(bridged.analyze('nichōca').clauses[0].candidates[0].english[0],'I cry');
+console.log('PASS: source-graded morphology bridge, '+finiteList.length+
+ ' isolated historical finite forms, exact recorded glosses, honest incomplete clauses and 11 mismatch/uncertainty safeguards.');

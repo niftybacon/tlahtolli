@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Browser smoke for full source archive search and cautious translator fallback."""
+"""Browser smoke for full source archive search and evidence-aware translator comparisons."""
 from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
@@ -48,11 +48,82 @@ with sync_playwright() as pw:
     assert 'Siméon' in page.locator('#archiveResults').inner_text()
     page.locator('#tabTranslator').click()
     page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('115')")
+    def expand_archive_evidence():
+        # Exercise the actual disclosure UI, rather than accidentally asserting
+        # against invisible textContent in a collapsed <details> element.
+        opened=page.evaluate("""() => {
+          let count=0;
+          for(const detail of document.querySelectorAll('#translatorAnalyses details')){
+            const header=detail.querySelector(':scope > summary');
+            if(header?.textContent.includes('Additional lexical evidence')){
+              detail.open=true;count++;
+            }
+          }
+          return count;
+        }""")
+        assert opened>=1,'Expected an expandable lexical evidence section'
+
+    # Archive rows are source evidence only; an OCR section marker is not a
+    # verified Classical Nahuatl word and must remain unknown in the gloss.
     page.locator('#translatorInput').fill('LXVIIT')
     page.locator('#translatorForm button[type=submit]').click()
-    page.wait_for_function("document.querySelector('#translatorAnalyses').textContent.includes('Extended source archive')")
-    assert 'Unindexed form' in page.locator('#translatorAnalyses').inner_text()
-    assert 'not verified' in page.locator('#translatorAnalyses').inner_text().lower()
+    page.wait_for_function("""() => {
+      const root=document.querySelector('#translatorAnalyses');
+      return !!root && root.textContent.includes('Additional lexical evidence')
+        && root.textContent.includes('LXVIIT [headword]');
+    }""")
+    expand_archive_evidence()
+    unknown=page.locator('#translatorAnalyses').inner_text()
+    assert 'Unindexed form' in unknown,unknown
+    assert 'Additional lexical evidence' in unknown,unknown
+    assert 'Siméon' in unknown,unknown
+    assert 'Grammatical labels are source-reported, not verified parses' in unknown,unknown
+    assert '[?LXVIIT]' in page.locator('#translatorGloss').inner_text()
+    assert '1 unknown' in page.locator('#translatorStatus').inner_text()
+
+    # A known dictionary form must ALSO get comparisons, without changing
+    # the published translator's existing lexical decision.
+    page.locator('#translatorInput').fill('in')
+    page.locator('#translatorForm button[type=submit]').click()
+    page.wait_for_function("""() => {
+      const root=document.querySelector('#translatorAnalyses');
+      return !!root && root.textContent.includes('Additional lexical evidence')
+        && root.textContent.includes('Matched source form: in [headword]');
+    }""")
+    expand_archive_evidence()
+    known=page.locator('#translatorAnalyses').inner_text()
+    assert 'Additional lexical evidence' in known
+    assert 'Matched source form: in [headword]' in known
+    assert '0 unknown' in page.locator('#translatorStatus').inner_text()
+
+    # Kaikki lists both alomeh as an independent headword and alomeh as
+    # the plural of alo. The screen must retain those DIFFERENT analyses,
+    # but must not turn either dictionary record into a verified sentence.
+    page.locator('#translatorInput').fill('alomeh')
+    page.locator('#translatorForm button[type=submit]').click()
+    page.wait_for_function("""() => {
+      const root=document.querySelector('#translatorAnalyses');
+      return !!root && root.textContent.includes('Additional lexical evidence')
+        && root.textContent.includes('alomeh [source-listed form; source labels: plural]')
+        && root.textContent.includes('alomeh [headword]');
+    }""")
+    expand_archive_evidence()
+    plural=page.locator('#translatorAnalyses').inner_text()
+    assert 'alo' in plural
+    assert 'source labels: plural' in plural
+    assert 'unreviewed' in plural.lower()
+    assert 'Unindexed form' in plural
+    assert '[?alomeh]' in page.locator('#translatorGloss').inner_text()
+
+    # The archive is explicitly source-separated: an Eastern Huasteca
+    # entry can be queried only when opting out of classicalOnly.
+    dialect=page.evaluate("""() => ({
+      classical:window.TlahtolliArchive.lookupEvidence('peso',{limit:50}).hits
+        .some(h=>h.variety==='Eastern Huasteca Nahuatl'),
+      unrestricted:window.TlahtolliArchive.lookupEvidence('peso',{classicalOnly:false,limit:50}).hits
+        .some(h=>h.variety==='Eastern Huasteca Nahuatl')
+    })""")
+    assert not dialect['classical'] and dialect['unrestricted'],dialect
     assert not errors,errors
-    print('PASS: 36,543 archive rows, source diversity, search and unverified translator fallback')
+    print('PASS: 36,543 archive rows, historical/modern source isolation, verified vs unreviewed UI distinction, source-form grammar tags, and preserved unknown glosses')
     browser.close()

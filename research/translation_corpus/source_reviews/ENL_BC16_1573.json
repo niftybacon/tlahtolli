@@ -1,0 +1,328 @@
+{
+  "format": "tlahtolli-source-review-v1",
+  "id": "ENL-BC16a000-f122-1573",
+  "source_id": "ENL-BC16-1573",
+  "manuscript_title": "Land sale to a Spaniard, Santiago Xochac (Coyoacan region), 1573",
+  "historical_date": "1573",
+  "geographic_context": "Coyoacan region, central Mexico; Santiago Xochac",
+  "language_variety": "Sixteenth-century central Mexican Nahuatl (Classical-period candidate; not expert adjudicated)",
+  "archive": "Archivo General de la Nación (Mexico), Tierras 1735, exp. 2, folio 122",
+  "manuscript_page": "folio 122, manuscript's sole folio represented as ENL BC16a000",
+  "manuscript_image_url": "https://enl.wired-humanities.org/sites/default/files/mapaImages/BC16a000.png",
+  "library_record_url": "https://enl.wired-humanities.org/bc16/elements/bc16a/000",
+  "library_document_url": "https://enl.wired-humanities.org/bc16",
+  "edition_reference": "Arthur J. O. Anderson, Frances Berdan, and James Lockhart (eds.), Beyond the Codices (1976), document 16, pp. 98–101; ENL transcription and English translation from James Lockhart papers",
+  "source_identity_status": "confirmed from ENL description and facsimile",
+  "image_inspection": {
+    "status": "viewed_single_web_raster_not_independently_collated",
+    "observed_page_structure": "one handwritten legal-document page with upper text block and lower signatures/attestation",
+    "limitation": "Facsimile was inspected in a small web raster. The full text has not been independently deciphered, letter-by-letter collated, or checked against a high-resolution scan.",
+    "minimum_assisted_excerpt": "ticnamaca y¯ totlal",
+    "excerpt_basis": "short string located by comparison to ENL's edited analytic transcription; NOT an independent paleographic transcript",
+    "excerpt_verification": "Verbatim agreement with Lockhart's editorial transcription on ENL; not independently collated to a legible manuscript facsimile. The overbar is retained and an expansion is offered only as an explicitly labeled hypothesis.",
+    "snippet_translation": null,
+    "token_ambiguities": [
+      "y¯: overbar likely abbreviates a final nasal and the unit likely represents yn / in; this is a sourced editorial expansion, not an independently checked manuscript glyph",
+      "ticnamaca: written ti- can be 2sg or 1pl; final plural -h is absent from editorial spelling; preceding tehuātin and two named sellers support a 1pl contextual interpretation",
+      "totlal: source-backed to- 'our' and tlal- 'land' segmentation; exclude the free-citation absolutive -li"
+    ],
+    "transcription_reviewed_by": null,
+    "translation_reviewed_by": null
+  },
+  "knowledge_contamination": {
+    "published_transcription_consulted": true,
+    "published_translation_consulted": true,
+    "reason": "ENL's editorial transcription and Lockhart's published translation were consulted to locate and understand the manuscript. Future scoring by us on this same page would not be genuinely blind.",
+    "independent_test_eligible": false
+  },
+  "rights": {
+    "original_manuscript": "sixteenth-century historical original; separate digitization and access terms must be checked",
+    "facsimile_reproduction": "unconfirmed; link only, do not copy or redistribute",
+    "editorial_transcription": "unconfirmed; do not bulk reproduce",
+    "published_translation": "unconfirmed; do not copy into the repository"
+  },
+  "review_status": "external_lexical_grammar_and_parallel_text_crosscheck_no_independent_paleography",
+  "admission": "development_reference_only",
+  "evaluation_eligible": false,
+  "train_eligible": false,
+  "accuracy_judgment": null,
+  "reviewed_by_human_scholar": false,
+  "next_actions": [
+    "Obtain adequate facsimile resolution and independently compare each grapheme and abbreviation for a bounded segment",
+    "Preserve unresolved readings and written spellings before any normalization",
+    "Reconcile source conventions with published transcription only AFTER our first-pass manuscript reading",
+    "Do not use this document as a blind test: its published transcription and translation have already been consulted",
+    "Select a separate, unread manuscript for later held-out testing before examining any editorial translation"
+  ],
+  "created_on": "2026-10-28",
+  "note": "An AI-assisted, source-linked morphological analysis now has external dictionary, grammatical, orthographic, and independent historical-comparison evidence. This is NOT a human-scholar adjudication, independently deciphered facsimile, source-transcribed gold alignment, translation accuracy score, or training permission.",
+  "provisional_morphological_observations": [
+    {
+      "surface": "ticnamaca",
+      "unverified_segmentation": "ti-c-namaca",
+      "dictionary_lemma": "namaca",
+      "possible_functions": [
+        "ti-: 1st-person plural 'we' or 2nd-person singular 'you'; surface alone ambiguous",
+        "c-: third-person singular object index, roughly 'it'",
+        "namaca: source-documented transitive verb 'sell'",
+        "The 1pl reading is favored by preceding tehuātin ('we') and two named sellers"
+      ],
+      "uncertainty": "The 1pl suffix -h expected in a fuller present-tense analysis is not visibly written. Colonial spelling frequently omits this sound. Thus exact person is NOT proven by ticnamaca alone. The title and clause are externally edited, not independently collated from the facsimile.",
+      "source_links": [
+        "https://nahuatl.wired-humanities.org/content/namaca",
+        "https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html",
+        "https://enl.wired-humanities.org/bc16/elements/bc16a/000"
+      ],
+      "assessment": "Source-crosschecked morphological decomposition; 1pl subject is context-supported, not form-only proved."
+    },
+    {
+      "surface": "y¯",
+      "unverified_segmentation": null,
+      "dictionary_lemma": "in",
+      "possible_functions": [
+        "Likely represents yn / in: article-like noun-phrase introductory particle",
+        "Overbar in colonial Nahuatl can represent an omitted nasal consonant; not a vowel-length mark here",
+        "Keep the editorial source exactly as y¯ and expand only in a separate suggestion"
+      ],
+      "uncertainty": "A nasal-abbreviation reading is supported by published paleographic work. However no high-resolution independent check confirms the manuscript's specific overbar or exclusion of alternatives.",
+      "source_links": [
+        "https://bpb-us-e1.wpmucdn.com/blogs.uoregon.edu/dist/7/5151/files/2022/01/Horn_Lockhart-mundane-docs-in-N.pdf",
+        "https://nahuatl.wired-humanities.org/content/in",
+        "https://enl.wired-humanities.org/bc16/elements/bc16a/000"
+      ],
+      "assessment": "High-confidence historical scribal convention plus context; expansion is editorial/inferred, not a second attested source spelling."
+    },
+    {
+      "surface": "totlal",
+      "unverified_segmentation": "to-tlal",
+      "dictionary_lemma": "tlalli",
+      "possible_functions": [
+        "to-: first-person plural possessive prefix 'our'",
+        "tlal: possessed land base related to free citation form tlalli",
+        "The exact written string totlal is also independently recorded in 1563 central Mexican land-ownership evidence"
+      ],
+      "uncertainty": "Strong external support for segmentation and possessive interpretation; precise original graphemes and vowel quantity remain uncollated. Do not silently insert a source-unwritten absolutive suffix or editorial macrons.",
+      "source_links": [
+        "https://gdn.iib.unam.mx/diccionario/tlal/184899",
+        "https://nahuatl.wired-humanities.org/content/tlalli",
+        "https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html"
+      ],
+      "assessment": "Strong externally cross-checked possessive parse with independent sixteenth-century attestation of the exact form."
+    }
+  ],
+  "source_crosschecked_morphology": {
+    "schema": "tlahtolli-morpheme-evidence-v1",
+    "excerpt": "ticnamaca y¯ totlal",
+    "original_transcription_basis": "James Lockhart's published analytic transcription, ENL folio a; glyphs not independently deciphered",
+    "segmentation": "ti-c-namaca | y¯ (proposed yn / in) | to-tlal",
+    "evidence_level": "external_source_crosscheck_not_expert_or_facsimile_verified",
+    "grammatical_reading": "In the edited context: a first-person-plural seller acts on the land owned collectively. A single-token person reading is unresolved; the particle expansion is editorial.",
+    "english_context_reference": "We are selling our land",
+    "english_reference_kind": "Brief contextual paraphrase after Lockhart's published English; not independent translation gold",
+    "reviewed_by_human_scholar": false,
+    "independent_facsimile_collation": false,
+    "training_eligible": false,
+    "heldout_evaluation_eligible": false,
+    "claims": [
+      {
+        "surface": "ti",
+        "role": "Verbal subject agreement",
+        "functions": [
+          "1pl",
+          "2sg"
+        ],
+        "confidence": "grammar_supported_person_ambiguous",
+        "evidence": [
+          {
+            "url": "https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html",
+            "basis": "Independent Classical Nahuatl subject-prefix table: ti- indexes 1pl or 2sg."
+          },
+          {
+            "url": "https://nahuatl.wired-humanities.org/content/tehuantin",
+            "basis": "Independent tehuantin 'we'; preceding tehuātin in the same 1573 document supports 1pl context."
+          }
+        ],
+        "unresolved": "No final -h plural marker is printed in the edited ticnamaca; it may be historically omitted."
+      },
+      {
+        "surface": "c",
+        "role": "Verbal third-person singular object",
+        "functions": [
+          "3sg_object"
+        ],
+        "confidence": "grammar_supported",
+        "evidence": [
+          {
+            "url": "https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html",
+            "basis": "Independent grammatical object prefix table c-/qui- for third-person singular."
+          }
+        ],
+        "unresolved": "Coreference with totlal is inferred from the local phrase, not manually verified from the autograph."
+      },
+      {
+        "surface": "namaca",
+        "role": "Transitive verbal stem",
+        "functions": [
+          "sell_something"
+        ],
+        "confidence": "lexicon_supported",
+        "evidence": [
+          {
+            "url": "https://nahuatl.wired-humanities.org/content/namaca",
+            "basis": "Molina 1571 II f. 62v and Karttunen 1992 p. 158 establish namaca as a transitive verb 'sell something'."
+          }
+        ],
+        "unresolved": "Written stress/vowel length and 1pl -h omission remain unverified for this witness."
+      },
+      {
+        "surface": "y¯",
+        "role": "Historical scribal nasal abbreviation; proposed particle yn/in",
+        "functions": [
+          "noun_phrase_introducer"
+        ],
+        "confidence": "orthography_and_context_supported_expansion_unverified",
+        "evidence": [
+          {
+            "url": "https://bpb-us-e1.wpmucdn.com/blogs.uoregon.edu/dist/7/5151/files/2022/01/Horn_Lockhart-mundane-docs-in-N.pdf",
+            "basis": "Horn and Lockhart, Mundane Documents in Nahuatl, printed p. 16: original overbars can represent an omitted n or m; preserving the mark is methodologically important."
+          },
+          {
+            "url": "https://nahuatl.wired-humanities.org/content/in",
+            "basis": "The in/yn article-like particle is documented in Molina, Karttunen and Lockhart, with yn as historical spelling."
+          }
+        ],
+        "unresolved": "Do not rewrite written y¯ as yn in the transcript or treat the overbar as a vowel-length diacritic."
+      },
+      {
+        "surface": "to",
+        "role": "First-person plural noun possessor",
+        "functions": [
+          "1pl_possessor"
+        ],
+        "confidence": "grammar_supported",
+        "evidence": [
+          {
+            "url": "https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html",
+            "basis": "Independent Classical Nahuatl possessive-prefix table identifies to- 'our'."
+          }
+        ],
+        "unresolved": "No independent image-level collation."
+      },
+      {
+        "surface": "tlal",
+        "role": "Possessed base of land noun",
+        "functions": [
+          "land_property"
+        ],
+        "confidence": "lexicon_and_independent_sixteenth_century_form_supported",
+        "evidence": [
+          {
+            "url": "https://nahuatl.wired-humanities.org/content/tlalli",
+            "basis": "Molina 1571 II f. 124r and Karttunen identify tlalli as land/parcel; distinct lexical citation form."
+          },
+          {
+            "url": "https://gdn.iib.unam.mx/diccionario/tlal/184899",
+            "basis": "UNAM Gran Diccionario Náhuatl lists exact totlal 'our land' in a separate 1563 central Mexican ownership petition; the possessed tlal base is also catalogued."
+          }
+        ],
+        "unresolved": "Does not license blindly generating every possessed-noun form from tlalli."
+      }
+    ],
+    "contextual_evidence": [
+      {
+        "url": "https://enl.wired-humanities.org/bc16/elements/bc16a/000",
+        "basis": "Edited 1573 BC16 text has preceding tehuātin and names two sellers; Lockhart interprets their action as first-person plural selling."
+      },
+      {
+        "url": "https://nahuatl.wired-humanities.org/content/chane",
+        "basis": "Independent dictionary chane, pl. chaneque supports the nearby tichanneque context as plural residents."
+      }
+    ],
+    "token_analyses": [
+      {
+        "surface": "ticnamaca",
+        "lemma": "namaca",
+        "reading": "first-person plural candidate; context favors this",
+        "features": {
+          "category": "verb",
+          "subject": "1pl",
+          "object": "3sg",
+          "tense": "present possible",
+          "person_resolution": "inferred from discourse; final plural suffix not written"
+        },
+        "parts": [
+          "ti",
+          "c",
+          "namaca"
+        ],
+        "claim_ids": [
+          "ti",
+          "c",
+          "namaca"
+        ],
+        "note": "The documented ti- may be first-person plural, but a final plural -h is absent in this written form. No sentence-level first-person-plural certainty or English translation is licensed."
+      },
+      {
+        "surface": "ticnamaca",
+        "lemma": "namaca",
+        "reading": "second-person singular candidate; surface-compatible",
+        "features": {
+          "category": "verb",
+          "subject": "2sg",
+          "object": "3sg",
+          "tense": "present possible",
+          "person_resolution": "written ti- also permits 2sg; discourse makes this less likely"
+        },
+        "parts": [
+          "ti",
+          "c",
+          "namaca"
+        ],
+        "claim_ids": [
+          "ti",
+          "c",
+          "namaca"
+        ],
+        "note": "Keep the second-person singular alternative visible when inspecting this word without surrounding discourse. This is not a source attestation of a separate token."
+      },
+      {
+        "surface": "y¯",
+        "lemma": "in",
+        "reading": "unresolved scribal nasal abbreviation; yn/in conjecture",
+        "features": {
+          "category": "particle",
+          "expansion": "yn/in proposed, NOT source-spelled",
+          "abbreviation": "spacing overbar retained"
+        },
+        "parts": [
+          "y¯"
+        ],
+        "claim_ids": [
+          "y¯"
+        ],
+        "note": "Original editorial transcription is y¯, not verified yn or in. Bar is an abbreviation hypothesis, never a vowel-length mark or automatic replacement."
+      },
+      {
+        "surface": "totlal",
+        "lemma": "tlalli",
+        "reading": "possessed-noun analysis with independent 1563 source comparison",
+        "features": {
+          "category": "noun",
+          "possessor": "1pl",
+          "stem": "tlal",
+          "absolute_form": "tlalli",
+          "interpretation": "our land; lexical/morphological evidence only"
+        },
+        "parts": [
+          "to",
+          "tlal"
+        ],
+        "claim_ids": [
+          "to",
+          "tlal"
+        ],
+        "note": "Exact form totlal independently recorded in a separate 1563 land document. The source text does NOT contain an absolutive -li here; the 1573 autograph was not collated."
+      }
+    ]
+  }
+}

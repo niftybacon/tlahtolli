@@ -240,6 +240,14 @@ details[open]>.summary-arrow,details[open]>summary .summary-arrow{transform:rota
    <p>Read and investigate Classical Nahuatl inside Tlahtōlli. The existing Tēntli engine now proposes word segmentation and historically cautious spelling alternatives. This research preview is <strong>not yet a fluent AI sentence translator</strong>.</p>
    <p class="readerhint">Primary historical sources: <a href="https://florentinecodex.getty.edu/" target="_blank" rel="noopener noreferrer">Florentine Codex</a> · <a href="https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf" target="_blank" rel="noopener noreferrer">1833 Nahuatl Gospel of Luke (public-domain scan)</a>. Luke comes from a southern Puebla historical variety; its spellings and analyses are not assumed identical to sixteenth-century Codex Nahuatl.</p>
   </div>
+ <details id="manuscriptReadingDesk" class="panel" style="margin-top:18px">
+  <summary><strong>Read a 1573 Nahuatl manuscript · printed-text aid</strong> — short transcription, source links and unresolved forms (not a verified translation)</summary>
+  <div id="manuscriptReadingContent" style="padding:18px 6px" aria-live="polite">Loading the source-linked development reading…</div>
+ </details>
+ <details id="parallelReadingPanel" class="panel" style="margin-top:18px">
+  <summary><strong>Parallel Nahuatl reading desk · your own pasted source text</strong> — align selected phrases by hand, inspect words, export private working notes</summary>
+  <div id="parallelReadingWorkspace" style="padding:18px 6px" aria-live="polite">Preparing manual source-text workspace…</div>
+ </details>
   <form id="translatorForm">
    <div class="translator-controls">
     <div><label for="translatorDirection">Translation direction</label><select id="translatorDirection">
@@ -2497,7 +2505,11 @@ renderSourceAtlas();syncSourceAtlas();render();
 <script src="./translator-engine.js"></script>
 <script src="./translator-historical-morphology.js"></script>
 <script defer src="./amoxcalli-archive.js"></script>
+<script defer src="./translator-source-morphology.js"></script>
 <script defer src="./translator-integrated.js"></script>
+<script defer src="./manuscript-reading-desk.js"></script>
+<script defer src="./parallel-reading-core.js"></script>
+<script defer src="./parallel-reading-desk.js"></script>
 <script defer src="./corpus-integrity.js"></script>
 <script defer src="./codex-close-reading.js"></script>
 <script defer src="./codex-facsimile-review.js"></script>

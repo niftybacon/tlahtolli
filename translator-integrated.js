@@ -64,6 +64,7 @@ function showResult(){
       ' · possible direct object: '+proposal.nounPhrase.written),
       el('p','translator-meta','Verb '+proposal.verb.lemma+
        ' · 3sg object agreement · noun '+proposal.nounPhrase.lemma+
+       ' · '+proposal.nounPhrase.kind+
        (proposal.nounPhrase.possessor?' · possessor '+proposal.nounPhrase.possessor:'')+
        ' · '+proposal.grade),
       el('p','translator-caution','Particle: '+proposal.nounPhrase.markerStatus),

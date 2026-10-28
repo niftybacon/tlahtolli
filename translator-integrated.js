@@ -12,6 +12,7 @@ const el=(tag,cls,value)=>{
  return node;
 };
 const safeLink=(value,title)=>{
+ if(typeof value!=='string'||!value.trim())return null;
  try{
   const url=new URL(value,location.href);
   if(!['http:','https:'].includes(url.protocol))return null;

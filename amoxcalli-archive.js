@@ -27,9 +27,32 @@ function addForm(word,rec){
  byFold.set(folded,alternatives);
 }
 function addRecord(rec,forms=[]){
+ // Retain Kaikki's form-level labels instead of flattening its raw [form, tags]
+ // pairs into strings. A listed form is not thereby a historically attested
+ // inflection, and any grammatical label remains source-reported evidence.
+ rec.sourceForms=forms.map(f=>{
+  if(typeof f==='string')return {form:f,tags:[]};
+  if(!Array.isArray(f)||typeof f[0]!=='string')return null;
+  return {form:f[0],tags:(Array.isArray(f[1])?f[1]:[]).filter(tag=>typeof tag==='string')};
+ }).filter(f=>f&&f.form.trim());
  records.push(rec);
  addForm(rec.word,rec);
- for(const form of forms)if(form&&form!==rec.word)addForm(form,rec);
+ for(const entry of rec.sourceForms)if(norm(entry.form)!==norm(rec.word))addForm(entry.form,rec);
+}
+function matchingFormEvidence(rec,query,approximate){
+ const forms=[{form:rec.word,role:'headword',tags:[]},
+  ...(rec.sourceForms||[]).map(f=>({...f,role:'source-listed form'}))];
+ const found=new Map();
+ for(const item of forms){
+  const key=norm(item.form);
+  if(approximate?(fold(key)!==fold(query)||key===query):key!==query)continue;
+  const old=found.get(key);
+  if(old){
+   old.tags=[...new Set([...old.tags,...item.tags])];
+   if(item.role==='headword')old.role='headword';
+  }else found.set(key,{form:item.form,role:item.role,tags:[...item.tags]});
+ }
+ return [...found.values()];
 }
 async function fetchJson(path){
  const response=await fetch(base+path,{cache:'default'});
@@ -70,7 +93,7 @@ async function readAll(){
      variety:kinds[row[2]]||('Unclassified '+row[2]),language:'English',
      sourceUrl:meta.kaikki.source_url,etymology:row[5]||'',senses:senses,
      note:'Community dictionary data, not independent attestation of this historical context.'},
-     forms.map(f=>Array.isArray(f)?f[0]:null).filter(Boolean));
+     forms);
    }
   }
  }
@@ -103,8 +126,10 @@ function lookupEvidence(form,opts={}){
  const approximate=(byFold.get(fold(key))||[]).filter(rec=>allow(rec)&&!exact.includes(rec));
  const limit=Number.isInteger(opts.limit)?Math.min(50,Math.max(1,opts.limit)):8;
  const hits=[
-  ...exact.map(rec=>({...rec,matchKind:'exact'})),
-  ...approximate.map(rec=>({...rec,matchKind:'diacritic-variant'}))
+  ...exact.map(rec=>({...rec,matchKind:'exact',
+   matchedForms:matchingFormEvidence(rec,key,false)})),
+  ...approximate.map(rec=>({...rec,matchKind:'diacritic-variant',
+   matchedForms:matchingFormEvidence(rec,key,true)}))
  ];
  return {hits:hits.slice(0,limit),total:hits.length,
   approximateCount:approximate.length,truncated:hits.length>limit};

@@ -134,6 +134,38 @@ function lookupEvidence(form,opts={}){
  return {hits:hits.slice(0,limit),total:hits.length,
   approximateCount:approximate.length,truncated:hits.length>limit};
 }
+// Cross-reference an already-proposed morphological parse against *exact*
+// source-listed Classical forms. A lexical overlap is not a manuscript
+// attestation, a verified morphological parse, or a reason to rank candidates.
+function crossCheckMorphology(token,analyses,opts={}){
+ if(!loaded||!Array.isArray(analyses))return [];
+ const key=norm(token);
+ if(!key||key.length>120)return [];
+ const max=Number.isInteger(opts.limit)?Math.max(1,Math.min(opts.limit,20)):8;
+ const archive=(byForm.get(key)||[]).filter(rec=>rec.sourceKey==='kaikki'&&rec.variety==='Classical Nahuatl');
+ const out=[],seen=new Set();
+ for(const candidate of analyses.slice(0,40)){
+  if(!candidate||candidate.changed||candidate.kind==='Dictionary matching form'||
+    norm(candidate.surface)!==key||candidate.original&&norm(candidate.original)!==key)continue;
+  const lemma=norm(candidate.lemma);
+  if(!lemma)continue;
+  for(const rec of archive){
+   if(norm(rec.word)!==lemma)continue;
+   const forms=matchingFormEvidence(rec,key,false);
+   for(const form of forms){
+    const unique=[lemma,form.form,form.role,(form.tags||[]).join('|'),candidate.kind].join('\u0000');
+    if(seen.has(unique))continue;
+    seen.add(unique);
+    out.push({lemma:candidate.lemma,kind:candidate.kind,grade:candidate.grade||'unreviewed',
+     form:form.form,role:form.role,tags:form.tags,source:rec.source,sourceUrl:rec.sourceUrl,
+     sourcePartOfSpeech:rec.pos,
+     evidence:'Exact source-form/lemma overlap only; unreviewed lexicographic cross-reference, not proof of the proposed parse.'});
+    if(out.length>=max)return out;
+   }
+  }
+ }
+ return out;
+}
 function search(query,source='all',limit=60){
  if(!loaded)return {hits:[],total:0};
  const q=norm(query);
@@ -187,7 +219,7 @@ function bindPanel(){
  input.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(render,180);});
  filter.addEventListener('change',render);
 }
-root.TlahtolliArchive={ensureLoaded,lookup,lookupEvidence,search,renderRecord,get ready(){return loaded;},get manifest(){return manifest;}};
+root.TlahtolliArchive={ensureLoaded,lookup,lookupEvidence,crossCheckMorphology,search,renderRecord,get ready(){return loaded;},get manifest(){return manifest;}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindPanel,{once:true});
 else bindPanel();
 })(window);

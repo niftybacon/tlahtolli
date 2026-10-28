@@ -50,6 +50,18 @@ with sync_playwright() as pw:
     assert "NOT a decipherment" in reading
     assert "NOT independent evaluation data" in reading
     assert "abbreviation unresolved" in reading
+    morph_review=page.locator("#manuscriptMorphCrosscheck")
+    assert morph_review.count()==1
+    morph_review.evaluate("(node)=>node.open=true")
+    source_review=morph_review.inner_text()
+    assert "morpheme-level claims" in source_review
+    assert "ti · Verbal subject agreement" in source_review
+    assert "1pl / 2sg" in source_review
+    assert "y¯ · Historical scribal nasal abbreviation" in source_review
+    assert "1563" in source_review
+    assert "NOT been verified against a readable facsimile" in source_review
+    assert morph_review.get_by_role("link",name="Open source").count()>=6
+
     assert page.locator("#manuscriptReadingContent").get_by_role("link",name="Open original manuscript image").count()==1
     assert page.locator("#manuscriptReadingContent").get_by_role("link",name="Read the editorial transcript on ENL").count()==1
     page.locator("#manuscriptReadingContent .translator-actions button").click()

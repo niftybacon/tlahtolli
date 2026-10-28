@@ -13,6 +13,7 @@ PATCHES=[
  dict(verse=38,find='\n.38  Auh  in  Maria',replace='\n38  Auh  in  Maria',pdf_page=13,printed_page=5),
  dict(verse=57,find='\n51  Auh  in  Isabel',replace='\n57  Auh  in  Isabel',pdf_page=15,printed_page=7),
  dict(verse=67,find='\n61  Auh  in  Zacharias',replace='\n67  Auh  in  Zacharias',pdf_page=16,printed_page=8),
+ dict(chapter=2,verse=11,find='\n1 1  lpampa',replace='\n11  lpampa',pdf_page=19,printed_page=11),
  dict(chapter=2,verse=28,find='\n.  28  Auh  in  Simeón',replace='\n28  Auh  in  Simeón',pdf_page=21,printed_page=13),
 ]
 def apply(text):
@@ -45,14 +46,17 @@ def main():
   'chapter_1_verse_numeral_sequence':'1–80 visually checked across printed pages 1–9; not a line-by-line reading of Nahuatl wording',
   'chapter_1_verse_numbering_status':'pages_checked_numbering_only',
   'chapter_1_verse_wording_verified':False,
-  'chapter_2_partial_pdf_pages_checked_1based':[21],
-  'chapter_2_partial_observation':'Printed page 13 displays verses 27–35; the numeral 28 is present in print but was missed by OCR marker detection.',
-  'other_23_chapters_fully_verified':False,
+  'chapter_2_pdf_pages_checked_1based':list(range(18,24)),
+  'chapter_2_printed_pages_checked_1based':list(range(10,16)),
+  'chapter_2_verse_numeral_sequence':'1–52 visually checked across printed pages 10–15, not a line-by-line correction of Nahuatl wording',
+  'chapter_2_verse_numbering_status':'pages_checked_numbering_only',
+  'chapter_2_partial_observation':'Printed page 11 confirms verse 11; printed page 13 confirms verse 28, both OCR numeral errors.',
+  'other_22_chapters_verse_numerals_not_fully_checked':True,
   'patches':changes,
   'rights':'1833 original edition public domain; no modern copyrighted Bible translations used',
   'caveat':'These five numeral corrections are image-checked. Other punctuation, spelling and word boundaries remain unreviewed.',
   'training_approved':False,
  }
  args.report.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
- print('Chapter 1: printed 1–80 page-checked. Chapter 2 verse 28 spot-checked. '+str(len(changes))+' numeral corrections; wording remains unreviewed.')
+ print('Chapter 1: printed 1–80, Chapter 2: printed 1–52 page-checked. '+str(len(changes))+' numeral corrections; wording remains unreviewed.')
 if __name__=='__main__':main()

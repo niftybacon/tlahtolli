@@ -38,7 +38,8 @@ function showResult(){
  gloss.textContent=latest.gloss;
  status(latest.stats.matched+' recognized · '+latest.stats.unknown+' unknown · '+
   latest.stats.ambiguous+' ambiguous · '+latest.stats.approximate+
-  ' approximate. Research gloss, not a complete grammatical translation.'+
+  ' approximate · '+latest.stats.orthographyConflicts+
+  ' unresolved vowel-length contrasts. Working lexical clues, not a sentence translation.'+
   (dataMode==='offline'?' (Offline dictionary fallback.)':''));
  if(latest.passages.length){
   passages.append(el('h4','','Historical passage interpretation candidates'));
@@ -62,8 +63,23 @@ function showResult(){
   if(entry.status==='unknown'){
    block.append(el('p','translator-caution','Unindexed form: no established dictionary meaning. Morphological possibilities, if any, are shown separately below.'));
   }else{
-   if(entry.status==='approximate')block.append(el('p','translator-caution','Approximate orthography only. Vowel length or spelling may change the interpretation.'));
-   if(entry.candidates.length>1)block.append(el('p','translator-meta','Multiple lexical analyses possible; context required.'));
+   if(entry.status==='approximate')block.append(el('p','translator-caution','SPELLING UNCERTAIN: candidates are only diacritic-folded matches. No meaning has been selected for the working gloss.'));
+   if(entry.orthographyConflict)block.append(el('p','translator-caution','UNRESOLVED VOWEL LENGTH: the unmarked spelling matches this entry but also a different macron-bearing lemma. The working gloss deliberately abstains.'));
+   if(entry.ambiguous)block.append(el('p','translator-caution','MULTIPLE LEXICAL ANALYSES: no preferred meaning is selected automatically.'));
+   if(entry.truncated)block.append(el('p','translator-caution','Additional candidates exist beyond those shown; not all possibilities are displayed.'));
+   if(entry.alternatives?.length){
+    const alt=el('details','translator-morph-panel');
+    alt.append(el('summary','','Other meanings possible from unmarked vowel length ('+entry.alternatives.length+' shown)'));
+    for(const possibility of entry.alternatives){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',possibility.lemma+' — '+possibility.meaning),
+      el('p','translator-meta','Contrasting orthography: alternative, not a resolved reading.'));
+     const source=safeLink(possibility.source,'Inspect lexical source');
+     if(source)item.append(source);
+     alt.append(item);
+    }
+    block.append(alt);
+   }
    for(const candidate of entry.candidates){
     const line=el('div','translator-analysis');
     line.append(el('span','',candidate.lemma+' — '+candidate.meaning),

@@ -14,6 +14,11 @@ function tokenize(s){
  return String(s||'').match(re)||[];
 }
 function isWord(s){return /[\p{L}]/u.test(s);}
+function lexicalKey(m){return [m.lemma,m.meaning,m.pos].join('\u0000');}
+function distinctLexical(matches){
+ const seen=new Set();return matches.filter(m=>{const k=lexicalKey(m);if(seen.has(k))return false;seen.add(k);return true;});
+}
+function containsLengthMark(s){return norm(s)!==fold(s);}
 function confidence(match){
  if(match.form_type==='headword')return 'lexicon';
  if(match.form_type==='source-attested form')return 'source-form';
@@ -53,15 +58,29 @@ function create(dictionary,passages){
  }
  const candidates=Array.isArray(passages?.entries)?passages.entries.filter(e=>e&&e.variety==='Classical Nahuatl'&&e.train_eligible!==true):[];
  function lookup(query,direction='nh-en'){
-  const q=norm(query);if(!q)return {candidates:[],approximate:false};
+  const q=norm(query);if(!q)return {candidates:[],approximate:false,alternatives:[],orthographyConflict:false,totalCandidates:0,truncated:false};
   const table=direction==='en-nh'?english:index;
   const exact=table.get(q)||[];
-  if(exact.length)return {candidates:exact.slice(0,8).map(x=>({...x,confidence:confidence(x)})),approximate:false};
-  if(direction==='en-nh')return {candidates:[],approximate:false};
+  // Historic spellings often omit contrastive vowel length. When an unmarked
+  // exact match also has a distinct macron-bearing rival in this dictionary,
+  // do not silently select the unmarked sense.
   const close=[];
-  for(const [key,matches] of index)if(key!==q&&fold(key)===fold(q))close.push(...matches);
-  return {candidates:close.slice(0,8).map(x=>({...x,confidence:'approximate',context:'Macrons/diacritics differ. This may change meaning; verify the form.'})),approximate:close.length>0};
+  if(direction==='nh-en'){
+   for(const [key,matches] of index)if(key!==q&&fold(key)===fold(q))close.push(...matches);
+  }
+  const others=distinctLexical(close.filter(x=>!exact.some(y=>lexicalKey(x)===lexicalKey(y))));
+  const conflict=direction==='nh-en'&&exact.length>0&&!containsLengthMark(q)&&others.length>0;
+  if(exact.length){
+   return {candidates:exact.slice(0,8).map(x=>({...x,confidence:confidence(x)})),
+    approximate:false,alternatives:conflict?others.slice(0,8).map(x=>({...x,confidence:'orthographic-alternative'})):[],
+    orthographyConflict:conflict,totalCandidates:exact.length,truncated:exact.length>8||others.length>8};
+  }
+  if(direction==='en-nh')return {candidates:[],approximate:false,alternatives:[],orthographyConflict:false,totalCandidates:0,truncated:false};
+  const unique=distinctLexical(close);
+  return {candidates:unique.slice(0,8).map(x=>({...x,confidence:'approximate',context:'Macrons/diacritics differ. This may change meaning; verify the form.'})),
+   approximate:unique.length>0,alternatives:[],orthographyConflict:false,totalCandidates:unique.length,truncated:unique.length>8};
  }
+
  function passageMatches(input){
   const all=wordsOnly(input).map(norm).join(' ');
   if(!all)return [];
@@ -80,26 +99,39 @@ function create(dictionary,passages){
  }
  function analyze(input,direction='nh-en'){
   const parts=tokenize(String(input||'').slice(0,7000));
-  let matched=0,unknown=0,ambiguous=0,approximate=0;
+  let matched=0,unknown=0,ambiguous=0,approximate=0,orthographyConflicts=0,truncated=0;
   const annotated=parts.map(part=>{
    if(!isWord(part))return {kind:'separator',value:part};
    const result=lookup(part,direction),hits=result.candidates;
-   if(!hits.length){unknown++;return {kind:'word',value:part,status:'unknown',candidates:[]};}
-   matched++;if(hits.length>1)ambiguous++;if(result.approximate)approximate++;
+   if(!hits.length){unknown++;return {kind:'word',value:part,status:'unknown',candidates:[],alternatives:[]};}
+   matched++;
+   const ambiguousSense=distinctLexical(hits).length>1||result.totalCandidates>8;
+   if(ambiguousSense)ambiguous++;
+   if(result.approximate)approximate++;
+   if(result.orthographyConflict)orthographyConflicts++;
+   if(result.truncated)truncated++;
    return {kind:'word',value:part,status:result.approximate?'approximate':'matched',
-    candidates:hits};
+    candidates:hits,alternatives:result.alternatives,
+    ambiguous:ambiguousSense,orthographyConflict:result.orthographyConflict,
+    truncated:result.truncated};
   });
   const gloss=annotated.map(x=>{
    if(x.kind==='separator')return x.value;
    const first=x.candidates[0];
    if(!first)return '[?'+x.value+']';
+   // Deliberate abstention: a plausible lookup is NOT a licensed sentence
+   // translation and a missing macron must not decide among homographs.
+   if(x.orthographyConflict)return '[?'+x.value+': vowel length ambiguous]';
+   if(x.status==='approximate')return '[?'+x.value+': spelling uncertain]';
+   if(x.ambiguous)return '[?'+x.value+': multiple entries]';
    const value=direction==='nh-en'?(splitGloss(first.meaning)[0]||'?'):first.lemma;
    return '['+value+']';
   }).join('');
-  return {parts:annotated,gloss,stats:{matched,unknown,ambiguous,approximate,total:matched+unknown},
+  return {parts:annotated,gloss,stats:{matched,unknown,ambiguous,approximate,orthographyConflicts,truncated,total:matched+unknown},
    passages:direction==='nh-en'?passageMatches(input):[],
-   disclaimer:'Bracketed meanings are lookup aids; no complete grammatical translation has been generated.'};
+   disclaimer:'Bracketed meanings are dictionary lookups, not contextual translations. Uncertain spelling and multiple lexical candidates are not auto-resolved.'};
  }
+
  return {analyze,lookup,passageMatches,stats:{headwords:list.length,wordForms:index.size,passageCandidates:candidates.length}};
 }
 root.TlahtolliTranslator={create,norm,fold,tokenize};

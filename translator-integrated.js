@@ -221,6 +221,30 @@ function showResult(){
        if(link)record.append(link);
        section.append(record);
       }
+      if(morphBridge){
+       // This independent cross-check never modifies morphBridge's proposed
+       // analyses, their evidence grades, or any English candidate.
+       const proposals=morphBridge.examine(item.value,orthography?.value||'general').analyses;
+       const overlaps=window.TlahtolliArchive.crossCheckMorphology(item.value,proposals,{limit:8});
+       if(overlaps.length){
+        const extra=el('details','translator-morph-panel');
+        extra.append(el('summary','','Source-form overlap · '+overlaps.length+' unreviewed cross-reference'+
+         (overlaps.length===1?'':'s')));
+        extra.append(el('p','translator-caution',
+         'A source dictionary lists the same surface under the proposed lemma. This does not verify the grammatical analysis, sentence meaning, or historical use; other analyses may remain possible.'));
+        for(const overlap of overlaps){
+         const line=el('div','translator-analysis');
+         line.append(el('strong','',overlap.lemma+' · '+overlap.kind),
+          el('p','translator-meta','Matched '+overlap.role+': '+overlap.form+
+           (overlap.tags.length?' · source labels: '+overlap.tags.join(', '):'')+
+           ' · '+overlap.sourcePartOfSpeech+' · proposal grade: '+overlap.grade));
+         const link=safeLink(overlap.sourceUrl,'Inspect archive source');
+         if(link)line.append(link);
+         extra.append(line);
+        }
+        section.append(extra);
+       }
+      }
       blocks[i].append(section);
      });
      if(supplemented)status(note.textContent+' · '+supplemented+

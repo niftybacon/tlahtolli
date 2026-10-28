@@ -55,6 +55,11 @@ jobs:
         run: node tools/test_translator_morphology.js
       - name: Test all-twelve-book Codex research aggregation
         run: python tools/test_florentine_analysis.py
+      - name: Verify preliminary Codex readings cannot be mislabelled as training data
+        run: |
+          python tools/validate_codex_close_reading.py
+          node --check codex-close-reading.js
+
       - name: Test conservative 1833 Luke OCR correction and segmentation
         run: python tools/test_luke_ocr.py
       - name: Check original-page chapter numbering claims remain appropriately limited

@@ -52,7 +52,7 @@ with sync_playwright() as pw:
     page.locator('#translatorForm button[type=submit]').click()
     page.wait_for_function("document.querySelector('#translatorAnalyses').textContent.includes('Extended source archive')")
     assert 'Unindexed form' in page.locator('#translatorAnalyses').inner_text()
-    assert 'unreviewed' in page.locator('#translatorAnalyses').inner_text().lower()
+    assert 'not verified' in page.locator('#translatorAnalyses').inner_text().lower()
     assert not errors,errors
     print('PASS: 36,543 archive rows, source diversity, search and unverified translator fallback')
     browser.close()

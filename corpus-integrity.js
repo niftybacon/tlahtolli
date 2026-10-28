@@ -21,7 +21,7 @@ function persist(){try{localStorage.setItem(KEY,JSON.stringify(saved));return tr
 function currentRecord(seed){
  return Object.assign({
   id:seed.id,source_title:seed.source_title||'Florentine Codex',source_url:seed.source_url||'',
-  variety:'Classical Nahuatl',book:'',folio:'',original:seed.original||'',normalized:seed.normalized||'',
+  variety:'Classical Nahuatl',book:'',folio:'',manuscript_column:'Nahuatl (right)',line_locator:'',original_facsimile_url:'',source_edition:'',original:seed.original||'',normalized:seed.normalized||'',
   morphology:'',english_interpretation:seed.english_interpretation||'',
   editorial_notes:seed.source_note||'',source_status:'candidate',translator_credit:'',
   transcription_rights:'unverified',translation_rights:'unverified',
@@ -61,7 +61,11 @@ function makeRow(seed,idx){
  fieldForm(form,'source_title','Source title',d.source_title);
  fieldForm(form,'source_url','Exact HTTPS folio / manuscript link',d.source_url);
  fieldForm(form,'book','Book',d.book);
- fieldForm(form,'folio','Folio or segment locator',d.folio);
+ fieldForm(form,'folio','Folio (e.g., 62r)',d.folio);
+ fieldForm(form,'manuscript_column','Manuscript column or section',d.manuscript_column);
+ fieldForm(form,'line_locator','Exact handwritten line range (required to claim facsimile check)',d.line_locator);
+ fieldForm(form,'original_facsimile_url','Public-domain scan link for the exact page or manuscript image',d.original_facsimile_url);
+ fieldForm(form,'source_edition','Transcription provenance: independent manuscript or named editorial edition',d.source_edition);
  fieldForm(form,'original','Historical transcription (do not silently normalize)',d.original,'area');
  fieldForm(form,'normalized','Editorial normalization (a separate reading)',d.normalized,'area');
  fieldForm(form,'morphology','Morpheme-level analysis, hypotheses explicitly labeled',d.morphology,'area');
@@ -86,9 +90,12 @@ function makeRow(seed,idx){
   const next=Object.assign({},d);
   form.querySelectorAll('[data-key]').forEach(node=>{next[node.dataset.key]=node.value.trim();});
   if(!next.source_url.startsWith('https://')){alert('A source HTTPS link is required.');return;}
-  const readingChanged=['original','normalized','morphology','english_interpretation'].some(k=>(next[k]||'')!==(d[k]||''));
+  const readingChanged=['original','normalized','morphology','english_interpretation','folio','line_locator','original_facsimile_url','manuscript_column','source_url','source_edition'].some(k=>(next[k]||'')!==(d[k]||''));
   if(readingChanged&&next.source_status!=='candidate'){next.source_status='candidate';next.checked_at='';}
   if(next.source_status!=='candidate'&&!next.checked_by){alert('Name the person who checked this passage, or leave it as a candidate.');return;}
+  if(next.source_status!=='candidate' && (!/^https:\/\//.test(next.original_facsimile_url)||!next.folio||!next.line_locator)){
+   alert('To claim a facsimile check, provide an exact source-image HTTPS URL, folio, and physical line range.');return;
+  }
   if(next.source_status!=='candidate')next.checked_at=new Date().toISOString().slice(0,10);
   next.train_eligible=false;
   saved[seed.id]=next;
@@ -116,7 +123,7 @@ function addRecord(){
 }
 function render(){
  panel.replaceChildren();
- const intro=el('p','Keep the original written form, normalized spelling, grammatical parsing, and English interpretation separate. Changes to a previously reviewed reading reset its check status. Drafts stay in your browser.');
+ const intro=el('p','Keep the original written form, normalized spelling, grammatical parsing, and English interpretation separate. Record an exact folio and line range before marking a manuscript check complete. Changes to a previously reviewed reading reset its check status. Drafts stay in your browser.');
  panel.append(intro);
  const warning=el('p','Training gate: 0 approved examples. Copyright clearance and independent linguistic review are required before fitting a model. Getty Anderson–Dibble text and translation are rights-reserved; do not bulk-copy them.','ci-warning');
  panel.append(warning);

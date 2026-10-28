@@ -66,6 +66,11 @@ function showResult(){
       clue.parts.map(part=>part.surface+' ('+part.role+')').join(' · ')));
      const source=safeLink(clue.source,'Inspect source of morphological proposal');
      if(source)item.append(source);
+     for(const url of (clue.sources||[]).slice(0,6)){
+      if(url===clue.source)continue;
+      const evidence=safeLink(url,'Inspect independent morphology evidence');
+      if(evidence)item.append(evidence);
+     }
      panel.append(item);
     }
     if(clause.morphologicalClues.length>12)panel.append(el('p','translator-caution',

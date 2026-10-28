@@ -28,6 +28,12 @@ The Translator tab also includes **Parallel Nahuatl reading desk · your own pas
 
 The exported record is always `personal_unverified`; it carries `train_eligible:false`, `evaluation_eligible:false`, `alignment_verified:false`, and `published_translation_rights:not_verified`. It is **not** a `pairs.csv` record. A later learner cannot import a modified file that promotes those review flags. These safeguards do not adjudicate fair use, licensing, scholarly correctness, or permission to redistribute the published translation: review those separately before distributing personal exports.
 
+## Verified-against-sources morphology, still not facsimile-verified
+
+A source-by-source audit now documents **`ti-c-namaca | y¯ (probably yn / in) | to-tlal`**. See [the full claim/evidence ledger](../../../docs/ENL_1573_SOURCE_CROSSCHECKED_MORPHOLOGY.md), with Molina, Karttunen, Horn–Lockhart, grammar tables and a **separate 1563 `totlal` attestation** from UNAM. This is stronger than the earlier speculative reading: independently located lexical and grammatical references corroborate the morpheme functions. However, the initial `ti-` still has a real 1pl/2sg orthographic ambiguity, the source lacks an overt plural `-h`, and the `y¯` expansion is not independently read from the original glyphs. The quoted manuscript sample remains editorial-assistance-only.
+
+The reading desk exposes six independently cited morpheme claims, their uncertainty and sources. The underlying data and browser checks **do not** treat them as a certified English translation, independent hidden evaluation, or licensed model-training material.
+
 ## How to continue without an academic supervisor
 
 1. Open the facsimile at its highest available resolution and save **page and line coordinates**, not just copied modern text.

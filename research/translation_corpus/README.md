@@ -23,6 +23,9 @@ When a translation is behind copyright or other reuse restrictions, contribute o
 
 - [source_intake_template.md](source_intake_template.md) — plain-language source information for contributors.
 - [pairs.csv](pairs.csv) — future parallel-text records. Currently header-only by design; placeholders are not training data.
+- [research_examples.json](research_examples.json) — three short historical passage candidates for the translator preview, explicitly **not approved for training**.
+- [tools/validate_translation_corpus.py](../../tools/validate_translation_corpus.py) — checks approved-pair provenance, permissions, document-grouped holdouts, and rejects any unapproved rows assigned to a training split.
+- [tools/test_translator.js](../../tools/test_translator.js) — regression checks for phrase provenance, lexical index, dialect isolation, and unknown-word behavior.
 - [source_candidates.csv](source_candidates.csv) — bibliographic leads that require rights and alignment assessment.
 
 ## Review workflow

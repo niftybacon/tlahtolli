@@ -8,6 +8,7 @@ const path=require('node:path');
 const vm=require('node:vm');
 const ROOT=path.join(__dirname,'..');
 const BASE=path.join(ROOT,'research','translation_corpus');
+const REVIEWS=path.join(BASE,'source_reviews');
 const FIELDS=['pair_id','source_id','source_title','source_url','folio_or_segment',
  'source_date','source_region','nahuatl_variety','original_orthography','normalized_nahuatl',
  'translation_text','translation_language','translator_or_editor','translation_source_url',
@@ -54,10 +55,35 @@ function fingerprint(s){
 }
 function isUrl(s){try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)&&!!u.hostname&&!u.username&&!u.password;}catch{return false;}}
 function humanReview(s){const v=clean(s);return v.length>=2&&!/^(?:ai|ai-only|automated|machine|model|chatgpt|gpt|unknown|pending|unreviewed|n\/a)$/i.test(v);}
-function audit(pairs,examples){
+function loadSourceReviews(dir=REVIEWS){
+ if(!fs.existsSync(dir))return [];
+ return fs.readdirSync(dir).filter(name=>name.endsWith('.json')).sort()
+  .map(name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8')));
+}
+function audit(pairs,examples,sourceReviews=[]){
  const errors=[],seen=new Set(),sourceSplits=new Map(),groupSplits=new Map(),textSplits=new Map();
  const candidates=Array.isArray(examples?.entries)?examples.entries:[];
  const knownSources=new Set(),knownText=new Set();
+ const inspectedSources=new Set();
+ for(const review of sourceReviews){
+  if(review?.format!=='tlahtolli-source-review-v1'||!clean(review.source_id))
+   errors.push('Development source review lacks recognized format or source ID');
+  const id=clean(review?.source_id);
+  if(inspectedSources.has(id))errors.push('Duplicate development source review '+id);
+  if(id)inspectedSources.add(id);
+  if(review?.train_eligible!==false||review?.evaluation_eligible!==false||
+    review?.knowledge_contamination?.independent_test_eligible!==false||
+    review?.admission!=='development_reference_only')
+   errors.push('Inspected development source cannot be promoted to gold/training without independent reassessment: '+id);
+  if(!isUrl(review?.manuscript_image_url)||!isUrl(review?.library_record_url))
+   errors.push('Development source must link manuscript image and archival record: '+id);
+  if(!review?.archive||!review?.manuscript_page||!review?.historical_date)
+   errors.push('Development source lacks stable archive, folio, or date: '+id);
+  if(review?.image_inspection?.snippet_translation!==null)
+   errors.push('Development source snippet must not contain an unreviewed translation: '+id);
+  if(review?.knowledge_contamination?.published_translation_consulted!==true)
+   errors.push('Document explicitly whether the published translation has been consulted: '+id);
+ }
  for(const e of candidates){
   if(e?.source_id)knownSources.add(clean(e.source_id));
   for(const v of [e?.original,e?.normalized]){const k=fingerprint(v);if(k)knownText.add(k);}
@@ -101,12 +127,14 @@ function audit(pairs,examples){
   }
   if(split==='test'){
    if(knownSources.has(source))errors.push(label+': test source_id occurs in public translator research examples');
+   if(inspectedSources.has(source))errors.push(label+': test source_id already inspected and contaminated as a development source');
    if(knownText.has(original)||knownText.has(normalized))
     errors.push(label+': test input overlaps public research examples');
   }
  }
  return {errors,counts:{pairs:pairs.length,approved_test:approvedTest,approved_other:approvedNonTest,
-  pending:unapproved,public_preview_examples:candidates.length},
+  pending:unapproved,public_preview_examples:candidates.length,
+  inspected_development_sources:sourceReviews.length},
   readiness:errors.length?'invalid':approvedTest?'metadata_eligible_unscored':'no_heldout_gold',
   translation_accuracy:null,
   accuracy_reason:'No independently collected human judgments of the engine output exist. Lexical/sentence candidate coverage is not translation accuracy.'};
@@ -142,13 +170,15 @@ function probeExamples(examples){
 function main(){
  const pairs=parseCsv(fs.readFileSync(path.join(BASE,'pairs.csv'),'utf8'));
  const examples=JSON.parse(fs.readFileSync(path.join(BASE,'research_examples.json'),'utf8'));
- const report={format:'tlahtolli-evaluation-readiness-v1',...audit(pairs,examples)};
+ const reviews=loadSourceReviews();
+ const report={format:'tlahtolli-evaluation-readiness-v1',...audit(pairs,examples,reviews)};
  if(!report.errors.length)report.in_sample_diagnostics=probeExamples(examples);
  if(process.argv.includes('--json'))console.log(JSON.stringify(report,null,2));
  else {
   console.log('Independent translation-quality readiness: '+report.readiness);
   console.log('Approved held-out pairs: '+report.counts.approved_test+
-   '; public, non-gold display examples: '+report.counts.public_preview_examples);
+   '; public, non-gold display examples: '+report.counts.public_preview_examples+
+   '; inspected non-blind development sources: '+report.counts.inspected_development_sources);
   console.log('Translation accuracy: NOT MEASURABLE (null).');
   if(report.in_sample_diagnostics)for(const r of report.in_sample_diagnostics)
    console.log('Preview-only '+r.id+': curated lexical matches '+r.curated_matched+'/'+r.lexical_total+
@@ -159,4 +189,4 @@ function main(){
  return report;
 }
 if(require.main===module)main();
-module.exports={parseCsv,fingerprint,audit,probeExamples};
+module.exports={parseCsv,fingerprint,audit,probeExamples,loadSourceReviews};

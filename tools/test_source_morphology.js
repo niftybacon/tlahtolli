@@ -13,7 +13,7 @@ const model=make(review),analyze=model.analyze;
 assert.equal(model.sourceCount,3,'No automatic inference beyond the 3 source-spelled tokens');
 const verb=analyze('ticnamaca');
 assert.equal(verb.length,2,'Retain both subject-person readings, with no priority winner');
-assert.deepEqual(verb.map(x=>x.features.subject).sort(),['1pl','2sg']);
+assert.deepEqual(Array.from(verb,x=>x.features.subject).sort(),['1pl','2sg']);
 assert(verb.every(x=>x.lemma==='namaca'&&x.grade==='unreviewed'));
 assert(verb.every(x=>x.features.object==='3sg'));
 assert(verb.every(x=>x.parts.map(p=>p.surface).join('')==='ticnamaca'));

@@ -51,6 +51,31 @@ function showResult(){
     for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
    }
+   if(clause.agreementProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-agreement-proposals';
+    panel.append(el('summary','','Provisional agreement and noun-phrase links · '+
+     clause.agreementProposals.length+' alternatives (NOT a translation)'));
+    panel.append(el('p','translator-caution',
+     'The following structures use source-crosschecked morphological candidates and one fully consumed noun phrase. Their verb subject and noun-object linking are proposals only; neither English text nor full-clause certainty is inferred.'));
+    for(const proposal of clause.agreementProposals.slice(0,8)){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',proposal.verb.written+' · subject '+proposal.verb.subject+
+      ' · possible direct object: '+proposal.nounPhrase.written),
+      el('p','translator-meta','Verb '+proposal.verb.lemma+
+       ' · 3sg object agreement · noun '+proposal.nounPhrase.lemma+
+       (proposal.nounPhrase.possessor?' · possessor '+proposal.nounPhrase.possessor:'')+
+       ' · '+proposal.grade),
+      el('p','translator-caution','Particle: '+proposal.nounPhrase.markerStatus),
+      el('p','translator-caution',proposal.note));
+     for(const url of proposal.sources||[]){
+      const link=safeLink(url,'Inspect agreement and noun evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.morphologicalClues?.length){
     const panel=el('details','translator-morph-panel');
     panel.append(el('summary','','Partial morphology only · '+clause.morphologicalClues.length+

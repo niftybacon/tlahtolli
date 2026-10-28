@@ -19,6 +19,19 @@ jobs:
           python-version: '3.12'
       - name: Read archival OCR from 1833 Gospel of Luke
         run: python tools/analyze_luke1833.py --download-archive
+      - name: Inspect limited 1833 OCR layout samples for boundary recovery
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0,'tools')
+          from analyze_luke1833 import fetch
+          t=fetch()
+          print('Characters:',len(t),'line breaks:',t.count('\\n'),'form feeds:',t.count('\\f'))
+          for i in [int(len(t)*n/12) for n in range(1,12)]:
+              a=t[max(0,i-85):i+85]
+              print('SAMPLE',i,repr(a[:170]))
+          print('FIRST',repr(t[:260]))
+          PY
       - name: Validate derived corpus summary (no raw OCR or translations)
         run: |
           python - <<'PY'

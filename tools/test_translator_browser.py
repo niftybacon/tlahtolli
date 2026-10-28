@@ -38,6 +38,25 @@ with sync_playwright() as pw:
     assert page.locator("#translatorView").is_visible(), "Translator tab did not open"
     assert page.locator("#dictionaryView").is_hidden(), "Dictionary remained visible"
     assert page.locator("#tabTranslator").get_attribute("aria-selected") == "true"
+    # The 1573 manuscript reading aid uses only a tiny editorial-assisted
+    # excerpt. It must never claim that the low-resolution image was deciphered.
+    desk=page.locator("#manuscriptReadingDesk")
+    assert desk.count()==1
+    desk.evaluate("(node)=>node.open=true")
+    page.wait_for_function("""() => document.querySelector('#manuscriptReadingContent')
+      ?.textContent.includes('ticnamaca y¯ totlal')""")
+    reading=page.locator("#manuscriptReadingContent").inner_text()
+    assert "NOT a decipherment" in reading
+    assert "NOT independent evaluation data" in reading
+    assert "abbreviation unresolved" in reading
+    assert page.locator("#manuscriptReadingContent a[href*='BC16a000.png']").count()==1
+    assert page.locator("#manuscriptReadingContent a[href*='/bc16/elements/']").count()==1
+    page.locator("#manuscriptReadingContent .translator-actions button").click()
+    assert page.locator("#translatorInput").input_value()=="ticnamaca y¯ totlal"
+    assert "[?ticnamaca]" in page.locator("#translatorGloss").inner_text()
+    assert "[?totlal]" in page.locator("#translatorGloss").inner_text()
+    # Source interpretation must not become a confident contextual sentence.
+    assert "not a verified" in reading.lower() or "not a translation" in reading.lower()
     page.locator("#translatorInput").fill("in xōchitl in cuīcatl")
     page.locator("#translatorForm button[type=submit]").click()
     assert "[?xōchitl: multiple dictionary senses]" in page.locator("#translatorGloss").inner_text()

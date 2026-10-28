@@ -22,7 +22,7 @@
       "normalized": "ātl yitic nemini",
       "provisional_english": "one living within water / an inhabitant of water",
       "type": "descriptive nominal phrase",
-      "notes": "The original source edition can mean a water-dweller; do not force a complete finite sentence. y- marks possession in yitic; nemini may be agent/inhabitant and is not simply an English finite verb.",
+      "notes": "The facsimile visibly splits nemini across two physical manuscript lines (ne / mjnj). Keep that line break in the diplomatic layer but join the lexical word in the reading layer. Nemini may be a noun 'resident' or a homophonous verbal form; the immediate context does not independently certify its grammatical category. A lexicon gloss is not a sentence translation.",
       "tokens": [
         {
           "surface": "atl",
@@ -46,10 +46,10 @@
           "surface": "nemini",
           "lemma": "nemini",
           "gloss": "one who lives / resident",
-          "morph": "related to nemi 'live, move'; avoid unverified suffix boundary",
-          "role": "agent/resident; potentially nominal",
+          "morph": "Compare nemi and nominal nemini; do not infer a complete inflectional parse from surface form",
+          "role": "context-dependent noun 'resident' OR homophonous verbal form; unresolved",
           "dictionary_url": "https://nahuatl.wired-humanities.org/content/nemini",
-          "certainty": "lexicon_supported"
+          "certainty": "provisional"
         }
       ],
       "source_edition": "Short research witness compared with Getty's 20th-century editorial transcription; no independent diplomatic transcription yet",
@@ -60,7 +60,9 @@
       "translation_rights": "not_cleared",
       "review_level": "lexical_crosscheck_only",
       "reviewed_by": null,
-      "train_eligible": false
+      "train_eligible": false,
+      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
+      "visual_evidence_ref": "fc11-62r-water"
     },
     {
       "id": "FC11-62r-shield-comparison",
@@ -72,7 +74,7 @@
       "normalized": "iuhquin chīmalli",
       "provisional_english": "like a shield",
       "type": "comparison phrase",
-      "notes": "iuhquin is a comparative particle, not a conjugated verb; chīmalli here participates in a simile for the creature's shape.",
+      "notes": "The manuscript image visually suggests a physical line break within chimalli (chimal / li). This is not a morpheme boundary. iuhquin is a comparative particle; no certainty about surrounding clause syntax is claimed.",
       "tokens": [
         {
           "surface": "iuhquin",
@@ -101,7 +103,9 @@
       "translation_rights": "not_cleared",
       "review_level": "lexical_crosscheck_only",
       "reviewed_by": null,
-      "train_eligible": false
+      "train_eligible": false,
+      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
+      "visual_evidence_ref": "fc11-62r-shield"
     },
     {
       "id": "FC11-62r-resident-in-water",
@@ -142,7 +146,9 @@
       "translation_rights": "not_cleared",
       "review_level": "lexical_crosscheck_only",
       "reviewed_by": null,
-      "train_eligible": false
+      "train_eligible": false,
+      "facsimile_visual_comparison": "not_inspected",
+      "visual_evidence_ref": null
     },
     {
       "id": "FC11-62r-coamichi",
@@ -174,7 +180,9 @@
       "translation_rights": "not_cleared",
       "review_level": "lexical_crosscheck_only",
       "reviewed_by": null,
-      "train_eligible": false
+      "train_eligible": false,
+      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
+      "visual_evidence_ref": "fc11-62r-snakefish"
     },
     {
       "id": "FC11-62r-chimalmichi",
@@ -206,7 +214,9 @@
       "translation_rights": "not_cleared",
       "review_level": "lexical_crosscheck_only",
       "reviewed_by": null,
-      "train_eligible": false
+      "train_eligible": false,
+      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
+      "visual_evidence_ref": "fc11-62r-shieldfish"
     },
     {
       "id": "FC11-209v-mirror",
@@ -216,9 +226,9 @@
       "source_url": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
       "source_reading": "in mochioa tezcatl, in mocuepa ca tetl",
       "normalized": "in mochīhua tēzcatl, in mocuepa ca tetl",
-      "provisional_english": "a mirror is made; a stone turns into (or is made into) a mirror — full syntax unresolved",
+      "provisional_english": "A passage about a stone used for making a mirror; exact Nahuatl clause relations and the role of ca are unresolved.",
       "type": "clause fragment requiring source-context check",
-      "notes": "Existing Tlahtōlli candidate retained with an explicit warning: the supplied fragment may not represent a complete coherent sentence; independently verify word boundaries, relation of clauses, and the source's Spanish column before trusting translation.",
+      "notes": "Folio 209v visibly contains the phrase near the bottom of the Nahuatl column. The existing short excerpt may be read as a description of a mirror-making stone, but grammar and segmentation are not independently verified. The source's Spanish column is not a word-aligned Nahuatl translation.",
       "tokens": [
         {
           "surface": "in",
@@ -292,7 +302,11 @@
       "translation_rights": "not_cleared",
       "review_level": "lexical_crosscheck_only",
       "reviewed_by": null,
-      "train_eligible": false
+      "train_eligible": false,
+      "facsimile_visual_comparison": "partial_image_inspection_not_line_certified",
+      "visual_evidence_ref": "fc11-209v-mirror"
     }
-  ]
+  ],
+  "collation_link": "folio_visual_collation.json",
+  "review_notice": "Five preliminary visual observations on two folios. No fully diplomatic line transcription or independently expert-reviewed passage. Full Codex not trained."
 }

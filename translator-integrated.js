@@ -62,6 +62,9 @@ function showResult(){
      const item=el('div','translator-morph-candidate');
      item.append(el('strong','',clue.token+' → '+clue.lemma+' · '+clue.kind),
       el('p','translator-meta','Evidence grade: '+clue.grade+'; morphology only, not contextual certainty.'));
+     const features=Object.entries(clue.features||{}).filter(([k,v])=>v!==null&&v!==undefined&&typeof v==='string')
+      .slice(0,8).map(([k,v])=>k+': '+v).join(' · ');
+     if(features)item.append(el('p','translator-meta',features));
      if(clue.parts?.length)item.append(el('p','translator-meta',
       clue.parts.map(part=>part.surface+' ('+part.role+')').join(' · ')));
      const source=safeLink(clue.source,'Inspect source of morphological proposal');

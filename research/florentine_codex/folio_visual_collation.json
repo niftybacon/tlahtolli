@@ -1,0 +1,90 @@
+{
+  "format": "tlahtolli-manuscript-visual-collation",
+  "schema": 1,
+  "created_utc": "2026-10-28",
+  "scope": "Small visual comparison of two folio images only; no claim of all lines checked",
+  "responsible_work": "assistant visual comparison of images, not a trained Indigenous linguist's review",
+  "gold_standard": false,
+  "train_eligible": false,
+  "certified_lines": 0,
+  "rights": "Original 1577 manuscript public domain; Getty's separate digital image is a reference URL only, not copied or redistributed",
+  "folios": [
+    {
+      "book": 11,
+      "folio": "62r",
+      "source_url": "https://florentinecodex.getty.edu/en/book/11/folio/62r",
+      "manuscript_image_reference": "https://media.getty.edu/iiif/image/76250576-da1e-4a19-b51b-407b7ebb5abd/full/pct%3A16%2C/0/default.jpg",
+      "column": "right/Nahuatl",
+      "status": "visual_partial_not_certified",
+      "regions": [
+        {
+          "id": "fc11-62r-water",
+          "locator": "right column, upper middle, lines containing atlan nemjni and atl yitic",
+          "visual_observation": "The sequence 'atl yitic ne' ends one physical handwritten line; a continuation resembling 'mjnj' begins the next.",
+          "editorial_comparison": "atl yitic nemjnj",
+          "normalization_candidate": "ātl yitic nemini",
+          "observation_type": "line_break_only",
+          "uncertain_characters": "i/j and superscript diacritics cannot be securely assessed from this preview",
+          "word_boundary_certified": false,
+          "interpretation_certified": false
+        },
+        {
+          "id": "fc11-62r-shield",
+          "locator": "right column, lower third, beneath heading Chimalmjchi",
+          "visual_observation": "The comparison after iaoaltic appears as 'iuhqujn chimal' at the end of one line, followed by 'li' on the next.",
+          "editorial_comparison": "iuhqujn chimalli",
+          "normalization_candidate": "iuhquin chīmalli",
+          "observation_type": "line_break_only",
+          "uncertain_characters": "exact historic i/j shapes and vowel length remain editorial",
+          "word_boundary_certified": false,
+          "interpretation_certified": false
+        },
+        {
+          "id": "fc11-62r-snakefish",
+          "locator": "right column, lower half, heading directly above the small fish illustration",
+          "visual_observation": "A heading corresponding to 'Coamjchi' appears before a comparison with a snake, but individual glyph and abbreviation details need higher resolution.",
+          "editorial_comparison": "Coamjchi",
+          "normalization_candidate": "coāmichin (lexical reconstruction, not a diplomatic reading)",
+          "observation_type": "heading_location",
+          "uncertain_characters": "middle and final glyphs are provisional",
+          "word_boundary_certified": false,
+          "interpretation_certified": false
+        },
+        {
+          "id": "fc11-62r-shieldfish",
+          "locator": "right column, lower quarter, heading directly below fish illustration",
+          "visual_observation": "A heading corresponding to 'Chimalmjchi' appears immediately before a short description of the sea creature.",
+          "editorial_comparison": "Chimalmjchi",
+          "normalization_candidate": "chīmalmichin (lexical reconstruction, not a diplomatic reading)",
+          "observation_type": "heading_location",
+          "uncertain_characters": "middle and final glyphs are provisional",
+          "word_boundary_certified": false,
+          "interpretation_certified": false
+        }
+      ]
+    },
+    {
+      "book": 11,
+      "folio": "209v",
+      "source_url": "https://florentinecodex.getty.edu/es/book/11/folio/209v",
+      "manuscript_image_reference": "https://media.getty.edu/iiif/image/bf31d590-e082-4322-9e08-b419fc4e09fb/full/pct%3A16%2C/0/default.jpg",
+      "column": "right/Nahuatl",
+      "status": "visual_partial_not_certified",
+      "regions": [
+        {
+          "id": "fc11-209v-mirror",
+          "locator": "right column, bottom, following the fifth-paragraph heading",
+          "visual_observation": "A line near the bottom contains a phrase corresponding to 'in mochioa tezcatl'; the next begins with a phrase corresponding to 'in mocuepa ca tetl'.",
+          "editorial_comparison": "in mochioa tezcatl, in mocuepa ca tetl",
+          "normalization_candidate": "in mochīhua tēzcatl, in mocuepa ca tetl (partly hypothetical)",
+          "observation_type": "phrase_location",
+          "uncertain_characters": "whether ca functions as copula, preposition, or another construction is unresolved; exact normalized vowel lengths unverified",
+          "word_boundary_certified": false,
+          "interpretation_certified": false
+        }
+      ]
+    }
+  ],
+  "retraction_note": "Earlier Tlahtōlli close readings are preliminary comparative references. None of these five segments is a verified diplomatic line. The image shows scribal line breaks that automated tokenizers must not interpret as true word boundaries.",
+  "next_gate": "Inspect higher-resolution public-domain manuscript images, independently transcribe each physical line with character uncertainty, compare a second pass, then seek review by a qualified Classical Nahuatl specialist and competent present-day Nahuatl speakers or organizations where appropriate. Original source not equated with modern Nahuatl."
+}

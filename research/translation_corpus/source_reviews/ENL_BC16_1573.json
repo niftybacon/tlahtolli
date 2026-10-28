@@ -1,0 +1,58 @@
+{
+  "format": "tlahtolli-source-review-v1",
+  "id": "ENL-BC16a000-f122-1573",
+  "source_id": "ENL-BC16-1573",
+  "manuscript_title": "Land sale to a Spaniard, Santiago Xochac (Coyoacan region), 1573",
+  "historical_date": "1573",
+  "geographic_context": "Coyoacan region, central Mexico; Santiago Xochac",
+  "language_variety": "Sixteenth-century central Mexican Nahuatl (Classical-period candidate; not expert adjudicated)",
+  "archive": "Archivo General de la Nación (Mexico), Tierras 1735, exp. 2, folio 122",
+  "manuscript_page": "folio 122, manuscript's sole folio represented as ENL BC16a000",
+  "manuscript_image_url": "https://enl.wired-humanities.org/sites/default/files/mapaImages/BC16a000.png",
+  "library_record_url": "https://enl.wired-humanities.org/bc16/elements/bc16a/000",
+  "library_document_url": "https://enl.wired-humanities.org/bc16",
+  "edition_reference": "Arthur J. O. Anderson, Frances Berdan, and James Lockhart (eds.), Beyond the Codices (1976), document 16, pp. 98–101; ENL transcription and English translation from James Lockhart papers",
+  "source_identity_status": "confirmed from ENL description and facsimile",
+  "image_inspection": {
+    "status": "viewed_single_web_raster_not_independently_collated",
+    "observed_page_structure": "one handwritten legal-document page with upper text block and lower signatures/attestation",
+    "limitation": "Facsimile was inspected in a small web raster. The full text has not been independently deciphered, letter-by-letter collated, or checked against a high-resolution scan.",
+    "minimum_assisted_excerpt": "ticnamaca y¯ totlal",
+    "excerpt_basis": "short string located by comparison to ENL's edited analytic transcription; NOT an independent paleographic transcript",
+    "excerpt_verification": "tentative, assisted; the bar over y is left uninterpreted; do not add macrons or expand abbreviations automatically",
+    "snippet_translation": null,
+    "token_ambiguities": [
+      "y¯ is a scribal/editorial abbreviation and must not be silently expanded to a chosen reading",
+      "word boundaries and inflectional segmentation have not been verified"
+    ],
+    "transcription_reviewed_by": null,
+    "translation_reviewed_by": null
+  },
+  "knowledge_contamination": {
+    "published_transcription_consulted": true,
+    "published_translation_consulted": true,
+    "reason": "ENL's editorial transcription and Lockhart's published translation were consulted to locate and understand the manuscript. Future scoring by us on this same page would not be genuinely blind.",
+    "independent_test_eligible": false
+  },
+  "rights": {
+    "original_manuscript": "sixteenth-century historical original; separate digitization and access terms must be checked",
+    "facsimile_reproduction": "unconfirmed; link only, do not copy or redistribute",
+    "editorial_transcription": "unconfirmed; do not bulk reproduce",
+    "published_translation": "unconfirmed; do not copy into the repository"
+  },
+  "review_status": "source_identified_image_inspected_editorial_assisted_partial",
+  "admission": "development_reference_only",
+  "evaluation_eligible": false,
+  "train_eligible": false,
+  "accuracy_judgment": null,
+  "reviewed_by_human_scholar": false,
+  "next_actions": [
+    "Obtain adequate facsimile resolution and independently compare each grapheme and abbreviation for a bounded segment",
+    "Preserve unresolved readings and written spellings before any normalization",
+    "Reconcile source conventions with published transcription only AFTER our first-pass manuscript reading",
+    "Do not use this document as a blind test: its published transcription and translation have already been consulted",
+    "Select a separate, unread manuscript for later held-out testing before examining any editorial translation"
+  ],
+  "created_on": "2026-10-28",
+  "note": "Intake evidence only. No verified aligned sentences or gold translations. No external scholar or peer-review status is implied."
+}

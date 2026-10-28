@@ -51,6 +51,8 @@ jobs:
         run: python tools/validate_translation_corpus.py
       - name: Test source-aware translation engine
         run: node tools/test_translator.js
+      - name: Test all-twelve-book Codex research aggregation
+        run: python tools/test_florentine_analysis.py
       - name: Test FSRS Stage 1 and Stage 2 engine
         run: node tools/test_fsrs.js
       - name: Install headless browser

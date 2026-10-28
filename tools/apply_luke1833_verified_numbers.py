@@ -15,6 +15,7 @@ PATCHES=[
  dict(verse=67,find='\n61  Auh  in  Zacharias',replace='\n67  Auh  in  Zacharias',pdf_page=16,printed_page=8),
  dict(chapter=2,verse=11,find='\n1 1  lpampa',replace='\n11  lpampa',pdf_page=19,printed_page=11),
  dict(chapter=2,verse=28,find='\n.  28  Auh  in  Simeón',replace='\n28  Auh  in  Simeón',pdf_page=21,printed_page=13),
+ dict(chapter=3,verse=7,find='\n.  7  Yhuan  o  qui  milhuiaya',replace='\n7  Yhuan  o  qui  milhuiaya',pdf_page=24,printed_page=16),
 ]
 def apply(text):
  changes=[]
@@ -23,6 +24,7 @@ def apply(text):
   start=text.index(p['find'])
   if p.get('chapter',1)==1 and start>13000:raise ValueError('Chapter 1 patch fell outside chapter')
   if p.get('chapter',1)==2 and not 12200<start<20600:raise ValueError('Chapter 2 patch outside chapter')
+  if p.get('chapter',1)==3 and not 20500<start<26900:raise ValueError('Chapter 3 patch outside chapter')
   text=text.replace(p['find'],p['replace'],1)
   changes.append({'chapter':p.get('chapter',1),'verse':p['verse'],'before':p['find'].strip(),'after':p['replace'].strip(),
    'pdf_page_1based':p['pdf_page'],'printed_page':p['printed_page'],
@@ -50,13 +52,17 @@ def main():
   'chapter_2_printed_pages_checked_1based':list(range(10,16)),
   'chapter_2_verse_numeral_sequence':'1–52 visually checked across printed pages 10–15, not a line-by-line correction of Nahuatl wording',
   'chapter_2_verse_numbering_status':'pages_checked_numbering_only',
+  'chapter_3_pdf_pages_checked_1based':list(range(24,29)),
+  'chapter_3_printed_pages_checked_1based':list(range(16,21)),
+  'chapter_3_verse_numeral_sequence':'1–38 visually checked across printed pages 16–20; not a line-by-line correction of Nahuatl wording',
+  'chapter_3_verse_numbering_status':'pages_checked_numbering_only',
   'chapter_2_partial_observation':'Printed page 11 confirms verse 11; printed page 13 confirms verse 28, both OCR numeral errors.',
-  'other_22_chapters_verse_numerals_not_fully_checked':True,
+  'other_21_chapters_verse_numerals_not_fully_checked':True,
   'patches':changes,
   'rights':'1833 original edition public domain; no modern copyrighted Bible translations used',
   'caveat':'These five numeral corrections are image-checked. Other punctuation, spelling and word boundaries remain unreviewed.',
   'training_approved':False,
  }
  args.report.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
- print('Chapter 1: printed 1–80, Chapter 2: printed 1–52 page-checked. '+str(len(changes))+' numeral corrections; wording remains unreviewed.')
+ print('Chapters 1–3: all printed verse numerals page-checked. '+str(len(changes))+' numeral corrections; wording remains unreviewed.')
 if __name__=='__main__':main()

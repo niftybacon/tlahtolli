@@ -40,7 +40,7 @@
     "editorial_transcription": "unconfirmed; do not bulk reproduce",
     "published_translation": "unconfirmed; do not copy into the repository"
   },
-  "review_status": "source_identified_image_inspected_editorial_assisted_partial",
+  "review_status": "image_inspected_editorial_assisted_with_provisional_lexical_segmentation",
   "admission": "development_reference_only",
   "evaluation_eligible": false,
   "train_eligible": false,
@@ -54,5 +54,52 @@
     "Select a separate, unread manuscript for later held-out testing before examining any editorial translation"
   ],
   "created_on": "2026-10-28",
-  "note": "Intake evidence only. No verified aligned sentences or gold translations. No external scholar or peer-review status is implied."
+  "note": "Intake + explicitly speculative morphology only. Full source transcription and grammatical analysis are not verified; no English translation, aligned pair, scoring, training approval, or scholar sign-off.",
+  "provisional_morphological_observations": [
+    {
+      "surface": "ticnamaca",
+      "unverified_segmentation": "ti-c-namaca",
+      "dictionary_lemma": "namaca",
+      "possible_functions": [
+        "ti-: subject prefix; 2nd-person singular and 1st-person plural can share the written prefix",
+        "c-: possible third-person singular object agreement",
+        "namaca: to sell"
+      ],
+      "uncertainty": "The written surface does not show an overt final -h plural suffix. The two sellers supply contextual support for 'we' in the edited account, but we cannot treat that contextual reading as an independently verified morphological parse; colonial -h spelling is inconsistent.",
+      "source_links": [
+        "https://nahuatl.wired-humanities.org/content/namaca",
+        "https://en.wikipedia.org/wiki/Classical_Nahuatl_grammar",
+        "https://enl.wired-humanities.org/bc16/elements/bc16a/000"
+      ],
+      "assessment": "plausible lexical and grammatical decomposition; editorial context has been seen; no independent manuscript adjudication"
+    },
+    {
+      "surface": "y¯",
+      "unverified_segmentation": null,
+      "dictionary_lemma": null,
+      "possible_functions": [
+        "An abbreviated determinative/particle is possible; no expansion is approved"
+      ],
+      "uncertainty": "The bar is a source-era abbreviation mark. The current tokenizer may split it as y plus a nonword symbol. Neither a 'long y' nor an automatically expanded word should be asserted.",
+      "source_links": [
+        "https://enl.wired-humanities.org/sites/default/files/mapaImages/BC16a000.png"
+      ],
+      "assessment": "unresolved abbreviation and token-boundary question"
+    },
+    {
+      "surface": "totlal",
+      "unverified_segmentation": "to-tlal",
+      "dictionary_lemma": "tlalli",
+      "possible_functions": [
+        "to-: candidate first-person plural possessor 'our'",
+        "tlal-: candidate possessed stem of tlalli 'land'"
+      ],
+      "uncertainty": "The segmentation is grammatically plausible and supported by lexical references, not independently verified as read from the facsimile. No citation-form -li should be inserted into the source spelling.",
+      "source_links": [
+        "https://nahuatl.wired-humanities.org/content/tlalli",
+        "https://nawatl.com/curso/leccion-4-los-posesivos/"
+      ],
+      "assessment": "plausible possessive morphology, not a gold annotation"
+    }
+  ]
 }

@@ -139,7 +139,18 @@ function mount(){
 async function start(){
  mount();
  if(!isConfigured()){status('Account sync is not configured yet. The site owner must add the Supabase project URL and publishable key to cloud-config.js. Local study still works.');byId('cloudForms').hidden=true;byId('cloudForms').style.display='none';return}
- if(!window.supabase?.createClient){status('Supabase library could not load. Reload while online; local study still works.');byId('cloudForms').hidden=true;byId('cloudForms').style.display='none';return}
+ if(!window.supabase?.createClient){
+  try{await new Promise((resolve,reject)=>{
+   const script=document.createElement('script');
+   script.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+   script.async=true;script.onload=resolve;script.onerror=()=>reject(new Error('library unavailable'));
+   document.head.append(script);
+  });}catch{
+   status('Supabase library could not load. Reload while online; local study still works.');
+   byId('cloudForms').hidden=true;byId('cloudForms').style.display='none';return;
+  }
+ }
+ if(!window.supabase?.createClient){status('Account library unavailable; local study still works.');return}
  api=window.supabase.createClient(cfg.url,cfg.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
  try{
   const {data,error}=await api.auth.getSession();if(error)throw error;

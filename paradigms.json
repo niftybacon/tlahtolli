@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-verb-paradigms",
   "schema": 1,
-  "version": "2026-10-27.6.0",
+  "version": "2026-10-28.1.0",
   "patterns": [
     "present",
     "preterite",
@@ -31,7 +31,7 @@
       "b2s": "tlahtoh",
       "b2p": "tlahtoh",
       "b3": "tlahtō",
-      "note": "Class 3 -oā; base-2 tlahtoh from the classical grammar paradigm; compare Molina onitlato.",
+      "note": "Class 3 -oā; base-2 tlahtoh from the classical grammar paradigm; compare Molina onitlato. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/node/172772",
       "cells": [
         [
@@ -114,6 +114,19 @@
           "antlahtohtin",
           "tlahtohtin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "chōca": {
@@ -123,7 +136,7 @@
       "b2s": "chōca",
       "b2p": "chōca",
       "b3": "chōca",
-      "note": "Class 1. The written ō- preterite augment is often present but not obligatory.",
+      "note": "Class 1. The written ō- preterite augment is often present but not obligatory. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/choca",
       "cells": [
         [
@@ -206,6 +219,19 @@
           "anchōcahtin",
           "chōcahtin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "nemi": {
@@ -215,7 +241,7 @@
       "b2s": "nen",
       "b2p": "nen",
       "b3": "nemi",
-      "note": "Irregular preterite nen (Molina oninen); not the reduplicated verb nehnemi.",
+      "note": "Irregular preterite nen (Molina oninen); not the reduplicated verb nehnemi. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/nemi",
       "cells": [
         [
@@ -298,6 +324,19 @@
           "annentin",
           "nentin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "chīhua": {
@@ -307,7 +346,7 @@
       "b2s": "chīuh",
       "b2p": "chīuh",
       "b3": "chīhua",
-      "note": "Transitive; Class 2. Past stem chīuh, e.g. Molina onicchiuh. Third-singular object -c-/qui- is fixed here.",
+      "note": "Transitive; Class 2. Past stem chīuh, e.g. Molina onicchiuh. Third-singular object -c-/qui- is fixed here. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/chihua",
       "cells": [
         [
@@ -390,6 +429,19 @@
           "anquichīuhtin",
           "quichīuhtin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "mati": {
@@ -399,7 +451,7 @@
       "b2s": "mah",
       "b2p": "mat",
       "b3": "mati",
-      "note": "Karttunen MAT(I), preterite MAH or MAT; Lockhart states the preterite plural always uses MAT. Here singular MAH and plural MAT. Alternatives are not exhaustively listed.",
+      "note": "Karttunen MAT(I), preterite MAH or MAT; Lockhart states the preterite plural always uses MAT. Here singular MAH and plural MAT. Alternatives are not exhaustively listed. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/mati",
       "cells": [
         [
@@ -482,6 +534,19 @@
           "anquimattin",
           "quimattin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "itta": {
@@ -491,7 +556,7 @@
       "b2s": "itta",
       "b2p": "itta",
       "b3": "itta",
-      "note": "Class 1 transitive. The initial short i in (i)tta may be elided with an object prefix: niquitta, quitta. Citation spelling not a bare finite transitive predicate.",
+      "note": "Class 1 transitive. The initial short i in (i)tta may be elided with an object prefix: niquitta, quitta. Citation spelling not a bare finite transitive predicate. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/itta",
       "cells": [
         [
@@ -574,6 +639,19 @@
           "anquittahtin",
           "quittahtin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "tlacuā": {
@@ -583,7 +661,7 @@
       "b2s": "tlacuah",
       "b2p": "tlacuah",
       "b3": "tlacuā",
-      "note": "Class 4. Present singular tlacua, preterite singular tlacuah; these overlap other cells. Lexicalized tla- is part of the intransitive word.",
+      "note": "Class 4. Present singular tlacua, preterite singular tlacuah; these overlap other cells. Lexicalized tla- is part of the intransitive word. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/tlacua",
       "cells": [
         [
@@ -666,6 +744,19 @@
           "antlacuahtin",
           "tlacuahtin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "yōli": {
@@ -675,7 +766,7 @@
       "b2s": "yōl",
       "b2p": "yōl",
       "b3": "yōli",
-      "note": "Class 2, preterite yōl. This is separate from the similarly glossed nemi.",
+      "note": "Class 2, preterite yōl. This is separate from the similarly glossed nemi. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/node/176626",
       "cells": [
         [
@@ -758,6 +849,19 @@
           "anyōltin",
           "yōltin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "cui": {
@@ -767,7 +871,7 @@
       "b2s": "cui",
       "b2p": "cui",
       "b3": "cui",
-      "note": "Class 1; preterite cuic. A third-person object prefix is required for this transitive sense.",
+      "note": "Class 1; preterite cuic. A third-person object prefix is required for this transitive sense. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/cui",
       "cells": [
         [
@@ -850,6 +954,19 @@
           "anquicuihtin",
           "quicuihtin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "pōhua": {
@@ -859,7 +976,7 @@
       "b2s": "pōuh",
       "b2p": "pōuh",
       "b3": "pōhua",
-      "note": "Class 2; historical -hua class; base 2 pōuh. Keep apart from the lexicalized intransitive tlapōhua.",
+      "note": "Class 2; historical -hua class; base 2 pōuh. Keep apart from the lexicalized intransitive tlapōhua. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/pohua",
       "cells": [
         [
@@ -942,6 +1059,19 @@
           "anquipōuhtin",
           "quipōuhtin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "tlapōhua": {
@@ -951,7 +1081,7 @@
       "b2s": "tlapōuh",
       "b2p": "tlapōuh",
       "b3": "tlapōhua",
-      "note": "Derived from transitive pōhua with lexicalized nonspecific tla-. Historical paradigm includes nitlapoani, nitlapoazquia.",
+      "note": "Derived from transitive pōhua with lexicalized nonspecific tla-. Historical paradigm includes nitlapoani, nitlapoazquia. Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/content/tlapohua",
       "cells": [
         [
@@ -1034,6 +1164,19 @@
           "antlapōuhtin",
           "tlapōuhtin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     },
     "tlami": {
@@ -1043,7 +1186,7 @@
       "b2s": "tlan",
       "b2p": "tlan",
       "b3": "tlami",
-      "note": "Class 2 with irregular m → n in short preterite base: tlami → tlan (Molina onitlan).",
+      "note": "Class 2 with irregular m → n in short preterite base: tlami → tlan (Molina onitlan). Rule source audit: Launey §§1.1–1.3 inspected; other row locators are contents-only. All cells remain grammar-derived and individually uncertified.",
       "lemmaSource": "https://nahuatl.wired-humanities.org/node/176482",
       "cells": [
         [
@@ -1126,7 +1269,123 @@
           "antlantin",
           "tlantin"
         ]
+      ],
+      "rule_review_status": "general_present_rule_inspected; remaining_rule_text_pending; no_full_matrix_certified",
+      "rule_refs": [
+        "launey-0",
+        "launey-1",
+        "launey-2",
+        "launey-3",
+        "launey-4",
+        "launey-5",
+        "launey-6",
+        "launey-7",
+        "launey-8",
+        "launey-9"
       ]
     }
-  }
+  },
+  "orthography_policy": "Legacy mixed orthography; vowel-length consistency and individual rule citations await review. Do not treat omitted macrons as independently established short vowels.",
+  "rule_sources": [
+    {
+      "id": "launey-0",
+      "pattern": "present",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§§1.1–1.3, pp.12–14; transitive prefixes §3.1, p.26",
+      "verification": "rule_text_inspected",
+      "supports": "General subject-prefix and present plural mechanism; does not verify every model cell",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-1",
+      "pattern": "preterite",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§§8.2–8.8, pp.69–73",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-2",
+      "pattern": "imperfect",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§9.10, p.83",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-3",
+      "pattern": "future",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§9.8, p.82",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-4",
+      "pattern": "conditional",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§22.2, p.223",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-5",
+      "pattern": "pluperfect",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§22.1, p.222",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-6",
+      "pattern": "habitual/quotidian",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§§16.3–16.5, pp.161–163",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-7",
+      "pattern": "optative/imperative",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§§9.1–9.6, pp.78–81",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-8",
+      "pattern": "past optative",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§16.9, p.166 (candidate connection only)",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    },
+    {
+      "id": "launey-9",
+      "pattern": "admonitive/vetitive",
+      "source": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "work": "Launey, translated/adapted Mackay (2011)",
+      "locator": "§22.3, p.224",
+      "verification": "contents_locator_only_rule_text_unavailable",
+      "supports": "Research locator only; generated row not independently verified",
+      "cells_certified": false
+    }
+  ]
 }

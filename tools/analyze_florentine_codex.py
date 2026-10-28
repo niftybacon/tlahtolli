@@ -139,7 +139,8 @@ def analyze_texts(texts: dict[int, str], lexicon: Path) -> dict:
             "books_checked": len(books),
             "approximate_orthographic_units": sum(b["approximate_orthographic_units"] for b in books),
             "lexicon_approximate_hits": sum(b["lexicon_exact_or_diacritic_fold_hits"] for b in books),
-            "lexicon_headwords_indexed": len(known),
+            "lexicon_matching_strings_indexed": len(known),
+            "lexicon_headwords_indexed": sum(w.get("variety") in CLASSICAL for w in json.loads(lexicon.read_text(encoding="utf8"))["words"]),
         },
         "books": books,
     }

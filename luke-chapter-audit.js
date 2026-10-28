@@ -22,7 +22,10 @@ function renderChapter(ch){
  if(ch.out_of_order_number_transitions||ch.duplicate_verse_marker_candidates.length)
   detail.append(el('p','Out-of-order transitions: '+ch.out_of_order_number_transitions+'; duplicate candidate numerals: '+ch.duplicate_verse_marker_candidates.join(', ')+'.','translator-caution'));
  if(ch.chapter_status==='PRINTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'){
-  detail.append(el('p','Printed chapter 1 verse numerals 1–80 were visually checked across PDF pages 9–17. OCR numeral corrections are documented separately. The Nahuatl wording and spelling are NOT proofread.','translator-meta'));
+  detail.append(el('p','Printed chapter '+ch.chapter+' verse numerals 1–'+ch.expected_verse_count+
+   ' were visually checked across PDF pages '+ch.facsimile_pages_checked[0]+'–'+
+   ch.facsimile_pages_checked[ch.facsimile_pages_checked.length-1]+
+   '. Numeral corrections are documented separately. The Nahuatl wording and spelling are NOT proofread.','translator-meta'));
  }else if(ch.chapter_status==='SELECTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'){
   detail.append(el('p','A selected printed page has been examined (PDF page 21), confirming the numeral for verse 28. The chapter has NOT received a complete page-by-page reading.','translator-meta'));
  }else detail.append(el('p','Status: OCR structural audit only. No facsimile page was visually checked for this chapter.','translator-caution'));

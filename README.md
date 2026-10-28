@@ -1,3 +1,13 @@
+# Translation Desk v0.2 — evidence-aware research preview (October 28, 2026)
+
+[Open Tlahtōlli's Translation Desk](https://niftybacon.github.io/tlahtolli/translator.html) · [Corpus Stage 1 workspace](research/translation_corpus/README.md)
+
+The desk now indexes **115 Classical Nahuatl headwords**, their explicitly recorded historical spellings and sourced standalone forms, and **three source-linked historical passage candidates**. It shows bracketed lexical glosses, ambiguity/unknown-word warnings, and researcher notes with source links. These are **not AI-generated complete translations** and the three interpretive examples are **not cleared or approved for machine training**.
+
+Stage 1 collection gates and testing: `python tools/validate_translation_corpus.py` and `node tools/test_translator.js`. The translator's analysis engine is maintained in [translator-engine.js](translator-engine.js). Existing dictionary, reader, and SRS features remain unchanged.
+
+---
+
 # Stone and the mirror — one new historical Amoxtli passage (October 27, 2026)
 
 Added a documented Florentine Codex Book 11 fol. 209v stone-to-mirror clause with original transcription, normalized reading, English interpretation and individual token analyses. The dictionary now has 115 headwords: three audited lexical records were added for **tēzcatl**, **cuepa**, and **ca**. The already-listed *tetl* (stone) and *chīhua* (make) are reused without overwriting or duplicating them. The text concerns stones crafted into mirrors; ideas of divination and seeing hidden things are cultural context **not** a purported translation of this passage. [Review note](docs/AMOXTLI_MIRROR_STONE.md).

@@ -24,7 +24,7 @@ refs=ocr.references(dictionary)
 assert 'yhuan' in refs and 'ihuan' in refs
 assert 'paquil' not in refs
 base=('Lorem ipsum lorem ipsum '+chr(10))*600
-raw=base+'paqui-\nliztli anquihua-\nzoa in  in\n2  Tlahtolli\nSAN LUCAS, II.\n3  Cihuātl\n'
+raw=base+'paqui-\nliztli anquihua-\nzoa\n\nin  in\n\n2  Tlahtolli\nSAN LUCAS, II.\n3  Cihuātl\n'
 draft,report=ocr.prepare(raw,refs)
 assert 'paquiliztli ' in draft
 assert 'anquihua-\nzoa' in draft, 'Unsupported word must not silently be merged'

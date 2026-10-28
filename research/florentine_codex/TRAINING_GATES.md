@@ -34,6 +34,19 @@ Each example needs: source ID and exact book/folio/line; independently checked m
 
 Review stages: candidate → facsimile checked → linguistic review → rights-cleared alignment → human approval. Merely selecting “linguistically reviewed” in a local browser does not automatically satisfy rights or train the model. Any edit to a reviewed text should reset the verification stage. Approval for **public redistribution** and **model training** must be checked separately.
 
+## Morphology and normalization methodology from peer-reviewed research
+
+Francis M. Tyers, Robert Pugh, and Valery A. Berthoud F., "[Codex to corpus](https://aclanthology.org/2023.americasnlp-1.4/)," *AmericasNLP* (2023), reported a partially annotated Florentine Codex corpus using Universal Dependencies-inspired annotation. They treated **retokenization** (repairing spaces/line endings) and **historical orthography normalization** as separate tasks, preserving the original source string. Their experiments used Books 1 and 8 for training, Book 5 for held-out evaluation; the orthographic normalizer achieved **87% exact normalized-word accuracy** with a standalone neural model in that setup, while their dictionary-assisted variant improved its word error rate to **8.3%**. **These are the paper's reported results; they are not Tlahtōlli's measured accuracy.**
+
+Implementation consequences:
+
+1. Prefer reversible character-boundary actions to unconstrained text generation: a proposed merge/split must point to the original source character offsets, and characters must never be invented when changing word boundaries.
+2. Maintain separate immutable source transcription, tokenized reading, normalized orthography, lemma, part of speech, inflectional features and English interpretation.
+3. Preserve and independently review morpheme roles (relational nouns, incorporation, subject/object marking, compounding) and do not infer meaning solely from string similarity.
+4. Use document/book-level holdouts for normalization evaluation, not same-folio random train/test sentences.
+5. If later integrating the published corpus, identify its **actual release location and unambiguous license**. The research article's promise of openness is not itself a permission statement for training on a particular file.
+6. All automated normalizations remain *suggestions* until checked against manuscript readings; language variety and orthographic period are explicit.
+
 ## Suggested next work
 
 1. Manually verify 20–30 short passages in **Book 11**, then collect genre contrast from **Book 6** (rhetoric) and **Book 12** (narrative). Do not treat the Spanish column as a literal word-for-word translation of Nahuatl.

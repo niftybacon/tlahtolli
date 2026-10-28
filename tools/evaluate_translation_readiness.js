@@ -1,0 +1,162 @@
+#!/usr/bin/env node
+// Tlahtōlli: evaluation-readiness audit, NOT a translation accuracy benchmark.
+// Source-controlled corpus candidates are not independent ground truth.
+// No source-linked example is used as a known-answer translation.
+'use strict';
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const ROOT=path.join(__dirname,'..');
+const BASE=path.join(ROOT,'research','translation_corpus');
+const FIELDS=['pair_id','source_id','source_title','source_url','folio_or_segment',
+ 'source_date','source_region','nahuatl_variety','original_orthography','normalized_nahuatl',
+ 'translation_text','translation_language','translator_or_editor','translation_source_url',
+ 'alignment_type','original_rights','translation_rights','transcription_reviewed_by',
+ 'translation_reviewed_by','review_status','split_group','split','notes'];
+const RIGHTS=new Set(['public_domain','cc0','cc_by_4_0','permission_documented']);
+const SPLITS=new Set(['train','dev','test']);
+function parseCsv(source){
+ const s=String(source).replace(/^\uFEFF/,'');
+ const rows=[];let row=[],field='',quoted=false,closing=false;
+ for(let i=0;i<s.length;i++){
+  const c=s[i];
+  if(quoted){
+   if(c==='"'){
+    if(s[i+1]==='"'){field+='"';i++;}
+    else {quoted=false;closing=true;}
+   }else field+=c;
+  }else if(c===','||c==='\n'||c==='\r'){
+   row.push(field);field='';closing=false;
+   if(c!==','){
+    if(c==='\r'&&s[i+1]==='\n')i++;
+    if(row.some(x=>x!==''))rows.push(row);
+    row=[];
+   }
+  }else if(c==='"'&&!field&&!closing)quoted=true;
+  else if(closing&&c!==' '&&c!=='\t')throw Error('Unexpected characters after CSV closing quote');
+  else if(!closing)field+=c;
+ }
+ if(quoted)throw Error('Unclosed CSV quoted field');
+ if(field||row.length){row.push(field);rows.push(row);}
+ if(!rows.length)throw Error('Empty CSV');
+ const headings=rows.shift();
+ if(headings.length!==FIELDS.length||headings.some((h,i)=>h!==FIELDS[i]))throw Error('pairs.csv schema mismatch');
+ return rows.map((r,i)=>{
+  if(r.length!==headings.length)throw Error('CSV row '+(i+2)+' has '+r.length+' columns instead of '+headings.length);
+  return Object.fromEntries(headings.map((h,j)=>[h,r[j]]));
+ });
+}
+function clean(s){return String(s||'').normalize('NFC').trim();}
+function fingerprint(s){
+ return clean(s).toLocaleLowerCase('en').normalize('NFD')
+  .replace(/[\u0300-\u036f]/g,'')
+  .replace(/[^\p{L}\p{M}]+/gu,' ').trim().replace(/\s+/g,' ');
+}
+function isUrl(s){try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)&&!!u.hostname&&!u.username&&!u.password;}catch{return false;}}
+function humanReview(s){const v=clean(s);return v.length>=2&&!/^(?:ai|ai-only|automated|machine|model|chatgpt|gpt|unknown|pending|unreviewed|n\/a)$/i.test(v);}
+function audit(pairs,examples){
+ const errors=[],seen=new Set(),sourceSplits=new Map(),groupSplits=new Map(),textSplits=new Map();
+ const candidates=Array.isArray(examples?.entries)?examples.entries:[];
+ const knownSources=new Set(),knownText=new Set();
+ for(const e of candidates){
+  if(e?.source_id)knownSources.add(clean(e.source_id));
+  for(const v of [e?.original,e?.normalized]){const k=fingerprint(v);if(k)knownText.add(k);}
+  if(e?.train_eligible!==false||e?.review_status==='approved')errors.push('A display-only research example is incorrectly marked approved');
+ }
+ let approvedTest=0,approvedNonTest=0,unapproved=0;
+ for(const [i,row] of pairs.entries()){
+  const label='pair '+(clean(row.pair_id)||('#'+(i+1)));
+  if(!clean(row.pair_id)||seen.has(row.pair_id))errors.push(label+': missing or duplicate ID');
+  seen.add(row.pair_id);
+  const split=clean(row.split),source=clean(row.source_id),group=clean(row.split_group);
+  const original=fingerprint(row.original_orthography),normalized=fingerprint(row.normalized_nahuatl);
+  if(split&&!SPLITS.has(split))errors.push(label+': unsupported split');
+  if(row.review_status!=='approved'){
+   unapproved++;
+   if(split)errors.push(label+': unapproved record assigned to '+split);
+   continue;
+  }
+  if(split==='test')approvedTest++;else approvedNonTest++;
+  if(!split)errors.push(label+': approved record missing split');
+  if(!source||!group)errors.push(label+': approved record needs source_id and split_group');
+  if(row.nahuatl_variety!=='Classical Nahuatl')errors.push(label+': non-Classical variety cannot be benchmarked');
+  for(const key of ['original_rights','translation_rights']){
+   if(!RIGHTS.has(clean(row[key])))errors.push(label+': '+key+' not cleared');
+  }
+  for(const key of ['source_url','translation_source_url']){
+   if(!isUrl(row[key]))errors.push(label+': invalid '+key);
+  }
+  for(const key of ['source_title','source_date','source_region','folio_or_segment','original_orthography',
+   'normalized_nahuatl','translation_text','translation_language','translator_or_editor','alignment_type']){
+   if(!clean(row[key]))errors.push(label+': missing '+key);
+  }
+  if(!humanReview(row.transcription_reviewed_by)||!humanReview(row.translation_reviewed_by))
+   errors.push(label+': named independent human transcription/translation reviews required');
+  // Preserve the *whole manuscript/source* in one split, not a random folio.
+  for(const [map,key,name] of [[sourceSplits,source,'source_id'],[groupSplits,group,'split_group'],
+   [textSplits,original,'original surface'],[textSplits,normalized,'normalized surface']]){
+   if(!key||!split)continue;
+   if(map.has(key)&&map.get(key)!==split)errors.push(label+': '+name+' crosses train/dev/test');
+   map.set(key,split);
+  }
+  if(split==='test'){
+   if(knownSources.has(source))errors.push(label+': test source_id occurs in public translator research examples');
+   if(knownText.has(original)||knownText.has(normalized))
+    errors.push(label+': test input overlaps public research examples');
+  }
+ }
+ return {errors,counts:{pairs:pairs.length,approved_test:approvedTest,approved_other:approvedNonTest,
+  pending:unapproved,public_preview_examples:candidates.length},
+  readiness:errors.length?'invalid':approvedTest?'metadata_eligible_unscored':'no_heldout_gold',
+  translation_accuracy:null,
+  accuracy_reason:'No independently collected human judgments of the engine output exist. Lexical/sentence candidate coverage is not translation accuracy.'};
+}
+function loadModel(file,name){
+ const scope={window:{},URL};
+ vm.runInNewContext(fs.readFileSync(path.join(ROOT,file),'utf8'),scope,{filename:file});
+ if(!scope.window[name])throw Error(file+' did not expose '+name);
+ return scope.window[name];
+}
+function probeExamples(examples){
+ // Remove known historical phrase candidates from the translator model:
+ // otherwise recognizing one of our own stored examples would be leakage.
+ const dictionary=JSON.parse(fs.readFileSync(path.join(ROOT,'dictionary.json'),'utf8'));
+ const paradigms=JSON.parse(fs.readFileSync(path.join(ROOT,'paradigms.json'),'utf8'));
+ const lex=loadModel('translator-engine.js','TlahtolliTranslator').create(dictionary,{entries:[]});
+ const sentences=loadModel('translator-sentence.js','TlahtolliSentence').create(dictionary,paradigms);
+ return examples.entries.map(e=>{
+  const result=lex.analyze(e.original,'nh-en');
+  const sent=sentences.analyze(e.original);
+  return {id:e.id,source_id:e.source_id,
+   classification:'IN-SAMPLE DIAGNOSTIC ONLY: public source-linked candidate; not ground truth',
+   original_input:e.original,
+   lexical_total:result.stats.total,curated_matched:result.stats.matched,
+   unknown:result.stats.unknown,approximate:result.stats.approximate,
+   ambiguous_entries:result.stats.ambiguous,
+   unresolved_senses:result.stats.senseAmbiguities,
+   vowel_length_conflicts:result.stats.orthographyConflicts,
+   grammar_candidate_available:sent.complete,
+   stored_passage_match_count:result.passages.length};
+ });
+}
+function main(){
+ const pairs=parseCsv(fs.readFileSync(path.join(BASE,'pairs.csv'),'utf8'));
+ const examples=JSON.parse(fs.readFileSync(path.join(BASE,'research_examples.json'),'utf8'));
+ const report={format:'tlahtolli-evaluation-readiness-v1',...audit(pairs,examples)};
+ if(!report.errors.length)report.in_sample_diagnostics=probeExamples(examples);
+ if(process.argv.includes('--json'))console.log(JSON.stringify(report,null,2));
+ else {
+  console.log('Independent translation-quality readiness: '+report.readiness);
+  console.log('Approved held-out pairs: '+report.counts.approved_test+
+   '; public, non-gold display examples: '+report.counts.public_preview_examples);
+  console.log('Translation accuracy: NOT MEASURABLE (null).');
+  if(report.in_sample_diagnostics)for(const r of report.in_sample_diagnostics)
+   console.log('Preview-only '+r.id+': curated lexical matches '+r.curated_matched+'/'+r.lexical_total+
+    ', grammar candidate '+r.grammar_candidate_available+'; NOT a translation-quality score');
+  for(const err of report.errors)console.error('ERROR: '+err);
+ }
+ if(report.errors.length)process.exitCode=1;
+ return report;
+}
+if(require.main===module)main();
+module.exports={parseCsv,fingerprint,audit,probeExamples};

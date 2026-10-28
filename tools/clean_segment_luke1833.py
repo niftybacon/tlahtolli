@@ -40,7 +40,7 @@ def references(dictionary):
     add(form.get('form',''),w['word'],form.get('source'),form['evidence'])
  return forms
 
-def prepare(raw,ref,max_queue=700):
+def prepare(raw,ref,max_queue=1300):
  if len(raw)<12000:raise ValueError('OCR is incomplete')
  tokens=Counter(fold(m.group()) for m in TOKEN.finditer(raw))
  edits=[];queue=[];stats=Counter()
@@ -55,15 +55,18 @@ def prepare(raw,ref,max_queue=700):
   stats['applied_hyphen' if safe else 'unresolved_hyphen']+=1
   if len(queue)<max_queue:queue.append(item)
   if safe:edits.append((m.start(),m.end(),combined))
+ seen_space=set();selected_spaces=0
  for m in SPACED.finditer(raw):
-  if len(queue)>=max_queue:break
   proposal=m[1]+m[2];refs=ref.get(fold(proposal),[])
   if not refs:continue
+  stats['possible_space_joins']+=1
+  pair=fold(m.group())
+  if selected_spaces>=325 or pair in seen_space:continue
+  seen_space.add(pair);selected_spaces+=1
   queue.append({'kind':'possible_spaced_word','offset':m.start(),
     'original':m.group(),'proposed':proposal,'status':'needs_review',
     'reason':'complete_form_in_published_dictionary_but_spacing_may_be_real',
     'lexical_references':refs[:2],'source_review_required':True})
-  stats['possible_space_joins']+=1
  out=[];cursor=0
  for start,end,word in edits:
   if start<cursor:continue

@@ -47,6 +47,10 @@ jobs:
           Path('/tmp/tlahtolli-app.js').write_text(h.scripts[-1],encoding='utf8')
           PY
           node --check /tmp/tlahtolli-app.js
+      - name: Validate Classical Nahuatl translation corpus permissions and splits
+        run: python tools/validate_translation_corpus.py
+      - name: Test source-aware translation engine
+        run: node tools/test_translator.js
       - name: Test FSRS Stage 1 and Stage 2 engine
         run: node tools/test_fsrs.js
       - name: Install headless browser

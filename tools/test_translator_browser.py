@@ -48,6 +48,13 @@ with sync_playwright() as pw:
     page.locator("#translatorInput").fill("zzzyxxy")
     page.locator("#translatorForm button[type=submit]").click()
     assert "Unindexed form" in page.locator("#translatorAnalyses").inner_text()
+    page.locator("#translatorInput").fill("nimitzchīhua")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorAnalyses .translator-morph-panel").count() >= 1, "Advanced morphological proposals missing"
+    assert "Tēntli morphology engine" in page.locator("#translatorMorphStatus").inner_text()
+    page.locator("#translatorLukeExample").click()
+    assert page.locator("#translatorOrthography").input_value() == "luke1833"
+    assert "Yacuic" in page.locator("#translatorInput").input_value()
     page.locator("#codexAtlas").evaluate("(e)=>e.open=true")
     page.wait_for_function("document.querySelectorAll('#codexBookRows tr').length === 12")
     assert '291,900' in page.locator('#codexSummary').inner_text()

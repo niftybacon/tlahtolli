@@ -27,9 +27,13 @@ const parse=s=>{observed.push(s);
  return [];
 };
 const lookup=s=>({candidates:s==='quitoa'?[{lemma:'ihtoa',meaning:'to say',source:'https://example.org/source'}]:[]});
-const bridge=B.create(parse,lookup);
+const miniature={format:'tlahtolli-codex-aggregate-analysis',
+ verbatim_source_text_in_output:false,
+ books:[{book:11,top_orthographic_forms:[['qujtoa',12],['quitoa',5]]}]};
+const bridge=B.create(parse,lookup,miniature);
 const a=bridge.examine('qujtoa','codex');
 assert(a.analyses.some(x=>x.lemma==='ihtoa'&&x.changed));
+assert(a.corpusObservations.some(x=>x.book===11&&x.form==='qujtoa'&&x.count===12));
 assert(a.analyses.some(x=>x.grade==='hypothesis'&&x.changed));
 assert(a.analyses.every(x=>x.changed),'An unmatched original should not invent an attestation');
 assert(a.analyses.every(x=>x.rule.includes('tentative')));

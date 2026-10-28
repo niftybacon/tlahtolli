@@ -30,6 +30,8 @@ When a translation is behind copyright or other reuse restrictions, contribute o
 - [tools/evaluate_translation_readiness.js](../../tools/evaluate_translation_readiness.js) — measures **only** in-sample engineering coverage while enforcing fail-closed held-out-data readiness; accuracy stays null until human-scored test cases exist.
 - [tools/test_translation_readiness.js](../../tools/test_translation_readiness.js) — adversarial checks for leakage, rights, variety, reviewer, and CSV-safety gates.
 - [source_candidates.csv](source_candidates.csv) — bibliographic leads that require rights and alignment assessment.
+- [source_reviews/ENL_BC16_1573.json](source_reviews/ENL_BC16_1573.json) — the first 1573 central Mexican Nahuatl manuscript actually located and image-inspected, explicitly **not blind** because we consulted a modern transcription and translation. A short editorial-assisted excerpt is marked uncertain, never gold.
+- [source_reviews/README.md](source_reviews/README.md) — an achievable step-by-step manuscript reading process without claiming scholarly certification.
 
 ## Review workflow
 

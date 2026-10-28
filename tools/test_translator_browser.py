@@ -49,7 +49,7 @@ with sync_playwright() as pw:
     assert "NOT a decipherment" in reading
     assert "NOT independent evaluation data" in reading
     assert "abbreviation unresolved" in reading
-    assert page.locator("#manuscriptReadingContent a[href*='BC16a000.png']").count()==1
+    assert page.locator("#manuscriptReadingContent").get_by_role("link",name="Open original manuscript image").count()==1
     assert page.locator("#manuscriptReadingContent a[href*='/bc16/elements/']").count()==1
     page.locator("#manuscriptReadingContent .translator-actions button").click()
     assert page.locator("#translatorInput").input_value()=="ticnamaca y¯ totlal"

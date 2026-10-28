@@ -23,10 +23,11 @@ const safeLink=(value,title)=>{
 };
 const form=$('translatorForm');
 if(!form)return;
-let model=null,latest=null,dataMode='none';
+let model=null,latest=null,dataMode='none',morphBridge=null;
 const input=$('translatorInput'),direction=$('translatorDirection');
 const note=$('translatorStatus'),gloss=$('translatorGloss');
 const parts=$('translatorAnalyses'),passages=$('translatorPassages');
+const orthography=$('translatorOrthography'),morphStatus=$('translatorMorphStatus');
 function status(message){note.textContent=message;}
 function showResult(){
  parts.replaceChildren();passages.replaceChildren();latest=null;
@@ -53,12 +54,13 @@ function showResult(){
    passages.append(block);
   }
  }
+ let morphTokens=0;
  for(const entry of latest.parts){
   if(entry.kind!=='word')continue;
   const block=el('article','translator-word');
   block.append(el('strong','translator-headword',entry.value));
   if(entry.status==='unknown'){
-   block.append(el('p','translator-caution','Unindexed form: no meaning is proposed.'));
+   block.append(el('p','translator-caution','Unindexed form: no established dictionary meaning. Morphological possibilities, if any, are shown separately below.'));
   }else{
    if(entry.status==='approximate')block.append(el('p','translator-caution','Approximate orthography only. Vowel length or spelling may change the interpretation.'));
    if(entry.candidates.length>1)block.append(el('p','translator-meta','Multiple lexical analyses possible; context required.'));
@@ -71,7 +73,51 @@ function showResult(){
     block.append(line);
    }
   }
+  if(morphBridge&&direction.value==='nh-en'&&morphTokens<90){
+   morphTokens++;
+   const result=morphBridge.examine(entry.value,orthography?.value||'general');
+   if(result.analyses.length){
+    const panel=el('details','translator-morph-panel');
+    const preferred=result.analyses[0];
+    panel.append(el('summary','','Morphology · '+result.analyses.length+
+     ' candidate'+(result.analyses.length===1?'':'s')+
+     (preferred?.changed?' · historical spelling proposed':'')));
+    for(const proposal of result.analyses.slice(0,5)){
+     const line=el('div','translator-morph-candidate');
+     line.append(el('strong','',proposal.lemma+' · '+proposal.kind));
+     line.append(el('p','translator-meta',(morphBridge.gradeLabels[proposal.grade]||proposal.grade)+
+      ' · '+(proposal.changed?'Spelling suggestion: '+proposal.original+' → '+proposal.surface:
+      'Original spelling retained')));
+     if(proposal.changed)line.append(el('p','translator-caution',proposal.rule+
+       '. This is a tentative orthographic possibility, not a source-attested equivalence.'));
+     const feature=Object.entries(proposal.features||{}).filter(([k,v])=>k!=='template'&&v!==''&&v!=null)
+      .map(([k,v])=>k+': '+String(v)).join(' · ');
+     if(feature)line.append(el('p','translator-meta',feature));
+     if(proposal.parts.length){
+      const morphology=el('div','translator-morphemes');
+      for(const piece of proposal.parts.slice(0,9)){
+       const chip=el('span','translator-morpheme');
+       chip.append(el('strong','',piece.surface),el('small','',piece.role));
+       morphology.append(chip);
+      }
+      line.append(morphology);
+     }
+     if(proposal.meaning)line.append(el('p','',proposal.meaning));
+     if(proposal.note)line.append(el('p','translator-meta',proposal.note));
+     const link=safeLink(proposal.source,'Inspect morphology source');
+     if(link)line.append(link);
+     panel.append(line);
+    }
+    block.append(panel);
+   }
+  }
   parts.append(block);
+ }
+ if(morphStatus){
+  morphStatus.textContent=direction.value==='en-nh'?
+   'Morphological reverse parsing applies to Nahuatl input only. English mode remains dictionary lookup.':
+   morphBridge?'Using the existing Tēntli morphology engine for up to 90 tokens. Analyses may be hypotheses, not historical attestations.':
+   'The main-site morphology engine is unavailable; basic dictionary lookup remains available.';
  }
 }
 async function init(){
@@ -96,6 +142,12 @@ async function init(){
   }else throw Error('No published or bundled dictionary data found');
   const corpus=candidates.status==='fulfilled'?candidates.value:{entries:[]};
   model=window.TlahtolliTranslator.create(document,corpus);
+  if(window.TlahtolliHistoricalMorphology){
+   morphBridge=window.TlahtolliHistoricalMorphology.create(
+    token=>typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token),
+    token=>model.lookup(token,'nh-en')
+   );
+  }
   status(model.stats.headwords+' Classical Nahuatl headwords · '+
    model.stats.wordForms+' index keys · '+
    model.stats.passageCandidates+' sourced passage candidates.'+
@@ -104,9 +156,17 @@ async function init(){
 }
 form.addEventListener('submit',event=>{event.preventDefault();showResult();});
 direction.addEventListener('change',()=>{if(input.value.trim())showResult();});
+if(orthography)orthography.addEventListener('change',()=>{
+ morphBridge?.clearCache();
+ if(input.value.trim())showResult();
+});
 $('translatorExample').addEventListener('click',()=>{
  input.value='in mochioa tezcatl, in mocuepa ca tetl';
  direction.value='nh-en';showResult();
+});
+$('translatorLukeExample').addEventListener('click',()=>{
+ input.value='Yacuic iyec tenonotzaltzin';
+ direction.value='nh-en';if(orthography)orthography.value='luke1833';showResult();
 });
 $('translatorClear').addEventListener('click',()=>{
  input.value='';parts.replaceChildren();passages.replaceChildren();latest=null;

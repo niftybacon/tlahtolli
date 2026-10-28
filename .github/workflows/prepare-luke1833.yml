@@ -50,6 +50,10 @@ jobs:
           print('Draft OCR preparation validated:',r['counts'])
           print('All 24 chapter headings located; verse gaps flagged, no facsimile review claimed.')
           PY
+      - name: Refresh review snapshot after numeral corrections
+        run: |
+          python tools/refresh_luke_review.py
+          python tools/test_audit_repairs.py
       - name: Commit public-domain working OCR and provenance-rich review queue
         run: |
           git config user.name "github-actions[bot]"

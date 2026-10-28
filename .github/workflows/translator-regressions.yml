@@ -5,6 +5,8 @@ on:
     paths:
       - 'amoxcalli-archive.js'
       - 'manuscript-reading-desk.js'
+      - 'parallel-reading-*.js'
+      - 'tools/test_parallel_reading.js'
       - 'index.html'
       - 'translator-*.js'
       - 'tools/test_translator*.js'
@@ -20,6 +22,8 @@ on:
     paths:
       - 'amoxcalli-archive.js'
       - 'manuscript-reading-desk.js'
+      - 'parallel-reading-*.js'
+      - 'tools/test_parallel_reading.js'
       - 'index.html'
       - 'translator-*.js'
       - 'tools/test_translator*.js'
@@ -49,6 +53,10 @@ jobs:
           node-version: '22'
       - name: Manuscript reading aid JavaScript syntax
         run: node --check manuscript-reading-desk.js
+      - name: Parallel reading desk JavaScript syntax
+        run: node --check parallel-reading-core.js && node --check parallel-reading-desk.js
+      - name: Personal parallel text and manual-only alignment regressions
+        run: node tools/test_parallel_reading.js
       - name: Curated lexical and passage regressions
         run: node tools/test_translator.js
       - name: Sentence grammar regressions

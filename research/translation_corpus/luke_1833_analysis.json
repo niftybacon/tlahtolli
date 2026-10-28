@@ -1,0 +1,131 @@
+{
+  "format": "tlahtolli-luke1833-aggregate-analysis",
+  "schema": 1,
+  "created_utc": "2026-10-28T16:20:40+00:00",
+  "original_publication": "Mariano Paz y Sánchez, Gospel of Luke translated into Nahuatl, 1833",
+  "source": "https://archive.org/details/elevangeliodeslu00pazy",
+  "text_provider": "https://archive.org/download/elevangeliodeslu00pazy/elevangeliodeslu00pazy_djvu.txt",
+  "edition_rights": "Original 1833 edition is public domain (Wikimedia Commons Public Domain Mark).",
+  "variety": "Historical southern Puebla Nahuatl, ca. 1830, not automatically identical to sixteenth-century central Nahuatl.",
+  "text_quality": "UNVERIFIED archive OCR. Frequent scanning/printing errors and historical spelling variations; not suitable for direct model training.",
+  "text_redistributed": false,
+  "training_ready": false,
+  "parallel_aligned": false,
+  "source_sha256": "fd60e87f4126332ab239a550d1e57d955aba60d7e65d052a84e8337ccd4f99b4",
+  "stats": {
+    "approximate_ocr_letter_runs": 26201,
+    "distinct_ocr_forms": 5404,
+    "dictionary_exact_form_occurrences": 4589,
+    "dictionary_hypothetical_normalization_occurrences": 1217,
+    "dictionary_exact_form_percent": 17.51,
+    "dictionary_tentative_plus_exact_percent": 22.16,
+    "page_break_markers": 0
+  },
+  "frequent_written_forms": [
+    [
+      "in",
+      3287
+    ],
+    [
+      "yhuan",
+      1209
+    ],
+    [
+      "o",
+      501
+    ],
+    [
+      "qui",
+      495
+    ],
+    [
+      "oqui",
+      446
+    ],
+    [
+      "amo",
+      436
+    ],
+    [
+      "auh",
+      334
+    ],
+    [
+      "mo",
+      282
+    ],
+    [
+      "i",
+      252
+    ],
+    [
+      "an",
+      252
+    ],
+    [
+      "ye",
+      238
+    ],
+    [
+      "no",
+      218
+    ],
+    [
+      "ica",
+      193
+    ],
+    [
+      "ipampa",
+      189
+    ],
+    [
+      "ce",
+      165
+    ],
+    [
+      "xi",
+      163
+    ],
+    [
+      "tlen",
+      162
+    ],
+    [
+      "xic",
+      160
+    ],
+    [
+      "orno",
+      154
+    ],
+    [
+      "ca",
+      150
+    ],
+    [
+      "ic",
+      147
+    ],
+    [
+      "jesus",
+      147
+    ],
+    [
+      "mochi",
+      146
+    ],
+    [
+      "lucas",
+      136
+    ],
+    [
+      "ilhui",
+      133
+    ]
+  ],
+  "notes": [
+    "These measurements are OCR token runs, not linguistically verified word counts.",
+    "Orthographic transformations are only candidate comparisons. No automatic vowel-length inference.",
+    "Source references and spelling counts cannot substitute for aligned sentence-level translation pairs."
+  ]
+}

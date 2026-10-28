@@ -72,6 +72,65 @@ assert.equal(clues.length,4,'Both subject alternatives + abbreviation + possesse
 assert.equal(clues.filter(c=>c.token==='ticnamaca').length,2);
 assert(clues.some(c=>c.token==='y¯'&&c.lemma==='in'&&c.grade==='unreviewed'));
 assert(clues.some(c=>c.token==='totlal'&&c.lemma==='tlalli'));
+// One unranked source-backed finite verb + one fully consumed NP. This
+// intentionally does NOT create a complete/English sentence candidate.
+const sample=phrase.clauses[0];
+assert.equal(sample.agreementProposals.length,2,'Must preserve BOTH ti- persons');
+assert.deepEqual(Array.from(sample.agreementProposals,p=>p.verb.subject).sort(),['1pl','2sg']);
+for(const proposal of sample.agreementProposals){
+ assert.equal(proposal.grade,'source-backed agreement proposal (unverified; NOT a sentence translation)');
+ assert.equal(proposal.coverage,3,'Every source-spelled token must be consumed');
+ assert.equal(proposal.verb.object,'3sg');
+ assert.equal(proposal.nounPhrase.lemma,'tlalli');
+ assert.equal(proposal.nounPhrase.possessor,'1pl');
+ assert.equal(proposal.nounPhrase.marker,'y¯');
+ assert.match(proposal.nounPhrase.markerStatus,/HYPOTHESIS/);
+ assert.equal(proposal.agreement.nominalRole,'possible direct object');
+ assert(proposal.sources.some(url=>url.includes('gdn.iib.unam.mx')),'The noun form must carry independent 1563 evidence');
+ assert(proposal.sources.some(url=>url.includes('nahugram.html')),'The agreement must cite historical grammar');
+ assert.match(proposal.note,/does NOT independently settle verb subject/);
+}
+for(const text of [
+ 'ticnamaca totlal','totlal ticnamaca','y¯ totlal ticnamaca',
+ 'ticnamaca in totlal','in totlal ticnamaca',
+ 'ticnamaca in cihuātl','in cihuātl ticnamaca'
+]){
+ const result=sent.analyze(text);
+ assert.equal(result.complete,false,'No complete translation for source-linked proposal: '+text);
+ assert.equal(result.clauses[0].candidates.length,0);
+ assert.deepEqual(Array.from(result.clauses[0].agreementProposals,p=>p.verb.subject).sort(),['1pl','2sg'],text);
+ if(text.includes('cihuātl'))assert(result.clauses[0].agreementProposals.every(p=>
+  p.nounPhrase.lemma==='cihuātl'&&p.nounPhrase.kind==='unique curated noun headword'));
+}
+for(const text of [
+ 'ticnamaca in unknown','ticnamaca cihuātl','ticnamaca y¯ totlal extra',
+ 'ticnamaca y¯ totlal in conetl','ticnamaca in cihuātl in conetl',
+ 'ticnamaca in caltin','ticnamacas y¯ totlal','ticnamaca yn totlal',
+ 'ticnamaca y¯ totlalli','ticnamaca y¯','ticnamaca totlal totlal',
+ 'in ticnamaca cihuātl','ahmo ticnamaca y¯ totlal','ahmo ticnamaca in cihuātl',
+ 'ticnamaca, y¯ totlal','ticnamaca ticnamaca totlal'
+]){
+ const result=sent.analyze(text);
+ assert.equal(result.complete,false,text);
+ assert.equal(result.clauses[0].agreementProposals?.length||0,0,'Refuse unsupported NP/agreement: '+text);
+}
+const incompatible=sent=>sent.analyze('ticnamaca y¯ totlal').clauses[0].agreementProposals;
+for(const patch of [
+ {grade:'hypothesis'},
+ {kind:'Productive transitive parse'},
+ {features:{category:'verb',subject:'1pl',object:'3pl'}},
+ {features:{category:'verb',subject:'3sg',object:'3sg'}},
+ {sources:[]},
+ {parts:[{surface:'unrecorded',role:'fake'}]},
+]){
+ const alteredToken={...analyze('ticnamaca')[0],...patch};
+ const strictModel=win.window.TlahtolliSentence.create(d,paradigms,token=>
+  token==='ticnamaca'?[alteredToken]:analyze(token));
+ assert.equal(incompatible(strictModel).length,0,'Do not trust mismatched morphology: '+JSON.stringify(patch));
+}
+const ambiguousNounModel=win.window.TlahtolliSentence.create(d,paradigms,token=>
+ token==='totlal'?[...analyze(token),...analyze(token)]:analyze(token));
+assert.equal(incompatible(ambiguousNounModel).length,0,'Duplicate noun parses must not imply a single NP');
 assert.equal(sent.analyze('ticnamaca').complete,false);
 assert.equal(sent.analyze('totlal').complete,false);
 assert.equal(sent.analyze('ticnamaca y¯ totlal extra').complete,false);

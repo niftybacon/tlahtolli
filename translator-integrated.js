@@ -172,43 +172,54 @@ function showResult(){
   parts.append(block);
  }
 
-  // Supplement unsupported words with an independent archive lookup.
-  // Preserve unknown/ambiguous status in the curated translator; never certify OCR.
+  // Compare every analyzed token with the separately licensed archive.
+  // The published dictionary alone controls the working gloss and recognition status.
   if(direction.value==='nh-en'&&window.TlahtolliArchive){
    const current=latest;
-   const wordEntries=current.parts.filter(item=>item.kind==='word');
-   if(wordEntries.some(item=>item.status==='unknown')){
+   const wordEntries=current.parts.filter(item=>item.kind==='word').slice(0,90);
+   if(wordEntries.length){
     const blocks=[...parts.querySelectorAll('article.translator-word')];
     window.TlahtolliArchive.ensureLoaded().then(()=>{
      if(latest!==current)return;
-     let supplemented=0;
+     let supplemented=0,approximate=0;
      wordEntries.forEach((item,i)=>{
-      if(item.status!=='unknown'||!blocks[i])return;
-      const hits=window.TlahtolliArchive.lookup(item.value,{classicalOnly:true,limit:8});
-      if(!hits.length)return;
+      if(!blocks[i])return;
+      const evidence=window.TlahtolliArchive.lookupEvidence(item.value,{classicalOnly:true,limit:8});
+      if(!evidence.hits.length)return;
       supplemented++;
+      approximate+=evidence.approximateCount;
       const section=el('details','translator-morph-panel');
-      section.append(el('summary','','Extended source archive · '+hits.length+' matching records (not verified)'));
-      section.append(el('p','translator-caution','Supplemental lexical references only. Siméon is historical French OCR; Wiktionary candidates are separately labeled. A dictionary match is not a complete translation.'));
-      for(const hit of hits){
+      section.append(el('summary','','Additional lexical evidence · '+
+       evidence.total+' source record'+(evidence.total===1?'':'s')+' (unreviewed)'));
+      section.append(el('p','translator-caution',
+       'Independent historical/community dictionary comparisons. No archive meaning changes the reviewed lexical lookup, resolves a sense, or becomes an attested translation. Siméon definitions are French OCR.'));
+      if(evidence.truncated)section.append(el('p','translator-caution',
+       'Only the first '+evidence.hits.length+' matches are shown; other source records may differ.'));
+      for(const hit of evidence.hits){
        const record=el('div','translator-analysis');
        record.append(el('strong','',hit.word+' · '+hit.pos+' · '+hit.variety),
         el('p','translator-meta',hit.source+' · definition language: '+hit.language));
+       if(hit.matchKind==='diacritic-variant')record.append(el('p','translator-caution',
+        'UNCERTAIN SPELLING: macron/accent differs from the input. This is an unverified orthographic possibility, not a selected meaning.'));
        const definition=el('p','',hit.meaning||'No usable imported definition');
        if(definition.textContent.length>600){
         const full=el('details');
-        full.append(el('summary','','Read complete source definition ('+definition.textContent.length+' characters)'));
+        full.append(el('summary','','Read original definition ('+definition.textContent.length+' characters)'));
         full.append(definition);record.append(full);
        }else record.append(definition);
+       const tags=[...new Set((hit.senses||[]).flatMap(s=>Array.isArray(s[2])?s[2]:[]))].slice(0,12);
+       if(tags.length)record.append(el('p','translator-meta','Source sense labels: '+tags.join(', ')));
+       if(hit.etymology)record.append(el('p','translator-meta','Source etymology: '+hit.etymology));
        const link=safeLink(hit.sourceUrl,'Inspect imported source and licensing');
        if(link)record.append(link);
        section.append(record);
       }
       blocks[i].append(section);
      });
-     if(supplemented)status(note.textContent+' · '+supplemented+' unreviewed archive lookups available below.');
+     if(supplemented)status(note.textContent+' · '+supplemented+
+      ' tokens have unreviewed lexical comparisons'+(approximate?' (including uncertain spellings)':'')+'.');
     }).catch(error=>{
-     if(latest===current)status(note.textContent+' · Supplementary archive not available: '+error.message);
+     if(latest===current)status(note.textContent+' · Supplementary archive unavailable: '+error.message);
     });
    }
   }

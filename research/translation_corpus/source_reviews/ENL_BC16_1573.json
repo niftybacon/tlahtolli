@@ -237,6 +237,92 @@
         "url": "https://nahuatl.wired-humanities.org/content/chane",
         "basis": "Independent dictionary chane, pl. chaneque supports the nearby tichanneque context as plural residents."
       }
+    ],
+    "token_analyses": [
+      {
+        "surface": "ticnamaca",
+        "lemma": "namaca",
+        "reading": "first-person plural candidate; context favors this",
+        "features": {
+          "category": "verb",
+          "subject": "1pl",
+          "object": "3sg",
+          "tense": "present possible",
+          "person_resolution": "inferred from discourse; final plural suffix not written"
+        },
+        "parts": [
+          "ti",
+          "c",
+          "namaca"
+        ],
+        "claim_ids": [
+          "ti",
+          "c",
+          "namaca"
+        ],
+        "note": "The documented ti- may be first-person plural, but a final plural -h is absent in this written form. No sentence-level first-person-plural certainty or English translation is licensed."
+      },
+      {
+        "surface": "ticnamaca",
+        "lemma": "namaca",
+        "reading": "second-person singular candidate; surface-compatible",
+        "features": {
+          "category": "verb",
+          "subject": "2sg",
+          "object": "3sg",
+          "tense": "present possible",
+          "person_resolution": "written ti- also permits 2sg; discourse makes this less likely"
+        },
+        "parts": [
+          "ti",
+          "c",
+          "namaca"
+        ],
+        "claim_ids": [
+          "ti",
+          "c",
+          "namaca"
+        ],
+        "note": "Keep the second-person singular alternative visible when inspecting this word without surrounding discourse. This is not a source attestation of a separate token."
+      },
+      {
+        "surface": "y¯",
+        "lemma": "in",
+        "reading": "unresolved scribal nasal abbreviation; yn/in conjecture",
+        "features": {
+          "category": "particle",
+          "expansion": "yn/in proposed, NOT source-spelled",
+          "abbreviation": "spacing overbar retained"
+        },
+        "parts": [
+          "y¯"
+        ],
+        "claim_ids": [
+          "y¯"
+        ],
+        "note": "Original editorial transcription is y¯, not verified yn or in. Bar is an abbreviation hypothesis, never a vowel-length mark or automatic replacement."
+      },
+      {
+        "surface": "totlal",
+        "lemma": "tlalli",
+        "reading": "possessed-noun analysis with independent 1563 source comparison",
+        "features": {
+          "category": "noun",
+          "possessor": "1pl",
+          "stem": "tlal",
+          "absolute_form": "tlalli",
+          "interpretation": "our land; lexical/morphological evidence only"
+        },
+        "parts": [
+          "to",
+          "tlal"
+        ],
+        "claim_ids": [
+          "to",
+          "tlal"
+        ],
+        "note": "Exact form totlal independently recorded in a separate 1563 land document. The source text does NOT contain an absolutive -li here; the 1573 autograph was not collated."
+      }
     ]
   }
 }

@@ -103,3 +103,4 @@ const ambiguousComparison=mk([{word:'iuhquin',meaning:'like',pos:'particle'},
  {word:'object',meaning:'one'},{word:'object',meaning:'two'}]);
 assert.equal(ambiguousComparison.analyze('iuhquin object').contextReadings.length,0);
 console.log('PASS: bounded comparison composition, alternatives, order, punctuation, clause extent and lexical conflict controls.');
+require('./test_translator_sentence.js');

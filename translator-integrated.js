@@ -23,7 +23,7 @@ const safeLink=(value,title)=>{
 };
 const form=$('translatorForm');
 if(!form)return;
-let model=null,latest=null,dataMode='none',morphBridge=null;
+let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null;
 const input=$('translatorInput'),direction=$('translatorDirection');
 const note=$('translatorStatus'),gloss=$('translatorGloss');
 const parts=$('translatorAnalyses'),passages=$('translatorPassages');
@@ -36,6 +36,22 @@ function showResult(){
  if(!content){gloss.textContent='Enter a word or a short passage and choose Analyze.';status(model.stats.headwords+' Classical Nahuatl headwords ready.');return;}
  latest=model.analyze(content,direction.value);
  gloss.textContent=latest.gloss;
+ if(sentenceModel&&direction.value==='nh-en'){
+  const result=sentenceModel.analyze(content);
+  for(const clause of result.clauses){
+   const block=el('article','translator-candidate');
+   block.append(el('h4','','Sentence analysis'),el('p','',clause.text));
+   if(!clause.complete)block.append(el('p','translator-caution',clause.reason));
+   for(const candidate of clause.candidates){
+    const f=candidate.frame;
+    block.append(el('p','',candidate.english.join(' / ')||f.subject+' — '+(f.negative?'not ':'')+f.lexicalMeaning+(f.object?' — object: '+f.object:'')),
+     el('p','translator-meta','Predicate: '+f.predicate+' · present · subject: '+f.subject+' · object: '+(f.object||'none')+' · '+candidate.grade),
+     el('p','translator-caution',candidate.note));
+    for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
+   }
+   passages.append(block);
+  }
+ }
  status(latest.stats.matched+' recognized · '+latest.stats.unknown+' unknown · '+
   latest.stats.ambiguous+' ambiguous entries · '+latest.stats.senseAmbiguities+' unresolved sense lists · '+latest.stats.approximate+
   ' approximate · '+latest.stats.orthographyConflicts+
@@ -186,6 +202,14 @@ async function init(){
   }else throw Error('No published or bundled dictionary data found');
   const corpus=candidates.status==='fulfilled'?candidates.value:{entries:[]};
   model=window.TlahtolliTranslator.create(document,corpus);
+  try{
+   if(!window.TlahtolliSentence)await new Promise((resolve,reject)=>{
+    const script=window.document.createElement('script');script.src='./translator-sentence.js';
+    script.onload=resolve;script.onerror=reject;window.document.head.append(script);
+   });
+   const response=await fetch('./paradigms.json',{cache:'no-cache'});
+   if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(document,await response.json());
+  }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(
     token=>typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token),

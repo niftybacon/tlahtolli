@@ -45,7 +45,7 @@ function steps(value){
  }).filter(n=>Number.isFinite(n)&&n>=1000&&n<=30*DAY).slice(0,8);
 }
 let opts=config(readLocalJson(KEY,{}));
-function saveConfig(){try{localStorage.setItem(KEY,JSON.stringify(opts))}catch{message('Unable to save study settings. Back up your project.')}}
+function saveConfig(){try{localStorage.setItem(KEY,JSON.stringify(opts));window.dispatchEvent(new Event('tlahtolli:settingsChanged'));}catch{message('Unable to save study settings. Back up your project.')}}
 function midnight(ts=Date.now()){const d=new Date(ts);return new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime()}
 function phase(r){if(!r||!r.last)return 'new';if(['review','learning','relearning','suspended'].includes(r.phase))return r.phase;return r.reps>0?'review':'learning'}
 function usage(records=studyRecords,now=Date.now()){

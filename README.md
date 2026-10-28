@@ -4,7 +4,9 @@
 
 The translator is now a **native tab within Tlahtōlli**, not a separate website. It indexes **115 Classical Nahuatl headwords**, their explicitly recorded historical spellings and sourced standalone forms, and **three source-linked historical passage candidates**. It shows bracketed lexical glosses, ambiguity/unknown-word warnings, and researcher notes with source links. These are **not AI-generated complete translations** and the three interpretive examples are **not cleared or approved for machine training**.
 
-Stage 1 collection gates and testing: `python tools/validate_translation_corpus.py` and `node tools/test_translator.js`. The translator's analysis engine is maintained in [translator-engine.js](translator-engine.js), with the embedded tab interface in [translator-integrated.js](translator-integrated.js). The previous standalone `translator.html` link remains available for old bookmarks. Existing dictionary, reader, and SRS features remain unchanged.
+Stage 1 collection gates and testing: `python tools/validate_translation_corpus.py` and `node tools/test_translator.js`.
+
+**Extended lexical evidence (experimental):** The Translator now loads the separately licensed 36,543-row Siméon/Kaikki archive when a Nahuatl analysis is requested and shows unreviewed comparisons beneath both recognized and unknown words. Exact source-form hits precede accent/macron-folded spelling alternatives, explicitly marked uncertain. Source sense labels and etymology remain visible when supplied. Historical French OCR and modern-variety Wiktionary records are not silently promoted into the 115-headword reviewed dictionary. Archive comparisons never change the working translation gloss or train a model. Run `node tools/test_archive_lexical.js` alongside the existing translator tests. The translator's analysis engine is maintained in [translator-engine.js](translator-engine.js), with the embedded tab interface in [translator-integrated.js](translator-integrated.js). The previous standalone `translator.html` link remains available for old bookmarks. Existing dictionary, reader, and SRS features remain unchanged.
 
 ---
 

@@ -70,6 +70,8 @@ with sync_playwright() as pw:
     assert "[?totlal]" in page.locator("#translatorGloss").inner_text()
     # Source-level morphology is now visible inside the actual translator but
     # cannot upgrade an unknown dictionary word or a complete sentence.
+    page.locator("#translatorPassages details.translator-morph-panel").evaluate_all(
+        "(nodes)=>nodes.forEach(node=>node.open=true)")
     sentence=page.locator("#translatorPassages").inner_text()
     assert "Outside supported clause grammar" in sentence
     assert "Partial morphology only" in sentence

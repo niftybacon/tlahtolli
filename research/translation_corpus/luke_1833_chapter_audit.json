@@ -1,0 +1,1659 @@
+{
+  "format": "tlahtolli-luke1833-chapter-audit",
+  "schema": 1,
+  "created_utc": "2026-10-28T16:48:39+00:00",
+  "source": "https://archive.org/details/elevangeliodeslu00pazy",
+  "original_publication_year": 1833,
+  "input_ocr_sha256": "75af1f42631f31fa4cdf454b51e721073170911d57471a5e34d96dfa6dd35943",
+  "verse_count_reference": "https://www.mobile.catholic-resources.org/Bible/NT-Statistics-Greek.htm",
+  "editorial_status": "UNREVIEWED_MACHINE_STRUCTURAL_CHECK; not facsimile transcription verification",
+  "facsimile_review_completed_chapters": 0,
+  "training_approved": false,
+  "totals": {
+    "chapters_located": 24,
+    "reference_verse_count": 1151,
+    "chapter_headings_needing_review": 5,
+    "verse_marker_positions_requiring_review": 90
+  },
+  "chapters": [
+    {
+      "chapter": 1,
+      "ocr_heading": "IC CE TENONOTZAL QUAITL",
+      "ocr_heading_offset": 514,
+      "heading_end_offset": 544,
+      "end_before_offset": 12208,
+      "expected_verse_count": 80,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 72,
+      "verses_needing_marker_review": [
+        13,
+        31,
+        38,
+        54,
+        56,
+        57,
+        67
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 13,
+          "absolute_offset": 2254,
+          "printed_digits": "1 3",
+          "first_word_ocr": "Auh",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [
+        61
+      ],
+      "out_of_range_marker_candidates": [
+        {
+          "printed_digits": "131",
+          "absolute_offset": 5338
+        }
+      ],
+      "out_of_order_number_transitions": 2,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 692,
+          "first_word_ocr": "Quenami",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 805,
+          "first_word_ocr": "Onic",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 980,
+          "first_word_ocr": "lea",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 78,
+          "absolute_offset": 11667,
+          "first_word_ocr": "Ipampa",
+          "printed_digits": "78"
+        },
+        {
+          "verse": 79,
+          "absolute_offset": 11822,
+          "first_word_ocr": "In",
+          "printed_digits": "79"
+        },
+        {
+          "verse": 80,
+          "absolute_offset": 11998,
+          "first_word_ocr": "Auh",
+          "printed_digits": "80"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 2,
+      "ocr_heading": "IC OME TENONOTZAL QUAITL",
+      "ocr_heading_offset": 12208,
+      "heading_end_offset": 12241,
+      "end_before_offset": 20599,
+      "expected_verse_count": 52,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 49,
+      "verses_needing_marker_review": [
+        11,
+        28
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 11,
+          "absolute_offset": 13710,
+          "printed_digits": "1 1",
+          "first_word_ocr": "lpampa",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 12390,
+          "first_word_ocr": "In",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 12490,
+          "first_word_ocr": "Auh",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 12568,
+          "first_word_ocr": "Auh",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 50,
+          "absolute_offset": 20175,
+          "first_word_ocr": "Auh",
+          "printed_digits": "50"
+        },
+        {
+          "verse": 51,
+          "absolute_offset": 20253,
+          "first_word_ocr": "Tel",
+          "printed_digits": "51"
+        },
+        {
+          "verse": 52,
+          "absolute_offset": 20444,
+          "first_word_ocr": "In",
+          "printed_digits": "52"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 3,
+      "ocr_heading": "IC YEY TENONOTZAL QUAITL",
+      "ocr_heading_offset": 20599,
+      "heading_end_offset": 20626,
+      "end_before_offset": 26819,
+      "expected_verse_count": 38,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 36,
+      "verses_needing_marker_review": [
+        7
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 20997,
+          "first_word_ocr": "Omochí",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 21101,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 21268,
+          "first_word_ocr": "Quenami",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 36,
+          "absolute_offset": 26486,
+          "first_word_ocr": "Ipiltzin",
+          "printed_digits": "36"
+        },
+        {
+          "verse": 37,
+          "absolute_offset": 26602,
+          "first_word_ocr": "Ipiltzin",
+          "printed_digits": "37"
+        },
+        {
+          "verse": 38,
+          "absolute_offset": 26729,
+          "first_word_ocr": "Ipiltzin",
+          "printed_digits": "38"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 4,
+      "ocr_heading": "IC NAHUI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 26819,
+      "heading_end_offset": 26848,
+      "end_before_offset": 34185,
+      "expected_verse_count": 44,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 42,
+      "verses_needing_marker_review": [
+        11
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 11,
+          "absolute_offset": 28353,
+          "printed_digits": "1 1",
+          "first_word_ocr": "Yhuan",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 27001,
+          "first_word_ocr": "Campa",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 27193,
+          "first_word_ocr": "Auh",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 27301,
+          "first_word_ocr": "In",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 42,
+          "absolute_offset": 33733,
+          "first_word_ocr": "Auh",
+          "printed_digits": "42"
+        },
+        {
+          "verse": 43,
+          "absolute_offset": 33948,
+          "first_word_ocr": "In",
+          "printed_digits": "43"
+        },
+        {
+          "verse": 44,
+          "absolute_offset": 34110,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "44"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 5,
+      "ocr_heading": "IC MACUILI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 34185,
+      "heading_end_offset": 34216,
+      "end_before_offset": 41459,
+      "expected_verse_count": 39,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 36,
+      "verses_needing_marker_review": [
+        11,
+        18
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 11,
+          "absolute_offset": 35971,
+          "printed_digits": "1 1",
+          "first_word_ocr": "Yhuan",
+          "status": "needs_image_confirmation"
+        },
+        {
+          "possible_verse": 18,
+          "absolute_offset": 37447,
+          "printed_digits": "1 8",
+          "first_word_ocr": "Yhuan",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 34404,
+          "first_word_ocr": "Auh",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 34482,
+          "first_word_ocr": "Orno",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 34703,
+          "first_word_ocr": "Auh",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 37,
+          "absolute_offset": 41056,
+          "first_word_ocr": "No",
+          "printed_digits": "37"
+        },
+        {
+          "verse": 38,
+          "absolute_offset": 41232,
+          "first_word_ocr": "Auh",
+          "printed_digits": "38"
+        },
+        {
+          "verse": 39,
+          "absolute_offset": 41330,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "39"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 6,
+      "ocr_heading": "IC CHICUAZEÍÍ TENONOTZAL QUAITL",
+      "ocr_heading_offset": 41459,
+      "heading_end_offset": 41493,
+      "end_before_offset": 50921,
+      "expected_verse_count": 49,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 41,
+      "verses_needing_marker_review": [
+        18,
+        25,
+        26,
+        31,
+        41,
+        42,
+        48
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 18,
+          "absolute_offset": 44425,
+          "printed_digits": "1 8",
+          "first_word_ocr": "In",
+          "status": "needs_image_confirmation"
+        },
+        {
+          "possible_verse": 31,
+          "absolute_offset": 46928,
+          "printed_digits": "3 1",
+          "first_word_ocr": "Tel",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 41676,
+          "first_word_ocr": "Auh",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 41823,
+          "first_word_ocr": "In",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 42053,
+          "first_word_ocr": "Quenin",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 46,
+          "absolute_offset": 50085,
+          "first_word_ocr": "Matel",
+          "printed_digits": "46"
+        },
+        {
+          "verse": 47,
+          "absolute_offset": 50206,
+          "first_word_ocr": "Mochi",
+          "printed_digits": "47"
+        },
+        {
+          "verse": 49,
+          "absolute_offset": 50663,
+          "first_word_ocr": "On",
+          "printed_digits": "49"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 7,
+      "ocr_heading": "IC CHICÓME TENONOTZAL QUAITL",
+      "ocr_heading_offset": 50921,
+      "heading_end_offset": 50952,
+      "end_before_offset": 60192,
+      "expected_verse_count": 50,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 44,
+      "verses_needing_marker_review": [
+        2,
+        18,
+        25,
+        26,
+        34
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 18,
+          "absolute_offset": 54043,
+          "printed_digits": "1 8",
+          "first_word_ocr": "Yhuan",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 3,
+          "absolute_offset": 51220,
+          "first_word_ocr": "lea",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 51448,
+          "first_word_ocr": "Auh",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 5,
+          "absolute_offset": 51569,
+          "first_word_ocr": "Ipampa",
+          "printed_digits": "5"
+        },
+        {
+          "verse": 48,
+          "absolute_offset": 59832,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "48"
+        },
+        {
+          "verse": 49,
+          "absolute_offset": 59925,
+          "first_word_ocr": "Auh",
+          "printed_digits": "49"
+        },
+        {
+          "verse": 50,
+          "absolute_offset": 60078,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "50"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 8,
+      "ocr_heading": "IC CHICUEY TENONOTZAL QUAITL",
+      "ocr_heading_offset": 60192,
+      "heading_end_offset": 60223,
+      "end_before_offset": 70686,
+      "expected_verse_count": 56,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "explicit_ocr_marker_unverified",
+      "distinct_verse_numbers_seen_2_to_end": 50,
+      "verses_needing_marker_review": [
+        5,
+        9,
+        24,
+        53,
+        55
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [
+        {
+          "printed_digits": "0",
+          "absolute_offset": 61481
+        }
+      ],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 60470,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 60698,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 60869,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 52,
+          "absolute_offset": 70032,
+          "first_word_ocr": "Mochtin",
+          "printed_digits": "52"
+        },
+        {
+          "verse": 54,
+          "absolute_offset": 70251,
+          "first_word_ocr": "In",
+          "printed_digits": "54"
+        },
+        {
+          "verse": 56,
+          "absolute_offset": 70553,
+          "first_word_ocr": "Orno",
+          "printed_digits": "56"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 9,
+      "ocr_heading": "IC CHICNAHÜI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 70686,
+      "heading_end_offset": 70719,
+      "end_before_offset": 81699,
+      "expected_verse_count": 62,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 52,
+      "verses_needing_marker_review": [
+        10,
+        14,
+        25,
+        33,
+        40,
+        47,
+        49,
+        52,
+        57
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [
+        51
+      ],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 2,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 70904,
+          "first_word_ocr": "Oquin",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 71025,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 71287,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 60,
+          "absolute_offset": 81178,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "60"
+        },
+        {
+          "verse": 61,
+          "absolute_offset": 81367,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "61"
+        },
+        {
+          "verse": 62,
+          "absolute_offset": 81540,
+          "first_word_ocr": "In",
+          "printed_digits": "62"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 10,
+      "ocr_heading": "IC MÁTLACTLI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 81699,
+      "heading_end_offset": 81732,
+      "end_before_offset": 89501,
+      "expected_verse_count": 42,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 37,
+      "verses_needing_marker_review": [
+        13,
+        15,
+        34,
+        36
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 15,
+          "absolute_offset": 84254,
+          "printed_digits": "1 5",
+          "first_word_ocr": "Yhuan",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 82013,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 82228,
+          "first_word_ocr": "Xi",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 82343,
+          "first_word_ocr": "Amo",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 40,
+          "absolute_offset": 88940,
+          "first_word_ocr": "Auh",
+          "printed_digits": "40"
+        },
+        {
+          "verse": 41,
+          "absolute_offset": 89225,
+          "first_word_ocr": "Yn",
+          "printed_digits": "41"
+        },
+        {
+          "verse": 42,
+          "absolute_offset": 89378,
+          "first_word_ocr": "Melácayopan",
+          "printed_digits": "42"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 11,
+      "ocr_heading": "1C MATLANCE TENONOTZAL QUAITL",
+      "ocr_heading_offset": 89501,
+      "heading_end_offset": 89533,
+      "end_before_offset": 100018,
+      "expected_verse_count": 54,
+      "heading_status": "recognized_ocr_damaged",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 46,
+      "verses_needing_marker_review": [
+        11,
+        12,
+        42,
+        43,
+        44,
+        47,
+        52
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 89793,
+          "first_word_ocr": "In",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 89961,
+          "first_word_ocr": "In",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 90046,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 51,
+          "absolute_offset": 99296,
+          "first_word_ocr": "Hual",
+          "printed_digits": "51"
+        },
+        {
+          "verse": 53,
+          "absolute_offset": 99737,
+          "first_word_ocr": "Auh",
+          "printed_digits": "53"
+        },
+        {
+          "verse": 54,
+          "absolute_offset": 99912,
+          "first_word_ocr": "Quimayecoa",
+          "printed_digits": "54"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 12,
+      "ocr_heading": "IC MATLACTLAMOME TENONOTLAL QUAITL",
+      "ocr_heading_offset": 100018,
+      "heading_end_offset": 100055,
+      "end_before_offset": 110642,
+      "expected_verse_count": 59,
+      "heading_status": "recognized_ocr_damaged",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 53,
+      "verses_needing_marker_review": [
+        13,
+        25,
+        26,
+        51,
+        57
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 13,
+          "absolute_offset": 102299,
+          "printed_digits": "1 3",
+          "first_word_ocr": "Cerne",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 100316,
+          "first_word_ocr": "Melácayopan",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 100443,
+          "first_word_ocr": "Ypampa",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 100646,
+          "first_word_ocr": "Amehuatin",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 56,
+          "absolute_offset": 109909,
+          "first_word_ocr": "Te",
+          "printed_digits": "56"
+        },
+        {
+          "verse": 58,
+          "absolute_offset": 110155,
+          "first_word_ocr": "Auh",
+          "printed_digits": "58"
+        },
+        {
+          "verse": 59,
+          "absolute_offset": 110472,
+          "first_word_ocr": "Ni",
+          "printed_digits": "59"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 13,
+      "ocr_heading": "IC MATLACTLI YHUAN YEY QUAITL",
+      "ocr_heading_offset": 110642,
+      "heading_end_offset": 110688,
+      "end_before_offset": 116697,
+      "expected_verse_count": 35,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 26,
+      "verses_needing_marker_review": [
+        4,
+        5,
+        7,
+        11,
+        14,
+        15,
+        26,
+        34
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 11,
+          "absolute_offset": 112156,
+          "printed_digits": "1 1",
+          "first_word_ocr": "Yhuan",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 110886,
+          "first_word_ocr": "In",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 111096,
+          "first_word_ocr": "Nononqua",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 6,
+          "absolute_offset": 111260,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "6"
+        },
+        {
+          "verse": 32,
+          "absolute_offset": 115775,
+          "first_word_ocr": "Auh",
+          "printed_digits": "32"
+        },
+        {
+          "verse": 33,
+          "absolute_offset": 116066,
+          "first_word_ocr": "Tel",
+          "printed_digits": "33"
+        },
+        {
+          "verse": 35,
+          "absolute_offset": 116488,
+          "first_word_ocr": "Nican",
+          "printed_digits": "35"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 14,
+      "ocr_heading": "IC MATLACTLANAHÜI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 116697,
+      "heading_end_offset": 116735,
+      "end_before_offset": 122745,
+      "expected_verse_count": 35,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 33,
+      "verses_needing_marker_review": [
+        10
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 116898,
+          "first_word_ocr": "Ni",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 116980,
+          "first_word_ocr": "Auh",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 117116,
+          "first_word_ocr": "Yn",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 33,
+          "absolute_offset": 122282,
+          "first_word_ocr": "Yuhcon",
+          "printed_digits": "33"
+        },
+        {
+          "verse": 34,
+          "absolute_offset": 122463,
+          "first_word_ocr": "Cuali",
+          "printed_digits": "34"
+        },
+        {
+          "verse": 35,
+          "absolute_offset": 122581,
+          "first_word_ocr": "Amo",
+          "printed_digits": "35"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 15,
+      "ocr_heading": "IC CAXTOLI TENOXOTZAL QUAITL",
+      "ocr_heading_offset": 122745,
+      "heading_end_offset": 122782,
+      "end_before_offset": 128239,
+      "expected_verse_count": 32,
+      "heading_status": "recognized_ocr_damaged",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 27,
+      "verses_needing_marker_review": [
+        8,
+        9,
+        20,
+        28
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 122937,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 123093,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 123164,
+          "first_word_ocr": "Aquin",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 30,
+          "absolute_offset": 127789,
+          "first_word_ocr": "Auh",
+          "printed_digits": "30"
+        },
+        {
+          "verse": 31,
+          "absolute_offset": 127962,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "31"
+        },
+        {
+          "verse": 32,
+          "absolute_offset": 128094,
+          "first_word_ocr": "Tel",
+          "printed_digits": "32"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 16,
+      "ocr_heading": "IC CATOLONCE TENONOTZAL QUAITL",
+      "ocr_heading_offset": 128239,
+      "heading_end_offset": 128278,
+      "end_before_offset": 134217,
+      "expected_verse_count": 31,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 30,
+      "verses_needing_marker_review": [],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 128500,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 128715,
+          "first_word_ocr": "Auh",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 128911,
+          "first_word_ocr": "Oquíto",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 29,
+          "absolute_offset": 133769,
+          "first_word_ocr": "Auh",
+          "printed_digits": "29"
+        },
+        {
+          "verse": 30,
+          "absolute_offset": 133879,
+          "first_word_ocr": "Auh",
+          "printed_digits": "30"
+        },
+        {
+          "verse": 31,
+          "absolute_offset": 134041,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "31"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 17,
+      "ocr_heading": "IC CAXTOLOMOME TENONOTZAL QUAITL",
+      "ocr_heading_offset": 134217,
+      "heading_end_offset": 134258,
+      "end_before_offset": 139996,
+      "expected_verse_count": 37,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 32,
+      "verses_needing_marker_review": [
+        7,
+        9,
+        11,
+        27
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 11,
+          "absolute_offset": 136281,
+          "printed_digits": "1 1",
+          "first_word_ocr": "Yhuan",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 134513,
+          "first_word_ocr": "Ocachi",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 134730,
+          "first_word_ocr": "Xi",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 134907,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 35,
+          "absolute_offset": 139639,
+          "first_word_ocr": "Orne",
+          "printed_digits": "35"
+        },
+        {
+          "verse": 36,
+          "absolute_offset": 139798,
+          "first_word_ocr": "Otlananquilíqué",
+          "printed_digits": "36"
+        },
+        {
+          "verse": 37,
+          "absolute_offset": 139854,
+          "first_word_ocr": "In",
+          "printed_digits": "37"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 18,
+      "ocr_heading": "IC CAXTOLOMEI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 139996,
+      "heading_end_offset": 140030,
+      "end_before_offset": 146734,
+      "expected_verse_count": 43,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 40,
+      "verses_needing_marker_review": [
+        7,
+        26
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 140177,
+          "first_word_ocr": "Oqui",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 140331,
+          "first_word_ocr": "No",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 140539,
+          "first_word_ocr": "Auh",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 41,
+          "absolute_offset": 146340,
+          "first_word_ocr": "Quil",
+          "printed_digits": "41"
+        },
+        {
+          "verse": 42,
+          "absolute_offset": 146484,
+          "first_word_ocr": "In",
+          "printed_digits": "42"
+        },
+        {
+          "verse": 43,
+          "absolute_offset": 146572,
+          "first_word_ocr": "Zan",
+          "printed_digits": "43"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 19,
+      "ocr_heading": "IC CAXTOLI YHUAN NAHUI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 146734,
+      "heading_end_offset": 146797,
+      "end_before_offset": 154367,
+      "expected_verse_count": 48,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 45,
+      "verses_needing_marker_review": [
+        42,
+        44
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 146871,
+          "first_word_ocr": "Nican",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 147083,
+          "first_word_ocr": "Auh",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 147245,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 46,
+          "absolute_offset": 153886,
+          "first_word_ocr": "Oquim",
+          "printed_digits": "46"
+        },
+        {
+          "verse": 47,
+          "absolute_offset": 154016,
+          "first_word_ocr": "Centetl",
+          "printed_digits": "47"
+        },
+        {
+          "verse": 48,
+          "absolute_offset": 154219,
+          "first_word_ocr": "Auh",
+          "printed_digits": "48"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 20,
+      "ocr_heading": "IC CEMPOALI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 154367,
+      "heading_end_offset": 154399,
+      "end_before_offset": 161783,
+      "expected_verse_count": 47,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 43,
+      "verses_needing_marker_review": [
+        4,
+        7,
+        22
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 154639,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 154775,
+          "first_word_ocr": "In",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 5,
+          "absolute_offset": 155016,
+          "first_word_ocr": "Auh",
+          "printed_digits": "5"
+        },
+        {
+          "verse": 45,
+          "absolute_offset": 161202,
+          "first_word_ocr": "Auh",
+          "printed_digits": "45"
+        },
+        {
+          "verse": 46,
+          "absolute_offset": 161303,
+          "first_word_ocr": "Ximo",
+          "printed_digits": "46"
+        },
+        {
+          "verse": 47,
+          "absolute_offset": 161611,
+          "first_word_ocr": "In",
+          "printed_digits": "47"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    },
+    {
+      "chapter": 21,
+      "ocr_heading": "IC CEMPOALI YHUAN CE TONONOTZAL CUAITL",
+      "ocr_heading_offset": 161783,
+      "heading_end_offset": 161826,
+      "end_before_offset": 167622,
+      "expected_verse_count": 38,
+      "heading_status": "recognized_ocr_damaged",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 36,
+      "verses_needing_marker_review": [
+        18
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 18,
+          "absolute_offset": 164416,
+          "printed_digits": "1 8",
+          "first_word_ocr": "Auh",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 161953,
+          "first_word_ocr": "Tel",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 162058,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 162186,
+          "first_word_ocr": "Ipampa",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 36,
+          "absolute_offset": 167152,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "36"
+        },
+        {
+          "verse": 37,
+          "absolute_offset": 167366,
+          "first_word_ocr": "Cemithuitl",
+          "printed_digits": "37"
+        },
+        {
+          "verse": 38,
+          "absolute_offset": 167510,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "38"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 22,
+      "ocr_heading": "IC CEMPOAL YHUAN OME TENONOTZAL QUAITL",
+      "ocr_heading_offset": 167622,
+      "heading_end_offset": 167665,
+      "end_before_offset": 178552,
+      "expected_verse_count": 71,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 63,
+      "verses_needing_marker_review": [
+        7,
+        11,
+        13,
+        29,
+        54,
+        57,
+        64
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 11,
+          "absolute_offset": 168914,
+          "printed_digits": "1 1",
+          "first_word_ocr": "Yhuan",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [
+        51
+      ],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 1,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 167734,
+          "first_word_ocr": "Oqui",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 167884,
+          "first_word_ocr": "Auh",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 168005,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 69,
+          "absolute_offset": 178099,
+          "first_word_ocr": "Nonqua",
+          "printed_digits": "69"
+        },
+        {
+          "verse": 70,
+          "absolute_offset": 178211,
+          "first_word_ocr": "Yhcuac",
+          "printed_digits": "70"
+        },
+        {
+          "verse": 71,
+          "absolute_offset": 178405,
+          "first_word_ocr": "Auh",
+          "printed_digits": "71"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 23,
+      "ocr_heading": "IC CEMPOALI YHUAN YEY TENOSTOTZAL QUAITL",
+      "ocr_heading_offset": 178552,
+      "heading_end_offset": 178610,
+      "end_before_offset": 187447,
+      "expected_verse_count": 56,
+      "heading_status": "recognized_ocr_damaged",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 53,
+      "verses_needing_marker_review": [
+        9,
+        18
+      ],
+      "suspected_split_numerals": [
+        {
+          "possible_verse": 18,
+          "absolute_offset": 181291,
+          "printed_digits": "1 8",
+          "first_word_ocr": "Mochi",
+          "status": "needs_image_confirmation"
+        }
+      ],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 178685,
+          "first_word_ocr": "Opéqué",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 178932,
+          "first_word_ocr": "In",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 179102,
+          "first_word_ocr": "Auh",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 54,
+          "absolute_offset": 186993,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "54"
+        },
+        {
+          "verse": 55,
+          "absolute_offset": 187083,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "55"
+        },
+        {
+          "verse": 56,
+          "absolute_offset": 187284,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "56"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "high"
+    },
+    {
+      "chapter": 24,
+      "ocr_heading": "IC CEMPOALI YHUAN NAHUI TENONOTZAL QUAITL",
+      "ocr_heading_offset": 187447,
+      "heading_end_offset": 187507,
+      "end_before_offset": 195506,
+      "expected_verse_count": 53,
+      "heading_status": "recognized_unverified",
+      "verse_1_status": "implicit_ocr_position_not_facsimile_checked",
+      "distinct_verse_numbers_seen_2_to_end": 51,
+      "verses_needing_marker_review": [
+        28
+      ],
+      "suspected_split_numerals": [],
+      "duplicate_verse_marker_candidates": [],
+      "out_of_range_marker_candidates": [],
+      "out_of_order_number_transitions": 0,
+      "marker_samples": [
+        {
+          "verse": 2,
+          "absolute_offset": 187663,
+          "first_word_ocr": "Auh",
+          "printed_digits": "2"
+        },
+        {
+          "verse": 3,
+          "absolute_offset": 187767,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "3"
+        },
+        {
+          "verse": 4,
+          "absolute_offset": 187848,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "4"
+        },
+        {
+          "verse": 51,
+          "absolute_offset": 194908,
+          "first_word_ocr": "Auh",
+          "printed_digits": "51"
+        },
+        {
+          "verse": 52,
+          "absolute_offset": 195024,
+          "first_word_ocr": "Yhuan",
+          "printed_digits": "52"
+        },
+        {
+          "verse": 53,
+          "absolute_offset": 195131,
+          "first_word_ocr": "Cemícac",
+          "printed_digits": "53"
+        }
+      ],
+      "facsimile_pages_checked": [],
+      "chapter_status": "OCR_STRUCTURAL_AUDIT_ONLY",
+      "verse_text_verified": false,
+      "review_priority": "normal"
+    }
+  ]
+}

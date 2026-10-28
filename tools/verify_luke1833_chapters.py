@@ -93,7 +93,7 @@ def main():
  checked=BASE/'luke_1833_facsimile_number_checks.json'
  if checked.exists():
   review=json.loads(checked.read_text(encoding='utf8'))
-  if review.get('format')=='tlahtolli-luke1833-facsimile-number-checks' and len(review.get('patches',[]))==7:
+  if review.get('format')=='tlahtolli-luke1833-facsimile-number-checks' and len(review.get('patches',[]))==8:
    first=report['chapters'][0]
    first['facsimile_pages_checked']=review['chapter_1_pdf_pages_checked_1based']
    first['chapter_status']='PRINTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'
@@ -103,7 +103,11 @@ def main():
    second['facsimile_pages_checked']=review['chapter_2_pdf_pages_checked_1based']
    second['chapter_status']='PRINTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'
    second['verse_numbering_print_checked']=True
-   report['totals']['chapters_with_facsimile_numbering_checks']=2
+   third=report['chapters'][2]
+   third['facsimile_pages_checked']=review['chapter_3_pdf_pages_checked_1based']
+   third['chapter_status']='PRINTED_VERSE_NUMERALS_CHECKED_TEXT_NOT_PROOFREAD'
+   third['verse_numbering_print_checked']=True
+   report['totals']['chapters_with_facsimile_numbering_checks']=3
    report['totals']['chapters_with_full_wording_proofread']=0
  args.output.parent.mkdir(exist_ok=True,parents=True)
  args.output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')

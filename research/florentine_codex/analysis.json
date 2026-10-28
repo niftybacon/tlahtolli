@@ -1,0 +1,783 @@
+{
+  "format": "tlahtolli-codex-aggregate-analysis",
+  "schema": 1,
+  "created_utc": "2026-10-28T16:05:59+00:00",
+  "source": {
+    "name": "Transcript of the Florentine Codex (Nahuatl)",
+    "transcription_editor": "Valery A. Berthoud F.",
+    "edition": "Zenodo, 2022, version 1.0",
+    "record_url": "https://zenodo.org/records/7213020",
+    "doi": "10.5281/zenodo.7213020",
+    "license_review": "No confirmed machine-training or redistribution permission. Do not commit source text or use it for model training without separate review.",
+    "metadata_warning": "Zenodo's language label says Central Huasteca Nahuatl; the deposit describes the historical Florentine Codex. Verify transcriber, edition and tagging manually.",
+    "text_quality": "Some special characters are missing; page-layout hard wraps split lexical words. No automatic word-joining has been validated."
+  },
+  "scope": "All 12 downloaded historical transcription files, aggregate research scan only",
+  "train_eligible": false,
+  "verbatim_source_text_in_output": false,
+  "method": "Unicode letter-run counter, case-folded and diacritic-folded; exact match against published Classical Nahuatl dictionary headwords/original spellings. No full sentence analysis.",
+  "totals": {
+    "books_checked": 12,
+    "approximate_orthographic_units": 291900,
+    "lexicon_approximate_hits": 38338,
+    "lexicon_headwords_indexed": 116
+  },
+  "books": [
+    {
+      "book": 1,
+      "title": "The Gods",
+      "source_file": "Book 1 - The Gods.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/1",
+      "approximate_orthographic_units": 5779,
+      "unique_orthographic_forms": 2562,
+      "lexicon_exact_or_diacritic_fold_hits": 520,
+      "lexicon_approximate_coverage_pct": 9.0,
+      "top_orthographic_forms": [
+        [
+          "y",
+          364
+        ],
+        [
+          "in",
+          315
+        ],
+        [
+          "yn",
+          152
+        ],
+        [
+          "nj",
+          77
+        ],
+        [
+          "auh",
+          73
+        ],
+        [
+          "quj",
+          71
+        ],
+        [
+          "ic",
+          69
+        ],
+        [
+          "ca",
+          56
+        ],
+        [
+          "njc",
+          49
+        ],
+        [
+          "yoan",
+          47
+        ],
+        [
+          "qujn",
+          46
+        ],
+        [
+          "a",
+          45
+        ]
+      ],
+      "source_sha256": "40e1b6cf32abe0504f6f268987bd2c3cd4ecf0f2091dd0923639c830412843bd",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 2,
+      "title": "Ceremonies",
+      "source_file": "Book 2 - Ceremonies.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/2",
+      "approximate_orthographic_units": 28253,
+      "unique_orthographic_forms": 8115,
+      "lexicon_exact_or_diacritic_fold_hits": 3324,
+      "lexicon_approximate_coverage_pct": 11.77,
+      "top_orthographic_forms": [
+        [
+          "in",
+          2397
+        ],
+        [
+          "y",
+          1026
+        ],
+        [
+          "quj",
+          869
+        ],
+        [
+          "uh",
+          562
+        ],
+        [
+          "a",
+          556
+        ],
+        [
+          "ic",
+          494
+        ],
+        [
+          "ie",
+          411
+        ],
+        [
+          "auh",
+          361
+        ],
+        [
+          "can",
+          340
+        ],
+        [
+          "qujn",
+          318
+        ],
+        [
+          "yoan",
+          317
+        ],
+        [
+          "ca",
+          265
+        ]
+      ],
+      "source_sha256": "4d9d1018df082adceb0f4ddc5e8c45d4e75ecb55c9d1eec7989b2e0b1aaeebed",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 3,
+      "title": "The Origins of the Gods",
+      "source_file": "Book 3 - The Origins of the Gods.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/3",
+      "approximate_orthographic_units": 5527,
+      "unique_orthographic_forms": 2588,
+      "lexicon_exact_or_diacritic_fold_hits": 731,
+      "lexicon_approximate_coverage_pct": 13.23,
+      "top_orthographic_forms": [
+        [
+          "in",
+          405
+        ],
+        [
+          "auh",
+          195
+        ],
+        [
+          "njman",
+          92
+        ],
+        [
+          "yoan",
+          80
+        ],
+        [
+          "ie",
+          70
+        ],
+        [
+          "vel",
+          63
+        ],
+        [
+          "ic",
+          61
+        ],
+        [
+          "quj",
+          50
+        ],
+        [
+          "ieic",
+          49
+        ],
+        [
+          "injc",
+          45
+        ],
+        [
+          "y",
+          43
+        ],
+        [
+          "cenca",
+          43
+        ]
+      ],
+      "source_sha256": "16cbfc0d322ae78a521b019f087dfba2fb77c8907e995bd7ad503206e0c05766",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 4,
+      "title": "The Art of Divination",
+      "source_file": "Book 4 - The Art of Divination.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/4",
+      "approximate_orthographic_units": 23690,
+      "unique_orthographic_forms": 7720,
+      "lexicon_exact_or_diacritic_fold_hits": 2910,
+      "lexicon_approximate_coverage_pct": 12.28,
+      "top_orthographic_forms": [
+        [
+          "in",
+          1887
+        ],
+        [
+          "quj",
+          1013
+        ],
+        [
+          "y",
+          400
+        ],
+        [
+          "inj",
+          335
+        ],
+        [
+          "auh",
+          309
+        ],
+        [
+          "can",
+          290
+        ],
+        [
+          "iuh",
+          285
+        ],
+        [
+          "ic",
+          243
+        ],
+        [
+          "injc",
+          218
+        ],
+        [
+          "ca",
+          218
+        ],
+        [
+          "amo",
+          210
+        ],
+        [
+          "vel",
+          189
+        ]
+      ],
+      "source_sha256": "a0800201d626149ac70cef8dd8981ffce01a3a6bb70d49456cef9a1be6869d50",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 5,
+      "title": "The Omens",
+      "source_file": "Book 5 - The Omens.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/5",
+      "approximate_orthographic_units": 3376,
+      "unique_orthographic_forms": 1660,
+      "lexicon_exact_or_diacritic_fold_hits": 275,
+      "lexicon_approximate_coverage_pct": 8.15,
+      "top_orthographic_forms": [
+        [
+          "in",
+          172
+        ],
+        [
+          "ic",
+          67
+        ],
+        [
+          "ie",
+          59
+        ],
+        [
+          "quj",
+          57
+        ],
+        [
+          "injc",
+          51
+        ],
+        [
+          "can",
+          49
+        ],
+        [
+          "inj",
+          45
+        ],
+        [
+          "aco",
+          39
+        ],
+        [
+          "anoco",
+          37
+        ],
+        [
+          "amo",
+          36
+        ],
+        [
+          "ca",
+          35
+        ],
+        [
+          "vel",
+          33
+        ]
+      ],
+      "source_sha256": "02f215a247bd94927bbb1cb1a2a195c518de4dd816995e9d358c740a2f53beca",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 6,
+      "title": "Rhetoric and Moral Philosophy",
+      "source_file": "Book 6 - Rhetoric and Moral Philosophy.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/6",
+      "approximate_orthographic_units": 54855,
+      "unique_orthographic_forms": 13746,
+      "lexicon_exact_or_diacritic_fold_hits": 9437,
+      "lexicon_approximate_coverage_pct": 17.2,
+      "top_orthographic_forms": [
+        [
+          "in",
+          6656
+        ],
+        [
+          "quj",
+          1129
+        ],
+        [
+          "ca",
+          1064
+        ],
+        [
+          "inj",
+          824
+        ],
+        [
+          "auh",
+          803
+        ],
+        [
+          "ie",
+          599
+        ],
+        [
+          "a",
+          584
+        ],
+        [
+          "amo",
+          493
+        ],
+        [
+          "ic",
+          487
+        ],
+        [
+          "can",
+          446
+        ],
+        [
+          "cujx",
+          443
+        ],
+        [
+          "injc",
+          434
+        ]
+      ],
+      "source_sha256": "e00ecdd6befd2c37acde57913b072570dfa9f5b51e27a0ca8e382ae4cb53a42c",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 7,
+      "title": "The Sun, Moon, Stars, and the Binding of the Years",
+      "source_file": "Book 7 - The Sun, Moon, Stars, and the Binding of the Years.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/7",
+      "approximate_orthographic_units": 4884,
+      "unique_orthographic_forms": 2216,
+      "lexicon_exact_or_diacritic_fold_hits": 763,
+      "lexicon_approximate_coverage_pct": 15.62,
+      "top_orthographic_forms": [
+        [
+          "in",
+          480
+        ],
+        [
+          "ic",
+          110
+        ],
+        [
+          "ie",
+          106
+        ],
+        [
+          "auh",
+          105
+        ],
+        [
+          "inic",
+          80
+        ],
+        [
+          "ca",
+          59
+        ],
+        [
+          "can",
+          58
+        ],
+        [
+          "amo",
+          41
+        ],
+        [
+          "inicoac",
+          39
+        ],
+        [
+          "yoan",
+          35
+        ],
+        [
+          "vel",
+          31
+        ],
+        [
+          "niman",
+          30
+        ]
+      ],
+      "source_sha256": "f471d1b3122d3bdfe9404567db56f697cfc3dea7f33f1d4d757237f971dff6e9",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 8,
+      "title": "Kings and Lords",
+      "source_file": "Book 8 - Kings and Lords.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/8",
+      "approximate_orthographic_units": 13062,
+      "unique_orthographic_forms": 4317,
+      "lexicon_exact_or_diacritic_fold_hits": 1672,
+      "lexicon_approximate_coverage_pct": 12.8,
+      "top_orthographic_forms": [
+        [
+          "in",
+          1258
+        ],
+        [
+          "ioan",
+          254
+        ],
+        [
+          "injc",
+          218
+        ],
+        [
+          "quj",
+          216
+        ],
+        [
+          "inj",
+          158
+        ],
+        [
+          "tlatoanj",
+          136
+        ],
+        [
+          "ic",
+          130
+        ],
+        [
+          "a",
+          124
+        ],
+        [
+          "uh",
+          111
+        ],
+        [
+          "auh",
+          104
+        ],
+        [
+          "ipan",
+          92
+        ],
+        [
+          "vncan",
+          90
+        ]
+      ],
+      "source_sha256": "2d340f5fd15039f90fabfef6d718570c0bf0c32583aa34ecd3613f3ef210c16b",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 9,
+      "title": "The Merchants",
+      "source_file": "Book 9 - The Merchants.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/9",
+      "approximate_orthographic_units": 20339,
+      "unique_orthographic_forms": 5528,
+      "lexicon_exact_or_diacritic_fold_hits": 2983,
+      "lexicon_approximate_coverage_pct": 14.67,
+      "top_orthographic_forms": [
+        [
+          "in",
+          2083
+        ],
+        [
+          "qui",
+          443
+        ],
+        [
+          "ie",
+          377
+        ],
+        [
+          "a",
+          343
+        ],
+        [
+          "ini",
+          331
+        ],
+        [
+          "inic",
+          328
+        ],
+        [
+          "uh",
+          326
+        ],
+        [
+          "ic",
+          267
+        ],
+        [
+          "ioan",
+          253
+        ],
+        [
+          "ca",
+          231
+        ],
+        [
+          "can",
+          192
+        ],
+        [
+          "niman",
+          177
+        ]
+      ],
+      "source_sha256": "faaedd020dda24d019bda1ffeee942587b53515ffcc910bb817630682bbe4ba6",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 10,
+      "title": "The People",
+      "source_file": "Book 10 - The People.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/10",
+      "approximate_orthographic_units": 32955,
+      "unique_orthographic_forms": 11751,
+      "lexicon_exact_or_diacritic_fold_hits": 3884,
+      "lexicon_approximate_coverage_pct": 11.79,
+      "top_orthographic_forms": [
+        [
+          "in",
+          2626
+        ],
+        [
+          "tla",
+          391
+        ],
+        [
+          "quj",
+          381
+        ],
+        [
+          "ca",
+          324
+        ],
+        [
+          "qui",
+          310
+        ],
+        [
+          "auh",
+          282
+        ],
+        [
+          "inj",
+          261
+        ],
+        [
+          "te",
+          242
+        ],
+        [
+          "qualli",
+          227
+        ],
+        [
+          "ic",
+          226
+        ],
+        [
+          "amo",
+          205
+        ],
+        [
+          "ioan",
+          200
+        ]
+      ],
+      "source_sha256": "817654d2c4c1b11be4e5217ce90d0990d02fec863614188ec2958b2e2c8afc3c",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 11,
+      "title": "Earthly Things",
+      "source_file": "Book 11 - Earthly Things.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/11",
+      "approximate_orthographic_units": 72989,
+      "unique_orthographic_forms": 11082,
+      "lexicon_exact_or_diacritic_fold_hits": 7647,
+      "lexicon_approximate_coverage_pct": 10.48,
+      "top_orthographic_forms": [
+        [
+          "in",
+          4561
+        ],
+        [
+          "quj",
+          2709
+        ],
+        [
+          "inj",
+          2106
+        ],
+        [
+          "ca",
+          1095
+        ],
+        [
+          "can",
+          1067
+        ],
+        [
+          "nj",
+          795
+        ],
+        [
+          "tla",
+          786
+        ],
+        [
+          "mj",
+          735
+        ],
+        [
+          "iuh",
+          692
+        ],
+        [
+          "qua",
+          639
+        ],
+        [
+          "cuj",
+          631
+        ],
+        [
+          "auh",
+          622
+        ]
+      ],
+      "source_sha256": "ffad7306919b7a99428381705636926c346b7b29cec4ee047bb1ef899e20b3c5",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    },
+    {
+      "book": 12,
+      "title": "The Conquest of Mexico",
+      "source_file": "Book 12 - The Conquest of Mexico.txt",
+      "source": "https://zenodo.org/records/7213020",
+      "reference": "https://florentinecodex.getty.edu/en/book/12",
+      "approximate_orthographic_units": 26191,
+      "unique_orthographic_forms": 5062,
+      "lexicon_exact_or_diacritic_fold_hits": 4192,
+      "lexicon_approximate_coverage_pct": 16.01,
+      "top_orthographic_forms": [
+        [
+          "in",
+          2774
+        ],
+        [
+          "quj",
+          1116
+        ],
+        [
+          "auh",
+          583
+        ],
+        [
+          "ca",
+          513
+        ],
+        [
+          "ie",
+          513
+        ],
+        [
+          "qujn",
+          477
+        ],
+        [
+          "que",
+          420
+        ],
+        [
+          "nj",
+          400
+        ],
+        [
+          "ic",
+          389
+        ],
+        [
+          "ma",
+          319
+        ],
+        [
+          "tla",
+          299
+        ],
+        [
+          "can",
+          295
+        ]
+      ],
+      "source_sha256": "160286278179d70f9956c9e41f07457dd7f21d32f24ff9c803f6428f7a7d2678",
+      "quality_warning": "Hard-wrapped source lines split some words; this is a preliminary orthographic scan, not a validated word/morpheme count."
+    }
+  ]
+}

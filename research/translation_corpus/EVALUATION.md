@@ -20,6 +20,14 @@ node tools/test_translation_readiness.js
 
 The readiness command reports `translation_accuracy: null`. It may show the number of tokens recognized by the current curated dictionary and whether a bounded grammar candidate exists for each **already-known** research example. Those are **in-sample engineering diagnostics** only. The script explicitly constructs the lexical analyzer with **no saved research passages**, so a verbatim stored phrase cannot inflate the probe. It still does not make the examples independent: their component words and prior editorial choices have affected project development.
 
+## First non-blind manuscript intake — 1573 Coyoacán land sale
+
+We selected **Early Nahuatl Library BC16a000**, archived as **AGN Tierras 1735, exp. 2, folio 122**. See [source review and facsimile](source_reviews/ENL_BC16_1573.json) and the [self-review procedure](source_reviews/README.md).
+
+The actual manuscript image has been viewed, but the tiny first-pass excerpt was located with the assistance of a published transcription. **The published English translation was also consulted**, so it would be misleading to place the source in a blind test set. It is reserved for *development source inspection only*. Its language/date are more directly relevant to sixteenth-century Classical Nahuatl than the 1833 Luke edition, but that does not verify any candidate reading.
+
+The evaluation readiness tool loads this source-review record and rejects attempts to label this source as a clean held-out test. It reports only mechanical dictionary lookup diagnostics for the excerpt; `y¯` remains an unresolved written abbreviation. No translated pair, rights clearance, gold score, or independent human language assessment has been produced.
+
 ## Admission protocol for future test cases
 
 1. Choose a manuscript or source document **not used** in public Tlahtōlli passage examples, dictionary tuning, rule selection, or other development. Register the full work/source ID; do not split adjacent lines or folios randomly into train/test.

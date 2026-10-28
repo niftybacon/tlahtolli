@@ -1,0 +1,82 @@
+{
+  "format": "tlahtolli-luke1833-facsimile-number-checks",
+  "schema": 1,
+  "created_utc": "2026-10-28T16:55:43+00:00",
+  "source": "https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf",
+  "source_pdf_page_count": 152,
+  "chapter_1_pdf_pages_checked_1based": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "chapter_1_printed_pages_checked_1based": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "chapter_1_verse_numeral_sequence": "1–80 visually checked across printed pages 1–9; not a line-by-line reading of Nahuatl wording",
+  "chapter_1_verse_numbering_status": "pages_checked_numbering_only",
+  "chapter_1_verse_wording_verified": false,
+  "chapter_2_partial_pdf_pages_checked_1based": [
+    21
+  ],
+  "chapter_2_partial_observation": "Printed page 13 displays verses 27–35; the numeral 28 is present in print but was missed by OCR marker detection.",
+  "other_23_chapters_fully_verified": false,
+  "patches": [
+    {
+      "verse": 13,
+      "before": "1 3  Auh  in  Ángel",
+      "after": "13  Auh  in  Ángel",
+      "pdf_page_1based": 10,
+      "printed_page": 2,
+      "verification": "original_1833_scanned_image_verified_number_only"
+    },
+    {
+      "verse": 31,
+      "before": "131  Xic  itanican",
+      "after": "31  Xic  itanican",
+      "pdf_page_1based": 13,
+      "printed_page": 5,
+      "verification": "original_1833_scanned_image_verified_number_only"
+    },
+    {
+      "verse": 38,
+      "before": ".38  Auh  in  Maria",
+      "after": "38  Auh  in  Maria",
+      "pdf_page_1based": 13,
+      "printed_page": 5,
+      "verification": "original_1833_scanned_image_verified_number_only"
+    },
+    {
+      "verse": 57,
+      "before": "51  Auh  in  Isabel",
+      "after": "57  Auh  in  Isabel",
+      "pdf_page_1based": 15,
+      "printed_page": 7,
+      "verification": "original_1833_scanned_image_verified_number_only"
+    },
+    {
+      "verse": 67,
+      "before": "61  Auh  in  Zacharias",
+      "after": "67  Auh  in  Zacharias",
+      "pdf_page_1based": 16,
+      "printed_page": 8,
+      "verification": "original_1833_scanned_image_verified_number_only"
+    }
+  ],
+  "rights": "1833 original edition public domain; no modern copyrighted Bible translations used",
+  "caveat": "These five numeral corrections are image-checked. Other punctuation, spelling and word boundaries remain unreviewed.",
+  "training_approved": false
+}

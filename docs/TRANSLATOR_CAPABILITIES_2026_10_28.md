@@ -42,6 +42,19 @@ When a clause cannot be analyzed fully, the sentence result may additionally car
 - `.github/workflows/translator-regressions.yml` and full-project CI are the actual build authorities. Check latest commit SHA before declaring success.
 - The imported archival dictionaries are source-linked background, **not** verified grammar and not neural-model training pairs.
 
+## Next milestone: source-crosschecked morphology enters the actual translator
+
+New `translator-source-morphology.js` is a **generic, fail-closed adapter** for explicitly documented token-level analyses in the existing manuscript source-review records. It is not a productive inflection generator, not a gold benchmark, and not an independent second linguist.
+
+- The 1573 Coyoacán review now records four explicit analyses for three manuscript-spelled units: `ticnamaca` (both **1pl** and **2sg** subject possibilities), `y¯` (nasal abbreviation with proposed `yn/in` expansion, never substituted in original text), and `totlal` (1pl possessed noun with an independent 1563 historical comparison).
+- `translator-integrated.js` reads the source record in the same initialization batch as the dictionary and combines its bounded analyses with the canonical Tēntli morphology provider. Both the morphology panel and the sentence engine's **incomplete-clause clues** now show these evidence-linked proposals.
+- The source adapter only accepts the exact recorded spelling, recomposes every proposed token from separately cited morpheme parts, requires its claims to have valid external source URLs, and refuses any promotion to training/gold, human-reviewed, or facsimile-collated status. It outputs `grade:'unreviewed'` regardless of editorial prose.
+- Neither a new curated headword nor any lexical working gloss is inserted. The existing sentence analyzer cannot declare the 1573 phrase `complete`; it cannot select between 1pl/2sg on the written verb alone; and it cannot automatically substitute `in` for the original `y¯`.
+- `tools/test_source_morphology.js` and the headless Chromium Translator regression check exact readings, 1pl/2sg ambiguity, cited 1563 support, preservation of original abbreviation, and strict rejection of invented spellings, modified metadata, and ungrounded English.
+- This mechanism can process additional source-review records **once their own explicit cited token analyses are carefully prepared**. It does not generalize new verb or possessive morphology without separate evidence.
+
+**Next priority after this milestone:** implement small, independently grammar-licensed noun-phrase and agreement rules that consume vetted candidate analyses while preserving alternative subject roles and failures for incomplete clauses. That requires positive *and* negative historical examples, not simply copying Lockhart's English interpretation.
+
 ## Highest-impact next work
 
 1. Extend source-linked grammar **only** from independent Classical-era citation/negative evidence, not templates derived from modern dialects or the published English answer.

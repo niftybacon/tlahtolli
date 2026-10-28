@@ -30,6 +30,7 @@ jobs:
         run: |
           python tools/test_data.py
           python tools/test_audit_repairs.py
+          python tools/test_refresh_luke_review.py
           python tools/test_remaining_audit.py
       - name: Audit claim-level source coverage
         run: python tools/test_claim_audit.py

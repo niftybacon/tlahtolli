@@ -83,6 +83,25 @@ function audit(pairs,examples,sourceReviews=[]){
    errors.push('Development source snippet must not contain an unreviewed translation: '+id);
   if(review?.knowledge_contamination?.published_translation_consulted!==true)
    errors.push('Document explicitly whether the published translation has been consulted: '+id);
+  const checked=review?.source_crosschecked_morphology;
+  if(checked){
+   if(checked.schema!=='tlahtolli-morpheme-evidence-v1'||
+    checked.excerpt!==review.image_inspection?.minimum_assisted_excerpt||
+    checked.training_eligible!==false||checked.heldout_evaluation_eligible!==false||
+    checked.independent_facsimile_collation!==false||
+    checked.reviewed_by_human_scholar!==false||
+    checked.evidence_level!=='external_source_crosscheck_not_expert_or_facsimile_verified')
+    errors.push('External morphology record must preserve unverified, non-gold source status: '+id);
+   if(!Array.isArray(checked.claims)||!checked.claims.length||checked.claims.length>20)
+    errors.push('External morphology requires bounded, cited morpheme claims: '+id);
+   else for(const [j,claim] of checked.claims.entries()){
+    if(!clean(claim?.surface)||!clean(claim?.role)||!clean(claim?.confidence)||
+     !clean(claim?.unresolved)||!Array.isArray(claim?.functions)||!claim.functions.length||
+     !Array.isArray(claim?.evidence)||!claim.evidence.length||claim.evidence.length>5||
+     claim.evidence.some(e=>!isUrl(e?.url)||!clean(e?.basis)))
+     errors.push('External morphology claim lacks provenance or unresolved constraints: '+id+' claim '+(j+1));
+   }
+  }
  }
  for(const e of candidates){
   if(e?.source_id)knownSources.add(clean(e.source_id));

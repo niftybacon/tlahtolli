@@ -17,6 +17,38 @@ assert.equal(reviewedSource.train_eligible,false);
 assert.equal(reviewedSource.knowledge_contamination.published_translation_consulted,true);
 assert.equal(reviewedSource.knowledge_contamination.independent_test_eligible,false);
 assert.equal(reviewedSource.image_inspection.snippet_translation,null);
+const crosscheck=reviewedSource.source_crosschecked_morphology;
+assert.equal(crosscheck.excerpt,'ticnamaca y¯ totlal');
+assert.equal(crosscheck.reviewed_by_human_scholar,false);
+assert.equal(crosscheck.independent_facsimile_collation,false);
+assert.equal(crosscheck.training_eligible,false);
+assert.equal(crosscheck.heldout_evaluation_eligible,false);
+assert.equal(crosscheck.claims.length,6);
+assert.deepEqual(crosscheck.claims.map(x=>x.surface),['ti','c','namaca','y¯','to','tlal']);
+assert(crosscheck.claims.find(x=>x.surface==='ti').functions.includes('2sg'),
+ 'Never silently eliminate second-person possibility from the original spelling');
+assert(crosscheck.claims.find(x=>x.surface==='ti').functions.includes('1pl'));
+assert(crosscheck.claims.find(x=>x.surface==='y¯').unresolved.includes('overbar'),
+ 'Abbreviation expansion must remain explicitly proposed');
+assert(crosscheck.claims.find(x=>x.surface==='tlal').evidence.some(x=>
+ x.url.includes('gdn.iib.unam.mx')&&x.basis.includes('1563')),
+ 'Evidence must include independent historical attestation of the possessed form');
+assert(crosscheck.claims.every(x=>x.evidence.every(c=>
+ c.url.startsWith('https://')&&c.basis.length>20)), 'Every claim needs an external source');
+for(const patch of [
+ {training_eligible:true},
+ {heldout_evaluation_eligible:true},
+ {independent_facsimile_collation:true},
+ {reviewed_by_human_scholar:true},
+ {excerpt:'normalized without provenance'},
+ {claims:[{surface:'y¯',role:'Particle',confidence:'proved',functions:['yn'],
+   unresolved:'none',evidence:[{url:'badurl',basis:'claimed'}]}]}
+]){
+ const bad={...reviewedSource,source_crosschecked_morphology:{...crosscheck,...patch}};
+ assert(mod.audit([],examples,[bad]).errors.length>0,
+  'Never admit altered source-evidence claims: '+JSON.stringify(patch));
+}
+
 const sourceProbe=mod.probeDevelopmentSources(reviews);
 assert.equal(sourceProbe.length,1);
 assert.equal(sourceProbe[0].translation_accuracy,null);

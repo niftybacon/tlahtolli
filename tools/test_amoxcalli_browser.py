@@ -31,7 +31,7 @@ with sync_playwright() as pw:
     assert page.locator('#count').count()==1
     page.locator('#historicalArchive').evaluate('(node)=>node.open=true')
     page.locator('#archiveLoad').click()
-    page.wait_for_function('window.TlahtolliArchive.ready===true',{ 'timeout':60000 } )
+    page.wait_for_function('window.TlahtolliArchive.ready===true',timeout=60000)
     assert '36,543' in page.locator('#archiveStatus').inner_text()
     report=page.evaluate("""() => ({
       total:window.TlahtolliArchive.manifest.source_rows.total,

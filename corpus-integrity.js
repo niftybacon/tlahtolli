@@ -44,7 +44,8 @@ function showEditor(seed){
 function makeRow(seed,idx){
  const d=currentRecord(seed),art=el('article',null,'ci-entry');
  art.append(el('h4',(idx+1)+'. '+d.source_title));
- const state=el('p','Review: '+d.source_status+' · Rights: '+d.transcription_rights+' / '+d.translation_rights,'ci-meta');
+ const reviewLabels={candidate:'Candidate / not reviewed',facsimile_checked:'User-reported visual check — NOT independently certified',linguistically_reviewed:'User-reported analysis — NOT independently certified'};
+ const state=el('p','Review: '+(reviewLabels[d.source_status]||'Unrecognized state — NOT certified')+' · Rights: '+d.transcription_rights+' / '+d.translation_rights,'ci-meta');
  art.append(state);
  const reading=el('p','Witness: '+(d.original||'(not transcribed)'));
  art.append(reading);
@@ -71,8 +72,8 @@ function makeRow(seed,idx){
  fieldForm(form,'morphology','Morpheme-level analysis, hypotheses explicitly labeled',d.morphology,'area');
  fieldForm(form,'english_interpretation','English interpretation (identify translator)',d.english_interpretation,'area');
  fieldForm(form,'translator_credit','Translation/editor attribution',d.translator_credit);
- fieldForm(form,'source_status','Review stage',d.source_status,'select',[
- ['candidate','Candidate / not reviewed'],['facsimile_checked','Checked against source facsimile'],['linguistically_reviewed','Linguistically reviewed (identify reviewer)']
+ fieldForm(form,'source_status','Self-reported review stage (not certification)',d.source_status,'select',[
+ ['candidate','Candidate / not reviewed'],['facsimile_checked','User-reported visual comparison — NOT certified'],['linguistically_reviewed','User-reported linguistic analysis — NOT certified']
  ]);
  fieldForm(form,'transcription_rights','Nahuatl transcription reuse',d.transcription_rights,'select',[
  ['unverified','Unknown / restricted'],['permission_documented','Permission documented'],['self_transcribed_public_domain','Independent transcription of public-domain manuscript']
@@ -82,7 +83,7 @@ function makeRow(seed,idx){
  ]);
  fieldForm(form,'transcription_rights_evidence','Evidence for transcription rights (URL or citation)',d.transcription_rights_evidence);
  fieldForm(form,'translation_rights_evidence','Evidence for translation rights (URL or citation)',d.translation_rights_evidence);
- fieldForm(form,'checked_by','Reviewer (do not claim expert review without one)',d.checked_by);
+ fieldForm(form,'checked_by','Person reporting this check (not independently authenticated)',d.checked_by);
  fieldForm(form,'editorial_notes','Notes, alternatives and unresolved uncertainty',d.editorial_notes,'area');
  art.append(form);
  const save=el('button','Save local review');save.type='button';
@@ -109,9 +110,9 @@ function makeRow(seed,idx){
 function download(){
  const payload={
   format:'tlahtolli-corpus-review-export',schema:1,exported_at:new Date().toISOString(),
-  copyright_note:'An export is a local review file, NOT an approved training dataset. Confirm licenses and independent linguistic review before training.',
+  copyright_note:'Local, self-reported annotations only. No human identities or analyses independently authenticated. NOT an approved training dataset.',
   train_eligible:false,
-  records:entries.map(e=>Object.assign({},currentRecord(e),{train_eligible:false}))
+  records:entries.map(e=>Object.assign({},currentRecord(e),{facsimile_certified:false,grammar_certified:false,translation_certified:false,train_eligible:false}))
  };
  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
  const u=URL.createObjectURL(blob);const a=el('a');a.href=u;a.download='tlahtolli-florentine-review.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),500);

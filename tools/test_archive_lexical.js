@@ -71,5 +71,47 @@ vm.runInNewContext(script,context,{filename:'amoxcalli-archive.js'});
  assert.equal(vowelLength.hits[0].matchedForms[0].role,'source-listed form');
  assert(vowelLength.hits[0].matchedForms[0].tags.includes('canonical'));
  assert.equal(api.lookupEvidence('alomeh',{limit:1}).truncated,false);
+
+ // Validate against a shipped, unmodified Kaikki source shard rather than
+ // relying only on hand-authored fixtures.
+ const actual=JSON.parse(fs.readFileSync(path.join(__dirname,'..',
+  'research/amoxcalli_archive/kaikki_00.json'),'utf8'));
+ assert.equal(actual.format,'tlahtolli-amoxcalli-kaikki-v1');
+ const actualDocs={
+  'manifest.json':{
+   format:'tlahtolli-amoxcalli-archive-manifest-v1',
+   source_rows:{simeon:0,kaikki:actual.rows.length,total:actual.rows.length},
+   simeon:{files:[],source_url:'https://example.org/simeon'},
+   kaikki:{files:['kaikki_00.json'],source_url:'https://example.org/kaikki'}
+  },
+  'kaikki_00.json':actual
+ };
+ const actualContext={
+  window:{},
+  document:{readyState:'loading',addEventListener(){}},
+  fetch:async url=>{
+   const name=String(url).split('/').pop();
+   return {ok:Object.hasOwn(actualDocs,name),status:Object.hasOwn(actualDocs,name)?200:404,
+    json:async()=>actualDocs[name]};
+  }
+ };
+ vm.runInNewContext(script,actualContext,{filename:'amoxcalli-archive.js'});
+ const realApi=actualContext.window.TlahtolliArchive;
+ const realLoaded=await realApi.ensureLoaded();
+ assert.equal(realLoaded.total,actual.rows.length);
+ const realPlural=realApi.lookupEvidence('alomeh');
+ assert(realPlural.hits.some(hit=>hit.word==='alo'&&
+  hit.matchedForms.some(f=>f.role==='source-listed form'&&f.tags.includes('plural'))));
+ assert(realPlural.hits.some(hit=>hit.word==='alomeh'&&
+  hit.matchedForms.some(f=>f.role==='headword')),
+  'A form-of relation and an independent lemma are separate analyses');
+ const markedCanonical=realApi.lookupEvidence('ōn');
+ assert(markedCanonical.hits.some(hit=>hit.matchedForms.some(
+  f=>f.role==='source-listed form'&&f.tags.includes('canonical'))));
+ const unmarkedCanonical=realApi.lookupEvidence('on');
+ assert(unmarkedCanonical.hits.some(hit=>hit.matchedForms.some(
+  f=>f.role==='headword'&&f.tags.includes('canonical'))));
+ assert(realApi.lookupEvidence('in').total>1,'Retain homonymous source rows');
+
  console.log('Archive evidence tests passed: form tags, headwords vs listed plurals, exact/diacritic contrast, dialect isolation, truncation and compatibility.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

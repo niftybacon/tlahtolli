@@ -204,8 +204,8 @@ async function init(){
   model=window.TlahtolliTranslator.create(document,corpus);
   try{
    if(!window.TlahtolliSentence)await new Promise((resolve,reject)=>{
-    const script=document.createElement('script');script.src='./translator-sentence.js';
-    script.onload=resolve;script.onerror=reject;document.head.append(script);
+    const script=window.document.createElement('script');script.src='./translator-sentence.js';
+    script.onload=resolve;script.onerror=reject;window.document.head.append(script);
    });
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
    if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(document,await response.json());

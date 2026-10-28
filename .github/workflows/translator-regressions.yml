@@ -10,7 +10,9 @@ on:
       - 'dictionary.json'
       - 'paradigms.json'
       - 'research/amoxcalli_archive/**'
-      - 'research/translation_corpus/research_examples.json'
+      - 'research/translation_corpus/**'
+      - 'tools/evaluate_translation_readiness.js'
+      - 'tools/test_translation_readiness.js'
       - '.github/workflows/translator-regressions.yml'
   pull_request:
     paths:
@@ -21,7 +23,9 @@ on:
       - 'dictionary.json'
       - 'paradigms.json'
       - 'research/amoxcalli_archive/**'
-      - 'research/translation_corpus/research_examples.json'
+      - 'research/translation_corpus/**'
+      - 'tools/evaluate_translation_readiness.js'
+      - 'tools/test_translation_readiness.js'
       - '.github/workflows/translator-regressions.yml'
 
 permissions:
@@ -45,3 +49,7 @@ jobs:
         run: node tools/test_translator_sentence.js
       - name: Archive form evidence and morphology cross-check regressions
         run: node tools/test_archive_lexical.js
+      - name: Translation quality readiness and independent-holdout checks
+        run: node tools/test_translation_readiness.js
+      - name: Evaluation audit (no invented accuracy)
+        run: node tools/evaluate_translation_readiness.js

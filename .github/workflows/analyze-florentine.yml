@@ -1,0 +1,50 @@
+name: Research scan of all 12 Florentine Codex books
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - tools/analyze_florentine_codex.py
+      - .github/workflows/analyze-florentine.yml
+permissions:
+  contents: write
+jobs:
+  codex-aggregate-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Analyze 12 books from open Zenodo research deposit
+        run: python tools/analyze_florentine_codex.py --download-zenodo --output research/florentine_codex/analysis.json
+      - name: Validate no verbatim texts or translations are exported
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path("research/florentine_codex/analysis.json")
+          data=json.loads(path.read_text(encoding="utf-8"))
+          assert data["totals"]["books_checked"] == 12
+          assert len(data["books"]) == 12
+          assert data["verbatim_source_text_in_output"] is False
+          assert data["train_eligible"] is False
+          for b in data["books"]:
+              assert len(b["source_sha256"])==64
+              assert len(b["top_orthographic_forms"]) <= 12
+              assert "text" not in b
+              assert b["approximate_orthographic_units"] > 100
+          print("Validated: only limited aggregate descriptive statistics, no transcriptions or translations")
+          PY
+      - name: Commit derived research statistics only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/florentine_codex/analysis.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record aggregate research measurements for all twelve Florentine Codex books"
+            git push
+          else
+            echo "No changes"
+          fi

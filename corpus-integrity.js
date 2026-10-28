@@ -124,12 +124,14 @@ function render(){
  const add=el('button','Add sourced folio');add.type='button';add.onclick=addRecord;
  const exp=el('button','Export local review JSON');exp.type='button';exp.onclick=download;
  bar.append(add,exp,el('span','Research candidates: '+entries.length,'ci-meta'));panel.append(bar);
- panel.append(el('p','','ci-meta')).lastChild.id='ciSaveStatus';
+ const status=el('p','','ci-meta');status.id='ciSaveStatus';panel.append(status);
  for(let i=0;i<entries.length;i++)panel.append(makeRow(entries[i],i));
  const note=el('p','The twelve-book corpus atlas above is aggregate frequency evidence, not sentence-aligned training data. Three initial short examples come from the site’s research_examples.json. Import into machine-learning training only after a separate source, rights, segmentation and evaluation audit.','ci-note');
  panel.append(line(),note);
 }
 fetch('./research/translation_corpus/research_examples.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('source status '+r.status);return r.json();}).then(data=>{
- entries=(data.entries||[]).filter(e=>e.source_id==='FC').map(e=>Object.assign({},e,{source_status:e.review_status||'candidate'}));render();
+ entries=(data.entries||[]).filter(e=>e.source_id==='FC').map(e=>Object.assign({},e,{source_status:e.review_status||'candidate'}));
+ for(const id of Object.keys(saved)){if(id.startsWith('local-fc-')&&!entries.some(x=>x.id===id))entries.push(Object.assign({id},saved[id]));}
+ render();
 }).catch(err=>{entries=[];render();panel.prepend(el('p','Source examples could not be fetched: '+err.message+'. New sourced entries can still be recorded locally.','ci-warning'));});
 })();

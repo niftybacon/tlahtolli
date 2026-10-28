@@ -22,7 +22,7 @@ try{opts=configure(JSON.parse(localStorage.getItem(KEY)||'{}'));}catch{opts=conf
 function getSettings(){return JSON.parse(JSON.stringify(opts));}
 function setSettings(next){
  opts=configure(next);
- try{localStorage.setItem(KEY,JSON.stringify(opts));}catch{}
+ try{localStorage.setItem(KEY,JSON.stringify(opts));window.dispatchEvent(new Event('tlahtolli:settingsChanged'));}catch{}
  return getSettings();
 }
 function retrievability(s,elapsedDays){return Math.pow(1+K*Math.max(0,elapsedDays)/Math.max(.01,s),DECAY);}

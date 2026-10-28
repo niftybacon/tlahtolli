@@ -17,6 +17,16 @@ assert.equal(reviewedSource.train_eligible,false);
 assert.equal(reviewedSource.knowledge_contamination.published_translation_consulted,true);
 assert.equal(reviewedSource.knowledge_contamination.independent_test_eligible,false);
 assert.equal(reviewedSource.image_inspection.snippet_translation,null);
+const sourceProbe=mod.probeDevelopmentSources(reviews);
+assert.equal(sourceProbe.length,1);
+assert.equal(sourceProbe[0].translation_accuracy,null);
+assert.equal(sourceProbe[0].abbreviation_unresolved,true);
+assert(sourceProbe[0].classification.includes('NOT BLIND'));
+assert(sourceProbe[0].tokenization.some(t=>t.written_token==='ticnamaca'));
+assert(sourceProbe[0].tokenization.some(t=>t.written_token==='totlal'));
+assert(!sourceProbe[0].tokenization.some(t=>t.written_token==='y¯'),
+ 'The source abbreviation must NOT be misrepresented as a securely segmented word');
+assert(sourceProbe[0].dictionary_matches+sourceProbe[0].dictionary_unknown>=2);
 assert.equal(pairs.length,0,'If actual reviewed pairs are added, update the evaluation test expectations');
 const clean=mod.audit(pairs,examples,reviews);
 assert.deepEqual(clean.errors,[]);

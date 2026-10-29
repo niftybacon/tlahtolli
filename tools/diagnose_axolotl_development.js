@@ -136,7 +136,7 @@ function diagnose(sample,engines,options={}){
   const syntactic=engines.sentence.analyze(row.nahuatl);
   const clauses=syntactic.clauses||[];
   const parts=lexical.parts.filter(x=>x.kind==='word');
-  const unknown=parts.filter(x=>x.status==='unknown');
+  const unknown=parts.filter(x=>x.status==='unknown'||x.status==='provisional');
   let plausibleMorph=0,archiveFormMorph=0;
   const unknownAudit=[];
   for(const token of unknown){

@@ -18,6 +18,8 @@ jobs:
           node-version: '22'
       - name: Check generated dictionary outputs
         run: python tools/build_dictionary.py --check
+      - name: Batch-source validation and no inferred morphology
+        run: python tools/import_archive_verb_batch.py --check
       - name: Check content-versioned runtime scripts
         run: python tools/test_runtime_assets.py && python tools/build_runtime_assets.py --check
       - name: Check source-controlled SRS embed

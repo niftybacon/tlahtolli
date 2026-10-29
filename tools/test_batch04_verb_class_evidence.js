@@ -7,17 +7,17 @@ const D=JSON.parse(read('dictionary.json')),P=JSON.parse(read('paradigms.json'))
 const L=JSON.parse(read('data/lexicon.json')),M=JSON.parse(read('data/morphology.json'));
 const E=JSON.parse(read('data/evidence.json')),R=JSON.parse(read('release.json'));
 assert.equal(D.version,R.version);assert.equal(R.version,D.version);
-assert.equal(D.words.length,210);
+assert.equal(D.words.length,R.headwords);
 assert.equal(D.words.filter(w=>w.status==='Checked against source').length,144);
 assert.equal(D.words.filter(w=>w.status.startsWith('Index-sourced')).length,66);
 assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),270+2,
  'Batch04 baseline plus two separately Molina-recorded Class 2 forms; verify those forms in dedicated regression');
-assert.equal(D.words.reduce((n,w)=>n+w.claims.length,0),1275);
+assert.equal(D.words.slice(0,210).reduce((n,w)=>n+w.claims.length,0),1275);
 assert.equal(Object.keys(P.paradigms).length,12);
 assert.deepEqual(L.words.map(w=>w.word),M.entries.map(w=>w.word));
 assert.deepEqual(L.words.map(w=>w.word),E.entries.map(w=>w.word));
 const previouslyReviewed=new Set(['tepoztia','tepoztehuia']);
-const previous80=D.words.slice(128).filter(w=>!previouslyReviewed.has(w.word));
+const previous80=D.words.slice(128,210).filter(w=>!previouslyReviewed.has(w.word));
 assert.equal(previous80.length,80);
 const ledger=read('docs/BATCH04_REMAINING_80_VERB_CLASS_AUDIT_2026_10_29.md');
 const rows=[...ledger.matchAll(/^\| `([^`]+)` \|/gm)].map(m=>m[1]);

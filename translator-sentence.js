@@ -37,7 +37,13 @@ const DEFAULT_CLAUSE_ROWS=[
  ['transitive-third-role-ambiguous-pre','NP V','transitive',[2],'either'],
  ['transitive-two-nps-verb-first','V NP NP','transitive',[2],'both'],
  ['transitive-two-nps-verb-middle','NP V NP','transitive',[2],'both'],
- ['transitive-two-nps-verb-last','NP NP V','transitive',[2],'both']
+ ['transitive-two-nps-verb-last','NP NP V','transitive',[2],'both'],
+ ['possessed-intrans-subject-post','V PNP','intransitive',[2],'subject'],
+ ['possessed-intrans-subject-pre','PNP V','intransitive',[2],'subject'],
+ ['possessed-trans-object-post','V PNP','transitive',[0,1,3,4,5],'object'],
+ ['possessed-trans-object-pre','PNP V','transitive',[0,1,3,4,5],'object'],
+ ['possessed-trans-third-post','V PNP','transitive',[2],'either'],
+ ['possessed-trans-third-pre','PNP V','transitive',[2],'either']
 ];
 const DEFAULT_CLAUSE_PACK={format:'tlahtolli-classical-clause-rules-v1',version:1,
  rules:DEFAULT_CLAUSE_ROWS.map(([id,sequence,valency,persons,roles])=>({
@@ -59,13 +65,16 @@ function compileClauseRules(pack){
   if(!r||typeof r.id!=='string'||!/^[a-z0-9-]{3,72}$/.test(r.id)||
    ids.has(r.id)||!Array.isArray(r.sequence)||r.sequence.length<1||
    r.sequence.length>3||r.sequence.filter(x=>x==='V').length!==1||
-   r.sequence.some(x=>x!=='V'&&x!=='NP')||
+   r.sequence.some(x=>x!=='V'&&x!=='NP'&&x!=='PNP')||
    !Array.isArray(r.persons)||r.persons.some(x=>!Number.isInteger(x))||
    typeof r.source_url!=='string'||!/^https:\/\/[^/\s]+/u.test(r.source_url)||
    r.evidence_status!=='editorial formalization of cited Classical grammar; not individual manuscript attestation')
    return [];
   const spec=specs[r.roles];
-  if(!spec||r.sequence.filter(x=>x==='NP').length!==spec.count||
+  const possessed=r.sequence.filter(x=>x==='PNP').length;
+  if(!spec||r.sequence.filter(x=>x==='NP'||x==='PNP').length!==spec.count||
+   (possessed&&(possessed!==1||spec.count!==1||!r.id.startsWith('possessed-')))||
+   (!possessed&&r.id.startsWith('possessed-'))||
    r.valency!==spec.valency||r.persons.join(',')!==spec.persons)return [];
   const signature=[r.sequence.join(' '),r.valency,r.persons.join(','),r.roles].join('|');
   if(signatures.has(signature))return [];
@@ -426,7 +435,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  // written in + unique curated noun. Entire token consumption is mandatory.
  const activeClauseRules=compileClauseRules(grammarRules===undefined||grammarRules===null?
   DEFAULT_CLAUSE_PACK:grammarRules);
- function matchClauseRules(tokens,readVerbs){
+ function matchClauseRules(tokens,readVerbs,options){
   const getVerbs=typeof readVerbs==='function'?readVerbs:key=>index.get(norm(key))||[];
   const proposals=[];
   for(const rule of activeClauseRules){
@@ -436,6 +445,15 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
      verbsAt=getVerbs(tokens[cursor]||'')||[];
      if(!verbsAt.length){valid=false;break;}
      cursor++;
+    }else if(slot==='PNP'){
+     // No default possessed-noun interpretation is licensed in English output.
+     // Only a caller that provides an exact, source-gated resolver may use PNP.
+     if(typeof options?.possessed!=='function'){valid=false;break;}
+     const marked=norm(tokens[cursor]||'')==='in';
+     const pos=cursor+(marked?1:0);
+     const n=options.possessed(tokens[pos]||'');
+     if(!n){valid=false;break;}
+     phrases.push(n);cursor=pos+1;
     }else{
      if(norm(tokens[cursor]||'')!=='in'||cursor+1>=tokens.length){
       valid=false;break;
@@ -527,6 +545,72 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    });
   }
   return {items:out.slice(0,32),truncated:out.length>32};
+ }
+ // Source-linked possessed noun forms are NEVER freely generated from prefixes.
+ // This bounded first phase recognizes only exact cited first-person no- forms
+ // already in the dictionary; it does not infer a whole possessive paradigm.
+ function resolveRecordedPossessed(token){
+  if(typeof token!=='string'||!/^[\p{L}\p{M}’'-]{3,120}$/u.test(token)||
+   !norm(token).startsWith('no'))return null;
+  const rows=words.filter(w=>String(w.pos).includes('noun')&&
+   norm(String(w.possessed||'').split('(')[0].trim())===norm(token));
+  if(rows.length!==1)return null;
+  const w=rows[0],claim=(w.claims||[]).filter(c=>c.field==='possessed'&&
+   ['dictionary','grammar','text'].includes(c.assessment)&&
+   typeof c.locator==='string'&&c.locator.trim()&&
+   typeof c.source==='string'&&/^https:\/\/[^/\s]+/u.test(c.source));
+  if(claim.length!==1||!/^https:\/\/[^/\s]+/u.test(w.source||''))return null;
+  const hits=exactMorphology(token).filter(m=>
+   m.kind==='Editorially listed possessed form'&&m.grade==='lexical'&&
+   m.lemma===w.word&&m.source===claim[0].source&&
+   m.features?.partOfSpeech==='noun'&&m.features?.evidence===claim[0].assessment&&
+   m.locator===claim[0].locator&&
+   m.parts?.length===2&&norm(m.parts[0].surface)==='no'&&
+   m.parts[0].role.includes('1sg possessive prefix')&&
+   norm(m.parts.map(p=>p.surface).join(''))===norm(token));
+  if(hits.length!==1)return null;
+  return {word:w.word,meaning:w.meaning,source:w.source,written:token,
+   possessor:'1sg',possessorSource:claim[0].source,possessorLocator:claim[0].locator,
+   kind:'exact source-located possessed noun (1sg no-)',morphSource:hits[0].source};
+ }
+ function possessedAgreementProposals(tokens,negative){
+  if(negative||tokens.length<2||tokens.length>4)return {items:[],truncated:false};
+  const readVerb=token=>[...(index.get(norm(token))||[]),
+   ...indexedMorphologyReadings(token)];
+  const matches=matchClauseRules(tokens,readVerb,{possessed:resolveRecordedPossessed})
+   .filter(x=>x.rule.sequence.includes('PNP'));
+  const result=[];
+  for(const {parse,rule,subjectNoun,objectNoun} of matches){
+   const possessed=subjectNoun||objectNoun;
+   if(!possessed?.possessorSource)continue;
+   const subject=PERSON_CODES[parse.person],verbIndex=parse.patternIndex;
+   const isIndexedNonpresent=Number.isInteger(verbIndex);
+   const verbSurface= isIndexedNonpresent?
+    paradigms.paradigms[parse.lemma]?.cells?.[verbIndex]?.[parse.person]:
+    [...index.entries()].find(([k,entries])=>entries.some(
+     e=>e===parse))?.[0];
+   if(!verbSurface)continue;
+   result.push({
+    grade:'source-located possession + grammatical role hypothesis (NOT a translation)',
+    constructionId:rule.id,coverage:tokens.length,
+    verb:{written:tokens.find(t=>norm(t)===norm(verbSurface))||verbSurface,
+     lemma:parse.lemma,subject,objectAgreement:parse.transitive?'indexed fixed 3sg':'intransitive',
+     pattern:parse.tense,patternIndex:isIndexedNonpresent?verbIndex:null,
+     evidence:isIndexedNonpresent?'exact grammar-derived nonpresent matrix cell':'exact indexed present/future cell'},
+    possessedNoun:{written:possessed.written,lemma:possessed.word,
+     fullMeaning:possessed.meaning,possessor:possessed.possessor,
+     role:subjectNoun?'possible grammatical subject':'possible grammatical object',
+     source:possessed.possessorSource,locator:possessed.possessorLocator},
+    sourceLinks:[...new Set([rule.source_url,parse.source,possessed.source,
+     possessed.possessorSource,grammar,tenseSource].filter(Boolean))],
+    note:'The nominal 1sg possessor and finite verb subject are independent grammatical features. '+
+     'Do NOT infer that they refer to the same person or reject different persons. '+
+     'All source-spelled tokens are consumed; the noun form is exact and source-located, '+
+     'but sentence meaning, historical attestation, actual subject/object attachment '+
+     'and tense/aspect are NOT verified. No English sentence is generated.'
+   });
+  }
+  return {items:result.slice(0,24),truncated:result.length>24};
  }
  function analyzeMultiClause(raw){
   if(typeof raw!=='string'||raw.length>7000||raw.length<8||
@@ -653,6 +737,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     locativeInterpretations:candidates.length?[]:locativeAnalyze(tokens,negative),
     complexClauseProposals:candidates.length?[]:finiteLocativeProposals(tokens,negative),
     morphosyntactic: morphologyClauseCandidates(tokens,negative),
+    possessedAgreement: possessedAgreementProposals(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,

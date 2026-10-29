@@ -114,8 +114,11 @@ node tools/diagnose_axolotl_development.js /tmp/tlahtolli-axolotl.csv --limit 36
 node tools/diagnose_axolotl_development.js /tmp/tlahtolli-axolotl.csv --limit 48 --json
 ```
 
-The tool reuses the existing lexicon lookup, canonical morphology analyzer and
-source-aware sentence parser. It does **not** create a second translator, infer
+The tool reuses the existing lexicon lookup, canonical morphology analyzer,
+source-aware sentence parser, and the already-shipped 36,543-row Amoxcalli archive lookup.
+Archive matches are reported separately as exact Classical headword/form evidence,
+diacritic-only Classical variants, or unreviewed Siméon OCR matches; none is promoted
+to a verified curated match or automatically translated. It does **not** create a second translator, infer
 rules from Spanish translations, or copy bilingual passage text into the repo.
 It verifies the original upstream git blob SHA and row/classification totals
 before processing. The bounded sample is deterministic, de-duplicated and

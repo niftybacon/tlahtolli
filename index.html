@@ -1536,6 +1536,15 @@ const TlahtolliMorphEngine = (() => {
   {person:'2pl',surface:'an',plural:true},
   {person:'3pl',surface:'',plural:true}
  ];
+ // Launey (2011), §1.2: n-/t- before an immediately adjacent vowel;
+ // ni-/ti- before consonants. Object prefixes intervene when present.
+ // Preserve original NFC spelling; do not guess weak-i stem deletions.
+ function subjectPrefix(who,following){
+  if(/^[aeiouāēīōū]/u.test(following)&&
+     ['1sg','2sg','1pl'].includes(who.person))
+   return who.person==='1sg'?'n':'t';
+  return who.surface;
+ }
  const OBJECTS=[
   {person:'1sg',shape:'nēch',gloss:'me'},
   {person:'2sg',shape:'mitz',gloss:'you (singular)'},
@@ -1789,18 +1798,19 @@ const TlahtolliMorphEngine = (() => {
    const lemma=String(w.word||'').normalize('NFC').toLocaleLowerCase('en');
    if(!/^[\p{L}\p{M}]{3,120}$/u.test(lemma))continue;
    for(const subject of PEOPLE.slice(0,2)){
-    // Only 1sg ni- and 2sg ti-; 1pl/2pl/3pl require distinct
-    // suffix/number treatment. Do not derive a transitive without an object.
-    if(written!==subject.surface+lemma)continue;
+    // Source-checked intransitives only: n-/t- before a vowel, ni-/ti-
+    // before a consonant. No change to valency, plurals or tense.
+    const prefix=subjectPrefix(subject,lemma);
+    if(written!==prefix+lemma)continue;
     if(all.some(c=>c.lemma===w.word&&
        ['manuscript','lexical','grammar'].includes(c.grade)))continue;
     all.push(make(w.word,'Regular intransitive present hypothesis','hypothesis',
      {tense:'Present',subject:subject.person,category:'verb',
       sourceStatus:'Curated intransitive headword + general singular subject rule'},
-     [{surface:raw.slice(0,subject.surface.length),role:'Subject '+subject.person+' prefix; grammar-derived'},
-      {surface:raw.slice(subject.surface.length),role:'Source-listed intransitive citation form; proposed present base'}],
+     [{surface:raw.slice(0,prefix.length),role:'Subject '+subject.person+' prefix; grammar-derived'},
+      {surface:raw.slice(prefix.length),role:'Source-listed intransitive citation form; proposed present base'}],
      head.source,head.locator||'',
-     'Analytical ni-/ti- plus source-checked intransitive citation form. This exact finite word is NOT independently attested by the source, and no plural, nonpresent, incorporated or transitive forms are inferred.'));
+     'Analytical n-/t- before vowels, ni-/ti- otherwise, plus source-checked intransitive citation form. This exact finite word is NOT independently attested by the source, and no plural, nonpresent, incorporated or transitive forms are inferred.'));
    }
   }
  }
@@ -1833,7 +1843,18 @@ const TlahtolliMorphEngine = (() => {
     // Only a recorded o-/ō- augment followed by the actual 1sg ni-
     // licenses a change of singular SUBJECT. Other preterites, reflexives,
     // plural allomorphs and bare dictionary stems have different licensing.
-    const m=/^(o|ō)ni([\p{L}\p{M}]{3,110})$/u.exec(recorded);
+    // Vowel-initial intransitives take n- (not ni-) immediately before
+    // their short stem. Reconstruct only when that exact written initial
+    // vowel agrees with the independently checked citation spelling.
+    let vowelSubject=false;
+    let m=null;
+    if(pos==='verb (intransitive)'&&/^[aeiouāēīōū]/u.test(lemma)){
+     const candidate=/^(o|ō)n([\p{L}\p{M}]{2,110})$/u.exec(recorded);
+     if(candidate&&candidate[2].startsWith(lemma[0])){
+      m=candidate;vowelSubject=true;
+     }
+    }
+    if(!m)m=/^(o|ō)ni([\p{L}\p{M}]{3,110})$/u.exec(recorded);
     if(!m)continue;
     const [augment,remainder]=[m[1],m[2]];
     let object='',objectRole='';
@@ -1858,15 +1879,16 @@ const TlahtolliMorphEngine = (() => {
     if(remainder.length-object.length<2)continue;
     const partsFor=person=>[
      {surface:augment,role:'Augment exactly as recorded in a 1sg preterite example'},
-     {surface:person,role:'2sg ti- subject prefix (grammar substitution)'},
+     {surface:person,role:'2sg '+person+'- subject prefix (grammar substitution)'},
      ...(object?[{surface:object,role:objectRole+'; exact object sequence retained'}]:[]),
      {surface:remainder.slice(object.length),
       role:'Unaltered remainder of source-listed 1sg preterite; no inferred internal stem boundaries'}
     ];
-    const preterite=augment+'ti'+remainder;
+    const secondPrefix=vowelSubject?'t':'ti';
+    const preterite=augment+secondPrefix+remainder;
     if(written===preterite&&!all.some(a=>a.lemma===w.word&&
        ['manuscript','lexical','grammar','paradigm'].includes(a.grade))){
-     const parts=partsFor('ti');
+     const parts=partsFor(secondPrefix);
      all.push(make(w.word,'Source-template singular preterite hypothesis','hypothesis',
       {tense:'Preterite',subject:'2sg',object:objectRole||'intransitive',
        sourceStatus:'Independent 1sg dictionary/example token + regular singular subject agreement'},
@@ -1918,28 +1940,28 @@ const TlahtolliMorphEngine = (() => {
      if(pos==='verb (intransitive)'||object==='tla'){
       const singular=pos==='verb (intransitive)'?PEOPLE.slice(0,3):PEOPLE.slice(0,2);
       for(const who of singular){
-       class1(who.surface+object+lemma+'z','Source-class1 future hypothesis','Future',who.person,
-        [{surface:who.surface||'Ø',role:'Subject '+who.person},
+       class1(subjectPrefix(who,object+lemma)+object+lemma+'z','Source-class1 future hypothesis','Future',who.person,
+        [{surface:subjectPrefix(who,object+lemma)||'Ø',role:'Subject '+who.person},
          ...(object?[{surface:object,role:objectRole+' from the exact source finite form'}]:[]),
          {surface:lemma,role:'Source-checked Class 1 citation base'},
          {surface:'z',role:'Grammatical future ending (hypothesis)'}]);
       }
       for(const who of PEOPLE.slice(3)){
-       class1(augment+who.surface+object+lemma+'queh','Source-class1 plural preterite hypothesis','Preterite',who.person,
+       class1(augment+subjectPrefix(who,object+lemma)+object+lemma+'queh','Source-class1 plural preterite hypothesis','Preterite',who.person,
         [{surface:augment,role:'Exact source-listed past augment'},
-         {surface:who.surface||'Ø',role:'Plural subject '+who.person},
+         {surface:subjectPrefix(who,object+lemma)||'Ø',role:'Plural subject '+who.person},
          ...(object?[{surface:object,role:'Recorded object sequence'}]:[]),
          {surface:lemma,role:'Unchanged Class 1 base, NOT Class 2 short stem'},
          {surface:'queh',role:'Plural preterite -queh (no singular -c)'}]);
-       class1(who.surface+object+lemma+'zqueh','Source-class1 plural future hypothesis','Future',who.person,
-        [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+       class1(subjectPrefix(who,object+lemma)+object+lemma+'zqueh','Source-class1 plural future hypothesis','Future',who.person,
+        [{surface:subjectPrefix(who,object+lemma)||'Ø',role:'Plural subject '+who.person},
          ...(object?[{surface:object,role:'Recorded object sequence'}]:[]),
          {surface:lemma,role:'Unchanged Class 1 lexical base'},
          {surface:'z',role:'Grammatical future -z'},
          {surface:'queh',role:'Grammatical nonpresent plural -queh'}]);
        if(pos==='verb (intransitive)')
-        class1(who.surface+lemma+'h','Source-class1 plural present hypothesis','Present',who.person,
-         [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+        class1(subjectPrefix(who,lemma)+lemma+'h','Source-class1 plural present hypothesis','Present',who.person,
+         [{surface:subjectPrefix(who,object+lemma)||'Ø',role:'Plural subject '+who.person},
           {surface:lemma,role:'Unchanged Class 1 base'},
           {surface:'h',role:'Classical present plural -h (hypothesis)'}]);
       }
@@ -1966,12 +1988,12 @@ const TlahtolliMorphEngine = (() => {
       const subjects=pos==='verb (intransitive)'?
        [PEOPLE[0],PEOPLE[1],PEOPLE[2]]:[PEOPLE[0],PEOPLE[1]];
       for(const who of subjects){
-       const surface=who.surface+object+lemma+'z';
+       const surface=subjectPrefix(who,object+lemma)+object+lemma+'z';
        if(written!==surface||stronger())continue;
        all.push(make(w.word,'Source-stem-class future hypothesis','hypothesis',
         {tense:'Future',subject:who.person,object:objectRole||'intransitive',
          stemClass:'Source-checked present base with -z future'},
-        [{surface:who.surface||'Ø',role:'Singular subject '+who.person+' (zero for 3sg)'},
+        [{surface:subjectPrefix(who,object+lemma)||'Ø',role:'Singular subject '+who.person+' (zero for 3sg)'},
          ...(object?[{surface:object,role:objectRole+'; retained from exact preterite evidence'}]:[]),
          {surface:lemma,role:'Source-checked long/present lexical base'},
          {surface:'z',role:'Singular future -z; grammatical rule, not attestation'}],
@@ -1988,24 +2010,24 @@ const TlahtolliMorphEngine = (() => {
     // object allomorphs; an explicit tla- example is required for transitives.
     if(classLicensed&&(pos==='verb (intransitive)'||object==='tla')){
      for(const who of PEOPLE.slice(3)){
-      const preterite=augment+who.surface+object+shortBase+'queh';
+      const preterite=augment+subjectPrefix(who,object+shortBase)+object+shortBase+'queh';
       if(written===preterite&&!stronger())
        all.push(make(w.word,'Source-stem-class plural preterite hypothesis','hypothesis',
         {tense:'Preterite',subject:who.person,object:objectRole||'intransitive',
          stemClass:'Source-checked short base + nonpresent plural -queh'},
         [{surface:augment,role:'Augment exactly as source-recorded'},
-         {surface:who.surface||'Ø',role:'Plural subject '+who.person},
+         {surface:subjectPrefix(who,object+shortBase)||'Ø',role:'Plural subject '+who.person},
          ...(object?[{surface:object,role:'Recorded indefinite object prefix'}]:[]),
          {surface:shortBase,role:'Independently checked preterite short base'},
          {surface:'queh',role:'Classical nonpresent plural -queh'}],
         stemClaim.source,stemClaim.locator,
         'Classical plural preterite construction from sourced base 2 and a recorded 1sg form. Generated token is NOT independently attested; number, dialectal suffix variants and English remain unverified.'));
-      const future=who.surface+object+lemma+'zqueh';
+      const future=subjectPrefix(who,object+lemma)+object+lemma+'zqueh';
       if(written===future&&!stronger())
        all.push(make(w.word,'Source-stem-class plural future hypothesis','hypothesis',
         {tense:'Future',subject:who.person,object:objectRole||'intransitive',
          stemClass:'Source-checked present base + -zqueh'},
-        [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+        [{surface:subjectPrefix(who,object+lemma)||'Ø',role:'Plural subject '+who.person},
          ...(object?[{surface:object,role:'Recorded indefinite object prefix'}]:[]),
          {surface:lemma,role:'Independently checked long/present base'},
          {surface:'z',role:'Classical future marker -z'},
@@ -2020,12 +2042,12 @@ const TlahtolliMorphEngine = (() => {
     // A headword or an unreviewed archive record alone cannot license this.
     if(classLicensed&&pos==='verb (intransitive)'){
      for(const who of PEOPLE.slice(3)){
-      const present=who.surface+lemma+'h';
+      const present=subjectPrefix(who,lemma)+lemma+'h';
       if(written!==present||stronger())continue;
       all.push(make(w.word,'Source-stem-class plural present hypothesis','hypothesis',
        {tense:'Present',subject:who.person,object:'intransitive',
         stemClass:'Independently checked present base + Classical plural -h'},
-       [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+       [{surface:subjectPrefix(who,object+lemma)||'Ø',role:'Plural subject '+who.person},
         {surface:lemma,role:'Source-checked long/present lexical base'},
         {surface:'h',role:'Classical present plural -h; grammatical rule, not an attestation'}],
        stemClaim.source,stemClaim.locator,
@@ -2914,7 +2936,7 @@ renderSourceAtlas();syncSourceAtlas();render();
 <script defer src="./translator-source-morphology.js?v=5011c5135796595b"></script>
 <script defer src="./translator-locative.js?v=2b454e2359ac9906"></script>
 <script defer src="./translator-grammar-ir.js?v=66c19fadc81dc93d"></script>
-<script defer src="./translator-integrated.js?v=4f7d98a4d68950bf" data-runtime="434cf8497e2d0687" data-sentence-src="./translator-sentence.js?v=5eea9f6c6a2e7001" data-english-src="./translator-english.js?v=50c70dd73e209d12"></script>
+<script defer src="./translator-integrated.js?v=4f7d98a4d68950bf" data-runtime="f15f4220e77ea1eb" data-sentence-src="./translator-sentence.js?v=5eea9f6c6a2e7001" data-english-src="./translator-english.js?v=50c70dd73e209d12"></script>
 <script defer src="./manuscript-reading-desk.js?v=fb0ab1fbf1aa0460"></script>
 <script defer src="./parallel-reading-core.js?v=3b6c12adb65c224a"></script>
 <script defer src="./parallel-reading-desk.js?v=e6ab091f2dda6945"></script>

@@ -344,6 +344,8 @@ function showResult(){
      if(p.relational)item.append(el('p','translator-meta',
       'Relational: '+p.relational.written+' → '+p.relational.lemma+
       ' · '+p.relational.referentStatus));
+     if(p.sourceWindow)item.append(el('p','translator-meta',
+      'Exact editorial witness: '+p.sourceWindow.passageId+' · '+p.sourceWindow.status));
      item.append(el('p','translator-caution',p.note));
      for(const url of p.sources){
       const link=safeLink(url,'Inspect source finite form and clause evidence');
@@ -847,9 +849,11 @@ async function init(){
    fetch('./data/possessed_form_evidence.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./data/source_finite_context.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./data/passages.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -858,7 +862,8 @@ async function init(){
   }else throw Error('No published or bundled dictionary data found');
   const corpus=candidates.status==='fulfilled'?candidates.value:{entries:[]};
   model=window.TlahtolliTranslator.create(document,corpus);
-  grammarIR=window.TlahtolliGrammarIR?.create(document)||null;
+  const citedPassages=historicalPassages.status==='fulfilled'?historicalPassages.value:null;
+  grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages)||null;
   if(window.TlahtolliSourceMorphology&&sourceReview.status==='fulfilled'&&sourceReview.value)
    sourceMorphology=window.TlahtolliSourceMorphology.create(sourceReview.value);
   const locative=window.TlahtolliLocative?.create(document,corpus)||null;
@@ -877,7 +882,8 @@ async function init(){
     explainMorphology,corpus,locative,
     clauseGrammar.status==='fulfilled'?clauseGrammar.value:null,
     possessiveEvidence.status==='fulfilled'?possessiveEvidence.value:null,
-    sourceFiniteEvidence.status==='fulfilled'?sourceFiniteEvidence.value:null);
+    sourceFiniteEvidence.status==='fulfilled'?sourceFiniteEvidence.value:null,
+    citedPassages);
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(sentenceModel)try{
    if(!window.TlahtolliEnglish)await new Promise((resolve,reject)=>{

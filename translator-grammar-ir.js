@@ -8,7 +8,7 @@ const MAX_NODES=240,MAX_EDGES=480,MAX_ALTERNATIVES=48;
 const norm=x=>String(x||'').normalize('NFC').toLowerCase();
 const source=x=>typeof x==='string'&&/^https:\/\/[^\s/]+/u.test(x)?x:null;
 const items=(x,max=32)=>Array.isArray(x)?x.slice(0,max):[];
-function create(dictionary){
+function create(dictionary,historicalPassages){
  // A lexical head source must originate from an unambiguous curated entry,
  // never from the preceding in-relative grammar marker.
  const lexicalSource=(lemma,written)=>{
@@ -205,6 +205,22 @@ function create(dictionary){
      role:h?.role||'unresolved',verbSubjectPerson:j.subject,
      nominalPossessorPerson:h?.possessor||null,subjectPossessorUnified:false});
    }
+   function citedWindowValid(p){
+    if(!p.sourceWindow)return true;
+    const witness=p.sourceWindow,rows=historicalPassages?.records;
+    if(!Array.isArray(rows)||!p.nounPhrase||!p.relational||
+       witness.status!=='contiguous edited witness; grammar and manuscript line unverified'||
+       witness.source!==p.verb?.source)return false;
+    return rows.some(row=>{
+     if(row?.id!==witness.passageId||row.reading_status!=='edited_transcription_candidate'||
+        row.train_eligible!==false||row.reader?.source!==witness.source||
+        typeof row.original!=='string'||row.original.length>1500)return false;
+     const written=row.original.split(/\s+/u).map(t=>
+       t.replace(/^[,.;!?]+|[,.;!?]+$/gu,'')).filter(Boolean);
+     return written.some((_,start)=>start+p.coverage<=written.length&&
+       clauses[i].tokens.every((token,k)=>norm(token)===norm(written[start+k])));
+    });
+   }
    // Source-recorded finite verbs are candidate-only: no agreement or English
    // may be inferred from source orthography or an unresolved nominal role.
    for(const [n,p] of items(cl.historicalFiniteProposals,8).entries()){
@@ -235,6 +251,7 @@ function create(dictionary){
        w.pos==='relational noun / locative'&&w.source===p.relational.source&&
        [w.word,...String(w.original||'').split(/[;,/]/)]
          .some(x=>norm(x.trim())===norm(p.relational.written))).length!==1))continue;
+    if(!citedWindowValid(p))continue;
     const v=variant(i,'source-finite-context',n,p.grade,p.sources);if(!v)continue;
     const fin=predicate(i,j.written,j.lemma,j.subjectPerson,v,0,j.source,j.tokenIndex);
     if(fin){
@@ -245,11 +262,14 @@ function create(dictionary){
     }
     if(p.nounPhrase){
      const h=p.nounPhrase;
+     const bareWitness=!!p.sourceWindow;
      const nm=mention(i,{written:h.written,lemma:h.lemma,source:h.source},v,
-       'possible-conditional-nominal-argument');
-     if(fin&&nm)newEdge(fin,nm,'possible-conditional-argument',{
-      readingId:v,roleStatus:h.roleStatus,requiresUnverified3sg:true,
-      agreementCertified:false,referentResolved:false
+       bareWitness?'source-cooccurring-unassigned-noun':'possible-conditional-nominal-argument');
+     if(fin&&nm)newEdge(fin,nm,
+       bareWitness?'possible-unassigned-nominal':'possible-conditional-argument',{
+       readingId:v,roleStatus:h.roleStatus,requiresUnverified3sg:!bareWitness,
+       nominalRoleResolved:false,agreementCertified:false,referentResolved:false,
+       sourceWindow:bareWitness?p.sourceWindow.passageId:null
      });
     }
     if(p.relational){

@@ -55,12 +55,32 @@ with sync_playwright() as pw:
         assert "NOT thereby attested" in text, text
         assert panel.get_by_role("link", name="Inspect source finite form and clause evidence").count() >= 2
 
+    for value, marker, is_witness in (
+        ("itech qujça xochitl", "UNRESOLVED", True),
+        ("itech qujça in xochitl", "ONLY IF unverified verb person is 3sg", False),
+        ("in xochitl itech qujça", "ONLY IF unverified verb person is 3sg", False),
+    ):
+        panel = analyze(value).locator(".translator-source-finite-proposals")
+        assert panel.count() == 1, f"No new source-finite structure for {value}"
+        panel.evaluate("(node)=>node.open=true")
+        contents = panel.inner_text()
+        assert marker in contents and "Relational: itech" in contents
+        assert "NOT a translation" in contents
+        if is_witness:
+            assert "Exact editorial witness: passage-3" in contents
+            assert "grammar is NOT thereby verified" in contents
+        else:
+            assert "Exact editorial witness" not in contents
+            assert "NOT thereby attested" in contents
+
     for value in ("tipolihui in cihuātl", "quiza in xochitl",
                   "qujça in xochitl extra", "ahmo qujça in xochitl",
-                  "qujça in unknown", "qujça itech extra", "qujça?"):
+                  "qujça in unknown", "qujça itech extra", "qujça?",
+                  "itech qujça cihuātl", "itech qujça tlapalli",
+                  "itech qujça xochitl extra", "itech tipolihui in xochitl"):
         assert analyze(value).locator(".translator-source-finite-proposals").count() == 0, value
 
     assert "I will see the woman" in analyze("niquittaz in cihuātl").inner_text()
     assert not errors, errors
     browser.close()
-print("PASS browser source finite context: real Tēntli, 6 structural readings, 7 refusals, English regression.")
+print("PASS browser source finite context: real Tēntli, 9 structural readings, 11 refusals, English regression.")

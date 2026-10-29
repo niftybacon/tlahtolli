@@ -30,6 +30,20 @@ These results use the already-existing sentence model and shared `translator-gra
 
 The existing corpus diagnostic is still a deliberately narrower Node suite; it is **not** an independent or comprehensive accuracy evaluation. The longer edited Florentine phrase `injn itoca itech qujça xochitl, ioan tlapalli` is **not** now a supported complete translation. The exact `itech qujça` span is recognized but wider phrase attachments and `ioan` remain unresolved.
 
+
+## Subsequent increment — larger historical finite spans
+
+The existing source-finite analyzer now composes a recorded finite token, a previously indexed relational word, and a noun **without inventing person agreement or the relational referent**.
+
+- `itech qujça xochitl` is an exact contiguous, previously consulted **editorial word window** inside the existing Book XI 217r excerpt. The model now reports the finite predicate, relational adjunct, and bare noun in one **three-token structural alternative**, while explicitly leaving the noun's grammatical role unassigned. The visible source window is not a facsimile-certified parse or a verified interpretation.
+- `itech qujça in xochitl` and `in xochitl itech qujça` are **four-token compositional hypotheses**, not separately attested word sequences. Their marked noun may serve as a subject **only if** the original finite verb's unresolved agreement proves compatible with third-person singular. The parser does not make that determination.
+- The bare-noun window is admitted **only** if its exact original spellings occur contiguously in the existing canonical `data/passages.json` with a matching source URL and research-only status. Altering its words, provenance, status or source makes the analyzer abstain. The shared grammar IR independently verifies the witness metadata and refuses tampered claims.
+- Existing source-finite, indexed-paradigm, locative, and comparative behavior are unchanged. English remains unavailable for these new structures. No bare-noun rule is applied to arbitrary substituted nouns.
+
+This is **not** yet a complete structural analysis of `injn itoca itech qujça xochitl, ioan tlapalli`: the preceding possessed-name expression, following coordination and full clause relationships remain unresolved.
+
+The next meaningful step should be connecting **already validated partial spans** to additional source-supported clause components with clear, non-overlapping bounds, not adding redundant verb paradigms or another grammar engine.
+
 ## Follow-up
 
 The next genuinely new work would be source-graded relational attachment across a larger witnessed clause, plus more independently source-located finite forms and independent adjudication. Do not promote these hypotheses to historical translations or a gold benchmark.

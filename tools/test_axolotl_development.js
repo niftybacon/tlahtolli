@@ -7,7 +7,7 @@ const original='Classical Nahuatl',iso='nci';
 const rows=[
  ['La mujer llora','chōca in cihuātl',original,'Work A',iso],
  ['Los niños viven','nemi in conetl',original,'Work B',iso],
- ['Otra descripción','zzzz yyy xxxx',original,'Work C',iso],
+ ['Otra descripción aquí','zzzz yyy xxxx',original,'Work C',iso],
  ['LA MUJER LLORA!','Chōca, in cihuātl!',original,'Work C',iso],
  ['Un dicho moderno','Modern dialect string', 'Modern Nahuatl','Work Modern','azz'],
  ['Muy largo','x '.repeat(19).trim(),original,'Work A',iso],

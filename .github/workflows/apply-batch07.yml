@@ -1,0 +1,49 @@
+name: Apply frozen Batch 07 lexical release
+on:
+  push:
+    branches: [batch07-large-classical-lexical-intake]
+    paths:
+      - 'research/batches/classical_archive_lexical_batch07_2026_10_29.json'
+      - 'tools/import_archive_lexical_batch.py'
+      - '.github/workflows/apply-batch07.yml'
+permissions:
+  contents: write
+concurrency:
+  group: tlahtolli-batch07-one-shot
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply 1664 independently unreviewed source-index headwords
+        run: python tools/import_archive_lexical_batch.py --write
+      - name: Regenerate runtime identifiers and validate evidence boundaries
+        run: |
+          python tools/build_runtime_assets.py --write
+          python tools/build_dictionary.py --check
+          python tools/build_runtime_assets.py --check
+          python tools/import_archive_lexical_batch.py --check
+          python tools/import_archive_verb_batch.py --check
+          node tools/test_archive_lexical_batch07.js
+          node tools/test_source_verb_batch06.js
+          node tools/test_translator.js
+      - name: Commit canonical sources and generated exports back to this isolated branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lexicon.json data/morphology.json data/evidence.json paradigms.json references.json release.json dictionary.json claim_audit.csv index.html
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git commit -m "Batch 07: publish 1664 provisional entries with synchronized source and offline builds"
+          git push origin HEAD:refs/heads/batch07-large-classical-lexical-intake

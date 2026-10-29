@@ -39,7 +39,7 @@ function create(dictionary,passages){
  for(const w of list){
   const base={lemma:w.word,meaning:w.meaning||'',senses:splitGloss(w.meaning),pos:w.pos||'',source:safeURL(w.source),
    variety:w.variety,form:w.word,form_type:'headword',evidence:w.status==='Archive-indexed; lexical review pending'?'archive-index':'lexicon',
-   context:w.status==='Archive-indexed; lexical review pending'?'UNREVIEWED community archive index gloss, NOT a verified Classical verb reading or translation.':'An isolated dictionary entry is not a sentence-level translation.'};
+   context:w.status==='Archive-indexed; lexical review pending'?'UNREVIEWED community archive index gloss; no independently verified Classical lexical reading, morphology or contextual translation.':'An isolated dictionary entry is not a sentence-level translation.'};
   push(w.word,base);
   for(const variant of String(w.original||'').split(/[\/;,]/)){
    const v=variant.trim();if(v&&wordsOnly(v).length===1&&norm(v)!==norm(w.word))

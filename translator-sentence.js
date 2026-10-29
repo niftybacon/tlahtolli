@@ -244,6 +244,81 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  }
  const nounLabel=n=>'the '+(nouns[n.word]||'['+n.meaning+']');
 
+ // Noun coordination is distinct from the existing AUH clause coordinator.
+ // It is a bounded NP structure, NOT a clause/subject/object interpretation.
+ const coordinationLexeme=words.filter(w=>w.word==='īhuān'&&
+  w.pos==='conjunction / postpositional construction'&&
+  /^https:\/\/[^/\s]+/u.test(w.source||''));
+ const inMarker=words.filter(w=>w.word==='in'&&
+  w.pos==='grammatical particle / subordinator'&&
+  /^https:\/\/[^/\s]+/u.test(w.source||''));
+ const FLOR_FOLIO='https://florentinecodex.getty.edu/book/11/folio/217r';
+ const tidyCoordToken=t=>String(t).replace(/,+$/u,'');
+ function attestedIoanWindow(tokens){
+  const rows=historicalPassages?.records;
+  if(!Array.isArray(rows)||rows.length>150)return null;
+  for(const row of rows){
+   if(!row||row.reading_status!=='edited_transcription_candidate'||
+     row.train_eligible!==false||row.reader?.source!==FLOR_FOLIO||
+     typeof row.original!=='string'||row.original.length>1500)continue;
+   const observed=row.original.split(/\s+/u).map(t=>t.replace(/[;,]+$/u,''));
+   for(let start=0;start+tokens.length<=observed.length;start++){
+    if(tokens.every((token,k)=>norm(tidyCoordToken(token))===norm(observed[start+k])))
+     return {passageId:row.id,source:FLOR_FOLIO,
+      status:'exact editorial word sequence, NOT an independently certified grammatical parse'};
+   }
+  }
+  return null;
+ }
+ function nominalCoordinationProposals(tokens,negative){
+  if(negative||tokens.length<3||tokens.length>5||
+     coordinationLexeme.length!==1||inMarker.length!==1)return [];
+  const con=coordinationLexeme[0],mark=inMarker[0];
+  const cueIndices=tokens.map((t,i)=>({t,i})).filter(x=>
+   norm(tidyCoordToken(x.t))==='ioan'||
+   [con.word,...String(con.original||'').split(/[;,/]/)].some(v=>
+    norm(v.trim())===norm(tidyCoordToken(x.t)))).map(x=>x.i);
+  if(cueIndices.length!==1)return [];
+  const at=cueIndices[0],sides=[tokens.slice(0,at),tokens.slice(at+1)];
+  if(sides.some(x=>x.length<1||x.length>2))return [];
+  const phrases=[];
+  for(const [side,tokensHere] of sides.entries()){
+   const marked=tokensHere.length===2;
+   if(marked&&norm(tokensHere[0])!=='in')return [];
+   const original=tokensHere[tokensHere.length-1],surface=tidyCoordToken(original);
+   if(!surface||surface!==original&&(!original.endsWith(',')||side!==0))return [];
+   const n=noun(surface);
+   if(!n||n.pos!=='noun'||!/^https:\/\/[^/\s]+/u.test(n.source||''))return [];
+   phrases.push({written:original,headword:n.word,headSource:n.source,
+    tokenIndex:side===0?at-1:tokens.length-1,
+    articleMarker:marked?'in':null,articleSource:marked?mark.source:null,
+    gloss:nouns[n.word]||null,fullMeaning:n.meaning});
+  }
+  const cue=tokens[at],historic=norm(cue)==='ioan';
+  const witness=historic?attestedIoanWindow(tokens):null;
+  // 'ioan' is a source-recorded historical spelling, not a free global
+  // modernization of every unverified word that happens to resemble īhuān.
+  if(historic&&!witness)return [];
+  const cited=[con.source,...phrases.map(x=>x.headSource),
+    ...phrases.map(x=>x.articleSource),witness?.source].filter(Boolean);
+  return [{family:'nominal-coordination',coverage:tokens.length,
+   written:tokens.slice(),lemma:con.word,
+   connector:{written:cue,tokenIndex:at,source:historic?FLOR_FOLIO:con.source,
+    meaningAlternatives:['and','together with'],selectedMeaning:null,
+    spellingEvidence:historic?'exact editorial manuscript-location window':
+      'curated historical dictionary spelling'},
+   nouns:phrases,sourceWindow:witness,
+   grade:'source-checked NP coordination hypothesis; NOT a clause translation',
+   sources:[...new Set(cited)],
+   note:'Two independently cited noun headwords flank an independently sourced '+
+    'coordination/with-form. The nouns are not assigned grammatical roles, '+
+    'number, agreement, or referent identity. This structure may mean AND '+
+    'or TOGETHER WITH; no English sentence is licensed. '+
+    (witness?'Exact words are in an edited source window, NOT a certified parse.':
+      'The combined noun phrase is grammatical composition, NOT an attested manuscript quote.')}];
+ }
+
+
  // General Classical-period comparative-fragment rule. The morphological
  // composition is reusable for *unique curated nouns*, not restricted to the
  // one Florentine Codex example that first motivated it. It is not a clause.
@@ -1240,7 +1315,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    ['nested-dependent',c=>c.nestedInProposals],
    ['morphology-clause',c=>c.morphosyntactic?.items],
    ['possessed-argument',c=>c.possessedAgreement?.items],
-   ['source-agreement',c=>c.agreementProposals]
+   ['source-agreement',c=>c.agreementProposals],
+   ['nominal-coordination',c=>c.nominalCoordinationProposals]
   ];
   const spans=[];
   let probes=0;
@@ -1325,6 +1401,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     complexClauseProposals:candidates.length?[]:finiteLocativeProposals(tokens,negative),
     morphosyntactic: morphologyClauseCandidates(tokens,negative),
     historicalFiniteProposals:candidates.length?[]:historicalFiniteContextProposals(tokens,negative),
+    nominalCoordinationProposals:candidates.length?[]:nominalCoordinationProposals(tokens,negative),
     possessedAgreement: possessedAgreementProposals(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),

@@ -15,6 +15,7 @@ function load(words=dictionary.words){
   VERB_TENSES:paradigms.patterns,
   norm:s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),
   stripToken:s=>String(s||'').replace(/^[^\p{L}\p{M}]+|[^\p{L}\p{M}]+$/gu,''),
+  historicalSpellings:w=>String(w.original||'').split(/[;,/]+/).map(x=>x.trim()).filter(Boolean),
   safe:String,validUrl:()=>true,safeLink:()=>''};
  vm.runInNewContext(engineSource+'\nthis.morph=TlahtolliMorphEngine;',ctx);
  return ctx;

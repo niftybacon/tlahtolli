@@ -34,6 +34,9 @@ on:
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'
       - 'tools/test_translation_readiness.js'
+      - 'tools/diagnose_historical_sentences.js'
+      - 'tools/test_historical_sentence_diagnostics.js'
+      - 'data/passages.json'
       - '.github/workflows/translator-regressions.yml'
   pull_request:
     paths:
@@ -62,6 +65,9 @@ on:
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'
       - 'tools/test_translation_readiness.js'
+      - 'tools/diagnose_historical_sentences.js'
+      - 'tools/test_historical_sentence_diagnostics.js'
+      - 'data/passages.json'
       - '.github/workflows/translator-regressions.yml'
 
 permissions:
@@ -125,3 +131,5 @@ jobs:
         run: node tools/test_translation_readiness.js
       - name: Evaluation audit (no invented accuracy)
         run: node tools/evaluate_translation_readiness.js
+      - name: Historical edited-excerpt sentence diagnostics (not accuracy)
+        run: node --check tools/diagnose_historical_sentences.js && node tools/test_historical_sentence_diagnostics.js && node tools/diagnose_historical_sentences.js

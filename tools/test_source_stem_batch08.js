@@ -23,7 +23,7 @@ function engine(words=D.words){
  return ctx.Morph;
 }
 const analyze=s=>engine().analyze(s);
-const grade=['dictionary','text','grammar','paradigm'];
+const grade=['lexical','manuscript','grammar','paradigm'];
 let licensed=0,graded=0,withheld=0,exact=0;
 for(const spec of M.entries){
  const w=index.get(spec.word);assert(w,w?.word||spec.word);

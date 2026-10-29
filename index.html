@@ -767,9 +767,9 @@ function resolveToken(p,i){
   if(p.linkTypes?.[i]==='variant')return {word:linked,type:'variant',manual:true};
   return {word:linked,type:'suggested',manual:true};
  }
- const exact=words.find(w=>w.variety===p.variety&&norm(w.word)===stripped);
+ const exact=words.find(w=>w.status!=='Archive-indexed; lexical review pending'&&w.variety===p.variety&&norm(w.word)===stripped);
  if(exact)return {word:exact,type:'exact'};
- const variant=words.find(w=>w.variety===p.variety&&historicalSpellings(w).some(x=>norm(x)===stripped));
+ const variant=words.find(w=>w.status!=='Archive-indexed; lexical review pending'&&w.variety===p.variety&&historicalSpellings(w).some(x=>norm(x)===stripped));
  if(variant)return {word:variant,type:'variant'};
  const matches=[];
  for(const w of words){if(w.variety!==p.variety)continue;for(const f of w.inflections||[]){if(f.evidence!=='review'&&f.evidence!=='stem'&&norm(f.form)===stripped)matches.push({w,f});}}

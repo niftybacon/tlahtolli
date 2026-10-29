@@ -8,7 +8,7 @@ const vm=require('node:vm');
 const script=fs.readFileSync(path.join(__dirname,'..','amoxcalli-archive.js'),'utf8');
 const manifest={
  format:'tlahtolli-amoxcalli-archive-manifest-v1',
- source_rows:{simeon:2,kaikki:5,total:7},
+ source_rows:{simeon:2,kaikki:6,total:8},
  simeon:{files:['s.json'],source_url:'https://example.org/simeon'},
  kaikki:{files:['k.json'],source_url:'https://example.org/kaikki'}
 };
@@ -23,7 +23,8 @@ const docs={
   ['tēztli','noun','nci',[[['mirror'],[],['figurative']]],[],'','Classical Nahuatl'],
   ['mila','noun','nhe',[[['field'],[],[]]],[],'','Eastern Huasteca Nahuatl'],
   ['alo','noun','nci',[[['scarlet macaw'],[],['animate']]],[['alomeh',['plural']]],'','Classical Nahuatl'],
-  ['on','pron','nci',[[['that'],[],[]]],[['on',['canonical']],['ōn',['canonical']]],'','Classical Nahuatl']
+  ['on','pron','nci',[[['that'],[],[]]],[['on',['canonical']],['ōn',['canonical']]],'','Classical Nahuatl'],
+  ['in','particle','nci',[[['determiner fixture'],[],[]]],[],'','Classical Nahuatl']
  ]}
 };
 const context={
@@ -39,7 +40,7 @@ vm.runInNewContext(script,context,{filename:'amoxcalli-archive.js'});
 (async()=>{
  const api=context.window.TlahtolliArchive;
  const loaded=await api.ensureLoaded();
- assert.equal(loaded.total,7);
+ assert.equal(loaded.total,8);
  const exactAndAlternate=api.lookupEvidence('catl');
  assert.equal(exactAndAlternate.total,2);
  assert.equal(exactAndAlternate.hits[0].matchKind,'exact');
@@ -51,6 +52,29 @@ vm.runInNewContext(script,context,{filename:'amoxcalli-archive.js'});
  assert.equal(api.lookup('catl').length,1,'legacy lookup must remain exact');
  assert.equal(api.lookupEvidence('mila').total,0,'modern variety must not leak into Classical lookup');
  assert.equal(api.lookupEvidence('mila',{classicalOnly:false}).total,1);
+ // Existing historical variants only; the archive must NOT invent its own.
+ vm.runInNewContext(fs.readFileSync(path.join(__dirname,'..',
+  'translator-historical-morphology.js'),'utf8'),context);
+ const variants=context.window.TlahtolliHistoricalMorphology.variants;
+ const historical=api.lookupHistoricalEvidence('yn',variants('yn','codex'));
+ assert(historical.total>=1,'Tentative y→i must cross-reference exact Classical form');
+ assert(historical.hits.some(h=>h.word==='in'&&h.matchedWritten==='in'&&
+  h.originalWritten==='yn'&&
+  h.matchKind==='tentative-historical-spelling'&&
+  h.evidenceGrade==='unverified-orthographic-candidate'&&
+  h.transformation.includes('tentative')));
+ assert.equal(api.lookupEvidence('yn').total,0,
+  'Tentative source candidate must not become a direct lexical lookup');
+ assert.equal(api.lookupHistoricalEvidence('in',variants('in','codex')).total,0,
+  'Do not invent variants when the written Classical form is already indexed');
+ assert.equal(api.lookupHistoricalEvidence('yn',[{form:'in',changed:false,
+  rule:'Initial y → i (tentative)'}]).total,0);
+ assert.equal(api.lookupHistoricalEvidence('yn',[{form:'in',changed:true,
+  rule:'Arbitrary guess'}]).total,0);
+ assert.equal(api.lookupHistoricalEvidence('yn',[{form:'in',changed:true,
+  rule:'Initial y → i (tentative)'}],{limit:1}).hits.length,1);
+ assert.equal(api.lookupHistoricalEvidence('y¯',variants('y¯','codex')).total,0,
+  'Abbreviation overbars may not be dropped to find a fake lexical candidate');
  const truncated=api.lookupEvidence('catl',{limit:1});
  assert.equal(truncated.total,2);
  assert.equal(truncated.hits.length,1);

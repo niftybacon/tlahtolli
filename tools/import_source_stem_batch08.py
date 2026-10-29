@@ -116,7 +116,7 @@ def update_prior(spec,l,m,e):
  m["grammarSource"]=spec["source"]
  m["grammarNotes"]+=" | Batch 08 source-form-constrained Class 1; -c is a suffix, not a shorter stem. "+spec["note"]
  e["claims"][-1]=claim("stem","grammar",spec["source"],spec["locator"],
-  "Batch 08 documented Class 1 singular -c, source-listed completed form "+spec["preterite"]+
+  "Batch 08 documented Class 1 singular -c: source-listed completed form "+spec["preterite"]+
   " and preserved citation base "+word+"-. Not a Class 2 base alternation. "+spec["note"])
 
 def apply(write=False):

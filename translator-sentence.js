@@ -303,7 +303,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     ...phrases.map(x=>x.articleSource),witness?.source].filter(Boolean);
   return [{family:'nominal-coordination',coverage:tokens.length,
    written:tokens.slice(),lemma:con.word,
-   connector:{written:cue,tokenIndex:at,source:historic?FLOR_FOLIO:con.source,
+   connector:{written:cue,lemma:con.word,tokenIndex:at,source:historic?FLOR_FOLIO:con.source,
     meaningAlternatives:['and','together with'],selectedMeaning:null,
     spellingEvidence:historic?'exact editorial manuscript-location window':
       'curated historical dictionary spelling'},
@@ -1299,7 +1299,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  // Conservative resource bounds prevent uncontrolled combinatorial scanning.
  function recoverPartialSpans(clause){
   const original=clause.tokens||[];
-  if(clause.complete||original.length<4||original.length>18)return [];
+  if(clause.complete||clause.nominalCoordinationProposals?.length||
+     original.length<4||original.length>18)return [];
   if(original.some(t=>typeof t!=='string'||t.length>120||
     /[()[\]{}<>]/u.test(t)))return [];
   const cleaned=original.map(t=>t.replace(/^[,.;:!]+|[,.;:!]+$/gu,''));

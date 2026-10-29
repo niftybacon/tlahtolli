@@ -93,9 +93,18 @@ function loadKnownHistoricalEditions(){
  const file=path.join(BASE,'luke_1833_source.json');
  return fs.existsSync(file)?[JSON.parse(fs.readFileSync(file,'utf8'))]:[];
 }
+function loadInspectedParallelPointers(){
+ const file=path.join(BASE,'axolotl_classical_pair_pointers.json');
+ if(!fs.existsSync(file))return {rows:[]};
+ const manifest=JSON.parse(fs.readFileSync(file,'utf8'));
+ if(manifest?.format!=='tlahtolli-axolotl-source-pointer-manifest-v1'||
+    manifest?.schema!==1||!Array.isArray(manifest.rows)||
+    manifest.rows.length>60)throw Error('Unrecognized external parallel research manifest');
+ return manifest;
+}
 function developmentSourceIndex(examples,sourceReviews,
  passages=loadDevelopmentPassages(),editions=loadKnownHistoricalEditions()){
- const sourceIds=new Set(),works=new Set(),windows=[];
+ const sourceIds=new Set(),works=new Set(),windows=[],inspectedWorkTitles=new Set();
  const addText=(text,origin)=>{
   if(typeof text!=='string'||!text.trim()||/[\[\]]/u.test(text))return;
   const key=fingerprint(text);
@@ -125,7 +134,16 @@ function developmentSourceIndex(examples,sourceReviews,
   addSource(e?.id,e?.primary_scan);addSource(e?.id,e?.archive_source);
   addText(e?.example_original_title_tokens,'used-historical-edition');
  }
- return {sourceIds,works,windows};
+ for(const p of loadInspectedParallelPointers().rows){
+  // These are inspected development records, never a blind benchmark.
+  // Do not copy original or translated text into the public repository.
+  if(typeof p?.id==='string')sourceIds.add(p.id.trim().toLowerCase());
+  if(typeof p?.source_work_title==='string'){
+   const key=fingerprint(p.source_work_title);
+   if(key)inspectedWorkTitles.add(key);
+  }
+ }
+ return {sourceIds,works,windows,inspectedWorkTitles};
 }
 function overlapsConsultedText(input,windows){
  const key=fingerprint(input);if(!key)return null;
@@ -261,6 +279,8 @@ function audit(pairs,examples,sourceReviews=[],developmentPassages=loadDevelopme
     errors.push(label+': test input overlaps public research examples');
    if(development.sourceIds.has(source.toLowerCase()))
     errors.push(label+': test source ID was already used in another development resource');
+   if(development.inspectedWorkTitles.has(fingerprint(row.source_title)))
+    errors.push(label+': test work is present in inspected external parallel-pair development pointers');
    if(work&&development.works.has(work))
     errors.push(label+': test document/work already consulted in Tlahtōlli development');
    const contaminated=overlapsConsultedText(row.original_orthography,development.windows)||

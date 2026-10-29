@@ -205,6 +205,45 @@ function create(dictionary){
      role:h?.role||'unresolved',verbSubjectPerson:j.subject,
      nominalPossessorPerson:h?.possessor||null,subjectPossessorUnified:false});
    }
+   // Source-recorded finite verbs are candidate-only: no agreement or English
+   // may be inferred from source orthography or an unresolved nominal role.
+   for(const [n,p] of items(cl.historicalFiniteProposals,8).entries()){
+    if(!p||p.coverage!==cl.tokens?.length||!p.verb||
+      !source(p.verb.source)||!items(p.sources).includes(p.verb.source)||
+      (p.nounPhrase&&!source(p.nounPhrase.source))||
+      (p.adverb&&!source(p.adverb.source)))continue;
+    const v=variant(i,'source-finite-context',n,p.grade,p.sources);if(!v)continue;
+    const j=p.verb;
+    const fin=predicate(i,j.written,j.lemma,j.subjectPerson,v,0,j.source,j.tokenIndex);
+    if(fin){
+     const node=byId.get(fin);
+     node.personStatus=j.personStatus;
+     node.tenseStatus=j.tenseStatus;
+     node.agreementCertified=false;
+    }
+    if(p.nounPhrase){
+     const h=p.nounPhrase;
+     const nm=mention(i,{written:h.written,lemma:h.lemma,source:h.source},v,
+       'possible-conditional-nominal-argument');
+     if(fin&&nm)newEdge(fin,nm,'possible-conditional-argument',{
+      readingId:v,roleStatus:h.roleStatus,requiresUnverified3sg:true,
+      agreementCertified:false,referentResolved:false
+     });
+    }
+    if(p.adverb){
+     const h=p.adverb,t=span(i,h.written);
+     if(t!==null){
+      const adv=newNode('possible-adverbial-modifier',{
+       unit:i,tokenIndex:t,written:h.written,lemma:h.lemma,
+       source:h.source,scope:'unresolved'});
+      if(adv&&fin){
+       newEdge(v,adv,'contains-possible-adverb',{readingId:v});
+       newEdge(fin,adv,'possible-adverbial-scope',{
+        readingId:v,scopeResolved:false,referentResolved:false});
+      }
+     }
+    }
+   }
    for(const [n,p] of items(cl.nominalInProposals,8).entries()){
     if(!p||p.coverage!==cl.tokens?.length)continue;
     const v=variant(i,'finite-in-complement',n,p.grade,p.sources);if(!v)continue;

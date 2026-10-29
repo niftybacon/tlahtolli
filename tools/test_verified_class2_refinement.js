@@ -7,7 +7,7 @@ assert.equal(D.version,R.version);assert.equal(D.words.length,R.headwords);
 assert.equal(D.words.slice(0,210).filter(w=>String(w.pos).includes('verb')).length,64,'Old substring count retained as false-positive control');
 assert.equal(D.words.slice(0,210).filter(w=>/^verb(?:\s*\(|$)/u.test(String(w.pos))).length,54,
  'Only grammatically labelled verb entries count; adverbs are not verbs');
-assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),272);
+assert.equal(D.words.slice(0,210).reduce((n,w)=>n+w.inflections.length,0),272);
 assert.equal(D.words.slice(0,210).reduce((n,w)=>n+w.claims.length,0),1275);
 assert.equal(Object.keys(P.paradigms).length,12);
 const script=read('tools/morphology_engine.js').split('renderMorphologyBreakdown=TlahtolliMorphEngine.html;')[0];

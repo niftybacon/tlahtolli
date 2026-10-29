@@ -45,6 +45,8 @@ on:
       - 'tools/test_index_verb_source_review.js'
       - 'tools/test_batch04_verb_class_evidence.js'
       - 'tools/test_verified_class2_refinement.js'
+      - 'tools/test_source_verb_batch06.js'
+      - 'research/batches/source_reviewed_verb_batch06_2026_10_29.json'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -105,6 +107,8 @@ on:
       - 'tools/test_index_verb_source_review.js'
       - 'tools/test_batch04_verb_class_evidence.js'
       - 'tools/test_verified_class2_refinement.js'
+      - 'tools/test_source_verb_batch06.js'
+      - 'research/batches/source_reviewed_verb_batch06_2026_10_29.json'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -169,6 +173,8 @@ jobs:
         run: node tools/test_source_present_plural_morphology.js
       - name: Source-located batch 03 lexical stem and morphology regressions
         run: node tools/test_curated_verb_expansion03.js && node tools/test_index_verb_source_review.js && node tools/test_batch04_verb_class_evidence.js && node tools/test_verified_class2_refinement.js
+      - name: "Batch 06: 43 source-reviewed verbs and 84 Class 2 productive morphology hypotheses"
+        run: node tools/test_source_verb_batch06.js
       - name: Exact possessed noun and person agreement safeguards
         run: node tools/test_possessed_agreement.js
       - name: Exact possessed noun heads in constrained Classical in-relatives

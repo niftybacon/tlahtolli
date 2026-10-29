@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-29.5.0",
+  "version": "2026-10-29.6.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -2852,74 +2852,74 @@
     {
       "word": "malīna",
       "meaning": "to twist on ones thigh",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "malina",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/malina",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/malina",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 42. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 42. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.51v col.1; Karttunen 1992 p.134. Also reflexive in other sources; admitted template only for exact nitla- construction External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "pāca",
       "meaning": "to wash",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "paca",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/paca",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/paca",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 50. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 50. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.78v col.1; Karttunen 1992 p.182. Molina offers alternative -pac/-pacac preterites; record exact -pacac only and do not impose class External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "mīna",
       "meaning": "to shoot arrows, to pierce something",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "mina",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/mina",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/mina",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 64. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 64. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.56v col.2; Lockhart 2001 p.225. Source also has nitla/niteitz; nite only is in this template External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "mani",
       "meaning": "To spread out, to extend.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (irregular)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/mani",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/mani",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 69. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 69. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Karttunen 1992 p.136; Lockhart 2001 p.224. Irregular surface distribution mani/manic/manca; excludes regular ni- analogy External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "panō",
       "meaning": "To cross over, cross a river",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "pano",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/pano",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/pano",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 0, row 93. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 0, row 93. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229. Future/preterite class 1 not extrapolated beyond existing source template External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "pāti",
       "meaning": "to melt. Intransitive form of patla.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (impersonal or unresolved)",
       "original": "pati",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/pati",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/pati",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 98. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 98. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.80r col.1; Karttunen 1992 p.188. Impersonal melting: opat is not an independently labelled 1sg finite form External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "chichi",
@@ -2936,26 +2936,26 @@
     {
       "word": "tēca",
       "meaning": "To lay (something) down; spread (something) out on a flat surface.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "teca",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/teca",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/teca",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive, reflexive. Shard 0, row 111. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive, reflexive. Shard 0, row 111. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.91v col.1; Karttunen 1992 p.215. Reflexive nino- is a separate construction; no reflexive inference External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "cecmiqui",
       "meaning": "die of cold",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/cecmiqui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cecmiqui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 0, row 117. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 0, row 117. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.15v col.1; Karttunen 1992 p.27.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tlahuēlīlōcāmati",
@@ -2984,14 +2984,14 @@
     {
       "word": "chicāhua",
       "meaning": "To strengthen.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "chicahua",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/chicahua",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/chicahua",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: ambitransitive, transitive, intransitive. Shard 0, row 144. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: ambitransitive, transitive, intransitive. Shard 0, row 144. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.19v col.1; Lockhart 2001 p.214. Different ni/nic/nino senses and Class 1/2 present; no unique stem-class promotion External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "celiā",
@@ -3008,38 +3008,38 @@
     {
       "word": "temo",
       "meaning": "to descend",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/temo",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/temo",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: conjugation-1, intransitive. Shard 0, row 195. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: conjugation-1, intransitive. Shard 0, row 195. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.97v col.2; Karttunen 1992 p.223; Lockhart 2001 p.233. Class 1 -c is not the same as the attested base-2 alternation required by the current stem engine External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "miqui",
       "meaning": "To die.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/miqui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/miqui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 231. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 231. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.56v col.2; Karttunen 1992 p.148; Lockhart 2001 p.225.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "yāōmiqui",
       "meaning": "To die in battle.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (class unresolved)",
       "original": "yaomiqui",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/yaomiqui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/yaomiqui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 0, row 242. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 0, row 242. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Sahagún Primeros Memoriales, Sullivan ed. 1997 p.164 (yaumiquiz). Future token is source-spelled and does not license a new finite paradigm Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status. External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "contradeciroa",
@@ -3056,14 +3056,14 @@
     {
       "word": "poyōmiqui",
       "meaning": "To die through treachery.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "poyomiqui",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/poyomiqui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/poyomiqui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 0, row 272. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 0, row 272. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Lockhart 2001 p.230; Karttunen 1992 p.204.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "ahci",
@@ -3080,14 +3080,14 @@
     {
       "word": "tlācatiliā",
       "meaning": "To cause (someone) to be born.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "tlacatilia",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tlacatilia",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlacatilia",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 449. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 449. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.115v col.2; Karttunen 1992 p.253.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "caltia",
@@ -3128,14 +3128,14 @@
     {
       "word": "mātoca",
       "meaning": "to touch; fondle; masturbate",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive/reflexive)",
       "original": "matoca",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/matoca",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/matoca",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 580. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 580. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.53v col.1; Karttunen 1992 p.139. Source's nitla and nino senses do not license untested allomorphs External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tōnēhua",
@@ -3164,14 +3164,14 @@
     {
       "word": "teōchīhua",
       "meaning": "To bless.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive/reflexive)",
       "original": "teochihua",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/teochihua",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/teochihua",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 614. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 614. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.100r col.2; Karttunen 1992 p.227. Separate nino and nitla constructions are not inferred External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "chachayāhua",
@@ -3188,26 +3188,26 @@
     {
       "word": "pēhua",
       "meaning": "begin, start",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "pehua",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/pehua",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/pehua",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 636. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 636. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Lockhart 2001 p.229; Karttunen 1992 p.191. Do not use the mislabelled Molina nite- for automatic transitivity External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "cuīca",
       "meaning": "To sing.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "cuica",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/cuica",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cuica",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 637. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 637. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.26v col.1; Lockhart 2001 p.216.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "pantlalia",
@@ -3236,74 +3236,74 @@
     {
       "word": "āpīzmiqui",
       "meaning": "To starve.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "apizmiqui",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/apizmiqui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/apizmiqui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 681. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 681. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.7r col.1; Karttunen 1992 p.12. Recorded preterite lacks the macrons of the editorial citation; no generalized short base External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "cotōni",
       "meaning": "to snap, to break off. Intransitive counterpart of cotona.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "cotoni",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/cotoni",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cotoni",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 709. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 709. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.24v col.2; Lockhart 2001 p.216.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tzacui",
       "meaning": "To close.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (impersonal or unresolved)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tzacui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tzacui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 714. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 714. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Lockhart 2001 p.240; Karttunen 1992 p.310. Lockhart ōtzauc lacks a source-specific first-person subject External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tzacua",
       "meaning": "To close; block.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tzacua",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tzacua",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 715. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 715. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.151v col.1; Karttunen 1992 p.310. Class 2 recorded ōnictzauc is a different specific-object construction External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tōna",
       "meaning": "To shine; be sunny.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (impersonal or unresolved)",
       "original": "tona",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tona",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tona",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 717. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 717. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.149r col.2; Lockhart 2001 p.240. Weather/solar impersonal sense; no ni- agreement extrapolation External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "yohua",
       "meaning": "To get dark; be dark.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (impersonal or unresolved)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/yohua",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/yohua",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 726. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 726. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.41v col.1; Lockhart 2001 p.242. Impersonal nightfall; no ni- person inflection. External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "āyi",
@@ -3320,74 +3320,74 @@
     {
       "word": "īxcuepa",
       "meaning": "To deceive; confuse.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive/reflexive)",
       "original": "ixcuepa",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/ixcuepa",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ixcuepa",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 757. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 757. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.45r col.2; Karttunen 1992 p.113. Mixed reflexive/transitive; no generated reflexive allomorphs External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tzoncui",
       "meaning": "To take vengeance.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (reflexive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tzoncui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tzoncui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: reflexive. Shard 0, row 792. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: reflexive. Shard 0, row 792. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.153r col.2; Karttunen 1992 p.317. Reflexive nino- cannot be made productive by transitive rules External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tzinti",
       "meaning": "To begin.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tzinti",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tzinti",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 793. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 793. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.152v col.1; Karttunen 1992 p.314. Source lists -c completed suffix; avoid generalizing from this form External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "cua",
       "meaning": "To eat.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/cua",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cua",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 810. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 810. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.84r col.1; Karttunen 1992 p.56. Source spells qua and flags alternation; do not silently assert long vowel or stem class External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "popoca",
       "meaning": "To smoke; emit smoke.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/popoca",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/popoca",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 815. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 815. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.83r col.2; Karttunen 1992 p.203.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "ēlēhuiā",
       "meaning": "To desire.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "elehuia",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/elehuia",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/elehuia",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 833. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 0, row 833. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.28v col.1; Karttunen 1992 p.89. Vowel length varies in colonial writings; no bulk normalization External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "cuecuechmictia",
@@ -3452,26 +3452,26 @@
     {
       "word": "mayana",
       "meaning": "to be hungry",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/mayana",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/mayana",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1025. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1025. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.51r col.2; Lockhart 2001 p.224. Lockhart's MAYĀNA quantity differs from the unmarked source-index headword; no invented macron-based stem class External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "āmiqui",
       "meaning": "To die of thirst.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "amiqui",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/amiqui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/amiqui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1026. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1026. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.5r col.1; Karttunen 1992 pp.10–11. Molina lists onamic with n. but not a full ni- first-person exemplar; preserve the exact ambiguity External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "mictihuetzi",
@@ -3488,14 +3488,14 @@
     {
       "word": "tzatzi",
       "meaning": "To shout; yell; vocalize (of both humans and animals).",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tzatzi",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tzatzi",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1045. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1045. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.151v col.2; Lockhart 2001 p.240. Molina's otzatzic is not itself a 1sg form; ōnitzahtzic is from Lockhart External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tzahtzi",
@@ -3572,26 +3572,26 @@
     {
       "word": "cuepōni",
       "meaning": "To bloom.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "cueponi",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/cueponi",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/cueponi",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1092. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1092. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.26r col.2; Karttunen 1992 p.70. Listed ocuepon is an impersonal/3sg preterite despite adjacent ni. No 1sg source token External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "xōtla",
       "meaning": "to burn",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "xotla",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/xotla",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/xotla",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1093. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 0, row 1093. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.161r col.2; Karttunen 1992 p.331.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tlemiqui",
@@ -5864,26 +5864,26 @@
     {
       "word": "tozoā",
       "meaning": "to keep vigil, remain awake",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (class unresolved)",
       "original": "tozoa",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tozoa",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tozoa",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 2, row 310. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 2, row 310. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Karttunen 1992 p.249; dictionary headword TŌZOĀ. No source-located 1sg past; lexical-only promotion Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status. External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "choloa",
       "meaning": "to flee, escape, bound away",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/choloa",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/choloa",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: conjugation-3, intransitive. Shard 2, row 311. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: conjugation-3, intransitive. Shard 2, row 311. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.21v col.2; Lockhart 2001 p.215. Lockhart Class 3 ōnicholoh differs orthographically; no Class 2 promotion External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "yancuiya",
@@ -5900,26 +5900,26 @@
     {
       "word": "tzāhua",
       "meaning": "to spin",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "tzahua",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tzahua",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tzahua",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 2, row 313. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 2, row 313. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.151v col.2; Lockhart 2001 p.240.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tomāhua",
       "meaning": "to fatten, become plump",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (intransitive)",
       "original": "tomahua",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/tomahua",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tomahua",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 2, row 316. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: intransitive. Shard 2, row 316. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.149r col.1; Launey 2011 p.114. The separate nino/nitla constructions do not share an assumed class External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "tzolihui",
@@ -5948,14 +5948,14 @@
     {
       "word": "chānti",
       "meaning": "to settle, dwell, reside",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (class unresolved)",
       "original": "chanti",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/chanti",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/chanti",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 2, row 331. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 2, row 331. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Karttunen 1992 pp.45–46, CHĀNTI (settle, dwell).  Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status. External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "neltoca",
@@ -5984,26 +5984,26 @@
     {
       "word": "nāmiqui",
       "meaning": "to meet",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "namiqui",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/namiqui",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/namiqui",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 2, row 350. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 2, row 350. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.62v col.2; Karttunen 1992 p.159. Class 2 source-listed -NAMIC but no generated irregular c/qui object alternation External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "nāmictiā",
       "meaning": "to marry.",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive/reflexive)",
       "original": "namictia",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/namictia",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/namictia",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 2, row 351. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: none. Shard 2, row 351. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.62v col.2; Karttunen 1992 p.159. Mixed reflexive/transitive and multiple meanings are kept separate External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "mahcēhua",
@@ -6020,14 +6020,14 @@
     {
       "word": "pozōniā",
       "meaning": "to boil something",
-      "pos": "verb (provisional archive index)",
+      "pos": "verb (transitive)",
       "original": "pozonia",
       "variety": "Classical Nahuatl",
-      "status": "Archive-indexed; lexical review pending",
-      "source": "https://en.wiktionary.org/wiki/pozonia",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/pozonia",
       "example": "",
       "translation": "",
-      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 2, row 356. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+      "notes": "Kaikki/Wiktionary Classical-labelled (nci) verb index only; precise era, lexical sense, valency, conjugation and vowel length NOT independently verified. Source tags: transitive. Shard 2, row 356. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0. | Entry-level review: independently consulted ODN page quoting Molina 1571 II f.83r col.1; Karttunen 1992 p.205.  External source interpretation and historical date remain scoped; not specialist peer review."
     },
     {
       "word": "coyōnehnemi",

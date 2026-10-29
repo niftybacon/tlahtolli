@@ -86,9 +86,13 @@ function create(dictionary){
    if(v){alternatives.push(v);newEdge(clauseIds[i],v,'has-unranked-alternative',{readingId:v});}
    return v;
   }
-  function predicate(i,written,lemma,person,readingId,layer,sourceUrl){
+  function predicate(i,written,lemma,person,readingId,layer,sourceUrl,tokenIndex){
    if(!written||!lemma||!person)return null;
-   const t=span(i,written);if(t===null)return null;
+   // Explicitly indexed recursive layers can repeat the SAME finite spelling.
+   // Never guess which token the layer points to by a global word lookup.
+   const t=Number.isInteger(tokenIndex)&&
+    norm(clauses[i]?.tokens?.[tokenIndex])===norm(written)?tokenIndex:span(i,written);
+   if(t===null)return null;
    const id=newNode('finite-predicate',{unit:i,tokenIndex:t,written,lemma,
     subjectPerson:person,layer,source:source(sourceUrl),
     subjectReferentId:null});
@@ -102,7 +106,7 @@ function create(dictionary){
     const v=variant(i,'nested-in',n,p.grade,p.sources);if(!v)continue;
     let parent=null;
     for(const [layer,j] of p.layers.entries()){
-     const finite=predicate(i,j.written,j.lemma,j.subjectPerson,v,layer,j.source);
+     const finite=predicate(i,j.written,j.lemma,j.subjectPerson,v,layer,j.source,layer*2);
      if(parent&&finite)newEdge(parent,finite,'in-subordinate-dependency',{readingId:v,
       grammaticalScope:'embedded under preceding finite predicate; no subject identity inferred'});
      if(finite)parent=finite;
@@ -114,7 +118,7 @@ function create(dictionary){
       possessor:h?.possessor||null,
       possessorSource:h?.possessiveEvidence?.source||null},v,'headed-relative-nominal');
      const relative=predicate(i,r?.written,r?.lemma,r?.subjectPerson,v,p.layers.length,
-      p.sources?.find(source));
+      p.sources?.find(source),cl.tokens.length-1);
      if(parent&&relative)newEdge(parent,relative,'terminal-relative-dependency',{readingId:v});
      if(nm&&relative)newEdge(nm,relative,'possible-relative-gap',{readingId:v,
       gapRole:r?.headGapRole||'unresolved',antecedentResolved:false});
@@ -128,11 +132,11 @@ function create(dictionary){
      source:h?.possessiveEvidence?.source||lexicalSource(h?.lemma,h?.written),
      possessor:h?.possessor||null,possessorSource:h?.possessiveEvidence?.source||null},v,
      'possible-relative-head');
-    const rel=predicate(i,r?.written,r?.lemma,r?.subjectPerson,v,1,p.sources?.find(source));
+    const rel=predicate(i,r?.written,r?.lemma,r?.subjectPerson,v,1,p.sources?.find(source),cl.tokens.length-1);
     if(nm&&rel)newEdge(nm,rel,'possible-relative-gap',{readingId:v,
      gapRole:r?.headGapRole||'unresolved',antecedentResolved:false});
     if(p.matrix){
-     const matrix=predicate(i,p.matrix.written,p.matrix.lemma,p.matrix.subjectPerson,v,0,p.sources?.find(source));
+     const matrix=predicate(i,p.matrix.written,p.matrix.lemma,p.matrix.subjectPerson,v,0,p.sources?.find(source),0);
      if(matrix&&nm)newEdge(matrix,nm,'possible-matrix-argument',{readingId:v,
       role:p.matrix.headRole||'unresolved'});
     }
@@ -152,8 +156,8 @@ function create(dictionary){
    for(const [n,p] of items(cl.nominalInProposals,8).entries()){
     if(!p||p.coverage!==cl.tokens?.length)continue;
     const v=variant(i,'finite-in-complement',n,p.grade,p.sources);if(!v)continue;
-    const a=predicate(i,p.matrix?.written,p.matrix?.lemma,p.matrix?.subjectPerson,v,0,p.sources?.find(source));
-    const b=predicate(i,p.dependent?.written,p.dependent?.lemma,p.dependent?.subjectPerson,v,1,p.sources?.find(source));
+    const a=predicate(i,p.matrix?.written,p.matrix?.lemma,p.matrix?.subjectPerson,v,0,p.sources?.find(source),0);
+    const b=predicate(i,p.dependent?.written,p.dependent?.lemma,p.dependent?.subjectPerson,v,1,p.sources?.find(source),2);
     if(a&&b)newEdge(a,b,'in-subordinate-dependency',{readingId:v,
      grammaticalScope:'possible complement or adjunct, not semantically selected'});
    }

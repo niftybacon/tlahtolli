@@ -10,7 +10,14 @@ vm.runInNewContext(fs.readFileSync(path.join(root,'translator-engine.js'),'utf8'
 const source=JSON.parse(fs.readFileSync(path.join(root,'dictionary.json'),'utf8'));
 const examples=JSON.parse(fs.readFileSync(path.join(root,'research/translation_corpus/research_examples.json'),'utf8'));
 const model=context.window.TlahtolliTranslator.create(source,examples);
-assert.equal(model.stats.headwords,210,'unexpected headword count; review source-driven dictionary changes');
+const release=JSON.parse(fs.readFileSync(path.join(root,'release.json'),'utf8'));
+assert.equal(model.stats.headwords,release.headwords,'dictionary and published release counts disagree');
+const provisional=model.analyze('malīna','nh-en');
+assert.equal(provisional.stats.provisional,1,'Kaikki-only verb must remain provisional');
+assert.equal(provisional.stats.matched,0,'Kaikki-only verb is not a curated lexical recognition');
+assert.equal(provisional.stats.unknown,1,'Kaikki-only verb must not inflate curated token coverage');
+assert.match(provisional.gloss,/unreviewed archive index gloss/);
+assert.equal(model.lookup('malīna').candidates[0].evidence,'archive-index');
 
 const manuscriptParticles=[
  ['niman','https://nahuatl.wired-humanities.org/node/172499'],

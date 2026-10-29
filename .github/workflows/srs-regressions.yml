@@ -1,0 +1,51 @@
+name: Anki-style study regression checks
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'tools/srs_engine.js'
+      - 'tools/srs_ui.js'
+      - 'tools/fsrs_core.js'
+      - 'tools/fsrs_ui.js'
+      - 'tools/fsrs_stage2.js'
+      - 'tools/test_srs.py'
+      - 'tools/test_srs_v3.py'
+      - 'tools/test_srs_session.js'
+      - 'tools/test_srs_waiting_browser.py'
+      - '.github/workflows/srs-regressions.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'tools/srs_engine.js'
+      - 'tools/srs_ui.js'
+      - 'tools/fsrs_core.js'
+      - 'tools/fsrs_ui.js'
+      - 'tools/fsrs_stage2.js'
+      - 'tools/test_srs_session.js'
+      - 'tools/test_srs_waiting_browser.py'
+      - '.github/workflows/srs-regressions.yml'
+permissions:
+  contents: read
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify standalone SRS embed
+        run: python tools/build_srs.py
+      - name: Check classic, FSRS and same-session retries
+        run: node tools/test_fsrs.js && node tools/test_srs_session.js
+      - name: Install headless browser
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install chromium --only-shell
+      - name: SRS/Anki browser regression
+        run: python tools/test_srs.py && python tools/test_srs_v3.py && python tools/test_srs_waiting_browser.py

@@ -121,3 +121,16 @@ morphology regressions. Future enhancements could include a **properly tested
 FSRS implementation**, device-to-device sync controlled by the user, separate
 study presets per subject, and a faithful Anki review-log transfer format. None
 of these is implied by the present version.
+
+
+### Session mastery retries (October 29, 2026)
+
+A review session must not claim to be finished simply because an **Again** or **Hard** card is temporarily scheduled in the future. The vocabulary, reverse-vocabulary and indexed conjugation queues now retain session-local retries (surviving a reload of the same tab via `sessionStorage`) and show a **Still learning** countdown if no other cards can be shown yet. A timer refreshes the queue when the next step is ready.
+
+- **Again** follows the configured learning/relearning delay, then returns. A previously learned review receives a normal lapse and relearning state.
+- **Hard** in learning/relearning follows the scheduler's delay. **Hard** on an established review uses its normal future interval **plus** a one-minute, session-only mastery check. This check is not another long-term SRS review; **Good/Easy** passes it without extending the interval, **Hard** repeats it, and **Again** records a real lapse.
+- **Good** that advances an unfinished *learning step* remains pending until the next learning step; **Good/Easy** that completes learning or a session-only check closes that retry.
+- Paused retries do not bypass timers. Daily new/review caps and conjugation sibling burying do not hide a retry already introduced in this session. Suspended leeches remain suspended until explicitly resumed; **Practice any** remains non-scheduling.
+- Retry state is tab-scoped and expires after 24 hours; persistent `studyRecords` still preserve all normal learning/relearning due dates and history if a tab is closed or restarted. Undo restores both the schedule and the pending session retry.
+
+Test with `node tools/test_srs_session.js`, alongside existing SRS/FSRS regression suites. This is a Tlahtōlli-specific mastery workflow, not a claim that native Anki requires a same-session Good grade for every Hard card.

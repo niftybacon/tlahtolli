@@ -60,6 +60,12 @@
   $('srsFeedback').textContent='Saved. Existing scheduled reviews have not been moved.';
  };
  $('srsUndo').onclick=()=>S.undoLast();
+ const priorReset=$('studyReset').onclick;
+ $('studyReset').onclick=()=>{
+  const before=Object.keys(studyRecords).length;
+  priorReset();
+  if(before&&Object.keys(studyRecords).length===0)S.clearSession();
+ };
  $('srsAnkiVocab').onclick=()=>S.exportAnki(false);
  $('srsAnkiReverse').onclick=()=>S.exportAnki('reverse');
  $('srsResume').onclick=()=>S.resumeSuspended();
@@ -67,9 +73,23 @@
  const priorStudyRender=renderStudy;
  studyQueue=()=>S.queueWords();
  drillQueue=()=>S.queueDrill();
- renderStudy=function(){priorStudyRender();S.preview('studyCard',studyCurrentKey);S.statsText()};
+ function waitingCard(id,mode){
+  const wait=S.waiting(mode);
+  if(!wait)return;
+  const seconds=Math.max(1,Math.ceil((wait.next-Date.now())/1000));
+  const delay=seconds>=60?Math.ceil(seconds/60)+' minute(s)':seconds+' second(s)';
+  $(id).innerHTML='<div data-srs-waiting><h3>Still learning · '+wait.count+' retry card(s) pending</h3>'+
+   '<p>Next retry in '+delay+'. The session is not complete: Again, Hard, and unfinished learning steps return here.</p>'+
+   '<p class="readerhint">Timed learning steps stay intact. Hard long-term cards get a separate session-only mastery check without inflating review history.</p></div>';
+ }
+ renderStudy=function(){priorStudyRender();if(!studyCurrentKey)waitingCard('studyCard','words');S.preview('studyCard',studyCurrentKey);S.statsText()};
  const priorDrillRender=renderDrill;
- renderDrill=function(){priorDrillRender();S.preview('drillCard',drillCurrentKey);S.statsText()};
+ renderDrill=function(){priorDrillRender();if(!drillCurrentKey)waitingCard('drillCard','drill');S.preview('drillCard',drillCurrentKey);S.statsText()};
+ // Refresh waiting screens when short-term steps and retests become due.
+ window.setInterval(()=>{
+  if(!studyCurrentKey&&$('studyCard')?.querySelector('[data-srs-waiting]'))renderStudy();
+  if(!drillCurrentKey&&$('drillCard')?.querySelector('[data-srs-waiting]'))renderDrill();
+ },5000);
  gradeStudy=grade=>{if(studyRevealed)S.rate(studyCurrentKey,grade,$('studySubset').value)};
  gradeDrill=grade=>{if(drillRevealed)S.rate(drillCurrentKey,grade,$('drillSubset').value)};
  $('studySubset').addEventListener('change',()=>{S.applySettings(S.getSettings())});

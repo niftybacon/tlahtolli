@@ -59,6 +59,22 @@ for(const [input,verb,person,location] of [
   assert.equal(p.location.attachmentAlternatives.length,1,input);
  }
 }
+// A general clause-construction rule must cover all source-indexed verb models,
+// not a memorized pair of Florentine or Coyoacán vocabulary examples.
+let familyCoverage=0;
+for(const [lemma,entry] of Object.entries(paradigms.paradigms)){
+ for(const row of [0,3]){
+  const form=entry.cells[row][0],p=proposed(form+' calli itic')[0];
+  assert.equal(p.verb.lemma,lemma);
+  assert.equal(p.verb.tense,row===0?'present':'future');
+  assert.equal(p.verb.subjectPerson,'1sg');
+  assert.equal(p.arguments.object.type,entry.trans?
+   'implicit third-person object; referent unresolved':
+   'intransitive predicate; no object licensed');
+  familyCoverage++;
+ }
+}
+assert.equal(familyCoverage,24);
 const ambiguous=proposed('quitta in cihuātl calli itic',2);
 assert.deepEqual(Array.from(ambiguous,p=>p.arguments.subjectNoun).sort(),
  [null,'cihuātl'].sort(),'Third-person subject or object roles must remain unranked');

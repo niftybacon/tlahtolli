@@ -1,0 +1,56 @@
+name: Apply Batch 08 source-graded stem release
+on:
+  push:
+    branches: [batch08-source-stem-classes-large]
+    paths:
+      - 'research/batches/source_stem_batch08_2026_10_29.json'
+      - 'tools/import_source_stem_batch08.py'
+      - '.github/workflows/apply-batch08.yml'
+permissions:
+  contents: write
+concurrency:
+  group: tlahtolli-batch08-one-shot
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply 38 individually located source reviews and 19 licensed classes
+        run: python tools/import_source_stem_batch08.py --write
+      - name: Regenerate single canonical morphology and runtime versioned HTML
+        run: |
+          python tools/build_morphology_engine.py --write
+          python tools/build_runtime_assets.py --write
+      - name: Verify provenance, old cohorts, exact spellings and abstention
+        run: |
+          python tools/build_dictionary.py --check
+          python tools/build_morphology_engine.py --check
+          python tools/build_runtime_assets.py --check
+          python tools/import_source_stem_batch08.py --check
+          python tools/import_archive_lexical_batch.py --check
+          python tools/import_archive_verb_batch.py --check
+          node tools/test_source_stem_batch08.js
+          node tools/test_source_verb_batch06.js
+          node tools/test_archive_lexical_batch07.js
+          node tools/test_verified_class2_refinement.js
+          node tools/test_translator.js
+      - name: Commit regenerated authoritative sources and offline exports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lexicon.json data/morphology.json data/evidence.json paradigms.json references.json release.json dictionary.json claim_audit.csv index.html
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git commit -m "Batch 08: publish 38 historical lexical reviews and evidence-gated class forms"
+          git push origin HEAD:refs/heads/batch08-source-stem-classes-large

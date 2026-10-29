@@ -1012,10 +1012,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,
     reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.'};
-   if(!clause.complete&&[
-    clause.relativeClauseProposals,clause.nominalInProposals,
-    clause.nestedInProposals
-   ].some(items=>items?.length))
+   if(!clause.complete&&clause.nestedInProposals?.length)
     clause.reason='A bounded clause structure is recognized, but it is not a verified full reading or an English translation.';
    return clause;
   });

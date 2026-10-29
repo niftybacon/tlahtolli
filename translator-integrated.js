@@ -86,6 +86,39 @@ function showResult(){
     }
     block.append(panel);
    }
+   if(clause.possessedAgreement?.items?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-possessed-agreement-proposals';
+    panel.append(el('summary','','Possessed nouns + agreement · '+
+     clause.possessedAgreement.items.length+' possible role'+
+     (clause.possessedAgreement.items.length===1?'':'s')+
+     ' (NOT a translation)'));
+    panel.append(el('p','translator-caution',
+     'An attested or source-recorded possessed noun is NOT proof of a contextual subject/object relationship. '+
+     'Possessor and verbal subject are separate; they may have different grammatical persons.'));
+    if(clause.possessedAgreement.truncated)panel.append(el('p','translator-caution',
+     'Only the first 24 structural possibilities are displayed.'));
+    for(const item of clause.possessedAgreement.items){
+     const node=el('div','translator-analysis');
+     node.append(el('strong','',item.verb.written+' · '+item.verb.lemma+
+      ' · verb subject '+item.verb.subject+' · '+item.verb.pattern),
+      el('p','translator-meta','Possessed noun '+item.possessedNoun.written+
+       ' → '+item.possessedNoun.lemma+
+       ' · nominal possessor '+item.possessedNoun.possessor+
+       ' · '+item.possessedNoun.role),
+      el('p','translator-meta','Full dictionary senses: '+
+       item.possessedNoun.fullMeaning),
+      el('p','translator-meta',item.constructionId+' · '+item.grade+
+       ' · '+item.coverage+' original tokens accounted for'),
+      el('p','translator-caution',item.note));
+     for(const url of item.sourceLinks){
+      const link=safeLink(url,'Inspect possession and agreement source');
+      if(link)node.append(link);
+     }
+     panel.append(node);
+    }
+    block.append(panel);
+   }
    if(clause.morphosyntactic?.items?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-morphosyntactic-proposals';

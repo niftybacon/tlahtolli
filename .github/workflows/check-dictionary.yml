@@ -60,6 +60,8 @@ jobs:
         run: python tools/validate_translation_corpus.py
       - name: Test source-aware translation engine
         run: node tools/test_translator.js
+      - name: Declarative Classical clause grammar parity and guardrails
+        run: node tools/test_declarative_grammar.js
       - name: Test lexical ambiguity and vowel-length abstention
         run: node tools/test_translation_abstention.js
       - name: Test historical spelling and morphology bridge

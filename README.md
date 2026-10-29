@@ -1,3 +1,9 @@
+# Translator audit and longer paragraph repairs (October 29, 2026)
+
+The current dictionary has 118 headwords. Supported clause sequences now retain their English choices with final punctuation and inside mixed paragraphs, up to 24 clauses. [The bottleneck audit](docs/TRANSLATOR_BOTTLENECK_AUDIT.md) records the actual historical-development results and the next morphology-to-clause milestone; these repairs do not establish general historical translation accuracy.
+
+**Contributors:** after changing JavaScript or translator data, run `python tools/build_runtime_assets.py --write` and commit the updated script URLs in `index.html`. CI checks them. The Translator status shows a runtime identifier separate from the dictionary edition.
+
 # Translation Desk v0.2 — evidence-aware research preview (October 28, 2026)
 
 [Open Tlahtōlli](https://niftybacon.github.io/tlahtolli/) and select **Tlahtōlli · Translator** in the main navigation · [Corpus Stage 1 workspace](research/translation_corpus/README.md)

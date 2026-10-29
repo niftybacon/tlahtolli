@@ -4,6 +4,7 @@
  */
 (function(){
 'use strict';
+const runtimeAssets=window.document.currentScript?.dataset||{};
 const $=id=>document.getElementById(id);
 const el=(tag,cls,value)=>{
  const node=document.createElement(tag);
@@ -28,7 +29,7 @@ const input=$('translatorInput'),direction=$('translatorDirection');
 const note=$('translatorStatus'),gloss=$('translatorGloss');
 const parts=$('translatorAnalyses'),passages=$('translatorPassages');
 const orthography=$('translatorOrthography'),morphStatus=$('translatorMorphStatus');
-function status(message){note.textContent=message;}
+function status(message){note.textContent=message+' · Runtime '+(runtimeAssets.runtime||'unversioned');}
 function showResult(){
  parts.replaceChildren();passages.replaceChildren();latest=null;
  if(!model){gloss.textContent='Dictionary is loading or unavailable.';return;}
@@ -987,7 +988,7 @@ async function init(){
   ];
   try{
    if(!window.TlahtolliSentence)await new Promise((resolve,reject)=>{
-    const script=window.document.createElement('script');script.src='./translator-sentence.js';
+    const script=window.document.createElement('script');script.src=runtimeAssets.sentenceSrc||'./translator-sentence.js';
     script.onload=resolve;script.onerror=reject;window.document.head.append(script);
    });
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
@@ -1005,7 +1006,7 @@ async function init(){
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(sentenceModel)try{
    if(!window.TlahtolliEnglish)await new Promise((resolve,reject)=>{
-    const script=window.document.createElement('script');script.src='./translator-english.js';
+    const script=window.document.createElement('script');script.src=runtimeAssets.englishSrc||'./translator-english.js';
     script.onload=resolve;script.onerror=reject;window.document.head.append(script);
    });
    englishModel=window.TlahtolliEnglish.create(sentenceModel);

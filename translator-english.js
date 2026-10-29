@@ -111,8 +111,24 @@ function create(model){
   if(typeof input!=='string'||input.length>7000||!result?.clauses?.length||
    result.clauses.length>24||/[?¿]/u.test(input))return fail('No supported complete passage structure.');
   const clauses=result.clauses;
-  let joins=[];
-  if(result.multiClauseProposals?.length){
+  let joins=[],units;
+  if(result.sentenceGroups){
+   const texts=input.split(/[.!\n]+/u).filter(s=>s.trim());
+   const groups=result.sentenceGroups;
+   if(!Array.isArray(groups)||groups.length!==texts.length||
+    groups.some((g,i)=>normal(g.text)!==normal(texts[i])||g.analysis?.sentenceGroups))
+    return fail('Sentence boundaries do not account for the written passage.');
+   const children=groups.map(g=>compose(g.text,g.analysis));
+   if(children.some(c=>!c.available))return fail('A sentence still lacks supported English wording.');
+   units=[];
+   children.forEach((child,i)=>{
+    if(i)joins.push({written:'punctuation',sources:[],options:[{label:'Sentence boundary',kind:'boundary'}]});
+    joins.push(...child.joins);
+    for(const unit of child.units)units.push({...unit,index:units.length});
+   });
+   if(units.length!==clauses.length||units.some((u,i)=>normal(u.written)!==normal(clauses[i].text)))
+    return fail('Sentence and clause boundaries disagree.');
+  }else if(result.multiClauseProposals?.length){
    if(result.multiClauseProposals.length!==1)return fail('Competing clause boundaries need review.');
    const m=result.multiClauseProposals[0];
    const split=input.trim().split(/\s*,?\s+auh\s+/iu);
@@ -129,7 +145,7 @@ function create(model){
    joins=clauses.slice(1).map(()=>({written:'punctuation',sources:[],
     options:[{label:'Sentence boundary',kind:'boundary'}]}));
   }
-  const units=clauses.map((c,i)=>({index:i,written:c.text.trim(),options:optionsFor(c)}));
+  units=units||clauses.map((c,i)=>({index:i,written:c.text.trim(),options:optionsFor(c)}));
   // Never make a partial passage look complete by dropping an unsupported unit.
   if(units.some(u=>!u.options.length||u.options.length>128))
    return fail('Some units still lack supported English wording; inspect their structural analysis below.');

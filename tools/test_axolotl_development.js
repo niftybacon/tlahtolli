@@ -41,6 +41,16 @@ assert.equal(engines.lex.stats.passageCandidates,0,
  'No saved sentence translations may be imported into the lexical lookup');
 assert.equal(engines.sentence.analyze('chōca in cihuātl').complete,true,
  'Existing sentence grammar still works; no new constructed parser');
+assert(engines.morph('ticnamaca').some(m=>m.grade==='unreviewed'&&m.features.subject==='1pl'),
+ 'The production source-linked morphology provider must be connected');
+const location=engines.sentence.analyze('nichōca in calli itic');
+assert(location.clauses[0].complexClauseProposals.length>0,'The production locative provider must be connected');
+const locReport=diagnose([{sourceRow:1,work:'Software fixture',nahuatl:'nichōca in calli itic.'}],engines);
+assert.equal(locReport.counts.draftEnglishRows,1);
+assert.equal(locReport.counts.fullSentenceGrammarCandidates,0,'Structural draft is not a complete grammar verdict');
+assert.equal(locReport.counts.conditionalStructuralRows,1);
+const sourceReport=diagnose([{sourceRow:1,work:'Software fixture',nahuatl:'ticnamaca in totlal'}],engines);
+assert.equal(sourceReport.counts.conditionalStructuralRows,1,'Count agreementProposals under its actual API name');
 const sample=[
  {sourceRow:1,work:'Software fixture A',nahuatl:'chōca in cihuātl',spanish:'La mujer llora'},
  {sourceRow:2,work:'Software fixture B',nahuatl:'zzzz yyy xxxx',spanish:'Sin análisis válido'}

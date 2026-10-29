@@ -384,8 +384,10 @@ function create(dictionary){
        st.matrixFrame.tense!==r.matrix.tense||
        PERSONS[st.matrixFrame.subjectPerson]!==r.matrix.subjectPerson||
        !hasSources(option,r.sources))continue;
-      const alt=graph.alternatives.find(a=>a.unit===i&&
-       a.family==='headed-in-relative'&&a.index===n);
+      // alternatives contains graph node IDs, not a second copy of nodes.
+      const altId=graph.alternatives.find(id=>graph.nodes?.some(a=>
+       a.id===id&&a.unit===i&&a.family==='headed-in-relative'&&a.index===n));
+      const alt=altId&&graph.nodes.find(a=>a.id===altId);
       if(!alt||!hasSources({sources:alt.sources},r.sources))continue;
       const edges=graph.edges.filter(e=>e.readingId===alt.id&&
        e.status==='candidate-only'&&e.notIdentity===true);

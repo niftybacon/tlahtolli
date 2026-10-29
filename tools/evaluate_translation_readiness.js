@@ -77,9 +77,12 @@ function sourceWorkKey(input){
  // ENL is an archive of many DISTINCT manuscripts: group only the specific
  // BC16a unit, never every manuscript on the ENL host.
  if(host==='enl.wired-humanities.org'){
-  const id=p.match(/\/bc\d+\/elements\/(bc\d+[a-z])\/\d+(?:\/|$)/u)||
-   p.match(/\/mapaimages\/(bc\d+[a-z])\d+\.png$/u);
-  if(id)return 'enl-manuscript:'+id[1];
+  const bc=p.match(/^\/(bc\d+)\/elements\/(bc\d+[a-z])\/\d+(?:\/|$)/u);
+  if(bc)return 'enl-manuscript:'+(bc[1]==='bc16'?bc[2]:bc[1]);
+  const image=p.match(/\/mapaimages\/(bc\d+[a-z])\d+\.png$/u);
+  if(image)return 'enl-manuscript:'+image[1];
+  const hask=p.match(/^\/(\d{4}hask)\/elements\/\1[^/]*\/\d+(?:\/|$)/u);
+  if(hask)return 'enl-manuscript:'+hask[1];
  }
  // General fallback: explicit URL identity, ignoring query and fragment.
  // Mirrors and unknown document aliases still need independent human checking.
@@ -100,6 +103,34 @@ function loadInspectedParallelPointers(){
  if(manifest?.format!=='tlahtolli-axolotl-source-pointer-manifest-v1'||
     manifest?.schema!==1||!Array.isArray(manifest.rows)||
     manifest.rows.length>60)throw Error('Unrecognized external parallel research manifest');
+ return manifest;
+}
+function loadInspectedEnlPointers(){
+ const file=path.join(BASE,'enl_parallel_alignment_pointers.json');
+ if(!fs.existsSync(file))return {rows:[]};
+ const manifest=JSON.parse(fs.readFileSync(file,'utf8'));
+ if(manifest?.format!=='tlahtolli-enl-parallel-anchor-pointers-v1'||
+    manifest.schema!==1||!Array.isArray(manifest.rows)||
+    manifest.rows.length<1||manifest.rows.length>60)
+  throw Error('Unrecognized ENL short parallel anchor pointer manifest');
+ const seen=new Set();
+ for(const p of manifest.rows){
+  if(!p||typeof p.id!=='string'||seen.has(p.id)||
+     !p.id.startsWith('ENL-')||typeof p.source_id!=='string'||
+     !p.source_id.startsWith('ENL-')||
+     !isUrl(p.url)||new URL(p.url).hostname!=='enl.wired-humanities.org'||
+     !/^enl-manuscript:/u.test(sourceWorkKey(p.url)||'')||
+     !clean(p.nahuatl_anchor)||!clean(p.english_anchor)||
+     p.nahuatl_anchor.split(/\s+/u).length>12||
+     p.english_anchor.split(/\s+/u).length>12||
+     !clean(p.translation_credit)||!clean(p.folio)||
+     p.status!=='published_short_parallel_anchor_requires_independent_alignment_review'||
+     p.gold_translation!==false||p.train_eligible!==false||
+     p.independent_evaluation_eligible!==false||
+     p.rights_status!=='modern_transcription_and_translation_reuse_unverified')
+    throw Error('ENL source anchor has missing provenance or unsafe approval status');
+  seen.add(p.id);
+ }
  return manifest;
 }
 function developmentSourceIndex(examples,sourceReviews,
@@ -133,6 +164,13 @@ function developmentSourceIndex(examples,sourceReviews,
  for(const e of editions||[]){
   addSource(e?.id,e?.primary_scan);addSource(e?.id,e?.archive_source);
   addText(e?.example_original_title_tokens,'used-historical-edition');
+ }
+ for(const p of loadInspectedEnlPointers().rows){
+  // Navigation anchors and target text are not gold. Exclude the entire
+  // inspected manuscript across alternate pages; never learn from the target.
+  addSource(p.source_id,p.url);
+  if(p.nahuatl_anchor.trim().split(/\s+/u).length>=4)
+   addText(p.nahuatl_anchor,'inspected-ENL-published-anchor');
  }
  for(const p of loadInspectedParallelPointers().rows){
   // These are inspected development records, never a blind benchmark.
@@ -376,4 +414,4 @@ function main(){
 }
 if(require.main===module)main();
 module.exports={parseCsv,fingerprint,audit,probeExamples,probeDevelopmentSources,loadSourceReviews,
- sourceWorkKey,developmentSourceIndex,overlapsConsultedText};
+ sourceWorkKey,developmentSourceIndex,overlapsConsultedText,loadInspectedEnlPointers};

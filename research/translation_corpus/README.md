@@ -100,6 +100,31 @@ Only an explicit `approved` status and verified permissions authorize training u
 
 **Do not bulk scrape.** Begin with small, individually reviewed passages, proper attribution, and explicit permission checks.
 
+## Seven additional inspected Nahuatl–English anchor pairs (2026-10-29)
+
+[ENL short parallel-anchor pointers](enl_parallel_alignment_pointers.json) record
+**seven short matched source/translation phrases** on seven individually checked
+pages of **five distinct manuscript works**, dated 1559, 1607, 1617, 1622 and
+1738. They come from the Early Nahuatl Library, not from the already-registered
+Axolotl samples. Each pointer supplies exact short orthographic anchors,
+a short excerpt from the published English translation, page URL, date,
+document identity, and translator attribution. It never imports the complete
+modern transcription or translation.
+
+**Evidence tier:** genuine publication-located **phrase anchors**, NOT
+independently reviewed sentence-to-sentence translations or model gold.
+Modern editions may normalize, split, conflate, paraphrase, or omit clauses;
+no correspondence beyond the short observed matching phrase is certified.
+These documents have now been inspected and are automatically quarantined
+from independent held-out evaluation. This is a development research queue
+for eventual facsimile collation and expert validation; all approval flags
+remain false and `pairs.csv` remains unchanged.
+
+The two parallel manifests are **not the same dataset**: Axolotl supplies
+published row references across six different source-work titles; ENL supplies
+short navigation/translation anchors from five archived manuscript documents.
+Do not add them together as eleven independent blind test works.
+
 ## New source: historical Gospel of Luke (1833)
 
 Mariano Paz y Sánchez, *El Evangelio de S. Lucas: del Latín al Mexicano ó mejor Nahuatl* (1833), [public-domain original scan](https://commons.wikimedia.org/wiki/File:Yacuic_iyec_tenonotzaltzin_in_Jesu-Christo,_quenami_oquimo_ihcuilhuili_in_San_Lucas.pdf). Source metadata in [luke_1833_source.json](luke_1833_source.json). Cambridge University Library identifies this historical variety with southern Puebla around 1830; it is **not automatically identical** to sixteenth-century central Mexican Nahuatl.

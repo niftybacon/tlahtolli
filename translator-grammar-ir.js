@@ -34,7 +34,10 @@ function create(dictionary){
      (role==='matrix subject'&&person==='3sg')||role==='matrix object':
     kind==='possessed'?
      (role==='possible grammatical subject'&&person==='3sg')||
-     (role==='possible grammatical object'&&transitive===true):false;
+     (role==='possible grammatical object'&&transitive===true):
+    kind==='embedded'?
+     (role==='subject'&&person==='3sg')||
+     (role==='object'&&transitive===true):false;
    if(valid){agreementAudit.accepted++;return true;}
    if(agreementAudit.rejected.length<48)
     agreementAudit.rejected.push({kind,role:String(role||'unresolved'),reason:
@@ -126,13 +129,35 @@ function create(dictionary){
      if(!roleAllowed('relative',rel?.headGapRole,rel?.subjectPerson,rel?.transitive)||
       !roleAllowed('matrix',p.terminal.headRole,p.layers[p.layers.length-1]?.subjectPerson,null))continue;
     }
+    if(p.terminal?.kind==='finite-with-arguments'){
+     const t=p.terminal, pred=t.predicate;
+     if(!pred||(!t.subjectArgument&&!t.objectArgument)||
+      (t.subjectArgument&&!roleAllowed('embedded','subject',pred.subjectPerson,pred.transitive))||
+      (t.objectArgument&&!roleAllowed('embedded','object',pred.subjectPerson,pred.transitive)))
+      continue;
+    }
     const v=variant(i,'nested-in',n,p.grade,p.sources);if(!v)continue;
     let parent=null;
     for(const [layer,j] of p.layers.entries()){
-     const finite=predicate(i,j.written,j.lemma,j.subjectPerson,v,layer,j.source,layer*2);
+     const finite=predicate(i,j.written,j.lemma,j.subjectPerson,v,layer,j.source,
+      Number.isInteger(j.tokenIndex)?j.tokenIndex:layer*2);
      if(parent&&finite)newEdge(parent,finite,'in-subordinate-dependency',{readingId:v,
       grammaticalScope:'embedded under preceding finite predicate; no subject identity inferred'});
      if(finite)parent=finite;
+    }
+    if(p.terminal?.kind==='finite-with-arguments'){
+     for(const [role,head] of [
+      ['subject',p.terminal.subjectArgument],
+      ['object',p.terminal.objectArgument]
+     ]){
+      if(!head)continue;
+      const nm=mention(i,head,v,'possible-embedded-'+role+'-argument');
+      if(parent&&nm)newEdge(parent,nm,'possible-grammatical-argument',{
+       readingId:v,role,embedded:true,sourceRule:p.terminal.ruleId,
+       nominalPossessorPerson:head.possessor||null,
+       subjectPossessorUnified:false,referentResolved:false
+      });
+     }
     }
     if(p.terminal?.kind==='headed-relative'){
      const h=p.terminal.head,r=p.terminal.relative;

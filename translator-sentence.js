@@ -504,6 +504,13 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
      (w.inflections||[]).filter(f=>norm(f.form)===norm(r.form)&&
        f.category===r.kind&&f.evidence==='text'&&f.source===r.source_url).length===1);
    if(exact.length!==1)return empty;
+   const entry=exact[0].inflections.find(f=>norm(f.form)===norm(r.form)&&
+     f.category===r.kind&&f.evidence==='text'&&f.source===r.source_url);
+   // A person label must ALSO be in the preexisting cited editorial entry.
+   // An unmarked historical spelling must never be changed into 2sg by JSON edits.
+   const editorial2sg=/\b(?:second[-\s]person singular|2sg)\b/i
+     .test(String(entry.gloss||'')+' '+String(entry.note||''));
+   if((r.subject_person==='2sg')!==editorial2sg)return empty;
    mapped.set(norm(r.form),r);
   }
   return mapped;

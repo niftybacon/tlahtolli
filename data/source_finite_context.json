@@ -1,0 +1,35 @@
+{
+  "format": "tlahtolli-source-finite-context-v1",
+  "version": 1,
+  "policy": "Existing source-recorded finite surface forms only. Linguistic features and construction readings are hypotheses, never manuscript-confirmed sentence translations.",
+  "train_eligible": false,
+  "evaluation_eligible": false,
+  "records": [
+    {
+      "id": "fc11-217r-qujca",
+      "form": "qujça",
+      "lemma": "quiza",
+      "kind": "Historically transcribed finite form",
+      "source_url": "https://florentinecodex.getty.edu/book/11/folio/217r",
+      "source_locator": "Florentine Codex XI 217r, editorial transcription, itech qujça",
+      "subject_person": null,
+      "person_status": "Unresolved from this excerpt; neither 3sg nor 3pl independently adjudicated",
+      "valency": "intransitive",
+      "status": "source-located editorial finite hypothesis; not facsimile-certified",
+      "note": "Historical j/ç spelling; intransitive verb source-listed, but surface alone does not establish subject person, clause boundaries, argument reference, or contextual English."
+    },
+    {
+      "id": "cantares-35r-tipolihui",
+      "form": "tipolihui",
+      "lemma": "polihui",
+      "kind": "Historically transcribed finite form",
+      "source_url": "https://historicas.unam.mx/publicaciones/publicadigital/libros/filosofia/046_04_45_textos_IV.pdf",
+      "source_locator": "León-Portilla 2017 p. 408 citing Cantares Mexicanos folio 35r",
+      "subject_person": "2sg",
+      "person_status": "Second-person-singular analysis in the existing edited source entry; not independently manuscript-collated",
+      "valency": "intransitive",
+      "status": "source-located editorial finite hypothesis; not facsimile-certified",
+      "note": "Listed in the historical poem excerpt 'cen tiyahui, tipolihui'; no claim that neighboring words can be freely recombined as attested text."
+    }
+  ]
+}

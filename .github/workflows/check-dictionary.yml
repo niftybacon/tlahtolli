@@ -104,6 +104,8 @@ jobs:
         run: python tools/test_morphology_clause_browser.py
       - name: Source-evidenced finite clause browser regression
         run: python tools/test_source_finite_context_browser.py
+      - name: Historical partial grammar windows in actual Translator UI
+        run: python tools/test_partial_grammar_spans_browser.py
       - name: Shared grammar IR structural and browser regressions
         run: node tools/test_shared_grammar_ir.js && python tools/test_shared_grammar_ir_browser.py
       - name: English choice provenance and agreement consistency

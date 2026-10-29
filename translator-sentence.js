@@ -1216,7 +1216,65 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   }
   return links;
  }
- function analyze(input){
+
+ // Locate grammar-supported CONTIGUOUS subexpressions inside a larger input
+ // that the existing whole-clause parser cannot interpret. This REUSES the
+ // identical analyzers: it never makes a new clause grammar, repairs unknown
+ // words or turns a partial English option into a whole-passage translation.
+ // Conservative resource bounds prevent uncontrolled combinatorial scanning.
+ function recoverPartialSpans(clause){
+  const original=clause.tokens||[];
+  if(clause.complete||original.length<4||original.length>18)return [];
+  if(original.some(t=>typeof t!=='string'||t.length>120||
+    /[()[\]{}<>]/u.test(t)))return [];
+  const cleaned=original.map(t=>t.replace(/^[,.;:!]+|[,.;:!]+$/gu,''));
+  if(cleaned.some(t=>!t||!/^[\p{L}\p{M}’'\-\u00AF]+$/u.test(t)))return [];
+  const families=[
+   ['indexed-finite',c=>c.candidates?.filter(p=>p.grade==='grammar-derived candidate')],
+   ['source-finite',c=>c.historicalFiniteProposals],
+   ['locative',c=>c.locativeInterpretations],
+   ['comparison',c=>c.fragmentInterpretations],
+   ['finite-location',c=>c.complexClauseProposals],
+   ['relative',c=>c.relativeClauseProposals],
+   ['nominal-dependent',c=>c.nominalInProposals],
+   ['nested-dependent',c=>c.nestedInProposals],
+   ['morphology-clause',c=>c.morphosyntactic?.items],
+   ['possessed-argument',c=>c.possessedAgreement?.items],
+   ['source-agreement',c=>c.agreementProposals]
+  ];
+  const spans=[];
+  let probes=0;
+  // Longest candidate windows first; overlapping candidates remain explicitly
+  // unranked, so no fictitious segmentation or unique grammatical attachment.
+  for(let length=Math.min(6,cleaned.length-1);length>=2;length--){
+   for(let start=0;start+length<=cleaned.length;start++){
+    if(++probes>85||spans.length>=24)break;
+    const observed=cleaned.slice(start,start+length);
+    const analyzed=analyze(observed.join(' '),false);
+    if(analyzed.clauses?.length!==1)continue;
+    const c=analyzed.clauses[0],present=[],sources=new Set();
+    let alternatives=0;
+    for(const [family,read] of families){
+     const matches=(read(c)||[]).filter(p=>p?.coverage===length);
+     if(!matches.length)continue;
+     const verified=matches.filter(p=>Array.isArray(p.sources)&&p.sources.length&&
+       p.sources.every(u=>typeof u==='string'&&/^https:\/\/[^/\s]+/u.test(u)));
+     if(!verified.length)continue;
+     present.push(family);alternatives+=verified.length;
+     for(const p of verified)for(const u of p.sources.slice(0,12))sources.add(u);
+    }
+    if(!present.length)continue;
+    spans.push({start,end:start+length,written:original.slice(start,start+length),
+     analyzedSpelling:observed.join(' '),families:present,
+     alternatives:Math.min(alternatives,64),sources:[...sources].slice(0,24),
+     status:'existing grammar on contiguous token window; NOT a whole-clause reading',
+     englishAvailableForWholeInput:false,referentResolved:false});
+   }
+   if(probes>85||spans.length>=24)break;
+  }
+  return spans;
+ }
+ function analyze(input,allowPartialRecovery=true){
   const raw=String(input||'');
   if(raw.length>7000)return {clauses:[],complete:false,reason:'Input exceeds 7000 characters.'};
   if(/[?¿]/u.test(raw))return {clauses:[{text:raw,tokens:[],candidates:[],complete:false,reason:'Question scope is not yet supported.'}],complete:false};
@@ -1274,6 +1332,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.'};
    if(!clause.complete&&clause.nestedInProposals?.length)
     clause.reason='A bounded clause structure is recognized, but it is not a verified full reading or an English translation.';
+   if(allowPartialRecovery)clause.partialSpans=recoverPartialSpans(clause);
    return clause;
   });
   return {clauses,complete:clauses.length>0&&clauses.every(c=>c.complete),

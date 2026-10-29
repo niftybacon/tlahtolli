@@ -122,6 +122,33 @@ function create(dictionary,historicalPassages){
   }
   for(let i=0;i<clauses.length;i++){
    const cl=clauses[i]||{};
+   // Partial analyses occupy observed token windows, not whole sentence
+   // alternatives. No English, identity, or cross-boundary links follow.
+   const allowed=new Set(['indexed-finite','source-finite','locative',
+    'comparison','finite-location','relative','nominal-dependent',
+    'nested-dependent','morphology-clause','possessed-argument','source-agreement']);
+   for(const p of items(cl.partialSpans,24)){
+    if(cl.complete||!Number.isInteger(p?.start)||!Number.isInteger(p?.end)||
+      p.start<0||p.end>items(cl.tokens,64).length||
+      p.end-p.start<2||p.end-p.start>6||
+      !Array.isArray(p.written)||p.written.length!==p.end-p.start||
+      !p.written.every((t,k)=>t===cl.tokens[p.start+k])||
+      !Array.isArray(p.families)||!p.families.length||
+      !p.families.every(x=>allowed.has(x))||
+      !Number.isInteger(p.alternatives)||p.alternatives<1||
+      !Array.isArray(p.sources)||!p.sources.length||!p.sources.every(source)||
+      p.status!=='existing grammar on contiguous token window; NOT a whole-clause reading'||
+      p.englishAvailableForWholeInput!==false||p.referentResolved!==false)continue;
+    const id=newNode('partial-grammatical-span',{unit:i,
+     tokenStart:p.start,tokenEnd:p.end,written:p.written.join(' '),
+     families:p.families.slice(0,11),alternativeCount:p.alternatives,
+     sources:p.sources.slice(0,24),boundaryAttachmentsResolved:false,
+     status:'local structural candidate; NOT whole-sentence analysis'});
+    if(id)newEdge(clauseIds[i],id,'contains-partial-grammatical-evidence',{
+     originalTokenStart:p.start,originalTokenEnd:p.end,
+     boundaryAttachmentsResolved:false,referentResolved:false});
+   }
+
    for(const [n,p] of items(cl.nestedInProposals,16).entries()){
     if(!p||p.coverage!==cl.tokens?.length||!Array.isArray(p.layers)||p.layers.length<2)continue;
     if(p.terminal?.kind==='headed-relative'){
@@ -419,7 +446,8 @@ function create(dictionary,historicalPassages){
    counts:{clauses:clauseIds.length,readings:alternatives.length,
     nominalMentions:nodes.filter(n=>n.kind==='nominal-mention').length,
     nestedDependencies:edges.filter(e=>e.relation==='in-subordinate-dependency').length,
-    antecedentCandidates:edges.filter(e=>e.relation==='antecedent-candidate').length}};
+    antecedentCandidates:edges.filter(e=>e.relation==='antecedent-candidate').length,
+    partialSpans:nodes.filter(n=>n.kind==='partial-grammatical-span').length}};
  }
  // Inspect output from the EXISTING English composer; do not realize text or
  // derive new grammar here. Every relative wording must map to a reading

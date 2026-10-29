@@ -68,6 +68,13 @@ assert(!serialized.includes('La mujer llora'));
 assert(!serialized.includes('Sin análisis válido'));
 assert(!serialized.includes('chōca in cihuātl'));
 assert(serialized.includes('Software fixture A'));
+assert.equal(r.counts.unknownTokens,r.inspectedRowReferences.reduce((a,b)=>a+b.unknownAudit.length,0),
+ 'Must classify every unknown occurrence, not just frequent examples');
+assert.equal(r.unknownDistinctForms,
+ new Set(r.inspectedRowReferences.flatMap(row=>row.unknownAudit.map(x=>x.written.toLowerCase()))).size);
+assert.equal(Object.values(r.unknownCategoryTotals).reduce((a,b)=>a+b,0),r.counts.unknownTokens);
+assert(r.inspectedRowReferences.every(x=>x.clauses.every(c=>Number.isInteger(c.wordTokens))));
+assert(r.inspectedRowReferences.every(x=>!Object.hasOwn(x,'spanish')));
 assert.equal(r.inspectedRowReferences.length,2);
 assert(r.inspectedRowReferences.every(x=>typeof x.grammarCandidate==='boolean'));
 assert(r.inspectedRowReferences.every(x=>!('spanish' in x)&&!('nahuatl' in x)));

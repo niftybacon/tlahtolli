@@ -57,7 +57,7 @@ function selectRows(rows,limit=48){
   eligibleLength:eligible,discardedIdenticalPairs:skippedDuplicates,
   discardedLength:skippedLength,distinctEligibleWorks:names.length}};
 }
-function loadExistingEngines(){
+async function loadExistingEngines(){
  const dictionary=json('dictionary.json'),paradigms=json('paradigms.json');
  const context={window:{},URL,words:dictionary.words,
   FULL_VERB_PARADIGMS:paradigms.paradigms,VERB_TENSES:paradigms.patterns,
@@ -72,6 +72,23 @@ function loadExistingEngines(){
  vm.runInNewContext(morphSource+'\nthis.canonicalMorph=TlahtolliMorphEngine;',context);
  for(const file of ['translator-engine.js','translator-sentence.js'])
   vm.runInNewContext(read(file),context,{filename:file});
+ // Reuse the already-shipped Amoxcalli archive loader/index. This is evidence
+ // of a possible external lexical match, never a verified translation.
+ const archiveContext={
+  window:{},document:{readyState:'loading',addEventListener(){}},
+  fetch:async url=>{
+   const rel=String(url).split('/').pop();
+   if(!/^[a-zA-Z0-9_.-]+\.json$/u.test(rel))throw Error('Unsafe archive shard name');
+   const file=path.join(ROOT,'research/amoxcalli_archive',rel);
+   if(!fs.existsSync(file))return {ok:false,status:404};
+   return {ok:true,status:200,json:async()=>JSON.parse(fs.readFileSync(file,'utf8'))};
+  }
+ };
+ vm.runInNewContext(read('amoxcalli-archive.js'),archiveContext,
+  {filename:'amoxcalli-archive.js'});
+ const archive=archiveContext.window.TlahtolliArchive;
+ const archiveLoaded=await archive.ensureLoaded();
+ if(archiveLoaded.total!==36543)throw Error('Archive source row inventory changed');
  const morph=token=>context.canonicalMorph.analyze(token);
  const sentence=context.window.TlahtolliSentence.create(dictionary,paradigms,morph,
   {entries:[]},null,json('data/clause_grammar.json'),
@@ -79,12 +96,14 @@ function loadExistingEngines(){
   json('data/passages.json'));
  // Crucial: NO stored bilingual sentence lookup passed to lexical model.
  const lex=context.window.TlahtolliTranslator.create(dictionary,{entries:[]});
- return {lex,sentence,morph};
+ return {lex,sentence,morph,archive};
 }
 function diagnose(sample,engines,options={}){
  const byWork=new Map(),unknownForms=new Map(),perRow=[];
  const stats={selected:0,nahuatlTokens:0,curatedMatches:0,unknownTokens:0,
   approximateMatches:0,lexicalAmbiguousTokens:0,sourceMorphologyUnknownTokens:0,
+  unknownExactClassicalArchive:0,unknownOnlyApproxClassicalArchive:0,
+  unknownSimeonOcrArchive:0,unknownNotInArchive:0,
   fullSentenceGrammarCandidates:0,partialGrammarWindowRows:0,
   conditionalStructuralRows:0,unresolvedSentenceRows:0};
  const structuralKeys=['historicalFiniteProposals','sourceAgreementProposals',
@@ -104,6 +123,18 @@ function diagnose(sample,engines,options={}){
    // A morphology proposal does NOT reclassify an unknown dictionary token
    // as securely analyzed or a translation.
    if(engines.morph(token.value)?.length)plausibleMorph++;
+   if(engines.archive){
+    const evidence=engines.archive.lookupEvidence(token.value,{limit:20});
+    const exact=evidence.hits.some(h=>h.sourceKey==='kaikki'&&
+     h.variety==='Classical Nahuatl'&&h.matchKind==='exact');
+    const approximate=evidence.hits.some(h=>h.sourceKey==='kaikki'&&
+     h.variety==='Classical Nahuatl'&&h.matchKind==='diacritic-variant');
+    const simeon=evidence.hits.some(h=>h.sourceKey==='simeon');
+    if(exact)stats.unknownExactClassicalArchive++;
+    else if(approximate)stats.unknownOnlyApproxClassicalArchive++;
+    else if(simeon)stats.unknownSimeonOcrArchive++;
+    else stats.unknownNotInArchive++;
+   }
   }
   const hasWindow=clauses.some(c=>c.partialSpans?.length>0);
   const structural=clauses.some(c=>structuralKeys.some(k=>c[k]?.length>0));
@@ -143,7 +174,7 @@ function diagnose(sample,engines,options={}){
   accuracy:null,approvedHeldoutPairs:0,
   caveat:'Counts are mechanical lexical or grammar coverage on published development material; they are not correctness judgments. Morphological guesses remain guesses.'};
 }
-function runCsv(buffer,limit=48,engines=loadExistingEngines()){
+async function runCsv(buffer,limit=48,engines=null){
  if(!Buffer.isBuffer(buffer))throw Error('Expected source CSV bytes');
  if(buffer.length>12*1024*1024)throw Error('External CSV is above the 12 MiB bounded processing limit');
  if(gitBlobSha(buffer)!==manifest.upstream.blob_sha)
@@ -154,13 +185,14 @@ function runCsv(buffer,limit=48,engines=loadExistingEngines()){
  if(rows.filter(isClassical).length!==manifest.upstream.verified_classical_label_rows)
   throw Error('Pinned Classical label inventory mismatch');
  const {selected,inventory}=selectRows(rows,limit);
- const report=diagnose(selected,engines,{inventory,
+ const readyEngines=engines||await loadExistingEngines();
+ const report=diagnose(selected,readyEngines,{inventory,
   sourceGitBlobSha:manifest.upstream.blob_sha});
  if(!report.counts.selected||report.counts.selected>limit)
   throw Error('No usable bounded corpus sample');
  return report;
 }
-function main(){
+async function main(){
  const input=process.argv[2],flagIndex=process.argv.indexOf('--limit');
  if(!input||input.startsWith('--')){
   console.error('Usage: node tools/diagnose_axolotl_development.js /local/pinned/axolotl.csv [--limit 48] [--json]');
@@ -172,7 +204,7 @@ function main(){
   if(!/^\d{1,3}$/u.test(value||''))throw Error('Invalid --limit');
   limit=Number(value);
  }
- const report=runCsv(fs.readFileSync(input),limit);
+ const report=await runCsv(fs.readFileSync(input),limit);
  if(process.argv.includes('--json'))return console.log(JSON.stringify(report,null,2));
  const c=report.counts;
  console.log('REAL AXOLOTL DEVELOPMENT SAMPLE: '+c.selected+' parallel rows across '+
@@ -184,6 +216,10 @@ function main(){
   '; multiple-entry ambiguity: '+c.lexicalAmbiguousTokens);
  console.log('Unknown tokens with morphology proposals (NOT verified): '+
   c.sourceMorphologyUnknownTokens);
+ console.log('Unrecognized curated tokens with exact Classical archive evidence: '+
+  c.unknownExactClassicalArchive+'; approximate Classical archive: '+
+  c.unknownOnlyApproxClassicalArchive+'; Siméon OCR only: '+
+  c.unknownSimeonOcrArchive+'; not found in archive: '+c.unknownNotInArchive);
  console.log('Full grammar candidates: '+c.fullSentenceGrammarCandidates+
   '; partial grammar windows: '+c.partialGrammarWindowRows+
   '; conditional structural analysis: '+c.conditionalStructuralRows+
@@ -196,6 +232,6 @@ function main(){
  console.log('Translation accuracy: NOT MEASURED; no train/test use or copied bilingual sentences.');
 }
 if(require.main===module){
- try{main()}catch(e){console.error('ERROR: '+e.message);process.exitCode=1;}
+ main().catch(e=>{console.error('ERROR: '+e.message);process.exitCode=1;});
 }
 module.exports={selectRows,loadExistingEngines,diagnose,runCsv};

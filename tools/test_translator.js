@@ -11,6 +11,36 @@ const source=JSON.parse(fs.readFileSync(path.join(root,'dictionary.json'),'utf8'
 const examples=JSON.parse(fs.readFileSync(path.join(root,'research/translation_corpus/research_examples.json'),'utf8'));
 const model=context.window.TlahtolliTranslator.create(source,examples);
 assert.equal(model.stats.headwords,118,'unexpected headword count; review source-driven dictionary changes');
+
+const manuscriptParticles=[
+ ['niman','https://nahuatl.wired-humanities.org/node/172499'],
+ ['oncan','https://nahuatl.wired-humanities.org/content/oncan'],
+ ['ompa','https://nahuatl.wired-humanities.org/content/ompa']
+];
+assert.equal(new Set(source.words.map(w=>w.word+'|'+w.variety)).size,source.words.length,
+ 'No duplicate canonical source-backed headwords');
+for(const [word,sourceUrl] of manuscriptParticles){
+ const w=source.words.find(w=>w.word===word);
+ assert(w&&w.source===sourceUrl&&w.variety==='Classical Nahuatl');
+ assert(w.pos.includes('particle')||w.pos.includes('adverb'));
+ assert.equal(w.animacy,'not_applicable');
+ assert.equal(w.number,'not_applicable');
+ assert(w.claims.filter(c=>['headword','meaning','pos'].includes(c.field)&&
+  c.assessment==='dictionary'&&c.locator.includes('1571')).length===3);
+ assert.deepEqual(w.inflections.map(f=>f.form),[word],
+  'No invented inflectional forms for a particle');
+ const x=model.lookup(word);
+ assert.equal(x.candidates.length,1);
+ assert.equal(x.candidates[0].source,sourceUrl);
+ assert.equal(x.candidates[0].form_type,'headword');
+}
+const particles=model.analyze('Niman oncan ompa','nh-en');
+assert.equal(particles.stats.matched,3);
+assert.equal(particles.stats.unknown,0);
+assert(!particles.passages.length,'No composed sentence is invented by lexical additions');
+assert.equal(model.lookup('nima').candidates.length,0,
+ 'No automatic stemming or false spelling equivalence from niman');
+
 assert.equal(model.stats.passageCandidates,3);
 const lookup=model.lookup('xōchitl','nh-en');
 assert.equal(lookup.candidates[0].lemma,'xōchitl');

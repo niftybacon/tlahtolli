@@ -119,6 +119,46 @@ assert(mod.audit(pairs,examples,[{...reviewedSource,knowledge_contamination:{
 }}]).errors.some(e=>e.includes('published translation')));
 invalid([record({original_orthography:'iuhqujn chimalli'})],'test input overlaps public');
 invalid([record({original_orthography:'Iuhqujn, CHIMALLI!'})],'test input overlaps public');
+// The former audit allowed a fake NEW source ID and a different FC folio URL.
+// Reject the whole codex as previously consulted, not only the three example IDs.
+invalid([record({source_id:'UNSEEN-ALIAS',split_group:'UNSEEN-ALIAS',
+ source_url:'https://florentinecodex.getty.edu/en/book/9/folio/12r?foo=1#passage'})],
+ 'test document/work already consulted');
+invalid([record({source_id:'NEW-BC16-SUBUNIT',split_group:'NEW-BC16-SUBUNIT',
+ source_url:'https://enl.wired-humanities.org/bc16/elements/bc16a/001'})],
+ 'test document/work already consulted');
+invalid([record({source_id:'NEW-BC16-IMAGE',split_group:'NEW-BC16-IMAGE',
+ source_url:'https://enl.wired-humanities.org/sites/default/files/mapaImages/BC16a001.png'})],
+ 'test document/work already consulted');
+invalid([record({source_id:'SAME-1833-BOOK',split_group:'SAME-1833-BOOK',
+ source_url:'https://archive.org/details/elevangeliodeslu00pazy?view=theater'})],
+ 'test document/work already consulted');
+// PR #53's Florentine excerpt is in data/passages.json, not the three
+// research_examples.json entries. Renaming the source or extending its words
+// cannot turn it into an independent held-out translation pair.
+invalid([record({original_orthography:
+ 'preface injn itoca itech qujça xochitl, ioan tlapalli ending'})],
+ 'test text overlaps existing-manuscript-reading');
+invalid([record({original_orthography:'ticnamaca y¯ totlal'})],
+ 'test text overlaps consulted-source-review');
+invalid([record({source_id:'LUKE-1833-PAZ-SANCHEZ'})],
+ 'test source ID was already used in another development resource');
+// Different manuscripts at the same ENL host must never be conflated.
+assert.notEqual(mod.sourceWorkKey('https://enl.wired-humanities.org/bc16/elements/bc16a/001'),
+ mod.sourceWorkKey('https://enl.wired-humanities.org/bc16/elements/bc16b/001'));
+assert.equal(mod.sourceWorkKey('https://florentinecodex.getty.edu/es/book/11/folio/209v'),
+ mod.sourceWorkKey('https://florentinecodex.getty.edu/book/4/folio/80r'));
+assert.equal(mod.sourceWorkKey('https://example.org/document?v=1#x'),
+ mod.sourceWorkKey('https://example.org/document?v=2#y'));
+invalid([record({source_url:'https://example.org/unseen-work',split_group:'group-A'}),
+ record({pair_id:'second',source_id:'OTHER',split_group:'group-B',
+  source_url:'https://example.org/unseen-work?alias=2',split:'train',
+  original_orthography:'different unrelated text',normalized_nahuatl:'also different'})],
+ 'source work crosses train/dev/test');
+// An unrelated new source with independently reviewed metadata remains
+// metadata-eligible, but never automatically receives an accuracy score.
+assert.equal(mod.audit([record({source_url:'https://example.org/other-manuscript'})],
+ examples,reviews).readiness,'metadata_eligible_unscored');
 invalid([record(),record({pair_id:'second',split:'train',split_group:'other',
   original_orthography:'unique input',normalized_nahuatl:'unique normalized'})],'source_id crosses train/dev/test');
 invalid([record(),record({pair_id:'second',split:'train',source_id:'OTHER',
@@ -139,4 +179,4 @@ assert.equal(parsed[0].notes,'test, "quoted"\nline');
 assert.throws(()=>mod.parseCsv(csvHeader+'\n"broken'),/Unclosed CSV/);
 assert.throws(()=>mod.parseCsv(csvHeader+'\n1,2'),/columns/);
 assert.equal(mod.fingerprint('īuhquīn, Chimalli!'),'iuhquin chimalli');
-console.log('PASS evaluation readiness: non-blind 1573 source quarantined, no invented accuracy, 3 in-sample-only diagnostics, source-heldout and provenance gates, rights/review failures, CSV edge cases and leakage negatives.');
+console.log('PASS evaluation readiness: non-blind 1573 source quarantined, no invented accuracy, 3 in-sample-only diagnostics, document-wide held-out quarantine, passage-window overlap, URL alias and provenance gates, rights/review failures, CSV edge cases and leakage negatives.');

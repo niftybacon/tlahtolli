@@ -32,6 +32,8 @@ jobs:
         run: node tools/test_source_stem_class_morphology.js
       - name: Sourced long/short stem plural future and preterite validation
         run: node tools/test_source_stem_plural_morphology.js
+      - name: Source-checked Classical present-plural hypotheses
+        run: node tools/test_source_present_plural_morphology.js
       - name: Curated source-checked lexical stem expansion batch 03
         run: node tools/test_curated_verb_expansion03.js
       - name: Test Phase 2 source separation

@@ -431,6 +431,24 @@ const TlahtolliMorphEngine = (() => {
         'Classical plural future construction from sourced base 1 and recorded valency. Generated token is NOT independently attested or a complete English translation.'));
      }
     }
+    // Present plural in Classical Nahuatl has the separately documented -h
+    // ending (Launey, Lesson 1; Sullivan, indicative). Reuse ONLY the same
+    // source-verified base-1/base-2 class already required for past/future.
+    // A headword or an unreviewed archive record alone cannot license this.
+    if(classLicensed&&pos==='verb (intransitive)'){
+     for(const who of PEOPLE.slice(3)){
+      const present=who.surface+lemma+'h';
+      if(written!==present||stronger())continue;
+      all.push(make(w.word,'Source-stem-class plural present hypothesis','hypothesis',
+       {tense:'Present',subject:who.person,object:'intransitive',
+        stemClass:'Independently checked present base + Classical plural -h'},
+       [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+        {surface:lemma,role:'Source-checked long/present lexical base'},
+        {surface:'h',role:'Classical present plural -h; grammatical rule, not an attestation'}],
+       stemClaim.source,stemClaim.locator,
+       'Present plural hypothesis from independently sourced verb bases, a located 1sg preterite, and published Classical number agreement. This whole written form is NOT independently attested or a complete translation.'));
+     }
+    }
     // The citation form is the source-checked present base, but only an
     // INDEPENDENTLY documented object slot (tla or te) licenses transitive
     // present agreement. We do NOT infer arbitrary objects, c/qui
@@ -563,7 +581,7 @@ const TlahtolliMorphEngine = (() => {
   }).join('');
   return '<section class="analysis-proposal"><h4>Advanced morphology · '+matches.length+
    ' candidate analysis'+(matches.length===1?'':'es')+'</h4>'+
-   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular present, independently checked long/short stem-class singular and plural future/preterite hypotheses, source-template second-person preterite, source-recorded indefinite objects, transitive objects, and source-bound possession analogies. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
+   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular present, independently checked long/short stem-class singular and plural present/future/preterite hypotheses, source-template second-person preterite, source-recorded indefinite objects, transitive objects, and source-bound possession analogies. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
    (hasQuantityAmbiguity?'<p class="analysis-caution">Macron-insensitive matching may collapse historically meaningful vowel length differences. Check the original orthography and context.</p>':'')+
    columns+(matches.length>24?'<p>Showing 24 of '+matches.length+' candidates.</p>':'')+
    '<p class="analysis-caution"><strong>Research boundary:</strong> no analysis proves a manuscript occurrence, contextual interpretation, or unmodeled allomorph. No unattested proposal is added to the public dictionary or evidence ledger.</p></section>';

@@ -211,7 +211,7 @@ function create(dictionary){
      possibleLink(a.fromClause,p.toClause,a.antecedent,'bounded-overt-mention-inventory',a.distance);
   }
   for(const p of items(analysis?.antecedentProposals,24)){
-   if(p?.confidence&&p.confidence!=='candidate-only')continue;
+   if(p?.confidence!=='candidate-only'||p.personConstraint!=='3sg ↔ 3sg')continue;
    if(p.toClause!==p.fromClause+1)continue;
    possibleLink(p.fromClause,p.toClause,p.antecedent,'adjacent-agreement-compatible-mention',1);
   }

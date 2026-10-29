@@ -1,0 +1,229 @@
+{
+  "format": "tlahtolli-axolotl-source-pointer-manifest-v1",
+  "schema": 1,
+  "purpose": "Locate real published parallel records without copying third-party editions into this public repository",
+  "research_status": "already_inspected_development_only_not_independent_test",
+  "upstream": {
+    "project": "ElotlMX/py-elotl",
+    "source_project": "UNAM Axolotl Spanish–Nahuatl parallel corpus",
+    "source_reference": "https://axolotl-corpus.mx/documents",
+    "repository_url": "https://github.com/ElotlMX/py-elotl",
+    "commit_sha": "157f34300f4ca92c3d75b74ec14142916d75c30b",
+    "file_path": "elotl/corpora/axolotl.csv",
+    "blob_sha": "90b7327fc4023ba529e1982f823ddeaee6e313e3",
+    "permalink": "https://github.com/ElotlMX/py-elotl/blob/157f34300f4ca92c3d75b74ec14142916d75c30b/elotl/corpora/axolotl.csv",
+    "verified_total_csv_rows": 16111,
+    "verified_classical_label_rows": 5993,
+    "schema_columns": [
+      "spanish",
+      "nahuatl",
+      "variety",
+      "source_work_title",
+      "iso_code"
+    ],
+    "license_note": "The code repository is MPL-2.0; this alone does not establish downstream rights to third-party book excerpts or modern translations."
+  },
+  "classification_caution": "Classical Nahuatl here is upstream metadata, not specialist verification. Pair alignment and source-to-edition identity are pending; these are NOT blind benchmarks, gold translations, or a claim of translator quality.",
+  "rows": [
+    {
+      "id": "AXO-NCI-00013",
+      "source_row_1based": 13,
+      "source_work_title": "Tercera Relación (Libro las ocho relaciones)",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 8,
+      "expected_spanish_tokens": 10,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-00235",
+      "source_row_1based": 235,
+      "source_work_title": "Anales de Tlatelolco",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 4,
+      "expected_spanish_tokens": 4,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-00462",
+      "source_row_1based": 462,
+      "source_work_title": "Anales de Tlatelolco",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 5,
+      "expected_spanish_tokens": 5,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-00557",
+      "source_row_1based": 557,
+      "source_work_title": "Anales de Tlatelolco",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 4,
+      "expected_spanish_tokens": 9,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-00669",
+      "source_row_1based": 669,
+      "source_work_title": "Anales de Tlatelolco",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 5,
+      "expected_spanish_tokens": 5,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-00695",
+      "source_row_1based": 695,
+      "source_work_title": "Memorial Breve (Libro las ocho relaciones)",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 8,
+      "expected_spanish_tokens": 11,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-02564",
+      "source_row_1based": 2564,
+      "source_work_title": "Anales de Tepeteopan",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 5,
+      "expected_spanish_tokens": 6,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-03997",
+      "source_row_1based": 3997,
+      "source_work_title": "Nican Mopohua",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 5,
+      "expected_spanish_tokens": 7,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-04029",
+      "source_row_1based": 4029,
+      "source_work_title": "Vida económica de Tenochtitlan",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 6,
+      "expected_spanish_tokens": 8,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    },
+    {
+      "id": "AXO-NCI-12734",
+      "source_row_1based": 12734,
+      "source_work_title": "Vida económica de Tenochtitlan",
+      "upstream_variety_label": "Classical Nahuatl",
+      "upstream_iso_label": "nci",
+      "expected_nahuatl_tokens": 6,
+      "expected_spanish_tokens": 9,
+      "status": "published_parallel_candidate_not_reviewed_or_blind",
+      "independent_evaluation_eligible": false,
+      "gold_translation": false,
+      "rights_of_underlying_edition": "unverified",
+      "requires": [
+        "original_edition_locator",
+        "historical_variety_confirmation",
+        "translation_alignment_review",
+        "transcription_collation",
+        "underlying_edition_rights_check"
+      ]
+    }
+  ]
+}

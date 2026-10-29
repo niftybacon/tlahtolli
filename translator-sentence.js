@@ -260,6 +260,109 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
   // No positional preference when both participants are third-person singular.
   return parse.person===2&&phrases.length===2?[[phrases[0],phrases[1]],[phrases[1],phrases[0]]]:[];
  }
+ // Complex-but-incomplete clause structure: a finite indexed verb, one
+ // independently source-backed locative construction, optionally one overt
+ // in + noun argument. There are no missing-token repairs or guessed nouns.
+ // We preserve both third-person roles and competing locative attachments.
+ function finiteLocativeProposals(tokens,negative){
+  if(tokens.length<3||tokens.length>8)return [];
+  const proposals=[];
+  for(let vi=0;vi<tokens.length;vi++){
+   const verbReadings=index.get(norm(tokens[vi]))||[];
+   if(!verbReadings.length)continue;
+   for(let li=0;li<tokens.length;li++)for(const ln of [2,3]){
+    if(li+ln>tokens.length||vi>=li&&vi<li+ln)continue;
+    const locationTokens=tokens.slice(li,li+ln);
+    let locations=[];
+    try{locations=locativeAnalyze(locationTokens,false);}catch{continue;}
+    if(!Array.isArray(locations)||locations.length!==1)continue;
+    const location=locations[0];
+    // An optional nominal or verbal word after the relational form is NOT
+    // a locative adjunct: its clause role is unresolved in the prior parser.
+    if(location.extra||location.coverage!==ln||
+     location.relation?.lexicalPossessor!=='3sg'||
+     !['itic','ītech'].includes(location.relation?.lemma)||
+     !Array.isArray(location.sources)||location.sources.length<2||
+     location.place?.article&&norm(locationTokens[0])!=='in')continue;
+    const leftovers=[];
+    for(let i=0;i<tokens.length;i++)if(i!==vi&&(i<li||i>=li+ln))leftovers.push(i);
+    const phrases=[];
+    if(leftovers.length){
+     if(leftovers.length!==2||leftovers[1]!==leftovers[0]+1||
+      norm(tokens[leftovers[0]])!=='in')continue;
+     const n=noun(tokens[leftovers[1]]);
+     if(!n||n.pos!=='noun'||!/^https:\/\//.test(n.source||''))continue;
+     phrases.push(n);
+    }
+    for(const parse of verbReadings){
+     const lex=words.filter(w=>w.word===parse.lemma&&
+      String(w.pos).startsWith('verb')&&/^https:\/\//.test(w.source||''));
+     if(lex.length!==1||!/^https:\/\//.test(parse.source||''))continue;
+     const semantic=verbs[parse.lemma];
+     if(!Array.isArray(semantic)||!semantic.length)continue;
+     for(const [subjectNoun,objectNoun] of assignments(parse,phrases)){
+      const locativeWritten=locationTokens.join(' ');
+      const attachmentAlternatives=phrases.length?
+       ['possible clause/event location','possible modification of the overt noun phrase']:
+       ['possible clause/event location'];
+      const subj=subjectNoun?nounLabel(subjectNoun):people[parse.person];
+      const role=parse.transitive?
+       objectNoun?{type:'overt third-person object',word:objectNoun.word,meaning:objectNoun.meaning}:
+       {type:'implicit third-person object; referent unresolved',word:null,meaning:null}:
+       {type:'intransitive predicate; no object licensed',word:null,meaning:null};
+      const sources=[...new Set([grammar,tenseSource,parse.source,lex[0].source,
+       ...location.sources,...phrases.map(p=>p.source)].filter(Boolean))].slice(0,18);
+      proposals.push({
+       grade:'grammar-composed verb + relational location (unattested; NOT a verified translation)',
+       coverage:tokens.length,
+       verb:{written:tokens[vi],lemma:parse.lemma,tense:parse.tense,
+        subjectPerson:PERSON_CODES[parse.person],subject:subj,negative,
+        transitive:!!parse.transitive,meaning:lex[0].meaning,
+        indexedEvidence:'generated present/future paradigm, not independently attested'},
+       arguments:{subjectNoun:subjectNoun?.word||null,object:role,
+        overtNounPhrase:phrases.length?'in '+tokens[leftovers[1]]:null},
+       location:{written:locativeWritten,place:location.place,
+        relation:location.relation,possibleSenses:location.relation.possibleSenses,
+        attachmentAlternatives,antecedentStatus:'relational 3sg possessor; coreference to the place noun is a hypothesis',
+        grade:location.grade},
+       sources,
+       note:'Every original clause token is consumed by a licensed finite verb, one source-checked locative phrase '+
+        'and at most one explicit in + noun argument. English predicate senses, the locative sense, the '+
+        'possessor referent and attachment to event vs noun remain unresolved. '+
+        'No third-person pronoun resolution, tense verification or new manuscript attestation is claimed.'
+      });
+      if(proposals.length>=20)return proposals;
+     }
+    }
+   }
+  }
+  // Distinct structural analyses remain unranked; they are not English answers.
+  return proposals;
+ }
+ function explicitContextLinks(clauses){
+  const links=[];
+  for(let i=1;i<clauses.length;i++){
+   const prior=clauses[i-1]?.complexClauseProposals||[];
+   const current=clauses[i]?.complexClauseProposals||[];
+   if(!prior.length||!current.length)continue;
+   const priorLocations=new Set(prior.map(p=>norm(p.location.written)));
+   const currentLocations=new Set(current.map(p=>norm(p.location.written)));
+   const overlap=[...priorLocations].filter(x=>currentLocations.has(x));
+   // Repeated written location is explicit; implicit location inheritance,
+   // pronominal coreference, and discourse participants are NOT resolved.
+   if(overlap.length!==1)continue;
+   const ps=new Set(prior.map(p=>p.verb.subjectPerson));
+   const cs=new Set(current.map(p=>p.verb.subjectPerson));
+   links.push({fromClause:i-1,toClause:i,
+    locationWritten:current[0].location.written,
+    relation:'same location phrase explicitly repeated in adjacent clauses',
+    subjectAgreement:ps.size===1&&cs.size===1&&[...ps][0]===[...cs][0]?
+     'same indexed grammatical person (NOT verified person identity)':
+     'distinct or ambiguous subject-person marking; no participant identity inferred',
+    note:'This is an observable repeated written locative, not proof that the events, people or locations in the historical world are identical.'});
+  }
+  return links;
+ }
  function analyze(input){
   const raw=String(input||'');
   if(raw.length>7000)return {clauses:[],complete:false,reason:'Input exceeds 7000 characters.'};
@@ -308,12 +411,14 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    return {text,tokens:original,candidates,complete:candidates.length>0,
     fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),
     locativeInterpretations:candidates.length?[]:locativeAnalyze(tokens,negative),
+    complexClauseProposals:candidates.length?[]:finiteLocativeProposals(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,
     reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.'};
   });
-  return {clauses,complete:clauses.length>0&&clauses.every(c=>c.complete)};
+  return {clauses,complete:clauses.length>0&&clauses.every(c=>c.complete),
+   contextLinks:explicitContextLinks(clauses)};
  }
  return {analyze};
 }

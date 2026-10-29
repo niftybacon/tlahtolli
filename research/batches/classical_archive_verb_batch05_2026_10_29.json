@@ -1,0 +1,2622 @@
+{
+  "format": "tlahtolli-classical-archive-verb-intake-v1",
+  "date": "2026-10-29",
+  "version": "2026-10-29.5.0",
+  "source_archive": "research/amoxcalli_archive/kaikki_*.json",
+  "upstream": "https://github.com/samvillasmith/amoxcalli-nahuatl-project/blob/main/source_data/nahuatl_kaikki_raw.jsonl",
+  "license": "Wiktionary CC BY-SA 3.0/GFDL; Amoxcalli parsed data CC BY-SA 4.0",
+  "policy": "Provisional source index only; no independently checked variety, verb class, stems, forms or translations.",
+  "baseline_headwords": 210,
+  "new_candidates": 268,
+  "entries": [
+    {
+      "word": "cocoa",
+      "source_word": "cocoa",
+      "gloss": "to hurt",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 0,
+      "row": 26
+    },
+    {
+      "word": "ono",
+      "source_word": "ono",
+      "gloss": "To be lying down",
+      "tags": [],
+      "shard": 0,
+      "row": 34
+    },
+    {
+      "word": "malīna",
+      "source_word": "malina",
+      "gloss": "to twist on ones thigh",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 42
+    },
+    {
+      "word": "pāca",
+      "source_word": "paca",
+      "gloss": "to wash",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 50
+    },
+    {
+      "word": "mīna",
+      "source_word": "mina",
+      "gloss": "to shoot arrows, to pierce something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 64
+    },
+    {
+      "word": "mani",
+      "source_word": "mani",
+      "gloss": "To spread out, to extend.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 69
+    },
+    {
+      "word": "panō",
+      "source_word": "pano",
+      "gloss": "To cross over, cross a river",
+      "tags": [],
+      "shard": 0,
+      "row": 93
+    },
+    {
+      "word": "pāti",
+      "source_word": "pati",
+      "gloss": "to melt. Intransitive form of patla.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 98
+    },
+    {
+      "word": "chichi",
+      "source_word": "chichi",
+      "gloss": "To suckle.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 104
+    },
+    {
+      "word": "tēca",
+      "source_word": "teca",
+      "gloss": "To lay (something) down; spread (something) out on a flat surface.",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 0,
+      "row": 111
+    },
+    {
+      "word": "cecmiqui",
+      "source_word": "cecmiqui",
+      "gloss": "die of cold",
+      "tags": [],
+      "shard": 0,
+      "row": 117
+    },
+    {
+      "word": "tlahuēlīlōcāmati",
+      "source_word": "tlahuelilocamati",
+      "gloss": "To consider (someone) a scoundrel.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 136
+    },
+    {
+      "word": "tlazohtla",
+      "source_word": "tlazohtla",
+      "gloss": "To love; cherish; treat well.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 141
+    },
+    {
+      "word": "chicāhua",
+      "source_word": "chicahua",
+      "gloss": "To strengthen.",
+      "tags": [
+        "ambitransitive",
+        "transitive",
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 144
+    },
+    {
+      "word": "celiā",
+      "source_word": "celia",
+      "gloss": "To receive",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 178
+    },
+    {
+      "word": "temo",
+      "source_word": "temo",
+      "gloss": "to descend",
+      "tags": [
+        "conjugation-1",
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 195
+    },
+    {
+      "word": "miqui",
+      "source_word": "miqui",
+      "gloss": "To die.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 231
+    },
+    {
+      "word": "yāōmiqui",
+      "source_word": "yaomiqui",
+      "gloss": "To die in battle.",
+      "tags": [],
+      "shard": 0,
+      "row": 242
+    },
+    {
+      "word": "contradeciroa",
+      "source_word": "contradeciroa",
+      "gloss": "To contradict.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 267
+    },
+    {
+      "word": "poyōmiqui",
+      "source_word": "poyomiqui",
+      "gloss": "To die through treachery.",
+      "tags": [],
+      "shard": 0,
+      "row": 272
+    },
+    {
+      "word": "ahci",
+      "source_word": "ahci",
+      "gloss": "to arrive",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 355
+    },
+    {
+      "word": "tlācatiliā",
+      "source_word": "tlacatilia",
+      "gloss": "To cause (someone) to be born.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 449
+    },
+    {
+      "word": "caltia",
+      "source_word": "caltia",
+      "gloss": "to provide with a house; to build a house for",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 469
+    },
+    {
+      "word": "moxāhua",
+      "source_word": "moxahua",
+      "gloss": "To put on traditional women's makeup.",
+      "tags": [
+        "reflexive"
+      ],
+      "shard": 0,
+      "row": 555
+    },
+    {
+      "word": "tlahtlacoā",
+      "source_word": "tlahtlacoa",
+      "gloss": "To do wrong; to make a mistake.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 575
+    },
+    {
+      "word": "mātoca",
+      "source_word": "matoca",
+      "gloss": "to touch; fondle; masturbate",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 580
+    },
+    {
+      "word": "tōnēhua",
+      "source_word": "tonehua",
+      "gloss": "To inflict burning pain on.",
+      "tags": [
+        "transitive",
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 587
+    },
+    {
+      "word": "ihcihui",
+      "source_word": "ihcihui",
+      "gloss": "To hurry.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 603
+    },
+    {
+      "word": "teōchīhua",
+      "source_word": "teochihua",
+      "gloss": "To bless.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 614
+    },
+    {
+      "word": "chachayāhua",
+      "source_word": "chachayahua",
+      "gloss": "broadcast (seeds)",
+      "tags": [],
+      "shard": 0,
+      "row": 635
+    },
+    {
+      "word": "pēhua",
+      "source_word": "pehua",
+      "gloss": "begin, start",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 636
+    },
+    {
+      "word": "cuīca",
+      "source_word": "cuica",
+      "gloss": "To sing.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 637
+    },
+    {
+      "word": "pantlalia",
+      "source_word": "pantlalia",
+      "gloss": "ride horseback",
+      "tags": [],
+      "shard": 0,
+      "row": 638
+    },
+    {
+      "word": "ezhuiā",
+      "source_word": "ezhuia",
+      "gloss": "To bloody; make bloody; cover in blood.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 669
+    },
+    {
+      "word": "āpīzmiqui",
+      "source_word": "apizmiqui",
+      "gloss": "To starve.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 681
+    },
+    {
+      "word": "cotōni",
+      "source_word": "cotoni",
+      "gloss": "to snap, to break off. Intransitive counterpart of cotona.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 709
+    },
+    {
+      "word": "tzacui",
+      "source_word": "tzacui",
+      "gloss": "To close.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 714
+    },
+    {
+      "word": "tzacua",
+      "source_word": "tzacua",
+      "gloss": "To close; block.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 715
+    },
+    {
+      "word": "tōna",
+      "source_word": "tona",
+      "gloss": "To shine; be sunny.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 717
+    },
+    {
+      "word": "yohua",
+      "source_word": "yohua",
+      "gloss": "To get dark; be dark.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 726
+    },
+    {
+      "word": "āyi",
+      "source_word": "ayi",
+      "gloss": "To make",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 743
+    },
+    {
+      "word": "īxcuepa",
+      "source_word": "ixcuepa",
+      "gloss": "To deceive; confuse.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 757
+    },
+    {
+      "word": "tzoncui",
+      "source_word": "tzoncui",
+      "gloss": "To take vengeance.",
+      "tags": [
+        "reflexive"
+      ],
+      "shard": 0,
+      "row": 792
+    },
+    {
+      "word": "tzinti",
+      "source_word": "tzinti",
+      "gloss": "To begin.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 793
+    },
+    {
+      "word": "cua",
+      "source_word": "cua",
+      "gloss": "To eat.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 810
+    },
+    {
+      "word": "popoca",
+      "source_word": "popoca",
+      "gloss": "To smoke; emit smoke.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 815
+    },
+    {
+      "word": "ēlēhuiā",
+      "source_word": "elehuia",
+      "gloss": "To desire.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 833
+    },
+    {
+      "word": "cuecuechmictia",
+      "source_word": "cuecuechmictia",
+      "gloss": "To hound; harass.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 953
+    },
+    {
+      "word": "tataca",
+      "source_word": "tataca",
+      "gloss": "to scratch",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 955
+    },
+    {
+      "word": "maxauhtinemi",
+      "source_word": "maxauhtinemi",
+      "gloss": "to not wear clothes to cover one's genitals; to expose oneself",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 957
+    },
+    {
+      "word": "tlālticpacquīza",
+      "source_word": "tlalticpacquiza",
+      "gloss": "To be born.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1014
+    },
+    {
+      "word": "patlachuia",
+      "source_word": "patlachuia",
+      "gloss": "To have lesbian sex with.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1024
+    },
+    {
+      "word": "mayana",
+      "source_word": "mayana",
+      "gloss": "to be hungry",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1025
+    },
+    {
+      "word": "āmiqui",
+      "source_word": "amiqui",
+      "gloss": "To die of thirst.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1026
+    },
+    {
+      "word": "mictihuetzi",
+      "source_word": "mictihuetzi",
+      "gloss": "To fall to one's death.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1027
+    },
+    {
+      "word": "tzatzi",
+      "source_word": "tzatzi",
+      "gloss": "To shout; yell; vocalize (of both humans and animals).",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1045
+    },
+    {
+      "word": "tzahtzi",
+      "source_word": "tzahtzi",
+      "gloss": "shout",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1046
+    },
+    {
+      "word": "mauhcatzatzi",
+      "source_word": "mauhcatzatzi",
+      "gloss": "to scream in fear",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1047
+    },
+    {
+      "word": "quiyahui",
+      "source_word": "quiyahui",
+      "gloss": "To rain.",
+      "tags": [
+        "impersonal"
+      ],
+      "shard": 0,
+      "row": 1049
+    },
+    {
+      "word": "nōtza",
+      "source_word": "notza",
+      "gloss": "To summon; call.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1066
+    },
+    {
+      "word": "yēctenēhua",
+      "source_word": "yectenehua",
+      "gloss": "To praise.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1074
+    },
+    {
+      "word": "tlequiquiztlaltema",
+      "source_word": "tlequiquiztlaltema",
+      "gloss": "To charge (a gun) with powder.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1088
+    },
+    {
+      "word": "cuepōni",
+      "source_word": "cueponi",
+      "gloss": "To bloom.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1092
+    },
+    {
+      "word": "xōtla",
+      "source_word": "xotla",
+      "gloss": "to burn",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1093
+    },
+    {
+      "word": "tlemiqui",
+      "source_word": "tlemiqui",
+      "gloss": "To be burned, scorched; to suffer from fire or heat.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1094
+    },
+    {
+      "word": "tōnalmiqui",
+      "source_word": "tonalmiqui",
+      "gloss": "To suffer from heat.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1095
+    },
+    {
+      "word": "yolpaqui",
+      "source_word": "yolpaqui",
+      "gloss": "To be happy.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1101
+    },
+    {
+      "word": "mictiā",
+      "source_word": "mictia",
+      "gloss": "To kill.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1144
+    },
+    {
+      "word": "potōni",
+      "source_word": "potoni",
+      "gloss": "To stink.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1148
+    },
+    {
+      "word": "pāqui",
+      "source_word": "paqui",
+      "gloss": "To be happy.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1149
+    },
+    {
+      "word": "pōchtēcati",
+      "source_word": "pochtecati",
+      "gloss": "To be a merchant; to engage in trade.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1170
+    },
+    {
+      "word": "tōca",
+      "source_word": "toca",
+      "gloss": "to bury, to plant something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1176
+    },
+    {
+      "word": "tlahtocati",
+      "source_word": "tlahtocati",
+      "gloss": "Rule; govern.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1184
+    },
+    {
+      "word": "tlalteuhnemitia",
+      "source_word": "tlalteuhnemitia",
+      "gloss": "To be suffer pain.",
+      "tags": [
+        "reflexive"
+      ],
+      "shard": 0,
+      "row": 1192
+    },
+    {
+      "word": "tepuztopilhuia",
+      "source_word": "tepuztopilhuia",
+      "gloss": "To lance; pierce with a lance.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1193
+    },
+    {
+      "word": "tzīnquīza",
+      "source_word": "tzinquiza",
+      "gloss": "To withdraw; retreat.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1201
+    },
+    {
+      "word": "tzompilihui",
+      "source_word": "tzompilihui",
+      "gloss": "To have a cold.",
+      "tags": [],
+      "shard": 0,
+      "row": 1207
+    },
+    {
+      "word": "tzayani",
+      "source_word": "tzayani",
+      "gloss": "To tear; split.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1212
+    },
+    {
+      "word": "tēmiqui",
+      "source_word": "temiqui",
+      "gloss": "To dream.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1218
+    },
+    {
+      "word": "cotōna",
+      "source_word": "cotona",
+      "gloss": "to cut something, to break something off. Transitive counterpart of cotoni.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1221
+    },
+    {
+      "word": "tlatzontequilia",
+      "source_word": "tlatzontequilia",
+      "gloss": "To sentence; pass judgement over; judge.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1230
+    },
+    {
+      "word": "maca",
+      "source_word": "maca",
+      "gloss": "to give",
+      "tags": [],
+      "shard": 0,
+      "row": 1234
+    },
+    {
+      "word": "tomi",
+      "source_word": "tomi",
+      "gloss": "To be loose",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1236
+    },
+    {
+      "word": "cah",
+      "source_word": "cah",
+      "gloss": "to be (somewhere), to be located",
+      "tags": [
+        "irregular",
+        "copulative",
+        "auxiliary"
+      ],
+      "shard": 0,
+      "row": 1240
+    },
+    {
+      "word": "mocuepa",
+      "source_word": "mocuepa",
+      "gloss": "to transform, to change",
+      "tags": [],
+      "shard": 0,
+      "row": 1242
+    },
+    {
+      "word": "nequi",
+      "source_word": "nequi",
+      "gloss": "to want something, to desire",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1258
+    },
+    {
+      "word": "polōni",
+      "source_word": "poloni",
+      "gloss": "To mumble, stutter, stammer",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1261
+    },
+    {
+      "word": "ēhua",
+      "source_word": "ehua",
+      "gloss": "to depart",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1286
+    },
+    {
+      "word": "huītz",
+      "source_word": "huitz",
+      "gloss": "to come",
+      "tags": [
+        "irregular"
+      ],
+      "shard": 0,
+      "row": 1288
+    },
+    {
+      "word": "teci",
+      "source_word": "teci",
+      "gloss": "to grind maize",
+      "tags": [],
+      "shard": 0,
+      "row": 1290
+    },
+    {
+      "word": "toloa",
+      "source_word": "toloa",
+      "gloss": "to swallow",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1291
+    },
+    {
+      "word": "āna",
+      "source_word": "āna",
+      "gloss": "seize, to take, to take prisoner",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 0,
+      "row": 1305
+    },
+    {
+      "word": "āmoxpōhua",
+      "source_word": "amoxpohua",
+      "gloss": "to read from a book or text.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1363
+    },
+    {
+      "word": "calpōhua",
+      "source_word": "calpohua",
+      "gloss": "to count houses, take census",
+      "tags": [],
+      "shard": 0,
+      "row": 1366
+    },
+    {
+      "word": "pohpōhua",
+      "source_word": "pohpohua",
+      "gloss": "to clean something",
+      "tags": [],
+      "shard": 0,
+      "row": 1368
+    },
+    {
+      "word": "īxāyōpohpōhua",
+      "source_word": "ixayopohpohua",
+      "gloss": "to wipe away a tear",
+      "tags": [],
+      "shard": 0,
+      "row": 1369
+    },
+    {
+      "word": "māpohpōhua",
+      "source_word": "mapohpohua",
+      "gloss": "to clean, wipe or dry the hands",
+      "tags": [],
+      "shard": 0,
+      "row": 1370
+    },
+    {
+      "word": "tōtoltepōhua",
+      "source_word": "totoltepohua",
+      "gloss": "to count eggs",
+      "tags": [],
+      "shard": 0,
+      "row": 1376
+    },
+    {
+      "word": "tōnalpōhua",
+      "source_word": "tonalpohua",
+      "gloss": "to divine using signs and dreams",
+      "tags": [],
+      "shard": 0,
+      "row": 1378
+    },
+    {
+      "word": "huāltemō",
+      "source_word": "hualtemo",
+      "gloss": "to come down, descend",
+      "tags": [],
+      "shard": 0,
+      "row": 1381
+    },
+    {
+      "word": "āonī",
+      "source_word": "aoni",
+      "gloss": "to swallow water when drowning",
+      "tags": [],
+      "shard": 0,
+      "row": 1386
+    },
+    {
+      "word": "ichtequi",
+      "source_word": "ichtequi",
+      "gloss": "to steal, rob",
+      "tags": [],
+      "shard": 0,
+      "row": 1388
+    },
+    {
+      "word": "yāōtlatquichihchīhua",
+      "source_word": "yaotlatquichihchihua",
+      "gloss": "to craft weapons for war or soldiers",
+      "tags": [],
+      "shard": 0,
+      "row": 1556
+    },
+    {
+      "word": "āltepētenānquetza",
+      "source_word": "altepetenanquetza",
+      "gloss": "to delimit a city",
+      "tags": [],
+      "shard": 0,
+      "row": 1560
+    },
+    {
+      "word": "cihuāmiqui",
+      "source_word": "cihuamiqui",
+      "gloss": "to widow",
+      "tags": [],
+      "shard": 0,
+      "row": 1642
+    },
+    {
+      "word": "īlōti",
+      "source_word": "iloti",
+      "gloss": "to return, to go back",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 0,
+      "row": 1954
+    },
+    {
+      "word": "xima",
+      "source_word": "xima",
+      "gloss": "to shave something, to smooth something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 158
+    },
+    {
+      "word": "chiquiuhchīhua",
+      "source_word": "chiquiuhchihua",
+      "gloss": "to weave or make baskets",
+      "tags": [],
+      "shard": 1,
+      "row": 427
+    },
+    {
+      "word": "mētztōna",
+      "source_word": "metztona",
+      "gloss": "for there to be moonlight, for the moon to be shining",
+      "tags": [],
+      "shard": 1,
+      "row": 492
+    },
+    {
+      "word": "ihtoa",
+      "source_word": "ihtoa",
+      "gloss": "to say",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 833
+    },
+    {
+      "word": "ihcuiloa",
+      "source_word": "ihcuiloa",
+      "gloss": "to paint",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 836
+    },
+    {
+      "word": "tehhuantin",
+      "source_word": "tehhuantin",
+      "gloss": "to be one of us, one like us",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 871
+    },
+    {
+      "word": "mōyōni",
+      "source_word": "moyoni",
+      "gloss": "To swarm",
+      "tags": [],
+      "shard": 1,
+      "row": 1004
+    },
+    {
+      "word": "ōllama",
+      "source_word": "ollama",
+      "gloss": "to play with a rubber ball, especially in the ritual ball game of ōllamaliztli",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1323
+    },
+    {
+      "word": "michahci",
+      "source_word": "michahci",
+      "gloss": "to fish",
+      "tags": [
+        "intransitive",
+        "reconstruction"
+      ],
+      "shard": 1,
+      "row": 1340
+    },
+    {
+      "word": "piqui",
+      "source_word": "piqui",
+      "gloss": "to invent or fabricate something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1503
+    },
+    {
+      "word": "mamali",
+      "source_word": "mamali",
+      "gloss": "to drill a hole through something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1505
+    },
+    {
+      "word": "cuauhtequi",
+      "source_word": "cuauhtequi",
+      "gloss": "To chop wood.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1510
+    },
+    {
+      "word": "huīca",
+      "source_word": "huica",
+      "gloss": "to lead something or someone",
+      "tags": [
+        "transitive",
+        "honorific",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1526
+    },
+    {
+      "word": "nehnemi",
+      "source_word": "nehnemi",
+      "gloss": "to walk",
+      "tags": [],
+      "shard": 1,
+      "row": 1527
+    },
+    {
+      "word": "ixhui",
+      "source_word": "ixhui",
+      "gloss": "to be full, to sate one's appetite",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1530
+    },
+    {
+      "word": "cētōchhuia",
+      "source_word": "cetochhuia",
+      "gloss": "To suffer the 1454 famine.",
+      "tags": [
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1533
+    },
+    {
+      "word": "iztlacati",
+      "source_word": "iztlacati",
+      "gloss": "to lie, to deceive",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1535
+    },
+    {
+      "word": "tlaquetza",
+      "source_word": "tlaquetza",
+      "gloss": "To tell a tale.",
+      "tags": [],
+      "shard": 1,
+      "row": 1579
+    },
+    {
+      "word": "huihuitla",
+      "source_word": "huihuitla",
+      "gloss": "To weed",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1593
+    },
+    {
+      "word": "ehco",
+      "source_word": "ehco",
+      "gloss": "to arrive",
+      "tags": [
+        "intransitive",
+        "verb"
+      ],
+      "shard": 1,
+      "row": 1594
+    },
+    {
+      "word": "tlehco",
+      "source_word": "tlehco",
+      "gloss": "to ascend, to climb",
+      "tags": [
+        "intransitive",
+        "verb"
+      ],
+      "shard": 1,
+      "row": 1595
+    },
+    {
+      "word": "cahcatza",
+      "source_word": "cahcatza",
+      "gloss": "to tie something securely, tightly",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1597
+    },
+    {
+      "word": "ilpia",
+      "source_word": "ilpia",
+      "gloss": "to tie something, to bind",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1598
+    },
+    {
+      "word": "mōtla",
+      "source_word": "motla",
+      "gloss": "to stone something, to hunt something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1599
+    },
+    {
+      "word": "patla",
+      "source_word": "patla",
+      "gloss": "to change something, to exchange",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1600
+    },
+    {
+      "word": "ihza",
+      "source_word": "ihza",
+      "gloss": "to awaken, to wake up",
+      "tags": [
+        "intransitive",
+        "verb"
+      ],
+      "shard": 1,
+      "row": 1602
+    },
+    {
+      "word": "icza",
+      "source_word": "icza",
+      "gloss": "to step on something, to trample",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1603
+    },
+    {
+      "word": "xihxili",
+      "source_word": "xihxili",
+      "gloss": "to trample something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1604
+    },
+    {
+      "word": "petzoa",
+      "source_word": "petzoa",
+      "gloss": "to smooth something, to polish something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1605
+    },
+    {
+      "word": "caltechoa",
+      "source_word": "caltechoa",
+      "gloss": "to separate something, to set aside",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1606
+    },
+    {
+      "word": "palēhuia",
+      "source_word": "palehuia",
+      "gloss": "to help someone, to aid",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1608
+    },
+    {
+      "word": "tlanchoā",
+      "source_word": "tlanchoa",
+      "gloss": "To chew, to masticate.",
+      "tags": [
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1609
+    },
+    {
+      "word": "petzcoa",
+      "source_word": "petzcoa",
+      "gloss": "To slide something.",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1610
+    },
+    {
+      "word": "chiya",
+      "source_word": "chiya",
+      "gloss": "to watch something, to observe",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1611
+    },
+    {
+      "word": "ohza",
+      "source_word": "ohza",
+      "gloss": "To anoint, to apply salve on something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1612
+    },
+    {
+      "word": "huītequi",
+      "source_word": "huitequi",
+      "gloss": "to strike something, to whip something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1614
+    },
+    {
+      "word": "huapāhua",
+      "source_word": "huapahua",
+      "gloss": "to strengthen, to raise a child",
+      "tags": [
+        "transitive",
+        "intransitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1615
+    },
+    {
+      "word": "ihcequi",
+      "source_word": "ihcequi",
+      "gloss": "to toast something on a griddle, to griddle",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1617
+    },
+    {
+      "word": "cāhua",
+      "source_word": "cahua",
+      "gloss": "to stop",
+      "tags": [
+        "reflexive",
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1618
+    },
+    {
+      "word": "ahhua",
+      "source_word": "ahhua",
+      "gloss": "To scold someone, to argue",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1620
+    },
+    {
+      "word": "chihcha",
+      "source_word": "chihcha",
+      "gloss": "to spit on something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1622
+    },
+    {
+      "word": "ihnecui",
+      "source_word": "ihnecui",
+      "gloss": "to smell something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1623
+    },
+    {
+      "word": "pehpena",
+      "source_word": "pehpena",
+      "gloss": "to pick something; to choose",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1624
+    },
+    {
+      "word": "tecihui",
+      "source_word": "tecihui",
+      "gloss": "To hail.",
+      "tags": [
+        "impersonal"
+      ],
+      "shard": 1,
+      "row": 1625
+    },
+    {
+      "word": "cepayahui",
+      "source_word": "cepayahui",
+      "gloss": "To snow.",
+      "tags": [
+        "impersonal"
+      ],
+      "shard": 1,
+      "row": 1628
+    },
+    {
+      "word": "tlapayahui",
+      "source_word": "tlapayahui",
+      "gloss": "To drizzle, rain gently for a long time.",
+      "tags": [
+        "impersonal"
+      ],
+      "shard": 1,
+      "row": 1629
+    },
+    {
+      "word": "ihquiti",
+      "source_word": "ihquiti",
+      "gloss": "to weave cloth",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1630
+    },
+    {
+      "word": "nānquilia",
+      "source_word": "nanquilia",
+      "gloss": "to answer, to respond to someone.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1631
+    },
+    {
+      "word": "ihtlacoa",
+      "source_word": "ihtlacoa",
+      "gloss": "to harm, damage something",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1632
+    },
+    {
+      "word": "pītza",
+      "source_word": "pitza",
+      "gloss": "to blow on something, to play a woodwind instrument",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1633
+    },
+    {
+      "word": "ithui",
+      "source_word": "ithui",
+      "gloss": "to be visible, to appear. Intransitive counterpart of itta.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1634
+    },
+    {
+      "word": "cuāmana",
+      "source_word": "cuamana",
+      "gloss": "to lie to or deceive something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1635
+    },
+    {
+      "word": "ilcāhua",
+      "source_word": "ilcahua",
+      "gloss": "to forget something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1636
+    },
+    {
+      "word": "ilnāmiqui",
+      "source_word": "ilnamiqui",
+      "gloss": "to remember something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1637
+    },
+    {
+      "word": "itqui",
+      "source_word": "itqui",
+      "gloss": "to carry something, to transport",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1638
+    },
+    {
+      "word": "zaca",
+      "source_word": "zaca",
+      "gloss": "to transport something, to carry something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1639
+    },
+    {
+      "word": "titītza",
+      "source_word": "tititza",
+      "gloss": "To stretch something.",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1640
+    },
+    {
+      "word": "cātzāna",
+      "source_word": "catzana",
+      "gloss": "To stretch one's arms and legs.",
+      "tags": [
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1641
+    },
+    {
+      "word": "xoloa",
+      "source_word": "xoloa",
+      "gloss": "To slip something.",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1642
+    },
+    {
+      "word": "alāhua",
+      "source_word": "alahua",
+      "gloss": "To slide something.",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1643
+    },
+    {
+      "word": "xolāhua",
+      "source_word": "xolahua",
+      "gloss": "To slide something.",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1644
+    },
+    {
+      "word": "oncah",
+      "source_word": "oncah",
+      "gloss": "to exist, to be somewhere",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1647
+    },
+    {
+      "word": "tolīnia",
+      "source_word": "tolinia",
+      "gloss": "to torment, to afflict",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1659
+    },
+    {
+      "word": "cuehzoa",
+      "source_word": "cuehzoa",
+      "gloss": "to disturb, to bother",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1660
+    },
+    {
+      "word": "pachoa",
+      "source_word": "pachoa",
+      "gloss": "to press down on something, to control someone, to sit on something",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1661
+    },
+    {
+      "word": "tequipachoa",
+      "source_word": "tequipachoa",
+      "gloss": "to worry someone, to torment",
+      "tags": [
+        "transitive",
+        "reflexive"
+      ],
+      "shard": 1,
+      "row": 1662
+    },
+    {
+      "word": "pāhuaci",
+      "source_word": "pahuaci",
+      "gloss": "to boil something, to stew something in a pot",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1663
+    },
+    {
+      "word": "ixca",
+      "source_word": "ixca",
+      "gloss": "to bake something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1664
+    },
+    {
+      "word": "quiquici",
+      "source_word": "quiquici",
+      "gloss": "To whistle out; hiss.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1665
+    },
+    {
+      "word": "petztoloa",
+      "source_word": "petztoloa",
+      "gloss": "to swallow something soft, something slippery",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1667
+    },
+    {
+      "word": "tēnihza",
+      "source_word": "tenihza",
+      "gloss": "to have breakfast",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1668
+    },
+    {
+      "word": "mahui",
+      "source_word": "mahui",
+      "gloss": "To fear, be frightened.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1669
+    },
+    {
+      "word": "huicci",
+      "source_word": "huicci",
+      "gloss": "To cook.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1670
+    },
+    {
+      "word": "iucci",
+      "source_word": "iucci",
+      "gloss": "To cook.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1671
+    },
+    {
+      "word": "iucxoa",
+      "source_word": "iucxoa",
+      "gloss": "To sneeze.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1672
+    },
+    {
+      "word": "tziucnoa",
+      "source_word": "tziucnoa",
+      "gloss": "To hiccup.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1673
+    },
+    {
+      "word": "tecpoa",
+      "source_word": "tecpoa",
+      "gloss": "To replant, resow.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1674
+    },
+    {
+      "word": "pīnāhua",
+      "source_word": "pinahua",
+      "gloss": "To be ashamed.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1675
+    },
+    {
+      "word": "tlaōcoya",
+      "source_word": "tlaocoya",
+      "gloss": "To be sad.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1678
+    },
+    {
+      "word": "cualāni",
+      "source_word": "cualani",
+      "gloss": "To get angry.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 1,
+      "row": 1679
+    },
+    {
+      "word": "ēlimiqui",
+      "source_word": "elimiqui",
+      "gloss": "to cultivate land",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 1,
+      "row": 1680
+    },
+    {
+      "word": "tlapoa",
+      "source_word": "tlapoa",
+      "gloss": "to open.",
+      "tags": [],
+      "shard": 1,
+      "row": 1720
+    },
+    {
+      "word": "yecoa",
+      "source_word": "yecoa",
+      "gloss": "sexual intercourse",
+      "tags": [],
+      "shard": 2,
+      "row": 35
+    },
+    {
+      "word": "hualla",
+      "source_word": "hualla",
+      "gloss": "To arrive.",
+      "tags": [],
+      "shard": 2,
+      "row": 161
+    },
+    {
+      "word": "patlana",
+      "source_word": "patlana",
+      "gloss": "To fly.",
+      "tags": [],
+      "shard": 2,
+      "row": 182
+    },
+    {
+      "word": "teponāzoa",
+      "source_word": "teponazoa",
+      "gloss": "to play the teponaztli; to play the drums",
+      "tags": [
+        "intransitive",
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 194
+    },
+    {
+      "word": "xocolia",
+      "source_word": "xocolia",
+      "gloss": "to make (something) sour or bitter.",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 207
+    },
+    {
+      "word": "quiquinatza",
+      "source_word": "quiquinatza",
+      "gloss": "to grunt, squeal, growl at",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 237
+    },
+    {
+      "word": "pōtza",
+      "source_word": "potza",
+      "gloss": "to throw up earth, burrow",
+      "tags": [],
+      "shard": 2,
+      "row": 239
+    },
+    {
+      "word": "iztaya",
+      "source_word": "iztaya",
+      "gloss": "To become white (like salt)",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 247
+    },
+    {
+      "word": "mozōmā",
+      "source_word": "mozoma",
+      "gloss": "To frown in anger",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 248
+    },
+    {
+      "word": "pātzca",
+      "source_word": "patzca",
+      "gloss": "To squeeze liquid from",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 249
+    },
+    {
+      "word": "tlatiā",
+      "source_word": "tlatia",
+      "gloss": "To burn something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 250
+    },
+    {
+      "word": "huīcatz",
+      "source_word": "huicatz",
+      "gloss": "To bring",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 251
+    },
+    {
+      "word": "quetza",
+      "source_word": "quetza",
+      "gloss": "To raise",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 252
+    },
+    {
+      "word": "tlāza",
+      "source_word": "tlaza",
+      "gloss": "To hurl",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 253
+    },
+    {
+      "word": "huetzca",
+      "source_word": "huetzca",
+      "gloss": "To laugh",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 254
+    },
+    {
+      "word": "tiāmiqui",
+      "source_word": "tiamiqui",
+      "gloss": "To do business",
+      "tags": [],
+      "shard": 2,
+      "row": 255
+    },
+    {
+      "word": "huāqui",
+      "source_word": "huaqui",
+      "gloss": "To become dry",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 256
+    },
+    {
+      "word": "ihca",
+      "source_word": "ihca",
+      "gloss": "To stand",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 257
+    },
+    {
+      "word": "ciyahui",
+      "source_word": "ciyahui",
+      "gloss": "To become tired",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 258
+    },
+    {
+      "word": "tequiti",
+      "source_word": "tequiti",
+      "gloss": "to work",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 259
+    },
+    {
+      "word": "quēmī",
+      "source_word": "quemi",
+      "gloss": "To wear",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 260
+    },
+    {
+      "word": "ihyāya",
+      "source_word": "ihyaya",
+      "gloss": "To stink",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 262
+    },
+    {
+      "word": "petlāni",
+      "source_word": "petlani",
+      "gloss": "To glisten, shine, sparkle",
+      "tags": [],
+      "shard": 2,
+      "row": 263
+    },
+    {
+      "word": "tlapetlāni",
+      "source_word": "tlapetlani",
+      "gloss": "(of lighting) To flash, to lightning",
+      "tags": [
+        "impersonal"
+      ],
+      "shard": 2,
+      "row": 264
+    },
+    {
+      "word": "poyāhua",
+      "source_word": "poyahua",
+      "gloss": "To darken",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 265
+    },
+    {
+      "word": "tlapoyāhua",
+      "source_word": "tlapoyahua",
+      "gloss": "To become night, for night to fall",
+      "tags": [
+        "impersonal"
+      ],
+      "shard": 2,
+      "row": 266
+    },
+    {
+      "word": "ceceya",
+      "source_word": "ceceya",
+      "gloss": "To become cold",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 267
+    },
+    {
+      "word": "pixca",
+      "source_word": "pixca",
+      "gloss": "To harvest, reap",
+      "tags": [],
+      "shard": 2,
+      "row": 268
+    },
+    {
+      "word": "poztequi",
+      "source_word": "poztequi",
+      "gloss": "To become broken, break",
+      "tags": [],
+      "shard": 2,
+      "row": 269
+    },
+    {
+      "word": "zahui",
+      "source_word": "zahui",
+      "gloss": "To fast",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 270
+    },
+    {
+      "word": "cocoya",
+      "source_word": "cocoya",
+      "gloss": "To become sick",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 271
+    },
+    {
+      "word": "tēcocoā",
+      "source_word": "tecocoa",
+      "gloss": "To cause someone to become sick",
+      "tags": [],
+      "shard": 2,
+      "row": 272
+    },
+    {
+      "word": "chalāni",
+      "source_word": "chalani",
+      "gloss": "To become cracked",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 273
+    },
+    {
+      "word": "caxani",
+      "source_word": "caxani",
+      "gloss": "To become untied",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 274
+    },
+    {
+      "word": "chacuani",
+      "source_word": "chacuani",
+      "gloss": "To soak",
+      "tags": [],
+      "shard": 2,
+      "row": 275
+    },
+    {
+      "word": "chīpini",
+      "source_word": "chipini",
+      "gloss": "To drip",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 276
+    },
+    {
+      "word": "pitzīni",
+      "source_word": "pitzini",
+      "gloss": "To break open, crack",
+      "tags": [],
+      "shard": 2,
+      "row": 277
+    },
+    {
+      "word": "tzicuīni",
+      "source_word": "tzicuini",
+      "gloss": "To splash, splatter",
+      "tags": [],
+      "shard": 2,
+      "row": 278
+    },
+    {
+      "word": "xitīni",
+      "source_word": "xitini",
+      "gloss": "To collapse",
+      "tags": [],
+      "shard": 2,
+      "row": 279
+    },
+    {
+      "word": "comōni",
+      "source_word": "comoni",
+      "gloss": "To flare, blaze",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 280
+    },
+    {
+      "word": "tzoyōni",
+      "source_word": "tzoyoni",
+      "gloss": "To become fried",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 281
+    },
+    {
+      "word": "coyōni",
+      "source_word": "coyoni",
+      "gloss": "To be hollowed out",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 282
+    },
+    {
+      "word": "molōni",
+      "source_word": "moloni",
+      "gloss": "To flow from an opening",
+      "tags": [],
+      "shard": 2,
+      "row": 283
+    },
+    {
+      "word": "pozōni",
+      "source_word": "pozoni",
+      "gloss": "To boil, seethe",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 284
+    },
+    {
+      "word": "ōlīni",
+      "source_word": "olini",
+      "gloss": "To move (a long a path)",
+      "tags": [],
+      "shard": 2,
+      "row": 285
+    },
+    {
+      "word": "cōtzāhui",
+      "source_word": "cotzahui",
+      "gloss": "To become yellow",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 286
+    },
+    {
+      "word": "queyōni",
+      "source_word": "queyoni",
+      "gloss": "To itch",
+      "tags": [],
+      "shard": 2,
+      "row": 287
+    },
+    {
+      "word": "tecuīni",
+      "source_word": "tecuini",
+      "gloss": "To flare up",
+      "tags": [],
+      "shard": 2,
+      "row": 288
+    },
+    {
+      "word": "caxāhua",
+      "source_word": "caxahua",
+      "gloss": "To become emaciated",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 289
+    },
+    {
+      "word": "chiyahua",
+      "source_word": "chiyahua",
+      "gloss": "to become greasy",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 290
+    },
+    {
+      "word": "zotlāhua",
+      "source_word": "zotlahua",
+      "gloss": "to faint",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 291
+    },
+    {
+      "word": "petlāhua",
+      "source_word": "petlahua",
+      "gloss": "to undress",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 292
+    },
+    {
+      "word": "pixahui",
+      "source_word": "pixahui",
+      "gloss": "to drizzle",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 293
+    },
+    {
+      "word": "mimilihui",
+      "source_word": "mimilihui",
+      "gloss": "to swell",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 294
+    },
+    {
+      "word": "ahhuiāya",
+      "source_word": "ahhuiaya",
+      "gloss": "to be fragrant",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 295
+    },
+    {
+      "word": "xoxohuiya",
+      "source_word": "xoxohuiya",
+      "gloss": "to become green",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 296
+    },
+    {
+      "word": "teohcihui",
+      "source_word": "teohcihui",
+      "gloss": "to be hungry",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 297
+    },
+    {
+      "word": "nenehcihui",
+      "source_word": "nenehcihui",
+      "gloss": "to pant, be winded",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 298
+    },
+    {
+      "word": "pahpaqui",
+      "source_word": "pahpaqui",
+      "gloss": "to be very happy",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 300
+    },
+    {
+      "word": "tzayāna",
+      "source_word": "tzayana",
+      "gloss": "to tear",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 301
+    },
+    {
+      "word": "xeloā",
+      "source_word": "xeloa",
+      "gloss": "to divide something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 302
+    },
+    {
+      "word": "tlatla",
+      "source_word": "tlatla",
+      "gloss": "to burn, be on fire",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 303
+    },
+    {
+      "word": "nanatzca",
+      "source_word": "nanatzca",
+      "gloss": "to creak, squeak",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 304
+    },
+    {
+      "word": "pipitzca",
+      "source_word": "pipitzca",
+      "gloss": "to squeak",
+      "tags": [],
+      "shard": 2,
+      "row": 305
+    },
+    {
+      "word": "ihxili",
+      "source_word": "ihxili",
+      "gloss": "to pierce; stab; prick",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 309
+    },
+    {
+      "word": "tozoā",
+      "source_word": "tozoa",
+      "gloss": "to keep vigil, remain awake",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 310
+    },
+    {
+      "word": "choloa",
+      "source_word": "choloa",
+      "gloss": "to flee, escape, bound away",
+      "tags": [
+        "conjugation-3",
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 311
+    },
+    {
+      "word": "yancuiya",
+      "source_word": "yancuiya",
+      "gloss": "to be new",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 312
+    },
+    {
+      "word": "tzāhua",
+      "source_word": "tzahua",
+      "gloss": "to spin",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 313
+    },
+    {
+      "word": "tomāhua",
+      "source_word": "tomahua",
+      "gloss": "to fatten, become plump",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 316
+    },
+    {
+      "word": "tzolihui",
+      "source_word": "tzolihui",
+      "gloss": "to taper, narrow",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 317
+    },
+    {
+      "word": "peyōni",
+      "source_word": "peyoni",
+      "gloss": "to glow",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 318
+    },
+    {
+      "word": "chānti",
+      "source_word": "chanti",
+      "gloss": "to settle, dwell, reside",
+      "tags": [],
+      "shard": 2,
+      "row": 331
+    },
+    {
+      "word": "neltoca",
+      "source_word": "neltoca",
+      "gloss": "to believe in",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 332
+    },
+    {
+      "word": "tēnnāmiqui",
+      "source_word": "tennamiqui",
+      "gloss": "to kiss",
+      "tags": [],
+      "shard": 2,
+      "row": 349
+    },
+    {
+      "word": "nāmiqui",
+      "source_word": "namiqui",
+      "gloss": "to meet",
+      "tags": [],
+      "shard": 2,
+      "row": 350
+    },
+    {
+      "word": "nāmictiā",
+      "source_word": "namictia",
+      "gloss": "to marry.",
+      "tags": [],
+      "shard": 2,
+      "row": 351
+    },
+    {
+      "word": "mahcēhua",
+      "source_word": "macehua",
+      "gloss": "To deserve, to merit, to attain",
+      "tags": [
+        "transitive",
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 354
+    },
+    {
+      "word": "pozōniā",
+      "source_word": "pozonia",
+      "gloss": "to boil something",
+      "tags": [
+        "transitive"
+      ],
+      "shard": 2,
+      "row": 356
+    },
+    {
+      "word": "coyōnehnemi",
+      "source_word": "coyonehnemi",
+      "gloss": "Go on all fours; crawl.",
+      "tags": [
+        "intransitive"
+      ],
+      "shard": 2,
+      "row": 582
+    }
+  ]
+}

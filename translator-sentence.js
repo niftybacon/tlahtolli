@@ -411,14 +411,23 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    const complex=(clause.complexClauseProposals||[]).filter(c=>
     c.grade==='grammar-composed verb + relational location (unattested; NOT a verified translation)'&&
     c.coverage===clause.tokens.length);
-   if(!complete.length&&!complex.length)return null;
-   children.push({clause,finiteReadings:complete,complexReadings:complex});
+   const nested=(clause.nestedInProposals||[]).filter(c=>c.coverage===clause.tokens.length);
+   const dependent=(clause.nominalInProposals||[]).filter(c=>c.coverage===clause.tokens.length);
+   const relative=(clause.relativeClauseProposals||[]).filter(c=>
+    c.coverage===clause.tokens.length&&c.matrix);
+   if(!complete.length&&!complex.length&&!nested.length&&!dependent.length&&!relative.length)return null;
+   children.push({clause,finiteReadings:complete,complexReadings:complex,
+    nestedReadings:nested,dependentReadings:dependent,relativeReadings:relative});
   }
   const clauses=children.map(c=>c.clause);
   const segments=children.map((item,i)=>{
-   const finite=item.finiteReadings.length?item.finiteReadings:item.complexReadings;
+   const finite=item.finiteReadings.length?item.finiteReadings:
+    item.complexReadings.length?item.complexReadings:
+    item.nestedReadings.length?item.nestedReadings:
+    item.dependentReadings.length?item.dependentReadings:item.relativeReadings;
    const subjectPersons=[...new Set(finite.map(c=>
-    item.finiteReadings.length?PERSON_CODES[c.frame.subjectPerson]:c.verb.subjectPerson))];
+    item.finiteReadings.length?PERSON_CODES[c.frame.subjectPerson]:
+    item.complexReadings.length?c.verb.subjectPerson:c.matrix.subjectPerson))];
    return {
     index:i,text:parts[i],
     role:relation==='conditional antecedent and consequent'?
@@ -426,13 +435,14 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
       'proposed consequent (consequence type NOT independently verified)':
      'independent clause / discourse unit',
     finiteAnalysisKind:item.finiteReadings.length?'indexed complete clause grammar':
-     'finite+locative structural proposals only',
+     item.complexReadings.length?'finite+locative structural proposals only':
+     'finite-containing subordinate/relative structure (not a complete reading)',
     alternativeCount:finite.length,
     subjectPersons,
     locationExpressions:[...new Set(item.complexReadings.map(c=>c.location.written))],
     unresolved:item.finiteReadings.length?
      'Grammar-derived English sense candidates are NOT exhaustive or independently verified':
-     'Locative attachment and lexical senses remain unresolved; not a completed sentence translation'
+     'Subordinate role, locative attachment, participant identity and lexical senses remain unresolved; not a completed sentence translation'
    };
   });
   return {
@@ -442,6 +452,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    // A conditional protasis does not automatically supply a referent to its
    // consequent: never apply this heuristic to intla.
    antecedentProposals:marker==='auh'?possibleAntecedents(clauses):[],
+   discourseReferenceProposals:marker==='auh'?discourseReferenceProposals(clauses):[],
    multiClauseProposals:[{
     relation,markers,segments,
     clauseCount:parts.length,
@@ -554,6 +565,70 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
   }
   return proposals.slice(0,8);
  }
+ // Recursive but depth-limited analysis of a chain of in-introduced finite
+ // dependencies. A nested headed relative is an alternative terminal form.
+ // No omitted verbs, inferred markers, or unattested spelling repairs.
+ function nestedInProposals(tokens,negative){
+  if(negative||tokens.length<5||tokens.length>11||
+   tokens.some(t=>typeof t!=='string'||t.length>120))return [];
+  const results=[];
+  const licensesComplement=p=>p.transitive&&
+   (p.lemma==='mati'||p.lemma==='itta');
+  function visit(at,depth,parents){
+   if(depth>3||results.length>=16)return;
+   for(const reading of finiteAt(tokens[at]).slice(0,8)){
+    const node={written:tokens[at],lemma:reading.lemma,tense:reading.tense,
+     subjectPerson:PERSON_CODES[reading.person],transitive:!!reading.transitive,
+     source:reading.source};
+    if(at===tokens.length-1){
+     if(depth<2)continue; // One-level in is handled by nominalInProposals.
+     const layers=[...parents,node];
+     results.push({
+      construction:'nested in-introduced finite dependency',
+      grade:'bounded recursive subordinate syntax hypothesis (NOT a translation)',
+      matrix:layers[0],layers,terminal:{kind:'finite',...node},
+      depth,coverage:tokens.length,
+      sources:[...new Set([...IN_SOURCES,CLAUSE_SOURCE,...layers.map(l=>l.source)].filter(Boolean))],
+      note:'Each in and every finite token is consumed by a bounded recursive structure. '+
+       'Only curated transitive complement-taking matrix readings may contain another finite clause. '+
+       'Subordinate meaning, clause-as-object status, participant identity and English output remain unresolved.'
+     });
+     continue;
+    }
+    if(norm(tokens[at+1])!=='in')continue;
+    // An embedded finite predicate may itself have an explicitly headed
+    // relative NP. Reuse the existing relative gap/agreement constraints.
+    if(depth>=1&&tokens.length-at===5){
+     for(const rel of relativeInProposals(tokens.slice(at),false)){
+      if(!rel.matrix||rel.matrix.lemma!==reading.lemma||
+       rel.matrix.subjectPerson!==node.subjectPerson||
+       rel.matrix.tense!==node.tense)continue;
+      const layers=[...parents,node];
+      results.push({
+       construction:'finite complement containing a headed in-relative',
+       grade:'bounded recursive subordinate/relative syntax hypothesis (NOT a translation)',
+       matrix:layers[0],layers,
+       terminal:{kind:'headed-relative',head:rel.head,relative:rel.relative,
+        headRole:rel.matrix.headRole},
+       depth:depth+1,coverage:tokens.length,
+       sources:[...new Set([...IN_SOURCES,CLAUSE_SOURCE,...layers.map(l=>l.source),
+        ...rel.sources].filter(Boolean))],
+       note:'The terminal noun/relative pair is licensed by the existing relative gap constraints. '+
+        'The outer in is a possible finite subordinator; the inner in markers retain distinct functions. '+
+        'The clause structure and nominal antecedent are hypotheses; discourse identity is NOT resolved.'
+      });
+      if(results.length>=16)return;
+     }
+    }
+    if(licensesComplement(reading)&&at+2<tokens.length&&
+     finiteAt(tokens[at+2]).length){
+     visit(at+2,depth+1,[...parents,node]);
+    }
+   }
+  }
+  visit(0,0,[]);
+  return results.slice(0,16);
+ }
  function possibleAntecedents(clauses){
   const links=[];
   for(let i=1;i<clauses.length;i++){
@@ -589,6 +664,58 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
     alternatives:'Unmentioned third-person discourse referents may still be intended.',
     note:'Adjacent clause and matching 3sg subject agreement license only a candidate. '+
       'This DOES NOT prove that the same person or entity acts in both clauses.'
+   });
+  }
+  return links;
+ }
+ // Track overt NOMINAL subject mentions across a short discourse window.
+ // Inferred/null subjects are never promoted to new mentions or merged into
+ // entities. Mention alternatives are not rankings or proven coreference.
+ function discourseReferenceProposals(clauses){
+  const maxDistance=3,links=[];
+  const singleFrame=clause=>{
+   if(clause?.relativeClauseProposals?.length||
+    clause?.nestedInProposals?.length||clause?.nominalInProposals?.length||
+    clause?.complexClauseProposals?.length||clause?.roleAmbiguous)return null;
+   const readings=(clause?.candidates||[]).filter(c=>
+    c.grade==='grammar-derived candidate'&&
+    c.coverage===clause.tokens.length);
+   if(!readings.length)return null;
+   const frames=new Set(readings.map(c=>JSON.stringify([
+    c.frame.subjectPerson,c.frame.subjectNoun,c.frame.objectNoun,
+    c.frame.predicate,c.frame.tense,c.frame.negative])));
+   return frames.size===1?readings[0].frame:null;
+  };
+  for(let i=1;i<clauses.length&&links.length<24;i++){
+   const target=singleFrame(clauses[i]);
+   // The conservative coreference slot is ONLY an unexpressed 3sg subject
+   // of an intransitive complete finite reading.
+   if(!target||target.subjectPerson!==2||target.subjectNoun||
+    target.objectNoun||target.object)continue;
+   const alternatives=[];
+   for(let j=i-1;j>=0&&i-j<=maxDistance;j--){
+    const prior=singleFrame(clauses[j]);
+    if(!prior)break; // Never leap over unsupported/ambiguous syntax.
+    if(prior.subjectPerson!==2||!prior.subjectNoun||
+     prior.objectNoun||prior.object)continue;
+    const n=noun(prior.subjectNoun);
+    if(!n||!/^https:\/\//.test(n.source||''))continue;
+    alternatives.push({fromClause:j,distance:i-j,
+     antecedent:{written:n.word,meaning:n.meaning,source:n.source},
+     grammaticalRole:'overt 3sg subject',agreement:'3sg ↔ 3sg'});
+   }
+   if(!alternatives.length)continue;
+   links.push({toClause:i,
+    pronounSlot:'implicit 3sg subject indexed by the later finite verb',
+    candidates:alternatives,confidence:'candidate-only',
+    status:alternatives.length===1?
+     'one visible agreement-compatible mention; identity NOT resolved':
+     'multiple visible agreement-compatible mentions; no selection justified',
+    alternatives:'Unmentioned discourse referents also remain possible.',
+    scope:'preceding three analyzed clause units, without crossing an unsupported parse',
+    note:'This is a bounded mention inventory, not an entity-resolution chain. '+
+     'Repeated lexical nouns do not establish that two mentions denote the same person. '+
+     'Implicit subjects never create new identity evidence.'
    });
   }
   return links;
@@ -644,6 +771,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
     fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),
     relativeClauseProposals:candidates.length?[]:relativeInProposals(original,negative),
     nominalInProposals:candidates.length?[]:nominalInProposals(original,negative),
+    nestedInProposals:candidates.length?[]:nestedInProposals(original,negative),
     locativeInterpretations:candidates.length?[]:locativeAnalyze(tokens,negative),
     complexClauseProposals:candidates.length?[]:finiteLocativeProposals(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
@@ -653,7 +781,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
   });
   return {clauses,complete:clauses.length>0&&clauses.every(c=>c.complete),
    contextLinks:explicitContextLinks(clauses),
-   antecedentProposals:possibleAntecedents(clauses)};
+   antecedentProposals:possibleAntecedents(clauses),
+   discourseReferenceProposals:discourseReferenceProposals(clauses)};
  }
  return {analyze};
 }

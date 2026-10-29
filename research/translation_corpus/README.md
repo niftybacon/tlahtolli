@@ -100,6 +100,87 @@ Only an explicit `approved` status and verified permissions authorize training u
 
 **Do not bulk scrape.** Begin with small, individually reviewed passages, proper attribution, and explicit permission checks.
 
+## First operational development-corpus diagnostics (2026-10-29)
+
+Instead of treating the thousands of available historical parallel fragments as
+unusable until certified for a *blind* evaluation, Tlahtōlli now has a repeatable
+**development analysis** over the *actual pinned* upstream Axolotl CSV:
+
+```sh
+curl -fsSL \
+ https://raw.githubusercontent.com/ElotlMX/py-elotl/157f34300f4ca92c3d75b74ec14142916d75c30b/elotl/corpora/axolotl.csv \
+ -o /tmp/tlahtolli-axolotl.csv
+node tools/diagnose_axolotl_development.js /tmp/tlahtolli-axolotl.csv --limit 36
+node tools/diagnose_axolotl_development.js /tmp/tlahtolli-axolotl.csv --limit 48 --json
+```
+
+The tool reuses the existing lexicon lookup, canonical morphology analyzer,
+source-aware sentence parser, and the already-shipped 36,543-row Amoxcalli archive lookup.
+Archive matches are reported separately as exact Classical headword/form evidence,
+diacritic-only Classical variants, or unreviewed Siméon OCR matches; none is promoted
+to a verified curated match or automatically translated. It does **not** create a second translator, infer
+rules from Spanish translations, or copy bilingual passage text into the repo.
+It verifies the original upstream git blob SHA and row/classification totals
+before processing. The bounded sample is deterministic, de-duplicated and
+round-robin stratified by source-work title; the 3–18 word filter prioritizes
+phrase/sentence candidates rather than chapter-length OCR or one-word labels.
+
+This produces exact **in-sample engineering coverage** categories:
+curated lexical forms found/unrecognized, approximate or ambiguous matches,
+unknown tokens with *provisional* morphology analyses, complete indexed
+sentence grammar candidates, source-backed partial grammar windows,
+conditional structural analyses, and source-work-level differences. The
+diagnostic never compares Spanish wording to generated English: those are not
+equivalent representations. A morphology proposal is not counted as a secure
+lexical match; a full grammar candidate is **not** a verified translation.
+
+The GitHub translator regression workflow automatically downloads the exact
+pinned CSV to temporary runner storage, runs a reproducible 36-row sample,
+and reports the aggregate counts without uploading the original bilingual
+sentences or adding examples to `pairs.csv`.
+The separate fixture regression checks sample determinism, non-Classical
+exclusion, duplicate exclusion, source-byte integrity, real-engine use, and
+no fabricated translation score. Developer-created examples exist *only* in
+the fixture tests and do not contribute to the real-corpus report.
+
+### First measured baseline from the pinned source (36-row CI run)
+
+The live source-byte-verified diagnostic on October 29, 2026 analyzed a
+deterministic sample of **36 published Classical-labeled parallel rows across
+17 upstream source-work titles** (GitHub Action `40876479899`,
+pinned blob SHA `90b7327fc4023ba529e1982f823ddeaee6e313e3`).
+
+| Mechanical result | Actual count |
+| --- | ---: |
+| Nahuatl lexical word tokens | 365 |
+| Recognized by the **115-headword curated lookup** | 90 (24.7%) |
+| Not recognized by curated lookup | 275 (75.3%) |
+| Among those 275: exact Classical-labeled **archive** evidence | 41 |
+| Diacritic-only Classical archive evidence | 0 |
+| Siméon OCR evidence only | 41 |
+| Neither archive source matched | 193 |
+| Tokens with unreviewed morphology proposals | 1 |
+| Complete grammar candidates | 0 of 36 |
+| Partial grammar-window rows | 0 of 36 |
+
+The categories are *token occurrences*, not unique lemmas, correct readings,
+or historical translation success rates. The frequent missing surfaces include
+`niman`, `ye`, `ipan`, `oncan`, and `ma`.
+The result points to **source-sensitive lexical/form coverage and morphology**
+as a higher priority than adding another highly specialized sentence pattern.
+It does not make all 193 unmatched forms real missing dictionary headwords:
+inflection, clitics, orthographic variation, named entities, and OCR issues
+remain possible.
+
+**Limitations:** The upstream 'Classical Nahuatl' label is an editorial dataset
+classification. Its Spanish translations can be paraphrastic and its source
+orthography/digitization uneven. Work-level stratification is based on the
+upstream source title. The tool measures *current capability gaps*, not whether
+the original manuscript is authentic or whether a proposed English reading
+would be correct. Fixes must be justified by linguistic evidence; the first
+priority is the highest-impact failure class in the resulting report, not an
+arbitrary additional grammar rule.
+
 ## Seven additional inspected Nahuatl–English anchor pairs (2026-10-29)
 
 [ENL short parallel-anchor pointers](enl_parallel_alignment_pointers.json) record

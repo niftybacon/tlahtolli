@@ -41,6 +41,8 @@ on:
       - 'tools/test_translation_readiness.js'
       - 'tools/test_axolotl_pair_pointers.js'
       - 'tools/inspect_axolotl_candidates.js'
+      - 'tools/diagnose_axolotl_development.js'
+      - 'tools/test_axolotl_development.js'
       - 'tools/diagnose_historical_sentences.js'
       - 'tools/test_historical_sentence_diagnostics.js'
       - 'data/passages.json'
@@ -86,6 +88,8 @@ on:
       - 'tools/test_translation_readiness.js'
       - 'tools/test_axolotl_pair_pointers.js'
       - 'tools/inspect_axolotl_candidates.js'
+      - 'tools/diagnose_axolotl_development.js'
+      - 'tools/test_axolotl_development.js'
       - 'tools/diagnose_historical_sentences.js'
       - 'tools/test_historical_sentence_diagnostics.js'
       - 'data/passages.json'
@@ -153,6 +157,14 @@ jobs:
         run: node tools/test_translation_readiness.js
       - name: Published Axolotl parallel pair pointer integrity (no copied gold)
         run: node --check tools/inspect_axolotl_candidates.js && node tools/test_axolotl_pair_pointers.js
+      - name: Axolotl development diagnostics fixture and no-score safeguards
+        run: node --check tools/diagnose_axolotl_development.js && node tools/test_axolotl_development.js
+      - name: Real pinned Axolotl source grammar/lexical failure inventory
+        run: |
+          curl --fail --location --show-error --silent --retry 2 --connect-timeout 12 --max-time 90 \
+            "https://raw.githubusercontent.com/ElotlMX/py-elotl/157f34300f4ca92c3d75b74ec14142916d75c30b/elotl/corpora/axolotl.csv" \
+            --output "$RUNNER_TEMP/tlahtolli-axolotl-source.csv"
+          node tools/diagnose_axolotl_development.js "$RUNNER_TEMP/tlahtolli-axolotl-source.csv" --limit 36
       - name: Evaluation audit (no invented accuracy)
         run: node tools/evaluate_translation_readiness.js
       - name: Source-evidenced finite verb clause hypotheses and safeguards

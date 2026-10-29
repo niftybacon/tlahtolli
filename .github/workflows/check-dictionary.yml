@@ -62,6 +62,8 @@ jobs:
         run: node tools/test_translator.js
       - name: Declarative Classical clause grammar parity and guardrails
         run: node tools/test_declarative_grammar.js
+      - name: Indexed morphology plus declarative clause evidence boundaries
+        run: node tools/test_morphology_clause_bridge.js
       - name: Test lexical ambiguity and vowel-length abstention
         run: node tools/test_translation_abstention.js
       - name: Test historical spelling and morphology bridge

@@ -355,6 +355,40 @@ with sync_playwright() as pw:
     assert "cihuātl" in mention_text
     assert "identity NOT resolved" in mention_text
     assert "Unmentioned discourse referents" in mention_text
+    # Declarative grammar now licenses overt nouns INSIDE in-subordinate clauses.
+    page.locator("#translatorInput").fill("nicmati in chōca in cihuātl")
+    page.locator("#translatorForm button[type=submit]").click()
+    embedded=page.locator("#translatorPassages .translator-nested-in-proposals")
+    assert embedded.count()==1
+    embedded.evaluate("(node)=>node.open=true")
+    embedded_text=embedded.inner_text()
+    assert "finite clause with overt nominal argument" in embedded_text
+    assert "Overt embedded subject: cihuātl" in embedded_text
+    assert "Exact token coverage: 5" in embedded_text
+    assert "NOT a translation" in embedded_text
+    page.locator("#translatorInput").fill("nicmati in in cihuātl chōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    embedded=page.locator("#translatorPassages .translator-nested-in-proposals")
+    assert embedded.count()==1
+    embedded.evaluate("(node)=>node.open=true")
+    assert "Overt embedded subject: cihuātl" in embedded.inner_text()
+    page.locator("#translatorInput").fill("nicmati in quitta in cihuātl")
+    page.locator("#translatorForm button[type=submit]").click()
+    embedded=page.locator("#translatorPassages .translator-nested-in-proposals")
+    assert embedded.locator(".translator-analysis").count()==2
+    embedded.evaluate("(node)=>node.open=true")
+    assert "Overt embedded subject: cihuātl" in embedded.inner_text()
+    assert "Overt embedded object: cihuātl" in embedded.inner_text()
+    page.locator("#translatorInput").fill("nicmati in chōca nocal")
+    page.locator("#translatorForm button[type=submit]").click()
+    embedded=page.locator("#translatorPassages .translator-nested-in-proposals")
+    assert embedded.count()==1
+    embedded.evaluate("(node)=>node.open=true")
+    assert "noun possessor 1sg" in embedded.inner_text()
+    assert "does not establish the embedded verb subject" in embedded.inner_text()
+    page.locator("#translatorInput").fill("ninemi in chōca in cihuātl")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-nested-in-proposals").count()==0
     # Explicit Classical multi-clause markers. Never infer a single English
     # conjunction, conditional truth, or implicit reference.
     page.locator("#translatorInput").fill("ninemi auh nichōca")

@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-29.3.1",
+  "version": "2026-10-29.4.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -1952,26 +1952,26 @@
     {
       "word": "nonotzalitlani",
       "meaning": "to seek advice",
-      "pos": "verb",
+      "pos": "verb (transitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlani",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlani. nite. pret. onitenonotzalitlan. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "nonotzalitlania",
       "meaning": "to ask for advice",
-      "pos": "verb",
+      "pos": "verb (transitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlania",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlania. nite.. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "nonotzaloca",
@@ -2012,14 +2012,14 @@
     {
       "word": "nopalaquia",
       "meaning": "to plant prickly pear cactus",
-      "pos": "verb",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nopalaquia",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.73v col.1: nopalaquia. ni. pret. oninopalaqui. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "nopalhuehue",
@@ -2048,14 +2048,14 @@
     {
       "word": "nopalteca",
       "meaning": "to plant nopal cactus parts",
-      "pos": "verb",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nopalteca",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.73v col.1: nopalteca. ni.. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "nopaltzonpa",
@@ -2084,26 +2084,26 @@
     {
       "word": "tecpancapohua",
       "meaning": "to count items in an ordered arrangement",
-      "pos": "verb",
-      "original": "",
+      "pos": "verb (transitive)",
+      "original": "tecpancapoa",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpancapohua",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.93r col.2: tecpancapoa. nic. pret. onictepancapouh. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tecpancatenehua",
       "meaning": "to list and count items in order",
-      "pos": "verb",
-      "original": "",
+      "pos": "verb (transitive)",
+      "original": "tecpancateneua",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpancatenehua",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.93r col.2: tecpancateneua. nic. pret. onictecpancateneuh. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tecpanchan",
@@ -2132,14 +2132,14 @@
     {
       "word": "tecpantlalia",
       "meaning": "to put people in order",
-      "pos": "verb",
+      "pos": "verb (transitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpantlalia",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.93r col.2: tecpantlalia. nite.. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tecpantlalli",
@@ -2240,14 +2240,14 @@
     {
       "word": "tecpichoa",
       "meaning": "to gather; yoke or pile up",
-      "pos": "verb",
+      "pos": "verb (transitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpichoa",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.93r col.2: tecpichoa. nitla. pret. onitlatecpicho. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tecpilcalli",
@@ -2276,38 +2276,38 @@
     {
       "word": "tecpilitoa",
       "meaning": "to arm a knight",
-      "pos": "verb",
+      "pos": "verb (transitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpilitoa",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.93r col.2: tecpilitoa. nite. pret. onitetecpilito. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tecpillahtoa",
       "meaning": "to speak in an elegant or courtly manner",
-      "pos": "verb",
-      "original": "",
+      "pos": "verb (intransitive)",
+      "original": "tecpillatoa",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpillahtoa",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.93r col.2: tecpillatoa. ni. pret. onitecpillato. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tecpillahuana",
       "meaning": "to drink moderately",
-      "pos": "verb",
-      "original": "",
+      "pos": "verb (intransitive)",
+      "original": "tecpillauana",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpillahuana",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.93v col.1: tecpillauana. ni. pret. onitecpillauan. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tecpillahuanaliztli",
@@ -2444,14 +2444,14 @@
     {
       "word": "tepozpitza",
       "meaning": "to smelt or melt metal",
-      "pos": "verb",
-      "original": "",
+      "pos": "verb (intransitive)",
+      "original": "tepuzpitza",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/188946",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.104r col.1: tepuzpitza. ni. pret. onitepuzpitz. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tepozpitzcayotl",
@@ -2492,14 +2492,14 @@
     {
       "word": "tepozquechilia",
       "meaning": "to brand an animal",
-      "pos": "verb",
+      "pos": "verb (transitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/200634",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "Entry-specific Karttunen (1992) p.231 vt classification via ODN. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tepozquiquizoani",
@@ -2756,14 +2756,14 @@
     {
       "word": "tlamatzoa",
       "meaning": "to give well-intended advice",
-      "pos": "verb",
+      "pos": "verb (intransitive)",
       "original": "",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=750&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlamatzoa",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN transcription of Molina (1571), Molina (1571), Vocabulario, Part II f.126r col.1: tlamatzoa. ni. pret. onitlamatzo. Editorial index spelling and the exact source-written form are kept distinct. No direct original-folio collation, independently proven stem pair, broad object allomorphy or invented future paradigm."
     },
     {
       "word": "tlamatzohualli",

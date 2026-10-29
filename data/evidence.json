@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-29.3.1",
+  "version": "2026-10-29.4.0",
   "entries": [
     {
       "word": "ātl",
@@ -9664,37 +9664,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nonotzalitlani.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlani",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlani. nite. pret. onitenonotzalitlan",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nonotzalitlani.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlani",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlani. nite. pret. onitenonotzalitlan",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nonotzalitlani.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlani",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlani. nite. pret. onitenonotzalitlan",
+          "note": "The source explicitly labels nite for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlani",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class nite and recorded preterite onitenonotzalitlan do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -9706,37 +9706,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nonotzalitlania.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlania",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlania. nite.",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nonotzalitlania.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlania",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlania. nite.",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nonotzalitlania.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlania",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlania. nite.",
+          "note": "The source explicitly labels nite for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlania",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class nite do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -9874,37 +9874,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nopalaquia.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalaquia",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nopalaquia. ni. pret. oninopalaqui",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nopalaquia.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalaquia",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nopalaquia. ni. pret. oninopalaqui",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nopalaquia.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalaquia",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nopalaquia. ni. pret. oninopalaqui",
+          "note": "The source explicitly labels ni for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalaquia",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class ni and recorded preterite oninopalaqui do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10000,37 +10000,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nopalteca.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalteca",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nopalteca. ni.",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nopalteca.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalteca",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nopalteca. ni.",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 475, result headed “nopalteca.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalteca",
+          "locator": "Molina (1571), Vocabulario, Part II f.73v col.1: nopalteca. ni.",
+          "note": "The source explicitly labels ni for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=475&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalteca",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class ni do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10126,37 +10126,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpancapohua.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancapohua",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpancapoa. nic. pret. onictepancapouh",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpancapohua.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancapohua",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpancapoa. nic. pret. onictepancapouh",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpancapohua.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancapohua",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpancapoa. nic. pret. onictepancapouh",
+          "note": "The source explicitly labels nic for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancapohua",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class nic and recorded preterite onictepancapouh do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10168,37 +10168,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpancatenehua.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancatenehua",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpancateneua. nic. pret. onictecpancateneuh",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpancatenehua.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancatenehua",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpancateneua. nic. pret. onictecpancateneuh",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpancatenehua.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancatenehua",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpancateneua. nic. pret. onictecpancateneuh",
+          "note": "The source explicitly labels nic for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancatenehua",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class nic and recorded preterite onictecpancateneuh do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10294,37 +10294,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpantlalia.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpantlalia",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpantlalia. nite.",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpantlalia.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpantlalia",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpantlalia. nite.",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpantlalia.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpantlalia",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpantlalia. nite.",
+          "note": "The source explicitly labels nite for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpantlalia",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class nite do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10672,37 +10672,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpichoa.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpichoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpichoa. nitla. pret. onitlatecpicho",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpichoa.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpichoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpichoa. nitla. pret. onitlatecpicho",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpichoa.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpichoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpichoa. nitla. pret. onitlatecpicho",
+          "note": "The source explicitly labels nitla for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpichoa",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class nitla and recorded preterite onitlatecpicho do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10798,37 +10798,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpilitoa.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpilitoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpilitoa. nite. pret. onitetecpilito",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpilitoa.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpilitoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpilitoa. nite. pret. onitetecpilito",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpilitoa.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpilitoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpilitoa. nite. pret. onitetecpilito",
+          "note": "The source explicitly labels nite for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpilitoa",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class nite and recorded preterite onitetecpilito do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10840,37 +10840,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpillahtoa.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahtoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpillatoa. ni. pret. onitecpillato",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpillahtoa.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahtoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpillatoa. ni. pret. onitecpillato",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpillahtoa.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahtoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.93r col.2: tecpillatoa. ni. pret. onitecpillato",
+          "note": "The source explicitly labels ni for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahtoa",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class ni and recorded preterite onitecpillato do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10882,37 +10882,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpillahuana.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahuana",
+          "locator": "Molina (1571), Vocabulario, Part II f.93v col.1: tecpillauana. ni. pret. onitecpillauan",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpillahuana.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahuana",
+          "locator": "Molina (1571), Vocabulario, Part II f.93v col.1: tecpillauana. ni. pret. onitecpillauan",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpillahuana.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahuana",
+          "locator": "Molina (1571), Vocabulario, Part II f.93v col.1: tecpillauana. ni. pret. onitecpillauan",
+          "note": "The source explicitly labels ni for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahuana",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class ni and recorded preterite onitecpillauan do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -11386,37 +11386,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozpitza.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/node/188946",
+          "locator": "Molina (1571), Vocabulario, Part II f.104r col.1: tepuzpitza. ni. pret. onitepuzpitz",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozpitza.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/node/188946",
+          "locator": "Molina (1571), Vocabulario, Part II f.104r col.1: tepuzpitza. ni. pret. onitepuzpitz",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozpitza.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/188946",
+          "locator": "Molina (1571), Vocabulario, Part II f.104r col.1: tepuzpitza. ni. pret. onitepuzpitz",
+          "note": "The source explicitly labels ni for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/node/188946",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class ni and recorded preterite onitepuzpitz do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -11554,37 +11554,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozquechilia.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/node/200634",
+          "locator": "Karttunen (1992), An Analytical Dictionary of Nahuatl, p.231, TEPOZQUECHILIĀ vt (via ODN)",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozquechilia.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/node/200634",
+          "locator": "Karttunen (1992), An Analytical Dictionary of Nahuatl, p.231, TEPOZQUECHILIĀ vt (via ODN)",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozquechilia.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/200634",
+          "locator": "Karttunen (1992), An Analytical Dictionary of Nahuatl, p.231, TEPOZQUECHILIĀ vt (via ODN)",
+          "note": "The source explicitly labels vt for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/node/200634",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class vt do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -12478,37 +12478,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=750&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 750, result headed “tlamatzoa.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatzoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.126r col.1: tlamatzoa. ni. pret. onitlamatzo",
+          "note": "Entry-specific lexical identity is linked to a published Molina/Karttunen transcription, not independently verified folio evidence.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=750&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 750, result headed “tlamatzoa.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatzoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.126r col.1: tlamatzoa. ni. pret. onitlamatzo",
+          "note": "Source-level basic gloss is supported at this entry, but contextual sense choice is not independently verified.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=750&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 750, result headed “tlamatzoa.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatzoa",
+          "locator": "Molina (1571), Vocabulario, Part II f.126r col.1: tlamatzoa. ni. pret. onitlamatzo",
+          "note": "The source explicitly labels ni for this lexical use; other object/reflexive readings are not inferred.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=750&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatzoa",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "The source-checked grammatical class ni and recorded preterite onitlamatzo do not independently license a base-1/base-2 stem paradigm or arbitrary orthographic substitution.",
+          "reviewer": "Tlahtōlli entry-level ODN source transcription audit (2026-10-29; not original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]

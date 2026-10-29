@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.3.1",
+  "version": "2026-10-29.4.0",
   "entries": [
     {
       "word": "ātl",
@@ -4233,9 +4233,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nonotzalitlani",
+      "grammarNotes": "Source-checked explicit nite lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onitenonotzalitlan",
+          "category": "Preterite 1sg, animate indefinite object (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nonotzalitlani",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.73v col.1: nonotzalitlani. nite. pret. onitenonotzalitlan. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4248,8 +4257,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nonotzalitlania",
+      "grammarNotes": "Source-checked explicit nite lexical construction; no independently source-recorded finite preterite. Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
       "inflections": [],
       "formsEdited": false
     },
@@ -4308,9 +4317,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nopalaquia",
+      "grammarNotes": "Source-checked explicit ni lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "oninopalaqui",
+          "category": "Preterite 1sg (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nopalaquia",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.73v col.1: nopalaquia. ni. pret. oninopalaqui. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4353,8 +4371,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nopalteca",
+      "grammarNotes": "Source-checked explicit ni lexical construction; no independently source-recorded finite preterite. Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
       "inflections": [],
       "formsEdited": false
     },
@@ -4398,9 +4416,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpancapohua",
+      "grammarNotes": "Source-checked explicit nic lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onictepancapouh",
+          "category": "Preterite 1sg, specific object (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancapohua",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.93r col.2: tecpancapoa. nic. pret. onictepancapouh. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4413,9 +4440,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpancatenehua",
+      "grammarNotes": "Source-checked explicit nic lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onictecpancateneuh",
+          "category": "Preterite 1sg, specific object (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpancatenehua",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.93r col.2: tecpancateneua. nic. pret. onictecpancateneuh. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4458,8 +4494,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpantlalia",
+      "grammarNotes": "Source-checked explicit nite lexical construction; no independently source-recorded finite preterite. Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
       "inflections": [],
       "formsEdited": false
     },
@@ -4593,9 +4629,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpichoa",
+      "grammarNotes": "Source-checked explicit nitla lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onitlatecpicho",
+          "category": "Preterite 1sg, unspecified object (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpichoa",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.93r col.2: tecpichoa. nitla. pret. onitlatecpicho. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4638,9 +4683,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpilitoa",
+      "grammarNotes": "Source-checked explicit nite lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onitetecpilito",
+          "category": "Preterite 1sg, animate indefinite object (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpilitoa",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.93r col.2: tecpilitoa. nite. pret. onitetecpilito. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4653,9 +4707,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpillahtoa",
+      "grammarNotes": "Source-checked explicit ni lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onitecpillato",
+          "category": "Preterite 1sg (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahtoa",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.93r col.2: tecpillatoa. ni. pret. onitecpillato. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4668,9 +4731,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpillahuana",
+      "grammarNotes": "Source-checked explicit ni lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onitecpillauan",
+          "category": "Preterite 1sg (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpillahuana",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.93v col.1: tecpillauana. ni. pret. onitecpillauan. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4848,9 +4920,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/188946",
+      "grammarNotes": "Source-checked explicit ni lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onitepuzpitz",
+          "category": "Preterite 1sg (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/188946",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.104r col.1: tepuzpitza. ni. pret. onitepuzpitz. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4908,8 +4989,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/200634",
+      "grammarNotes": "Source-checked explicit vt lexical construction; no independently source-recorded finite preterite. Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
       "inflections": [],
       "formsEdited": false
     },
@@ -5256,9 +5337,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlamatzoa",
+      "grammarNotes": "Source-checked explicit ni lexical construction; one source-recorded 1sg preterite Stem/base class, vowel quantity beyond source spelling, other tenses and sentence meaning remain unresolved.",
+      "inflections": [
+        {
+          "form": "onitlamatzo",
+          "category": "Preterite 1sg (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlamatzoa",
+          "note": "Exact preterite token as reported in Molina (1571), Vocabulario, Part II f.126r col.1: tlamatzoa. ni. pret. onitlamatzo. Dictionary transcription only, not a separately collated manuscript or a generalized stem-class rule."
+        }
+      ],
       "formsEdited": false
     },
     {

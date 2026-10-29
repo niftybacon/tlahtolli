@@ -36,7 +36,8 @@ const check=(input,kind)=>{
  assert.equal(p.coverage,cl.tokens.length,'No original word silently discarded');
  assert(p.sources.length>=2&&p.sources.every(url=>url.startsWith('https://')));
  assert(p.grade.includes('NOT an attested sentence'));
- assert(p.note.includes('NOT thereby attested'));
+ assert(p.note.includes(p.sourceWindow?'NOT thereby verified':'NOT thereby attested'),
+  'Exact editorial witness must not be confused with verified grammar');
  assert.equal(composer.compose(input,result).available,false);
  const graph=ir.build(input,result);
  assert.equal(graph.alternatives.length,1);

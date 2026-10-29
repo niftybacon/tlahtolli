@@ -867,13 +867,59 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  // dependencies. A nested headed relative is an alternative terminal form.
  // No omitted verbs, inferred markers, or unattested spelling repairs.
  function nestedInProposals(tokens,negative){
-  if(negative||tokens.length<5||tokens.length>11||
+  if(negative||tokens.length<4||tokens.length>11||
    tokens.some(t=>typeof t!=='string'||t.length>120))return [];
   const results=[];
   const licensesComplement=p=>p.transitive&&
    (p.lemma==='mati'||p.lemma==='itta');
+  // An embedded finite predicate may carry its own overt subject/object.
+  // Delegate to the SAME full-consumption declarative clause grammar.
+  function terminalArgumentProposals(at,depth,parents){
+   if(depth<1||depth>3||results.length>=16)return;
+   const suffix=tokens.slice(at);
+   if(suffix.length<2||suffix.length>5)return;
+   for(const {parse,rule,subjectNoun,objectNoun} of
+    matchClauseRules(suffix,finiteAt,{possessed:resolveRecordedPossessed})){
+    if(rule.roles==='none'||results.length>=16)break;
+    let verbAt=0;
+    for(const slot of rule.sequence){
+     if(slot==='V')break;
+     verbAt+=slot==='NP'?2:norm(suffix[verbAt])==='in'?2:1;
+    }
+    const leaf={written:suffix[verbAt],lemma:parse.lemma,tense:parse.tense,
+     subjectPerson:PERSON_CODES[parse.person],transitive:!!parse.transitive,
+     source:parse.source};
+    const argumentOf=n=>n?{
+     written:n.written||n.word,lemma:n.word,meaning:n.meaning,source:n.source,
+     ...(n.possessor?{possessor:n.possessor,
+      possessorSource:n.possessorSource,possessorLocator:n.possessorLocator}: {})
+    }:null;
+    const subject=argumentOf(subjectNoun),object=argumentOf(objectNoun);
+    const layers=[...parents,leaf];
+    results.push({
+     construction:'in-introduced finite clause with overt nominal argument',
+     grade:'declarative-grammar subordinate argument hypothesis (NOT a translation)',
+     matrix:layers[0],layers,depth,coverage:tokens.length,
+     terminal:{kind:'finite-with-arguments',predicate:leaf,ruleId:rule.id,
+      written:suffix.join(' '),subjectArgument:subject,objectArgument:object,
+      roleStatus:rule.roles==='either'||rule.roles==='both'?
+       'multiple unranked agreement-compatible roles':'single rule-constrained role',
+      argumentSource:rule.source_url},
+     sources:[...new Set([...IN_SOURCES,CLAUSE_SOURCE,
+      ...layers.map(l=>l.source),rule.source_url,
+      subject?.source,object?.source,subject?.possessorSource,
+      object?.possessorSource].filter(Boolean))],
+     note:'The embedded finite clause and its overt noun arguments are licensed by '+
+      'the same fully consuming declarative grammar as an independent clause. '+
+      'The leading in is a possible subordinator, while any later in may introduce a noun. '+
+      'Noun possessor, indexed verb subject, clause attachment and referent identity remain distinct and unresolved. '+
+      'The combined subordinate construction has no independently verified English translation.'
+    });
+   }
+  }
   function visit(at,depth,parents){
    if(depth>3||results.length>=16)return;
+   terminalArgumentProposals(at,depth,parents);
    for(const reading of finiteAt(tokens[at]).slice(0,8)){
     const node={written:tokens[at],lemma:reading.lemma,tense:reading.tense,
      subjectPerson:PERSON_CODES[reading.person],transitive:!!reading.transitive,
@@ -918,8 +964,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
       if(results.length>=16)return;
      }
     }
-    if(licensesComplement(reading)&&at+2<tokens.length&&
-     finiteAt(tokens[at+2]).length){
+    if(licensesComplement(reading)&&at+2<tokens.length){
      visit(at+2,depth+1,[...parents,node]);
     }
    }

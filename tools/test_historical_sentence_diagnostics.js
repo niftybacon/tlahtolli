@@ -36,6 +36,8 @@ assert(enl&&enl.original==='ticnamaca y¯ totlal');
 assert(enl.originalAnalysis.proposalCounts.some(p=>p.agreementProposals>=2),
  'The source-graded ambiguity of ticnamaca must survive in a bounded argument proposal');
 assert.equal(enl.originalAnalysis.englishDraftAvailable,false);
+assert(enl.originalAnalysis.tokenSurfaceDifferences.some(x=>x.written==='y¯'&&x.lexicalToken==='y'),
+ 'Tokenization must disclose loss of the original scribal overbar');
 const model=d.loadModels();
 const invented=d.analyzeText('nichōca totally-unattested',model);
 assert.equal(invented.englishDraftAvailable,false,'No unknown material may disappear into English');

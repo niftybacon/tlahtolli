@@ -73,6 +73,8 @@ vm.runInNewContext(script,context,{filename:'amoxcalli-archive.js'});
   rule:'Arbitrary guess'}]).total,0);
  assert.equal(api.lookupHistoricalEvidence('yn',[{form:'in',changed:true,
   rule:'Initial y → i (tentative)'}],{limit:1}).hits.length,1);
+ assert.equal(api.lookupHistoricalEvidence('y',variants('y','codex')).total,0,
+  'A one-letter historical y must not be equated automatically with lexical i');
  assert.equal(api.lookupHistoricalEvidence('y¯',variants('y¯','codex')).total,0,
   'Abbreviation overbars may not be dropped to find a fake lexical candidate');
  const truncated=api.lookupEvidence('catl',{limit:1});

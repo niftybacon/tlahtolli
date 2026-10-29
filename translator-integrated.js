@@ -839,9 +839,23 @@ function showResult(){
      // First archive load supplies source-labelled morphology to the existing
      // sentence analyzer. Re-evaluate exactly once; no new curated matches.
      if(!archiveMorphologyRendered){
+      // Archive loading can finish while a researcher is reading expanded
+      // source-morpheme notes.  Do not reset their open details as a side
+      // effect of adding low-confidence archive clues to the sentence view.
+      const visibleNotes=[parts,passages].map(parent=>
+       [...parent.querySelectorAll('details.translator-morph-panel')]
+        .map((node,index)=>({index,open:node.open}))
+        .filter(item=>item.open));
       archiveMorphologyRendered=true;
       morphBridge?.clearCache();
-      showResult();return;
+      showResult();
+      [parts,passages].forEach((parent,section)=>{
+       const panels=[...parent.querySelectorAll('details.translator-morph-panel')];
+       for(const item of visibleNotes[section]){
+        if(panels[item.index])panels[item.index].open=true;
+       }
+      });
+      return;
      }
      let supplemented=0,approximate=0;
      wordEntries.forEach((item,i)=>{

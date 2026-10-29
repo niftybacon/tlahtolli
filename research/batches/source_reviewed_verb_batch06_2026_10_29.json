@@ -42,13 +42,13 @@
     {
       "word": "yāōmiqui",
       "source": "https://nahuatl.wired-humanities.org/content/yaomiqui",
-      "pos": "verb (intransitive)",
+      "pos": "verb (class unresolved)",
       "locator": "Sahagún Primeros Memoriales, Sullivan ed. 1997 p.164 (yaumiquiz)",
       "preterite": "",
       "preterite_category": "",
       "short_base": "",
       "stem_locator": "",
-      "note": "Future token is source-spelled and does not license a new finite paradigm"
+      "note": "Future token is source-spelled and does not license a new finite paradigm Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status."
     },
     {
       "word": "poyōmiqui",
@@ -97,13 +97,13 @@
     {
       "word": "chānti",
       "source": "https://nahuatl.wired-humanities.org/content/chanti",
-      "pos": "verb (intransitive)",
+      "pos": "verb (class unresolved)",
       "locator": "Karttunen 1992 pp.45–46, CHĀNTI (settle, dwell)",
       "preterite": "",
       "preterite_category": "",
       "short_base": "",
       "stem_locator": "",
-      "note": ""
+      "note": " Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status."
     },
     {
       "word": "tzatzi",
@@ -427,13 +427,13 @@
     {
       "word": "tozoā",
       "source": "https://nahuatl.wired-humanities.org/content/tozoa",
-      "pos": "verb (intransitive)",
+      "pos": "verb (class unresolved)",
       "locator": "Karttunen 1992 p.249; dictionary headword TŌZOĀ",
       "preterite": "",
       "preterite_category": "",
       "short_base": "",
       "stem_locator": "",
-      "note": "No source-located 1sg past; lexical-only promotion"
+      "note": "No source-located 1sg past; lexical-only promotion Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status."
     },
     {
       "word": "tzāhua",

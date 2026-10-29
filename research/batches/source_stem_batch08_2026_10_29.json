@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "target_version": "2026-10-29.8.0",
   "baseline_headwords": 2142,
-  "reviewed_candidates": 39,
+  "reviewed_candidates": 38,
   "existing_class1_review": 4,
   "productive_class_count": 19,
   "policy": "Each row is bounded to quoted ODN historical lexicographic material. Grade historical dictionary entry separately from manuscript attestation. Only unambiguous exact person-marked and Class 1/-c or Class 2 short-base evidence licenses hypotheses.",
@@ -453,18 +453,6 @@
       "kind": "new-source-review"
     },
     {
-      "word": "chīpini",
-      "source": "https://nahuatl.wired-humanities.org/content/chipini",
-      "pos": "verb (impersonal or unresolved)",
-      "locator": "Molina II f.21r col.2; Karttunen 1992 p.53",
-      "preterite": "ochipin",
-      "category": "Preterite (unmarked subject)",
-      "short_base": "",
-      "class": "",
-      "note": "Source says for droplets to fall, not verified first-person agreement.",
-      "kind": "new-source-review"
-    },
-    {
       "word": "poztequi",
       "source": "https://nahuatl.wired-humanities.org/content/poztequi",
       "pos": "verb (transitive/reflexive)",
@@ -509,6 +497,28 @@
       "locator": "Molina II f.83r col.2; Karttunen 1992 p.203",
       "note": "Molina's ni- smoking sense, no impersonal transfer.",
       "kind": "class1-existing"
+    }
+  ],
+  "refusals": [
+    {
+      "word": "chīpini",
+      "source": "https://nahuatl.wired-humanities.org/content/chipini",
+      "reason": "Canonical index spelling chīpini conflicts with Karttunen CHIPĪN(I); do not silently promote vowel length or merge phonemic identities."
+    },
+    {
+      "word": "nehnemi",
+      "source": "https://nahuatl.wired-humanities.org/content/nehnemi",
+      "reason": "Currently visible ODN page supplies modern IDIEZ morphology without an independently checked Classical preterite/ni- form."
+    },
+    {
+      "word": "tzahtzi",
+      "source": "https://nahuatl.wired-humanities.org/content/tzahtzi",
+      "reason": "Modern IDIEZ tlach1 label alone does not verify older Nahuatl stem class."
+    },
+    {
+      "word": "ihcihui",
+      "source": "https://nahuatl.wired-humanities.org/content/ihcihui",
+      "reason": "Modern IDIEZ class evidence only; historical finite stem unconfirmed."
     }
   ]
 }

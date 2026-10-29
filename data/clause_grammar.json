@@ -1,0 +1,167 @@
+{
+  "format": "tlahtolli-classical-clause-rules-v1",
+  "version": 1,
+  "authority": "Grammar-compositional hypotheses using explicitly indexed present/future finite verbs; not manuscript attestation or verified translations.",
+  "slots": {
+    "V": "exact indexed present/future finite verb",
+    "NP": "written in + one unique curated Classical noun citation form"
+  },
+  "notes": "Rules preserve the existing narrow grammar while making construction order, transitivity, subject-person constraints, and role alternatives declarative. These are not independently reviewed translation pairs.",
+  "rules": [
+    {
+      "id": "finite-alone",
+      "sequence": [
+        "V"
+      ],
+      "valency": "any",
+      "persons": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "roles": "none",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "intransitive-subject-post",
+      "sequence": [
+        "V",
+        "NP"
+      ],
+      "valency": "intransitive",
+      "persons": [
+        2
+      ],
+      "roles": "subject",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "intransitive-subject-pre",
+      "sequence": [
+        "NP",
+        "V"
+      ],
+      "valency": "intransitive",
+      "persons": [
+        2
+      ],
+      "roles": "subject",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "transitive-explicit-object-post",
+      "sequence": [
+        "V",
+        "NP"
+      ],
+      "valency": "transitive",
+      "persons": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "roles": "object",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "transitive-explicit-object-pre",
+      "sequence": [
+        "NP",
+        "V"
+      ],
+      "valency": "transitive",
+      "persons": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "roles": "object",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "transitive-third-role-ambiguous-post",
+      "sequence": [
+        "V",
+        "NP"
+      ],
+      "valency": "transitive",
+      "persons": [
+        2
+      ],
+      "roles": "either",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "transitive-third-role-ambiguous-pre",
+      "sequence": [
+        "NP",
+        "V"
+      ],
+      "valency": "transitive",
+      "persons": [
+        2
+      ],
+      "roles": "either",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "transitive-two-nps-verb-first",
+      "sequence": [
+        "V",
+        "NP",
+        "NP"
+      ],
+      "valency": "transitive",
+      "persons": [
+        2
+      ],
+      "roles": "both",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "transitive-two-nps-verb-middle",
+      "sequence": [
+        "NP",
+        "V",
+        "NP"
+      ],
+      "valency": "transitive",
+      "persons": [
+        2
+      ],
+      "roles": "both",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    },
+    {
+      "id": "transitive-two-nps-verb-last",
+      "sequence": [
+        "NP",
+        "NP",
+        "V"
+      ],
+      "valency": "transitive",
+      "persons": [
+        2
+      ],
+      "roles": "both",
+      "source_url": "https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf",
+      "evidence_status": "editorial formalization of cited Classical grammar; not individual manuscript attestation"
+    }
+  ]
+}

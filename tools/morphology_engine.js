@@ -250,6 +250,242 @@ const TlahtolliMorphEngine = (() => {
    }
   }
  }
+ // Reuse source-checked regular intransitive citation forms as the complete
+ // present stem for singular ni-/ti- subject agreement. This extends analysis
+ // beyond the 12 curated *full* paradigm matrices without creating a second
+ // conjugator or inferring a whole past/future paradigm.
+ // Exact NFC spelling is required: no silent loss of vowel-length contrast.
+ function fromRegularIntransitivePresent(raw,all){
+  const written=String(raw||'').normalize('NFC').toLocaleLowerCase('en');
+  for(const w of words){
+   if(String(w.pos||'').trim().toLowerCase()!=='verb (intransitive)'||
+      Object.prototype.hasOwnProperty.call(FULL_VERB_PARADIGMS,w.word))continue;
+   const head=sourceClaim(w,'headword'),category=sourceClaim(w,'pos');
+   if(!head||!category||!/^https:\/\//u.test(head.source||'')||
+      !/^https:\/\//u.test(category.source||''))continue;
+   const lemma=String(w.word||'').normalize('NFC').toLocaleLowerCase('en');
+   if(!/^[\p{L}\p{M}]{3,120}$/u.test(lemma))continue;
+   for(const subject of PEOPLE.slice(0,2)){
+    // Only 1sg ni- and 2sg ti-; 1pl/2pl/3pl require distinct
+    // suffix/number treatment. Do not derive a transitive without an object.
+    if(written!==subject.surface+lemma)continue;
+    if(all.some(c=>c.lemma===w.word&&
+       ['manuscript','lexical','grammar'].includes(c.grade)))continue;
+    all.push(make(w.word,'Regular intransitive present hypothesis','hypothesis',
+     {tense:'Present',subject:subject.person,category:'verb',
+      sourceStatus:'Curated intransitive headword + general singular subject rule'},
+     [{surface:raw.slice(0,subject.surface.length),role:'Subject '+subject.person+' prefix; grammar-derived'},
+      {surface:raw.slice(subject.surface.length),role:'Source-listed intransitive citation form; proposed present base'}],
+     head.source,head.locator||'',
+     'Analytical ni-/ti- plus source-checked intransitive citation form. This exact finite word is NOT independently attested by the source, and no plural, nonpresent, incorporated or transitive forms are inferred.'));
+   }
+  }
+ }
+ // A source-located bound *possessed* base is different from an absolutive
+ // combining stem. Only a single explicitly listed bound lexical form can
+ // license prefix substitutions; multi-part relations and semantic exceptions
+ // cannot be generalized safely.
+ // Extend finite morphology beyond the 12 complete 10×6 matrices by
+ // composing ONLY independently recorded 1sg preterite examples and source-
+ // checked citation bases. No new stem dictionary, analyzer, or matrix exists.
+ // Never compare a generated candidate through normalize(): vowel length and
+ // original source spelling must stay exact for speculative forms.
+ function fromSourceLocatedFiniteTemplates(raw,all){
+  const written=String(raw||'').normalize('NFC').toLocaleLowerCase('en');
+  if(!/^[\p{L}\p{M}]{4,120}$/u.test(written))return;
+  for(const w of words){
+   if(Object.prototype.hasOwnProperty.call(FULL_VERB_PARADIGMS,w.word))continue;
+   const pos=String(w.pos||'').trim().toLowerCase();
+   if(!['verb (intransitive)','verb (transitive)','verb (transitive/reflexive)'].includes(pos))continue;
+   const head=sourceClaim(w,'headword'),category=sourceClaim(w,'pos');
+   if(!head||!category||!/^https:\/\//u.test(head.source||'')||
+      !/^https:\/\//u.test(category.source||''))continue;
+   const lemma=String(w.word||'').normalize('NFC').toLocaleLowerCase('en');
+   if(!/^[\p{L}\p{M}]{3,110}$/u.test(lemma))continue;
+   for(const example of w.inflections||[]){
+    if(!['dictionary','text'].includes(example.evidence)||
+       !/^https:\/\//u.test(example.source||'')||
+       !/^Preterite 1sg(?:\b|[,(])/iu.test(String(example.category||'')))continue;
+    const recorded=String(example.form||'').normalize('NFC').toLocaleLowerCase('en');
+    // Only a recorded o-/ō- augment followed by the actual 1sg ni-
+    // licenses a change of singular SUBJECT. Other preterites, reflexives,
+    // plural allomorphs and bare dictionary stems have different licensing.
+    const m=/^(o|ō)ni([\p{L}\p{M}]{3,110})$/u.exec(recorded);
+    if(!m)continue;
+    const [augment,remainder]=[m[1],m[2]];
+    let object='',objectRole='';
+    if(pos==='verb (intransitive)'){
+     // There is no object slot; source-listed 1sg stem is preserved intact.
+     if(/object|reflexive/iu.test(example.category))continue;
+    }else if(pos==='verb (transitive)'){
+     if(/unspecified object/iu.test(example.category)&&remainder.startsWith('tla')){
+      object='tla';objectRole='nonhuman indefinite (source-labelled)';
+     }else if(/animate indefinite object/iu.test(example.category)&&remainder.startsWith('te')){
+      // Molina's independently labelled nite- transitive class; no guessed vowel-length variation.
+      object='te';objectRole='human indefinite (exact source-spelled prefix)';
+     }else if(/specific object/iu.test(example.category)&&remainder.startsWith('c')){
+      object='c';objectRole='3sg object (source-labelled)';
+     }else continue;
+    }else{
+     // Mixed transitive/reflexive lexical classes are accepted ONLY for a
+     // separately labelled non-reflexive, animate indefinite object.
+     if(!/animate indefinite object/iu.test(example.category)||!remainder.startsWith('te'))continue;
+     object='te';objectRole='human indefinite (source spelling; vowel length unresolved)';
+    }
+    if(remainder.length-object.length<2)continue;
+    const partsFor=person=>[
+     {surface:augment,role:'Augment exactly as recorded in a 1sg preterite example'},
+     {surface:person,role:'2sg ti- subject prefix (grammar substitution)'},
+     ...(object?[{surface:object,role:objectRole+'; exact object sequence retained'}]:[]),
+     {surface:remainder.slice(object.length),
+      role:'Unaltered remainder of source-listed 1sg preterite; no inferred internal stem boundaries'}
+    ];
+    const preterite=augment+'ti'+remainder;
+    if(written===preterite&&!all.some(a=>a.lemma===w.word&&
+       ['manuscript','lexical','grammar','paradigm'].includes(a.grade))){
+     const parts=partsFor('ti');
+     all.push(make(w.word,'Source-template singular preterite hypothesis','hypothesis',
+      {tense:'Preterite',subject:'2sg',object:objectRole||'intransitive',
+       sourceStatus:'Independent 1sg dictionary/example token + regular singular subject agreement'},
+      parts,example.source,head.locator||'',
+      'The 1sg preterite is source-listed; this 2sg substitution is NOT independently attested. No person-plural agreement, irregular-base inference, context-specific tense force or English translation is established.'));
+    }
+    // The source may independently specify DIFFERENT present (base 1) and
+    // preterite (base 2) stems. Use them only when this exact documented
+    // preterite validates the shorter stem: never infer an arbitrary class
+    // from a citation headword or from the 36K unreviewed archive.
+    const stemClaim=sourceClaim(w,'stem');
+    const stemBases=String(w.stem||'').split(';')
+     .map(x=>x.trim().match(/^([\p{L}\p{M}]{2,110})-$/u))
+     .filter(Boolean).map(x=>x[1].normalize('NFC').toLocaleLowerCase('en'));
+    const shortBase=remainder.slice(object.length);
+    const classLicensed=stemClaim&&/^https:\/\//u.test(stemClaim.source||'')&&
+     stemBases.length===2&&stemBases.includes(lemma)&&
+     stemBases.includes(shortBase)&&lemma!==shortBase&&
+     // Exact short-base evidence belongs to this lexeme and finite cell.
+     ['verb (intransitive)','verb (transitive)'].includes(pos);
+    const stronger=()=>all.some(a=>a.lemma===w.word&&
+     ['manuscript','lexical','grammar','paradigm'].includes(a.grade));
+    if(classLicensed){
+     // The zero-subject 3sg preterite keeps the *whole* short base and
+     // augment. Object agreement can alternate for transitive third person:
+     // refuse it rather than invent a c-/qui- allomorph.
+     if(pos==='verb (intransitive)'&&written===augment+shortBase&&!stronger())
+      all.push(make(w.word,'Source-stem-class third-person preterite hypothesis','hypothesis',
+       {tense:'Preterite',subject:'3sg',object:'intransitive',
+        stemClass:'Independently located long/short lexical bases'},
+       [{surface:augment,role:'Source-listed preterite augment'},
+        {surface:'Ø',role:'Third-person singular subject (zero prefix)'},
+        {surface:shortBase,role:'Exact source-checked preterite short base'}],
+       stemClaim.source,stemClaim.locator,
+       'The source establishes this lexical short base, not this complete third-person token. Grammatical combination is a NOT independently attested hypothesis, not translated English.'));
+     // Future singular uses the *present* base followed by -z, not the
+     // short preterite base. Only the same explicitly recorded indefinite
+     // object is retained; do NOT extrapolate specific c-/qui- forms.
+     if(pos==='verb (intransitive)'||object==='tla'){
+      const subjects=pos==='verb (intransitive)'?
+       [PEOPLE[0],PEOPLE[1],PEOPLE[2]]:[PEOPLE[0],PEOPLE[1]];
+      for(const who of subjects){
+       const surface=who.surface+object+lemma+'z';
+       if(written!==surface||stronger())continue;
+       all.push(make(w.word,'Source-stem-class future hypothesis','hypothesis',
+        {tense:'Future',subject:who.person,object:objectRole||'intransitive',
+         stemClass:'Source-checked present base with -z future'},
+        [{surface:who.surface||'Ø',role:'Singular subject '+who.person+' (zero for 3sg)'},
+         ...(object?[{surface:object,role:objectRole+'; retained from exact preterite evidence'}]:[]),
+         {surface:lemma,role:'Source-checked long/present lexical base'},
+         {surface:'z',role:'Singular future -z; grammatical rule, not attestation'}],
+        stemClaim.source,stemClaim.locator,
+        'The lexical bases and source-listed 1sg preterite justify a class-limited future hypothesis. The generated whole word is NOT independently attested or a verified contextual translation.'));
+      }
+     }
+    }
+    // A verified base-2 (preterite) and base-1 (present) also permit
+    // narrowly bounded plural morphology: -queh follows the short past
+    // base and -zqueh follows the long future base. The PERSON prefix is
+    // the already indexed Tēntli plural inventory (ti-/an-/Ø).
+    // Do not generate other tense/aspect classes, reflexives, or c-/qui-
+    // object allomorphs; an explicit tla- example is required for transitives.
+    if(classLicensed&&(pos==='verb (intransitive)'||object==='tla')){
+     for(const who of PEOPLE.slice(3)){
+      const preterite=augment+who.surface+object+shortBase+'queh';
+      if(written===preterite&&!stronger())
+       all.push(make(w.word,'Source-stem-class plural preterite hypothesis','hypothesis',
+        {tense:'Preterite',subject:who.person,object:objectRole||'intransitive',
+         stemClass:'Source-checked short base + nonpresent plural -queh'},
+        [{surface:augment,role:'Augment exactly as source-recorded'},
+         {surface:who.surface||'Ø',role:'Plural subject '+who.person},
+         ...(object?[{surface:object,role:'Recorded indefinite object prefix'}]:[]),
+         {surface:shortBase,role:'Independently checked preterite short base'},
+         {surface:'queh',role:'Classical nonpresent plural -queh'}],
+        stemClaim.source,stemClaim.locator,
+        'Classical plural preterite construction from sourced base 2 and a recorded 1sg form. Generated token is NOT independently attested; number, dialectal suffix variants and English remain unverified.'));
+      const future=who.surface+object+lemma+'zqueh';
+      if(written===future&&!stronger())
+       all.push(make(w.word,'Source-stem-class plural future hypothesis','hypothesis',
+        {tense:'Future',subject:who.person,object:objectRole||'intransitive',
+         stemClass:'Source-checked present base + -zqueh'},
+        [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+         ...(object?[{surface:object,role:'Recorded indefinite object prefix'}]:[]),
+         {surface:lemma,role:'Independently checked long/present base'},
+         {surface:'z',role:'Classical future marker -z'},
+         {surface:'queh',role:'Classical nonpresent plural -queh'}],
+        stemClaim.source,stemClaim.locator,
+        'Classical plural future construction from sourced base 1 and recorded valency. Generated token is NOT independently attested or a complete English translation.'));
+     }
+    }
+    // Present plural in Classical Nahuatl has the separately documented -h
+    // ending (Launey, Lesson 1; Sullivan, indicative). Reuse ONLY the same
+    // source-verified base-1/base-2 class already required for past/future.
+    // A headword or an unreviewed archive record alone cannot license this.
+    if(classLicensed&&pos==='verb (intransitive)'){
+     for(const who of PEOPLE.slice(3)){
+      const present=who.surface+lemma+'h';
+      if(written!==present||stronger())continue;
+      all.push(make(w.word,'Source-stem-class plural present hypothesis','hypothesis',
+       {tense:'Present',subject:who.person,object:'intransitive',
+        stemClass:'Independently checked present base + Classical plural -h'},
+       [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+        {surface:lemma,role:'Source-checked long/present lexical base'},
+        {surface:'h',role:'Classical present plural -h; grammatical rule, not an attestation'}],
+       stemClaim.source,stemClaim.locator,
+       'Present plural hypothesis from independently sourced verb bases, a located 1sg preterite, and published Classical number agreement. This whole written form is NOT independently attested or a complete translation.'));
+     }
+    }
+    // The citation form is the source-checked present base, but only an
+    // INDEPENDENTLY documented object slot (tla or te) licenses transitive
+    // present agreement. We do NOT infer arbitrary objects, c/qui
+    // allomorphy, or reflexives from a bare lexical transitivity label.
+    if(object!=='tla'&&object!=='te')continue;
+    for(const person of PEOPLE.slice(0,2)){
+     const present=person.surface+object+lemma;
+     if(written!==present||all.some(a=>a.lemma===w.word&&
+        ['manuscript','lexical','grammar','paradigm'].includes(a.grade)))continue;
+     all.push(make(w.word,'Source-template transitive present hypothesis','hypothesis',
+      {tense:'Present',subject:person.person,object:objectRole,
+       sourceStatus:'Curated citation base and exact source-reported indefinite object slot'},
+      [{surface:person.surface,role:person.person+' subject prefix (grammar-derived)'},
+       {surface:object,role:objectRole+'; attested as a slot in the source-listed 1sg preterite'},
+       {surface:lemma,role:'Curated dictionary citation base; not independently attested with these prefixes'}],
+      example.source,head.locator||'',
+      'Productive singular present interpretation from source-supported citation base and object pattern. This whole token is NOT independently attested; no alternate stem, additional object, number, sense, or verified English is inferred.'));
+    }
+   }
+  }
+ }
+ function sourceBoundPossessedBase(w){
+  if(String(w.pos||'').trim().toLowerCase()!=='noun')return null;
+  const claim=sourceClaim(w,'possessed');
+  if(!claim||!sourceClaim(w,'headword')||!sourceClaim(w,'pos')||
+     !/^https:\/\//u.test(claim.source||''))return null;
+  const specified=String(w.possessed||'').trim().normalize('NFC');
+  const match=/^-([\p{L}\p{M}]{2,80})\s*\(([^()]*)\)$/u.exec(specified);
+  if(!match)return null;
+  const note=match[2].trim();
+  if(!/^(?:possessed stem|bound stem|bound form)(?:\s*[;,]|$)/iu.test(note)||
+     /special semantics|only|alternativ|reverential|plural|for noble/iu.test(note))return null;
+  return {base:match[1],claim};
+ }
  function fromPossessiveAnalogy(q,all){
   // Only an actual source-located complete no- form can license an analogy.
   // Never extrapolate from naked -possessed stems or from a generic noun.
@@ -271,6 +507,33 @@ const TlahtolliMorphEngine = (() => {
    }
   }
  }
+ function fromSourceBoundPossessives(raw,all){
+  // Exact surface spelling matters: normalize() folds vowel quantity and
+  // would incorrectly license a different macron-bearing possessive base.
+  const written=String(raw||'').normalize('NFC').toLocaleLowerCase('en');
+  for(const w of words){
+   const licensed=sourceBoundPossessedBase(w);
+   if(!licensed)continue;
+   const {base,claim}=licensed;
+   const canonical=base.toLocaleLowerCase('en');
+   for(const p of NOUN_PREFIXES){
+    const expected=p.shape+canonical;
+    if(written!==expected)continue;
+    // Stronger *exact* source-recorded forms take precedence. The
+    // bibliography for a bound base does not attest this prefixed token.
+    if(all.some(c=>c.lemma===w.word&&
+       ['manuscript','lexical','grammar'].includes(c.grade)&&
+       c.kind!=='Noun citation-form segmentation'))continue;
+    all.push(make(w.word,'Source-bound possessed noun analogy','analogy',
+     {category:'noun',possessor:p.person,
+      sourceStatus:'Source-located possessed base + grammar-derived person prefix'},
+     [{surface:raw.slice(0,p.shape.length),role:p.person+' possessive prefix ('+p.gloss+')'},
+      {surface:raw.slice(p.shape.length),role:'Exact source-located bound possessed base; no guessed stem alternation'}],
+     claim.source,claim.locator,
+     'Analogy from an independently source-located bound possessed noun base, NOT an attested whole token. Contextual sense, vowel contact, alienability, register, allomorphy and co-reference are unresolved; no productive plural or sentence translation is licensed.'));
+   }
+  }
+ }
  function analyze(input){
   const raw=finiteText(stripToken(input),160).trim(),q=normalize(raw);
   if(!q||q.length>120||/\s/.test(raw))return [];
@@ -278,7 +541,10 @@ const TlahtolliMorphEngine = (() => {
   for(const w of words)fromForms(q,w,out);
   fromParadigms(q,out);
   fromProductiveVerb(q,out);
+  fromRegularIntransitivePresent(raw,out);
+  fromSourceLocatedFiniteTemplates(raw,out);
   fromPossessiveAnalogy(q,out);
+  fromSourceBoundPossessives(raw,out);
   const seen=new Set(),clean=[];
   for(const candidate of out){
    const key=JSON.stringify([candidate.lemma,candidate.kind,candidate.grade,candidate.features,candidate.parts]);
@@ -318,7 +584,7 @@ const TlahtolliMorphEngine = (() => {
   }).join('');
   return '<section class="analysis-proposal"><h4>Advanced morphology · '+matches.length+
    ' candidate analysis'+(matches.length===1?'':'es')+'</h4>'+
-   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus guarded productive transitive and possessed-noun hypotheses. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
+   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular present, independently checked long/short stem-class singular and plural present/future/preterite hypotheses, source-template second-person preterite, source-recorded indefinite objects, transitive objects, and source-bound possession analogies. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
    (hasQuantityAmbiguity?'<p class="analysis-caution">Macron-insensitive matching may collapse historically meaningful vowel length differences. Check the original orthography and context.</p>':'')+
    columns+(matches.length>24?'<p>Showing 24 of '+matches.length+' candidates.</p>':'')+
    '<p class="analysis-caution"><strong>Research boundary:</strong> no analysis proves a manuscript occurrence, contextual interpretation, or unmodeled allomorph. No unattested proposal is added to the public dictionary or evidence ledger.</p></section>';

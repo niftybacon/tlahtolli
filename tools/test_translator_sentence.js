@@ -17,6 +17,16 @@ for(const text of ['chōca in cihuātl','in cihuātl chōca']){
 assert.equal(analyze('niquitta').clauses[0].candidates[0].frame.object,'him / her / it');
 assert.equal(analyze('ahmo nichōca. nitlacua.').clauses[1].candidates[0].frame.negative,false);
 for(const text of ['nichōca extra','nichōca in cihuātl','chōca cihuātl','chōca in unknown','chōca, in cihuātl','cuix nichōca','nichōca?','in cihuātl','ahmo','zzzz'])assert.equal(analyze(text).complete,false,text);
+const unsupportedQuestion=analyze('¿nichōca? chōca in cihuātl.');
+assert.equal(unsupportedQuestion.complete,false);
+assert.equal(unsupportedQuestion.clauses.length,1);
+assert.equal(unsupportedQuestion.clauses[0].tokens.join(' '),'nichōca chōca in cihuātl',
+ 'Questions must retain actual written words for morphology instead of erasing tokens');
+assert.equal(unsupportedQuestion.clauses[0].candidates.length,0,
+ 'A question mark must never produce declarative finite English from question text');
+assert(Array.isArray(unsupportedQuestion.clauses[0].morphologicalClues));
+assert.match(unsupportedQuestion.clauses[0].reason,/Question scope is not yet supported/);
+assert.equal(analyze('chōca in cihuātl?').clauses[0].tokens.length,3);
 const partial=analyze('nichōca. unknown.');assert.equal(partial.complete,false);assert.equal(partial.clauses[0].complete,true);
 assert.equal(analyze('x'.repeat(7001)).complete,false);
 assert.equal(analyze('').complete,false);

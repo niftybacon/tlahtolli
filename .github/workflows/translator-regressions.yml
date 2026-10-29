@@ -32,6 +32,17 @@ on:
       - 'tools/test_possessed_agreement.js'
       - 'tools/test_possessed_relative_heads.js'
       - 'tools/test_morphology_clause_bridge.js'
+      - 'tools/morphology_engine.js'
+      - 'tools/test_regular_present_morphology.js'
+      - 'tools/test_source_bound_possessives.js'
+      - 'tools/test_source_verb_productivity.js'
+      - 'tools/test_source_stem_class_morphology.js'
+      - 'tools/test_source_stem_plural_morphology.js'
+      - 'tools/test_source_present_plural_morphology.js'
+      - 'tools/test_curated_verb_expansion03.js'
+      - 'tools/test_index_verb_source_review.js'
+      - 'tools/test_batch04_verb_class_evidence.js'
+      - 'tools/test_verified_class2_refinement.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -79,6 +90,17 @@ on:
       - 'tools/test_possessed_agreement.js'
       - 'tools/test_possessed_relative_heads.js'
       - 'tools/test_morphology_clause_bridge.js'
+      - 'tools/morphology_engine.js'
+      - 'tools/test_regular_present_morphology.js'
+      - 'tools/test_source_bound_possessives.js'
+      - 'tools/test_source_verb_productivity.js'
+      - 'tools/test_source_stem_class_morphology.js'
+      - 'tools/test_source_stem_plural_morphology.js'
+      - 'tools/test_source_present_plural_morphology.js'
+      - 'tools/test_curated_verb_expansion03.js'
+      - 'tools/test_index_verb_source_review.js'
+      - 'tools/test_batch04_verb_class_evidence.js'
+      - 'tools/test_verified_class2_refinement.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -127,6 +149,20 @@ jobs:
         run: node tools/test_declarative_grammar.js
       - name: Indexed morphology to clause bridge tests
         run: node tools/test_morphology_clause_bridge.js
+      - name: Canonical Tēntli regular singular present hypotheses
+        run: node tools/test_regular_present_morphology.js
+      - name: Canonical source-bound possessed noun morphology
+        run: node tools/test_source_bound_possessives.js
+      - name: Canonical source-located finite verb morphology
+        run: node tools/test_source_verb_productivity.js
+      - name: Canonical source-checked long/short verb stem productivity
+        run: node tools/test_source_stem_class_morphology.js
+      - name: Canonical source-backed plural future/preterite morphology
+        run: node tools/test_source_stem_plural_morphology.js
+      - name: Source-checked Classical present-plural hypotheses
+        run: node tools/test_source_present_plural_morphology.js
+      - name: Source-located batch 03 lexical stem and morphology regressions
+        run: node tools/test_curated_verb_expansion03.js && node tools/test_index_verb_source_review.js && node tools/test_batch04_verb_class_evidence.js && node tools/test_verified_class2_refinement.js
       - name: Exact possessed noun and person agreement safeguards
         run: node tools/test_possessed_agreement.js
       - name: Exact possessed noun heads in constrained Classical in-relatives

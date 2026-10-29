@@ -213,6 +213,47 @@ function crossCheckMorphology(token,analyses,opts={}){
  }
  return out;
 }
+// Read only the EXACT Classical source-listed forms and their imported tags.
+// The archival form-of label can offer a provisional lexical/morphological clue
+// even when the 115-word curated lexicon and 12 paradigms have no candidate.
+// This is deliberately NOT a productive inflector or an approved dictionary
+// addition: no segmentation, tense/subject agreement, sense, or English is
+// selected from an unreviewed Wiktionary label.
+function analyzeSourceForms(token,opts={}){
+ if(!loaded)return [];
+ const key=norm(token);
+ if(!/^[\p{L}\p{M}’'-]{1,120}$/u.test(key))return [];
+ const max=Number.isInteger(opts.limit)?Math.max(1,Math.min(opts.limit,20)):8;
+ const allowed={
+  noun:new Set(['plural','possessive']),
+  verb:new Set(['first-person','second-person','third-person','impersonal',
+   'preterite','imperfective','present','past','future','future-near','non-past'])
+ };
+ const out=[],seen=new Set();
+ for(const rec of byForm.get(key)||[]){
+  if(rec.sourceKey!=='kaikki'||rec.variety!=='Classical Nahuatl'||
+     !allowed[rec.pos])continue;
+  for(const form of matchingFormEvidence(rec,key,false)){
+   // A bare exact lemma or spelling variant is only lexical/orthographic
+   // evidence. A source-listed tagged form has additional morphological data.
+   if(form.role!=='source-listed form'||!form.tags.some(t=>allowed[rec.pos].has(t))||
+      form.tags.includes('error-unrecognized-form'))continue;
+   const tags=[...new Set(form.tags)].sort();
+   const id=[norm(rec.word),rec.pos,key,tags.join(',')].join('\u0000');
+   if(seen.has(id))continue;
+   seen.add(id);
+   out.push({lemma:rec.word,kind:'Archive source-listed form (unreviewed)',
+    grade:'unreviewed',score:22,features:{
+     partOfSpeech:rec.pos,sourceTags:tags.join(', '),
+     sourceStatus:'Community-supplied Classical label; not independently checked'},
+    parts:[{surface:form.form,role:'Exact source-listed form; no internally established morpheme boundaries'}],
+    source:rec.sourceUrl,sources:[rec.sourceUrl],
+    note:'Unreviewed Kaikki/Wiktionary grammatical labels only. A listed form is not a verified historical attestation, paradigm, segmentation, contextual sense, or English translation.'});
+   if(out.length>=max)return out;
+  }
+ }
+ return out;
+}
 function search(query,source='all',limit=60){
  if(!loaded)return {hits:[],total:0};
  const q=norm(query);
@@ -266,7 +307,7 @@ function bindPanel(){
  input.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(render,180);});
  filter.addEventListener('change',render);
 }
-root.TlahtolliArchive={ensureLoaded,lookup,lookupEvidence,lookupHistoricalEvidence,crossCheckMorphology,search,renderRecord,get ready(){return loaded;},get manifest(){return manifest;}};
+root.TlahtolliArchive={ensureLoaded,lookup,lookupEvidence,lookupHistoricalEvidence,crossCheckMorphology,analyzeSourceForms,search,renderRecord,get ready(){return loaded;},get manifest(){return manifest;}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindPanel,{once:true});
 else bindPanel();
 })(window);

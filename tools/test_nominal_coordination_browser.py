@@ -28,7 +28,7 @@ with sync_playwright() as pw:
     page.route("**/*",serve)
     page.goto("https://tlahtolli.test/",wait_until="load")
     page.locator("#tabTranslator").click()
-    page.wait_for_function("() => document.querySelector('#translatorStatus')?.textContent.includes('118')")
+    page.wait_for_function("() => document.querySelector('#translatorStatus')?.textContent.includes('headwords')")
     def analyze(text):
         page.locator("#translatorInput").fill(text)
         page.locator("#translatorForm button[type=submit]").click()

@@ -47,7 +47,7 @@ with sync_playwright() as pw:
     assert page.locator('#archiveResults .archive-entry').count()>0
     assert 'Siméon' in page.locator('#archiveResults').inner_text()
     page.locator('#tabTranslator').click()
-    page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('118')")
+    page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('headwords')")
     def expand_archive_evidence():
         # Exercise the actual disclosure UI, rather than accidentally asserting
         # against invisible textContent in a collapsed <details> element.
@@ -113,6 +113,18 @@ with sync_playwright() as pw:
     assert 'source labels: plural' in plural
     assert 'unreviewed' in plural.lower()
     assert 'Unindexed form' in plural
+    assert '[?alomeh]' in page.locator('#translatorGloss').inner_text()
+
+    # An exact Classical source-listed form now also becomes an explicitly
+    # unreviewed morphology clue within the EXISTING sentence analysis.
+    # It must not become a translated sentence or a curated lexical hit.
+    page.locator('#translatorPassages details.translator-morph-panel').evaluate_all(
+        '(nodes)=>nodes.forEach(n=>n.open=true)')
+    grammatical=page.locator('#translatorPassages').inner_text()
+    assert 'Partial morphology only' in grammatical,grammatical
+    assert 'Archive source-listed form (unreviewed)' in grammatical,grammatical
+    assert 'alomeh → alo' in grammatical,grammatical
+    assert 'unreviewed' in grammatical.lower()
     assert '[?alomeh]' in page.locator('#translatorGloss').inner_text()
 
     # A real historical y→i candidate must surface through the existing

@@ -37,8 +37,24 @@ assert(originalForm.some(x=>x.form==='quitoa'&&x.changed),
  'Must reuse historical spelling engine; no new morphology parser');
 assert(engines.archive.lookupEvidence('on').total>0,
  'Classical lexical evidence must be accessible from the existing archive');
+assert.equal(engines.archiveMorph('alomeh')[0]?.lemma,'alo',
+ 'Existing Classical source-form plural must be available as an unreviewed morphology clue');
+assert.equal(engines.archiveMorph('mila').length,0,
+ 'Modern variety must not feed Classical sentence morphology');
+const archiveCase=diagnose([{sourceRow:999,work:'Synthetic unreviewed-form fixture',
+ nahuatl:'alomeh zzzz xxxx',spanish:'Not gold'}],engines);
+assert.equal(archiveCase.counts.archiveFormMorphologyUnknownTokens,1,
+ 'Exact tagged Classical form should provide one separately counted clue');
+assert.equal(archiveCase.counts.curatedMatches,0,
+ 'Archive-only clue must not change reviewed lexical coverage');
+assert.equal(archiveCase.inspectedRowReferences[0].unknownAudit[0].sourceListedMorphologyClues,1);
 assert.equal(engines.lex.stats.passageCandidates,0,
  'No saved sentence translations may be imported into the lexical lookup');
+const q=engines.sentence.analyze('Quil? nichōca.');
+assert.equal(q.complete,false);
+assert.equal(q.clauses[0].tokens.join(' '),'Quil nichōca',
+ 'One question mark must not erase all token diagnostics');
+assert.equal(q.clauses[0].candidates.length,0);
 assert.equal(engines.sentence.analyze('chōca in cihuātl').complete,true,
  'Existing sentence grammar still works; no new constructed parser');
 assert(engines.morph('ticnamaca').some(m=>m.grade==='unreviewed'&&m.features.subject==='1pl'),
@@ -66,6 +82,7 @@ assert.equal(r.counts.unresolvedSentenceRows,1);
 assert(Number.isInteger(r.counts.unknownWithTentativeHistoricalArchiveCandidates));
 assert(Array.isArray(r.tentativeHistoricalArchiveForms));
 assert.equal(r.counts.unknownWithTentativeHistoricalArchiveCandidates>=0,true);
+assert(Number.isInteger(r.counts.archiveFormMorphologyUnknownTokens));
 assert.equal(r.counts.curatedMatches+r.counts.unknownTokens,r.counts.nahuatlTokens,
  'Historical archive candidates must NOT inflate curated coverage');
 

@@ -6,7 +6,9 @@ r=Path(__file__).resolve().parents[1]
 d=json.loads((r/'dictionary.json').read_text(encoding='utf8'))
 p=json.loads((r/'paradigms.json').read_text(encoding='utf8'))
 s=json.loads((r/'references.json').read_text(encoding='utf8'))
-assert d['version']==p['version']==s['version']=='2026-10-29.1.0'
+# Compare against the authoritative release manifest rather than freezing a prior data edition.
+release=json.loads((r/'release.json').read_text(encoding='utf8'))
+assert d['version']==p['version']==s['version']==release['version']
 assert len(d['words'])>=88 and len(p['paradigms'])>=12
 fields={'headword','meaning','pos'}
 for i,w in enumerate(d['words']):

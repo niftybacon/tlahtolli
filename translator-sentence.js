@@ -203,7 +203,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    // Never sentence-translate productive guesses, spelling repairs, headwords,
    // or a lexeme whose precise source-listed finite form is missing.
    if(!['lexical','manuscript'].includes(m.grade))continue;
-   const w=words.filter(w=>w.word===m.lemma&&String(w.pos).includes('verb'));
+   const w=words.filter(w=>w.word===m.lemma&&/^verb(?:\s*\(|$)/u.test(String(w.pos)));
    if(w.length!==1)continue;
    for(const f of w[0].inflections||[]){
     if(norm(f.form)!==norm(token)||m.kind!==f.category||
@@ -1420,7 +1420,16 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  function analyzeInput(input,allowPartialRecovery){
   const raw=String(input||'');
   if(raw.length>7000)return {clauses:[],complete:false,reason:'Input exceeds 7000 characters.'};
-  if(/[?¿]/u.test(raw))return {clauses:[{text:raw,tokens:[],candidates:[],complete:false,reason:'Question scope is not yet supported.'}],complete:false};
+  if(/[?¿]/u.test(raw)){
+   // Question scope is NOT licensed by the present finite-clause grammar.
+   // Still retain each original written word for bounded morphology clues:
+   // previously a single ? anywhere in an input discarded every token.
+   const tokens=raw.match(/[\p{L}\p{M}’'\-\u00AF]+/gu)||[];
+   return {clauses:[{text:raw,tokens,candidates:[],complete:false,
+    morphologicalClues:partialClues(tokens),
+    reason:'Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred.'}],
+    complete:false};
+  }
   // Separate written sentence boundaries BEFORE analyzing clause connectors.
   // A period must not disable auh within the preceding sentence. Semicolons
   // stay local: intla may use one to separate antecedent and consequent.

@@ -714,11 +714,16 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   'https://www.languageinindia.com/nov2011/bedellnawatorugo.pdf'
  ];
  const CLAUSE_SOURCE='https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/noun-clauses/F671D417C8996C3D444F793A9B73F550';
+ // Resolve unique source-backed verb lemmas once; nested clauses should
+ // not repeatedly scan the entire Classical lexicon for every finite token.
+ // Counts (rather than first-hit maps) preserve abstention on ambiguity.
+ const finiteLexemeCounts=new Map();
+ for(const w of words)if(String(w.pos).startsWith('verb')&&
+  /^https:\/\//.test(w.source||''))
+  finiteLexemeCounts.set(w.word,(finiteLexemeCounts.get(w.word)||0)+1);
  function finiteAt(token){
   return (index.get(norm(token))||[]).filter(p=>{
-   const lex=words.filter(w=>w.word===p.lemma&&String(w.pos).startsWith('verb')&&
-    /^https:\/\//.test(w.source||''));
-   return lex.length===1&&/^https:\/\//.test(p.source||'')&&
+   return finiteLexemeCounts.get(p.lemma)===1&&/^https:\/\//.test(p.source||'')&&
     (p.tense==='present'||p.tense==='future');
   });
  }

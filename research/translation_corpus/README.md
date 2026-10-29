@@ -33,6 +33,58 @@ When a translation is behind copyright or other reuse restrictions, contribute o
 - [source_reviews/ENL_BC16_1573.json](source_reviews/ENL_BC16_1573.json) — the first 1573 central Mexican Nahuatl manuscript actually located and image-inspected, explicitly **not blind** because we consulted a modern transcription and translation. A short editorial-assisted excerpt is marked uncertain, never gold.
 - [source_reviews/README.md](source_reviews/README.md) — an achievable step-by-step manuscript reading process without claiming scholarly certification.
 
+## Real published parallel-pair pointers (2026-10-29)
+
+We identified **10 actual source-provided Nahuatl–Spanish parallel pairs** in
+six published source works within [Comunidad Elotl's Py-Elotl Axolotl CSV]
+(https://github.com/ElotlMX/py-elotl/blob/157f34300f4ca92c3d75b74ec14142916d75c30b/elotl/corpora/axolotl.csv).
+The inspected upstream CSV has **16,111 rows**, including **5,993 rows
+labeled Classical Nahuatl** (upstream label, not a scholarly variety audit).
+
+See [axolotl_classical_pair_pointers.json](axolotl_classical_pair_pointers.json):
+an immutable Git-blob-pinned research manifest recording exact 1-based CSV
+record numbers, source work titles, ISO label, expected token counts, and
+outstanding verification requirements. The current set covers
+*Anales de Tlatelolco*, *Anales de Tepeteopan*, *Vida económica de
+Tenochtitlan*, *Memorial Breve*, *Tercera Relación*, and *Nican Mopohua*.
+
+**Inspect the actual paired strings locally**, without saving their underlying
+modern translations in the public Tlahtōlli repository:
+
+```sh
+# Obtain the exact pinned source file from the upstream link above.
+node tools/inspect_axolotl_candidates.js /path/to/axolotl.csv
+node tools/inspect_axolotl_candidates.js /path/to/axolotl.csv --json
+```
+
+The inspector checks the **original Git blob SHA**, exact CSV row count,
+source-work identity, Classical variety label, ISO `nci`
+label, expected token counts, and unique Nahuatl/Spanish text per candidate.
+It refuses modified files, shifted rows, duplicated pairs and invented
+`approved`/`gold` labels. CSV parsing preserves original spelling,
+punctuation, line breaks and quoted separators. Its output is a **local
+source-provided alignment**, not an independent facsimile collation.
+
+**What these records do not prove:** the source work's date or variety was
+confirmed independently; the Nahuatl was rechecked against a first-edition
+manuscript; the modern Spanish editor rendered precisely the same semantic
+clause boundaries; or that downstream rights in each work are cleared.
+The Py-Elotl **software** license alone does not grant rights in the books
+from which source pairs were extracted.
+
+Because we inspected and selected these examples, their six source-work
+titles are now excluded by the existing evaluator from **independent held-out
+gold**. They are useful for source discovery, human linguistic review and
+eventual explicitly in-sample development analysis only. No strings were
+copied into `pairs.csv`, no benchmark was scored, and the project's approved
+gold count remains zero.
+
+The original scholarly description of Axolotl:
+[Gutiérrez-Vásques, Sierra and Hernández Pompa (2016)]
+(https://aclanthology.org/L16-1666/) documents source, dialect,
+orthographic and alignment variation. Those limitations must be resolved
+one source at a time before claims of translation quality.
+
 ## Review workflow
 
 `candidate → permissions_checked → transcribed → aligned → linguistically_reviewed → approved`.

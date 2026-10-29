@@ -39,6 +39,8 @@ on:
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'
       - 'tools/test_translation_readiness.js'
+      - 'tools/test_axolotl_pair_pointers.js'
+      - 'tools/inspect_axolotl_candidates.js'
       - 'tools/diagnose_historical_sentences.js'
       - 'tools/test_historical_sentence_diagnostics.js'
       - 'data/passages.json'
@@ -82,6 +84,8 @@ on:
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'
       - 'tools/test_translation_readiness.js'
+      - 'tools/test_axolotl_pair_pointers.js'
+      - 'tools/inspect_axolotl_candidates.js'
       - 'tools/diagnose_historical_sentences.js'
       - 'tools/test_historical_sentence_diagnostics.js'
       - 'data/passages.json'
@@ -147,6 +151,8 @@ jobs:
         run: node tools/test_archive_lexical.js
       - name: Translation quality readiness and independent-holdout checks
         run: node tools/test_translation_readiness.js
+      - name: Published Axolotl parallel pair pointer integrity (no copied gold)
+        run: node --check tools/inspect_axolotl_candidates.js && node tools/test_axolotl_pair_pointers.js
       - name: Evaluation audit (no invented accuracy)
         run: node tools/evaluate_translation_readiness.js
       - name: Source-evidenced finite verb clause hypotheses and safeguards

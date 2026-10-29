@@ -47,7 +47,7 @@ with sync_playwright() as pw:
     assert page.locator('#archiveResults .archive-entry').count()>0
     assert 'Siméon' in page.locator('#archiveResults').inner_text()
     page.locator('#tabTranslator').click()
-    page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('118')")
+    page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('headwords')")
     def expand_archive_evidence():
         # Exercise the actual disclosure UI, rather than accidentally asserting
         # against invisible textContent in a collapsed <details> element.

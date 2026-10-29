@@ -10,7 +10,7 @@ vm.runInNewContext(fs.readFileSync(path.join(root,'translator-engine.js'),'utf8'
 const source=JSON.parse(fs.readFileSync(path.join(root,'dictionary.json'),'utf8'));
 const examples=JSON.parse(fs.readFileSync(path.join(root,'research/translation_corpus/research_examples.json'),'utf8'));
 const model=context.window.TlahtolliTranslator.create(source,examples);
-assert.equal(model.stats.headwords,118,'unexpected headword count; review source-driven dictionary changes');
+assert.equal(model.stats.headwords,128,'unexpected headword count; review source-driven dictionary changes');
 
 const manuscriptParticles=[
  ['niman','https://nahuatl.wired-humanities.org/node/172499'],

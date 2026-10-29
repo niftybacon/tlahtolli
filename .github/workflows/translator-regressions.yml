@@ -38,6 +38,7 @@ on:
       - 'tools/test_source_verb_productivity.js'
       - 'tools/test_source_stem_class_morphology.js'
       - 'tools/test_source_stem_plural_morphology.js'
+      - 'tools/test_curated_verb_expansion03.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -91,6 +92,7 @@ on:
       - 'tools/test_source_verb_productivity.js'
       - 'tools/test_source_stem_class_morphology.js'
       - 'tools/test_source_stem_plural_morphology.js'
+      - 'tools/test_curated_verb_expansion03.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -149,6 +151,8 @@ jobs:
         run: node tools/test_source_stem_class_morphology.js
       - name: Canonical source-backed plural future/preterite morphology
         run: node tools/test_source_stem_plural_morphology.js
+      - name: Source-located batch 03 lexical stem and morphology regressions
+        run: node tools/test_curated_verb_expansion03.js
       - name: Exact possessed noun and person agreement safeguards
         run: node tools/test_possessed_agreement.js
       - name: Exact possessed noun heads in constrained Classical in-relatives

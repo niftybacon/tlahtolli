@@ -24,6 +24,7 @@ const safeLink=(value,title)=>{
 const form=$('translatorForm');
 if(!form)return;
 let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null,sourceMorphology=null,englishModel=null,grammarIR=null;
+let archiveMorphologyRendered=false;
 const input=$('translatorInput'),direction=$('translatorDirection');
 const note=$('translatorStatus'),gloss=$('translatorGloss');
 const parts=$('translatorAnalyses'),passages=$('translatorPassages');
@@ -835,6 +836,13 @@ function showResult(){
     const blocks=[...parts.querySelectorAll('article.translator-word')];
     window.TlahtolliArchive.ensureLoaded().then(()=>{
      if(latest!==current)return;
+     // First archive load supplies source-labelled morphology to the existing
+     // sentence analyzer. Re-evaluate exactly once; no new curated matches.
+     if(!archiveMorphologyRendered){
+      archiveMorphologyRendered=true;
+      morphBridge?.clearCache();
+      showResult();return;
+     }
      let supplemented=0,approximate=0;
      wordEntries.forEach((item,i)=>{
       if(!blocks[i])return;
@@ -983,7 +991,9 @@ async function init(){
   const locative=window.TlahtolliLocative?.create(document,corpus)||null;
   const explainMorphology=token=>[
    ...(typeof TlahtolliMorphEngine==='undefined'?[]:TlahtolliMorphEngine.analyze(token)),
-   ...(sourceMorphology?.analyze(token)||[])
+   ...(sourceMorphology?.analyze(token)||[]),
+   ...(window.TlahtolliArchive?.ready?
+    window.TlahtolliArchive.analyzeSourceForms(token,{limit:8}):[])
   ];
   try{
    if(!window.TlahtolliSentence)await new Promise((resolve,reject)=>{

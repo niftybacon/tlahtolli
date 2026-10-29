@@ -115,6 +115,18 @@ with sync_playwright() as pw:
     assert 'Unindexed form' in plural
     assert '[?alomeh]' in page.locator('#translatorGloss').inner_text()
 
+    # An exact Classical source-listed form now also becomes an explicitly
+    # unreviewed morphology clue within the EXISTING sentence analysis.
+    # It must not become a translated sentence or a curated lexical hit.
+    page.locator('#translatorPassages details.translator-morph-panel').evaluate_all(
+        '(nodes)=>nodes.forEach(n=>n.open=true)')
+    grammatical=page.locator('#translatorPassages').inner_text()
+    assert 'Partial morphology only' in grammatical,grammatical
+    assert 'Archive source-listed form (unreviewed)' in grammatical,grammatical
+    assert 'alomeh → alo' in grammatical,grammatical
+    assert 'unreviewed' in grammatical.lower()
+    assert '[?alomeh]' in page.locator('#translatorGloss').inner_text()
+
     # A real historical y→i candidate must surface through the existing
     # archive + historical engine bridge, without changing the working gloss.
     page.locator('#translatorInput').fill('yca')

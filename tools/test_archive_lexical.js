@@ -84,6 +84,28 @@ vm.runInNewContext(script,context,{filename:'amoxcalli-archive.js'});
  assert.equal(api.lookupEvidence('unattested').total,0);
  const inflected=api.lookupEvidence('alomeh');
  assert.equal(inflected.total,1);
+
+ // The same unreviewed archive source-form record can supply an exact,
+ // tagged morphological clue. This must never backfill the curated lexicon.
+ const archiveMorph=api.analyzeSourceForms('alomeh');
+ assert.equal(archiveMorph.length,1);
+ assert.equal(archiveMorph[0].lemma,'alo');
+ assert.equal(archiveMorph[0].grade,'unreviewed');
+ assert.equal(archiveMorph[0].kind,'Archive source-listed form (unreviewed)');
+ assert(archiveMorph[0].features.sourceTags.includes('plural'));
+ assert.equal(archiveMorph[0].parts.length,1,
+  'Archive tag does not license invented morpheme boundaries');
+ assert.equal(archiveMorph[0].parts[0].surface,'alomeh');
+ assert(archiveMorph[0].note.includes('not a verified historical attestation'));
+ assert.equal(api.analyzeSourceForms('on').length,0,
+  'A canonical spelling variant is not an inflection');
+ assert.equal(api.analyzeSourceForms('mila').length,0,
+  'Modern Huasteca records cannot yield Classical morphology');
+ assert.equal(api.analyzeSourceForms('alomeh!').length,0,
+  'Punctuation cannot be silently discarded');
+ assert.equal(api.analyzeSourceForms('aloméh').length,0,
+  'No diacritic-only match or vowel-length normalization');
+ assert.equal(api.analyzeSourceForms('alomeh',{limit:1}).length,1);
  assert.equal(inflected.hits[0].word,'alo');
  assert.equal(inflected.hits[0].matchedForms[0].role,'source-listed form');
  assert.equal(inflected.hits[0].matchedForms[0].form,'alomeh');
@@ -155,6 +177,11 @@ vm.runInNewContext(script,context,{filename:'amoxcalli-archive.js'});
  const realApi=actualContext.window.TlahtolliArchive;
  const realLoaded=await realApi.ensureLoaded();
  assert.equal(realLoaded.total,actual.rows.length);
+ const realMorph=realApi.analyzeSourceForms('alomeh');
+ assert(realMorph.some(m=>m.lemma==='alo'&&m.grade==='unreviewed'&&m.features.sourceTags.includes('plural')),
+  'Published Classical source form must supply only an unreviewed morph cue');
+ assert(realMorph.every(m=>m.parts.length===1),
+  'Source-form evidence never implies a segmentation');
  const realPlural=realApi.lookupEvidence('alomeh');
  assert(realPlural.hits.some(hit=>hit.word==='alo'&&
   hit.matchedForms.some(f=>f.role==='source-listed form'&&f.tags.includes('plural'))));

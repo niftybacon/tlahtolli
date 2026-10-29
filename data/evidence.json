@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-29.4.1",
+  "version": "2026-10-29.4.2",
   "entries": [
     {
       "word": "ātl",
@@ -8123,12 +8123,12 @@
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/node/172619",
-          "locator": "",
-          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
-          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quiza",
+          "locator": "Molina II f.89v col.1: 'quiza. ni. (pret. oniquiz.)'; Lockhart, Nahuatl as Written (2001) p.231: Class 2 ōniquīz; Karttunen p.213 QUIZ(A)",
+          "note": "Source-checked Class 2 present/past written bases quiza- and quiz- supported by Molina + explicit Lockhart class; Molina's unmarked quiz contrasts with Lockhart's marked quīz; preserve original written form. Locative -tech/-pan and -ti- auxiliary senses are not inferred. Generated paradigms are hypotheses only.",
+          "reviewer": "Tlahtōlli ODN Molina/Lockhart stem-class review (original folio not independently collated)",
+          "checkedAt": "2026-10-29"
         },
         {
           "field": "other",
@@ -8386,12 +8386,12 @@
         },
         {
           "field": "stem",
-          "assessment": "unverified",
+          "assessment": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/polihui",
-          "locator": "",
-          "note": "No independently verified inflectional stem is supplied. Avoid mechanical decomposition.",
-          "reviewer": "Tlahtōlli Amoxtli expansion — AI-assisted lexicographic review; no independent manuscript collation or specialist peer review",
-          "checkedAt": "2026-10-27"
+          "locator": "Molina II f.83r col.1: 'poliui. ni. (pret. onipoliuh.)'; Lockhart, Nahuatl as Written (2001) p.230: Class 2 ōnipoliuh; Karttunen p.202 POLIHU(I)",
+          "note": "Source-checked Class 2 present/past written bases polihui- and poliuh- supported by Molina + explicit Lockhart class; Molina's citation poliui and normalized polihui are not the same spelling. Transitive poloa and nonactive polihuīhua are distinct lexical constructions. Generated paradigms are hypotheses only.",
+          "reviewer": "Tlahtōlli ODN Molina/Lockhart stem-class review (original folio not independently collated)",
+          "checkedAt": "2026-10-29"
         },
         {
           "field": "other",

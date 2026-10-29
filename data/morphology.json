@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.4.1",
+  "version": "2026-10-29.4.2",
   "entries": [
     {
       "word": "ātl",
@@ -3502,15 +3502,15 @@
     {
       "word": "quiza",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "quiza-; quiz-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "inapplicable",
       "absolutive": "not applicable",
       "possessed": "",
-      "grammarSource": "https://nahuatl.wired-humanities.org/node/172619",
-      "grammarNotes": "A versatile motion/emergence verb; 'comes from' in the cited pigment-name explanation. Do not extrapolate a full tense paradigm. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/quiza",
+      "grammarNotes": "Lockhart identifies this verb as Class 2, with the exact Molina 1sg past. The two documented spelling-level bases are quiza- (citation) and quiz- (past); other persons and tenses stay grammar hypotheses, not individually source-attested. Molina's unmarked quiz contrasts with Lockhart's marked quīz; preserve original written form. Locative -tech/-pan and -ti- auxiliary senses are not inferred.",
       "inflections": [
         {
           "form": "quiza",
@@ -3527,6 +3527,14 @@
           "evidence": "text",
           "source": "https://florentinecodex.getty.edu/book/11/folio/217r",
           "note": "Book 11, f. 217r: 'itech qujça' — Original transcription j/ç orthography corresponds to modernized quiza"
+        },
+        {
+          "form": "oniquiz",
+          "category": "Preterite 1sg (Molina 1571; class 2)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quiza",
+          "note": "Exact 1sg token quoted by ODN from Molina, not independently collated from original folio. Molina II f.89v col.1: 'quiza. ni. (pret. oniquiz.)'; Lockhart, Nahuatl as Written (2001) p.231: Class 2 ōniquīz; Karttunen p.213 QUIZ(A) NO other person/tense cell attested by this record."
         }
       ],
       "formsEdited": false
@@ -3582,7 +3590,7 @@
     {
       "word": "polihui",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "polihui-; poliuh-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
@@ -3590,7 +3598,7 @@
       "absolutive": "not applicable",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/polihui",
-      "grammarNotes": "Second-conjugation intransitive, associated with disappearance and death; distinguish from transitive poloa. No full 10×6 paradigm, plural, or possessive set is inferred from an isolated passage.",
+      "grammarNotes": "Lockhart identifies this verb as Class 2, with the exact Molina 1sg past. The two documented spelling-level bases are polihui- (citation) and poliuh- (past); other persons and tenses stay grammar hypotheses, not individually source-attested. Molina's citation poliui and normalized polihui are not the same spelling. Transitive poloa and nonactive polihuīhua are distinct lexical constructions.",
       "inflections": [
         {
           "form": "polihui",
@@ -3607,6 +3615,14 @@
           "evidence": "text",
           "source": "https://historicas.unam.mx/publicaciones/publicadigital/libros/filosofia/046_04_45_textos_IV.pdf",
           "note": "UNAM (2017), León-Portilla, p. 408, Cantares Mexicanos f. 35r: 'tipolihui' — Second-person singular present in a poem; secondary edition, not independently inspected manuscript"
+        },
+        {
+          "form": "onipoliuh",
+          "category": "Preterite 1sg (Molina 1571; class 2)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/polihui",
+          "note": "Exact 1sg token quoted by ODN from Molina, not independently collated from original folio. Molina II f.83r col.1: 'poliui. ni. (pret. onipoliuh.)'; Lockhart, Nahuatl as Written (2001) p.230: Class 2 ōnipoliuh; Karttunen p.202 POLIHU(I) NO other person/tense cell attested by this record."
         }
       ],
       "formsEdited": false

@@ -35,7 +35,7 @@ jobs:
       - name: Source-checked Classical present-plural hypotheses
         run: node tools/test_source_present_plural_morphology.js
       - name: Curated source-checked lexical stem expansion batch 03
-        run: node tools/test_curated_verb_expansion03.js && node tools/test_index_verb_source_review.js && node tools/test_batch04_verb_class_evidence.js
+        run: node tools/test_curated_verb_expansion03.js && node tools/test_index_verb_source_review.js && node tools/test_batch04_verb_class_evidence.js && node tools/test_verified_class2_refinement.js
       - name: Test Phase 2 source separation
         run: python tools/test_phase2.py
       - name: Validate published dictionary

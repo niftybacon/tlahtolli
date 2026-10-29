@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-29.4.1",
+  "version": "2026-10-29.4.2",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -1611,7 +1611,7 @@
       "source": "https://nahuatl.wired-humanities.org/node/172619",
       "example": "",
       "translation": "",
-      "notes": "A versatile motion/emergence verb; 'comes from' in the cited pigment-name explanation. Do not extrapolate a full tense paradigm."
+      "notes": "A versatile motion/emergence verb; 'comes from' in the cited pigment-name explanation. Do not extrapolate a full tense paradigm. 2026-10-29 stem review: Molina records oniquiz; Lockhart classifies this individual lexeme as Class 2. Molina's unmarked quiz contrasts with Lockhart's marked quīz; preserve original written form. Locative -tech/-pan and -ti- auxiliary senses are not inferred. No complete paradigm verified."
     },
     {
       "word": "tlapalli",
@@ -1647,7 +1647,7 @@
       "source": "https://nahuatl.wired-humanities.org/content/polihui",
       "example": "",
       "translation": "",
-      "notes": "Second-conjugation intransitive, associated with disappearance and death; distinguish from transitive poloa."
+      "notes": "Second-conjugation intransitive, associated with disappearance and death; distinguish from transitive poloa. 2026-10-29 stem review: Molina records onipoliuh; Lockhart classifies this individual lexeme as Class 2. Molina's citation poliui and normalized polihui are not the same spelling. Transitive poloa and nonactive polihuīhua are distinct lexical constructions. No complete paradigm verified."
     },
     {
       "word": "tēzcatl",

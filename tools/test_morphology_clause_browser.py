@@ -90,7 +90,23 @@ with sync_playwright() as pw:
     ambiguous_owner = possession.inner_text()
     assert "possible grammatical object" in ambiguous_owner
     assert "possible grammatical subject" in ambiguous_owner
-    for unsupported in ("niquitta mocal", "ahmo niquitta nocal", "niquitta nocal extra"):
+    for sourced, lemma in (("iicxi", "icxitl"), ("itoca", "tocaitl")):
+        analyze("niquitta " + sourced)
+        relation = page.locator("#translatorPassages .translator-possessed-agreement-proposals")
+        assert relation.count() == 1
+        relation.evaluate("(node) => node.open=true")
+        assertion = relation.inner_text()
+        assert "nominal possessor 3sg" in assertion and lemma in assertion
+        assert "verb subject 1sg" in assertion
+        assert "NOT a translation" in assertion
+        analyze("tiquitta " + sourced)
+        relation = page.locator("#translatorPassages .translator-possessed-agreement-proposals")
+        relation.evaluate("(node) => node.open=true")
+        assert "verb subject 2sg" in relation.inner_text()
+        assert "nominal possessor 3sg" in relation.inner_text()
+    for unsupported in ("niquitta inxiuh", "niquitta imitzcuinoan",
+                        "niquitta itlatqui", "niquitta mocal",
+                        "ahmo niquitta nocal", "niquitta nocal extra"):
         analyze(unsupported)
         assert page.locator("#translatorPassages .translator-possessed-agreement-proposals").count() == 0
 

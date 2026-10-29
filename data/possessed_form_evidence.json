@@ -1,0 +1,29 @@
+{
+  "format": "tlahtolli-exact-possessive-evidence-v1",
+  "version": 1,
+  "scope": "Only explicitly catalogued 3sg i- possessed noun forms, source-located by original spelling; no token generation, no plural-owner inference, no historic spelling repair.",
+  "records": [
+    {
+      "id": "source-3sg-icxitl",
+      "lemma": "icxitl",
+      "form": "iicxi",
+      "person": "3sg",
+      "possessive_prefix": "i",
+      "source": "https://nahuatl.wired-humanities.org/content/icxitl",
+      "locator": "Florentine Codex, Book 10 (Anderson/Dibble 1961), p.161: in iicxi, in anoço ima",
+      "review_status": "source-located editorial candidate; not independent adjudication",
+      "epistemic_note": "Exact source-listed noun form only. Does not establish sentence role, referent identity, or a productive 3sg paradigm."
+    },
+    {
+      "id": "source-3sg-tocaitl",
+      "lemma": "tocaitl",
+      "form": "itoca",
+      "person": "3sg",
+      "possessive_prefix": "i",
+      "source": "https://nahuatl.wired-humanities.org/content/tocaitl",
+      "locator": "Sahagún, Primeros Memoriales (Sullivan ed.1997), p.254: quimaca yn itoca",
+      "review_status": "source-located editorial candidate; not independent adjudication",
+      "epistemic_note": "Exact source-listed noun form only. Does not establish sentence role, referent identity, or a productive 3sg paradigm."
+    }
+  ]
+}

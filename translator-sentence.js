@@ -84,7 +84,7 @@ function compileClauseRules(pack){
  return valid;
 }
 
-function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules){
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -549,29 +549,70 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  // Source-linked possessed noun forms are NEVER freely generated from prefixes.
  // This bounded first phase recognizes only exact cited first-person no- forms
  // already in the dictionary; it does not infer a whole possessive paradigm.
+ // The 3sg inventory comes from an explicit reviewed-file allowlist, never a
+ // guessed i- prefix rule. Malformed/duplicated packages fail closed.
+ function compilePossessedEvidence(pack){
+  if(!pack||pack.format!=='tlahtolli-exact-possessive-evidence-v1'||
+   pack.version!==1||!Array.isArray(pack.records)||
+   pack.records.length<1||pack.records.length>8)return new Map();
+  const byForm=new Map();
+  for(const x of pack.records){
+   if(!x||typeof x.id!=='string'||!/^[a-z0-9-]{3,60}$/.test(x.id)||
+    !x.id.startsWith('source-3sg-')||x.person!=='3sg'||
+    x.possessive_prefix!=='i'||typeof x.form!=='string'||
+    !/^i[\p{L}\p{M}’'-]{2,100}$/u.test(x.form)||
+    typeof x.lemma!=='string'||typeof x.source!=='string'||
+    !/^https:\/\/[^/\s]+/u.test(x.source)||typeof x.locator!=='string'||
+    !x.locator.trim()||x.review_status!==
+     'source-located editorial candidate; not independent adjudication'||
+    typeof x.epistemic_note!=='string'||!x.epistemic_note.includes('Does not establish')||
+    byForm.has(norm(x.form)))return new Map();
+   // The independent source location and original written dictionary field
+   // must both match the editorial record. No source metadata rewriting.
+   const hits=words.filter(w=>w.word===x.lemma&&w.pos==='noun'&&
+    norm(String(w.possessed||'').split('(')[0].trim())===norm(x.form));
+   if(hits.length!==1)return new Map();
+   const c=(hits[0].claims||[]).filter(cl=>cl.field==='possessed'&&
+    cl.assessment==='text'&&cl.source===x.source&&cl.locator===x.locator);
+   if(c.length!==1)return new Map();
+   byForm.set(norm(x.form),{lemma:x.lemma,person:'3sg',prefix:'i',
+    source:x.source,locator:x.locator});
+  }
+  return byForm;
+ }
+ const locatedPossessives=compilePossessedEvidence(possessiveEvidence);
  function resolveRecordedPossessed(token){
-  if(typeof token!=='string'||!/^[\p{L}\p{M}’'-]{3,120}$/u.test(token)||
-   !norm(token).startsWith('no'))return null;
-  const rows=words.filter(w=>String(w.pos).includes('noun')&&
-   norm(String(w.possessed||'').split('(')[0].trim())===norm(token));
+  if(typeof token!=='string'||!/^[\p{L}\p{M}’'-]{3,120}$/u.test(token))
+   return null;
+  const written=norm(token),nominal=locatedPossessives.get(written);
+  const owner=written.startsWith('no')?
+   {person:'1sg',prefix:'no',lemma:null}:nominal;
+  if(!owner)return null;
+  const rows=words.filter(w=>w.pos==='noun'&&
+   norm(String(w.possessed||'').split('(')[0].trim())===written&&
+   (!owner.lemma||w.word===owner.lemma));
   if(rows.length!==1)return null;
   const w=rows[0],claim=(w.claims||[]).filter(c=>c.field==='possessed'&&
    ['dictionary','grammar','text'].includes(c.assessment)&&
    typeof c.locator==='string'&&c.locator.trim()&&
    typeof c.source==='string'&&/^https:\/\/[^/\s]+/u.test(c.source));
   if(claim.length!==1||!/^https:\/\/[^/\s]+/u.test(w.source||''))return null;
+  if(nominal&&(claim[0].assessment!=='text'||claim[0].source!==nominal.source||
+   claim[0].locator!==nominal.locator))return null;
   const hits=exactMorphology(token).filter(m=>
    m.kind==='Editorially listed possessed form'&&m.grade==='lexical'&&
    m.lemma===w.word&&m.source===claim[0].source&&
    m.features?.partOfSpeech==='noun'&&m.features?.evidence===claim[0].assessment&&
    m.locator===claim[0].locator&&
-   m.parts?.length===2&&norm(m.parts[0].surface)==='no'&&
-   m.parts[0].role.includes('1sg possessive prefix')&&
-   norm(m.parts.map(p=>p.surface).join(''))===norm(token));
+   m.parts?.length===2&&norm(m.parts[0].surface)===owner.prefix&&
+   m.parts[0].role.includes(owner.person+' possessive prefix')&&
+   norm(m.parts.map(p=>p.surface).join(''))===written);
   if(hits.length!==1)return null;
   return {word:w.word,meaning:w.meaning,source:w.source,written:token,
-   possessor:'1sg',possessorSource:claim[0].source,possessorLocator:claim[0].locator,
-   kind:'exact source-located possessed noun (1sg no-)',morphSource:hits[0].source};
+   possessor:owner.person,possessorSource:claim[0].source,
+   possessorLocator:claim[0].locator,
+   kind:'exact source-located possessed noun ('+owner.person+' '+owner.prefix+'-)',
+   morphSource:hits[0].source};
  }
  function possessedAgreementProposals(tokens,negative){
   if(negative||tokens.length<2||tokens.length>4)return {items:[],truncated:false};

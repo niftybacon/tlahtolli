@@ -142,7 +142,9 @@ function lookupHistoricalEvidence(written,proposals,opts={}){
  const empty={hits:[],total:0,truncated:false};
  if(!loaded||!Array.isArray(proposals))return empty;
  const original=norm(written);
- if(!/^[\p{L}\p{M}’'-]{1,120}$/u.test(original))return empty;
+ // Single-letter manuscript tokens are too ambiguous for automatic
+ // orthographic cross-reference (e.g. written y is not safely lexical i).
+ if(original.length<2||!/^[\p{L}\p{M}’'-]{1,120}$/u.test(original))return empty;
  // A directly recorded Classical form takes precedence; do not invent an
  // orthographic substitution where the original has source evidence already.
  if((byForm.get(original)||[]).some(r=>r.sourceKey==='kaikki'&&

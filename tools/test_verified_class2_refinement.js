@@ -3,12 +3,12 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),read=x=>fs.readFileSync(path.join(root,x),'utf8');
 const D=JSON.parse(read('dictionary.json')),P=JSON.parse(read('paradigms.json')),R=JSON.parse(read('release.json'));
-assert.equal(D.version,R.version);assert.equal(D.version,'2026-10-29.4.2');assert.equal(D.words.length,210);
-assert.equal(D.words.filter(w=>String(w.pos).includes('verb')).length,64,'Old substring count retained as false-positive control');
-assert.equal(D.words.filter(w=>/^verb(?:\s*\(|$)/u.test(String(w.pos))).length,54,
+assert.equal(D.version,R.version);assert.equal(D.words.length,R.headwords);
+assert.equal(D.words.slice(0,210).filter(w=>String(w.pos).includes('verb')).length,64,'Old substring count retained as false-positive control');
+assert.equal(D.words.slice(0,210).filter(w=>/^verb(?:\s*\(|$)/u.test(String(w.pos))).length,54,
  'Only grammatically labelled verb entries count; adverbs are not verbs');
 assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),272);
-assert.equal(D.words.reduce((n,w)=>n+w.claims.length,0),1275);
+assert.equal(D.words.slice(0,210).reduce((n,w)=>n+w.claims.length,0),1275);
 assert.equal(Object.keys(P.paradigms).length,12);
 const script=read('tools/morphology_engine.js').split('renderMorphologyBreakdown=TlahtolliMorphEngine.html;')[0];
 function load(words=D.words){

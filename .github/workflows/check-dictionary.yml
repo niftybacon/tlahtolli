@@ -90,6 +90,8 @@ jobs:
           python -m playwright install chromium --only-shell
       - name: Integrated translator browser and tab regression
         run: python tools/test_translator_browser.py
+      - name: Browser regression for grammar-morphology clause bridge
+        run: python tools/test_morphology_clause_browser.py
       - name: Test expanded Amoxcalli archive search and cautious translator fallback
         run: python tools/test_amoxcalli_browser.py
       - name: Test Florentine Codex grammar reader and manuscript verification safeguards

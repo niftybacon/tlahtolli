@@ -6,7 +6,7 @@ const D=JSON.parse(read('dictionary.json')),M=JSON.parse(read('research/batches/
 const R=JSON.parse(read('release.json')),P=JSON.parse(read('paradigms.json'));
 assert.equal(D.version,R.version);assert.equal(D.version,M.target_version);
 assert.equal(D.words.length,2142);assert.equal(R.headwords,2142);assert.equal(M.entries.length,38);
-assert.equal(M.entries.filter(x=>!!x.class).length,15);assert.equal(M.older.length,4);
+assert.equal(M.entries.filter(x=>!!x.class).length,13);assert.equal(M.older.length,4);
 assert.equal(D.words.filter(w=>w.status==='Checked against source').length,225);
 assert.equal(D.words.filter(w=>w.status==='Archive-indexed; lexical review pending'&&w.pos.startsWith('verb')).length,187);
 assert.equal(Object.keys(P.paradigms).length,12);
@@ -95,5 +95,5 @@ for(const item of M.refusals){
  w.stem='huetzca-; huetzc-';
  assert(!engine(ws).analyze('nihuetzcaz').some(a=>a.lemma==='huetzca'&&a.kind.startsWith('Source-class1')));
 }
-assert.equal(licensed,15);assert.equal(withheld,23);assert.equal(exact,34);
-console.log('PASS Batch 08: '+M.entries.length+' historical lexical dispositions, 19 source-licensed classes, 34+2 exact forms; 4 refusals');
+assert.equal(licensed,13);assert.equal(withheld,25);assert.equal(exact,34);
+console.log('PASS Batch 08: '+M.entries.length+' historical lexical dispositions, 17 source-licensed classes, 34+2 exact forms; 6 refusals');

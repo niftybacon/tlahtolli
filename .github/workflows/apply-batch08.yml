@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Apply 38 individually located source reviews and 19 licensed classes
+      - name: Apply 38 individually located source reviews and 17 licensed classes
         run: python tools/import_source_stem_batch08.py --write
       - name: Regenerate single canonical morphology and runtime versioned HTML
         run: |

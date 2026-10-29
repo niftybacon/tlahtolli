@@ -123,7 +123,7 @@ def apply(write=False):
  manifest=read(PATH)
  must(manifest["format"]=="tlahtolli-verb-stem-evidence-batch08-v1","Bad manifest format")
  must(len(manifest["entries"])==manifest["reviewed_candidates"]==38,"Reviewed row count changed")
- must(len(manifest["older"])==4 and manifest["productive_class_count"]==19,"Class ledger changed")
+ must(len(manifest["older"])==4 and manifest["productive_class_count"]==17,"Class ledger changed")
  allrows=manifest["entries"]+manifest["older"]
  must(len({x["word"] for x in allrows})==len(allrows),"Duplicate candidate review")
  lex,morph,evid=(read(x) for x in ("data/lexicon.json","data/morphology.json","data/evidence.json"))
@@ -143,7 +143,7 @@ def apply(write=False):
   for spec in manifest["older"]:
    i=ix[spec["word"]]
    must(morph["entries"][i]["stem"]==spec["word"]+"-","Prior Class 1 missing "+spec["word"])
-  print("PASS: 38 source-review dispositions, 19 licensed verb stems, 4 explicit refusals")
+  print("PASS: 38 source-review dispositions, 17 licensed verb stems, 6 explicit refusals")
   return
  must(release["version"]!=manifest["target_version"],"Already imported")
  for spec in manifest["entries"]:
@@ -160,7 +160,7 @@ def apply(write=False):
                   ("release.json",release)):
   (ROOT/path).write_text(dump(obj),encoding="utf8")
  build(write=True)
- print("PASS: 38 source-reviewed lexemes, 34 exact newly stored preterites, 19 stem classes")
+ print("PASS: 38 source-reviewed lexemes, 34 exact newly stored preterites, 17 stem classes")
 
 if __name__=="__main__":
  parser=argparse.ArgumentParser()

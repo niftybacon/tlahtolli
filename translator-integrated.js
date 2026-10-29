@@ -450,6 +450,39 @@ function showResult(){
     }
     block.append(panel);
    }
+   if(clause.partialSpans?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-partial-grammar-spans';
+    panel.append(el('summary','','Supported grammatical windows · '+
+     clause.partialSpans.length+' partial span'+
+     (clause.partialSpans.length===1?'':'s')+' (NOT a translation)'));
+    panel.append(el('p','translator-caution',
+     'These windows were analyzed by existing grammar rules within the longer '+
+     'passage. Original token offsets are preserved; punctuation is trimmed '+
+     'only for the window probe. Overlaps are unranked and boundary attachments '+
+     'are NOT established. No whole-passage English is licensed.'));
+    const covered=new Set();
+    for(const p of clause.partialSpans){
+     for(let i=p.start;i<p.end;i++)covered.add(i);
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',p.written.join(' ')),
+      el('p','translator-meta','Original words '+(p.start+1)+'–'+p.end+
+       ' · '+p.families.join(' / ')+' · '+p.alternatives+
+       ' unranked grammatical reading'+(p.alternatives===1?'':'s')),
+      el('p','translator-caution',p.status));
+     for(const url of p.sources.slice(0,8)){
+      const link=safeLink(url,'Inspect partial-window evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    const gaps=clause.tokens.map((t,i)=>covered.has(i)?null:(i+1)+': '+t).filter(Boolean);
+    panel.append(el('p','translator-caution',gaps.length?
+     'Words without a recovered structural window: '+gaps.join(' · '):
+     'All written words appear in at least one candidate window; no '+
+     'supported WHOLE-clause interpretation is established.'));
+    block.append(panel);
+   }
    if(clause.morphologicalClues?.length){
     const panel=el('details','translator-morph-panel');
     panel.append(el('summary','','Partial morphology only · '+clause.morphologicalClues.length+

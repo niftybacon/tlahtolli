@@ -100,6 +100,46 @@ Only an explicit `approved` status and verified permissions authorize training u
 
 **Do not bulk scrape.** Begin with small, individually reviewed passages, proper attribution, and explicit permission checks.
 
+## Three source-curated 1571 Molina function words (2026-10-29)
+
+A complete 36-record/275-unknown-token audit revealed that some repeated
+historical closed-class **free words** were only visible as unreviewed archive
+comparisons, not in Tlahtōlli's main 115-entry curated lexicon. Rather than
+create another dictionary, we updated the canonical source-led lexicon with
+three independently cited entries:
+
+| Original Classical form | Early dictionary location | Occurrences in pinned 36 records |
+| --- | --- | ---: |
+| `niman` | [Molina 1571, II f. 72r](https://nahuatl.wired-humanities.org/node/172499), with Karttunen and Lockhart corroboration | 7 |
+| `oncan` | [Molina 1571, II f. 77r](https://nahuatl.wired-humanities.org/content/oncan), with Olmos and Lockhart corroboration | 3 |
+| `ompa` | [Molina 1571, II f. 76v](https://nahuatl.wired-humanities.org/content/ompa), with Karttunen and Carochi corroboration | 2 |
+
+These forms existed **before** any Axolotl sampling. Evidence for the word
+exists independently of its presence in that development set. We cite the
+original 1571 source folios, retain uncertain semantic/temporal functions,
+and do not invent inflection cells, noun animacy, clause attachments or a
+sentence translation. Source morphology for these particles has **zero**
+extra forms because the headword itself already indexes the documented
+spelling; adding an identical 'inflected' citation form would produce
+redundant lexical candidates.
+
+Canonical inputs are `data/lexicon.json`, `data/morphology.json`, and
+`data/evidence.json`. We used the existing `tools/build_dictionary.py`
+output contract to keep `dictionary.json`, the claim audit ledger,
+`index.html` offline seed, and the version-locked companion documents
+synchronized. No separate lookup engine or lexicon source was created.
+
+**Measured same-cohort result**: the original 36 source records still contain
+365 lexical tokens, but exact curated matches increased **90 → 102** and
+unknown occurrences decreased **275 → 263**. That is +12 documented free
+word occurrences / +3 validated headwords, not 12 new parsed sentences.
+Archive-only Classical matches decreased from 41 to 36; OCR-only matches
+decreased from 41 to 34; all **193** previously unmatched archive occurrences
+remain unmatched. **No full grammar candidate** was produced. This is a
+**known-development-set, lexical coverage gain only**, not accuracy or
+out-of-sample generalization. The 36 records also include date fragments,
+Roman numerals and Spanish names—do not call them 36 verified sentences.
+
 ## Existing historical spelling → archive evidence bridge (2026-10-29)
 
 The project already had **two separate systems**: `TlahtolliHistoricalMorphology.variants`

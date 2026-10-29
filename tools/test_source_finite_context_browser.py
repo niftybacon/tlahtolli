@@ -32,7 +32,7 @@ with sync_playwright() as pw:
     page.route("**/*", serve)
     page.goto("https://tlahtolli.test/", wait_until="load")
     page.locator("#tabTranslator").click()
-    page.wait_for_function("() => document.querySelector('#translatorStatus')?.textContent.includes('115')")
+    page.wait_for_function("() => document.querySelector('#translatorStatus')?.textContent.includes('118')")
 
     def analyze(value):
         page.locator("#translatorInput").fill(value)

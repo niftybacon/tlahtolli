@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-28.1.0",
+  "version": "2026-10-29.1.0",
   "entries": [
     {
       "word": "ātl",
@@ -3713,6 +3713,51 @@
           "note": "Lexical citation form; normalized vowel length is editorial unless explicitly transcribed. Original writing appears in Book 11 fol. 209v: Florentine Codex Book 11, fol. 209v: 'in mocuepa ca tetl'"
         }
       ],
+      "formsEdited": false
+    },
+    {
+      "word": "niman",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "not_applicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/172499",
+      "grammarNotes": "Sixteenth-century Molina lists niman as a conjunction; Lockhart also notes sequencing and intensification before negatives. Do not auto-select a temporal sense from the isolated word.",
+      "inflections": [],
+      "formsEdited": false
+    },
+    {
+      "word": "oncan",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "not_applicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/oncan",
+      "grammarNotes": "Molina source spelling oncan, with spatial and contextual temporal uses; vowel length and exact deictic distance remain editorially unsettled. Distinguish from ompa.",
+      "inflections": [],
+      "formsEdited": false
+    },
+    {
+      "word": "ompa",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "not_applicable",
+      "absolutive": "not_applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ompa",
+      "grammarNotes": "Molina source spelling ompa; Karttunen/Carochi discuss editorial long initial vowel. The early spelling is not a context-selected length or an automatically spatial reading.",
+      "inflections": [],
       "formsEdited": false
     }
   ]

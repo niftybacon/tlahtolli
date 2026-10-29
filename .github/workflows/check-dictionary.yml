@@ -102,6 +102,8 @@ jobs:
         run: python tools/test_location_english_browser.py
       - name: Morphology-assisted clause browser regression
         run: python tools/test_morphology_clause_browser.py
+      - name: Shared grammar IR structural and browser regressions
+        run: node tools/test_shared_grammar_ir.js && python tools/test_shared_grammar_ir_browser.py
       - name: Test expanded Amoxcalli archive search and cautious translator fallback
         run: python tools/test_amoxcalli_browser.py
       - name: Test Florentine Codex grammar reader and manuscript verification safeguards

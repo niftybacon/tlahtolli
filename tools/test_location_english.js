@@ -37,6 +37,9 @@ assert.equal(english.render(sequence,[],[1]),'Inside the house, I cry, and I wil
 assert.ok(!sequence.units[1].options.some(o=>o.text.includes('house')),'no silent location inheritance');
 assert.equal(english.render(compose('ahmo nichōca in calli itic auh nitlacua'),[],[1]),
  'Inside the house, I do not cry, and I eat.');
+assert.equal(english.render(compose('niquitta in cihuātl in chōca auh nichōca in calli itic'),[],[1]),
+ 'I see the woman that cries, and inside the house, I cry.',
+ 'retain the concurrently merged relative-clause coordination support');
 assert.equal(sequence.verified,false);
 assert.ok(sequence.note.includes('relational possessor'));
 assert.equal(model.analyze('nichōca in calli itic').complete,false,'rendering must not promote parser evidence');
@@ -73,3 +76,4 @@ const bad=model.analyze('nichōca in calli itic');
 bad.clauses[0].complexClauseProposals[0].location.possibleSenses=['because of'];
 assert.equal(english.compose('nichōca in calli itic',bad).available,false);
 console.log('Location English: 288 finite controls, attachment/sense alternatives, provenance, negation and negative controls passed.');
+

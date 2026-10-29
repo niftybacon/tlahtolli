@@ -438,6 +438,10 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
   return {
    clauses,complete:false,
    contextLinks:explicitContextLinks(clauses),
+   // Coordination permits candidate discourse links, not established identity.
+   // A conditional protasis does not automatically supply a referent to its
+   // consequent: never apply this heuristic to intla.
+   antecedentProposals:marker==='auh'?possibleAntecedents(clauses):[],
    multiClauseProposals:[{
     relation,markers,segments,
     clauseCount:parts.length,
@@ -569,12 +573,18 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    const prev=earlier[0].frame,nextFrame=later[0].frame;
    if(prev.subjectPerson!==2||!prev.subjectNoun||prev.objectNoun||
     nextFrame.subjectPerson!==2||nextFrame.subjectNoun||nextFrame.objectNoun)continue;
+   // Do not equate the second subject with the first merely because both
+   // index third person. We only surface an overt, unique noun as a possible
+   // antecedent; discourse and real-world identity remain unresolved.
    const n=noun(prev.subjectNoun);
    if(!n||!/^https:\/\//.test(n.source||''))continue;
    links.push({
     fromClause:i-1,toClause:i,
     antecedent:{written:n.word,meaning:n.meaning,source:n.source},
     pronounSlot:'unexpressed 3sg subject indexed on subsequent finite verb',
+    relation:'adjacent overt nominal subject → subsequent implicit indexed subject',
+    personConstraint:'3sg ↔ 3sg',
+    confidence:'candidate-only',
     status:'single agreement-compatible antecedent candidate, NOT resolved reference',
     alternatives:'Unmentioned third-person discourse referents may still be intended.',
     note:'Adjacent clause and matching 3sg subject agreement license only a candidate. '+

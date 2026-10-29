@@ -143,6 +143,35 @@ exclusion, duplicate exclusion, source-byte integrity, real-engine use, and
 no fabricated translation score. Developer-created examples exist *only* in
 the fixture tests and do not contribute to the real-corpus report.
 
+### First measured baseline from the pinned source (36-row CI run)
+
+The live source-byte-verified diagnostic on October 29, 2026 analyzed a
+deterministic sample of **36 published Classical-labeled parallel rows across
+17 upstream source-work titles** (GitHub Action `40876479899`,
+pinned blob SHA `90b7327fc4023ba529e1982f823ddeaee6e313e3`).
+
+| Mechanical result | Actual count |
+| --- | ---: |
+| Nahuatl lexical word tokens | 365 |
+| Recognized by the **115-headword curated lookup** | 90 (24.7%) |
+| Not recognized by curated lookup | 275 (75.3%) |
+| Among those 275: exact Classical-labeled **archive** evidence | 41 |
+| Diacritic-only Classical archive evidence | 0 |
+| Siméon OCR evidence only | 41 |
+| Neither archive source matched | 193 |
+| Tokens with unreviewed morphology proposals | 1 |
+| Complete grammar candidates | 0 of 36 |
+| Partial grammar-window rows | 0 of 36 |
+
+The categories are *token occurrences*, not unique lemmas, correct readings,
+or historical translation success rates. The frequent missing surfaces include
+`niman`, `ye`, `ipan`, `oncan`, and `ma`.
+The result points to **source-sensitive lexical/form coverage and morphology**
+as a higher priority than adding another highly specialized sentence pattern.
+It does not make all 193 unmatched forms real missing dictionary headwords:
+inflection, clitics, orthographic variation, named entities, and OCR issues
+remain possible.
+
 **Limitations:** The upstream 'Classical Nahuatl' label is an editorial dataset
 classification. Its Spanish translations can be paraphrastic and its source
 orthography/digitization uneven. Work-level stratification is based on the

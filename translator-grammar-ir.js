@@ -211,7 +211,8 @@ function create(dictionary){
     if(!p||p.coverage!==cl.tokens?.length||!p.verb||
       !source(p.verb.source)||!items(p.sources).includes(p.verb.source)||
       (p.nounPhrase&&!source(p.nounPhrase.source))||
-      (p.adverb&&!source(p.adverb.source)))continue;
+      (p.adverb&&!source(p.adverb.source))||
+      (p.relational&&!source(p.relational.source)))continue;
     const j=p.verb;
     const lexical=items(dictionary?.words,2000).filter(w=>w.word===j.lemma&&
       w.pos==='verb (intransitive)'&&source(w.source)&&
@@ -229,7 +230,11 @@ function create(dictionary){
       (p.nounPhrase&&lexicalSource(p.nounPhrase.lemma,p.nounPhrase.written)!==p.nounPhrase.source)||
       (p.nounPhrase&&editorial2sg)||
       (p.adverb&&items(dictionary?.words,2000).filter(w=>w.word===p.adverb.lemma&&
-       String(w.pos).startsWith('adverb')&&w.source===p.adverb.source).length!==1))continue;
+       String(w.pos).startsWith('adverb')&&w.source===p.adverb.source).length!==1)||
+      (p.relational&&items(dictionary?.words,2000).filter(w=>w.word===p.relational.lemma&&
+       w.pos==='relational noun / locative'&&w.source===p.relational.source&&
+       [w.word,...String(w.original||'').split(/[;,/]/)]
+         .some(x=>norm(x.trim())===norm(p.relational.written))).length!==1))continue;
     const v=variant(i,'source-finite-context',n,p.grade,p.sources);if(!v)continue;
     const fin=predicate(i,j.written,j.lemma,j.subjectPerson,v,0,j.source,j.tokenIndex);
     if(fin){
@@ -246,6 +251,19 @@ function create(dictionary){
       readingId:v,roleStatus:h.roleStatus,requiresUnverified3sg:true,
       agreementCertified:false,referentResolved:false
      });
+    }
+    if(p.relational){
+     const h=p.relational,t=span(i,h.written);
+     if(t!==null){
+      const loc=newNode('possible-relational-adjunct',{
+       unit:i,tokenIndex:t,written:h.written,lemma:h.lemma,source:h.source,
+       possessorReferent:null,attachment:'unresolved'});
+      if(loc&&fin){
+       newEdge(v,loc,'contains-unresolved-relational',{readingId:v});
+       newEdge(fin,loc,'possible-relational-attachment',{
+        readingId:v,attachmentResolved:false,possessorResolved:false});
+      }
+     }
     }
     if(p.adverb){
      const h=p.adverb,t=span(i,h.written);

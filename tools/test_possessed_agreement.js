@@ -130,7 +130,7 @@ const invalidPacks=[
  {...poss,version:2},
  {...poss,records:[]},
  {...poss,records:[...poss.records,poss.records[0]]},
- {...poss,records:poss.records.map((r,i)=>i?r:{...r,person:'3pl'}},
+ {...poss,records:poss.records.map((r,i)=>i?r:{...r,person:'3pl'})},
  {...poss,records:poss.records.map((r,i)=>i?r:{...r,form:'itlatqui'})},
  {...poss,records:poss.records.map((r,i)=>i?r:{...r,source:'https://example.org/forged'})},
  {...poss,records:poss.records.map((r,i)=>i?r:{...r,locator:'fictional record'})},

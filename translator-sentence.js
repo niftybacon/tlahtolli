@@ -84,7 +84,7 @@ function compileClauseRules(pack){
  return valid;
 }
 
-function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence){
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -528,8 +528,34 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   if(!w||!/^https:\/\/[^/\s]+/u.test(w.source||''))return null;
   return {record,lexical:w};
  }
+
+ // A bare noun is admitted only if the EXACT word sequence appears in an
+ // already-source-located editorial excerpt; never infer an attested parse.
+ function sourceWindow(tokens,record){
+  const passages=historicalPassages?.records;
+  if(!Array.isArray(passages)||passages.length>150)return null;
+  for(const p of passages){
+   if(p?.reading_status!=='edited_transcription_candidate'||p.train_eligible!==false||
+      p.reader?.source!==record.source_url||typeof p.original!=='string'||p.original.length>1500)continue;
+   const written=p.original.split(/\s+/u).map(t=>t.replace(/^[,.;!?]+|[,.;!?]+$/gu,'')).filter(Boolean);
+   for(let i=0;i<=written.length-tokens.length;i++)
+    if(tokens.every((t,j)=>norm(t)===norm(written[i+j])))
+     return {passageId:p.id,source:record.source_url,
+      status:'contiguous edited witness; grammar and manuscript line unverified'};
+  }
+  return null;
+ }
+ function sourceRelational(token){
+  const matches=words.filter(w=>w.pos==='relational noun / locative'&&
+    /^https:\/\/[^/\s]+/u.test(w.source||'')&&
+    [w.word,...String(w.original||'').split(/[;,/]/)]
+      .some(v=>norm(v.trim())===norm(token)));
+  return matches.length===1?
+   {written:token,lemma:matches[0].word,source:matches[0].source,
+    referentStatus:'relational possessor and attachment UNRESOLVED'}:null;
+ }
  function historicalFiniteContextProposals(tokens,negative){
-  if(negative||tokens.length<2||tokens.length>3)return [];
+  if(negative||tokens.length<2||tokens.length>4)return [];
   const matches=tokens.map((token,index)=>({index,found:sourceFiniteReading(token)}))
     .filter(x=>x.found);
   if(matches.length!==1)return [];
@@ -539,14 +565,14 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     personStatus:record.person_status,tenseStatus:'not independently established',
     valency:'intransitive',evidence:'exact source-recorded finite form',
     source:record.source_url,locator:record.source_locator};
-  const output=(construction,rule,nounPhrase,adverb,relational)=>({
+  const output=(construction,rule,nounPhrase,adverb,relational,witness=null)=>({
    constructionId:rule?.id||construction,construction,
    grade:'source-recorded finite + bounded grammatical hypothesis (NOT an attested sentence)',
    coverage:tokens.length,verb,nounPhrase:nounPhrase||null,adverb:adverb||null,
-   relational:relational||null,
+   relational:relational||null,sourceWindow:witness,
    sources:[...new Set([record.source_url,found.lexical.source,rule?.source_url,
-     nounPhrase?.source,adverb?.source,relational?.source].filter(Boolean))],
-   note:'Only this finite FORM is source-recorded. This complete token sequence is NOT thereby attested. '+
+     nounPhrase?.source,adverb?.source,relational?.source,witness?.source].filter(Boolean))],
+   note:(witness?'Exact written sequence occurs in an already consulted editorial source, but grammar is NOT thereby verified. ':'Only this finite FORM is source-recorded. This complete token sequence is NOT thereby attested. ')+
      'Person evidence: '+record.person_status+'. Tense, argument attachment, adverb scope and '+
      'referent identity are not independently verified. No English translation is licensed.'
   });
@@ -565,6 +591,36 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
         roleStatus:'possible subject ONLY IF unresolved verb person is 3sg'},null)];
    }
   }
+
+  // Combine the SAME recorded finite with the already recognized relational
+  // form and a noun. Bare nouns require an exact documentary word-sequence gate.
+  if(record.subject_person===null&&tokens.length===3&&index===1){
+   const rel=sourceRelational(tokens[0]),n=noun(tokens[2]);
+   const witness=rel&&n&&sourceWindow(tokens,record);
+   if(witness&&n.pos==='noun'&&/^https:\/\/[^/\s]+/u.test(n.source||''))
+    return [output('source finite + relational + witnessed bare noun (role unresolved)',
+      null,{written:tokens[2],lemma:n.word,source:n.source,
+        roleStatus:'bare noun in cited edited sequence; grammatical role UNRESOLVED'},
+      null,rel,witness)];
+  }
+  // An overt in+NP follows the existing declarative intransitive subject rule,
+  // but remains CONDITIONAL because this source verb has unknown person.
+  if(record.subject_person===null&&tokens.length===4){
+   const front=index===1,back=index===3;
+   const ri=front?0:back?2:-1,mi=front?2:0,ni=front?3:1;
+   const seq=front?['V','NP']:['NP','V'];
+   if(ri>=0&&norm(tokens[mi])==='in'){
+    const rel=sourceRelational(tokens[ri]),n=noun(tokens[ni]);
+    const rule=activeClauseRules.find(r=>r.valency==='intransitive'&&
+      r.roles==='subject'&&r.persons.includes(2)&&
+      JSON.stringify(r.sequence)===JSON.stringify(seq));
+    if(rel&&n?.pos==='noun'&&/^https:\/\/[^/\s]+/u.test(n.source||'')&&rule)
+     return [output('source finite + relational + marked noun (conditional 3sg role)',
+      rule,{written:tokens[ni],lemma:n.word,source:n.source,
+       roleStatus:'possible subject ONLY IF unverified verb person is 3sg'},
+      null,rel)];
+   }
+  }
   // Source-backed adverbs can modify a finite predicate without assigning
   // its subject person. This is a proposal, not a new source attestation.
   if(tokens.length===2){
@@ -577,14 +633,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     return [output('source finite + unscoped adverb',null,null,
       {written:tokens[ai],lemma:hits[0].word,source:hits[0].source,
        status:'possible modifier; semantic scope unknown'})];
-   const locations=words.filter(w=>w.pos==='relational noun / locative'&&
-     /^https:\/\/[^/\s]+/u.test(w.source||'')&&
-     [w.word,...String(w.original||'').split(/[;,/]/)]
-       .some(x=>norm(x.trim())===norm(tokens[ai])));
-   if(locations.length===1)
-    return [output('source finite + unresolved relational adjunct',null,null,null,
-      {written:tokens[ai],lemma:locations[0].word,source:locations[0].source,
-       referentStatus:'possessor and attachment remain unresolved'})];
+   const rel=sourceRelational(tokens[ai]);
+   if(rel)return [output('source finite + unresolved relational adjunct',null,null,null,rel)];
   }
   return [];
  }

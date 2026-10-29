@@ -212,6 +212,24 @@ function create(dictionary){
       !source(p.verb.source)||!items(p.sources).includes(p.verb.source)||
       (p.nounPhrase&&!source(p.nounPhrase.source))||
       (p.adverb&&!source(p.adverb.source)))continue;
+    const j=p.verb;
+    const lexical=items(dictionary?.words,2000).filter(w=>w.word===j.lemma&&
+      w.pos==='verb (intransitive)'&&source(w.source)&&
+      items(w.inflections,100).some(f=>norm(f.form)===norm(j.written)&&
+       f.evidence==='text'&&f.category==='Historically transcribed finite form'&&
+       f.source===j.source));
+    const finiteEntry=lexical.length===1?
+      lexical[0].inflections.find(f=>norm(f.form)===norm(j.written)&&
+       f.evidence==='text'&&f.category==='Historically transcribed finite form'&&
+       f.source===j.source):null;
+    const editorial2sg=/\b(?:second[-\s]person singular|2sg)\b/i
+      .test(String(finiteEntry?.gloss||'')+' '+String(finiteEntry?.note||''));
+    if(!finiteEntry||j.subjectPerson!==(editorial2sg?'2sg':'unresolved')||
+      cl.tokens?.[j.tokenIndex]!==j.written||
+      (p.nounPhrase&&lexicalSource(p.nounPhrase.lemma,p.nounPhrase.written)!==p.nounPhrase.source)||
+      (p.nounPhrase&&editorial2sg)||
+      (p.adverb&&items(dictionary?.words,2000).filter(w=>w.word===p.adverb.lemma&&
+       String(w.pos).startsWith('adverb')&&w.source===p.adverb.source).length!==1))continue;
     const v=variant(i,'source-finite-context',n,p.grade,p.sources);if(!v)continue;
     const j=p.verb;
     const fin=predicate(i,j.written,j.lemma,j.subjectPerson,v,0,j.source,j.tokenIndex);

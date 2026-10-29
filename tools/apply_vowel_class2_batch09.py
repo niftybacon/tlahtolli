@@ -44,7 +44,9 @@ def run(write=False):
             f["category"]=="Preterite 1sg" and f["source"]==spec["source"]
             for f in m["inflections"]),name+": no exact source-listed preterite")
   claim=next((c for c in e["claims"] if c["field"]=="stem"),None)
-  check(claim is not None and claim["source"]==spec["source"],name+": existing claim/source mismatch")
+  check(claim is not None,name+": missing pre-existing unverified stem claim")
+  if not write:
+   check(claim["source"]==spec["source"],name+": promoted claim/source mismatch")
   if write:
    check(not m["stem"] and claim["assessment"]=="unverified",name+": already promoted")
    m["stem"]=spec["base1"]+"-; "+spec["base2"]+"-"

@@ -28,6 +28,8 @@ jobs:
         run: node tools/test_source_bound_possessives.js
       - name: Source-located finite verb productivity and lexical provenance
         run: node tools/test_source_verb_productivity.js
+      - name: Source-backed long/short stem class and future hypotheses
+        run: node tools/test_source_stem_class_morphology.js
       - name: Test Phase 2 source separation
         run: python tools/test_phase2.py
       - name: Validate published dictionary

@@ -8,9 +8,10 @@ const MAX_NODES=240,MAX_EDGES=480,MAX_ALTERNATIVES=48;
 const norm=x=>String(x||'').normalize('NFC').toLowerCase();
 const source=x=>typeof x==='string'&&/^https:\/\/[^\s/]+/u.test(x)?x:null;
 const items=(x,max=32)=>Array.isArray(x)?x.slice(0,max):[];
-function create(dictionary,historicalPassages){
+function create(dictionary,historicalPassages,paradigms){
  // A lexical head source must originate from an unambiguous curated entry,
  // never from the preceding in-relative grammar marker.
+ const grammarSource='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
  const lexicalSource=(lemma,written)=>{
   const found=items(dictionary?.words,2000).filter(x=>x.word===lemma&&
    x.pos==='noun'&&source(x.source)&&
@@ -152,17 +153,25 @@ function create(dictionary,historicalPassages){
 
    // Only noun-PHRASE hypotheses. Do not create discourse mentions or
    // subject/object slots from unresolved coordinated heads.
-   for(const [n,p] of items(cl.nominalCoordinationProposals,8).entries()){
+   const coordinatedLayers=[
+    ...items(cl.nominalCoordinationProposals,8).map((p,n)=>({p,n,offset:0,attached:null})),
+    ...items(cl.coordinatedSubjectProposals,8).map((attached,n)=>({
+     p:attached?.nominal,n,offset:attached?.nominalStart,attached
+    }))
+   ];
+   for(const {p,n,offset,attached} of coordinatedLayers){
+    if(!Number.isInteger(offset)||offset<0||offset>1)continue;
+    const nominalTokens=cl.tokens?.slice(offset,offset+(p?.coverage||0))||[];
     if(cl.complete||!p||p.family!=='nominal-coordination'||
       p.grade!=='source-checked NP coordination hypothesis; NOT a clause translation'||
-      p.coverage!==cl.tokens?.length||!Array.isArray(p.written)||
-      p.written.length!==cl.tokens.length||
-      !p.written.every((t,k)=>t===cl.tokens[k])||
+      p.coverage!==nominalTokens.length||!Array.isArray(p.written)||
+      p.written.length!==nominalTokens.length||
+      !p.written.every((t,k)=>t===nominalTokens[k])||
       !Array.isArray(p.nouns)||p.nouns.length!==2||
       p.connector?.meaningAlternatives?.join('|')!=='and|together with'||
       p.connector?.selectedMeaning!==null||
       p.connector?.lemma!=='īhuān'||!Number.isInteger(p.connector?.tokenIndex)||
-      cl.tokens[p.connector.tokenIndex]!==p.connector.written||
+      nominalTokens[p.connector.tokenIndex]!==p.connector.written||
       !Array.isArray(p.sources)||p.sources.length<3||
       !p.sources.every(source))continue;
     const connector=items(dictionary?.words,2000).filter(w=>w.word==='īhuān'&&
@@ -172,7 +181,7 @@ function create(dictionary,historicalPassages){
     if(connector.length!==1||mark.length!==1||
       !p.sources.includes(connector[0].source))continue;
     const cue=p.connector.written,at=p.connector.tokenIndex,historical=norm(cue)==='ioan';
-    if(at<1||at>=cl.tokens.length-1)continue;
+    if(at<1||at>=nominalTokens.length-1)continue;
     if(historical){
      const witness=p.sourceWindow,url='https://florentinecodex.getty.edu/book/11/folio/217r';
      if(!witness||witness.source!==url||p.connector.source!==url||
@@ -192,15 +201,15 @@ function create(dictionary,historicalPassages){
      p.connector.source!==connector[0].source||
      ![connector[0].word,...String(connector[0].original||'').split(/[;,/]/)]
       .some(x=>norm(x.trim())===norm(cue)))continue;
-    const sides=[cl.tokens.slice(0,at),cl.tokens.slice(at+1)],members=[];
+    const sides=[nominalTokens.slice(0,at),nominalTokens.slice(at+1)],members=[];
     for(let k=0;k<2;k++){
      const side=sides[k],h=p.nouns[k];
      if(side.length<1||side.length>2||!h||!Number.isInteger(h.tokenIndex)||
-      h.written!==cl.tokens[h.tokenIndex]||
-      h.tokenIndex!==(k===0?at-1:cl.tokens.length-1)||
+      h.written!==nominalTokens[h.tokenIndex]||
+      h.tokenIndex!==(k===0?at-1:nominalTokens.length-1)||
       (side.length===2)!==(h.articleMarker==='in')||
       (side.length===2&&
-       (cl.tokens[h.tokenIndex-1]!=='in'||h.articleSource!==mark[0].source)))break;
+       (nominalTokens[h.tokenIndex-1]!=='in'||h.articleSource!==mark[0].source)))break;
      const form=side[side.length-1],clean=form.replace(/,+$/u,'');
      if(!clean||(form!==clean&&(!form.endsWith(',')||k!==0)))break;
      const hits=items(dictionary?.words,2000).filter(w=>w.pos==='noun'&&
@@ -212,18 +221,64 @@ function create(dictionary,historicalPassages){
      members.push({head:h,entry:hits[0]});
     }
     if(members.length!==2)continue;
-    const v=variant(i,'nominal-coordination',n,p.grade,p.sources);if(!v)continue;
+    let finite=null;
+    if(attached){
+     const pred=attached.predicate;
+     const person=pred?.subjectPerson==='3sg'?2:pred?.subjectPerson==='3pl'?5:-1;
+     const matrix=paradigms?.paradigms?.[pred?.lemma];
+     const lex=items(dictionary?.words,2000).filter(w=>w.word===pred?.lemma&&
+      w.source===pred?.source&&source(w.source));
+     const animacy=members[0].entry.animacy;
+     const agreementUrl='https://gdn.iib.unam.mx/diccionario/ihuan/50956';
+     const position=offset===1?0:nominalTokens.length;
+     if(cl.complete||!Array.isArray(attached.written)||
+      attached.written.length!==cl.tokens.length||
+      !attached.written.every((t,k)=>t===cl.tokens[k])||
+      attached.family!=='coordinated-subject-attachment'||
+      attached.coverage!==cl.tokens.length||
+      attached.nominalStart!==offset||nominalTokens.length!==cl.tokens.length-1||
+      !pred||pred.tokenIndex!==position||pred.written!==cl.tokens[position]||
+      pred.tense!=='present'||pred.transitive!==false||
+      (person!==2&&person!==5)||pred.source!==matrix?.lemmaSource||
+      matrix?.trans!==false||matrix?.cells?.[0]?.[person]!==pred.written||
+      lex.length!==1||!['animate','inanimate'].includes(animacy)||
+      animacy!==members[1].entry.animacy||
+      (animacy==='inanimate'&&person!==2)||
+      attached.nominalAnimacy!==animacy||
+      attached.possibleRole!=='coordinated nominal subject'||
+      attached.subjectAgreement!==pred.subjectPerson||
+      attached.numberAgreementSource!==agreementUrl||
+      attached.grade!=='source-licensed coordination + indexed intransitive agreement hypothesis; NOT a translation'||
+      !Array.isArray(attached.sources)||
+      !attached.sources.includes(agreementUrl)||
+      !attached.sources.includes(pred.source)||
+      !attached.sources.includes(grammarSource)||
+      !p.sources.every(u=>attached.sources.includes(u))||
+      !attached.sources.every(source))continue;
+     finite=pred;
+    }
+    const v=variant(i,attached?'coordinated-subject-attachment':'nominal-coordination',
+     n,attached?attached.grade:p.grade,attached?attached.sources:p.sources);if(!v)continue;
     const link=newNode('nominal-coordination-marker',{
-     unit:i,tokenIndex:at,written:cue,lemma:'īhuān',source:p.connector.source,
+     unit:i,tokenIndex:at+offset,written:cue,lemma:'īhuān',source:p.connector.source,
      possibleMeanings:['and','together with'],meaningSelected:null,scopeResolved:false});
     if(link)newEdge(v,link,'contains-unresolved-coordinator',{readingId:v});
     for(const [k,{head,entry}] of members.entries()){
      const id=newNode('coordinated-noun-head',{
-      unit:i,tokenIndex:head.tokenIndex,written:head.written,lemma:entry.word,
+      unit:i,tokenIndex:head.tokenIndex+offset,written:head.written,lemma:entry.word,
       source:entry.source,number:null,grammaticalRole:null,referentId:null});
      if(link&&id)newEdge(link,id,'possible-coordinated-noun-member',{
       readingId:v,member:k,roleResolved:false,numberResolved:false,
       relationSelected:false,referentResolved:false});
+    }
+    if(finite){
+     const pred=predicate(i,finite.written,finite.lemma,finite.subjectPerson,
+      v,0,finite.source,finite.tokenIndex);
+     if(pred&&link)newEdge(pred,link,'possible-coordinated-subject-attachment',{
+      readingId:v,role:'possible coordinated subject',numberAgreement:finite.subjectPerson,
+      agreementSource:attached.numberAgreementSource,scopeResolved:false,
+      referentResolved:false,semanticReadingSelected:false
+     });
     }
    }
    for(const [n,p] of items(cl.nestedInProposals,16).entries()){
@@ -525,7 +580,8 @@ function create(dictionary,historicalPassages){
     nestedDependencies:edges.filter(e=>e.relation==='in-subordinate-dependency').length,
     antecedentCandidates:edges.filter(e=>e.relation==='antecedent-candidate').length,
     partialSpans:nodes.filter(n=>n.kind==='partial-grammatical-span').length,
-    nominalCoordinations:nodes.filter(n=>n.kind==='nominal-coordination-marker').length}};
+    nominalCoordinations:nodes.filter(n=>n.kind==='nominal-coordination-marker').length,
+    coordinatedSubjectAttachments:edges.filter(e=>e.relation==='possible-coordinated-subject-attachment').length}};
  }
  // Inspect output from the EXISTING English composer; do not realize text or
  // derive new grammar here. Every relative wording must map to a reading

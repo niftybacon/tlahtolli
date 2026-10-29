@@ -303,13 +303,14 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  // written in + unique curated noun. Entire token consumption is mandatory.
  const activeClauseRules=compileClauseRules(grammarRules===undefined||grammarRules===null?
   DEFAULT_CLAUSE_PACK:grammarRules);
- function matchClauseRules(tokens){
+ function matchClauseRules(tokens,readVerbs){
+  const getVerbs=typeof readVerbs==='function'?readVerbs:key=>index.get(norm(key))||[];
   const proposals=[];
   for(const rule of activeClauseRules){
    let cursor=0,verbsAt=null,phrases=[],valid=true;
    for(const slot of rule.sequence){
     if(slot==='V'){
-     verbsAt=index.get(norm(tokens[cursor]||''))||[];
+     verbsAt=getVerbs(tokens[cursor]||'')||[];
      if(!verbsAt.length){valid=false;break;}
      cursor++;
     }else{
@@ -339,6 +340,70 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    }
   }
   return proposals;
+ }
+ // Only indexed, *grammar-derived* canonical morphology is permitted here.
+ // Past and modal rows below are NOT sufficiently vetted to generate English.
+ // This bridge produces structural hypotheses exclusively: complete:false.
+ const MORPH_CLAUSE_ROWS=new Set([1,2,4,5,6]); // preterite, imperfect, conditional, pluperfect, habitual
+ function indexedMorphologyReadings(token){
+  if(typeof token!=='string'||!/^[\p{L}\p{M}’'-]{1,120}$/u.test(token))return [];
+  const proposals=[];
+  for(const m of exactMorphology(token)){
+   if(m.kind!=='Indexed conjugation'||m.grade!=='paradigm'||
+    typeof m.source!=='string'||!/^https:\/\/[^/\s]+/u.test(m.source))continue;
+   const row=m.features?.patternIndex;
+   if(!Number.isInteger(row)||!MORPH_CLAUSE_ROWS.has(row))continue;
+   const model=paradigms?.paradigms?.[m.lemma],who=PERSON_CODES.indexOf(m.features.subject);
+   if(!model||who<0||!Array.isArray(model.cells?.[row])||
+    norm(model.cells[row][who])!==norm(token)||
+    m.source!==model.lemmaSource||m.features.paradigmClass!==model.cls||
+    m.features.object!==(model.trans?'fixed third-person singular':'intransitive'))continue;
+   // The canonical analyzer and verb matrix must independently agree on exact
+   // spelling, lemma, person, row, class, transitivity and source. Orthographic
+   // repairs, augment variants and productive hypothetical forms do NOT qualify.
+   const lexical=words.filter(w=>w.word===m.lemma&&
+    String(w.pos).startsWith('verb')&&/^https:\/\/[^/\s]+/u.test(w.source||''));
+   if(lexical.length!==1)continue;
+   proposals.push({lemma:m.lemma,person:who,transitive:!!model.trans,
+    tense:paradigms.patterns?.[row]||('indexed row '+row),patternIndex:row,
+    source:m.source,lexicalSource:lexical[0].source,lexicalMeaning:lexical[0].meaning,
+    morphology:m});
+  }
+  return proposals;
+ }
+ function morphologyClauseCandidates(tokens,negative){
+  if(negative||tokens.length<3||tokens.length>5)return {items:[],truncated:false};
+  // Reuse the SAME declarative construction, agreement, valency, NP and
+  // full-token-consumption constraints as the supported present/future parser.
+  const combined=matchClauseRules(tokens,indexedMorphologyReadings);
+  const out=[];
+  for(const {parse,rule,subjectNoun,objectNoun} of combined){
+   if(rule.roles==='none')continue;
+   const roles=[subjectNoun,objectNoun].filter(Boolean);
+   if(roles.some(n=>!/^https:\/\/[^/\s]+/u.test(n.source||'')))continue;
+   out.push({
+    grade:'indexed-morphology clause hypothesis (NOT a translation)',
+    constructionId:rule.id,coverage:tokens.length,
+    verb:{written:tokens.find(t=>norm(t)===norm(
+     paradigms.paradigms[parse.lemma].cells[parse.patternIndex][parse.person]))||'',
+     lemma:parse.lemma,patternIndex:parse.patternIndex,
+     pattern:parse.tense,subjectPerson:PERSON_CODES[parse.person],
+     lexicalMeaning:parse.lexicalMeaning,transitive:parse.transitive,
+     evidence:'exact grammar-derived matrix cell; NOT manuscript-attested'},
+    argumentRoles:{subjectNoun:subjectNoun?.word||null,
+     objectNoun:objectNoun?.word||null,
+     implicitObject:parse.transitive&&!objectNoun?'unresolved third-person object':null,
+     nominalMeanings:roles.map(n=>({lemma:n.word,meaning:n.meaning,source:n.source}))},
+    sources:[...new Set([rule.source_url,grammar,tenseSource,parse.source,
+     parse.lexicalSource,...roles.map(n=>n.source)].filter(Boolean))],
+    note:'Entire written input is accounted for by a source-cited editorial construction and '+
+     'an exact grammar-derived finite form. This is NOT a complete translation, '+
+     'historical attestation, tense/aspect certification, or contextual sense judgment. '+
+     'Alternatives are not ranked. No unknown word, new tense rendering, '+
+     'unverified person/object substitution, or manuscript spelling is invented.'
+   });
+  }
+  return {items:out.slice(0,32),truncated:out.length>32};
  }
  function analyze(input){
   const raw=String(input||'');
@@ -380,6 +445,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    return {text,tokens:original,candidates,complete:candidates.length>0,
     fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),
     locativeInterpretations:candidates.length?[]:locativeAnalyze(tokens,negative),
+    morphosyntactic: morphologyClauseCandidates(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,

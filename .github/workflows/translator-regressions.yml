@@ -35,6 +35,7 @@ on:
       - 'tools/morphology_engine.js'
       - 'tools/test_regular_present_morphology.js'
       - 'tools/test_source_bound_possessives.js'
+      - 'tools/test_source_verb_productivity.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -85,6 +86,7 @@ on:
       - 'tools/morphology_engine.js'
       - 'tools/test_regular_present_morphology.js'
       - 'tools/test_source_bound_possessives.js'
+      - 'tools/test_source_verb_productivity.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -137,6 +139,8 @@ jobs:
         run: node tools/test_regular_present_morphology.js
       - name: Canonical source-bound possessed noun morphology
         run: node tools/test_source_bound_possessives.js
+      - name: Canonical source-located finite verb morphology
+        run: node tools/test_source_verb_productivity.js
       - name: Exact possessed noun and person agreement safeguards
         run: node tools/test_possessed_agreement.js
       - name: Exact possessed noun heads in constrained Classical in-relatives

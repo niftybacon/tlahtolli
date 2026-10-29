@@ -22,7 +22,7 @@ def describe(word):
     stem=claims.get("stem",{})
     exact=[i for i in word.get("inflections",[])
            if i.get("evidence") in ("dictionary","text")
-           and re.match(r"^Preterite 1sg(?:\\b|[,(])",i.get("category",""),re.I)]
+           and re.match(r"^Preterite 1sg(?:\b|[,(])",i.get("category",""),re.I)]
     lemma=word["word"]
     first=next((c for c in [claims.get("headword",{}),claims.get("pos",{})]
                if c.get("assessment") not in ("dictionary","grammar","text")),None)

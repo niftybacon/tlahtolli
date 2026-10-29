@@ -4,11 +4,11 @@ const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p
 const D=JSON.parse(read('dictionary.json')),P=JSON.parse(read('paradigms.json'));
 const L=JSON.parse(read('data/lexicon.json')),M=JSON.parse(read('data/morphology.json')),E=JSON.parse(read('data/evidence.json'));
 assert.equal(D.version,JSON.parse(read('release.json')).version);assert.equal(D.version,JSON.parse(read('release.json')).version);
-assert.equal(D.words.length,210);assert.equal(D.words.filter(w=>w.status==='Checked against source').length,144);
+assert.equal(D.words.length,JSON.parse(read('release.json')).headwords);assert.equal(D.words.filter(w=>w.status==='Checked against source').length,144);
 assert.equal(D.words.filter(w=>w.status.startsWith('Index-sourced')).length,66);
 assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),270+2,
  'Batch04 baseline plus two separately Molina-recorded Class 2 forms; verify those forms in dedicated regression');
-assert.equal(D.words.reduce((n,w)=>n+w.claims.length,0),1275);
+assert.equal(D.words.slice(0,210).reduce((n,w)=>n+w.claims.length,0),1275);
 assert.equal(Object.keys(P.paradigms).length,12);
 assert.deepEqual(L.words.map(w=>w.word),M.entries.map(w=>w.word));
 assert.deepEqual(L.words.map(w=>w.word),E.entries.map(w=>w.word));

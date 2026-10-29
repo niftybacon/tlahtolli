@@ -164,7 +164,7 @@ jobs:
           curl --fail --location --show-error --silent --retry 2 --connect-timeout 12 --max-time 90 \
             "https://raw.githubusercontent.com/ElotlMX/py-elotl/157f34300f4ca92c3d75b74ec14142916d75c30b/elotl/corpora/axolotl.csv" \
             --output "$RUNNER_TEMP/tlahtolli-axolotl-source.csv"
-          node tools/diagnose_axolotl_development.js "$RUNNER_TEMP/tlahtolli-axolotl-source.csv" --limit 36
+          node tools/diagnose_axolotl_development.js "$RUNNER_TEMP/tlahtolli-axolotl-source.csv" --limit 36 --audit-36
       - name: Evaluation audit (no invented accuracy)
         run: node tools/evaluate_translation_readiness.js
       - name: Source-evidenced finite verb clause hypotheses and safeguards

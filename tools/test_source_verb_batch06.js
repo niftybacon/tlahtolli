@@ -4,10 +4,11 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const D=JSON.parse(read('dictionary.json')),M=JSON.parse(read('research/batches/source_reviewed_verb_batch06_2026_10_29.json'));
 const P=JSON.parse(read('paradigms.json')),R=JSON.parse(read('release.json'));
-assert.equal(D.version,R.version);assert.equal(D.version,M.target_version);
-assert.equal(D.words.length,478);assert.equal(M.entries.length,43);
+assert.equal(D.version,R.version);
+// This dated source-reviewed cohort must remain valid after later lexical-only editions.
+assert.equal(D.words.length,R.headwords);assert(D.words.length>=478);assert.equal(M.entries.length,43);
 assert.equal(D.words.filter(w=>w.status==='Checked against source').length,187);
-assert.equal(D.words.filter(w=>w.status==='Archive-indexed; lexical review pending').length,225);
+assert.equal(D.words.filter(w=>w.status==='Archive-indexed; lexical review pending'&&w.pos.startsWith('verb')).length,225);
 assert.equal(Object.keys(P.paradigms).length,12);
 assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),305);
 const src=read('tools/morphology_engine.js').split('renderMorphologyBreakdown=TlahtolliMorphEngine.html;')[0];

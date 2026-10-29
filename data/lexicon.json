@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-28.1.0",
+  "version": "2026-10-29.1.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -1684,6 +1684,42 @@
       "example": "in mocuepa ca tetl",
       "translation": "... [a] stone converted into [a] mirror (interpretative source fragment).",
       "notes": "This entry centers on clause-linking/emphatic 'ca'. Written ca can also be an existential verb 'to be' (see separate ODN /content/ca); the role of 'ca' in 'in mocuepa ca tetl' needs source-specific syntactic review and should NOT be mechanically translated as 'because'. The quoted wording appears in the historical Codex edition."
+    },
+    {
+      "word": "niman",
+      "meaning": "then; immediately; right away; later (context-dependent)",
+      "pos": "temporal particle / conjunction",
+      "original": "niman",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/172499",
+      "example": "",
+      "translation": "",
+      "notes": "Sixteenth-century Molina lists niman as a conjunction; Lockhart also notes sequencing and intensification before negatives. Do not auto-select a temporal sense from the isolated word."
+    },
+    {
+      "word": "oncan",
+      "meaning": "there; from there; at that place (sometimes temporal)",
+      "pos": "locative adverb / temporal particle",
+      "original": "oncan",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/oncan",
+      "example": "",
+      "translation": "",
+      "notes": "Molina source spelling oncan, with spatial and contextual temporal uses; vowel length and exact deictic distance remain editorially unsettled. Distinguish from ompa."
+    },
+    {
+      "word": "ompa",
+      "meaning": "there; over there; from there (sometimes temporal)",
+      "pos": "locative adverb / particle",
+      "original": "ompa",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/ompa",
+      "example": "",
+      "translation": "",
+      "notes": "Molina source spelling ompa; Karttunen/Carochi discuss editorial long initial vowel. The early spelling is not a context-selected length or an automatically spatial reading."
     }
   ]
 }

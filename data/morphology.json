@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.4.0",
+  "version": "2026-10-29.4.1",
   "entries": [
     {
       "word": "ātl",
@@ -4173,9 +4173,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/aztayoa",
+      "grammarNotes": "Only the exact source-spelled whole form is recorded. No source-checked verb class, productive rule, 1sg template, future paradigm, or source-confirmed person.",
+      "inflections": [
+        {
+          "form": "oaztayoac",
+          "category": "Molina-reported preterite form (person unverified)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/aztayoa",
+          "note": "Exact third-person-looking written past form as printed in Molina transcription; no person marking in the listed citation and no 1sg or productive stem template. Molina (1571) part II f.10r col.2: aztayoa, pret. oaztayoac"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4599,9 +4608,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tecpayoa",
+      "grammarNotes": "Only the exact source-spelled whole form is recorded. No source-checked verb class, productive rule, 1sg template, future paradigm, or source-confirmed person.",
+      "inflections": [
+        {
+          "form": "otecpayoac",
+          "category": "Molina-reported preterite form (person unverified)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpayoa",
+          "note": "Exact source-listed past form with no explicit grammatical person; do not infer a source-checked intransitive person stem or generic preterite agreement. Molina (1571) part II f.93r col.2: tecpayoa, pret. otecpayoac"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -4860,9 +4878,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tepozotinemi",
+      "grammarNotes": "Only the exact source-spelled whole form is recorded. No source-checked verb class, productive rule, 1sg template, future paradigm, or source-confirmed person.",
+      "inflections": [
+        {
+          "form": "tepoçotinemiz",
+          "category": "Edited 1559 Cuauhtinchan future-looking text form (person unresolved)",
+          "gloss": "",
+          "evidence": "review",
+          "source": "https://nahuatl.wired-humanities.org/content/tepozotinemi",
+          "note": "Exact orthography in an edited colonial passage as reprinted by ODN. Inflection/subject segmentation and original manuscript spelling not independently collated; lexical context comparison only, not approved gold. Luis Reyes García, Ordenanzas para el gobierno de Cuauhtinchan, año de 1559, Estudios de Cultura Náhuatl 10 (1972), pp.304–305; excerpt 'expa tepoçotinemiz tetlaecoltiz ...'"
+        }
+      ],
       "formsEdited": false
     },
     {

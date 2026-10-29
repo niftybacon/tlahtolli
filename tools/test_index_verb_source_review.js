@@ -6,8 +6,8 @@ const L=JSON.parse(read('data/lexicon.json')),M=JSON.parse(read('data/morphology
 assert.equal(D.version,JSON.parse(read('release.json')).version);assert.equal(D.version,JSON.parse(read('release.json')).version);
 assert.equal(D.words.length,210);assert.equal(D.words.filter(w=>w.status==='Checked against source').length,144);
 assert.equal(D.words.filter(w=>w.status.startsWith('Index-sourced')).length,66);
-assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),267);
-assert.equal(D.words.reduce((n,w)=>n+w.claims.length,0),1272);
+assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),270);
+assert.equal(D.words.reduce((n,w)=>n+w.claims.length,0),1275);
 assert.equal(Object.keys(P.paradigms).length,12);
 assert.deepEqual(L.words.map(w=>w.word),M.entries.map(w=>w.word));
 assert.deepEqual(L.words.map(w=>w.word),E.entries.map(w=>w.word));

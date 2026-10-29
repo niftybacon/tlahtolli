@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-29.4.0",
+  "version": "2026-10-29.4.1",
   "entries": [
     {
       "word": "ātl",
@@ -9496,37 +9496,46 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=75&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 75, result headed “aztayoa.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/aztayoa",
+          "locator": "Molina (1571) part II f.10r col.2: aztayoa, pret. oaztayoac",
+          "note": "Entry-level published lexicographic reading supports the headword and principal gloss, not a universal lexical class or sentence translation.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=75&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 75, result headed “aztayoa.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/aztayoa",
+          "locator": "Molina (1571) part II f.10r col.2: aztayoa, pret. oaztayoac",
+          "note": "Entry-level published lexicographic reading supports the headword and principal gloss, not a universal lexical class or sentence translation.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
           "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=75&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 75, result headed “aztayoa.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/aztayoa",
+          "locator": "Molina (1571) part II f.10r col.2: aztayoa, pret. oaztayoac",
+          "note": "A recorded past/future-looking written form does not by itself establish source-specified valency or verified subject person for a productive paradigm.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=75&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/aztayoa",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "No independently source-checked citation/pretense base pair, person class, vowel length or orthographic rewriting from one whole form.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/aztayoa",
+          "locator": "Molina (1571) part II f.10r col.2: aztayoa, pret. oaztayoac",
+          "note": "Exact written form oaztayoac recorded as a discrete lexical/witness clue. Grade is dictionary for Molina examples and review-only for the edited colonial context; this is not standalone grammatical proof or manually collated primary manuscript.",
+          "reviewer": "Tlahtōlli source-specific form review (published transcription, no original folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -10588,37 +10597,46 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpayoa.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpayoa",
+          "locator": "Molina (1571) part II f.93r col.2: tecpayoa, pret. otecpayoac",
+          "note": "Entry-level published lexicographic reading supports the headword and principal gloss, not a universal lexical class or sentence translation.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpayoa.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpayoa",
+          "locator": "Molina (1571) part II f.93r col.2: tecpayoa, pret. otecpayoac",
+          "note": "Entry-level published lexicographic reading supports the headword and principal gloss, not a universal lexical class or sentence translation.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
           "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 573, result headed “tecpayoa.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpayoa",
+          "locator": "Molina (1571) part II f.93r col.2: tecpayoa, pret. otecpayoac",
+          "note": "A recorded past/future-looking written form does not by itself establish source-specified valency or verified subject person for a productive paradigm.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpayoa",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "No independently source-checked citation/pretense base pair, person class, vowel length or orthographic rewriting from one whole form.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tecpayoa",
+          "locator": "Molina (1571) part II f.93r col.2: tecpayoa, pret. otecpayoac",
+          "note": "Exact written form otecpayoac recorded as a discrete lexical/witness clue. Grade is dictionary for Molina examples and review-only for the edited colonial context; this is not standalone grammatical proof or manually collated primary manuscript.",
+          "reviewer": "Tlahtōlli source-specific form review (published transcription, no original folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -11218,37 +11236,46 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozotinemi.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tepozotinemi",
+          "locator": "Luis Reyes García, Ordenanzas para el gobierno de Cuauhtinchan, año de 1559, Estudios de Cultura Náhuatl 10 (1972), pp.304–305; excerpt 'expa tepoçotinemiz tetlaecoltiz ...'",
+          "note": "Entry-level published lexicographic reading supports the headword and principal gloss, not a universal lexical class or sentence translation.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozotinemi.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tepozotinemi",
+          "locator": "Luis Reyes García, Ordenanzas para el gobierno de Cuauhtinchan, año de 1559, Estudios de Cultura Náhuatl 10 (1972), pp.304–305; excerpt 'expa tepoçotinemiz tetlaecoltiz ...'",
+          "note": "Entry-level published lexicographic reading supports the headword and principal gloss, not a universal lexical class or sentence translation.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
           "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepozotinemi.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tepozotinemi",
+          "locator": "Luis Reyes García, Ordenanzas para el gobierno de Cuauhtinchan, año de 1559, Estudios de Cultura Náhuatl 10 (1972), pp.304–305; excerpt 'expa tepoçotinemiz tetlaecoltiz ...'",
+          "note": "A recorded past/future-looking written form does not by itself establish source-specified valency or verified subject person for a productive paradigm.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tepozotinemi",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "No independently source-checked citation/pretense base pair, person class, vowel length or orthographic rewriting from one whole form.",
+          "reviewer": "Tlahtōlli source-specific form review (ODN published transcriptions; no original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "text",
+          "source": "https://nahuatl.wired-humanities.org/content/tepozotinemi",
+          "locator": "Luis Reyes García, Ordenanzas para el gobierno de Cuauhtinchan, año de 1559, Estudios de Cultura Náhuatl 10 (1972), pp.304–305; excerpt 'expa tepoçotinemiz tetlaecoltiz ...'",
+          "note": "Exact written form tepoçotinemiz recorded as a discrete lexical/witness clue. Grade is dictionary for Molina examples and review-only for the edited colonial context; this is not standalone grammatical proof or manually collated primary manuscript.",
+          "reviewer": "Tlahtōlli source-specific form review (published transcription, no original folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]

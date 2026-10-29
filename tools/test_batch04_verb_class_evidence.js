@@ -6,12 +6,12 @@ const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p
 const D=JSON.parse(read('dictionary.json')),P=JSON.parse(read('paradigms.json'));
 const L=JSON.parse(read('data/lexicon.json')),M=JSON.parse(read('data/morphology.json'));
 const E=JSON.parse(read('data/evidence.json')),R=JSON.parse(read('release.json'));
-assert.equal(D.version,'2026-10-29.4.0');assert.equal(R.version,D.version);
+assert.equal(D.version,R.version);assert.equal(R.version,D.version);
 assert.equal(D.words.length,210);
 assert.equal(D.words.filter(w=>w.status==='Checked against source').length,144);
 assert.equal(D.words.filter(w=>w.status.startsWith('Index-sourced')).length,66);
-assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),267);
-assert.equal(D.words.reduce((n,w)=>n+w.claims.length,0),1272);
+assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),270);
+assert.equal(D.words.reduce((n,w)=>n+w.claims.length,0),1275);
 assert.equal(Object.keys(P.paradigms).length,12);
 assert.deepEqual(L.words.map(w=>w.word),M.entries.map(w=>w.word));
 assert.deepEqual(L.words.map(w=>w.word),E.entries.map(w=>w.word));
@@ -67,7 +67,15 @@ for(const name of deferred){
  const w=D.words.find(x=>x.word===name);
  assert(w.status.startsWith('Index-sourced'),name+' cannot be silently promoted');
  assert(w.claims.some(c=>c.field==='pos'&&c.assessment==='inference'));
- assert.equal(w.stem,'');assert.equal(w.inflections.length,0);
+ assert.equal(w.stem,'');
+ const unclassifiedSource={aztayoa:'oaztayoac',tecpayoa:'otecpayoac',
+  tepozotinemi:'tepoçotinemiz'};
+ if(unclassifiedSource[name]){
+  assert.equal(w.inflections.length,1,name+' must have precisely one source-reported token');
+  assert.equal(w.inflections[0].form,unclassifiedSource[name]);
+  assert.equal(w.inflections[0].gloss,'','Source form must not supply invented English');
+  assert(w.claims.some(c=>c.field==='other'&&c.locator),'Explicit exact-form provenance missing');
+ }else assert.equal(w.inflections.length,0);
 }
 const eng=read('tools/morphology_engine.js').split('renderMorphologyBreakdown=TlahtolliMorphEngine.html;')[0];
 function load(words=D.words){
@@ -134,5 +142,21 @@ for(const [token] of examples.slice(0,7)){
  const out=sentence.analyze(token);
  assert.equal(out.complete,false,'No complete English translation from merely generated morphology');
  assert.equal(out.clauses[0].candidates.length,0);
+}
+
+for(const [lemma,spelling,grade] of [
+ ['aztayoa','oaztayoac','lexical'],['tecpayoa','otecpayoac','lexical'],
+ ['tepozotinemi','tepoçotinemiz','unreviewed']
+]){
+ const w=D.words.find(x=>x.word===lemma),listed=analyze(spelling);
+ assert.equal(w.status,'Index-sourced; further lexical review pending');
+ assert(listed.some(x=>x.lemma===lemma&&x.grade===grade),
+  'Only the exact written surface receives its distinct source grade: '+spelling);
+ assert(!listed.some(x=>x.lemma===lemma&&x.grade==='hypothesis'),
+  'No productive inferred 3sg/future tense allowed from unclassified source token');
+}
+for(const unlicensed of ['oaztayoaz','oniaztayoac','otitecpayoac','nitepoçotinemiz']){
+ assert(!analyze(unlicensed).some(x=>['aztayoa','tecpayoa','tepozotinemi'].includes(x.lemma)&&x.grade==='hypothesis'),
+  'Unverified class must not produce person or tense analogies: '+unlicensed);
 }
 console.log('PASS 80-entry verb-class audit: 14 verified classes, 10 exact preterites, 7 unresolved, 59 nonverb; no false paradigms');

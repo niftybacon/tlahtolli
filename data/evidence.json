@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-29.5.0",
+  "version": "2026-10-29.6.0",
   "entries": [
     {
       "word": "ātl",
@@ -12840,29 +12840,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/malina",
-          "locator": "Kaikki nci record \"malina\"; already imported shard 0, row 42",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/malina",
+          "locator": "Molina 1571 II f.51v col.1; Karttunen 1992 p.134",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Also reflexive in other sources; admitted template only for exact nitla- construction",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/malina",
-          "locator": "Kaikki nci record \"malina\"; already imported shard 0, row 42",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/malina",
+          "locator": "Molina 1571 II f.51v col.1; Karttunen 1992 p.134",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Also reflexive in other sources; admitted template only for exact nitla- construction",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/malina",
-          "locator": "Kaikki nci record \"malina\"; already imported shard 0, row 42",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/malina",
+          "locator": "Molina 1571 II f.51v col.1; Karttunen 1992 p.134",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Also reflexive in other sources; admitted template only for exact nitla- construction",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -12882,29 +12882,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/paca",
-          "locator": "Kaikki nci record \"paca\"; already imported shard 0, row 50",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/paca",
+          "locator": "Molina 1571 II f.78v col.1; Karttunen 1992 p.182",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Molina offers alternative -pac/-pacac preterites; record exact -pacac only and do not impose class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/paca",
-          "locator": "Kaikki nci record \"paca\"; already imported shard 0, row 50",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/paca",
+          "locator": "Molina 1571 II f.78v col.1; Karttunen 1992 p.182",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Molina offers alternative -pac/-pacac preterites; record exact -pacac only and do not impose class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/paca",
-          "locator": "Kaikki nci record \"paca\"; already imported shard 0, row 50",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/paca",
+          "locator": "Molina 1571 II f.78v col.1; Karttunen 1992 p.182",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Molina offers alternative -pac/-pacac preterites; record exact -pacac only and do not impose class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -12924,29 +12924,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mina",
-          "locator": "Kaikki nci record \"mina\"; already imported shard 0, row 64",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mina",
+          "locator": "Molina 1571 II f.56v col.2; Lockhart 2001 p.225",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Source also has nitla/niteitz; nite only is in this template",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mina",
-          "locator": "Kaikki nci record \"mina\"; already imported shard 0, row 64",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mina",
+          "locator": "Molina 1571 II f.56v col.2; Lockhart 2001 p.225",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Source also has nitla/niteitz; nite only is in this template",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mina",
-          "locator": "Kaikki nci record \"mina\"; already imported shard 0, row 64",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mina",
+          "locator": "Molina 1571 II f.56v col.2; Lockhart 2001 p.225",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Source also has nitla/niteitz; nite only is in this template",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -12966,29 +12966,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mani",
-          "locator": "Kaikki nci record \"mani\"; already imported shard 0, row 69",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mani",
+          "locator": "Karttunen 1992 p.136; Lockhart 2001 p.224",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Irregular surface distribution mani/manic/manca; excludes regular ni- analogy",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mani",
-          "locator": "Kaikki nci record \"mani\"; already imported shard 0, row 69",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mani",
+          "locator": "Karttunen 1992 p.136; Lockhart 2001 p.224",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Irregular surface distribution mani/manic/manca; excludes regular ni- analogy",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mani",
-          "locator": "Kaikki nci record \"mani\"; already imported shard 0, row 69",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mani",
+          "locator": "Karttunen 1992 p.136; Lockhart 2001 p.224",
+          "note": "The consulted historical dictionaries distinguish this verb (irregular) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Irregular surface distribution mani/manic/manca; excludes regular ni- analogy",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13008,29 +13008,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pano",
-          "locator": "Kaikki nci record \"pano\"; already imported shard 0, row 93",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pano",
+          "locator": "Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Future/preterite class 1 not extrapolated beyond existing source template",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pano",
-          "locator": "Kaikki nci record \"pano\"; already imported shard 0, row 93",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pano",
+          "locator": "Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Future/preterite class 1 not extrapolated beyond existing source template",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pano",
-          "locator": "Kaikki nci record \"pano\"; already imported shard 0, row 93",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pano",
+          "locator": "Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Future/preterite class 1 not extrapolated beyond existing source template",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13050,29 +13050,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pati",
-          "locator": "Kaikki nci record \"pati\"; already imported shard 0, row 98",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pati",
+          "locator": "Molina 1571 II f.80r col.1; Karttunen 1992 p.188",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Impersonal melting: opat is not an independently labelled 1sg finite form",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pati",
-          "locator": "Kaikki nci record \"pati\"; already imported shard 0, row 98",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pati",
+          "locator": "Molina 1571 II f.80r col.1; Karttunen 1992 p.188",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Impersonal melting: opat is not an independently labelled 1sg finite form",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pati",
-          "locator": "Kaikki nci record \"pati\"; already imported shard 0, row 98",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pati",
+          "locator": "Molina 1571 II f.80r col.1; Karttunen 1992 p.188",
+          "note": "The consulted historical dictionaries distinguish this verb (impersonal or unresolved) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Impersonal melting: opat is not an independently labelled 1sg finite form",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13134,29 +13134,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/teca",
-          "locator": "Kaikki nci record \"teca\"; already imported shard 0, row 111",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teca",
+          "locator": "Molina 1571 II f.91v col.1; Karttunen 1992 p.215",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Reflexive nino- is a separate construction; no reflexive inference",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/teca",
-          "locator": "Kaikki nci record \"teca\"; already imported shard 0, row 111",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teca",
+          "locator": "Molina 1571 II f.91v col.1; Karttunen 1992 p.215",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Reflexive nino- is a separate construction; no reflexive inference",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/teca",
-          "locator": "Kaikki nci record \"teca\"; already imported shard 0, row 111",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teca",
+          "locator": "Molina 1571 II f.91v col.1; Karttunen 1992 p.215",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Reflexive nino- is a separate construction; no reflexive inference",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13176,38 +13176,38 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cecmiqui",
-          "locator": "Kaikki nci record \"cecmiqui\"; already imported shard 0, row 117",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cecmiqui",
+          "locator": "Molina 1571 II f.15v col.1; Karttunen 1992 p.27",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cecmiqui",
-          "locator": "Kaikki nci record \"cecmiqui\"; already imported shard 0, row 117",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cecmiqui",
+          "locator": "Molina 1571 II f.15v col.1; Karttunen 1992 p.27",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cecmiqui",
-          "locator": "Kaikki nci record \"cecmiqui\"; already imported shard 0, row 117",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cecmiqui",
+          "locator": "Molina 1571 II f.15v col.1; Karttunen 1992 p.27",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://en.wiktionary.org/wiki/cecmiqui",
-          "locator": "",
-          "note": "No source-verified base pair, finite form or justified productive morphology.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cecmiqui",
+          "locator": "Karttunen 1992 p.27: CECMIQU(I), preterite -MIC; Molina 1571 II f.15v col.1 onicecmic",
+          "note": "Explicitly cited present/citation and Class 2 preterite bases; finite 1sg record must independently reconstruct onicecmic. Never call generated forms manuscript attestations. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -13302,29 +13302,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/chicahua",
-          "locator": "Kaikki nci record \"chicahua\"; already imported shard 0, row 144",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chicahua",
+          "locator": "Molina 1571 II f.19v col.1; Lockhart 2001 p.214",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Different ni/nic/nino senses and Class 1/2 present; no unique stem-class promotion",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/chicahua",
-          "locator": "Kaikki nci record \"chicahua\"; already imported shard 0, row 144",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chicahua",
+          "locator": "Molina 1571 II f.19v col.1; Lockhart 2001 p.214",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Different ni/nic/nino senses and Class 1/2 present; no unique stem-class promotion",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/chicahua",
-          "locator": "Kaikki nci record \"chicahua\"; already imported shard 0, row 144",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chicahua",
+          "locator": "Molina 1571 II f.19v col.1; Lockhart 2001 p.214",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Different ni/nic/nino senses and Class 1/2 present; no unique stem-class promotion",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13386,29 +13386,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/temo",
-          "locator": "Kaikki nci record \"temo\"; already imported shard 0, row 195",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temo",
+          "locator": "Molina 1571 II f.97v col.2; Karttunen 1992 p.223; Lockhart 2001 p.233",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Class 1 -c is not the same as the attested base-2 alternation required by the current stem engine",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/temo",
-          "locator": "Kaikki nci record \"temo\"; already imported shard 0, row 195",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temo",
+          "locator": "Molina 1571 II f.97v col.2; Karttunen 1992 p.223; Lockhart 2001 p.233",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Class 1 -c is not the same as the attested base-2 alternation required by the current stem engine",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/temo",
-          "locator": "Kaikki nci record \"temo\"; already imported shard 0, row 195",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temo",
+          "locator": "Molina 1571 II f.97v col.2; Karttunen 1992 p.223; Lockhart 2001 p.233",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Class 1 -c is not the same as the attested base-2 alternation required by the current stem engine",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13428,38 +13428,38 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/miqui",
-          "locator": "Kaikki nci record \"miqui\"; already imported shard 0, row 231",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/miqui",
+          "locator": "Molina 1571 II f.56v col.2; Karttunen 1992 p.148; Lockhart 2001 p.225",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/miqui",
-          "locator": "Kaikki nci record \"miqui\"; already imported shard 0, row 231",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/miqui",
+          "locator": "Molina 1571 II f.56v col.2; Karttunen 1992 p.148; Lockhart 2001 p.225",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/miqui",
-          "locator": "Kaikki nci record \"miqui\"; already imported shard 0, row 231",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/miqui",
+          "locator": "Molina 1571 II f.56v col.2; Karttunen 1992 p.148; Lockhart 2001 p.225",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://en.wiktionary.org/wiki/miqui",
-          "locator": "",
-          "note": "No source-verified base pair, finite form or justified productive morphology.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/miqui",
+          "locator": "Lockhart 2001 p.225, Class 2: ōnimic; Karttunen 1992 p.148 MIQU(I), preterite MIC",
+          "note": "Explicitly cited present/citation and Class 2 preterite bases; finite 1sg record must independently reconstruct onimic. Never call generated forms manuscript attestations. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -13470,29 +13470,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/yaomiqui",
-          "locator": "Kaikki nci record \"yaomiqui\"; already imported shard 0, row 242",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yaomiqui",
+          "locator": "Sahagún Primeros Memoriales, Sullivan ed. 1997 p.164 (yaumiquiz)",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Future token is source-spelled and does not license a new finite paradigm Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/yaomiqui",
-          "locator": "Kaikki nci record \"yaomiqui\"; already imported shard 0, row 242",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yaomiqui",
+          "locator": "Sahagún Primeros Memoriales, Sullivan ed. 1997 p.164 (yaumiquiz)",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Future token is source-spelled and does not license a new finite paradigm Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/yaomiqui",
-          "locator": "Kaikki nci record \"yaomiqui\"; already imported shard 0, row 242",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yaomiqui",
+          "locator": "Sahagún Primeros Memoriales, Sullivan ed. 1997 p.164 (yaumiquiz)",
+          "note": "The consulted historical dictionaries distinguish this verb (class unresolved) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Future token is source-spelled and does not license a new finite paradigm Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13554,38 +13554,38 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/poyomiqui",
-          "locator": "Kaikki nci record \"poyomiqui\"; already imported shard 0, row 272",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/poyomiqui",
+          "locator": "Lockhart 2001 p.230; Karttunen 1992 p.204",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/poyomiqui",
-          "locator": "Kaikki nci record \"poyomiqui\"; already imported shard 0, row 272",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/poyomiqui",
+          "locator": "Lockhart 2001 p.230; Karttunen 1992 p.204",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/poyomiqui",
-          "locator": "Kaikki nci record \"poyomiqui\"; already imported shard 0, row 272",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/poyomiqui",
+          "locator": "Lockhart 2001 p.230; Karttunen 1992 p.204",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://en.wiktionary.org/wiki/poyomiqui",
-          "locator": "",
-          "note": "No source-verified base pair, finite form or justified productive morphology.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/poyomiqui",
+          "locator": "Lockhart 2001 p.230 Class 2 ōnipoyōmic; Karttunen 1992 p.204 POYŌMIQU(I), preterite -MIC",
+          "note": "Explicitly cited present/citation and Class 2 preterite bases; finite 1sg record must independently reconstruct ōnipoyōmic. Never call generated forms manuscript attestations. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -13638,29 +13638,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tlacatilia",
-          "locator": "Kaikki nci record \"tlacatilia\"; already imported shard 0, row 449",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacatilia",
+          "locator": "Molina 1571 II f.115v col.2; Karttunen 1992 p.253",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tlacatilia",
-          "locator": "Kaikki nci record \"tlacatilia\"; already imported shard 0, row 449",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacatilia",
+          "locator": "Molina 1571 II f.115v col.2; Karttunen 1992 p.253",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tlacatilia",
-          "locator": "Kaikki nci record \"tlacatilia\"; already imported shard 0, row 449",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacatilia",
+          "locator": "Molina 1571 II f.115v col.2; Karttunen 1992 p.253",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13806,29 +13806,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/matoca",
-          "locator": "Kaikki nci record \"matoca\"; already imported shard 0, row 580",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/matoca",
+          "locator": "Molina 1571 II f.53v col.1; Karttunen 1992 p.139",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Source's nitla and nino senses do not license untested allomorphs",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/matoca",
-          "locator": "Kaikki nci record \"matoca\"; already imported shard 0, row 580",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/matoca",
+          "locator": "Molina 1571 II f.53v col.1; Karttunen 1992 p.139",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Source's nitla and nino senses do not license untested allomorphs",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/matoca",
-          "locator": "Kaikki nci record \"matoca\"; already imported shard 0, row 580",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/matoca",
+          "locator": "Molina 1571 II f.53v col.1; Karttunen 1992 p.139",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive/reflexive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Source's nitla and nino senses do not license untested allomorphs",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -13932,29 +13932,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/teochihua",
-          "locator": "Kaikki nci record \"teochihua\"; already imported shard 0, row 614",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teochihua",
+          "locator": "Molina 1571 II f.100r col.2; Karttunen 1992 p.227",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Separate nino and nitla constructions are not inferred",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/teochihua",
-          "locator": "Kaikki nci record \"teochihua\"; already imported shard 0, row 614",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teochihua",
+          "locator": "Molina 1571 II f.100r col.2; Karttunen 1992 p.227",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Separate nino and nitla constructions are not inferred",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/teochihua",
-          "locator": "Kaikki nci record \"teochihua\"; already imported shard 0, row 614",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teochihua",
+          "locator": "Molina 1571 II f.100r col.2; Karttunen 1992 p.227",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive/reflexive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Separate nino and nitla constructions are not inferred",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14016,38 +14016,38 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pehua",
-          "locator": "Kaikki nci record \"pehua\"; already imported shard 0, row 636",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pehua",
+          "locator": "Lockhart 2001 p.229; Karttunen 1992 p.191",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Do not use the mislabelled Molina nite- for automatic transitivity",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pehua",
-          "locator": "Kaikki nci record \"pehua\"; already imported shard 0, row 636",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pehua",
+          "locator": "Lockhart 2001 p.229; Karttunen 1992 p.191",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Do not use the mislabelled Molina nite- for automatic transitivity",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pehua",
-          "locator": "Kaikki nci record \"pehua\"; already imported shard 0, row 636",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pehua",
+          "locator": "Lockhart 2001 p.229; Karttunen 1992 p.191",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Do not use the mislabelled Molina nite- for automatic transitivity",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://en.wiktionary.org/wiki/pehua",
-          "locator": "",
-          "note": "No source-verified base pair, finite form or justified productive morphology.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pehua",
+          "locator": "Lockhart 2001 p.229 Class 2: ōnipēuh; Molina nite- is flagged as erroneous for 'begin' by Karttunen",
+          "note": "Explicitly cited present/citation and Class 2 preterite bases; finite 1sg record must independently reconstruct ōnipēuh. Never call generated forms manuscript attestations. Do not use the mislabelled Molina nite- for automatic transitivity",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -14058,29 +14058,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cuica",
-          "locator": "Kaikki nci record \"cuica\"; already imported shard 0, row 637",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuica",
+          "locator": "Molina 1571 II f.26v col.1; Lockhart 2001 p.216",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cuica",
-          "locator": "Kaikki nci record \"cuica\"; already imported shard 0, row 637",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuica",
+          "locator": "Molina 1571 II f.26v col.1; Lockhart 2001 p.216",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cuica",
-          "locator": "Kaikki nci record \"cuica\"; already imported shard 0, row 637",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuica",
+          "locator": "Molina 1571 II f.26v col.1; Lockhart 2001 p.216",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14184,29 +14184,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/apizmiqui",
-          "locator": "Kaikki nci record \"apizmiqui\"; already imported shard 0, row 681",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/apizmiqui",
+          "locator": "Molina 1571 II f.7r col.1; Karttunen 1992 p.12",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Recorded preterite lacks the macrons of the editorial citation; no generalized short base",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/apizmiqui",
-          "locator": "Kaikki nci record \"apizmiqui\"; already imported shard 0, row 681",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/apizmiqui",
+          "locator": "Molina 1571 II f.7r col.1; Karttunen 1992 p.12",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Recorded preterite lacks the macrons of the editorial citation; no generalized short base",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/apizmiqui",
-          "locator": "Kaikki nci record \"apizmiqui\"; already imported shard 0, row 681",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/apizmiqui",
+          "locator": "Molina 1571 II f.7r col.1; Karttunen 1992 p.12",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Recorded preterite lacks the macrons of the editorial citation; no generalized short base",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14226,38 +14226,38 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cotoni",
-          "locator": "Kaikki nci record \"cotoni\"; already imported shard 0, row 709",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cotoni",
+          "locator": "Molina 1571 II f.24v col.2; Lockhart 2001 p.216",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cotoni",
-          "locator": "Kaikki nci record \"cotoni\"; already imported shard 0, row 709",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cotoni",
+          "locator": "Molina 1571 II f.24v col.2; Lockhart 2001 p.216",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cotoni",
-          "locator": "Kaikki nci record \"cotoni\"; already imported shard 0, row 709",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cotoni",
+          "locator": "Molina 1571 II f.24v col.2; Lockhart 2001 p.216",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://en.wiktionary.org/wiki/cotoni",
-          "locator": "",
-          "note": "No source-verified base pair, finite form or justified productive morphology.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cotoni",
+          "locator": "Lockhart 2001 p.216 Class 2 ōnicotōn; Molina II f.24v col.2, ocoton (unmarked spelling)",
+          "note": "Explicitly cited present/citation and Class 2 preterite bases; finite 1sg record must independently reconstruct ōnicotōn. Never call generated forms manuscript attestations. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -14268,29 +14268,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzacui",
-          "locator": "Kaikki nci record \"tzacui\"; already imported shard 0, row 714",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzacui",
+          "locator": "Lockhart 2001 p.240; Karttunen 1992 p.310",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Lockhart ōtzauc lacks a source-specific first-person subject",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzacui",
-          "locator": "Kaikki nci record \"tzacui\"; already imported shard 0, row 714",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzacui",
+          "locator": "Lockhart 2001 p.240; Karttunen 1992 p.310",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Lockhart ōtzauc lacks a source-specific first-person subject",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzacui",
-          "locator": "Kaikki nci record \"tzacui\"; already imported shard 0, row 714",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzacui",
+          "locator": "Lockhart 2001 p.240; Karttunen 1992 p.310",
+          "note": "The consulted historical dictionaries distinguish this verb (impersonal or unresolved) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Lockhart ōtzauc lacks a source-specific first-person subject",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14310,29 +14310,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzacua",
-          "locator": "Kaikki nci record \"tzacua\"; already imported shard 0, row 715",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzacua",
+          "locator": "Molina 1571 II f.151v col.1; Karttunen 1992 p.310",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Class 2 recorded ōnictzauc is a different specific-object construction",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzacua",
-          "locator": "Kaikki nci record \"tzacua\"; already imported shard 0, row 715",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzacua",
+          "locator": "Molina 1571 II f.151v col.1; Karttunen 1992 p.310",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Class 2 recorded ōnictzauc is a different specific-object construction",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzacua",
-          "locator": "Kaikki nci record \"tzacua\"; already imported shard 0, row 715",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzacua",
+          "locator": "Molina 1571 II f.151v col.1; Karttunen 1992 p.310",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Class 2 recorded ōnictzauc is a different specific-object construction",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14352,29 +14352,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tona",
-          "locator": "Kaikki nci record \"tona\"; already imported shard 0, row 717",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tona",
+          "locator": "Molina 1571 II f.149r col.2; Lockhart 2001 p.240",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Weather/solar impersonal sense; no ni- agreement extrapolation",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tona",
-          "locator": "Kaikki nci record \"tona\"; already imported shard 0, row 717",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tona",
+          "locator": "Molina 1571 II f.149r col.2; Lockhart 2001 p.240",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Weather/solar impersonal sense; no ni- agreement extrapolation",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tona",
-          "locator": "Kaikki nci record \"tona\"; already imported shard 0, row 717",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tona",
+          "locator": "Molina 1571 II f.149r col.2; Lockhart 2001 p.240",
+          "note": "The consulted historical dictionaries distinguish this verb (impersonal or unresolved) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Weather/solar impersonal sense; no ni- agreement extrapolation",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14394,29 +14394,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/yohua",
-          "locator": "Kaikki nci record \"yohua\"; already imported shard 0, row 726",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yohua",
+          "locator": "Molina 1571 II f.41v col.1; Lockhart 2001 p.242",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Impersonal nightfall; no ni- person inflection.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/yohua",
-          "locator": "Kaikki nci record \"yohua\"; already imported shard 0, row 726",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yohua",
+          "locator": "Molina 1571 II f.41v col.1; Lockhart 2001 p.242",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Impersonal nightfall; no ni- person inflection.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/yohua",
-          "locator": "Kaikki nci record \"yohua\"; already imported shard 0, row 726",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yohua",
+          "locator": "Molina 1571 II f.41v col.1; Lockhart 2001 p.242",
+          "note": "The consulted historical dictionaries distinguish this verb (impersonal or unresolved) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Impersonal nightfall; no ni- person inflection.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14478,29 +14478,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/ixcuepa",
-          "locator": "Kaikki nci record \"ixcuepa\"; already imported shard 0, row 757",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ixcuepa",
+          "locator": "Molina 1571 II f.45r col.2; Karttunen 1992 p.113",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Mixed reflexive/transitive; no generated reflexive allomorphs",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/ixcuepa",
-          "locator": "Kaikki nci record \"ixcuepa\"; already imported shard 0, row 757",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ixcuepa",
+          "locator": "Molina 1571 II f.45r col.2; Karttunen 1992 p.113",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Mixed reflexive/transitive; no generated reflexive allomorphs",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/ixcuepa",
-          "locator": "Kaikki nci record \"ixcuepa\"; already imported shard 0, row 757",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ixcuepa",
+          "locator": "Molina 1571 II f.45r col.2; Karttunen 1992 p.113",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive/reflexive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Mixed reflexive/transitive; no generated reflexive allomorphs",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14520,29 +14520,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzoncui",
-          "locator": "Kaikki nci record \"tzoncui\"; already imported shard 0, row 792",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzoncui",
+          "locator": "Molina 1571 II f.153r col.2; Karttunen 1992 p.317",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Reflexive nino- cannot be made productive by transitive rules",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzoncui",
-          "locator": "Kaikki nci record \"tzoncui\"; already imported shard 0, row 792",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzoncui",
+          "locator": "Molina 1571 II f.153r col.2; Karttunen 1992 p.317",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Reflexive nino- cannot be made productive by transitive rules",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzoncui",
-          "locator": "Kaikki nci record \"tzoncui\"; already imported shard 0, row 792",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzoncui",
+          "locator": "Molina 1571 II f.153r col.2; Karttunen 1992 p.317",
+          "note": "The consulted historical dictionaries distinguish this verb (reflexive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Reflexive nino- cannot be made productive by transitive rules",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14562,29 +14562,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzinti",
-          "locator": "Kaikki nci record \"tzinti\"; already imported shard 0, row 793",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzinti",
+          "locator": "Molina 1571 II f.152v col.1; Karttunen 1992 p.314",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Source lists -c completed suffix; avoid generalizing from this form",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzinti",
-          "locator": "Kaikki nci record \"tzinti\"; already imported shard 0, row 793",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzinti",
+          "locator": "Molina 1571 II f.152v col.1; Karttunen 1992 p.314",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Source lists -c completed suffix; avoid generalizing from this form",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzinti",
-          "locator": "Kaikki nci record \"tzinti\"; already imported shard 0, row 793",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzinti",
+          "locator": "Molina 1571 II f.152v col.1; Karttunen 1992 p.314",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Source lists -c completed suffix; avoid generalizing from this form",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14604,29 +14604,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cua",
-          "locator": "Kaikki nci record \"cua\"; already imported shard 0, row 810",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cua",
+          "locator": "Molina 1571 II f.84r col.1; Karttunen 1992 p.56",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Source spells qua and flags alternation; do not silently assert long vowel or stem class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cua",
-          "locator": "Kaikki nci record \"cua\"; already imported shard 0, row 810",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cua",
+          "locator": "Molina 1571 II f.84r col.1; Karttunen 1992 p.56",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Source spells qua and flags alternation; do not silently assert long vowel or stem class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cua",
-          "locator": "Kaikki nci record \"cua\"; already imported shard 0, row 810",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cua",
+          "locator": "Molina 1571 II f.84r col.1; Karttunen 1992 p.56",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Source spells qua and flags alternation; do not silently assert long vowel or stem class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14646,29 +14646,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/popoca",
-          "locator": "Kaikki nci record \"popoca\"; already imported shard 0, row 815",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/popoca",
+          "locator": "Molina 1571 II f.83r col.2; Karttunen 1992 p.203",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/popoca",
-          "locator": "Kaikki nci record \"popoca\"; already imported shard 0, row 815",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/popoca",
+          "locator": "Molina 1571 II f.83r col.2; Karttunen 1992 p.203",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/popoca",
-          "locator": "Kaikki nci record \"popoca\"; already imported shard 0, row 815",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/popoca",
+          "locator": "Molina 1571 II f.83r col.2; Karttunen 1992 p.203",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14688,29 +14688,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/elehuia",
-          "locator": "Kaikki nci record \"elehuia\"; already imported shard 0, row 833",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/elehuia",
+          "locator": "Molina 1571 II f.28v col.1; Karttunen 1992 p.89",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Vowel length varies in colonial writings; no bulk normalization",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/elehuia",
-          "locator": "Kaikki nci record \"elehuia\"; already imported shard 0, row 833",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/elehuia",
+          "locator": "Molina 1571 II f.28v col.1; Karttunen 1992 p.89",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Vowel length varies in colonial writings; no bulk normalization",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/elehuia",
-          "locator": "Kaikki nci record \"elehuia\"; already imported shard 0, row 833",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/elehuia",
+          "locator": "Molina 1571 II f.28v col.1; Karttunen 1992 p.89",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Vowel length varies in colonial writings; no bulk normalization",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14940,29 +14940,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mayana",
-          "locator": "Kaikki nci record \"mayana\"; already imported shard 0, row 1025",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mayana",
+          "locator": "Molina 1571 II f.51r col.2; Lockhart 2001 p.224",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Lockhart's MAYĀNA quantity differs from the unmarked source-index headword; no invented macron-based stem class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mayana",
-          "locator": "Kaikki nci record \"mayana\"; already imported shard 0, row 1025",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mayana",
+          "locator": "Molina 1571 II f.51r col.2; Lockhart 2001 p.224",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Lockhart's MAYĀNA quantity differs from the unmarked source-index headword; no invented macron-based stem class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/mayana",
-          "locator": "Kaikki nci record \"mayana\"; already imported shard 0, row 1025",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mayana",
+          "locator": "Molina 1571 II f.51r col.2; Lockhart 2001 p.224",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Lockhart's MAYĀNA quantity differs from the unmarked source-index headword; no invented macron-based stem class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -14982,29 +14982,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/amiqui",
-          "locator": "Kaikki nci record \"amiqui\"; already imported shard 0, row 1026",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/amiqui",
+          "locator": "Molina 1571 II f.5r col.1; Karttunen 1992 pp.10–11",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Molina lists onamic with n. but not a full ni- first-person exemplar; preserve the exact ambiguity",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/amiqui",
-          "locator": "Kaikki nci record \"amiqui\"; already imported shard 0, row 1026",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/amiqui",
+          "locator": "Molina 1571 II f.5r col.1; Karttunen 1992 pp.10–11",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Molina lists onamic with n. but not a full ni- first-person exemplar; preserve the exact ambiguity",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/amiqui",
-          "locator": "Kaikki nci record \"amiqui\"; already imported shard 0, row 1026",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/amiqui",
+          "locator": "Molina 1571 II f.5r col.1; Karttunen 1992 pp.10–11",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Molina lists onamic with n. but not a full ni- first-person exemplar; preserve the exact ambiguity",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -15066,29 +15066,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzatzi",
-          "locator": "Kaikki nci record \"tzatzi\"; already imported shard 0, row 1045",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzatzi",
+          "locator": "Molina 1571 II f.151v col.2; Lockhart 2001 p.240",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Molina's otzatzic is not itself a 1sg form; ōnitzahtzic is from Lockhart",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzatzi",
-          "locator": "Kaikki nci record \"tzatzi\"; already imported shard 0, row 1045",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzatzi",
+          "locator": "Molina 1571 II f.151v col.2; Lockhart 2001 p.240",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Molina's otzatzic is not itself a 1sg form; ōnitzahtzic is from Lockhart",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzatzi",
-          "locator": "Kaikki nci record \"tzatzi\"; already imported shard 0, row 1045",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzatzi",
+          "locator": "Molina 1571 II f.151v col.2; Lockhart 2001 p.240",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Molina's otzatzic is not itself a 1sg form; ōnitzahtzic is from Lockhart",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -15360,29 +15360,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cueponi",
-          "locator": "Kaikki nci record \"cueponi\"; already imported shard 0, row 1092",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cueponi",
+          "locator": "Molina 1571 II f.26r col.2; Karttunen 1992 p.70",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Listed ocuepon is an impersonal/3sg preterite despite adjacent ni. No 1sg source token",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cueponi",
-          "locator": "Kaikki nci record \"cueponi\"; already imported shard 0, row 1092",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cueponi",
+          "locator": "Molina 1571 II f.26r col.2; Karttunen 1992 p.70",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Listed ocuepon is an impersonal/3sg preterite despite adjacent ni. No 1sg source token",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/cueponi",
-          "locator": "Kaikki nci record \"cueponi\"; already imported shard 0, row 1092",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cueponi",
+          "locator": "Molina 1571 II f.26r col.2; Karttunen 1992 p.70",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Listed ocuepon is an impersonal/3sg preterite despite adjacent ni. No 1sg source token",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -15402,29 +15402,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/xotla",
-          "locator": "Kaikki nci record \"xotla\"; already imported shard 0, row 1093",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xotla",
+          "locator": "Molina 1571 II f.161r col.2; Karttunen 1992 p.331",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/xotla",
-          "locator": "Kaikki nci record \"xotla\"; already imported shard 0, row 1093",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xotla",
+          "locator": "Molina 1571 II f.161r col.2; Karttunen 1992 p.331",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/xotla",
-          "locator": "Kaikki nci record \"xotla\"; already imported shard 0, row 1093",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xotla",
+          "locator": "Molina 1571 II f.161r col.2; Karttunen 1992 p.331",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -23382,29 +23382,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tozoa",
-          "locator": "Kaikki nci record \"tozoa\"; already imported shard 2, row 310",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tozoa",
+          "locator": "Karttunen 1992 p.249; dictionary headword TŌZOĀ",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. No source-located 1sg past; lexical-only promotion Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tozoa",
-          "locator": "Kaikki nci record \"tozoa\"; already imported shard 2, row 310",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tozoa",
+          "locator": "Karttunen 1992 p.249; dictionary headword TŌZOĀ",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. No source-located 1sg past; lexical-only promotion Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tozoa",
-          "locator": "Kaikki nci record \"tozoa\"; already imported shard 2, row 310",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tozoa",
+          "locator": "Karttunen 1992 p.249; dictionary headword TŌZOĀ",
+          "note": "The consulted historical dictionaries distinguish this verb (class unresolved) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. No source-located 1sg past; lexical-only promotion Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -23424,29 +23424,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/choloa",
-          "locator": "Kaikki nci record \"choloa\"; already imported shard 2, row 311",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/choloa",
+          "locator": "Molina 1571 II f.21v col.2; Lockhart 2001 p.215",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Lockhart Class 3 ōnicholoh differs orthographically; no Class 2 promotion",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/choloa",
-          "locator": "Kaikki nci record \"choloa\"; already imported shard 2, row 311",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/choloa",
+          "locator": "Molina 1571 II f.21v col.2; Lockhart 2001 p.215",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Lockhart Class 3 ōnicholoh differs orthographically; no Class 2 promotion",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/choloa",
-          "locator": "Kaikki nci record \"choloa\"; already imported shard 2, row 311",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/choloa",
+          "locator": "Molina 1571 II f.21v col.2; Lockhart 2001 p.215",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Lockhart Class 3 ōnicholoh differs orthographically; no Class 2 promotion",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -23508,38 +23508,38 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzahua",
-          "locator": "Kaikki nci record \"tzahua\"; already imported shard 2, row 313",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzahua",
+          "locator": "Molina 1571 II f.151v col.2; Lockhart 2001 p.240",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzahua",
-          "locator": "Kaikki nci record \"tzahua\"; already imported shard 2, row 313",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzahua",
+          "locator": "Molina 1571 II f.151v col.2; Lockhart 2001 p.240",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tzahua",
-          "locator": "Kaikki nci record \"tzahua\"; already imported shard 2, row 313",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzahua",
+          "locator": "Molina 1571 II f.151v col.2; Lockhart 2001 p.240",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://en.wiktionary.org/wiki/tzahua",
-          "locator": "",
-          "note": "No source-verified base pair, finite form or justified productive morphology.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzahua",
+          "locator": "Lockhart 2001 p.240 Class 2 ōnitzāuh; Karttunen transitive also, this branch restricts to Molina ni- sense",
+          "note": "Explicitly cited present/citation and Class 2 preterite bases; finite 1sg record must independently reconstruct ōnitzāuh. Never call generated forms manuscript attestations. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -23550,29 +23550,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tomahua",
-          "locator": "Kaikki nci record \"tomahua\"; already imported shard 2, row 316",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tomahua",
+          "locator": "Molina 1571 II f.149r col.1; Launey 2011 p.114",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. The separate nino/nitla constructions do not share an assumed class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tomahua",
-          "locator": "Kaikki nci record \"tomahua\"; already imported shard 2, row 316",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tomahua",
+          "locator": "Molina 1571 II f.149r col.1; Launey 2011 p.114",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. The separate nino/nitla constructions do not share an assumed class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/tomahua",
-          "locator": "Kaikki nci record \"tomahua\"; already imported shard 2, row 316",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tomahua",
+          "locator": "Molina 1571 II f.149r col.1; Launey 2011 p.114",
+          "note": "The consulted historical dictionaries distinguish this verb (intransitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. The separate nino/nitla constructions do not share an assumed class",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -23676,29 +23676,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/chanti",
-          "locator": "Kaikki nci record \"chanti\"; already imported shard 2, row 331",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chanti",
+          "locator": "Karttunen 1992 pp.45–46, CHĀNTI (settle, dwell)",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading.  Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/chanti",
-          "locator": "Kaikki nci record \"chanti\"; already imported shard 2, row 331",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chanti",
+          "locator": "Karttunen 1992 pp.45–46, CHĀNTI (settle, dwell)",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified.  Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/chanti",
-          "locator": "Kaikki nci record \"chanti\"; already imported shard 2, row 331",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chanti",
+          "locator": "Karttunen 1992 pp.45–46, CHĀNTI (settle, dwell)",
+          "note": "The consulted historical dictionaries distinguish this verb (class unresolved) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate.  Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status.",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -23802,29 +23802,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/namiqui",
-          "locator": "Kaikki nci record \"namiqui\"; already imported shard 2, row 350",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namiqui",
+          "locator": "Molina 1571 II f.62v col.2; Karttunen 1992 p.159",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Class 2 source-listed -NAMIC but no generated irregular c/qui object alternation",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/namiqui",
-          "locator": "Kaikki nci record \"namiqui\"; already imported shard 2, row 350",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namiqui",
+          "locator": "Molina 1571 II f.62v col.2; Karttunen 1992 p.159",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Class 2 source-listed -NAMIC but no generated irregular c/qui object alternation",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/namiqui",
-          "locator": "Kaikki nci record \"namiqui\"; already imported shard 2, row 350",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namiqui",
+          "locator": "Molina 1571 II f.62v col.2; Karttunen 1992 p.159",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Class 2 source-listed -NAMIC but no generated irregular c/qui object alternation",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -23844,29 +23844,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/namictia",
-          "locator": "Kaikki nci record \"namictia\"; already imported shard 2, row 351",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictia",
+          "locator": "Molina 1571 II f.62v col.2; Karttunen 1992 p.159",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. Mixed reflexive/transitive and multiple meanings are kept separate",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/namictia",
-          "locator": "Kaikki nci record \"namictia\"; already imported shard 2, row 351",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictia",
+          "locator": "Molina 1571 II f.62v col.2; Karttunen 1992 p.159",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. Mixed reflexive/transitive and multiple meanings are kept separate",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/namictia",
-          "locator": "Kaikki nci record \"namictia\"; already imported shard 2, row 351",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictia",
+          "locator": "Molina 1571 II f.62v col.2; Karttunen 1992 p.159",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive/reflexive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. Mixed reflexive/transitive and multiple meanings are kept separate",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
@@ -23928,29 +23928,29 @@
       "claims": [
         {
           "field": "headword",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pozonia",
-          "locator": "Kaikki nci record \"pozonia\"; already imported shard 2, row 356",
-          "note": "A lemma appears in a community source index, not an independently collated historical text.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pozonia",
+          "locator": "Molina 1571 II f.83r col.1; Karttunen 1992 p.205",
+          "note": "Exact headword and spelling cross-referenced with ODN's historical entries; it is a cited lexeme, not a historical sentence reading. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pozonia",
-          "locator": "Kaikki nci record \"pozonia\"; already imported shard 2, row 356",
-          "note": "Short source-reported gloss; not a verified lexical or contextual Classical translation.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pozonia",
+          "locator": "Molina 1571 II f.83r col.1; Karttunen 1992 p.205",
+          "note": "The short recorded gloss is supported by the inspected ODN definition; no context-specific interpretation or all senses are independently verified. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://en.wiktionary.org/wiki/pozonia",
-          "locator": "Kaikki nci record \"pozonia\"; already imported shard 2, row 356",
-          "note": "Community source labels row as verb; class, valency and period remain unresolved.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pozonia",
+          "locator": "Molina 1571 II f.83r col.1; Karttunen 1992 p.205",
+          "note": "The consulted historical dictionaries distinguish this verb (transitive) construction. Only explicitly sourced person/valency is licensed; competing varieties and meanings remain separate. ",
+          "reviewer": "Tlahtōlli batch 06 AI-assisted ODN entry review; not facsimile collation or specialist peer review",
           "checkedAt": "2026-10-29"
         },
         {

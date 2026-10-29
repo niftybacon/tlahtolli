@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.5.0",
+  "version": "2026-10-29.6.0",
   "entries": [
     {
       "word": "ātl",
@@ -5509,9 +5509,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/malina",
+      "grammarNotes": "Reviewed Molina 1571 II f.51v col.1; Karttunen 1992 p.134. Also reflexive in other sources; admitted template only for exact nitla- construction Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitlamalin",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Source-reported completed form of malīna, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/malina",
+          "note": "Exact first-person token sourced in Molina 1571 II f.51v col.1; Karttunen 1992 p.134; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Also reflexive in other sources; admitted template only for exact nitla- construction"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5524,9 +5533,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/paca",
+      "grammarNotes": "Reviewed Molina 1571 II f.78v col.1; Karttunen 1992 p.182. Molina offers alternative -pac/-pacac preterites; record exact -pacac only and do not impose class Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitlapacac",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Source-reported completed form of pāca, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/paca",
+          "note": "Exact first-person token sourced in Molina 1571 II f.78v col.1; Karttunen 1992 p.182; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Molina offers alternative -pac/-pacac preterites; record exact -pacac only and do not impose class"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5539,9 +5557,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/mina",
+      "grammarNotes": "Reviewed Molina 1571 II f.56v col.2; Lockhart 2001 p.225. Source also has nitla/niteitz; nite only is in this template Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitemin",
+          "category": "Preterite 1sg (animate indefinite object)",
+          "gloss": "Source-reported completed form of mīna, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mina",
+          "note": "Exact first-person token sourced in Molina 1571 II f.56v col.2; Lockhart 2001 p.225; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Source also has nitla/niteitz; nite only is in this template"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5554,8 +5581,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/mani",
+      "grammarNotes": "Reviewed Karttunen 1992 p.136; Lockhart 2001 p.224. Irregular surface distribution mani/manic/manca; excludes regular ni- analogy Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -5569,9 +5596,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/pano",
+      "grammarNotes": "Reviewed Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229. Future/preterite class 1 not extrapolated beyond existing source template Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onipanoc",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of panō, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pano",
+          "note": "Exact first-person token sourced in Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Future/preterite class 1 not extrapolated beyond existing source template"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5584,8 +5620,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/pati",
+      "grammarNotes": "Reviewed Molina 1571 II f.80r col.1; Karttunen 1992 p.188. Impersonal melting: opat is not an independently labelled 1sg finite form Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -5614,24 +5650,42 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/teca",
+      "grammarNotes": "Reviewed Molina 1571 II f.91v col.1; Karttunen 1992 p.215. Reflexive nino- is a separate construction; no reflexive inference Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitlatecac",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Source-reported completed form of tēca, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teca",
+          "note": "Exact first-person token sourced in Molina 1571 II f.91v col.1; Karttunen 1992 p.215; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Reflexive nino- is a separate construction; no reflexive inference"
+        }
+      ],
       "formsEdited": false
     },
     {
       "word": "cecmiqui",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "cecmiqui-; cecmic-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cecmiqui",
+      "grammarNotes": "Reviewed Molina 1571 II f.15v col.1; Karttunen 1992 p.27.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onicecmic",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of cecmiqui, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cecmiqui",
+          "note": "Exact first-person token sourced in Molina 1571 II f.15v col.1; Karttunen 1992 p.27; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5674,9 +5728,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/chicahua",
+      "grammarNotes": "Reviewed Molina 1571 II f.19v col.1; Lockhart 2001 p.214. Different ni/nic/nino senses and Class 1/2 present; no unique stem-class promotion Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitlachicauh",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Source-reported completed form of chicāhua, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chicahua",
+          "note": "Exact first-person token sourced in Molina 1571 II f.19v col.1; Lockhart 2001 p.214; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Different ni/nic/nino senses and Class 1/2 present; no unique stem-class promotion"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5704,24 +5767,42 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/temo",
+      "grammarNotes": "Reviewed Molina 1571 II f.97v col.2; Karttunen 1992 p.223; Lockhart 2001 p.233. Class 1 -c is not the same as the attested base-2 alternation required by the current stem engine Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitemoc",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of temo, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temo",
+          "note": "Exact first-person token sourced in Molina 1571 II f.97v col.2; Karttunen 1992 p.223; Lockhart 2001 p.233; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Class 1 -c is not the same as the attested base-2 alternation required by the current stem engine"
+        }
+      ],
       "formsEdited": false
     },
     {
       "word": "miqui",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "miqui-; mic-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/miqui",
+      "grammarNotes": "Reviewed Molina 1571 II f.56v col.2; Karttunen 1992 p.148; Lockhart 2001 p.225.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onimic",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of miqui, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/miqui",
+          "note": "Exact first-person token sourced in Molina 1571 II f.56v col.2; Karttunen 1992 p.148; Lockhart 2001 p.225; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5734,8 +5815,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/yaomiqui",
+      "grammarNotes": "Reviewed Sahagún Primeros Memoriales, Sullivan ed. 1997 p.164 (yaumiquiz). Future token is source-spelled and does not license a new finite paradigm Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status. Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -5757,16 +5838,25 @@
     {
       "word": "poyōmiqui",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "poyōmiqui-; poyōmic-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/poyomiqui",
+      "grammarNotes": "Reviewed Lockhart 2001 p.230; Karttunen 1992 p.204.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "ōnipoyōmic",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of poyōmiqui, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/poyomiqui",
+          "note": "Exact first-person token sourced in Lockhart 2001 p.230; Karttunen 1992 p.204; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5794,9 +5884,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlacatilia",
+      "grammarNotes": "Reviewed Molina 1571 II f.115v col.2; Karttunen 1992 p.253.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitetlacatili",
+          "category": "Preterite 1sg (animate indefinite object)",
+          "gloss": "Source-reported completed form of tlācatiliā, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacatilia",
+          "note": "Exact first-person token sourced in Molina 1571 II f.115v col.2; Karttunen 1992 p.253; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5854,9 +5953,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/matoca",
+      "grammarNotes": "Reviewed Molina 1571 II f.53v col.1; Karttunen 1992 p.139. Source's nitla and nino senses do not license untested allomorphs Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitematocac",
+          "category": "Preterite 1sg (animate indefinite object)",
+          "gloss": "Source-reported completed form of mātoca, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/matoca",
+          "note": "Exact first-person token sourced in Molina 1571 II f.53v col.1; Karttunen 1992 p.139; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Source's nitla and nino senses do not license untested allomorphs"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5899,9 +6007,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/teochihua",
+      "grammarNotes": "Reviewed Molina 1571 II f.100r col.2; Karttunen 1992 p.227. Separate nino and nitla constructions are not inferred Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "oniteteochiuh",
+          "category": "Preterite 1sg (animate indefinite object)",
+          "gloss": "Source-reported completed form of teōchīhua, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teochihua",
+          "note": "Exact first-person token sourced in Molina 1571 II f.100r col.2; Karttunen 1992 p.227; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Separate nino and nitla constructions are not inferred"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5922,16 +6039,25 @@
     {
       "word": "pēhua",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "pēhua-; pēuh-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/pehua",
+      "grammarNotes": "Reviewed Lockhart 2001 p.229; Karttunen 1992 p.191. Do not use the mislabelled Molina nite- for automatic transitivity Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "ōnipēuh",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of pēhua, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pehua",
+          "note": "Exact first-person token sourced in Lockhart 2001 p.229; Karttunen 1992 p.191; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Do not use the mislabelled Molina nite- for automatic transitivity"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5944,9 +6070,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cuica",
+      "grammarNotes": "Reviewed Molina 1571 II f.26v col.1; Lockhart 2001 p.216.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onicuicac",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of cuīca, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuica",
+          "note": "Exact first-person token sourced in Molina 1571 II f.26v col.1; Lockhart 2001 p.216; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5989,24 +6124,42 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/apizmiqui",
+      "grammarNotes": "Reviewed Molina 1571 II f.7r col.1; Karttunen 1992 p.12. Recorded preterite lacks the macrons of the editorial citation; no generalized short base Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onapizmic",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of āpīzmiqui, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/apizmiqui",
+          "note": "Exact first-person token sourced in Molina 1571 II f.7r col.1; Karttunen 1992 p.12; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Recorded preterite lacks the macrons of the editorial citation; no generalized short base"
+        }
+      ],
       "formsEdited": false
     },
     {
       "word": "cotōni",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "cotōni-; cotōn-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cotoni",
+      "grammarNotes": "Reviewed Molina 1571 II f.24v col.2; Lockhart 2001 p.216.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "ōnicotōn",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of cotōni, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cotoni",
+          "note": "Exact first-person token sourced in Molina 1571 II f.24v col.2; Lockhart 2001 p.216; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6019,8 +6172,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tzacui",
+      "grammarNotes": "Reviewed Lockhart 2001 p.240; Karttunen 1992 p.310. Lockhart ōtzauc lacks a source-specific first-person subject Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -6034,9 +6187,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tzacua",
+      "grammarNotes": "Reviewed Molina 1571 II f.151v col.1; Karttunen 1992 p.310. Class 2 recorded ōnictzauc is a different specific-object construction Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitlatzacu",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Source-reported completed form of tzacua, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzacua",
+          "note": "Exact first-person token sourced in Molina 1571 II f.151v col.1; Karttunen 1992 p.310; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Class 2 recorded ōnictzauc is a different specific-object construction"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6049,8 +6211,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tona",
+      "grammarNotes": "Reviewed Molina 1571 II f.149r col.2; Lockhart 2001 p.240. Weather/solar impersonal sense; no ni- agreement extrapolation Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -6064,8 +6226,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/yohua",
+      "grammarNotes": "Reviewed Molina 1571 II f.41v col.1; Lockhart 2001 p.242. Impersonal nightfall; no ni- person inflection. Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -6094,9 +6256,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ixcuepa",
+      "grammarNotes": "Reviewed Molina 1571 II f.45r col.2; Karttunen 1992 p.113. Mixed reflexive/transitive; no generated reflexive allomorphs Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "oniteixcuep",
+          "category": "Preterite 1sg (animate indefinite object)",
+          "gloss": "Source-reported completed form of īxcuepa, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ixcuepa",
+          "note": "Exact first-person token sourced in Molina 1571 II f.45r col.2; Karttunen 1992 p.113; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Mixed reflexive/transitive; no generated reflexive allomorphs"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6109,9 +6280,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tzoncui",
+      "grammarNotes": "Reviewed Molina 1571 II f.153r col.2; Karttunen 1992 p.317. Reflexive nino- cannot be made productive by transitive rules Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "oninotzoncuic",
+          "category": "Preterite 1sg reflexive (source-listed only)",
+          "gloss": "Source-reported completed form of tzoncui, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzoncui",
+          "note": "Exact first-person token sourced in Molina 1571 II f.153r col.2; Karttunen 1992 p.317; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Reflexive nino- cannot be made productive by transitive rules"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6124,9 +6304,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tzinti",
+      "grammarNotes": "Reviewed Molina 1571 II f.152v col.1; Karttunen 1992 p.314. Source lists -c completed suffix; avoid generalizing from this form Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitzintic",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of tzinti, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzinti",
+          "note": "Exact first-person token sourced in Molina 1571 II f.152v col.1; Karttunen 1992 p.314; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Source lists -c completed suffix; avoid generalizing from this form"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6139,9 +6328,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cua",
+      "grammarNotes": "Reviewed Molina 1571 II f.84r col.1; Karttunen 1992 p.56. Source spells qua and flags alternation; do not silently assert long vowel or stem class Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitlaqua",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Source-reported completed form of cua, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cua",
+          "note": "Exact first-person token sourced in Molina 1571 II f.84r col.1; Karttunen 1992 p.56; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Source spells qua and flags alternation; do not silently assert long vowel or stem class"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6154,9 +6352,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/popoca",
+      "grammarNotes": "Reviewed Molina 1571 II f.83r col.2; Karttunen 1992 p.203.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onipopocac",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of popoca, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/popoca",
+          "note": "Exact first-person token sourced in Molina 1571 II f.83r col.2; Karttunen 1992 p.203; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6169,9 +6376,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/elehuia",
+      "grammarNotes": "Reviewed Molina 1571 II f.28v col.1; Karttunen 1992 p.89. Vowel length varies in colonial writings; no bulk normalization Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitlaeleui",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Source-reported completed form of ēlēhuiā, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/elehuia",
+          "note": "Exact first-person token sourced in Molina 1571 II f.28v col.1; Karttunen 1992 p.89; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Vowel length varies in colonial writings; no bulk normalization"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6259,9 +6475,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/mayana",
+      "grammarNotes": "Reviewed Molina 1571 II f.51r col.2; Lockhart 2001 p.224. Lockhart's MAYĀNA quantity differs from the unmarked source-index headword; no invented macron-based stem class Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onimayan",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of mayana, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mayana",
+          "note": "Exact first-person token sourced in Molina 1571 II f.51r col.2; Lockhart 2001 p.224; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Lockhart's MAYĀNA quantity differs from the unmarked source-index headword; no invented macron-based stem class"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6274,8 +6499,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/amiqui",
+      "grammarNotes": "Reviewed Molina 1571 II f.5r col.1; Karttunen 1992 pp.10–11. Molina lists onamic with n. but not a full ni- first-person exemplar; preserve the exact ambiguity Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -6304,9 +6529,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tzatzi",
+      "grammarNotes": "Reviewed Molina 1571 II f.151v col.2; Lockhart 2001 p.240. Molina's otzatzic is not itself a 1sg form; ōnitzahtzic is from Lockhart Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "ōnitzahtzic",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of tzatzi, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzatzi",
+          "note": "Exact first-person token sourced in Molina 1571 II f.151v col.2; Lockhart 2001 p.240; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Molina's otzatzic is not itself a 1sg form; ōnitzahtzic is from Lockhart"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6409,8 +6643,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cueponi",
+      "grammarNotes": "Reviewed Molina 1571 II f.26r col.2; Karttunen 1992 p.70. Listed ocuepon is an impersonal/3sg preterite despite adjacent ni. No 1sg source token Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -6424,9 +6658,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/xotla",
+      "grammarNotes": "Reviewed Molina 1571 II f.161r col.2; Karttunen 1992 p.331.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onixotlac",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of xōtla, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/xotla",
+          "note": "Exact first-person token sourced in Molina 1571 II f.161r col.2; Karttunen 1992 p.331; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9274,8 +9517,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tozoa",
+      "grammarNotes": "Reviewed Karttunen 1992 p.249; dictionary headword TŌZOĀ. No source-located 1sg past; lexical-only promotion Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status. Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -9289,9 +9532,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/choloa",
+      "grammarNotes": "Reviewed Molina 1571 II f.21v col.2; Lockhart 2001 p.215. Lockhart Class 3 ōnicholoh differs orthographically; no Class 2 promotion Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onicholo",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of choloa, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/choloa",
+          "note": "Exact first-person token sourced in Molina 1571 II f.21v col.2; Lockhart 2001 p.215; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Lockhart Class 3 ōnicholoh differs orthographically; no Class 2 promotion"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9312,16 +9564,25 @@
     {
       "word": "tzāhua",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "tzāhua-; tzāuh-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tzahua",
+      "grammarNotes": "Reviewed Molina 1571 II f.151v col.2; Lockhart 2001 p.240.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "ōnitzāuh",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of tzāhua, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tzahua",
+          "note": "Exact first-person token sourced in Molina 1571 II f.151v col.2; Lockhart 2001 p.240; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9334,9 +9595,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tomahua",
+      "grammarNotes": "Reviewed Molina 1571 II f.149r col.1; Launey 2011 p.114. The separate nino/nitla constructions do not share an assumed class Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitomauac",
+          "category": "Preterite 1sg",
+          "gloss": "Source-reported completed form of tomāhua, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tomahua",
+          "note": "Exact first-person token sourced in Molina 1571 II f.149r col.1; Launey 2011 p.114; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. The separate nino/nitla constructions do not share an assumed class"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9379,8 +9649,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/chanti",
+      "grammarNotes": "Reviewed Karttunen 1992 pp.45–46, CHĀNTI (settle, dwell).  Lexical source does not independently license personal ni-/ti- agreement; preserve lexical-only status. Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
       "inflections": [],
       "formsEdited": false
     },
@@ -9424,9 +9694,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/namiqui",
+      "grammarNotes": "Reviewed Molina 1571 II f.62v col.2; Karttunen 1992 p.159. Class 2 source-listed -NAMIC but no generated irregular c/qui object alternation Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitenamic",
+          "category": "Preterite 1sg (animate indefinite object)",
+          "gloss": "Source-reported completed form of nāmiqui, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namiqui",
+          "note": "Exact first-person token sourced in Molina 1571 II f.62v col.2; Karttunen 1992 p.159; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Class 2 source-listed -NAMIC but no generated irregular c/qui object alternation"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9439,9 +9718,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/namictia",
+      "grammarNotes": "Reviewed Molina 1571 II f.62v col.2; Karttunen 1992 p.159. Mixed reflexive/transitive and multiple meanings are kept separate Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitenamicti",
+          "category": "Preterite 1sg (animate indefinite object)",
+          "gloss": "Source-reported completed form of nāmictiā, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/namictia",
+          "note": "Exact first-person token sourced in Molina 1571 II f.62v col.2; Karttunen 1992 p.159; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Mixed reflexive/transitive and multiple meanings are kept separate"
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9469,9 +9757,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/pozonia",
+      "grammarNotes": "Reviewed Molina 1571 II f.83r col.1; Karttunen 1992 p.205.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "inflections": [
+        {
+          "form": "onitlapozoni",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Source-reported completed form of pozōniā, exact spelling only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pozonia",
+          "note": "Exact first-person token sourced in Molina 1571 II f.83r col.1; Karttunen 1992 p.205; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        }
+      ],
       "formsEdited": false
     },
     {

@@ -35,6 +35,8 @@ with sync_playwright() as pw:
     output = page.locator(".translator-english-output")
     analyze("niquitta in cihuātl in chōca")
     assert output.inner_text() == "I see the woman that cries."
+    assert "Grammar-graph evidence:" in page.locator(".translator-composed-english").inner_text()
+    assert "relative role alternatives cross-checked" in page.locator(".translator-composed-english").inner_text()
     page.get_by_role("combobox", name="Clause 1 English reading", exact=True).select_option(label="I inspect the woman that cries")
     assert output.inner_text() == "I inspect the woman that cries."
     panel = page.locator(".translator-composed-english")
@@ -49,6 +51,15 @@ with sync_playwright() as pw:
     analyze("quitta in cihuātl in conetl")
     page.get_by_role("combobox", name="Clause 1 English reading", exact=True).select_option(label="The child sees the woman")
     assert output.inner_text() == "The child sees the woman."
+    analyze("quitta in cihuātl in quitta")
+    choices = page.get_by_role("combobox", name="Clause 1 English reading", exact=True)
+    options = choices.locator("option").all_inner_texts()
+    assert any("that sees" in option for option in options)
+    assert any("that he / she / it sees" in option for option in options)
+    assert "Grammar-graph evidence:" in page.locator(".translator-composed-english").inner_text()
+    analyze("nichōca in calli itic")
+    assert output.inner_text() == "Inside the house, I cry."
+    assert "location alternatives retained" in page.locator(".translator-composed-english").inner_text()
     analyze("nichōca. xyzzy. nitlacua")
     assert output.count() == 0, "Unsupported middle unit must not disappear from the passage"
     analyze("nichōca <img src=x onerror=alert(1)>")

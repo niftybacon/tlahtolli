@@ -21,8 +21,26 @@ function create(dictionary){
   const raw=typeof input==='string'?input:'';
   const clauses=items(analysis?.clauses,32);
   const nodes=[],edges=[],byId=new Map(),mentions=new Map(),slots=new Map(),edgeKeys=new Set();
-  const diagnostics=[],alternatives=[];
+  const diagnostics=[],alternatives=[],agreementAudit={checked:0,accepted:0,rejected:[],status:'source-bounded grammatical role checks; NOT reference resolution'};
   let serial=0;
+  // Compare indexed person and valency only INSIDE each analysis alternative.
+  // A noun possessor never substitutes for a finite subject or object index.
+  function roleAllowed(kind,role,person,transitive){
+   agreementAudit.checked++;
+   const valid=kind==='relative'?
+    (role==='relative subject'&&person==='3sg')||
+    (role==='relative object'&&transitive===true):
+    kind==='matrix'?
+     (role==='matrix subject'&&person==='3sg')||role==='matrix object':
+    kind==='possessed'?
+     (role==='possible grammatical subject'&&person==='3sg')||
+     (role==='possible grammatical object'&&transitive===true):false;
+   if(valid){agreementAudit.accepted++;return true;}
+   if(agreementAudit.rejected.length<48)
+    agreementAudit.rejected.push({kind,role:String(role||'unresolved'),reason:
+     'indexed verbal subject/valency incompatible with proposed noun role; no identity inferred'});
+   return false;
+  }
   const newNode=(kind,props)=>{
    if(nodes.length>=MAX_NODES){if(!diagnostics.includes('node-limit'))diagnostics.push('node-limit');return null;}
    const id=kind+':'+(serial++);
@@ -34,7 +52,7 @@ function create(dictionary){
    const key=JSON.stringify([from,to,relation,meta.readingId||'']);
    if(edgeKeys.has(key))return;edgeKeys.add(key);
    if(edges.length>=MAX_EDGES){if(!diagnostics.includes('edge-limit'))diagnostics.push('edge-limit');return;}
-   edges.push({from,to,relation,status:'candidate-only',notIdentity:true,...meta});
+   edges.push({from,to,relation,...meta,status:'candidate-only',notIdentity:true});
   };
   const span=(i,written)=>{
    const tokens=items(clauses[i]?.tokens,64);
@@ -103,6 +121,11 @@ function create(dictionary){
    const cl=clauses[i]||{};
    for(const [n,p] of items(cl.nestedInProposals,16).entries()){
     if(!p||p.coverage!==cl.tokens?.length||!Array.isArray(p.layers)||p.layers.length<2)continue;
+    if(p.terminal?.kind==='headed-relative'){
+     const rel=p.terminal.relative;
+     if(!roleAllowed('relative',rel?.headGapRole,rel?.subjectPerson,rel?.transitive)||
+      !roleAllowed('matrix',p.terminal.headRole,p.layers[p.layers.length-1]?.subjectPerson,null))continue;
+    }
     const v=variant(i,'nested-in',n,p.grade,p.sources);if(!v)continue;
     let parent=null;
     for(const [layer,j] of p.layers.entries()){
@@ -126,6 +149,8 @@ function create(dictionary){
    }
    for(const [n,p] of items(cl.relativeClauseProposals,12).entries()){
     if(!p||p.coverage!==cl.tokens?.length)continue;
+    if(!roleAllowed('relative',p.relative?.headGapRole,p.relative?.subjectPerson,p.relative?.transitive)||
+     (p.matrix&&!roleAllowed('matrix',p.matrix.headRole,p.matrix.subjectPerson,null)))continue;
     const v=variant(i,'headed-in-relative',n,p.grade,p.sources);if(!v)continue;
     const h=p.head,r=p.relative;
     const nm=mention(i,{written:h?.written,lemma:h?.lemma,
@@ -143,6 +168,8 @@ function create(dictionary){
    }
    for(const [n,p] of items(cl.possessedAgreement?.items,24).entries()){
     if(!p||p.coverage!==cl.tokens?.length)continue;
+    if(!roleAllowed('possessed',p.possessedNoun?.role,p.verb?.subject,
+     p.verb?.objectAgreement==='indexed fixed 3sg'))continue;
     const v=variant(i,'possessed-noun-argument',n,p.grade,p.sourceLinks);if(!v)continue;
     const h=p.possessedNoun,j=p.verb;
     const nm=mention(i,{written:h?.written,lemma:h?.lemma,
@@ -192,9 +219,50 @@ function create(dictionary){
    if(id){slots.set(i,id);newEdge(clauseIds[i],id,'contains-unexpressed-subject');}
    return id;
   }
+  // Only a uniquely licensed overt 3sg SUBJECT can seed a discourse link.
+  // Relative heads, possessed arguments and noun objects are not promoted.
+  function overtSubject(i){
+   const cl=clauses[i];if(!cl||cl.roleAmbiguous||
+    items(cl.relativeClauseProposals).length||items(cl.nestedInProposals).length||
+    items(cl.nominalInProposals).length||items(cl.complexClauseProposals).length)return null;
+   const readings=items(cl.candidates).filter(c=>
+    c?.grade==='grammar-derived candidate'&&c.coverage===cl.tokens?.length&&c.frame);
+   const keys=new Set(readings.map(c=>JSON.stringify([c.frame.subjectPerson,
+    c.frame.subjectNoun,c.frame.objectNoun,c.frame.object,c.frame.predicate,
+    c.frame.tense,c.frame.negative])));
+   if(keys.size!==1)return null;
+   const frame=readings[0].frame;
+   if(frame.subjectPerson!==2||!frame.subjectNoun||frame.objectNoun||frame.object)return null;
+   const nounSource=items(readings[0].nounSenses).filter(x=>
+    x?.lemma===frame.subjectNoun&&source(x.source));
+   if(nounSource.length!==1)return null;
+   const original=lexicalSource(frame.subjectNoun,frame.subjectNoun);
+   return original===nounSource[0].source?{written:frame.subjectNoun,source:original}:null;
+  }
+  // No antecedent can jump over unparsed or role-ambiguous discourse units.
+  function traversable(from,to){
+   for(let i=from+1;i<to;i++){
+    const cl=clauses[i];if(!cl||cl.roleAmbiguous||
+     items(cl.relativeClauseProposals).length||items(cl.nestedInProposals).length||
+     items(cl.nominalInProposals).length||items(cl.complexClauseProposals).length)return false;
+    const c=items(cl.candidates).filter(x=>x?.grade==='grammar-derived candidate'&&
+     x.coverage===cl.tokens?.length&&x.frame);
+    if(!c.length||new Set(c.map(x=>JSON.stringify([x.frame.subjectPerson,
+     x.frame.subjectNoun,x.frame.objectNoun,x.frame.predicate,x.frame.tense,
+     x.frame.negative]))).size!==1)return false;
+   }
+   return true;
+  }
   const possibleLink=(from,to,a,label,distance)=>{
    if(!Number.isInteger(from)||!Number.isInteger(to)||from<0||to>=clauses.length||
     from>=to||to-from>3||!a||!source(a.source)||a.written!==a.written?.trim())return;
+   const verified=overtSubject(from);
+   if(!verified||verified.written!==a.written||verified.source!==a.source||
+    !traversable(from,to)){
+    if(agreementAudit.rejected.length<48)agreementAudit.rejected.push({kind:'discourse',
+     role:'implicit 3sg subject',reason:'prior mention is not a unique overt 3sg subject, or intervening scope is unsupported'});
+    return;
+   }
    const slot=targetSlot(to);if(!slot)return;
    const m=mentions.get(from+':'+span(from,a.written));
    const head=m&&byId.get(m);
@@ -225,6 +293,8 @@ function create(dictionary){
   return {schema:'tlahtolli-grammar-ir-v1',status:'candidate-only; not a translation',
    input:raw.slice(0,7000),nodes,edges,alternatives:alternatives.slice(),
    clauseIds:clauseIds.filter(Boolean),diagnostics:[...new Set(diagnostics)],
+   agreementAudit:{...agreementAudit,rejected:agreementAudit.rejected.slice(),
+    unresolved:'compatible agreement never establishes discourse co-reference, nominal owner identity, or a complete translation'},
    unresolved:{pronounIdentity:true,possessorIdentity:true,semanticScope:true,
     sourceAttestationOfComposedSentence:true},
    counts:{clauses:clauseIds.length,readings:alternatives.length,

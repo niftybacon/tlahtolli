@@ -1014,7 +1014,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.'};
    if(!clause.complete&&[
     clause.relativeClauseProposals,clause.nominalInProposals,
-    clause.nestedInProposals,clause.complexClauseProposals
+    clause.nestedInProposals
    ].some(items=>items?.length))
     clause.reason='A bounded clause structure is recognized, but it is not a verified full reading or an English translation.';
    return clause;

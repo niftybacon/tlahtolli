@@ -75,8 +75,34 @@ with sync_playwright() as pw:
                    "in cihuātl ihuan in conetl extra"):
         assert analyze(sample).locator(".translator-nominal-coordination").count()==0,sample
 
+    # Reuse the SAME integrated translator for grammar-constrained attachment.
+    for sample,agreement in (
+        ("chōca in cihuātl īhuān in conetl","3sg"),
+        ("chōcah in cihuātl īhuān in conetl","3pl"),
+        ("in cihuātl īhuān in conetl chōcah","3pl"),
+    ):
+        result=analyze(sample)
+        linked=result.locator(".translator-coordinated-subject")
+        assert linked.count()==1,sample
+        linked.evaluate("(node)=>node.open=true")
+        label=linked.inner_text()
+        assert agreement in label and "NOT a translation" in label,label
+        assert "cihuātl" in label and "conetl" in label
+        assert linked.get_by_role("link",name="Inspect agreement and nominal evidence").count()>=4
+        assert result.locator(".translator-composed-english").count()==0,sample
+
+    for sample in (
+        "chōcah xōchitl īhuān tetl",
+        "niquitta in cihuātl īhuān in conetl",
+        "chōcah in cihuātl īhuān in xōchitl",
+        "chōcah cihuātl ioan conetl",
+    ):
+        result=analyze(sample)
+        assert result.locator(".translator-coordinated-subject").count()==0,sample
+        assert result.locator(".translator-composed-english").count()==0,sample
+
     supported=analyze("niquittaz in cihuātl")
     assert "I will see the woman" in supported.inner_text()
     assert not errors,errors
     browser.close()
-print("PASS noun coordination browser: source-located ioan, productive cited spelling, two historical inner windows, no whole-clause English leakage.")
+print("PASS noun coordination browser: source-located ioan, productive cited spelling, two historical inner windows, cited third-person subject attachments, no invented English.")

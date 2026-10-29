@@ -235,7 +235,7 @@ with sync_playwright() as pw:
     assert complex_panel.count()==1
     complex_panel.evaluate("(node)=>node.open=true")
     clause=complex_panel.inner_text()
-    assert "finite verb + relational location" in clause.lower()
+    assert "finite verb + locative context" in clause.lower()
     assert "grammar-composed verb + relational location" in clause
     assert "subject I" in clause
     assert "Possible relational senses: inside / within / in the interior of" in clause

@@ -103,6 +103,8 @@ jobs:
         run: node tools/test_multiclause_syntax.js
       - name: Classical in relatives, subordinate predicates and antecedent constraints
         run: node --check translator-sentence.js && node tools/test_relative_in_antecedents.js
+      - name: Nested in-clauses, discourse mentions and possessed relative heads
+        run: node tools/test_translator_nested_in_discourse.js && node tools/test_nested_possessed_relatives.js
       - name: Archive form evidence and morphology cross-check regressions
         run: node tools/test_archive_lexical.js
       - name: Translation quality readiness and independent-holdout checks

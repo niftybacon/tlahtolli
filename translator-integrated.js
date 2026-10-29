@@ -152,6 +152,43 @@ function showResult(){
     }
     block.append(panel);
    }
+   if(clause.nestedInProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-nested-in-proposals';
+    panel.append(el('summary','','Nested in-subordination · '+
+     clause.nestedInProposals.length+' bounded structural alternative'+
+     (clause.nestedInProposals.length===1?'':'s')+' (NOT a translation)'));
+    panel.append(el('p','translator-caution',
+     'Each displayed in marker is accounted for. Depth, finite agreement and relative head roles are syntactic proposals; subordinate meanings, omitted arguments and participant identity remain unresolved.'));
+    for(const p of clause.nestedInProposals.slice(0,16)){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',p.construction+' · depth '+p.depth),
+      el('p','translator-meta',p.layers.map(l=>l.written+
+       ' ('+l.lemma+', '+l.subjectPerson+')').join(' → in → ')),
+      el('p','translator-meta',p.terminal.kind==='headed-relative'?
+       'Relative head: '+p.terminal.head.written+' · gap: '+
+       p.terminal.relative.headGapRole+' · '+p.terminal.relative.written:
+       'Finite leaf: '+p.terminal.written+' · '+p.terminal.subjectPerson),
+      el('p','translator-meta','Exact token coverage: '+p.coverage+' · '+p.grade),
+      el('p','translator-caution',p.note));
+     if(p.terminal.kind==='headed-relative'&&p.terminal.head.possessiveEvidence){
+      item.append(
+       el('p','translator-meta','Source-listed possessed relative head: '+
+        p.terminal.head.possessiveEvidence.written+
+        ' · nominal possessor '+p.terminal.head.possessor),
+       el('p','translator-caution',p.terminal.head.possessorStatus),
+       el('p','translator-caution',
+        'Possession is lexical evidence for the noun only; neither the outer '+
+        'matrix subject nor the inner relative subject is identified with its possessor.'));
+     }
+     for(const source of p.sources||[]){
+      const link=safeLink(source,'Inspect nested grammar evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.complexClauseProposals?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-complex-clause-proposals';
@@ -432,6 +469,32 @@ function showResult(){
      el('p','translator-caution',candidate.note));
     const source=safeLink(candidate.antecedent.source,'Inspect antecedent noun evidence');
     if(source)panel.append(source);
+   }
+   passages.append(panel);
+  }
+  if(result.discourseReferenceProposals?.length){
+   const panel=el('details','translator-morph-panel');
+   panel.className+=' translator-discourse-references';
+   panel.append(el('summary','','Discourse mention tracking · '+
+    result.discourseReferenceProposals.length+' unresolved subject slot'+
+    (result.discourseReferenceProposals.length===1?'':'s')));
+   panel.append(el('p','translator-caution',
+    'These are observable agreement-compatible lexical mentions within three preceding clause units. Neither closeness nor repeated noun spellings proves reference identity; unmentioned participants remain possible.'));
+   for(const proposal of result.discourseReferenceProposals){
+    const item=el('div','translator-analysis');
+    item.append(el('strong','','Clause '+(proposal.toClause+1)+' · '+proposal.pronounSlot),
+     el('p','translator-caution',proposal.status));
+    for(const alternative of proposal.candidates){
+     item.append(el('p','translator-meta',
+      'Possible overt antecedent in clause '+(alternative.fromClause+1)+
+      ': '+alternative.antecedent.written+' · '+alternative.grammaticalRole+
+      ' · distance '+alternative.distance+' clause(s) · '+alternative.agreement));
+     const link=safeLink(alternative.antecedent.source,'Inspect noun evidence');
+     if(link)item.append(link);
+    }
+    item.append(el('p','translator-caution',proposal.alternatives),
+     el('p','translator-caution',proposal.note));
+    panel.append(item);
    }
    passages.append(panel);
   }

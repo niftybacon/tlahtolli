@@ -324,6 +324,37 @@ with sync_playwright() as pw:
     assert "I see the woman" in page.locator("#translatorPassages").inner_text()
     assert page.locator("#translatorPassages .translator-relative-in-proposals").count()==0
     assert page.locator("#translatorPassages .translator-nominal-in-proposals").count()==0
+    # Recursive finite in-subordination plus source-located possessed relative heads.
+    page.locator("#translatorInput").fill("nicmati in quimati in chōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    nested=page.locator("#translatorPassages .translator-nested-in-proposals")
+    assert nested.count()==1
+    nested.evaluate("(node)=>node.open=true")
+    assert "nested in-introduced finite dependency" in nested.inner_text()
+    assert "depth 2" in nested.inner_text()
+    assert "Exact token coverage: 5" in nested.inner_text()
+    assert "NOT a translation" in nested.inner_text()
+    page.locator("#translatorInput").fill("nicmati in niquitta in iicxi in chōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    nested=page.locator("#translatorPassages .translator-nested-in-proposals")
+    assert nested.count()==1
+    nested.evaluate("(node)=>node.open=true")
+    nested_text=nested.inner_text()
+    assert "finite complement containing a headed in-relative" in nested_text
+    assert "Source-listed possessed relative head: iicxi" in nested_text
+    assert "nominal possessor 3sg" in nested_text
+    assert "NOT the finite verb subject" in nested_text
+    assert "neither the outer matrix subject nor the inner relative subject" in nested_text
+    page.locator("#translatorInput").fill("chōca in cihuātl. nemi. chōca.")
+    page.locator("#translatorForm button[type=submit]").click()
+    mentions=page.locator("#translatorPassages .translator-discourse-references")
+    assert mentions.count()==1
+    mentions.evaluate("(node)=>node.open=true")
+    mention_text=mentions.inner_text()
+    assert "Clause 3" in mention_text
+    assert "cihuātl" in mention_text
+    assert "identity NOT resolved" in mention_text
+    assert "Unmentioned discourse referents" in mention_text
     # Explicit Classical multi-clause markers. Never infer a single English
     # conjunction, conditional truth, or implicit reference.
     page.locator("#translatorInput").fill("ninemi auh nichōca")

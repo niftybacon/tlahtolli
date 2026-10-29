@@ -19,6 +19,7 @@ on:
       - 'paradigms.json'
       - 'data/clause_grammar.json'
       - 'tools/test_declarative_grammar.js'
+      - 'tools/test_morphology_clause_bridge.js'
       - 'research/amoxcalli_archive/**'
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'
@@ -42,6 +43,7 @@ on:
       - 'paradigms.json'
       - 'data/clause_grammar.json'
       - 'tools/test_declarative_grammar.js'
+      - 'tools/test_morphology_clause_bridge.js'
       - 'research/amoxcalli_archive/**'
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'
@@ -75,6 +77,8 @@ jobs:
         run: node tools/test_translator_sentence.js
       - name: Editable rule grammar parity and guardrails
         run: node tools/test_declarative_grammar.js
+      - name: Indexed morphology plus declarative clause evidence boundaries
+        run: node tools/test_morphology_clause_bridge.js
       - name: Source-linked morphology bridge syntax and provenance regressions
         run: node --check translator-source-morphology.js && node tools/test_source_morphology.js
       - name: Classical Nahuatl source-linked comparative fragment regressions

@@ -60,8 +60,94 @@ function loadSourceReviews(dir=REVIEWS){
  return fs.readdirSync(dir).filter(name=>name.endsWith('.json')).sort()
   .map(name=>JSON.parse(fs.readFileSync(path.join(dir,name),'utf8')));
 }
-function audit(pairs,examples,sourceReviews=[]){
- const errors=[],seen=new Set(),sourceSplits=new Map(),groupSplits=new Map(),textSplits=new Map();
+// The repository already stores development excerpts outside research_examples.json.
+// Excluding only known pair IDs was not enough: a different folio/alias from a
+// previously consulted work could be falsely advertised as independent gold.
+function sourceWorkKey(input){
+ if(!isUrl(input))return null;
+ const u=new URL(input),host=u.hostname.toLowerCase().replace(/^www\./u,'');
+ const p=decodeURI(u.pathname).toLowerCase().replace(/\/+$/u,'');
+ // The twelve Florentine books are one heavily used development work.
+ // Language-prefixed /es/ and /en/ routes are still the same codex.
+ if(host==='florentinecodex.getty.edu'&&
+    /^(?:\/(?:en|es))?\/book\/\d+(?:\/|$)/u.test(p))
+  return 'work:florentine-codex';
+ // ENL is an archive of many DISTINCT manuscripts: group only the specific
+ // BC16a unit, never every manuscript on the ENL host.
+ if(host==='enl.wired-humanities.org'){
+  const id=p.match(/\/bc\d+\/elements\/(bc\d+[a-z])\/\d+(?:\/|$)/u)||
+   p.match(/\/mapaimages\/(bc\d+[a-z])\d+\.png$/u);
+  if(id)return 'enl-manuscript:'+id[1];
+ }
+ // General fallback: explicit URL identity, ignoring query and fragment.
+ // Mirrors and unknown document aliases still need independent human checking.
+ return host+p;
+}
+function loadDevelopmentPassages(){
+ const file=path.join(ROOT,'data','passages.json');
+ return fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8')):{records:[]};
+}
+function loadKnownHistoricalEditions(){
+ const file=path.join(BASE,'luke_1833_source.json');
+ return fs.existsSync(file)?[JSON.parse(fs.readFileSync(file,'utf8'))]:[];
+}
+function developmentSourceIndex(examples,sourceReviews,
+ passages=loadDevelopmentPassages(),editions=loadKnownHistoricalEditions()){
+ const sourceIds=new Set(),works=new Set(),windows=[];
+ const addText=(text,origin)=>{
+  if(typeof text!=='string'||!text.trim()||/[\[\]]/u.test(text))return;
+  const key=fingerprint(text);
+  if(key)windows.push({key,tokens:key.split(' '),origin});
+ };
+ const addSource=(id,url)=>{
+  if(typeof id==='string'&&id.trim())sourceIds.add(id.trim().toLowerCase());
+  const key=sourceWorkKey(url);if(key)works.add(key);
+ };
+ for(const e of Array.isArray(examples?.entries)?examples.entries:[]){
+  addSource(e?.source_id,e?.source_url);
+  addText(e?.original,'public-research-example');addText(e?.normalized,'public-research-example');
+ }
+ for(const e of Array.isArray(passages?.records)?passages.records:[]){
+  addSource(e?.source_id,e?.reader?.source);
+  addText(e?.original,'existing-manuscript-reading');
+  addText(e?.normalized,'existing-manuscript-reading');
+ }
+ for(const e of sourceReviews||[]){
+  addSource(e?.source_id,e?.library_record_url);
+  addSource(e?.source_id,e?.manuscript_image_url);
+  addSource(e?.source_id,e?.library_document_url);
+  addText(e?.image_inspection?.minimum_assisted_excerpt,'consulted-source-review');
+  addText(e?.source_crosschecked_morphology?.excerpt,'consulted-source-review');
+ }
+ for(const e of editions||[]){
+  addSource(e?.id,e?.primary_scan);addSource(e?.id,e?.archive_source);
+  addText(e?.example_original_title_tokens,'used-historical-edition');
+ }
+ return {sourceIds,works,windows};
+}
+function overlapsConsultedText(input,windows){
+ const key=fingerprint(input);if(!key)return null;
+ const tokens=key.split(' ');
+ for(const row of windows){
+  if(key===row.key)return row.origin;
+  // Four consecutive normalized source words reveal a copied/excerpted
+  // development window even after extra surrounding words are added.
+  // Shorter sequences require an EXACT match to limit false positives.
+  if(tokens.length<4||row.tokens.length<4)continue;
+  const shorter=tokens.length<=row.tokens.length?tokens:row.tokens;
+  const longer=tokens.length<=row.tokens.length?row.tokens:tokens;
+  for(let i=0;i+4<=shorter.length;i++){
+   const chunk=shorter.slice(i,i+4).join(' ');
+   for(let j=0;j+4<=longer.length;j++)
+    if(longer.slice(j,j+4).join(' ')===chunk)return row.origin;
+  }
+ }
+ return null;
+}
+function audit(pairs,examples,sourceReviews=[],developmentPassages=loadDevelopmentPassages(),editions=loadKnownHistoricalEditions()){
+
+ const errors=[],seen=new Set(),sourceSplits=new Map(),groupSplits=new Map(),textSplits=new Map(),workSplits=new Map();
+ const development=developmentSourceIndex(examples,sourceReviews,developmentPassages,editions);
  const candidates=Array.isArray(examples?.entries)?examples.entries:[];
  const knownSources=new Set(),knownText=new Set();
  const inspectedSources=new Set();
@@ -153,6 +239,12 @@ function audit(pairs,examples,sourceReviews=[]){
   }
   if(!humanReview(row.transcription_reviewed_by)||!humanReview(row.translation_reviewed_by))
    errors.push(label+': named independent human transcription/translation reviews required');
+  const work=sourceWorkKey(row.source_url);
+  if(work&&split){
+   if(workSplits.has(work)&&workSplits.get(work)!==split)
+    errors.push(label+': source work crosses train/dev/test even with renamed source_id or split_group');
+   workSplits.set(work,split);
+  }
   // Preserve the *whole manuscript/source* in one split, not a random folio.
   for(const [map,key,name] of [[sourceSplits,source,'source_id'],[groupSplits,group,'split_group'],
    [textSplits,original,'original surface'],[textSplits,normalized,'normalized surface']]){
@@ -165,6 +257,14 @@ function audit(pairs,examples,sourceReviews=[]){
    if(inspectedSources.has(source))errors.push(label+': test source_id already inspected and contaminated as a development source');
    if(knownText.has(original)||knownText.has(normalized))
     errors.push(label+': test input overlaps public research examples');
+   if(development.sourceIds.has(source.toLowerCase()))
+    errors.push(label+': test source ID was already used in another development resource');
+   if(work&&development.works.has(work))
+    errors.push(label+': test document/work already consulted in Tlahtōlli development');
+   const contaminated=overlapsConsultedText(row.original_orthography,development.windows)||
+    overlapsConsultedText(row.normalized_nahuatl,development.windows);
+   if(contaminated)
+    errors.push(label+': test text overlaps '+contaminated+' (not independent held-out evidence)');
   }
  }
  return {errors,counts:{pairs:pairs.length,approved_test:approvedTest,approved_other:approvedNonTest,
@@ -253,4 +353,5 @@ function main(){
  return report;
 }
 if(require.main===module)main();
-module.exports={parseCsv,fingerprint,audit,probeExamples,probeDevelopmentSources,loadSourceReviews};
+module.exports={parseCsv,fingerprint,audit,probeExamples,probeDevelopmentSources,loadSourceReviews,
+ sourceWorkKey,developmentSourceIndex,overlapsConsultedText};

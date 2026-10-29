@@ -27,6 +27,8 @@ on:
       - 'tools/test_ir_audited_english.js'
       - 'tools/test_grammar_ir_agreement_audit.js'
       - 'tools/test_archive_lexical.js'
+      - 'tools/import_archive_verb_batch.py'
+      - 'research/batches/classical_archive_verb_batch05_2026_10_29.json'
       - 'dictionary.json'
       - 'paradigms.json'
       - 'tools/test_possessed_agreement.js'
@@ -85,6 +87,8 @@ on:
       - 'tools/test_ir_audited_english.js'
       - 'tools/test_grammar_ir_agreement_audit.js'
       - 'tools/test_archive_lexical.js'
+      - 'tools/import_archive_verb_batch.py'
+      - 'research/batches/classical_archive_verb_batch05_2026_10_29.json'
       - 'dictionary.json'
       - 'paradigms.json'
       - 'tools/test_possessed_agreement.js'
@@ -143,6 +147,8 @@ jobs:
         run: node tools/test_parallel_reading.js
       - name: Curated lexical and passage regressions
         run: node tools/test_translator.js
+      - name: Batch-source validation and no inferred morphology
+        run: python tools/import_archive_verb_batch.py --check
       - name: Sentence grammar regressions
         run: node tools/test_translator_sentence.js
       - name: Declarative construction rule coverage

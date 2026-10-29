@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-29.4.0",
+  "version": "2026-10-29.4.1",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -1908,10 +1908,10 @@
       "original": "",
       "variety": "Classical Nahuatl",
       "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=75&title_1=&title_1_op=%3D",
+      "source": "https://nahuatl.wired-humanities.org/content/aztayoa",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "A full source entry now confirms a specifically recorded form, but verb class/valency, person assignment, stem alternation and historical interpretation remain unverified. Exact third-person-looking written past form as printed in Molina transcription; no person marking in the listed citation and no 1sg or productive stem template."
     },
     {
       "word": "aztlacapalli",
@@ -2220,10 +2220,10 @@
       "original": "",
       "variety": "Classical Nahuatl",
       "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=573&title_1=&title_1_op=%3D",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpayoa",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "A full source entry now confirms a specifically recorded form, but verb class/valency, person assignment, stem alternation and historical interpretation remain unverified. Exact source-listed past form with no explicit grammatical person; do not infer a source-checked intransitive person stem or generic preterite agreement."
     },
     {
       "word": "tecpayotl",
@@ -2400,10 +2400,10 @@
       "original": "",
       "variety": "Classical Nahuatl",
       "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+      "source": "https://nahuatl.wired-humanities.org/content/tepozotinemi",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "A full source entry now confirms a specifically recorded form, but verb class/valency, person assignment, stem alternation and historical interpretation remain unverified. Exact orthography in an edited colonial passage as reprinted by ODN. Inflection/subject segmentation and original manuscript spelling not independently collated; lexical context comparison only, not approved gold."
     },
     {
       "word": "tepozotlapalhuaztli",

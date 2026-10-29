@@ -35,6 +35,21 @@ assert.equal(polysemy.passages.length,0,'Uncited idiomatic interpretation must n
 assert.equal(model.analyze('xōchitl','en-nh').stats.unknown,1,'Reverse direction does not imply generation.');
 assert.equal(model.lookup('nonsense','nh-en').candidates.length,0);
 assert(!model.lookup('-āuh','nh-en').candidates.length,'Bound stems must not be standalone tokens.');
+// A spacing overbar is part of a manuscript spelling, not disposable punctuation.
+const written=model.analyze('ticnamaca y¯ totlal','nh-en');
+assert.equal(written.parts.filter(x=>x.kind==='word').map(x=>x.value).join('|'),
+ 'ticnamaca|y¯|totlal','Keep the source-written abbreviation intact across lexical lookup');
+assert.match(written.gloss,/y¯/u,'The working gloss must preserve the written mark');
+assert.equal(context.window.TlahtolliTranslator.tokenize('y‾, y¯ ȳ')
+ .filter(x=>x.includes('y')).join('|'),'y‾|y¯|ȳ',
+ 'Distinct overbar and combining-macron conventions must remain distinct');
+assert.equal(context.window.TlahtolliTranslator.tokenize('¯ y').join('|'),'¯ |y',
+ 'An isolated mark is punctuation, not a fabricated word');
+const fakeUnmarked=context.window.TlahtolliTranslator.create({words:[{
+ word:'y',meaning:'fabricated control',variety:'Classical Nahuatl'
+}]},{entries:[]});
+assert.equal(fakeUnmarked.analyze('y¯','nh-en').stats.unknown,1,
+ 'A cited plain-y entry must never license a written y-overbar abbreviation');
 const injected={words:[{word:'testa',meaning:'test',variety:'Eastern Huasteca Nahuatl'}]};
 assert.equal(context.window.TlahtolliTranslator.create(injected,{entries:[]}).stats.headwords,0);
 console.log('Translation tests passed: lexical lookup, historical passage provenance, unknowns, reverse boundaries and dialect isolation.');

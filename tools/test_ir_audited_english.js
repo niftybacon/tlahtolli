@@ -20,6 +20,11 @@ const copy=x=>JSON.parse(JSON.stringify(x));
 const roleText='quitta in cihuātl in quitta';
 const role=make(roleText);
 assert.equal(role.original.available,true);
+if(!role.audited.available)console.error('AUDIT DEBUG',JSON.stringify({
+ reason:role.audited.reason,original:role.original.units[0]?.options.slice(0,1),
+ props:role.analysis.clauses[0]?.relativeClauseProposals.slice(0,1),
+ alternatives:role.graph.alternatives,edges:role.graph.edges
+},null,2).slice(0,16000));
 assert.equal(role.audited.available,true);
 assert.equal(role.audited.verified,false);
 assert.equal(role.audited.audit.graphMatchedRelatives,role.original.units[0].options.length);

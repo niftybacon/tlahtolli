@@ -767,7 +767,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    if(!candidates.length&&!negative&&tokens.length===1){
     candidates.push(...exactFiniteReadings(tokens[0],exactMorphology(tokens[0])));
    }
-   return {text,tokens:original,candidates,complete:candidates.length>0,
+   const clause={text,tokens:original,candidates,complete:candidates.length>0,
     fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),
     relativeClauseProposals:candidates.length?[]:relativeInProposals(original,negative),
     nominalInProposals:candidates.length?[]:nominalInProposals(original,negative),
@@ -778,6 +778,12 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,
     reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.'};
+   if(!clause.complete&&[
+    clause.relativeClauseProposals,clause.nominalInProposals,
+    clause.nestedInProposals,clause.complexClauseProposals
+   ].some(items=>items?.length))
+    clause.reason='A bounded clause structure is recognized, but it is not a verified full reading or an English translation.';
+   return clause;
   });
   return {clauses,complete:clauses.length>0&&clauses.every(c=>c.complete),
    contextLinks:explicitContextLinks(clauses),

@@ -6,11 +6,13 @@
 'use strict';
 function norm(s){return String(s||'').normalize('NFC').trim().toLocaleLowerCase('en');}
 function fold(s){return norm(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
-function wordsOnly(s){return (String(s||'').match(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu)||[]);}
+function wordsOnly(s){return (String(s||'').match(/[\p{L}\p{M}]+(?:[¯‾][\p{L}\p{M}]*|['’\-][\p{L}\p{M}]+)*/gu)||[]);}
 function splitGloss(s){return String(s||'').split(/[;,]/).map(x=>x.trim()).filter(Boolean);}
 function safeURL(url){try{const u=new URL(url);return /^https?:$/.test(u.protocol)?u.href:null;}catch{return null;}}
 function tokenize(s){
- const re=/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*|[^\p{L}\p{M}]+/gu;
+ // Preserve spacing overbars as part of a written token, not as punctuation.
+ // A scribal abbreviation remains an unresolved spelling, never an expansion.
+ const re=/[\p{L}\p{M}]+(?:[¯‾][\p{L}\p{M}]*|['’\-][\p{L}\p{M}]+)*|[^\p{L}\p{M}]+/gu;
  return String(s||'').match(re)||[];
 }
 function isWord(s){return /[\p{L}]/u.test(s);}

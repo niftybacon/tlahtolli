@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-29.1.0",
+  "version": "2026-10-29.2.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -1720,6 +1720,126 @@
       "example": "",
       "translation": "",
       "notes": "Molina source spelling ompa; Karttunen/Carochi discuss editorial long initial vowel. The early spelling is not a context-selected length or an automatically spatial reading."
+    },
+    {
+      "word": "tēmi",
+      "meaning": "to be full; to fill up (intransitive)",
+      "pos": "verb (intransitive)",
+      "original": "temi",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/temi",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "huetzi",
+      "meaning": "to fall; fall down",
+      "pos": "verb (intransitive)",
+      "original": "uetzi; vetzi",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "tlācati",
+      "meaning": "to be born",
+      "pos": "verb (intransitive)",
+      "original": "tlacati",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "nāhuati",
+      "meaning": "to speak clearly or loudly; to make a clear sound",
+      "pos": "verb (intransitive)",
+      "original": "nauati",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "tlatzihui",
+      "meaning": "to be idle, lazy or slothful",
+      "pos": "verb (intransitive)",
+      "original": "tlatziui",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/176525",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "patlāni",
+      "meaning": "to fly",
+      "pos": "verb (intransitive)",
+      "original": "patlani",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/patlani",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "tlanahui",
+      "meaning": "to worsen or become gravely ill",
+      "pos": "verb (intransitive)",
+      "original": "tlanaui",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "tequi",
+      "meaning": "to cut or cut off something",
+      "pos": "verb (transitive)",
+      "original": "tequi",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tequi",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "tlachia",
+      "meaning": "to look; to observe or watch",
+      "pos": "verb (intransitive)",
+      "original": "tlachia",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tlachia",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
+    },
+    {
+      "word": "tītlani",
+      "meaning": "to send a messenger; to dispatch someone on an errand",
+      "pos": "verb (transitive)",
+      "original": "titlani",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/titlani",
+      "example": "",
+      "translation": "",
+      "notes": "Source-located lexical reading, not a separately checked manuscript witness. Original transcription and editorial vowel length are distinct. No complete paradigm is implied."
     }
   ]
 }

@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'..'),read=x=>fs.readFileSync(path.join(root,x
 const D=JSON.parse(read('dictionary.json')),P=JSON.parse(read('paradigms.json')),R=JSON.parse(read('release.json'));
 assert.equal(D.version,R.version);assert.equal(D.version,'2026-10-29.4.2');assert.equal(D.words.length,210);
 assert.equal(D.words.filter(w=>String(w.pos).includes('verb')).length,64,'Old substring count retained as false-positive control');
-assert.equal(D.words.filter(w=>String(w.pos).startsWith('verb (')).length,54,
+assert.equal(D.words.filter(w=>/^verb(?:\s*\(|$)/u.test(String(w.pos))).length,54,
  'Only grammatically labelled verb entries count; adverbs are not verbs');
 assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),272);
 assert.equal(D.words.reduce((n,w)=>n+w.claims.length,0),1275);

@@ -199,7 +199,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    // Never sentence-translate productive guesses, spelling repairs, headwords,
    // or a lexeme whose precise source-listed finite form is missing.
    if(!['lexical','manuscript'].includes(m.grade))continue;
-   const w=words.filter(w=>w.word===m.lemma&&String(w.pos).startsWith('verb ('));
+   const w=words.filter(w=>w.word===m.lemma&&/^verb(?:\s*\(|$)/u.test(String(w.pos)));
    if(w.length!==1)continue;
    for(const f of w[0].inflections||[]){
     if(norm(f.form)!==norm(token)||m.kind!==f.category||

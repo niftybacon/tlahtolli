@@ -3727,16 +3727,7 @@
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/node/172499",
       "grammarNotes": "Sixteenth-century Molina lists niman as a conjunction; Lockhart also notes sequencing and intensification before negatives. Do not auto-select a temporal sense from the isolated word.",
-      "inflections": [
-        {
-          "form": "niman",
-          "category": "Dictionary headword",
-          "gloss": "then",
-          "evidence": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/node/172499",
-          "note": "Headword in Molina 1571. Citation does not resolve contextual meaning, preceding particles or clause scope."
-        }
-      ],
+      "inflections": [],
       "formsEdited": false
     },
     {
@@ -3751,16 +3742,7 @@
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/oncan",
       "grammarNotes": "Molina source spelling oncan, with spatial and contextual temporal uses; vowel length and exact deictic distance remain editorially unsettled. Distinguish from ompa.",
-      "inflections": [
-        {
-          "form": "oncan",
-          "category": "Dictionary headword",
-          "gloss": "there",
-          "evidence": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/content/oncan",
-          "note": "Headword in Molina 1571. Citation does not resolve contextual meaning, preceding particles or clause scope."
-        }
-      ],
+      "inflections": [],
       "formsEdited": false
     },
     {
@@ -3775,16 +3757,7 @@
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/ompa",
       "grammarNotes": "Molina source spelling ompa; Karttunen/Carochi discuss editorial long initial vowel. The early spelling is not a context-selected length or an automatically spatial reading.",
-      "inflections": [
-        {
-          "form": "ompa",
-          "category": "Dictionary headword",
-          "gloss": "there",
-          "evidence": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/content/ompa",
-          "note": "Headword in Molina 1571. Citation does not resolve contextual meaning, preceding particles or clause scope."
-        }
-      ],
+      "inflections": [],
       "formsEdited": false
     }
   ]

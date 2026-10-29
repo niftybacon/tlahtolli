@@ -58,7 +58,7 @@ node tools/inspect_axolotl_candidates.js /path/to/axolotl.csv --json
 ```
 
 The inspector checks the **original Git blob SHA**, exact CSV row count,
-source-work identity, Classical variety label, ISBN-unrelated ISO `nci`
+source-work identity, Classical variety label, ISO `nci`
 label, expected token counts, and unique Nahuatl/Spanish text per candidate.
 It refuses modified files, shifted rows, duplicated pairs and invented
 `approved`/`gold` labels. CSV parsing preserves original spelling,

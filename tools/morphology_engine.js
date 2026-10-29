@@ -366,6 +366,63 @@ const TlahtolliMorphEngine = (() => {
      ['verb (intransitive)','verb (transitive)'].includes(pos);
     const stronger=()=>all.some(a=>a.lemma===w.word&&
      ['manuscript','lexical','grammar','paradigm'].includes(a.grade));
+    // Batch 08: Class 1 is NOT a Class 2 short-stem alternation.
+    // The historical 1sg must show exactly this lemma plus the -c suffix.
+    // Keep the sole attested base and source-located Class 1 note separate.
+    const class1Licensed=stemClaim&&
+     /^Batch 08 documented Class 1 singular -c:/u.test(stemClaim.note||'')&&
+     stemBases.length===1&&stemBases[0]===lemma&&
+     shortBase===lemma+'c'&&
+     ['verb (intransitive)','verb (transitive)'].includes(pos)&&
+     (pos==='verb (intransitive)'||object==='tla');
+    if(class1Licensed){
+     const class1=(form,kind,tense,subject,parts)=>{
+      if(written!==form||all.some(a=>a.lemma===w.word&&
+       ['manuscript','lexical','grammar','paradigm'].includes(a.grade)))return;
+      all.push(make(w.word,kind,'hypothesis',
+       {tense,subject,object:objectRole||'intransitive',
+        stemClass:'Source-listed 1sg + unchanged Class 1 lexical base; -c singular, -queh plural'},
+       parts,stemClaim.source,stemClaim.locator,
+       'Historical source lists ONLY the 1sg -c form. This is a grammar-derived Class 1 word hypothesis, NOT an independently attested historical form, an additional valency, or a verified English reading.'));
+     };
+     if(pos==='verb (intransitive)'){
+      class1(augment+lemma+'c','Source-class1 third-person preterite hypothesis','Preterite','3sg',
+       [{surface:augment,role:'Exact source-listed past augment'},
+        {surface:'Ø',role:'3sg subject (zero prefix)'},
+        {surface:lemma,role:'Class 1 unchanged lexical base'},
+        {surface:'c',role:'Singular preterite -c from cited 1sg example'}]);
+     }
+     if(pos==='verb (intransitive)'||object==='tla'){
+      const singular=pos==='verb (intransitive)'?PEOPLE.slice(0,3):PEOPLE.slice(0,2);
+      for(const who of singular){
+       class1(who.surface+object+lemma+'z','Source-class1 future hypothesis','Future',who.person,
+        [{surface:who.surface||'Ø',role:'Subject '+who.person},
+         ...(object?[{surface:object,role:objectRole+' from the exact source finite form'}]:[]),
+         {surface:lemma,role:'Source-checked Class 1 citation base'},
+         {surface:'z',role:'Grammatical future ending (hypothesis)'}]);
+      }
+      for(const who of PEOPLE.slice(3)){
+       class1(augment+who.surface+object+lemma+'queh','Source-class1 plural preterite hypothesis','Preterite',who.person,
+        [{surface:augment,role:'Exact source-listed past augment'},
+         {surface:who.surface||'Ø',role:'Plural subject '+who.person},
+         ...(object?[{surface:object,role:'Recorded object sequence'}]:[]),
+         {surface:lemma,role:'Unchanged Class 1 base, NOT Class 2 short stem'},
+         {surface:'queh',role:'Plural preterite -queh (no singular -c)'}]);
+       class1(who.surface+object+lemma+'zqueh','Source-class1 plural future hypothesis','Future',who.person,
+        [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+         ...(object?[{surface:object,role:'Recorded object sequence'}]:[]),
+         {surface:lemma,role:'Unchanged Class 1 lexical base'},
+         {surface:'z',role:'Grammatical future -z'},
+         {surface:'queh',role:'Grammatical nonpresent plural -queh'}]);
+       if(pos==='verb (intransitive)')
+        class1(who.surface+lemma+'h','Source-class1 plural present hypothesis','Present',who.person,
+         [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+          {surface:lemma,role:'Unchanged Class 1 base'},
+          {surface:'h',role:'Classical present plural -h (hypothesis)'}]);
+      }
+     }
+    }
+
     if(classLicensed){
      // The zero-subject 3sg preterite keeps the *whole* short base and
      // augment. Object agreement can alternate for transitive third person:

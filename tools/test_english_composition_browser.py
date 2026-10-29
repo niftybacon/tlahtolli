@@ -41,6 +41,10 @@ with sync_playwright() as pw:
     assert output.inner_text() == "I inspect the woman that cries."
     panel = page.locator(".translator-composed-english")
     panel.locator("summary").click()
+    details = panel.locator("details")
+    print("EVIDENCE PANEL DIAGNOSTIC", repr(details.evaluate(
+        """d => ({open:d.open, html:d.innerHTML.slice(0,2000), text:d.textContent.slice(0,800),
+        links:[...d.querySelectorAll('a')].map(a=>({text:a.textContent,href:a.href}))})""")), flush=True)
     assert "wife" in panel.inner_text()
     assert panel.get_by_role("link", name="Inspect composition evidence").count() > 0
     analyze("nichōca auh ahmo niquittaz in cihuātl auh nitlacua")

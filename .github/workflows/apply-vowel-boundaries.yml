@@ -1,0 +1,68 @@
+name: Materialize source-bound vowel-initial morphology and complete audit
+on:
+  push:
+    branches: [vowel-initial-prefix-audit-2026-10-29]
+    paths:
+      - 'tools/morphology_engine.js'
+      - 'tools/audit_vowel_initial_verbs.py'
+      - 'tools/test_vowel_initial_verbs.js'
+      - 'tools/apply_vowel_class2_batch09.py'
+      - 'research/batches/source_vowel_class2_batch09_2026_10_29.json'
+      - 'tools/import_source_stem_batch08.py'
+      - 'tools/test_source_stem_batch08.js'
+      - '.github/workflows/apply-vowel-boundaries.yml'
+permissions:
+  contents: write
+concurrency:
+  group: tlahtolli-vowel-boundary-audit-2026-10-29
+  cancel-in-progress: false
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Import only the two newly source-verified vowel Class 2 base pairs
+        run: |
+          CURRENT_VERSION=$(python -c "import json; print(json.load(open('release.json'))['version'])")
+          if [ "$CURRENT_VERSION" = '2026-10-29.8.0' ]; then
+            python tools/apply_vowel_class2_batch09.py --write
+          else
+            python tools/apply_vowel_class2_batch09.py --check
+          fi
+      - name: Generate the full canonical verb census and offline engine parity
+        run: |
+          python tools/audit_vowel_initial_verbs.py --write
+          python tools/build_morphology_engine.py --write
+          python tools/build_runtime_assets.py --write
+      - name: Test historical allomorphy, negative controls, and prior coverage
+        run: |
+          python tools/audit_vowel_initial_verbs.py --check
+          python tools/build_morphology_engine.py --check
+          python tools/build_runtime_assets.py --check
+          python tools/build_dictionary.py --check
+          python tools/apply_vowel_class2_batch09.py --check
+          python tools/import_source_stem_batch08.py --check
+          node tools/test_vowel_initial_verbs.js
+          node tools/test_source_stem_batch08.js
+          node tools/test_source_stem_class_morphology.js
+          node tools/test_source_verb_batch06.js
+          node tools/test_translator_sentence.js
+      - name: Publish generated HTML and audited complete inventory on branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lexicon.json data/morphology.json data/evidence.json paradigms.json references.json release.json dictionary.json claim_audit.csv index.html docs/VOWEL_INITIAL_VERB_INVENTORY_2026_10_29.md
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git commit -m "Rebuild offline Tēntli and publish exhaustive vowel-initial verb audit"
+          git push origin HEAD:refs/heads/vowel-initial-prefix-audit-2026-10-29

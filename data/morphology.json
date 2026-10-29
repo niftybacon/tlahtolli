@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.8.0",
+  "version": "2026-10-29.9.0",
   "entries": [
     {
       "word": "ātl",
@@ -7309,7 +7309,7 @@
     {
       "word": "ichtequi",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "ichtequi-; ichtec-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
@@ -7317,7 +7317,7 @@
       "absolutive": "",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/ichtequi",
-      "grammarNotes": "Batch 08: Karttunen 1992 p.93; Lockhart 2001 p.219. Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed.",
+      "grammarNotes": "Batch 08: Karttunen 1992 p.93; Lockhart 2001 p.219. Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed. | Batch 09: n- conditioned before initial vowel; source-linked Class 2 base pair. No transitive/weak-i extrapolation.",
       "inflections": [
         {
           "form": "ōnichtec",
@@ -7642,7 +7642,7 @@
     {
       "word": "iztlacati",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "iztlacati-; iztlacat-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
@@ -7650,7 +7650,7 @@
       "absolutive": "",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/iztlacati",
-      "grammarNotes": "Batch 08: Molina II f.49v col.1; Lockhart 2001 p.222. Lockhart explicitly marks Class 2. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed.",
+      "grammarNotes": "Batch 08: Molina II f.49v col.1; Lockhart 2001 p.222. Lockhart explicitly marks Class 2. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed. | Batch 09: n- conditioned before initial vowel; source-linked Class 2 base pair. No transitive/weak-i extrapolation.",
       "inflections": [
         {
           "form": "ōniztlacat",

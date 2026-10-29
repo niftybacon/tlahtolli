@@ -1,0 +1,31 @@
+{
+  "format": "tlahtolli-vowel-boundary-class2-review-v1",
+  "date": "2026-10-29",
+  "baseline": "2026-10-29.8.0",
+  "target": "2026-10-29.9.0",
+  "policy": "Source-located Class 2 citation/preterite base pairs only. Preterite n- plus vowel-initial base cannot be misread as ni- plus a guessed consonant initial base. No weak initial i elision or manuscript token inferred.",
+  "entries": [
+    {
+      "word": "iztlacati",
+      "pos": "verb (intransitive)",
+      "source": "https://nahuatl.wired-humanities.org/content/iztlacati",
+      "locator": "Lockhart 2001 p.222 Class 2: ōniztlacat; Molina 1571 II f.49v col.1 oniztlacat; Karttunen 1992 p.125 (I)ZTLACAT(I)",
+      "preterite": "ōniztlacat",
+      "base1": "iztlacati",
+      "base2": "iztlacat",
+      "augment": "ō",
+      "note": "Intransitive ni. Prefix conditioned n- + vowel initial iztlacat. Do not use the transitive/reflexive (I)ZTLACATĪHUA or infer a weak-i-deleting object prefix."
+    },
+    {
+      "word": "ichtequi",
+      "pos": "verb (intransitive)",
+      "source": "https://nahuatl.wired-humanities.org/content/ichtequi",
+      "locator": "Lockhart 2001 p.219 (i)chtequi n. Class 2: ōnichtec; Karttunen 1992 p.93 (I)CHTEQU(I), pret -TEC",
+      "preterite": "ōnichtec",
+      "base1": "ichtequi",
+      "base2": "ichtec",
+      "augment": "ō",
+      "note": "Distinct intransitive n. ōnichtec; source also lists transitive niqu. ōniquichtec, which is NOT included in this class/frame. Weak initial-i variation after object prefix remains withheld."
+    }
+  ]
+}

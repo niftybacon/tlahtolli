@@ -61,6 +61,9 @@ assert.equal(analyze('intla '+overt('cihuātl')+', '+implicit).discourseReferenc
 const auh=analyze([overt('cihuātl'),implicit,v('nemi')].join(' auh '));
 assert.equal(auh.multiClauseProposals.length,1);
 assert.equal(auh.discourseReferenceProposals.length,2);
+assert.equal(auh.antecedentProposals.length,1);
+assert.equal(auh.antecedentProposals[0].personConstraint,'3sg ↔ 3sg');
+assert.equal(auh.antecedentProposals[0].confidence,'candidate-only');
 assert.equal(analyze(overt('cihuātl')+' auh '+nested).discourseReferenceProposals.length,0);
 assert.equal(analyze(overt('cihuātl')+' auh '+nested).multiClauseProposals.length,1);
 console.log('Nested in-subordination and bounded discourse reference checks passed');

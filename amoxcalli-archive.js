@@ -134,6 +134,43 @@ function lookupEvidence(form,opts={}){
  return {hits:hits.slice(0,limit),total:hits.length,
   approximateCount:approximate.length,truncated:hits.length>limit};
 }
+// Bridge existing historical-spelling proposals to exact Classical archive forms.
+// NO new spelling rules are defined here: the caller must supply proposals from
+// TlahtolliHistoricalMorphology. A matched dictionary form remains an unreviewed
+// possibility, not a selected gloss, lemma, morphology, or manuscript reading.
+function lookupHistoricalEvidence(written,proposals,opts={}){
+ const empty={hits:[],total:0,truncated:false};
+ if(!loaded||!Array.isArray(proposals))return empty;
+ const original=norm(written);
+ // Single-letter manuscript tokens are too ambiguous for automatic
+ // orthographic cross-reference (e.g. written y is not safely lexical i).
+ if(original.length<2||!/^[\p{L}\p{M}’'-]{1,120}$/u.test(original))return empty;
+ // A directly recorded Classical form takes precedence; do not invent an
+ // orthographic substitution where the original has source evidence already.
+ if((byForm.get(original)||[]).some(r=>r.sourceKey==='kaikki'&&
+     r.variety==='Classical Nahuatl'))return empty;
+ const limit=Number.isInteger(opts.limit)?Math.max(1,Math.min(20,opts.limit)):8;
+ const hits=[],seen=new Set();
+ for(const p of proposals.slice(0,12)){
+  if(!p||p.changed!==true||typeof p.form!=='string'||
+     typeof p.rule!=='string'||!p.rule.includes('tentative'))continue;
+  const proposed=norm(p.form);
+  if(proposed===original||!/^[\p{L}\p{M}’'-]{1,120}$/u.test(proposed))continue;
+  for(const rec of byForm.get(proposed)||[]){
+   if(rec.sourceKey!=='kaikki'||rec.variety!=='Classical Nahuatl')continue;
+   const forms=matchingFormEvidence(rec,proposed,false);
+   if(!forms.length)continue;
+   const key=rec.word+'\u0000'+proposed+'\u0000'+rec.pos+'\u0000'+rec.meaning;
+   if(seen.has(key))continue;
+   seen.add(key);
+   hits.push({...rec,matchKind:'tentative-historical-spelling',
+    evidenceGrade:'unverified-orthographic-candidate',
+    originalWritten:written,matchedWritten:proposed,
+    transformation:p.rule,matchedForms:forms});
+  }
+ }
+ return {hits:hits.slice(0,limit),total:hits.length,truncated:hits.length>limit};
+}
 // Cross-reference an already-proposed morphological parse against *exact*
 // source-listed Classical forms. A lexical overlap is not a manuscript
 // attestation, a verified morphological parse, or a reason to rank candidates.
@@ -229,7 +266,7 @@ function bindPanel(){
  input.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(render,180);});
  filter.addEventListener('change',render);
 }
-root.TlahtolliArchive={ensureLoaded,lookup,lookupEvidence,crossCheckMorphology,search,renderRecord,get ready(){return loaded;},get manifest(){return manifest;}};
+root.TlahtolliArchive={ensureLoaded,lookup,lookupEvidence,lookupHistoricalEvidence,crossCheckMorphology,search,renderRecord,get ready(){return loaded;},get manifest(){return manifest;}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindPanel,{once:true});
 else bindPanel();
 })(window);

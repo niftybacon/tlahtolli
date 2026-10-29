@@ -839,12 +839,17 @@ function showResult(){
      wordEntries.forEach((item,i)=>{
       if(!blocks[i])return;
       const evidence=window.TlahtolliArchive.lookupEvidence(item.value,{classicalOnly:true,limit:8});
-      if(!evidence.hits.length)return;
+      const historical=item.status==='unknown'&&morphBridge?
+       window.TlahtolliArchive.lookupHistoricalEvidence(item.value,
+        morphBridge.variants(item.value,orthography?.value||'general'),{limit:8}):
+       {hits:[],total:0,truncated:false};
+      if(!evidence.hits.length&&!historical.hits.length)return;
       supplemented++;
-      approximate+=evidence.approximateCount;
+      approximate+=evidence.approximateCount+historical.total;
       const section=el('details','translator-morph-panel');
       section.append(el('summary','','Additional lexical evidence · '+
-       evidence.total+' source record'+(evidence.total===1?'':'s')+' (unreviewed)'));
+       (evidence.total+historical.total)+' source comparison'+
+       (evidence.total+historical.total===1?'':'s')+' (unreviewed)'));
       section.append(el('p','translator-caution',
        'Independent historical/community dictionary comparisons. No archive meaning changes the reviewed lexical lookup, resolves a sense, or becomes an attested translation. Siméon definitions are French OCR.'));
       if(evidence.truncated)section.append(el('p','translator-caution',
@@ -874,6 +879,26 @@ function showResult(){
        const link=safeLink(hit.sourceUrl,'Inspect imported source and licensing');
        if(link)record.append(link);
        section.append(record);
+      }
+      if(historical.hits.length){
+       const historicPanel=el('details','translator-morph-panel translator-historical-archive');
+       historicPanel.append(el('summary','','Tentative historical spelling → Classical archive · '+
+        historical.total+' possible source '+(historical.total===1?'record':'records')));
+       historicPanel.append(el('p','translator-caution',
+        'The written source token is unchanged and remains unrecognized by the curated translator. The existing historical-orthography engine proposes alternative spelling(s) that happen to match Classical-labelled dictionary entries; none is verified as the meaning, lemma, or segmentation of this token.'));
+       if(historical.truncated)historicPanel.append(el('p','translator-caution',
+        'Only the first '+historical.hits.length+' candidate matches are shown.'));
+       for(const hit of historical.hits){
+        const line=el('div','translator-analysis');
+        line.append(el('strong','',hit.originalWritten+' → '+hit.matchedWritten+' · '+hit.word),
+         el('p','translator-meta',hit.transformation+' · '+hit.pos+' · '+hit.source+
+          ' · unverified spelling hypothesis'));
+        if(hit.meaning)line.append(el('p','',hit.meaning.slice(0,500)));
+        const evidenceLink=safeLink(hit.sourceUrl,'Inspect Classical lexical source');
+        if(evidenceLink)line.append(evidenceLink);
+        historicPanel.append(line);
+       }
+       section.append(historicPanel);
       }
       if(morphBridge){
        // This independent cross-check never modifies morphBridge's proposed

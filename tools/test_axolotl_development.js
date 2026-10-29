@@ -30,6 +30,11 @@ await assert.rejects(runCsv(Buffer.from('fake'),2,{
 
 const engines=await loadExistingEngines();
 assert.equal(engines.archive.ready,true,'Already-shipped 36K archive is reused');
+assert.equal(typeof engines.historicalVariants,'function');
+assert.equal(typeof engines.archive.lookupHistoricalEvidence,'function');
+const originalForm=engines.historicalVariants('qujtoa','codex');
+assert(originalForm.some(x=>x.form==='quitoa'&&x.changed),
+ 'Must reuse historical spelling engine; no new morphology parser');
 assert(engines.archive.lookupEvidence('on').total>0,
  'Classical lexical evidence must be accessible from the existing archive');
 assert.equal(engines.lex.stats.passageCandidates,0,
@@ -48,6 +53,12 @@ assert(r.counts.curatedMatches>=1);
 assert(r.counts.unknownTokens>=3);
 assert.equal(r.counts.fullSentenceGrammarCandidates,1);
 assert.equal(r.counts.unresolvedSentenceRows,1);
+assert(Number.isInteger(r.counts.unknownWithTentativeHistoricalArchiveCandidates));
+assert(Array.isArray(r.tentativeHistoricalArchiveForms));
+assert.equal(r.counts.unknownWithTentativeHistoricalArchiveCandidates>=0,true);
+assert.equal(r.counts.curatedMatches+r.counts.unknownTokens,r.counts.nahuatlTokens,
+ 'Historical archive candidates must NOT inflate curated coverage');
+
 assert.equal(r.accuracy,null);
 assert.equal(r.approvedHeldoutPairs,0);
 assert.equal(r.byWork.length,2);

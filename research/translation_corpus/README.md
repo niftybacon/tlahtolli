@@ -100,6 +100,44 @@ Only an explicit `approved` status and verified permissions authorize training u
 
 **Do not bulk scrape.** Begin with small, individually reviewed passages, proper attribution, and explicit permission checks.
 
+## Existing historical spelling → archive evidence bridge (2026-10-29)
+
+The project already had **two separate systems**: `TlahtolliHistoricalMorphology.variants`
+for tentative source-spelling alternatives, and `TlahtolliArchive.lookupEvidence`
+for 36,543 source-separated lexicon rows. The translator already displayed
+each independently, but the archive lookup only indexed the **original** token.
+
+`TlahtolliArchive.lookupHistoricalEvidence(written, variants)` now reuses the
+historical engine's *existing* bounded candidate forms and checks whether
+any is an exact, Classical-labelled **Kaikki** source form. Only missing
+original Classical forms trigger this supplemental evidence. There are
+**no new historical transformations, lexemes, inflections or translations**.
+Unreviewed Siméon OCR is not used as proof of a Classical spelling alternative.
+
+In the translator's existing per-token evidence panel, a separate
+`Tentative historical spelling → Classical archive` section presents
+the unchanged original, possible spelling, source form and tentative
+transformation. The curated recognized status, working gloss, morphology
+grade, English choices and underlying form are **never changed**.
+
+**Measured real-source result:** the pinned 36-row Axolotl run
+(`40878775067`) found **five** unrecognized token occurrences with
+source-backed **tentative** historical variants: `yca → ica` (2),
+`ynon → inon` (2), `yquac → iquac` (1). An initial exploratory run
+also proposed single-character `y → i` (4), but this was **excluded**
+as too ambiguous for useful lexical evidence. The curated recognition
+baseline remains **90 of 365 tokens**, with **275 unknown**. This is a
+measured improvement in *evidence accessibility*, not five newly
+translated words or five verified historical meanings.
+
+The real Axolotl diagnostic reports additional occurrences that have
+tentative archive-backed historical spelling candidates, while retaining
+the same exact curated/unknown/other archive partition. Those extra
+candidates can overlap OCR-only and previously-unmatched categories:
+**do not add them to the recognized token count**. Neither historical
+spelling candidates nor archive matches establish the manuscript word's
+true meaning; they are research leads for sourced review.
+
 ## First operational development-corpus diagnostics (2026-10-29)
 
 Instead of treating the thousands of available historical parallel fragments as

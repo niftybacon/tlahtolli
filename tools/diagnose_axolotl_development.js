@@ -70,7 +70,7 @@ async function loadExistingEngines(){
  if(!morphSource.includes('const TlahtolliMorphEngine'))
   throw Error('Canonical morphology module format changed');
  vm.runInNewContext(morphSource+'\nthis.canonicalMorph=TlahtolliMorphEngine;',context);
- for(const file of ['translator-engine.js','translator-sentence.js'])
+ for(const file of ['translator-engine.js','translator-sentence.js','translator-historical-morphology.js'])
   vm.runInNewContext(read(file),context,{filename:file});
  // Reuse the already-shipped Amoxcalli archive loader/index. This is evidence
  // of a possible external lexical match, never a verified translation.
@@ -96,14 +96,15 @@ async function loadExistingEngines(){
   json('data/passages.json'));
  // Crucial: NO stored bilingual sentence lookup passed to lexical model.
  const lex=context.window.TlahtolliTranslator.create(dictionary,{entries:[]});
- return {lex,sentence,morph,archive};
+ return {lex,sentence,morph,archive,historicalVariants:context.window.TlahtolliHistoricalMorphology.variants};
 }
 function diagnose(sample,engines,options={}){
- const byWork=new Map(),unknownForms=new Map(),perRow=[];
+ const byWork=new Map(),unknownForms=new Map(),orthographicForms=new Map(),perRow=[];
  const stats={selected:0,nahuatlTokens:0,curatedMatches:0,unknownTokens:0,
   approximateMatches:0,lexicalAmbiguousTokens:0,sourceMorphologyUnknownTokens:0,
   unknownExactClassicalArchive:0,unknownOnlyApproxClassicalArchive:0,
   unknownSimeonOcrArchive:0,unknownNotInArchive:0,
+  unknownWithTentativeHistoricalArchiveCandidates:0,
   fullSentenceGrammarCandidates:0,partialGrammarWindowRows:0,
   conditionalStructuralRows:0,unresolvedSentenceRows:0};
  const structuralKeys=['historicalFiniteProposals','sourceAgreementProposals',
@@ -130,6 +131,23 @@ function diagnose(sample,engines,options={}){
     const approximate=evidence.hits.some(h=>h.sourceKey==='kaikki'&&
      h.variety==='Classical Nahuatl'&&h.matchKind==='diacritic-variant');
     const simeon=evidence.hits.some(h=>h.sourceKey==='simeon');
+    // This second bridge supplies separate possible spelling evidence, not a
+    // new curated match; baseline coverage counts remain unchanged.
+    if(engines.historicalVariants&&engines.archive.lookupHistoricalEvidence){
+     const candidates=engines.archive.lookupHistoricalEvidence(token.value,
+      engines.historicalVariants(token.value,'general'),{limit:12});
+     if(candidates.total>0){
+      stats.unknownWithTentativeHistoricalArchiveCandidates++;
+      const prev=orthographicForms.get(key)||{form:key,occurrences:0,
+       candidates:[]};
+      prev.occurrences++;
+      for(const hit of candidates.hits){
+       if(!prev.candidates.includes(hit.matchedWritten)&&prev.candidates.length<4)
+        prev.candidates.push(hit.matchedWritten);
+      }
+      orthographicForms.set(key,prev);
+     }
+    }
     if(exact)stats.unknownExactClassicalArchive++;
     else if(approximate)stats.unknownOnlyApproxClassicalArchive++;
     else if(simeon)stats.unknownSimeonOcrArchive++;
@@ -170,6 +188,8 @@ function diagnose(sample,engines,options={}){
   corpusInventory:options.inventory||null,counts:stats,
   byWork:[...byWork.values()].sort((a,b)=>a.work.localeCompare(b.work)),
   highFrequencyUnknownForms:unknown.slice(0,16).map(([form,occurrences])=>({form,occurrences})),
+  tentativeHistoricalArchiveForms:[...orthographicForms.values()].sort((a,b)=>
+   b.occurrences-a.occurrences||a.form.localeCompare(b.form)).slice(0,12),
   inspectedRowReferences:perRow,
   accuracy:null,approvedHeldoutPairs:0,
   caveat:'Counts are mechanical lexical or grammar coverage on published development material; they are not correctness judgments. Morphological guesses remain guesses.'};
@@ -224,6 +244,10 @@ async function main(){
   '; partial grammar windows: '+c.partialGrammarWindowRows+
   '; conditional structural analysis: '+c.conditionalStructuralRows+
   '; unresolved sentences: '+c.unresolvedSentenceRows);
+ console.log('Additional unverified historical spelling candidates with exact Classical archive evidence: '+
+  c.unknownWithTentativeHistoricalArchiveCandidates+' unknown-token occurrences; examples: '+
+  report.tentativeHistoricalArchiveForms.map(x=>x.form+' → '+x.candidates.join('/')+
+   ' ('+x.occurrences+')').join(', '));
  console.log('High-frequency unknown surface forms: '+
   report.highFrequencyUnknownForms.map(x=>x.form+' ('+x.occurrences+')').join(', '));
  for(const w of report.byWork)

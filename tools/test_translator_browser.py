@@ -227,6 +227,54 @@ with sync_playwright() as pw:
     page.locator("#translatorInput").fill("atl ytech nemjnj")
     page.locator("#translatorForm button[type=submit]").click()
     assert page.locator("#translatorPassages .translator-locative-interpretations").count()==0
+    # Clause composition: finite verb + source-graded relational location,
+    # optionally an overt in + object noun. No fluent invented English.
+    page.locator("#translatorInput").fill("ninemi calli itic")
+    page.locator("#translatorForm button[type=submit]").click()
+    complex_panel=page.locator("#translatorPassages .translator-complex-clause-proposals")
+    assert complex_panel.count()==1
+    complex_panel.evaluate("(node)=>node.open=true")
+    clause=complex_panel.inner_text()
+    assert "finite verb + locative context" in clause.lower()
+    assert "grammar-composed verb + relational location" in clause
+    assert "subject I" in clause
+    assert "Possible relational senses: inside / within / in the interior of" in clause
+    assert "Every original clause token is consumed" in clause
+    assert complex_panel.get_by_role("link",name="Inspect finite-locative evidence").count()>=3
+    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
+    page.locator("#translatorInput").fill("niquittaz in cihuātl calli itic")
+    page.locator("#translatorForm button[type=submit]").click()
+    complex_panel=page.locator("#translatorPassages .translator-complex-clause-proposals")
+    assert complex_panel.count()==1
+    complex_panel.evaluate("(node)=>node.open=true")
+    reading=complex_panel.inner_text()
+    assert "overt third-person object (cihuātl)" in reading
+    assert "possible clause/event location OR possible modification of the overt noun phrase" in reading
+    assert "future" in reading
+    assert "NOT a verified translation" in reading
+    page.locator("#translatorInput").fill("quitta in cihuātl calli itic")
+    page.locator("#translatorForm button[type=submit]").click()
+    complex_panel=page.locator("#translatorPassages .translator-complex-clause-proposals")
+    assert complex_panel.locator(".translator-analysis").count()==2
+    complex_panel.evaluate("(node)=>node.open=true")
+    third=complex_panel.inner_text()
+    assert "subject noun cihuātl" in third
+    assert "overt third-person object (cihuātl)" in third
+    page.locator("#translatorInput").fill("ninemi calli itic. nichōca calli itic.")
+    page.locator("#translatorForm button[type=submit]").click()
+    context=page.locator("#translatorPassages .translator-context-links")
+    assert context.count()==1
+    context.evaluate("(node)=>node.open=true")
+    linking=context.inner_text()
+    assert "Clause 1 → 2" in linking
+    assert "repeated written location: calli itic" in linking
+    assert "NOT verified person identity" in linking
+    page.locator("#translatorInput").fill("ninemi calli itic. nichōca.")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-context-links").count()==0
+    page.locator("#translatorInput").fill("ninemi atl yitic nemjnj")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-complex-clause-proposals").count()==0
     # The native sentence tab now reuses canonical source-located morphology:
     # source-listed finite forms can show their exact recorded glosses, but a
     # following noun does not become a magically parsed sentence.

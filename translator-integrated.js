@@ -51,6 +51,41 @@ function showResult(){
     for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
    }
+   if(clause.complexClauseProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-complex-clause-proposals';
+    panel.append(el('summary','','Finite verb + locative context · '+
+     clause.complexClauseProposals.length+' structural alternative'+
+     (clause.complexClauseProposals.length===1?'':'s')+
+     ' (NOT a verified translation)'));
+    panel.append(el('p','translator-caution',
+     'All words are accounted for, but the verb paradigms are grammar-derived. These are unranked syntactic proposals, NOT independently verified translations. Locatives may describe an event or modify a noun.'));
+    for(const p of clause.complexClauseProposals.slice(0,20)){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',p.verb.written+' ('+p.verb.lemma+') · '+p.verb.tense+
+      ' · subject '+p.verb.subject+
+      (p.verb.negative?' · negative':'')+
+      ' · '+p.location.written),
+      el('p','translator-meta','Lexical verb possibilities: '+p.verb.meaning+
+       ' · '+p.grade),
+      el('p','translator-meta','Noun argument: '+(p.arguments.overtNounPhrase||'none written')+
+       ' · '+p.arguments.object.type+
+       (p.arguments.object.word?' ('+p.arguments.object.word+')':'')+
+       ' · '+(p.arguments.subjectNoun?'subject noun '+p.arguments.subjectNoun:'subject indexed in verb')),
+      el('p','translator-meta','Possible relational senses: '+
+       p.location.possibleSenses.join(' / ')),
+      el('p','translator-caution','Attachment alternatives: '+
+       p.location.attachmentAlternatives.join(' OR ')),
+      el('p','translator-caution',p.location.antecedentStatus),
+      el('p','translator-caution',p.note));
+     for(const url of p.sources){
+      const link=safeLink(url,'Inspect finite-locative evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.locativeInterpretations?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-locative-interpretations';
@@ -176,6 +211,21 @@ function showResult(){
     block.append(panel);
    }
    passages.append(block);
+  }
+  if(result.contextLinks?.length){
+   const panel=el('details','translator-morph-panel');
+   panel.className+=' translator-context-links';
+   panel.append(el('summary','','Cross-clause context · '+
+    result.contextLinks.length+' explicit repetition'+
+    (result.contextLinks.length===1?'':'s')+' (NOT anaphora resolution)'));
+   for(const link of result.contextLinks){
+    panel.append(el('p','translator-meta',
+     'Clause '+(link.fromClause+1)+' → '+(link.toClause+1)+
+     ' · repeated written location: '+link.locationWritten),
+     el('p','translator-caution',link.subjectAgreement),
+     el('p','translator-caution',link.note));
+   }
+   passages.append(panel);
   }
  }
  status(latest.stats.matched+' recognized · '+latest.stats.unknown+' unknown · '+

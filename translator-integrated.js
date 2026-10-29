@@ -23,7 +23,7 @@ const safeLink=(value,title)=>{
 };
 const form=$('translatorForm');
 if(!form)return;
-let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null,sourceMorphology=null;
+let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null,sourceMorphology=null,englishModel=null;
 const input=$('translatorInput'),direction=$('translatorDirection');
 const note=$('translatorStatus'),gloss=$('translatorGloss');
 const parts=$('translatorAnalyses'),passages=$('translatorPassages');
@@ -38,6 +38,47 @@ function showResult(){
  gloss.textContent=latest.gloss;
  if(sentenceModel&&direction.value==='nh-en'){
   const result=sentenceModel.analyze(content);
+  if(englishModel){
+   const composition=englishModel.compose(content,result);
+   if(composition.available){
+    const panel=el('section','translator-candidate translator-composed-english');
+    panel.append(el('h4','','Draft English · compare readings'));
+    const output=el('p','translator-english-output');
+    output.setAttribute('aria-live','polite');
+    const unitChoices=[],joinChoices=[];
+    const update=()=>{output.textContent=englishModel.render(composition,unitChoices,joinChoices)||'';};
+    panel.append(output,el('p','translator-caution',composition.note));
+    for(const unit of composition.units){
+     const label=el('label','','Clause '+(unit.index+1)+' reading ');
+     const select=el('select');
+     select.setAttribute('aria-label','Clause '+(unit.index+1)+' English reading');
+     unit.options.forEach((o,i)=>{
+      const option=el('option','',o.text);option.value=String(i);select.append(option);
+     });
+     select.addEventListener('change',()=>{unitChoices[unit.index]=Number(select.value);update();});
+     label.append(select);panel.append(label);
+     const join=composition.joins[unit.index];
+     if(join&&join.options.length>1){
+      const joinLabel=el('label','','Reading of '+join.written+' ');
+      const choice=el('select');
+      choice.setAttribute('aria-label','Connector '+(unit.index+1)+' English reading');
+      join.options.forEach((o,i)=>{const option=el('option','',o.label);option.value=String(i);choice.append(option);});
+      choice.addEventListener('change',()=>{joinChoices[unit.index]=Number(choice.value);update();});
+      joinLabel.append(choice);panel.append(joinLabel);
+     }
+    }
+    const evidence=el('details');
+    evidence.append(el('summary','','Sources and lexical alternatives'));
+    for(const unit of composition.units){
+     const meanings=[...new Set(unit.options.flatMap(o=>o.nounSenses.map(n=>n.lemma+': '+n.fullMeaning)))];
+     if(meanings.length)evidence.append(el('p','translator-meta',meanings.join(' · ')));
+    }
+    const urls=new Set([...composition.units.flatMap(u=>u.options.flatMap(o=>o.sources)),
+     ...composition.joins.flatMap(j=>j.sources)]);
+    for(const url of urls){const a=safeLink(url,'Inspect composition evidence');if(a)evidence.append(a);}
+    panel.append(evidence);update();passages.append(panel);
+   }
+  }
   for(const clause of result.clauses){
    const block=el('article','translator-candidate');
    block.append(el('h4','','Sentence analysis'),el('p','',clause.text));
@@ -665,6 +706,13 @@ async function init(){
     clauseGrammar.status==='fulfilled'?clauseGrammar.value:null,
     possessiveEvidence.status==='fulfilled'?possessiveEvidence.value:null);
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
+  if(sentenceModel)try{
+   if(!window.TlahtolliEnglish)await new Promise((resolve,reject)=>{
+    const script=window.document.createElement('script');script.src='./translator-english.js';
+    script.onload=resolve;script.onerror=reject;window.document.head.append(script);
+   });
+   englishModel=window.TlahtolliEnglish.create(sentenceModel);
+  }catch{} // Existing analysis remains usable if the optional English layer fails.
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(
     explainMorphology,
@@ -721,3 +769,4 @@ $('translatorExport').addEventListener('click',()=>{
 });
 init();
 })();
+

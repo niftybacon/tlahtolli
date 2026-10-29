@@ -54,6 +54,15 @@ for(const input of ['qujça in xochitl','in xochitl qujça']){
  assert(p.nounPhrase.roleStatus.includes('ONLY IF'));
  assert(graph.edges.some(x=>x.relation==='possible-conditional-argument'&&x.requiresUnverified3sg));
 }
+for(const input of ['itech qujça','qujça itech']){
+ const {p,graph}=check(input,'source finite + unresolved relational adjunct');
+ assert.equal(p.verb.lemma,'quiza');
+ assert.equal(p.verb.subjectPerson,'unresolved');
+ assert.equal(p.relational.written,'itech');
+ assert.equal(p.relational.lemma,'ītech');
+ assert(graph.edges.some(e=>e.relation==='possible-relational-attachment'&&
+  e.attachmentResolved===false&&e.possessorResolved===false));
+}
 for(const input of ['cen tipolihui','tipolihui cen']){
  const {p,graph}=check(input,'source finite + unscoped adverb');
  assert.equal(p.verb.lemma,'polihui');
@@ -64,7 +73,7 @@ for(const input of ['cen tipolihui','tipolihui cen']){
 const refuses=[
  'tipolihui in cihuātl','quiza in xochitl','qujça in unknown',
  'qujça in xochitl extra','ahmo qujça in xochitl','cen unknown',
- 'qujça tipolihui','qujça in xochitl cen','qujça in',
+ 'qujça tipolihui','qujça in xochitl cen','qujça itech extra','qujça in',
  'qujça?','niquittaz in cihuātl','ticnamaca y¯ totlal'
 ];
 for(const input of refuses)assert.equal(
@@ -102,4 +111,4 @@ for(const [mutate,label] of [
  mutate(broken.clauses[0].historicalFiniteProposals[0]);
  assert.equal(ir.build('qujça in xochitl',broken).alternatives.length,0,label);
 }
-console.log('PASS source finite context: two cited non-paradigm predicates, four multi-token structural proposals, graph evidence, 11 refusals, nine invalid evidence packs, no invented English or certified agreement.');
+console.log('PASS source finite context: two cited non-paradigm predicates, six multi-token structural proposals, including attested itech qujça window, graph evidence, hostile provenance and syntax refusals, no invented English or certified agreement.');

@@ -898,13 +898,16 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     const frame={subject,subjectPerson:parse.person,subjectNoun:subjectNoun?.word||null,
      predicate:parse.lemma,tense:parse.tense,negative,object,objectNoun:objectNoun?.word||null,
      lexicalMeaning:lexical[0].meaning};
-    const english=(verbs[parse.lemma]||[]).map(([base,third])=>{
+    const englishParts=(verbs[parse.lemma]||[]).map(([base,third])=>{
      const verb=parse.tense==='future'?'will '+(negative?'not ':'')+base:
       negative?(parse.person===2?'does':'do')+' not '+base:parse.person===2?third:base;
+     return {subject,verb,object};
+    });
+    const english=englishParts.map(({subject,verb,object})=>{
      const line=subject+' '+verb+(object?' '+object:'');
      return line[0].toUpperCase()+line.slice(1);
     });
-    candidates.push({frame,english,coverage:original.length,
+    candidates.push({frame,english,englishParts,coverage:original.length,
      constructionId:rule.id,constructionSource:rule.source_url,
      nounSenses:[subjectNoun,objectNoun].filter(Boolean).map(n=>({
       lemma:n.word,selected:nouns[n.word]||null,fullMeaning:n.meaning,source:n.source})),
@@ -939,3 +942,4 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
 }
 root.TlahtolliSentence={create};
 })(window);
+

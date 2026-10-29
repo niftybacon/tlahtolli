@@ -80,14 +80,33 @@ for(const [lemma,first,second] of exact){
    a.kind==='Source-template singular preterite hypothesis'),impossible);
  }
 }
-// The historical withheld Class 2 licenses remain withheld; a subject
-// allomorph cannot conjure a verified stem, future, or a sentence.
-for(const lemma of ['iztlacati','ichtequi']){
- const w=index.get(lemma);
- assert(!w.claims.some(c=>c.field==='stem'&&['grammar','dictionary'].includes(c.assessment)));
- for(const form of ['n'+lemma+'z','t'+lemma+'z','ō'+lemma.slice(0,-1)]){
-  assert(!morph.analyze(form).some(a=>a.lemma===lemma&&
-   /Source-stem-class|Source-class1/.test(a.kind)),form);
+// New stem licenses are independent Lockhart Class 2 source claims, not
+// deductions from the productive vowel allomorph. Test each real source pair.
+for(const [lemma,base2,augment] of [
+ ['iztlacati','iztlacat','ō'],['ichtequi','ichtec','ō']]){
+ const w=index.get(lemma),claim=w.claims.find(c=>c.field==='stem');
+ assert.equal(w.stem,lemma+'-; '+base2+'-');
+ assert.equal(claim.assessment,'dictionary');
+ assert.equal(claim.source,w.source);
+ assert.match(claim.locator,/Lockhart 2001/);
+ const positives=[
+  ['n'+lemma+'z','Source-stem-class future hypothesis','1sg'],
+  ['t'+lemma+'z','Source-stem-class future hypothesis','2sg'],
+  [augment+'t'+base2+'queh','Source-stem-class plural preterite hypothesis','1pl'],
+  ['t'+lemma+'zqueh','Source-stem-class plural future hypothesis','1pl'],
+  ['t'+lemma+'h','Source-stem-class plural present hypothesis','1pl']
+ ];
+ for(const [token,kind,person] of positives){
+  const a=morph.analyze(token).filter(x=>x.lemma===lemma&&x.kind===kind);
+  assert.equal(a.length,1,lemma+' '+token+' '+kind);
+  assert.equal(a[0].grade,'hypothesis');
+  assert.equal(a[0].features.subject,person);
+  assert.equal(a[0].parts.map(x=>x.surface==='Ø'?'':x.surface).join(''),token);
+  assert(!w.inflections.some(x=>x.form===token),'Generated is NOT sourced '+token);
+ }
+ for(const bad of ['ni'+lemma+'z','ti'+lemma+'z',augment+'ti'+base2+'queh']){
+  assert(!morph.analyze(bad).some(a=>a.lemma===lemma&&
+   a.kind.startsWith('Source-stem-class')),lemma+' must reject '+bad);
  }
 }
 // Provisional archive candidates and mixed transitive/reflexive frames cannot

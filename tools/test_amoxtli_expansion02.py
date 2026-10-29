@@ -91,9 +91,9 @@ with sync_playwright() as pw:
   assert mirror['reflected']==1,mirror
   assert {x['lemma'] for x in mirror['tokens']}=={'in','chīhua','tēzcatl','cuepa','ca','tetl'},mirror
   assert all(x['kind']!='unknown' for x in mirror['tokens']),mirror
-  assert [w['word'] for w in d['words'][112:]]==['tēzcatl','cuepa','ca']
-  assert d['words'][-3]['plural']=='tezcame' and d['words'][-3]['pluralStatus']=='attested'
-  assert all(w['word'] not in p['paradigms'] for w in d['words'][112:])
+  assert [w['word'] for w in d['words'][112:115]]==['tēzcatl','cuepa','ca']
+  assert d['words'][112]['plural']=='tezcame' and d['words'][112]['pluralStatus']=='attested'
+  assert all(w['word'] not in p['paradigms'] for w in d['words'][112:115])
   assert not errors,errors
   browser.close()
 print('PASS: four sourced reader excerpts, nine new lemmas and additive local-data migration')

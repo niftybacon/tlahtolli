@@ -40,6 +40,49 @@ The evaluation readiness tool loads this source-review record and rejects attemp
 
 The readiness checker rejects: non-Classical approved test data, missing rights/reviewer metadata, unapproved rows assigned to any split, overlap with indexed display examples, duplicated strings across splits, and a source ID or split group appearing in more than one split. These are *minimum* checks, not evidence that surviving records are truly out-of-distribution or correctly translated.
 
+## Document-level contamination audit (2026-10-29)
+
+The admission audit now reads the **existing** development evidence in
+`data/passages.json`, `research_examples.json`, the inspected ENL source-review
+records and the known 1833 Luke edition metadata. These were already used by
+the translator. A test pair cannot become independent by merely using a
+different `source_id`, a different folio URL, an `/en/` vs `/es/` URL,
+a changed query string, or copied text with editorial macrons removed.
+
+Safeguards:
+
+- The Florentine Codex is treated as **one consulted work** across books,
+  folios and language routes. All of it is excluded from clean held-out test
+  claims because the project has used multiple portions in grammar development.
+- The ENL BC16a manuscript is excluded across its specific image and catalog
+  subpages; other ENL manuscripts are **not automatically excluded**.
+- The original 1833 Luke edition is excluded from independent *Classical*
+  evaluation, irrespective of its already documented variety mismatch.
+- Original and normalized development passages are matched by conservative
+  orthography-insensitive fingerprints. Four consecutive source words appearing
+  inside a longer candidate reveal a reused window; shorter passages only
+  trigger on exact normalized equality. The four-word rule can have false
+  positives: a reviewer must resolve a conflict **before** admitting a source,
+  not suppress the diagnostic to obtain a favorable score.
+- Pairs in different train/dev/test splits may not share a canonical source
+  work URL even if their source IDs and split groups differ.
+
+This is **not a complete plagiarism detector**. Alternate hosts, private
+copies, undocumented aliases, content reuse through paraphrase, and manuscript
+identity that cannot be determined from an archive URL still require a human
+source-lineage audit. Automated source-collision checks are conservative
+metadata gates; they do not verify that an unseen reviewer did not read the
+translation or that any gold sentence is linguistically correct.
+
+The new source lead **Crónica mexicáyotl**, edited with Nahuatl paleography
+and Spanish translation by Gabriel K. Kruell (UNAM 2021), is bibliographic
+metadata only, not an entered test sentence: no passage text was imported,
+manuscript witness collated, translation permission granted or reviewer
+appointed. The edition is based on the Códice Chimalpáin and must not be
+silently combined with the distinct earlier edition's manuscript witness.
+See `source_candidates.csv`. Treat that lead as **possible future intake,
+not an independent benchmark already obtained**.
+
 ## What may eventually be measured
 
 Once independent references and human assessments exist, report separately:

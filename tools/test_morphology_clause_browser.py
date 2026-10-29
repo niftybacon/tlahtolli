@@ -67,6 +67,33 @@ with sync_playwright() as pw:
     assert "Possible noun subject: cihuātl" in text
     assert "possible noun object: cihuātl" in text
 
+    # Possessor features must remain independent of the verb subject.
+    analyze("niquitta nocal")
+    possession = page.locator("#translatorPassages .translator-possessed-agreement-proposals")
+    assert possession.count() == 1
+    possession.evaluate("(node) => node.open=true")
+    owner = possession.inner_text()
+    assert "nominal possessor 1sg" in owner
+    assert "verb subject 1sg" in owner
+    assert "possible grammatical object" in owner
+    assert "nocal" in owner and "calli" in owner
+    assert "NOT a translation" in owner
+    assert possession.get_by_role("link", name="Inspect possession and agreement source").count() >= 2
+    analyze("tiquitta nocal")
+    possession = page.locator("#translatorPassages .translator-possessed-agreement-proposals")
+    possession.evaluate("(node) => node.open=true")
+    assert "verb subject 2sg" in possession.inner_text()
+    assert "nominal possessor 1sg" in possession.inner_text()
+    analyze("quitta nocal")
+    possession = page.locator("#translatorPassages .translator-possessed-agreement-proposals")
+    possession.evaluate("(node) => node.open=true")
+    ambiguous_owner = possession.inner_text()
+    assert "possible grammatical object" in ambiguous_owner
+    assert "possible grammatical subject" in ambiguous_owner
+    for unsupported in ("niquitta mocal", "ahmo niquitta nocal", "niquitta nocal extra"):
+        analyze(unsupported)
+        assert page.locator("#translatorPassages .translator-possessed-agreement-proposals").count() == 0
+
     for rejected in ["ahmo " + first + " in cihuātl",
                      first + " cihuātl", first + " in cihuātl extra"]:
         analyze(rejected)

@@ -1,5 +1,6 @@
 name: One-off translation coverage diagnostic (development, not accuracy)
 on:
+  workflow_dispatch:
   push:
     branches: [diagnostics/translation-coverage-2026-10-29]
     paths:

@@ -24,7 +24,58 @@ const nouns={'cihuātl':'woman','tlācatl':'person','conetl':'child','calli':'ho
  'chimalli':'shield','tlaxcalli':'tortilla','tepētl':'hill'};
 const grammar='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
 const tenseSource='https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html';
-function create(dictionary,paradigms,morphology,researchExamples,locative){
+// The canonical editable grammar is data/clause_grammar.json. Builtins preserve
+// the two-argument/offline API; both execute through the SAME rule interpreter.
+// Construction patterns are hypotheses, never claims of manuscript occurrence.
+const DEFAULT_CLAUSE_ROWS=[
+ ['finite-alone','V','any',[0,1,2,3,4,5],'none'],
+ ['intransitive-subject-post','V NP','intransitive',[2],'subject'],
+ ['intransitive-subject-pre','NP V','intransitive',[2],'subject'],
+ ['transitive-explicit-object-post','V NP','transitive',[0,1,3,4,5],'object'],
+ ['transitive-explicit-object-pre','NP V','transitive',[0,1,3,4,5],'object'],
+ ['transitive-third-role-ambiguous-post','V NP','transitive',[2],'either'],
+ ['transitive-third-role-ambiguous-pre','NP V','transitive',[2],'either'],
+ ['transitive-two-nps-verb-first','V NP NP','transitive',[2],'both'],
+ ['transitive-two-nps-verb-middle','NP V NP','transitive',[2],'both'],
+ ['transitive-two-nps-verb-last','NP NP V','transitive',[2],'both']
+];
+const DEFAULT_CLAUSE_PACK={format:'tlahtolli-classical-clause-rules-v1',version:1,
+ rules:DEFAULT_CLAUSE_ROWS.map(([id,sequence,valency,persons,roles])=>({
+  id,sequence:sequence.split(' '),valency,persons,roles,source_url:grammar,
+  evidence_status:'editorial formalization of cited Classical grammar; not individual manuscript attestation'
+ }))};
+function compileClauseRules(pack){
+ if(!pack||pack.format!=='tlahtolli-classical-clause-rules-v1'||pack.version!==1||
+  !Array.isArray(pack.rules)||pack.rules.length<1||pack.rules.length>48)return [];
+ const ids=new Set(),signatures=new Set(),valid=[];
+ const specs={
+  none:{count:0,valency:'any',persons:'0,1,2,3,4,5'},
+  subject:{count:1,valency:'intransitive',persons:'2'},
+  object:{count:1,valency:'transitive',persons:'0,1,3,4,5'},
+  either:{count:1,valency:'transitive',persons:'2'},
+  both:{count:2,valency:'transitive',persons:'2'}
+ };
+ for(const r of pack.rules){
+  if(!r||typeof r.id!=='string'||!/^[a-z0-9-]{3,72}$/.test(r.id)||
+   ids.has(r.id)||!Array.isArray(r.sequence)||r.sequence.length<1||
+   r.sequence.length>3||r.sequence.filter(x=>x==='V').length!==1||
+   r.sequence.some(x=>x!=='V'&&x!=='NP')||
+   !Array.isArray(r.persons)||r.persons.some(x=>!Number.isInteger(x))||
+   typeof r.source_url!=='string'||!/^https:\/\/[^/\s]+/u.test(r.source_url)||
+   r.evidence_status!=='editorial formalization of cited Classical grammar; not individual manuscript attestation')
+   return [];
+  const spec=specs[r.roles];
+  if(!spec||r.sequence.filter(x=>x==='NP').length!==spec.count||
+   r.valency!==spec.valency||r.persons.join(',')!==spec.persons)return [];
+  const signature=[r.sequence.join(' '),r.valency,r.persons.join(','),r.roles].join('|');
+  if(signatures.has(signature))return [];
+  signatures.add(signature);ids.add(r.id);
+  valid.push({...r,sequence:r.sequence.slice(),persons:r.persons.slice()});
+ }
+ return valid;
+}
+
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -371,6 +422,112 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
   intla:'https://nahuatl.wired-humanities.org/content/intla',
   conditions:'https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/conditions-more-particles/76A81C0D005DA60A951D4B578416020A'
  };
+ // Every licensed pattern is a declarative sequence of exact finite verbs and
+ // written in + unique curated noun. Entire token consumption is mandatory.
+ const activeClauseRules=compileClauseRules(grammarRules===undefined||grammarRules===null?
+  DEFAULT_CLAUSE_PACK:grammarRules);
+ function matchClauseRules(tokens,readVerbs){
+  const getVerbs=typeof readVerbs==='function'?readVerbs:key=>index.get(norm(key))||[];
+  const proposals=[];
+  for(const rule of activeClauseRules){
+   let cursor=0,verbsAt=null,phrases=[],valid=true;
+   for(const slot of rule.sequence){
+    if(slot==='V'){
+     verbsAt=getVerbs(tokens[cursor]||'')||[];
+     if(!verbsAt.length){valid=false;break;}
+     cursor++;
+    }else{
+     if(norm(tokens[cursor]||'')!=='in'||cursor+1>=tokens.length){
+      valid=false;break;
+     }
+     const n=noun(tokens[cursor+1]);
+     if(!n){valid=false;break;}
+     phrases.push(n);cursor+=2;
+    }
+   }
+   if(!valid||cursor!==tokens.length)continue;
+   for(const parse of verbsAt){
+    if((rule.valency==='transitive'&&!parse.transitive)||
+       (rule.valency==='intransitive'&&parse.transitive)||
+       !rule.persons.includes(parse.person))continue;
+    let assignments=[];
+    if(rule.roles==='none')assignments=[[null,null]];
+    else if(rule.roles==='subject')assignments=[[phrases[0],null]];
+    else if(rule.roles==='object')assignments=[[null,phrases[0]]];
+    else if(rule.roles==='either')assignments=[[null,phrases[0]],[phrases[0],null]];
+    else if(rule.roles==='both')assignments=[
+      [phrases[0],phrases[1]],[phrases[1],phrases[0]]
+    ];
+    for(const [subjectNoun,objectNoun] of assignments)
+     proposals.push({parse,rule,subjectNoun,objectNoun});
+   }
+  }
+  return proposals;
+ }
+ // Only indexed, *grammar-derived* canonical morphology is permitted here.
+ // Past and modal rows below are NOT sufficiently vetted to generate English.
+ // This bridge produces structural hypotheses exclusively: complete:false.
+ const MORPH_CLAUSE_ROWS=new Set([1,2,4,5,6]); // preterite, imperfect, conditional, pluperfect, habitual
+ function indexedMorphologyReadings(token){
+  if(typeof token!=='string'||!/^[\p{L}\p{M}’'-]{1,120}$/u.test(token))return [];
+  const proposals=[];
+  for(const m of exactMorphology(token)){
+   if(m.kind!=='Indexed conjugation'||m.grade!=='paradigm'||
+    typeof m.source!=='string'||!/^https:\/\/[^/\s]+/u.test(m.source))continue;
+   const row=m.features?.patternIndex;
+   if(!Number.isInteger(row)||!MORPH_CLAUSE_ROWS.has(row))continue;
+   const model=paradigms?.paradigms?.[m.lemma],who=PERSON_CODES.indexOf(m.features.subject);
+   if(!model||who<0||!Array.isArray(model.cells?.[row])||
+    norm(model.cells[row][who])!==norm(token)||
+    m.source!==model.lemmaSource||m.features.paradigmClass!==model.cls||
+    m.features.object!==(model.trans?'fixed third-person singular':'intransitive'))continue;
+   // The canonical analyzer and verb matrix must independently agree on exact
+   // spelling, lemma, person, row, class, transitivity and source. Orthographic
+   // repairs, augment variants and productive hypothetical forms do NOT qualify.
+   const lexical=words.filter(w=>w.word===m.lemma&&
+    String(w.pos).startsWith('verb')&&/^https:\/\/[^/\s]+/u.test(w.source||''));
+   if(lexical.length!==1)continue;
+   proposals.push({lemma:m.lemma,person:who,transitive:!!model.trans,
+    tense:paradigms.patterns?.[row]||('indexed row '+row),patternIndex:row,
+    source:m.source,lexicalSource:lexical[0].source,lexicalMeaning:lexical[0].meaning,
+    morphology:m});
+  }
+  return proposals;
+ }
+ function morphologyClauseCandidates(tokens,negative){
+  if(negative||tokens.length<3||tokens.length>5)return {items:[],truncated:false};
+  // Reuse the SAME declarative construction, agreement, valency, NP and
+  // full-token-consumption constraints as the supported present/future parser.
+  const combined=matchClauseRules(tokens,indexedMorphologyReadings);
+  const out=[];
+  for(const {parse,rule,subjectNoun,objectNoun} of combined){
+   if(rule.roles==='none')continue;
+   const roles=[subjectNoun,objectNoun].filter(Boolean);
+   if(roles.some(n=>!/^https:\/\/[^/\s]+/u.test(n.source||'')))continue;
+   out.push({
+    grade:'indexed-morphology clause hypothesis (NOT a translation)',
+    constructionId:rule.id,coverage:tokens.length,
+    verb:{written:tokens.find(t=>norm(t)===norm(
+     paradigms.paradigms[parse.lemma].cells[parse.patternIndex][parse.person]))||'',
+     lemma:parse.lemma,patternIndex:parse.patternIndex,
+     pattern:parse.tense,subjectPerson:PERSON_CODES[parse.person],
+     lexicalMeaning:parse.lexicalMeaning,transitive:parse.transitive,
+     evidence:'exact grammar-derived matrix cell; NOT manuscript-attested'},
+    argumentRoles:{subjectNoun:subjectNoun?.word||null,
+     objectNoun:objectNoun?.word||null,
+     implicitObject:parse.transitive&&!objectNoun?'unresolved third-person object':null,
+     nominalMeanings:roles.map(n=>({lemma:n.word,meaning:n.meaning,source:n.source}))},
+    sources:[...new Set([rule.source_url,grammar,tenseSource,parse.source,
+     parse.lexicalSource,...roles.map(n=>n.source)].filter(Boolean))],
+    note:'Entire written input is accounted for by a source-cited editorial construction and '+
+     'an exact grammar-derived finite form. This is NOT a complete translation, '+
+     'historical attestation, tense/aspect certification, or contextual sense judgment. '+
+     'Alternatives are not ranked. No unknown word, new tense rendering, '+
+     'unverified person/object substitution, or manuscript spelling is invented.'
+   });
+  }
+  return {items:out.slice(0,32),truncated:out.length>32};
+ }
  function analyzeMultiClause(raw){
   if(typeof raw!=='string'||raw.length>7000||raw.length<8||
    /[?¿!¡."“”()\n]/u.test(raw))return null;
@@ -463,36 +620,28 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    let negative=false;
    if(['ahmo','ahmō'].includes(norm(tokens[0]))){negative=true;tokens.shift();}
    const candidates=[];
-   for(let v=0;v<tokens.length;v++)for(const parse of index.get(norm(tokens[v]))||[]){
-    // Consume contiguous noun phrases in their original positions: never bridge a verb.
-    const phrases=[];let valid=true;
-    for(let i=0;i<tokens.length;){
-     if(i===v){i++;continue;}
-     const n=i+1!==v&&norm(tokens[i])==='in'?noun(tokens[i+1]):null;
-     if(!n){valid=false;break;}
-     phrases.push(n);i+=2;
-    }
-    if(!valid||phrases.length>2)continue;
+   for(const {parse,rule,subjectNoun,objectNoun} of matchClauseRules(tokens)){
     const lexical=words.filter(w=>w.word===parse.lemma);
     if(lexical.length!==1)continue;
-    for(const [subjectNoun,objectNoun] of assignments(parse,phrases)){
-     const subject=subjectNoun?nounLabel(subjectNoun):people[parse.person];
-     const object=objectNoun?nounLabel(objectNoun):parse.transitive?'him / her / it':null;
-     const frame={subject,subjectPerson:parse.person,subjectNoun:subjectNoun?.word||null,
-      predicate:parse.lemma,tense:parse.tense,negative,object,objectNoun:objectNoun?.word||null,
-      lexicalMeaning:lexical[0].meaning};
-     const english=(verbs[parse.lemma]||[]).map(([base,third])=>{
-      const verb=parse.tense==='future'?'will '+(negative?'not ':'')+base:
-       negative?(parse.person===2?'does':'do')+' not '+base:parse.person===2?third:base;
-      const line=subject+' '+verb+(object?' '+object:'');
-      return line[0].toUpperCase()+line.slice(1);
-     });
-     candidates.push({frame,english,coverage:original.length,
-      nounSenses:[subjectNoun,objectNoun].filter(Boolean).map(n=>({lemma:n.word,selected:nouns[n.word]||null,fullMeaning:n.meaning,source:n.source})),
-      sources:[...new Set([grammar,tenseSource,parse.source,lexical[0].source,subjectNoun?.source,objectNoun?.source].filter(Boolean))],
-      grade:'grammar-derived candidate',
-      note:'Illustrative English sense choices, not exhaustive translations. Noun articles, lexical senses, aspect and third-person referents require context; candidate order is not a ranking.'});
-    }
+    const subject=subjectNoun?nounLabel(subjectNoun):people[parse.person];
+    const object=objectNoun?nounLabel(objectNoun):parse.transitive?'him / her / it':null;
+    const frame={subject,subjectPerson:parse.person,subjectNoun:subjectNoun?.word||null,
+     predicate:parse.lemma,tense:parse.tense,negative,object,objectNoun:objectNoun?.word||null,
+     lexicalMeaning:lexical[0].meaning};
+    const english=(verbs[parse.lemma]||[]).map(([base,third])=>{
+     const verb=parse.tense==='future'?'will '+(negative?'not ':'')+base:
+      negative?(parse.person===2?'does':'do')+' not '+base:parse.person===2?third:base;
+     const line=subject+' '+verb+(object?' '+object:'');
+     return line[0].toUpperCase()+line.slice(1);
+    });
+    candidates.push({frame,english,coverage:original.length,
+     constructionId:rule.id,constructionSource:rule.source_url,
+     nounSenses:[subjectNoun,objectNoun].filter(Boolean).map(n=>({
+      lemma:n.word,selected:nouns[n.word]||null,fullMeaning:n.meaning,source:n.source})),
+     sources:[...new Set([grammar,tenseSource,rule.source_url,parse.source,lexical[0].source,
+      subjectNoun?.source,objectNoun?.source].filter(Boolean))],
+     grade:'grammar-derived candidate',
+     note:'Illustrative English sense choices, not exhaustive translations. Noun articles, lexical senses, aspect and third-person referents require context; candidate order is not a ranking. Construction '+rule.id+' is editorial grammar formalization, not individually attested.'});
    }
    // Only an isolated, explicitly source-labeled finite token can contribute
    // a new gloss. No words on either side may be silently discarded.
@@ -503,6 +652,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
     fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),
     locativeInterpretations:candidates.length?[]:locativeAnalyze(tokens,negative),
     complexClauseProposals:candidates.length?[]:finiteLocativeProposals(tokens,negative),
+    morphosyntactic: morphologyClauseCandidates(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,

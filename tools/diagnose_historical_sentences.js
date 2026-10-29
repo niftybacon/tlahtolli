@@ -21,7 +21,7 @@ function provenanceRows(passages,review){
   if(!original||original.length>500)continue;
   rows.push({id:p.id,source,sourceFamily:source.includes('florentinecodex')?'Florentine Codex':'historical edited citation',
    original,normalized:typeof p.normalized==='string'?p.normalized:null,
-   editorialKind:context,provenance:'edited transcription candidate; not a certified diplomatic line',
+   editorialKind:context,mayBeFragment:/fragment|phrase|comparison|compound noun|resident|locative/i.test(context),provenance:'edited transcription candidate; not a certified diplomatic line',
    trainingEligible:false,independentGold:false});
  }
  if(review?.format==='tlahtolli-source-review-v1'&&review.train_eligible===false&&
@@ -29,7 +29,7 @@ function provenanceRows(passages,review){
   const original=review.image_inspection?.minimum_assisted_excerpt;
   if(typeof original==='string'&&original.trim()&&/^https?:\/\//.test(review.library_record_url||'')){
    rows.push({id:review.id,source:review.library_record_url,sourceFamily:'Early Nahuatl Library',
-    original,normalized:null,editorialKind:'published-transcription-assisted manuscript excerpt',
+    original,normalized:null,editorialKind:'published-transcription-assisted manuscript excerpt',mayBeFragment:true,
     provenance:'source transcription and reference translation already consulted; not independently transcribed',
     trainingEligible:false,independentGold:false});
   }
@@ -74,6 +74,10 @@ function analyzeText(input,models){
  const clauses=truthyList(syntax.clauses);
  const tokens=truthyList(lexical.parts).filter(p=>p.kind==='word');
  const unknown=tokens.filter(t=>t.status==='unknown').map(t=>t.value);
+ const writtenTokens=input.trim().split(/\s+/u).map(t=>t.replace(/^[,.;!?]+|[,.;!?]+$/gu,''));
+ const tokenSurfaceDifferences=writtenTokens.length===tokens.length?
+  writtenTokens.flatMap((written,i)=>written!==tokens[i].value?
+   [{written,lexicalToken:tokens[i].value,reason:'Tokenizer surface mismatch (may discard scribal marks)'}]:[]):[];
  const proposals=clauses.map(proposalCounts);
  const graphAlt=truthyList(graph.alternatives).length;
  const structured=graphAlt>0||proposals.some(x=>Object.keys(x).length>0);
@@ -84,6 +88,7 @@ function analyzeText(input,models){
   'lexical-headword-gaps-and-no-composition';
  return {tokenCount:tokens.length,headwordMatched:tokens.length-unknown.length,
   unknownHeadwordTokens:unknown,fullyCoveredByHeadwordLookup:tokens.length>0&&!unknown.length,
+  tokenSurfaceDifferences,
   finiteCandidates,fullFiniteClauseAnalysis:syntax.complete===true,
   grammarAlternatives:graphAlt,grammarNodes:truthyList(graph.nodes).length,
   proposalCounts:proposals,englishDraftAvailable:wording.available===true,
@@ -135,7 +140,8 @@ function print(report){
   console.log('  '+a.status+' | headwords '+a.headwordMatched+'/'+a.tokenCount+
    ' | grammar alternatives '+a.grammarAlternatives+
    ' | finite '+a.finiteCandidates+' | draft '+(a.englishDraft||'none'));
-  if(a.unknownHeadwordTokens.length)console.log('  headword lookup misses: '+a.unknownHeadwordTokens.join(', '));
+  if(a.unknownHeadwordTokens.length)console.log('  curated lexical-index misses: '+a.unknownHeadwordTokens.join(', '));
+  if(a.tokenSurfaceDifferences.length)console.log('  written/tokenizer mismatches: '+JSON.stringify(a.tokenSurfaceDifferences));
   if(p.editorialNormalizationComparison)
    console.log('  editorial normalization only: '+p.normalized+
     ' | headwords '+p.editorialNormalizationComparison.headwordMatched+

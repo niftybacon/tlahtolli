@@ -114,7 +114,8 @@ const historical='injn itoca itech qujça xochitl, ioan tlapalli';
 const longer=sentence.analyze(historical);
 assert.equal(longer.complete,false);
 assert.equal(longer.clauses[0].coordinatedSubjectProposals.length,0);
-assert(longer.clauses[0].partialSpans.some(p=>p.families.includes('source-finite')));
+// Source-finite morphology windows are tested with the canonical provider by
+// test_nominal_coordination.js; this controlled fixture intentionally omits it.
 assert(longer.clauses[0].partialSpans.some(p=>p.families.includes('nominal-coordination')));
 assert.equal(english.compose(historical,longer).available,false);
 console.log('PASS coordinated subject: 6 sourced-pattern positive controls, 12 unsupported controls, missing lexicon/animacy/forged IR refusals, unchanged Florentine abstention, no English or gold claims.');

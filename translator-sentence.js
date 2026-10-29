@@ -892,6 +892,9 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     fromClause:i-1,toClause:i,
     antecedent:{written:n.word,meaning:n.meaning,source:n.source},
     pronounSlot:'unexpressed 3sg subject indexed on subsequent finite verb',
+    relation:'adjacent overt nominal subject → subsequent implicit indexed subject',
+    personConstraint:'3sg ↔ 3sg',
+    confidence:'candidate-only',
     status:'single agreement-compatible antecedent candidate, NOT resolved reference',
     alternatives:'Unmentioned third-person discourse referents may still be intended.',
     note:'Adjacent clause and matching 3sg subject agreement license only a candidate. '+

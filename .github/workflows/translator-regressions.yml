@@ -24,6 +24,7 @@ on:
       - 'tools/test_morphology_clause_bridge.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
+      - 'data/possessed_form_evidence.json'
       - 'research/amoxcalli_archive/**'
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'

@@ -361,9 +361,9 @@ const TlahtolliMorphEngine = (() => {
      stemBases.includes(shortBase)&&lemma!==shortBase&&
      // Exact short-base evidence belongs to this lexeme and finite cell.
      ['verb (intransitive)','verb (transitive)'].includes(pos);
+    const stronger=()=>all.some(a=>a.lemma===w.word&&
+     ['manuscript','lexical','grammar','paradigm'].includes(a.grade));
     if(classLicensed){
-     const stronger=()=>all.some(a=>a.lemma===w.word&&
-      ['manuscript','lexical','grammar','paradigm'].includes(a.grade));
      // The zero-subject 3sg preterite keeps the *whole* short base and
      // augment. Object agreement can alternate for transitive third person:
      // refuse it rather than invent a c-/qui- allomorph.

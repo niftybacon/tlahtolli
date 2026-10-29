@@ -8,7 +8,15 @@ const MAX_NODES=240,MAX_EDGES=480,MAX_ALTERNATIVES=48;
 const norm=x=>String(x||'').normalize('NFC').toLowerCase();
 const source=x=>typeof x==='string'&&/^https:\/\/[^\s/]+/u.test(x)?x:null;
 const items=(x,max=32)=>Array.isArray(x)?x.slice(0,max):[];
-function create(){
+function create(dictionary){
+ // A lexical head source must originate from an unambiguous curated entry,
+ // never from the preceding in-relative grammar marker.
+ const lexicalSource=(lemma,written)=>{
+  const found=items(dictionary?.words,2000).filter(x=>x.word===lemma&&
+   x.pos==='noun'&&source(x.source)&&
+   [x.word,...String(x.original||'').split(/[;,/]/)].some(y=>norm(y.trim())===norm(written)));
+  return found.length===1?found[0].source:null;
+ };
  function build(input,analysis){
   const raw=typeof input==='string'?input:'';
   const clauses=items(analysis?.clauses,32);
@@ -102,7 +110,7 @@ function create(){
     if(p.terminal?.kind==='headed-relative'){
      const h=p.terminal.head,r=p.terminal.relative;
      const nm=mention(i,{written:h?.written,lemma:h?.lemma,
-      source:h?.possessiveEvidence?.source||p.sources?.find(source),
+      source:h?.possessiveEvidence?.source||lexicalSource(h?.lemma,h?.written),
       possessor:h?.possessor||null,
       possessorSource:h?.possessiveEvidence?.source||null},v,'headed-relative-nominal');
      const relative=predicate(i,r?.written,r?.lemma,r?.subjectPerson,v,p.layers.length,
@@ -117,7 +125,7 @@ function create(){
     const v=variant(i,'headed-in-relative',n,p.grade,p.sources);if(!v)continue;
     const h=p.head,r=p.relative;
     const nm=mention(i,{written:h?.written,lemma:h?.lemma,
-     source:h?.possessiveEvidence?.source||p.sources?.find(source),
+     source:h?.possessiveEvidence?.source||lexicalSource(h?.lemma,h?.written),
      possessor:h?.possessor||null,possessorSource:h?.possessiveEvidence?.source||null},v,
      'possible-relative-head');
     const rel=predicate(i,r?.written,r?.lemma,r?.subjectPerson,v,1,p.sources?.find(source));

@@ -53,7 +53,7 @@ function showResult(){
      const select=el('select');
      select.setAttribute('aria-label','Clause '+(unit.index+1)+' English reading');
      unit.options.forEach((o,i)=>{
-      const option=el('option','',o.text);option.value=String(i);select.append(option);
+      const option=el('option','',o.text+(o.choiceLabel?' — '+o.choiceLabel:''));option.value=String(i);select.append(option);
      });
      select.addEventListener('change',()=>{unitChoices[unit.index]=Number(select.value);update();});
      label.append(select);panel.append(label);
@@ -777,4 +777,5 @@ $('translatorExport').addEventListener('click',()=>{
 });
 init();
 })();
+
 

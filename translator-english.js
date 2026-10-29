@@ -20,6 +20,54 @@ function create(model){
  }
  const match=(c,v)=>c.frame.predicate===v.lemma&&
   PERSONS[c.frame.subjectPerson]===v.subjectPerson&&c.frame.tense===v.tense;
+ function locationOptions(clause){
+  const options=[];
+  const relations={
+   itic:['inside','within','in the interior of'],
+   'ītech':['on','by','in contact with','attached to','concerning','from']
+  };
+  for(const p of clause.complexClauseProposals||[]){
+   if(p.grade!=='grammar-composed verb + relational location (unattested; NOT a verified translation)'||
+    !p.verb||!p.arguments||!p.location||
+    p.coverage+(p.verb.negative?1:0)!==clause.tokens?.length||
+    p.location.relation?.lexicalPossessor!=='3sg')continue;
+   const allowed=relations[p.location.relation.lemma];
+   const senses=p.location.possibleSenses;
+   if(!allowed||!Array.isArray(senses)||!senses.length||
+    senses.some(s=>!allowed.includes(s))||new Set(senses).size!==senses.length)continue;
+   // Citation wording only. A source-listed inflection does not automatically
+   // authorize singular English or a newly generated plural/possessive.
+   const place=model.describeNoun?.(p.location.place?.written);
+   if(!place||place.lemma!==p.location.place.lemma)continue;
+   const finiteInput=(p.verb.negative?'ahmo ':'')+p.verb.written+
+    (p.arguments.overtNounPhrase?' '+p.arguments.overtNounPhrase:'');
+   const readings=probe(finiteInput).filter(c=>match(c,p.verb)&&
+    c.frame.negative===p.verb.negative&&
+    c.frame.subjectNoun===p.arguments.subjectNoun&&
+    c.frame.objectNoun===(p.arguments.object?.word||null));
+   const attachments=p.location.attachmentAlternatives||[];
+   for(const c of readings)for(const words of c.englishParts)for(const sense of senses){
+    const phrase=sense+' '+place.text;
+    const common={kind:'relational-location',frame:c.frame,
+     place:place.lemma,relation:p.location.relation.lemma,selectedRelation:sense,
+     referentStatus:'preceding place as relational possessor is proposed, not resolved'};
+    const evidence={sources:sources(p.sources,c.sources,[place.sense.source]),
+     nounSenses:[...(c.nounSenses||[]),place.sense]};
+    if(attachments.includes('possible clause/event location')){
+     options.push({text:capital(phrase)+', '+line(words),...evidence,
+      choiceLabel:'Event relation: '+sense,
+      structure:{...common,attachment:'event'}});
+    }
+    if(attachments.includes('possible modification of the overt noun phrase')){
+     const slot=c.frame.subjectNoun?'subject':c.frame.objectNoun?'object':null;
+     if(slot)options.push({text:capital(line({...words,[slot]:words[slot]+' '+phrase})),
+      ...evidence,choiceLabel:'Describes the '+slot+': '+sense,
+      structure:{...common,attachment:slot}});
+    }
+   }
+  }
+  return options;
+ }
  function optionsFor(clause){
   const options=[];
   for(const c of finite(clause))for(const p of c.englishParts)
@@ -56,7 +104,7 @@ function create(model){
     }
    }
   }
-  return options;
+  return options.length?options:locationOptions(clause);
  }
  function compose(input,result){
   const fail=reason=>({available:false,reason,units:[],joins:[],verified:false});
@@ -87,7 +135,9 @@ function create(model){
    return fail('Some units still lack supported English wording; inspect their structural analysis below.');
   return {available:true,units,joins,verified:false,
    alternativeCount:units.reduce((n,u)=>n*u.options.length,1)*joins.reduce((n,j)=>n*j.options.length,1),
-   note:'Draft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context.'};
+   note:'Draft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context.'+
+    (units.some(u=>u.options.some(o=>o.structure.kind==='relational-location'))?
+     ' Location readings assume the relational possessor refers to the written place. Event versus noun attachment, relation sense, and negation scope remain hypotheses; no place is carried into another clause.':'')};
  }
  function render(composition,unitChoices=[],joinChoices=[]){
   if(!composition?.available)return null;
@@ -106,3 +156,4 @@ function create(model){
 }
 root.TlahtolliEnglish={create};
 })(window);
+

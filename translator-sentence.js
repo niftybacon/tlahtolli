@@ -84,7 +84,7 @@ function compileClauseRules(pack){
  return valid;
 }
 
-function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence){
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -481,6 +481,96 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    }
   }
   return proposals;
+ }
+ // Exact editorial source-listed finite forms are distinct from generated paradigm
+ // cells. Keep person and phrase-attachment uncertainty in every result.
+ function compileSourceFiniteEvidence(pack){
+  const empty=new Map();
+  if(!pack||pack.format!=='tlahtolli-source-finite-context-v1'||
+    pack.version!==1||pack.train_eligible!==false||pack.evaluation_eligible!==false||
+    !Array.isArray(pack.records)||pack.records.length<1||pack.records.length>16)return empty;
+  const mapped=new Map();
+  for(const r of pack.records){
+   if(!r||typeof r.id!=='string'||!/^[a-z0-9-]{8,90}$/.test(r.id)||
+     typeof r.form!=='string'||!/^[\p{L}\p{M}]{3,120}$/u.test(r.form)||
+     typeof r.lemma!=='string'||r.kind!=='Historically transcribed finite form'||
+     typeof r.source_url!=='string'||!/^https:\/\/[^/\s]+/u.test(r.source_url)||
+     typeof r.source_locator!=='string'||!r.source_locator.trim()||
+     r.status!=='source-located editorial finite hypothesis; not facsimile-certified'||
+     r.valency!=='intransitive'||typeof r.person_status!=='string'||!r.person_status.trim()||
+     ![null,'2sg'].includes(r.subject_person)||typeof r.note!=='string'||!r.note.trim()||
+     mapped.has(norm(r.form)))return empty;
+   const exact=words.filter(w=>w.word===r.lemma&&w.pos==='verb (intransitive)'&&
+     (w.inflections||[]).filter(f=>norm(f.form)===norm(r.form)&&
+       f.category===r.kind&&f.evidence==='text'&&f.source===r.source_url).length===1);
+   if(exact.length!==1)return empty;
+   mapped.set(norm(r.form),r);
+  }
+  return mapped;
+ }
+ const locatedSourceFinite=compileSourceFiniteEvidence(sourceFiniteEvidence);
+ function sourceFiniteReading(token){
+  const record=locatedSourceFinite.get(norm(token));
+  if(!record)return null;
+  const forms=exactMorphology(token).filter(m=>m.lemma===record.lemma&&
+    m.kind===record.kind&&m.grade==='manuscript'&&m.features?.evidence==='text'&&
+    m.source===record.source_url&&m.parts?.length>0&&
+    norm(m.parts.map(p=>p.surface).join(''))===norm(token));
+  if(forms.length!==1)return null;
+  const w=words.find(w=>w.word===record.lemma&&w.pos==='verb (intransitive)');
+  if(!w||!/^https:\/\/[^/\s]+/u.test(w.source||''))return null;
+  return {record,lexical:w};
+ }
+ function historicalFiniteContextProposals(tokens,negative){
+  if(negative||tokens.length<2||tokens.length>3)return [];
+  const matches=tokens.map((token,index)=>({index,found:sourceFiniteReading(token)}))
+    .filter(x=>x.found);
+  if(matches.length!==1)return [];
+  const {index,found}=matches[0],record=found.record;
+  const verb={written:tokens[index],tokenIndex:index,lemma:record.lemma,
+    subjectPerson:record.subject_person||'unresolved',
+    personStatus:record.person_status,tenseStatus:'not independently established',
+    valency:'intransitive',evidence:'exact source-recorded finite form',
+    source:record.source_url,locator:record.source_locator};
+  const output=(construction,rule,nounPhrase,adverb)=>({
+   constructionId:rule?.id||construction,construction,
+   grade:'source-recorded finite + bounded grammatical hypothesis (NOT an attested sentence)',
+   coverage:tokens.length,verb,nounPhrase:nounPhrase||null,adverb:adverb||null,
+   sources:[...new Set([record.source_url,found.lexical.source,rule?.source_url,
+     nounPhrase?.source,adverb?.source].filter(Boolean))],
+   note:'Only this finite FORM is source-recorded. This complete token sequence is NOT thereby attested. '+
+     'Person evidence: '+record.person_status+'. Tense, argument attachment, adverb scope and '+
+     'referent identity are not independently verified. No English translation is licensed.'
+  });
+  // Reuse EXISTING declarative 3sg intransitive NP grammar only as a
+  // conditional possibility, NEVER as evidence that the verb actually has 3sg agreement.
+  if(tokens.length===3&&record.subject_person===null){
+   const seq=index===0?['V','NP']:index===2?['NP','V']:null;
+   const ai=index===0?1:0,ni=index===0?2:1;
+   if(seq&&norm(tokens[ai])==='in'){
+    const n=noun(tokens[ni]);
+    const rule=activeClauseRules.find(r=>r.valency==='intransitive'&&r.roles==='subject'&&
+      r.persons.includes(2)&&JSON.stringify(r.sequence)===JSON.stringify(seq));
+    if(n&&n.pos==='noun'&&/^https:\/\/[^/\s]+/u.test(n.source||'')&&rule)
+     return [output('source finite + overt noun; conditional 3sg subject unverified',
+       rule,{written:tokens[ni],lemma:n.word,source:n.source,
+        roleStatus:'possible subject ONLY IF unresolved verb person is 3sg'},null)];
+   }
+  }
+  // Source-backed adverbs can modify a finite predicate without assigning
+  // its subject person. This is a proposal, not a new source attestation.
+  if(tokens.length===2){
+   const ai=index===0?1:0;
+   const hits=words.filter(w=>String(w.pos).startsWith('adverb')&&
+     /^https:\/\/[^/\s]+/u.test(w.source||'')&&
+     [w.word,...String(w.original||'').split(/[;,/]/)]
+       .some(x=>norm(x.trim())===norm(tokens[ai])));
+   if(hits.length===1)
+    return [output('source finite + unscoped adverb',null,null,
+      {written:tokens[ai],lemma:hits[0].word,source:hits[0].source,
+       status:'possible modifier; semantic scope unknown'})];
+  }
+  return [];
  }
  // Only indexed, *grammar-derived* canonical morphology is permitted here.
  // Past and modal rows below are NOT sufficiently vetted to generate English.
@@ -1110,6 +1200,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     locativeInterpretations:candidates.length?[]:locativeAnalyze(tokens,negative),
     complexClauseProposals:candidates.length?[]:finiteLocativeProposals(tokens,negative),
     morphosyntactic: morphologyClauseCandidates(tokens,negative),
+    historicalFiniteProposals:candidates.length?[]:historicalFiniteContextProposals(tokens,negative),
     possessedAgreement: possessedAgreementProposals(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),

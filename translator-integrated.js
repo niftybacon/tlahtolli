@@ -407,9 +407,11 @@ async function init(){
    fetch('./research/translation_corpus/luke_1833_analysis.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./research/translation_corpus/source_reviews/ENL_BC16_1573.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./data/clause_grammar.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -433,7 +435,8 @@ async function init(){
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
    if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(
     document,await response.json(),
-    explainMorphology,corpus,locative);
+    explainMorphology,corpus,locative,
+    clauseGrammar.status==='fulfilled'?clauseGrammar.value:null);
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(window.TlahtolliHistoricalMorphology){
    morphBridge=window.TlahtolliHistoricalMorphology.create(

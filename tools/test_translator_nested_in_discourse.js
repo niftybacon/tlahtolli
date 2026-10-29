@@ -27,6 +27,9 @@ const v=(lemma,person=2)=>lemma+'-fixture-'+person;
 const overt=n=>'in '+n+' '+v('nemi');
 const implicit=v('chōca');
 const nested=[v('mati',0),'in',v('mati'),'in',v('nemi')].join(' ');
+const duplicateVerb=window.TlahtolliSentence.create(
+ {words:[...words,{...words.find(x=>x.word==='mati')}]},paradigms,()=>[],null,null).analyze;
+assert.equal(duplicateVerb(nested).clauses[0].nestedInProposals.length,0);
 const p=analyze(nested);
 assert.equal(p.complete,false);
 assert.equal(p.clauses[0].nestedInProposals.length,1);

@@ -67,4 +67,33 @@ duplicated.words.push({...duplicated.words.find(w=>w.word==='icxitl')});
 assert.equal(make(exactMorph,duplicated).analyze('nicmati in niquitta in iicxi in chōca').clauses[0].nestedInProposals.length,0);
 const badMorph=token=>exactMorph(token).map(m=>({...m,source:'https://example.org/fake'}));
 assert.equal(make(badMorph).analyze('nicmati in niquitta in iicxi in chōca').clauses[0].nestedInProposals.length,0);
+// New coverage: a subordinate finite clause may contain an exact
+// source-located possessed subject. This is NOT agreement-based identity.
+for(const [written,person] of [['nocal','1sg'],['iicxi','3sg'],['itoca','3sg']]){
+ const post=make().analyze('nicmati in chōca '+written);
+ assert.equal(post.complete,false);
+ const proposals=post.clauses[0].nestedInProposals.filter(p=>
+  p.terminal.kind==='finite-with-arguments');
+ assert.equal(proposals.length,1,written);
+ assert.equal(proposals[0].depth,1);
+ assert.equal(proposals[0].terminal.subjectArgument.written,written);
+ assert.equal(proposals[0].terminal.subjectArgument.possessor,person);
+ assert.equal(proposals[0].terminal.predicate.subjectPerson,'3sg');
+ assert(proposals[0].sources.includes(proposals[0].terminal.subjectArgument.possessorSource));
+ assert(!('english' in proposals[0]));
+ const pre=make().analyze('nicmati in in '+written+' chōca');
+ const front=pre.clauses[0].nestedInProposals.filter(p=>
+  p.terminal.kind==='finite-with-arguments');
+ assert.equal(front.length,1,written+' fronted');
+ assert.equal(front[0].terminal.subjectArgument.possessor,person);
+ assert.equal(front[0].terminal.predicate.tokenIndex,4);
+}
+assert.equal(make(exactMorph,dictionary,null).analyze('nicmati in chōca iicxi')
+ .clauses[0].nestedInProposals.filter(p=>p.terminal.kind==='finite-with-arguments').length,0);
+assert.equal(make(exactMorph,duplicated).analyze('nicmati in chōca iicxi')
+ .clauses[0].nestedInProposals.filter(p=>p.terminal.kind==='finite-with-arguments').length,0);
+assert.equal(make(badMorph).analyze('nicmati in chōca iicxi')
+ .clauses[0].nestedInProposals.filter(p=>p.terminal.kind==='finite-with-arguments').length,0);
+assert.equal(make().analyze('nicmati in chōca mocal')
+ .clauses[0].nestedInProposals.filter(p=>p.terminal.kind==='finite-with-arguments').length,0);
 console.log('PASS: nested in-dependency + source-attested possessed heads; preserve separate possessor/finite agreement and conservative abstention');

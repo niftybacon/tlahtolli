@@ -24,7 +24,7 @@ def validate(manifest):
     seen, counts = set(), {}
     for item in entries:
         word, raw, pos = item["word"], item["source_word"], item["pos"]
-        ensure(pos in ALLOWED and re.fullmatch(r"[^\\W\\d_][^\\s/]{2,89}", word, flags=re.UNICODE),
+        ensure(pos in ALLOWED and re.fullmatch(r"[^\W\d_][^\s/]{2,89}", word, flags=re.UNICODE),
                "Invalid headword/POS: " + word)
         ensure(fold(word) not in seen, "Duplicate manifest key: " + word)
         seen.add(fold(word))

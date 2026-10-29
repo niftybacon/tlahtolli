@@ -96,19 +96,22 @@ async function loadExistingEngines(){
  const archiveLoaded=await archive.ensureLoaded();
  if(archiveLoaded.total!==36543)throw Error('Archive source row inventory changed');
  const morph=token=>context.canonicalMorph.analyze(token);
- const sentence=context.window.TlahtolliSentence.create(dictionary,paradigms,morph,
+ const archiveMorph=token=>archive.analyzeSourceForms(token,{limit:8});
+ const sentenceMorph=token=>[...morph(token),...archiveMorph(token)];
+ const sentence=context.window.TlahtolliSentence.create(dictionary,paradigms,sentenceMorph,
   {entries:[]},null,json('data/clause_grammar.json'),
   json('data/possessed_form_evidence.json'),json('data/source_finite_context.json'),
   json('data/passages.json'));
  // Crucial: NO stored bilingual sentence lookup passed to lexical model.
  const lex=context.window.TlahtolliTranslator.create(dictionary,{entries:[]});
- return {lex,sentence,morph,archive,historicalVariants:context.window.TlahtolliHistoricalMorphology.variants};
+ return {lex,sentence,morph,archiveMorph,archive,historicalVariants:context.window.TlahtolliHistoricalMorphology.variants};
 }
 function diagnose(sample,engines,options={}){
  const byWork=new Map(),unknownForms=new Map(),orthographicForms=new Map(),perRow=[];
  const categoryForms=new Map(),categoryTotals=new Map();
  const stats={selected:0,nahuatlTokens:0,curatedMatches:0,unknownTokens:0,
   approximateMatches:0,lexicalAmbiguousTokens:0,sourceMorphologyUnknownTokens:0,
+  archiveFormMorphologyUnknownTokens:0,
   unknownExactClassicalArchive:0,unknownOnlyApproxClassicalArchive:0,
   unknownSimeonOcrArchive:0,unknownNotInArchive:0,
   unknownWithTentativeHistoricalArchiveCandidates:0,
@@ -124,7 +127,7 @@ function diagnose(sample,engines,options={}){
   const clauses=syntactic.clauses||[];
   const parts=lexical.parts.filter(x=>x.kind==='word');
   const unknown=parts.filter(x=>x.status==='unknown');
-  let plausibleMorph=0;
+  let plausibleMorph=0,archiveFormMorph=0;
   const unknownAudit=[];
   for(const token of unknown){
    const key=token.value.toLowerCase().normalize('NFC');
@@ -132,6 +135,10 @@ function diagnose(sample,engines,options={}){
    // A morphology proposal does NOT reclassify an unknown dictionary token
    // as securely analyzed or a translation.
    if(engines.morph(token.value)?.length)plausibleMorph++;
+   // Exact source-listed inflection labels are an unreviewed tier, not
+   // canonical morphology or a curated lexical recognition.
+   const archiveClues=engines.archiveMorph?.(token.value)||[];
+   if(archiveClues.length)archiveFormMorph++;
    if(engines.archive){
     const evidence=engines.archive.lookupEvidence(token.value,{limit:20});
     const exact=evidence.hits.some(h=>h.sourceKey==='kaikki'&&
@@ -164,6 +171,7 @@ function diagnose(sample,engines,options={}){
     categoryTotals.set(category,(categoryTotals.get(category)||0)+1);
     unknownAudit.push({written:token.value,category,
      canonicalMorphologyCandidates:engines.morph(token.value)?.length||0,
+     sourceListedMorphologyClues:archiveClues.length,
      historicalArchivePossibility:!!(engines.historicalVariants&&
       engines.archive.lookupHistoricalEvidence?.(token.value,
        engines.historicalVariants(token.value,'general'),{limit:1}).total)});
@@ -182,6 +190,7 @@ function diagnose(sample,engines,options={}){
   stats.approximateMatches+=lexical.stats.approximate;
   stats.lexicalAmbiguousTokens+=lexical.stats.ambiguous;
   stats.sourceMorphologyUnknownTokens+=plausibleMorph;
+  stats.archiveFormMorphologyUnknownTokens+=archiveFormMorph;
   if(full)stats.fullSentenceGrammarCandidates++;
   if(hasWindow)stats.partialGrammarWindowRows++;
   if(structural)stats.conditionalStructuralRows++;
@@ -269,8 +278,10 @@ async function main(){
   '; curated matches: '+c.curatedMatches+
   '; unknown: '+c.unknownTokens+'; approximate: '+c.approximateMatches+
   '; multiple-entry ambiguity: '+c.lexicalAmbiguousTokens);
- console.log('Unknown tokens with morphology proposals (NOT verified): '+
+ console.log('Unknown tokens with canonical morphology proposals (NOT verified): '+
   c.sourceMorphologyUnknownTokens);
+ console.log('Unknown tokens with unreviewed Classical archive-form grammatical labels: '+
+  c.archiveFormMorphologyUnknownTokens+' (may overlap; NOT curated recognition)');
  console.log('Unrecognized curated tokens with exact Classical archive evidence: '+
   c.unknownExactClassicalArchive+'; approximate Classical archive: '+
   c.unknownOnlyApproxClassicalArchive+'; Siméon OCR only: '+
@@ -292,6 +303,7 @@ async function main(){
    '; punctuationBlocks='+Number(p.sentenceHasQuestionMark)+'/'+Number(p.sentenceHasParentheses)+
    '; unknown='+p.unknownAudit.map(t=>t.written+':'+t.category+
     (t.canonicalMorphologyCandidates?':M'+t.canonicalMorphologyCandidates:'')+
+    (t.sourceListedMorphologyClues?':A'+t.sourceListedMorphologyClues:'')+
     (t.historicalArchivePossibility?':H':'')).join(', '));
  }
  console.log('High-frequency unknown surface forms: '+

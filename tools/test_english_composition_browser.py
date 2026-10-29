@@ -60,13 +60,26 @@ with sync_playwright() as pw:
     analyze("nichōca in calli itic")
     assert output.inner_text() == "Inside the house, I cry."
     assert "location alternatives retained" in page.locator(".translator-composed-english").inner_text()
+    analyze("niquitta in cihuātl in chōca auh nichōca in calli itic. ahmo nitlacuāz auh ninemi.")
+    assert output.inner_text() == "I see the woman that cries. Inside the house, I cry. I will not eat. I live."
+    page.get_by_role("combobox", name="Connector 3 English reading", exact=True).select_option(label="but")
+    assert output.inner_text().endswith("I will not eat, but I live.")
+    assert page.get_by_role("combobox", name="Connector 2 English reading", exact=True).count() == 0
+    assert "Runtime unversioned" not in page.locator("#translatorStatus").inner_text()
+    assert "Runtime " in page.locator("#translatorStatus").inner_text()
+    for name in ["translator-sentence.js", "translator-english.js"]:
+        assert page.locator(f'script[src^="./{name}?v="]').count() == 1
+    analyze("nichōca auh nitlacua.")
+    assert output.inner_text() == "I cry. I eat."
+    analyze("nichōca auh nitlacua. xyzzy.")
+    assert output.count() == 0
     analyze("nichōca. xyzzy. nitlacua")
     assert output.count() == 0, "Unsupported middle unit must not disappear from the passage"
     analyze("nichōca <img src=x onerror=alert(1)>")
     assert output.count() == 0
     assert page.locator("#translatorPassages img").count() == 0
     # Failure of the optional renderer must leave existing sentence analysis usable.
-    page.route("**/translator-english.js", lambda route: route.fulfill(status=404, body="Not found"))
+    page.route("**/translator-english.js*", lambda route: route.fulfill(status=404, body="Not found"))
     page.reload(wait_until="load")
     page.locator("#tabTranslator").click()
     page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('headwords')")

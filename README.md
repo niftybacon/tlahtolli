@@ -22,6 +22,8 @@
 
 **Canonical build workflow:** edit `data/lexicon.json`, `data/morphology.json`, `data/evidence.json`; regenerate `dictionary.json`, `claim_audit.csv`, and the `index.html` offline seed using `python tools/build_dictionary.py --write`. Keep the separately maintained Tēntli engine and its HTML embed in parity using `python tools/build_morphology_engine.py --write`. Check both with `--check` and run existing CI. Publish all canonical/source/release documents with matching version strings (`release.json`, `paradigms.json`, `references.json`). Protect local user edits, study data and reader annotations.
 
+**Paragraph integration:** supported clause sequences now preserve English choices with final punctuation and inside mixed paragraphs, up to 24 clauses. See the [bottleneck audit](docs/TRANSLATOR_BOTTLENECK_AUDIT.md). After JavaScript or translator-data edits, run `python tools/build_runtime_assets.py --write` and commit the updated `index.html` script URLs. The runtime identifier is separate from the dictionary edition.
+
 ---
 
 ## Historical release notes (dated snapshots; counts below are not the current inventory)

@@ -92,7 +92,7 @@ for(const input of [
  'ninemi auh onicoch', // source-listed isolated gloss != independently parsed finite clause
  'ninemi auh ticnamaca y¯ totlal', // only partial morphology
  'ninemi auh calli itic', // locative fragment != finite clause
- 'ninemi auh nichōca auh niquitta in cihuātl auh ninemi', // too many linked clauses
+ Array(25).fill('ninemi').join(' auh '), // bounded at 24 linked clauses
  'ninemi, auh nichōca,',
  'ninemi; auh nichōca', // unsupported punctuation scope
  'intla ninemi nichōca', // requires a visible subordinate boundary

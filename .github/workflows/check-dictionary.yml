@@ -20,6 +20,8 @@ jobs:
         run: python tools/build_dictionary.py --check
       - name: Batch-source validation and no inferred morphology
         run: python tools/import_archive_verb_batch.py --check
+      - name: Check content-versioned runtime scripts
+        run: python tools/test_runtime_assets.py && python tools/build_runtime_assets.py --check
       - name: Check source-controlled SRS embed
         run: python tools/build_srs.py
       - name: Check source-controlled morphology-engine embed
@@ -78,6 +80,8 @@ jobs:
         run: node tools/test_translator.js
       - name: Test compositional English and complete passage coverage
         run: node tools/test_english_composition.js
+      - name: Test sentence groups and bounded morphology reuse
+        run: node tools/test_translator_sentence_groups.js
       - name: Test location context and English attachment alternatives
         run: node tools/test_location_english.js
       - name: Declarative grammar and indexed morphology regressions

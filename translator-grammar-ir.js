@@ -561,12 +561,18 @@ function create(dictionary,historicalPassages,paradigms){
    if(p.toClause!==p.fromClause+1)continue;
    possibleLink(p.fromClause,p.toClause,p.antecedent,'adjacent-agreement-compatible-mention',1);
   }
-  for(const p of items(analysis?.multiClauseProposals,4)){
-   if(p?.clauseCount!==clauses.length||!Array.isArray(p.segments)||
-    p.segments.length!==clauses.length)continue;
-   for(let i=1;i<clauses.length;i++)
-    newEdge(clauseIds[i-1],clauseIds[i],'explicit-clause-connection',{
-     connection:p.relation,marker:p.markers?.[i-1]||null,referenceResolved:false});
+  const connectionGroups=analysis?.sentenceGroups||[{analysis}];
+  let clauseOffset=0;
+  for(const group of connectionGroups){
+   const local=group.analysis,localCount=local?.clauses?.length||0;
+   for(const p of items(local?.multiClauseProposals,4)){
+    if(p?.clauseCount!==localCount||!Array.isArray(p.segments)||
+     p.segments.length!==localCount||clauseOffset+localCount>clauses.length)continue;
+    for(let i=1;i<localCount;i++)
+     newEdge(clauseIds[clauseOffset+i-1],clauseIds[clauseOffset+i],'explicit-clause-connection',{
+      connection:p.relation,marker:p.markers?.[i-1]||null,referenceResolved:false});
+   }
+   clauseOffset+=localCount;
   }
   return {schema:'tlahtolli-grammar-ir-v1',status:'candidate-only; not a translation',
    input:raw.slice(0,7000),nodes,edges,alternatives:alternatives.slice(),

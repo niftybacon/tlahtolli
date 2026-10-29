@@ -76,7 +76,8 @@ async function loadExistingEngines(){
  if(!morphSource.includes('const TlahtolliMorphEngine'))
   throw Error('Canonical morphology module format changed');
  vm.runInNewContext(morphSource+'\nthis.canonicalMorph=TlahtolliMorphEngine;',context);
- for(const file of ['translator-engine.js','translator-sentence.js','translator-historical-morphology.js'])
+ for(const file of ['translator-engine.js','translator-sentence.js','translator-historical-morphology.js',
+  'translator-source-morphology.js','translator-locative.js','translator-english.js','translator-grammar-ir.js'])
   vm.runInNewContext(read(file),context,{filename:file});
  // Reuse the already-shipped Amoxcalli archive loader/index. This is evidence
  // of a possible external lexical match, never a verified translation.
@@ -95,16 +96,25 @@ async function loadExistingEngines(){
  const archive=archiveContext.window.TlahtolliArchive;
  const archiveLoaded=await archive.ensureLoaded();
  if(archiveLoaded.total!==36543)throw Error('Archive source row inventory changed');
- const morph=token=>context.canonicalMorph.analyze(token);
+ // Match the live desk's provider wiring. The old diagnostic omitted the
+ // source-linked provider and the entire relational-location analyzer.
+ const sourceMorphology=context.window.TlahtolliSourceMorphology.create(
+  json('research/translation_corpus/source_reviews/ENL_BC16_1573.json'));
+ const morph=token=>[...context.canonicalMorph.analyze(token),...sourceMorphology.analyze(token)];
+ const research=json('research/translation_corpus/research_examples.json');
+ const locative=context.window.TlahtolliLocative.create(dictionary,research);
  const archiveMorph=token=>archive.analyzeSourceForms(token,{limit:8});
  const sentenceMorph=token=>[...morph(token),...archiveMorph(token)];
  const sentence=context.window.TlahtolliSentence.create(dictionary,paradigms,sentenceMorph,
-  {entries:[]},null,json('data/clause_grammar.json'),
+  research,locative,json('data/clause_grammar.json'),
   json('data/possessed_form_evidence.json'),json('data/source_finite_context.json'),
   json('data/passages.json'));
  // Crucial: NO stored bilingual sentence lookup passed to lexical model.
  const lex=context.window.TlahtolliTranslator.create(dictionary,{entries:[]});
- return {lex,sentence,morph,archiveMorph,archive,historicalVariants:context.window.TlahtolliHistoricalMorphology.variants};
+ const english=context.window.TlahtolliEnglish.create(sentence);
+ const ir=context.window.TlahtolliGrammarIR.create(dictionary,json('data/passages.json'),paradigms);
+ return {lex,sentence,morph,archiveMorph,archive,english,ir,canonicalMorph:token=>context.canonicalMorph.analyze(token),
+  historicalVariants:context.window.TlahtolliHistoricalMorphology.variants};
 }
 function diagnose(sample,engines,options={}){
  const byWork=new Map(),unknownForms=new Map(),orthographicForms=new Map(),perRow=[];
@@ -115,12 +125,12 @@ function diagnose(sample,engines,options={}){
   unknownExactClassicalArchive:0,unknownOnlyApproxClassicalArchive:0,
   unknownSimeonOcrArchive:0,unknownNotInArchive:0,
   unknownWithTentativeHistoricalArchiveCandidates:0,
-  fullSentenceGrammarCandidates:0,partialGrammarWindowRows:0,
+  fullSentenceGrammarCandidates:0,draftEnglishRows:0,partialGrammarWindowRows:0,
   conditionalStructuralRows:0,unresolvedSentenceRows:0};
- const structuralKeys=['historicalFiniteProposals','sourceAgreementProposals',
+ const structuralKeys=['historicalFiniteProposals','agreementProposals',
   'coordinatedSubjectProposals','nominalCoordinationProposals',
   'relativeClauseProposals','nestedInProposals',
-  'complexClauseProposals','possessedArgumentProposals'];
+  'complexClauseProposals','nominalInProposals','locativeInterpretations','fragmentInterpretations'];
  for(const row of sample){
   const lexical=engines.lex.analyze(row.nahuatl,'nh-en');
   const syntactic=engines.sentence.analyze(row.nahuatl);
@@ -170,7 +180,8 @@ function diagnose(sample,engines,options={}){
     categoryForms.set(key,category);
     categoryTotals.set(category,(categoryTotals.get(category)||0)+1);
     unknownAudit.push({written:token.value,category,
-     canonicalMorphologyCandidates:engines.morph(token.value)?.length||0,
+     canonicalMorphologyCandidates:engines.canonicalMorph?.(token.value)?.length||0,
+     morphologyCandidates:engines.morph(token.value)?.length||0,
      sourceListedMorphologyClues:archiveClues.length,
      historicalArchivePossibility:!!(engines.historicalVariants&&
       engines.archive.lookupHistoricalEvidence?.(token.value,
@@ -182,7 +193,13 @@ function diagnose(sample,engines,options={}){
    }
   }
   const hasWindow=clauses.some(c=>c.partialSpans?.length>0);
-  const structural=clauses.some(c=>structuralKeys.some(k=>c[k]?.length>0));
+  const structural=clauses.some(c=>structuralKeys.some(k=>c[k]?.length>0)||
+   c.possessedAgreement?.items?.length>0||c.morphosyntactic?.items?.length>0)||
+   !!syntactic.multiClauseProposals?.length||
+   !!syntactic.sentenceGroups?.some(g=>g.analysis.multiClauseProposals?.length);
+  const draft=engines.english&&engines.ir?engines.ir.auditEnglish(
+   engines.english.compose(row.nahuatl,syntactic),syntactic,
+   engines.ir.build(row.nahuatl,syntactic)):null;
   const full=syntactic.complete===true;
   stats.selected++;stats.nahuatlTokens+=lexical.stats.total;
   stats.curatedMatches+=lexical.stats.matched;
@@ -192,6 +209,7 @@ function diagnose(sample,engines,options={}){
   stats.sourceMorphologyUnknownTokens+=plausibleMorph;
   stats.archiveFormMorphologyUnknownTokens+=archiveFormMorph;
   if(full)stats.fullSentenceGrammarCandidates++;
+  if(draft?.available)stats.draftEnglishRows++;
   if(hasWindow)stats.partialGrammarWindowRows++;
   if(structural)stats.conditionalStructuralRows++;
   if(!full)stats.unresolvedSentenceRows++;
@@ -207,7 +225,7 @@ function diagnose(sample,engines,options={}){
    sourceMorphologyHints:c.morphologicalClues?.length||0,
    reason:c.reason||''}));
   perRow.push({upstreamRow:row.sourceRow,work:row.work,tokens:lexical.stats.total,
-   unknown:lexical.stats.unknown,grammarCandidate:full,
+   unknown:lexical.stats.unknown,grammarCandidate:full,draftEnglishAvailable:!!draft?.available,
    partialWindowPresent:hasWindow,structuralOnly:structural&&!full,
    sentenceHasQuestionMark:/[?¿]/u.test(row.nahuatl),
    sentenceHasParentheses:/[()\[\]{}<>]/u.test(row.nahuatl),
@@ -216,7 +234,7 @@ function diagnose(sample,engines,options={}){
  const unknown=[...unknownForms.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
  return {format:'tlahtolli-parallel-development-diagnostic-v1',
   classification:'IN-SAMPLE DEVELOPMENT ONLY; not independent test, not translation accuracy',
-  engine:'existing TlahtolliTranslator + TlahtolliSentence + canonical morphology',
+  engine:'live sentence/English/IR wiring: canonical and source-linked morphology, relational locations; bilingual lookup excluded',
   inputPolicy:'Spanish paired source kept for later review; never used as model-generated gold or grammar rule',
   sampling:'SHA256-ranked within each document title, round-robin across works, de-duplicate pairs, 3-18 Nahuatl tokens',
   sourceGitBlobSha:options.sourceGitBlobSha||null,
@@ -287,6 +305,7 @@ async function main(){
   c.unknownOnlyApproxClassicalArchive+'; Siméon OCR only: '+
   c.unknownSimeonOcrArchive+'; not found in archive: '+c.unknownNotInArchive);
  console.log('Full grammar candidates: '+c.fullSentenceGrammarCandidates+
+  '; audited draft English rows: '+c.draftEnglishRows+
   '; partial grammar windows: '+c.partialGrammarWindowRows+
   '; conditional structural analysis: '+c.conditionalStructuralRows+
   '; unresolved sentences: '+c.unresolvedSentenceRows);
@@ -302,7 +321,7 @@ async function main(){
    p.unknown+' unknown; clauses='+p.clauses.map(c=>c.wordTokens).join('/')+
    '; punctuationBlocks='+Number(p.sentenceHasQuestionMark)+'/'+Number(p.sentenceHasParentheses)+
    '; unknown='+p.unknownAudit.map(t=>t.written+':'+t.category+
-    (t.canonicalMorphologyCandidates?':M'+t.canonicalMorphologyCandidates:'')+
+    (t.morphologyCandidates?':M'+t.morphologyCandidates:'')+
     (t.sourceListedMorphologyClues?':A'+t.sourceListedMorphologyClues:'')+
     (t.historicalArchivePossibility?':H':'')).join(', '));
  }

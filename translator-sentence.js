@@ -91,13 +91,17 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  const PERSON_CODES=['1sg','2sg','3sg','1pl','2pl','3pl'];
  const locativeAnalyze=typeof locative?.analyze==='function'?locative.analyze:()=>[];
  const EVIDENCE_GRADES=new Set(['manuscript','lexical','grammar','lemma','paradigm','hypothesis','analogy','unreviewed']);
+ let morphologyMemo=null;
  function exactMorphology(token){
   if(!/^[\p{L}\p{M}’'\-\u00AF]{1,120}$/u.test(token))return []; // spacing overbar is a source-recorded abbreviation, not vowel length
+  if(morphologyMemo?.has(token))return morphologyMemo.get(token);
   try{
    const matches=parseMorph(token);
-   return Array.isArray(matches)?matches.filter(m=>m&&EVIDENCE_GRADES.has(m.grade)&&
+   const accepted=Array.isArray(matches)?matches.filter(m=>m&&EVIDENCE_GRADES.has(m.grade)&&
     typeof m.lemma==='string'&&typeof m.kind==='string'&&
     m.parts&&Array.isArray(m.parts)).slice(0,20):[];
+   if(morphologyMemo&&morphologyMemo.size<2048)morphologyMemo.set(token,accepted);
+   return accepted;
   }catch{return [];} // A morphology failure must never manufacture a sentence reading.
  }
  function partialClues(tokens){
@@ -959,7 +963,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    // differently scoped constituents; don't silently reclassify them.
    if(/\bintla\b|\bihuan\b/iu.test(input))return null;
    const split=input.split(/\s*,?\s+auh\s+/iu).map(x=>x.trim());
-   if(split.length<2||split.length>3||split.some(x=>!x||/[,;]/u.test(x)))return null;
+   if(split.length<2||split.length>24||split.some(x=>!x||/[,;]/u.test(x)))return null;
    parts.push(...split);relation='explicit discourse / clause coordination';
    marker='auh';markers=split.slice(1).map(()=>marker);
   }
@@ -1405,6 +1409,15 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   return spans;
  }
  function analyze(input,allowPartialRecovery=true){
+  // Partial windows and grammatical alternatives repeatedly inspect the same
+  // spelling. Share evidence only within this request; never cache across
+  // requests, providers, or spelling variants (including vowel length).
+  const owner=morphologyMemo===null;
+  if(owner)morphologyMemo=new Map();
+  try{return analyzeInput(input,allowPartialRecovery);}
+  finally{if(owner)morphologyMemo=null;}
+ }
+ function analyzeInput(input,allowPartialRecovery){
   const raw=String(input||'');
   if(raw.length>7000)return {clauses:[],complete:false,reason:'Input exceeds 7000 characters.'};
   if(/[?¿]/u.test(raw)){
@@ -1416,6 +1429,19 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     morphologicalClues:partialClues(tokens),
     reason:'Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred.'}],
     complete:false};
+  }
+  // Separate written sentence boundaries BEFORE analyzing clause connectors.
+  // A period must not disable auh within the preceding sentence. Semicolons
+  // stay local: intla may use one to separate antecedent and consequent.
+  if(/[.!\n]/u.test(raw)){
+   const texts=raw.split(/[.!\n]+/u).filter(s=>s.trim());
+   if(texts.length>24)return {clauses:[],complete:false,reason:'More than 24 sentence units.'};
+   const sentenceGroups=texts.map(text=>({text,analysis:analyze(text,allowPartialRecovery)}));
+   const clauses=sentenceGroups.flatMap(g=>g.analysis.clauses);
+   if(clauses.length>24)return {clauses:[],complete:false,reason:'More than 24 clause units.'};
+   return {clauses,sentenceGroups,complete:clauses.length>0&&sentenceGroups.every(g=>g.analysis.complete),
+    contextLinks:explicitContextLinks(clauses),antecedentProposals:possibleAntecedents(clauses),
+    discourseReferenceProposals:discourseReferenceProposals(clauses)};
   }
   const multi=analyzeMultiClause(raw);
   if(multi)return multi;

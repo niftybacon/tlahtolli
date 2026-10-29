@@ -17,6 +17,12 @@ const isClassical=r=>r.length===5&&r[2]==='Classical Nahuatl'&&r[4]==='nci';
 const count=s=>String(s||'').trim().split(/\s+/u).filter(Boolean).length;
 const digest=s=>crypto.createHash('sha256').update(s).digest('hex');
 
+// Pinned row IDs from the source-byte-verified 2026-10-29, 36-record
+// DEVELOPMENT COHORT. This prevents later refactors from quietly changing
+// the reported denominator. IDs are not a ground-truth sentence/translation set.
+const DEVELOPMENT_36_ROW_IDS=[12592,9712,10818,13267,3962,4474,9869,5048,12629,4508,13342,990,5812,16060,6321,5241,8684,13664,4751,13452,7877,5011,12741,8228,902,13193,12894,5216,10014,6818,759,4519,5515,7245,11739,12395];
+
+
 function selectRows(rows,limit=48){
  if(!Number.isInteger(limit)||limit<1||limit>200)throw Error('limit must be 1..200');
  const works=new Map(),seenNh=new Set(),seenEs=new Set();
@@ -213,6 +219,8 @@ function diagnose(sample,engines,options={}){
   unknownCategoryTotals:Object.fromEntries([...categoryTotals.entries()].sort()),
   unknownDistinctForms:categoryForms.size,
   inspectedRowReferences:perRow,
+  sourceRowsAreIndependentlySentenceVerified:false,
+  individualSourceRowsMayBeNamesDatesOrFragments:true,
   accuracy:null,approvedHeldoutPairs:0,
   caveat:'Counts are mechanical lexical or grammar coverage on published development material; they are not correctness judgments. Morphological guesses remain guesses.'};
 }
@@ -247,6 +255,11 @@ async function main(){
   limit=Number(value);
  }
  const report=await runCsv(fs.readFileSync(input),limit);
+ if(process.argv.includes('--audit-36')){
+  const observed=report.inspectedRowReferences.map(r=>r.upstreamRow);
+  if(JSON.stringify(observed)!==JSON.stringify(DEVELOPMENT_36_ROW_IDS))
+   throw Error('Pinned 36-row development cohort has changed: refuse incomparable audit');
+ }
  if(process.argv.includes('--json'))return console.log(JSON.stringify(report,null,2));
  const c=report.counts;
  console.log('REAL AXOLOTL DEVELOPMENT SAMPLE: '+c.selected+' parallel rows across '+
@@ -270,6 +283,7 @@ async function main(){
   c.unknownWithTentativeHistoricalArchiveCandidates+' unknown-token occurrences; examples: '+
   report.tentativeHistoricalArchiveForms.map(x=>x.form+' → '+x.candidates.join('/')+
    ' ('+x.occurrences+')').join(', '));
+ console.log('Source-record unit warning: no row certified as a complete linguistic sentence; short name/date fragments may occur.');
  console.log('Distinct unknown spellings: '+report.unknownDistinctForms+
   '; category occurrence totals: '+JSON.stringify(report.unknownCategoryTotals));
  if(process.argv.includes('--audit-36'))for(const p of report.inspectedRowReferences){

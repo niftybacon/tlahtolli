@@ -22,6 +22,7 @@ function distinctLexical(matches){
 }
 function containsLengthMark(s){return norm(s)!==fold(s);}
 function confidence(match){
+ if(match.evidence==='archive-index')return 'provisional-index';
  if(match.form_type==='headword')return 'lexicon';
  if(match.form_type==='source-attested form')return 'source-form';
  if(match.form_type==='historical spelling')return 'orthographic';
@@ -37,12 +38,12 @@ function create(dictionary,passages){
  }
  for(const w of list){
   const base={lemma:w.word,meaning:w.meaning||'',senses:splitGloss(w.meaning),pos:w.pos||'',source:safeURL(w.source),
-   variety:w.variety,form:w.word,form_type:'headword',evidence:'lexicon',
-   context:'An isolated dictionary entry is not a sentence-level translation.'};
+   variety:w.variety,form:w.word,form_type:'headword',evidence:w.status==='Archive-indexed; lexical review pending'?'archive-index':'lexicon',
+   context:w.status==='Archive-indexed; lexical review pending'?'UNREVIEWED community archive index gloss, NOT a verified Classical verb reading or translation.':'An isolated dictionary entry is not a sentence-level translation.'};
   push(w.word,base);
   for(const variant of String(w.original||'').split(/[\/;,]/)){
    const v=variant.trim();if(v&&wordsOnly(v).length===1&&norm(v)!==norm(w.word))
-    push(v,{...base,form:v,form_type:'historical spelling',evidence:'orthography'});
+    push(v,{...base,form:v,form_type:'historical spelling',evidence:base.evidence==='archive-index'?'archive-index':'orthography'});
   }
   for(const f of Array.isArray(w.inflections)?w.inflections:[]){
    if(!f||typeof f.form!=='string')continue;
@@ -119,12 +120,13 @@ function create(dictionary,passages){
  }
  function analyze(input,direction='nh-en'){
   const parts=tokenize(String(input||'').slice(0,7000));
-  let matched=0,unknown=0,ambiguous=0,senseAmbiguities=0,approximate=0,orthographyConflicts=0,truncated=0;
+  let matched=0,unknown=0,provisional=0,ambiguous=0,senseAmbiguities=0,approximate=0,orthographyConflicts=0,truncated=0;
   const annotated=parts.map(part=>{
    if(!isWord(part))return {kind:'separator',value:part};
    const result=lookup(part,direction),hits=result.candidates;
    if(!hits.length){unknown++;return {kind:'word',value:part,status:'unknown',candidates:[],alternatives:[]};}
-   matched++;
+   const provisionalOnly=hits.every(hit=>hit.evidence==='archive-index');
+   if(provisionalOnly){provisional++;unknown++;}else matched++;
    const ambiguousSense=distinctLexical(hits).length>1||result.totalCandidates>8;
    if(ambiguousSense)ambiguous++;
    const senseAmbiguous=direction==='nh-en'&&hits.some(hit=>new Set(hit.senses.map(norm)).size>1);
@@ -132,7 +134,7 @@ function create(dictionary,passages){
    if(result.approximate)approximate++;
    if(result.orthographyConflict)orthographyConflicts++;
    if(result.truncated)truncated++;
-   return {kind:'word',value:part,status:result.approximate?'approximate':'matched',
+   return {kind:'word',value:part,status:provisionalOnly?'provisional':result.approximate?'approximate':'matched',
     candidates:hits,alternatives:result.alternatives,
     ambiguous:ambiguousSense,senseAmbiguous,orthographyConflict:result.orthographyConflict,
     truncated:result.truncated};
@@ -141,6 +143,7 @@ function create(dictionary,passages){
    if(x.kind==='separator')return x.value;
    const first=x.candidates[0];
    if(!first)return '[?'+x.value+']';
+   if(x.status==='provisional')return '[?'+x.value+': unreviewed archive index gloss]';
    // Deliberate abstention: a plausible lookup is NOT a licensed sentence
    // translation and a missing macron must not decide among homographs.
    if(x.orthographyConflict)return '[?'+x.value+': vowel length ambiguous]';
@@ -150,7 +153,7 @@ function create(dictionary,passages){
    const value=direction==='nh-en'?(splitGloss(first.meaning)[0]||'?'):first.lemma;
    return '['+value+']';
   }).join('');
-  return {parts:annotated,gloss,stats:{matched,unknown,ambiguous,senseAmbiguities,approximate,orthographyConflicts,truncated,total:matched+unknown},
+  return {parts:annotated,gloss,stats:{matched,unknown,provisional,ambiguous,senseAmbiguities,approximate,orthographyConflicts,truncated,total:matched+unknown},
    contextReadings:contextReadings(input,direction),
    passages:direction==='nh-en'?passageMatches(input):[],
    disclaimer:'Bracketed meanings are dictionary lookups, not contextual translations. Uncertain spelling, multiple lexical candidates and multiple dictionary senses are not auto-resolved.'};

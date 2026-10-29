@@ -319,6 +319,37 @@ function showResult(){
     }
     block.append(panel);
    }
+   if(clause.historicalFiniteProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-source-finite-proposals';
+    panel.append(el('summary','','Source-recorded finite form + grammar · '+
+     clause.historicalFiniteProposals.length+' structural hypothesis'+
+     (clause.historicalFiniteProposals.length===1?'':'es')+' (NOT a translation)'));
+    panel.append(el('p','translator-caution',
+     'Only the FINITE VERB FORM has independent source evidence. Full phrase attestation, '+
+     'subject agreement, argument identity, tense and English remain unresolved.'));
+    for(const p of clause.historicalFiniteProposals){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',p.verb.written+' → '+p.verb.lemma+' · '+p.grade),
+      el('p','translator-meta','Construction: '+p.constructionId+
+       ' · '+p.coverage+' written tokens accounted for'),
+      el('p','translator-meta','Verbal person: '+p.verb.subjectPerson+
+       ' · '+p.verb.personStatus));
+     if(p.nounPhrase)item.append(el('p','translator-meta',
+      'Noun: '+p.nounPhrase.written+' → '+p.nounPhrase.lemma+
+      ' · '+p.nounPhrase.roleStatus));
+     if(p.adverb)item.append(el('p','translator-meta',
+      'Adverb: '+p.adverb.written+' → '+p.adverb.lemma+
+      ' · '+p.adverb.status));
+     item.append(el('p','translator-caution',p.note));
+     for(const url of p.sources){
+      const link=safeLink(url,'Inspect source finite form and clause evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.locativeInterpretations?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-locative-interpretations';
@@ -811,9 +842,11 @@ async function init(){
    fetch('./data/clause_grammar.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./data/possessed_form_evidence.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./data/source_finite_context.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -840,7 +873,8 @@ async function init(){
     document,await response.json(),
     explainMorphology,corpus,locative,
     clauseGrammar.status==='fulfilled'?clauseGrammar.value:null,
-    possessiveEvidence.status==='fulfilled'?possessiveEvidence.value:null);
+    possessiveEvidence.status==='fulfilled'?possessiveEvidence.value:null,
+    sourceFiniteEvidence.status==='fulfilled'?sourceFiniteEvidence.value:null);
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(sentenceModel)try{
    if(!window.TlahtolliEnglish)await new Promise((resolve,reject)=>{

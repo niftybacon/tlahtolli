@@ -149,6 +149,38 @@ invalid([record({source_id:'FICTITIOUS-ALIAS',split_group:'FICTITIOUS-ALIAS',
 invalid([record({source_id:'AXO-NCI-00235',split_group:'FAKE-OTHER-WORK',
  source_title:'Made-up different title'})],
  'test source ID was already used in another development resource');
+// Newly located short paired anchors from five different historical works
+// are independent of the six Axolotl titles, but NOT blind after inspection.
+const enl=mod.loadInspectedEnlPointers();
+assert.equal(enl.rows.length,7,'Seven SHORT source-linked pairs, not gold sentences');
+assert.equal(new Set(enl.rows.map(r=>r.source_id)).size,5);
+assert.equal(new Set(enl.rows.map(r=>r.url)).size,7);
+assert(enl.rows.every(r=>r.gold_translation===false&&
+ r.train_eligible===false&&r.independent_evaluation_eligible===false));
+assert(enl.rows.every(r=>r.url.startsWith('https://enl.wired-humanities.org/')));
+assert.equal(mod.audit(pairs,examples,reviews).counts.approved_test,0);
+for(const row of enl.rows){
+ invalid([record({source_id:row.source_id,split_group:'counterfeit-'+row.id,
+   source_url:'https://example.org/different-folder'})],
+ 'test source ID was already used in another development resource');
+ invalid([record({source_id:'RENAMED-'+row.id,split_group:'RENAMED-'+row.id,
+   source_url:row.url})],'test document/work already consulted');
+}
+// A different page of the SAME land-sale/will must not be misreported unseen.
+for(const url of [
+ 'https://enl.wired-humanities.org/bc17/elements/bc17d/000',
+ 'https://enl.wired-humanities.org/bc03/elements/bc03b/000',
+ 'https://enl.wired-humanities.org/1607hask/elements/1607hask423v/000'
+]){
+ invalid([record({source_id:'FRESH-ALIAS',split_group:'FRESH-GROUP',
+  source_url:url})],'test document/work already consulted');
+}
+assert.notEqual(mod.sourceWorkKey('https://enl.wired-humanities.org/bc17/elements/bc17e/000'),
+ mod.sourceWorkKey('https://enl.wired-humanities.org/bc16/elements/bc16a/000'));
+assert.equal(mod.sourceWorkKey('https://enl.wired-humanities.org/bc17/elements/bc17b/000'),
+ mod.sourceWorkKey('https://enl.wired-humanities.org/bc17/elements/bc17e/000'));
+assert.equal(mod.sourceWorkKey('https://enl.wired-humanities.org/1559hask/elements/1559hask99r/000'),
+ mod.sourceWorkKey('https://enl.wired-humanities.org/1559hask/elements/1559hask98v/000'));
 // Different manuscripts at the same ENL host must never be conflated.
 assert.notEqual(mod.sourceWorkKey('https://enl.wired-humanities.org/bc16/elements/bc16a/001'),
  mod.sourceWorkKey('https://enl.wired-humanities.org/bc16/elements/bc16b/001'));
@@ -185,4 +217,4 @@ assert.equal(parsed[0].notes,'test, "quoted"\nline');
 assert.throws(()=>mod.parseCsv(csvHeader+'\n"broken'),/Unclosed CSV/);
 assert.throws(()=>mod.parseCsv(csvHeader+'\n1,2'),/columns/);
 assert.equal(mod.fingerprint('īuhquīn, Chimalli!'),'iuhquin chimalli');
-console.log('PASS evaluation readiness: non-blind 1573 source quarantined, no invented accuracy, 3 in-sample-only diagnostics, document-wide held-out quarantine, passage-window overlap, URL alias and provenance gates, rights/review failures, CSV edge cases and leakage negatives.');
+console.log('PASS evaluation readiness: non-blind 1573 source quarantined, no invented accuracy, 3 in-sample-only diagnostics, document-wide held-out quarantine including new ENL parallel source anchors, passage-window overlap, URL alias and provenance gates, rights/review failures, CSV edge cases and leakage negatives.');

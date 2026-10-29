@@ -886,7 +886,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
      if(slot==='V')break;
      verbAt+=slot==='NP'?2:norm(suffix[verbAt])==='in'?2:1;
     }
-    const leaf={written:suffix[verbAt],lemma:parse.lemma,tense:parse.tense,
+    const leaf={written:suffix[verbAt],tokenIndex:at+verbAt,lemma:parse.lemma,tense:parse.tense,
      subjectPerson:PERSON_CODES[parse.person],transitive:!!parse.transitive,
      source:parse.source};
     const argumentOf=n=>n?{
@@ -921,7 +921,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    if(depth>3||results.length>=16)return;
    terminalArgumentProposals(at,depth,parents);
    for(const reading of finiteAt(tokens[at]).slice(0,8)){
-    const node={written:tokens[at],lemma:reading.lemma,tense:reading.tense,
+    const node={written:tokens[at],tokenIndex:at,lemma:reading.lemma,tense:reading.tense,
      subjectPerson:PERSON_CODES[reading.person],transitive:!!reading.transitive,
      source:reading.source};
     if(at===tokens.length-1){

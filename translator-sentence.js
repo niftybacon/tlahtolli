@@ -773,7 +773,14 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   const offset=tokens.length===5?1:0;
   if(offset&&norm(tokens[0])==='in')return [];
   if(norm(tokens[offset])!=='in'||norm(tokens[offset+2])!=='in')return [];
-  const head=noun(tokens[offset+1]);if(!head||!/^https:\/\//.test(head.source||''))return [];
+  // Source-located possessed NPs can serve as *possible* relative heads.
+  // Their possessor belongs to the NOUN, not to the relative or matrix verb.
+  // The same conservative resolver and full-token evidence restrictions as
+  // the PNP grammar must authorize the original complete written token.
+  const plainHead=noun(tokens[offset+1]);
+  const possessedHead=plainHead?null:resolveRecordedPossessed(tokens[offset+1]);
+  const head=plainHead||possessedHead;
+  if(!head||!/^https:\/\//.test(head.source||''))return [];
   const relatives=finiteAt(tokens[offset+3]);
   if(!relatives.length)return [];
   let matrix=[];
@@ -803,7 +810,11 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
       grade:'agreement-constrained in-relative hypothesis (NOT an attested sentence translation)',
       construction:offset?'matrix verb + headed relative noun phrase':'externally headed relative noun phrase (nonfinite)',
       head:{written:tokens[offset+1],lemma:head.word,meaning:head.meaning,
-       article:tokens[offset],antecedentStatus:'explicit lexical head; referent identity NOT determined'},
+       article:tokens[offset],antecedentStatus:'explicit lexical head; referent identity NOT determined',
+       ...(possessedHead?{possessor:possessedHead.possessor,
+        possessorStatus:'exact source-listed nominal possessor; NOT the finite verb subject',
+        possessiveEvidence:{written:possessedHead.written,source:possessedHead.possessorSource,
+         locator:possessedHead.possessorLocator}}:{})},
       relative:{marker:tokens[offset+2],written:tokens[offset+3],
        lemma:rel.lemma,tense:rel.tense,subjectPerson:PERSON_CODES[rel.person],
        transitive:rel.transitive,headGapRole:gap,
@@ -811,11 +822,14 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
       matrix:m?{written:tokens[0],lemma:m.lemma,tense:m.tense,
        subjectPerson:PERSON_CODES[m.person],headRole:slot}:null,
       coverage:tokens.length,
-      sources:[...new Set([...IN_SOURCES,head.source,rel.source,m?.source].filter(Boolean))],
+      sources:[...new Set([...IN_SOURCES,head.source,possessedHead?.possessorSource,rel.source,m?.source].filter(Boolean))],
       note:'In before the noun is article-like; in before the indexed verb is a possible relative introducer. '+
        'The head may fill only a person-compatible omitted argument slot. 3sg transitive ambiguity is retained '+
        'as separate unranked subject/object readings; it does not identify a pronoun, speaker or real-world entity. '+
-       'Verb cells are generated, not independently attested. No other subordinate senses are ruled out.'
+       'Verb cells are generated, not independently attested. No other subordinate senses are ruled out.'+
+       (possessedHead?' The head noun has independently source-located possession '+
+        'but the possessor is NOT the matrix/relative subject or the head-gap referent. '+
+        'The combined relative construction is an editorial hypothesis, not an attested sentence.':'')
      });
      if(results.length>=12)return results;
     }

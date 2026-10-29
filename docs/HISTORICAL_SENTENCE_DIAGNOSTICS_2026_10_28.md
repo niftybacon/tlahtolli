@@ -31,7 +31,7 @@ node tools/test_historical_sentence_diagnostics.js
 | FC XI 62r: Chimalmjchi | 0/1 | Hypothesized compound noun, not a finite sentence |
 | ENL 1573: ticnamaca y¯ totlal | 0/3 | Two source-backed agreement alternatives; no English |
 
-**Concrete orthography issue:** the lexical tokenizer returns y for source-written y¯, losing the scribal overbar. The source-specific morphology adapter preserves y¯ and its unresolved expansion hypothesis. The diagnostic reports this mismatch instead of silently normalizing it.
+**Orthography integrity follow-up:** the lexical tokenizer now preserves source-written `y¯` (spacing overbar) as one exact surface token rather than reducing it to `y`. The original abbreviation **still has no established curated lexical reading**: the source-specific morphology adapter separately keeps its unverified `yn/in` expansion as a hypothesis, never an automatic normalization. The diagnostic now checks preservation and explicit abstention rather than treating lost scribal marks as acceptable.
 
 **Scope limit:** This Node harness loads the actual curated lexical, indexed sentence, locative, English, shared grammar IR and exact ENL source-morphology modules, but not the separate browser-embedded Tēntli supplementary morphology. It reads existing local files only; no downloads, new training pairs or source promotion occur.
 

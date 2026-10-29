@@ -56,8 +56,12 @@ assert.equal(sourceProbe[0].abbreviation_unresolved,true);
 assert(sourceProbe[0].classification.includes('NOT BLIND'));
 assert(sourceProbe[0].tokenization.some(t=>t.written_token==='ticnamaca'));
 assert(sourceProbe[0].tokenization.some(t=>t.written_token==='totlal'));
-assert(!sourceProbe[0].tokenization.some(t=>t.written_token==='y¯'),
- 'The source abbreviation must NOT be misrepresented as a securely segmented word');
+const scribalAbbreviation=sourceProbe[0].tokenization.find(t=>t.written_token==='y¯');
+assert(scribalAbbreviation,'The original scribal overbar must survive lexical tokenization');
+assert.equal(scribalAbbreviation.lookup_status,'unknown',
+ 'Preserving a written token is not a verified segmentation or lexical interpretation');
+assert.equal(scribalAbbreviation.candidate_count,0,
+ 'A scribal overbar may not inherit unsupported dictionary readings');
 assert(sourceProbe[0].dictionary_matches+sourceProbe[0].dictionary_unknown>=2);
 assert.equal(pairs.length,0,'If actual reviewed pairs are added, update the evaluation test expectations');
 const clean=mod.audit(pairs,examples,reviews);

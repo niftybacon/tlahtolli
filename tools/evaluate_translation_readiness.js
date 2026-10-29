@@ -66,7 +66,9 @@ function loadSourceReviews(dir=REVIEWS){
 function sourceWorkKey(input){
  if(!isUrl(input))return null;
  const u=new URL(input),host=u.hostname.toLowerCase().replace(/^www\./u,'');
- const p=decodeURI(u.pathname).toLowerCase().replace(/\/+$/u,'');
+ let pathname=u.pathname;
+ try{pathname=decodeURIComponent(pathname);}catch{} // malformed encoding must not crash admission
+ const p=pathname.toLowerCase().replace(/\/+$/u,'');
  // The twelve Florentine books are one heavily used development work.
  // Language-prefixed /es/ and /en/ routes are still the same codex.
  if(host==='florentinecodex.getty.edu'&&

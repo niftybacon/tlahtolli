@@ -5,6 +5,7 @@ on:
     paths:
       - 'research/batches/source_stem_batch08_2026_10_29.json'
       - 'tools/import_source_stem_batch08.py'
+      - 'tools/test_source_stem_batch08.js'
       - '.github/workflows/apply-batch08.yml'
 permissions:
   contents: write

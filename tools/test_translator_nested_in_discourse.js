@@ -50,7 +50,7 @@ const trRelative=analyze(v('mati')+' in '+v('mati')+' in cihuātl in '+v('itta')
 assert.deepEqual([...new Set(trRelative.clauses[0].nestedInProposals.map(p=>p.terminal.relative.headGapRole))].sort(),
  ['relative object','relative subject']);
 const across=analyze([overt('cihuātl'),implicit,v('nemi'),implicit].join('. '));
-assert.deepEqual(across.discourseReferenceProposals.map(x=>x.candidates[0].distance),[1,2,3]);
+assert.deepEqual(Array.from(across.discourseReferenceProposals,x=>x.candidates[0].distance),[1,2,3]);
 assert.equal(analyze([overt('cihuātl'),implicit,implicit,implicit,implicit].join('. ')).discourseReferenceProposals.length,3);
 const competing=analyze([overt('cihuātl'),overt('tlācatl'),implicit].join('. '));
 assert.equal(competing.discourseReferenceProposals.length,1);

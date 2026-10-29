@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.3.0",
+  "version": "2026-10-29.3.1",
   "entries": [
     {
       "word": "ātl",
@@ -4983,9 +4983,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tepoztehuia",
+      "grammarNotes": "Only Molina's recorded 1sg preterite and source-indicated argument class are established by an ODN transcription. Stem-base alternation, vowel length and other finite forms remain unverified.",
+      "inflections": [
+        {
+          "form": "onitlatepuzteui",
+          "category": "Preterite 1sg, unspecified object (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztehuia",
+          "note": "Molina 1571 Part II f.104r col.2, transcription as published in ODN. Exact source spelling, not an original-folio collation or verified context; tepuzteuia is distinct from the normalized lemma."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5088,9 +5097,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "No stem, noun class, plural, possession, verb valency or finite forms reviewed. POS is an index-level editorial label only.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tepoztia",
+      "grammarNotes": "Only Molina's recorded 1sg preterite and source-indicated argument class are established by an ODN transcription. Stem-base alternation, vowel length and other finite forms remain unverified.",
+      "inflections": [
+        {
+          "form": "onitepuztiac",
+          "category": "Preterite 1sg (Molina 1571, source spelling)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztia",
+          "note": "Molina 1571 Part II f.104r col.2, transcription as published in ODN. Exact source spelling, not an original-folio collation or verified context; tepuztia is distinct from the normalized lemma."
+        }
+      ],
       "formsEdited": false
     },
     {

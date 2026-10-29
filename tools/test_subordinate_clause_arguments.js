@@ -14,7 +14,7 @@ const words=['cihuātl','tlācatl'].map(word=>({
  word,pos:'noun',meaning:word,variety:'Classical Nahuatl',source:url
 })).concat(['nemi','chōca','mati','itta'].map(word=>({
  word,pos:'verb',meaning:word,variety:'Classical Nahuatl',source:url
-}));
+})));
 const dictionary={words};
 const paradigms={paradigms:Object.fromEntries(
  ['nemi','chōca','mati','itta'].map(lemma=>[lemma,{

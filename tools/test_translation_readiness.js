@@ -143,6 +143,12 @@ invalid([record({original_orthography:'ticnamaca y¯ totlal'})],
  'test text overlaps consulted-source-review');
 invalid([record({source_id:'LUKE-1833-PAZ-SANCHEZ'})],
  'test source ID was already used in another development resource');
+invalid([record({source_id:'FICTITIOUS-ALIAS',split_group:'FICTITIOUS-ALIAS',
+ source_title:'Anales de Tlatelolco',source_url:'https://example.org/another-archive'})],
+ 'test work is present in inspected external parallel-pair development pointers');
+invalid([record({source_id:'AXO-NCI-00235',split_group:'FAKE-OTHER-WORK',
+ source_title:'Made-up different title'})],
+ 'test source ID was already used in another development resource');
 // Different manuscripts at the same ENL host must never be conflated.
 assert.notEqual(mod.sourceWorkKey('https://enl.wired-humanities.org/bc16/elements/bc16a/001'),
  mod.sourceWorkKey('https://enl.wired-humanities.org/bc16/elements/bc16b/001'));

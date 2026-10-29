@@ -24,6 +24,8 @@ jobs:
         run: python tools/build_morphology_engine.py --check
       - name: Canonical regular present morphology and safe abstention
         run: node tools/test_regular_present_morphology.js
+      - name: Source-located possessed stem production and refusal cases
+        run: node tools/test_source_bound_possessives.js
       - name: Test Phase 2 source separation
         run: python tools/test_phase2.py
       - name: Validate published dictionary

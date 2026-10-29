@@ -281,6 +281,23 @@ const TlahtolliMorphEngine = (() => {
    }
   }
  }
+ // A source-located bound *possessed* base is different from an absolutive
+ // combining stem. Only a single explicitly listed bound lexical form can
+ // license prefix substitutions; multi-part relations and semantic exceptions
+ // cannot be generalized safely.
+ function sourceBoundPossessedBase(w){
+  if(String(w.pos||'').trim().toLowerCase()!=='noun')return null;
+  const claim=sourceClaim(w,'possessed');
+  if(!claim||!sourceClaim(w,'headword')||!sourceClaim(w,'pos')||
+     !/^https:\/\//u.test(claim.source||''))return null;
+  const specified=String(w.possessed||'').trim().normalize('NFC');
+  const match=/^-([\p{L}\p{M}]{2,80})\s*\(([^()]*)\)$/u.exec(specified);
+  if(!match)return null;
+  const note=match[2].trim();
+  if(!/^(?:possessed stem|bound stem|bound form)(?:\s*[;,]|$)/iu.test(note)||
+     /special semantics|only|alternativ|reverential|plural|for noble/iu.test(note))return null;
+  return {base:match[1],claim};
+ }
  function fromPossessiveAnalogy(q,all){
   // Only an actual source-located complete no- form can license an analogy.
   // Never extrapolate from naked -possessed stems or from a generic noun.
@@ -302,6 +319,33 @@ const TlahtolliMorphEngine = (() => {
    }
   }
  }
+ function fromSourceBoundPossessives(raw,all){
+  // Exact surface spelling matters: normalize() folds vowel quantity and
+  // would incorrectly license a different macron-bearing possessive base.
+  const written=String(raw||'').normalize('NFC').toLocaleLowerCase('en');
+  for(const w of words){
+   const licensed=sourceBoundPossessedBase(w);
+   if(!licensed)continue;
+   const {base,claim}=licensed;
+   const canonical=base.toLocaleLowerCase('en');
+   for(const p of NOUN_PREFIXES){
+    const expected=p.shape+canonical;
+    if(written!==expected)continue;
+    // Stronger *exact* source-recorded forms take precedence. The
+    // bibliography for a bound base does not attest this prefixed token.
+    if(all.some(c=>c.lemma===w.word&&
+       ['manuscript','lexical','grammar'].includes(c.grade)&&
+       c.kind!=='Noun citation-form segmentation'))continue;
+    all.push(make(w.word,'Source-bound possessed noun analogy','analogy',
+     {category:'noun',possessor:p.person,
+      sourceStatus:'Source-located possessed base + grammar-derived person prefix'},
+     [{surface:raw.slice(0,p.shape.length),role:p.person+' possessive prefix ('+p.gloss+')'},
+      {surface:raw.slice(p.shape.length),role:'Exact source-located bound possessed base; no guessed stem alternation'}],
+     claim.source,claim.locator,
+     'Analogy from an independently source-located bound possessed noun base, NOT an attested whole token. Contextual sense, vowel contact, alienability, register, allomorphy and co-reference are unresolved; no productive plural or sentence translation is licensed.'));
+   }
+  }
+ }
  function analyze(input){
   const raw=finiteText(stripToken(input),160).trim(),q=normalize(raw);
   if(!q||q.length>120||/\s/.test(raw))return [];
@@ -311,6 +355,7 @@ const TlahtolliMorphEngine = (() => {
   fromProductiveVerb(q,out);
   fromRegularIntransitivePresent(raw,out);
   fromPossessiveAnalogy(q,out);
+  fromSourceBoundPossessives(raw,out);
   const seen=new Set(),clean=[];
   for(const candidate of out){
    const key=JSON.stringify([candidate.lemma,candidate.kind,candidate.grade,candidate.features,candidate.parts]);
@@ -350,7 +395,7 @@ const TlahtolliMorphEngine = (() => {
   }).join('');
   return '<section class="analysis-proposal"><h4>Advanced morphology · '+matches.length+
    ' candidate analysis'+(matches.length===1?'':'es')+'</h4>'+
-   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular intransitive present, transitive object, and possessed-noun hypotheses. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
+   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular intransitive present, transitive object, source-bound possessed-noun and separately cited possessive analogies. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
    (hasQuantityAmbiguity?'<p class="analysis-caution">Macron-insensitive matching may collapse historically meaningful vowel length differences. Check the original orthography and context.</p>':'')+
    columns+(matches.length>24?'<p>Showing 24 of '+matches.length+' candidates.</p>':'')+
    '<p class="analysis-caution"><strong>Research boundary:</strong> no analysis proves a manuscript occurrence, contextual interpretation, or unmodeled allomorph. No unattested proposal is added to the public dictionary or evidence ledger.</p></section>';

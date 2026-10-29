@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-29.1.0",
+  "version": "2026-10-29.2.0",
   "entries": [
     {
       "word": "ātl",
@@ -8765,6 +8765,516 @@
           "locator": "Molina 1571, Vocabulario II, f. 76v col. 2; Lockhart 2001, p. 228",
           "note": "Particle/adverb labeling follows Molina and Lockhart; no overt person/tense or nominal number inferred.",
           "reviewer": "Tlahtōlli AI-assisted source comparison; not independently expert-reviewed",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "tēmi",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temi",
+          "locator": "Molina (1571), II f.98r col.1: temi ni, pret. oten",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temi",
+          "locator": "Molina (1571), II f.98r col.1: temi ni, pret. oten",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temi",
+          "locator": "Molina (1571), II f.98r col.1: temi ni, pret. oten",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temi",
+          "locator": "Karttunen (1992) p.222 TĒM(I); Lockhart (2001) p.233 class 2 ōnitēn",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/temi",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "huetzi",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+          "locator": "Molina (1571), II f.156v: uetzi ni, pret. oniuetz",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+          "locator": "Molina (1571), II f.156v: uetzi ni, pret. oniuetz",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+          "locator": "Molina (1571), II f.156v: uetzi ni, pret. oniuetz",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+          "locator": "Karttunen (1992) p.87 HUETZ(I); Lockhart (2001) p.218 class 2 ōnihuetz",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "tlācati",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+          "locator": "Molina (1571), II f.115v col.2: tlacati ni, pret. onitlacat",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+          "locator": "Molina (1571), II f.115v col.2: tlacati ni, pret. onitlacat",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+          "locator": "Molina (1571), II f.115v col.2: tlacati ni, pret. onitlacat",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+          "locator": "Karttunen (1992) p.253 TLĀCAT(I); Lockhart (2001) p.235 class 2 ōnitlācat",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "nāhuati",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+          "locator": "Molina (1571), II f.63v col.1: nauati ni, pret. oninauat",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+          "locator": "Molina (1571), II f.63v col.1: nauati ni, pret. oninauat",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+          "locator": "Molina (1571), II f.63v col.1: nauati ni, pret. oninauat",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+          "locator": "Karttunen (1992) p.157 NĀHUAT(I); Lockhart (2001) p.226 class 2 ōnināhuat",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "tlatzihui",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176525",
+          "locator": "Molina (1571), II f.143r col.2: tlatziui ni, pret. onitlatziuh",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176525",
+          "locator": "Molina (1571), II f.143r col.2: tlatziui ni, pret. onitlatziuh",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176525",
+          "locator": "Molina (1571), II f.143r col.2: tlatziui ni, pret. onitlatziuh",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176525",
+          "locator": "Karttunen (1992) p.301 TLATZIHU(I); Lockhart (2001) p.239 class 2 ōnitlatziuh",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/node/176525",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "patlāni",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/patlani",
+          "locator": "Molina (1571), II f.80r col.2: patlani ni, pret. onipatlan",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/patlani",
+          "locator": "Molina (1571), II f.80r col.2: patlani ni, pret. onipatlan",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/patlani",
+          "locator": "Molina (1571), II f.80r col.2: patlani ni, pret. onipatlan",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/patlani",
+          "locator": "Karttunen (1992) p.189 PATLĀN(I); Lockhart (2001) p.229 class 2 ōnipatlān",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/patlani",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "tlanahui",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+          "locator": "Molina (1571), II f.127v col.1: tlanaui ni, pret. onitlanauh",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+          "locator": "Molina (1571), II f.127v col.1: tlanaui ni, pret. onitlanauh",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+          "locator": "Molina (1571), II f.127v col.1: tlanaui ni, pret. onitlanauh",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+          "locator": "Karttunen (1992) p.283 TLANAHU(I), dialectal vowel-length warning; Lockhart (2001) p.237 class 2 ōnitlanauh",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "tequi",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequi",
+          "locator": "Molina (1571), II f.105r col.2: tequi nitla, pret. onitlatec",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequi",
+          "locator": "Molina (1571), II f.105r col.2: tequi nitla, pret. onitlatec",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequi",
+          "locator": "Molina (1571), II f.105r col.2: tequi nitla, pret. onitlatec",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequi",
+          "locator": "Karttunen (1992) p.232 TEQU(I), preterite TEC; Lockhart (2001) p.234 class 2 ōnictec",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tequi",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "tlachia",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlachia",
+          "locator": "Molina (1571), II f.117r col.1: tlachia ni, pret. onitlachix",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlachia",
+          "locator": "Molina (1571), II f.117r col.1: tlachia ni, pret. onitlachix",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlachia",
+          "locator": "Molina (1571), II f.117r col.1: tlachia ni, pret. onitlachix",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlachia",
+          "locator": "Molina (1571), II f.117r col.1: onitlachix; stem split is editorial based on ni- person prefix",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/tlachia",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "tītlani",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/titlani",
+          "locator": "Molina (1571), II f.113v col.1: titlani nitla vel nite, pret. onitlatitlan vel onitetitlan",
+          "note": "Molina cites the lexical form. Editorial long vowels are distinguished from the folio spelling; source checked via ODN's transcription and references.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/titlani",
+          "locator": "Molina (1571), II f.113v col.1: titlani nitla vel nite, pret. onitlatitlan vel onitetitlan",
+          "note": "Conservative main dictionary sense only; contextual selection is not verified.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/titlani",
+          "locator": "Molina (1571), II f.113v col.1: titlani nitla vel nite, pret. onitlatitlan vel onitetitlan",
+          "note": "The original Molina ni/nitla or Lockhart class distinguishes intransitive and transitive behavior. No other valencies inferred.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "stem",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/titlani",
+          "locator": "Karttunen (1992) p.241 TĪTLAN(I); Lockhart (2001) p.235 class 2 ōnictītlan",
+          "note": "Proposed citation/preterite base pair constrained to separately listed source examples, not universal allomorphy. Macron and dialect alternatives require separate review.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "field": "other",
+          "assessment": "unverified",
+          "source": "https://nahuatl.wired-humanities.org/content/titlani",
+          "locator": "",
+          "note": "No independent primary-manuscript collation, productive paradigm or additional inflected meaning established.",
+          "reviewer": "Tlahtōlli source-location audit (AI-assisted; ODN transcription and bibliographic references, not independent original-folio collation)",
           "checkedAt": "2026-10-29"
         }
       ]

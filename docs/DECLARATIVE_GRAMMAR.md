@@ -8,9 +8,9 @@ A 36,543-record lexical archive is not a sentence grammar. The curated dictionar
 
 ## Canonical editable rules
 
-The file **data/clause_grammar.json** defines 10 finite clause construction patterns. Each rule has:
+The file **data/clause_grammar.json** defines 16 finite clause construction patterns (10 established finite patterns and six structurally provisional possessed-NP patterns). Each rule has:
 
-- **sequence:** ordered sequence of V (one exact indexed present/future finite verb cell) and NP (written in + a unique curated Classical Nahuatl noun citation spelling).
+- **sequence:** ordered sequence of V (one exact indexed present/future finite verb cell), NP (written in + a unique curated Classical Nahuatl noun citation spelling), or PNP (an exact source-located possessed noun form, optionally preceded by written in, never an analogical guess). PNP rules only produce provisional possession/role analyses, not English translations.
 - **valency:** any, transitive, or intransitive, checked against the existing paradigm transitivity flag.
 - **persons:** indexed subject/person numbers: 0=1sg, 1=2sg, 2=3sg, 3=1pl, 4=2pl, 5=3pl.
 - **roles:** none, subject, object, either, or both. Either and both enumerate competing third-person subject/object assignments rather than choosing by position.
@@ -45,3 +45,17 @@ The Translator tab requests the JSON rules alongside the dictionary. The two-arg
 - python tools/test_translator_browser.py
 
 The existing editorial evidence policy and independent evaluation readiness protocols still govern grammar sources and translation claims.
+
+## Reconciliation with contemporaneous main
+
+The reconciliation branch was cut from main commit 800b024 (which includes
+finite+locative clause proposals and overt auh/intla multi-clause syntax). The
+original declarative parser and the nonpresent morphological bridge were
+transplanted into that source without replacing those main additions. Existing
+finite+locative and multi-clause tests are required for a safe integration.
+
+The original PR #30 and #31 remain open and unchanged while this comprehensive
+branch is reviewed; do not merge them separately without reconciling history.
+The other concurrently active developer should keep its own branch and review
+new main changes before opening a competing PR. GitHub Actions success indicates
+software behavior checks, not historical translation validity.

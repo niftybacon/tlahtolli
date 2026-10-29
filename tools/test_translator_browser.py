@@ -193,6 +193,40 @@ with sync_playwright() as pw:
     page.locator("#translatorInput").fill("atl yitic nemjnj")
     page.locator("#translatorForm button[type=submit]").click()
     assert page.locator("#translatorPassages .translator-contextual-fragments").count()==0
+    # Source-located relational nouns from FC Book 11 and independent ODN
+    # lexical/grammatical witnesses. These remain nonfinite proposals.
+    page.locator("#translatorInput").fill("atl yitic nemjnj")
+    page.locator("#translatorForm button[type=submit]").click()
+    locative=page.locator("#translatorPassages .translator-locative-interpretations")
+    assert locative.count()==1
+    locative.evaluate("(node)=>node.open=true")
+    located=locative.inner_text()
+    assert "Nominal location + possessed relational + unresolved agentive/verb form" in located
+    assert "historical fragment (nonblind, editorially consulted)" in located
+    assert "3sg possessor" in located
+    assert "UNRESOLVED: agentive noun or homophonous verbal form" in located
+    assert "Published contextual note for this EXACT historical fragment:" in located
+    assert "NOT held-out evaluation" in located
+    assert locative.get_by_role("link",name="Inspect locative evidence").count()>=4
+    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
+    page.locator("#translatorInput").fill("calli itic")
+    page.locator("#translatorForm button[type=submit]").click()
+    locative=page.locator("#translatorPassages .translator-locative-interpretations")
+    assert locative.count()==1
+    locative.evaluate("(node)=>node.open=true")
+    comp=locative.inner_text()
+    assert "grammar-composed locative proposal (not independently attested)" in comp
+    assert "inside / within / in the interior of + [house; building; dwelling]" in comp
+    assert "Published contextual note" not in comp
+    page.locator("#translatorInput").fill("cihuātl ītech")
+    page.locator("#translatorForm button[type=submit]").click()
+    locative=page.locator("#translatorPassages .translator-locative-interpretations")
+    assert locative.count()==1
+    locative.evaluate("(node)=>node.open=true")
+    assert "on / by / in contact with / attached to / concerning / from" in locative.inner_text()
+    page.locator("#translatorInput").fill("atl ytech nemjnj")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-locative-interpretations").count()==0
     # The native sentence tab now reuses canonical source-located morphology:
     # source-listed finite forms can show their exact recorded glosses, but a
     # following noun does not become a magically parsed sentence.

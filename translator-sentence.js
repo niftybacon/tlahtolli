@@ -24,11 +24,12 @@ const nouns={'cihuātl':'woman','tlācatl':'person','conetl':'child','calli':'ho
  'chimalli':'shield','tlaxcalli':'tortilla','tepētl':'hill'};
 const grammar='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
 const tenseSource='https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html';
-function create(dictionary,paradigms,morphology,researchExamples){
+function create(dictionary,paradigms,morphology,researchExamples,locative){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
  const PERSON_CODES=['1sg','2sg','3sg','1pl','2pl','3pl'];
+ const locativeAnalyze=typeof locative?.analyze==='function'?locative.analyze:()=>[];
  const EVIDENCE_GRADES=new Set(['manuscript','lexical','grammar','lemma','paradigm','hypothesis','analogy','unreviewed']);
  function exactMorphology(token){
   if(!/^[\p{L}\p{M}’'\-\u00AF]{1,120}$/u.test(token))return []; // spacing overbar is a source-recorded abbreviation, not vowel length
@@ -306,6 +307,7 @@ function create(dictionary,paradigms,morphology,researchExamples){
    }
    return {text,tokens:original,candidates,complete:candidates.length>0,
     fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),
+    locativeInterpretations:candidates.length?[]:locativeAnalyze(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),
     roleAmbiguous:new Set(candidates.map(c=>JSON.stringify([c.frame.subjectNoun,c.frame.objectNoun]))).size>1,

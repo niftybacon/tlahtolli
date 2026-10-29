@@ -44,6 +44,8 @@ with sync_playwright() as pw:
         ("in xochitl qujça", "quiza", "ONLY IF unresolved verb person is 3sg"),
         ("cen tipolihui", "polihui", "2sg"),
         ("tipolihui cen", "polihui", "2sg"),
+        ("itech qujça", "quiza", "Relational: itech"),
+        ("qujça itech", "quiza", "Relational: itech"),
     ):
         panel = analyze(value).locator(".translator-source-finite-proposals")
         assert panel.count() == 1, value
@@ -55,10 +57,10 @@ with sync_playwright() as pw:
 
     for value in ("tipolihui in cihuātl", "quiza in xochitl",
                   "qujça in xochitl extra", "ahmo qujça in xochitl",
-                  "qujça in unknown", "qujça?"):
+                  "qujça in unknown", "qujça itech extra", "qujça?"):
         assert analyze(value).locator(".translator-source-finite-proposals").count() == 0, value
 
     assert "I will see the woman" in analyze("niquittaz in cihuātl").inner_text()
     assert not errors, errors
     browser.close()
-print("PASS browser source finite context: real Tēntli, 4 structural readings, 6 refusals, English regression.")
+print("PASS browser source finite context: real Tēntli, 6 structural readings, 7 refusals, English regression.")

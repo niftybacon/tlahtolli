@@ -275,6 +275,47 @@ with sync_playwright() as pw:
     page.locator("#translatorInput").fill("ninemi atl yitic nemjnj")
     page.locator("#translatorForm button[type=submit]").click()
     assert page.locator("#translatorPassages .translator-complex-clause-proposals").count()==0
+    # Explicit Classical multi-clause markers. Never infer a single English
+    # conjunction, conditional truth, or implicit reference.
+    page.locator("#translatorInput").fill("ninemi auh nichōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    syntax=page.locator("#translatorPassages .translator-multiclause-proposals")
+    assert syntax.count()==1
+    syntax.evaluate("(node)=>node.open=true")
+    coordination=syntax.inner_text()
+    assert "explicit discourse / clause coordination" in coordination
+    assert "Markers: auh" in coordination
+    assert "Auh marks a clause or discourse transition" in coordination
+    assert "Unit 1 · ninemi" in coordination and "Unit 2 · nichōca" in coordination
+    assert "Indexed person possibilities: 1sg" in coordination
+    assert "NOT an independently verified translation" in coordination
+    assert syntax.get_by_role("link",name="Inspect multi-clause grammar evidence").count()>=3
+    page.locator("#translatorInput").fill("intla ninemi, nichōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    syntax=page.locator("#translatorPassages .translator-multiclause-proposals")
+    assert syntax.count()==1
+    syntax.evaluate("(node)=>node.open=true")
+    conditional=syntax.inner_text()
+    assert "conditional antecedent and consequent" in conditional
+    assert "conditional antecedent (mood/force NOT independently verified)" in conditional
+    assert "proposed consequent (consequence type NOT independently verified)" in conditional
+    assert "verb mood, type of condition" in conditional
+    page.locator("#translatorInput").fill("ninemi calli itic auh nichōca calli itic")
+    page.locator("#translatorForm button[type=submit]").click()
+    syntax=page.locator("#translatorPassages .translator-multiclause-proposals")
+    assert syntax.count()==1
+    syntax.evaluate("(node)=>node.open=true")
+    context=page.locator("#translatorPassages .translator-context-links")
+    assert context.count()==1
+    context.evaluate("(node)=>node.open=true")
+    assert "repeated written location: calli itic" in context.inner_text()
+    assert "finite+locative structural proposals only" in syntax.inner_text()
+    page.locator("#translatorInput").fill("intla ahmo ninemi, nichōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-multiclause-proposals").count()==0
+    page.locator("#translatorInput").fill("ninemi ihuan nichōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-multiclause-proposals").count()==0
     # The native sentence tab now reuses canonical source-located morphology:
     # source-listed finite forms can show their exact recorded glosses, but a
     # following noun does not become a magically parsed sentence.

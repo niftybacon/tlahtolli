@@ -212,6 +212,39 @@ function showResult(){
    }
    passages.append(block);
   }
+  if(result.multiClauseProposals?.length){
+   const panel=el('details','translator-morph-panel');
+   panel.className+=' translator-multiclause-proposals';
+   panel.append(el('summary','','Classical multi-clause syntax · '+
+    result.multiClauseProposals.length+' marked construction'+
+    (result.multiClauseProposals.length===1?'':'s')+
+    ' (NOT an English translation)'));
+   panel.append(el('p','translator-caution',
+    'Explicit clause markers are supported by historical dictionaries and grammar; parsing their scope is a hypothesis, NOT proof of English and/but or a valid conditional mood.'));
+   for(const analysis of result.multiClauseProposals){
+    panel.append(el('strong','',analysis.relation+' · '+analysis.clauseCount+' units'),
+     el('p','translator-meta','Markers: '+analysis.markers.join(' / ')+' · '+analysis.grade),
+     el('p','translator-caution',analysis.note));
+    for(const part of analysis.segments){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','','Unit '+(part.index+1)+' · '+part.text),
+      el('p','translator-meta',part.role),
+      el('p','translator-meta',part.finiteAnalysisKind+
+       ' · '+part.alternativeCount+' finite alternative'+(part.alternativeCount===1?'':'s')),
+      el('p','translator-meta','Indexed person possibilities: '+
+       (part.subjectPersons.join(' / ')||'unresolved')),
+      el('p','translator-caution',part.unresolved));
+     if(part.locationExpressions.length)item.append(el('p','translator-meta',
+      'Explicit location phrase(s): '+part.locationExpressions.join(' / ')));
+     panel.append(item);
+    }
+    for(const url of analysis.sources){
+     const link=safeLink(url,'Inspect multi-clause grammar evidence');
+     if(link)panel.append(link);
+    }
+   }
+   passages.append(panel);
+  }
   if(result.contextLinks?.length){
    const panel=el('details','translator-morph-panel');
    panel.className+=' translator-context-links';

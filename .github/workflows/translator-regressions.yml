@@ -10,6 +10,7 @@ on:
       - 'tools/test_contextual_fragments.js'
       - 'tools/test_locative_relations.js'
       - 'tools/test_complex_locative_clauses.js'
+      - 'tools/test_multiclause_syntax.js'
       - 'parallel-reading-*.js'
       - 'tools/test_parallel_reading.js'
       - 'index.html'
@@ -32,6 +33,7 @@ on:
       - 'tools/test_contextual_fragments.js'
       - 'tools/test_locative_relations.js'
       - 'tools/test_complex_locative_clauses.js'
+      - 'tools/test_multiclause_syntax.js'
       - 'parallel-reading-*.js'
       - 'tools/test_parallel_reading.js'
       - 'index.html'
@@ -79,6 +81,8 @@ jobs:
         run: node --check translator-locative.js && node tools/test_locative_relations.js
       - name: Source-grounded finite-locative clauses and explicit context regressions
         run: node --check translator-sentence.js && node tools/test_complex_locative_clauses.js
+      - name: Classical overt coordination and bounded conditional syntax
+        run: node tools/test_multiclause_syntax.js
       - name: Archive form evidence and morphology cross-check regressions
         run: node tools/test_archive_lexical.js
       - name: Translation quality readiness and independent-holdout checks

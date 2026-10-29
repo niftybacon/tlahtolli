@@ -65,7 +65,7 @@ with sync_playwright() as pw:
         assert expected in content.inner_text(),sample
 
     for sample in ("niquittaz in cihuātl",
-                   "itech qujça cihuātl ioan tlapalli",
+                   "unseen fabricated phrases everywhere",
                    "unknown unknown unknown unknown"):
         result=analyze(sample)
         assert result.locator(".translator-partial-grammar-spans").count()==0,sample

@@ -19,6 +19,7 @@ on:
       - 'translator-*.js'
       - 'tools/test_translator*.js'
       - 'tools/test_shared_grammar_ir.js'
+      - 'tools/test_ir_audited_english.js'
       - 'tools/test_grammar_ir_agreement_audit.js'
       - 'tools/test_archive_lexical.js'
       - 'dictionary.json'
@@ -52,6 +53,7 @@ on:
       - 'translator-*.js'
       - 'tools/test_translator*.js'
       - 'tools/test_shared_grammar_ir.js'
+      - 'tools/test_ir_audited_english.js'
       - 'tools/test_grammar_ir_agreement_audit.js'
       - 'tools/test_archive_lexical.js'
       - 'dictionary.json'
@@ -113,6 +115,8 @@ jobs:
         run: node tools/test_translator_nested_in_discourse.js && node tools/test_nested_possessed_relatives.js && node tools/test_subordinate_clause_arguments.js
       - name: Shared grammatical IR nested possessed discourse integrity
         run: node --check translator-grammar-ir.js && node tools/test_shared_grammar_ir.js
+      - name: Existing English composition checked against IR grammatical alternatives
+        run: node tools/test_ir_audited_english.js
       - name: Agreement-aware graph role and discourse scope refusals
         run: node tools/test_grammar_ir_agreement_audit.js
       - name: Archive form evidence and morphology cross-check regressions

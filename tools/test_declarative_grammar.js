@@ -11,7 +11,7 @@ const rules=JSON.parse(fs.readFileSync(path.join(root,'data/clause_grammar.json'
 const create=pack=>context.window.TlahtolliSentence.create(dictionary,paradigms,null,null,null,pack);
 const configured=create(rules),offline=create();
 assert.equal(rules.format,'tlahtolli-classical-clause-rules-v1');
-assert.equal(rules.rules.length,10);
+assert.equal(rules.rules.length,16);
 const cases=[
  'nichōca','ahmo nichōca','niquitta','niquitta in cihuātl',
  'in cihuātl niquitta','chōca in cihuātl','in cihuātl chōca',

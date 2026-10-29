@@ -205,6 +205,80 @@ function create(dictionary){
      role:h?.role||'unresolved',verbSubjectPerson:j.subject,
      nominalPossessorPerson:h?.possessor||null,subjectPossessorUnified:false});
    }
+   // Source-recorded finite verbs are candidate-only: no agreement or English
+   // may be inferred from source orthography or an unresolved nominal role.
+   for(const [n,p] of items(cl.historicalFiniteProposals,8).entries()){
+    if(!p||p.coverage!==cl.tokens?.length||!p.verb||
+      !source(p.verb.source)||!items(p.sources).includes(p.verb.source)||
+      (p.nounPhrase&&!source(p.nounPhrase.source))||
+      (p.adverb&&!source(p.adverb.source))||
+      (p.relational&&!source(p.relational.source)))continue;
+    const j=p.verb;
+    const lexical=items(dictionary?.words,2000).filter(w=>w.word===j.lemma&&
+      w.pos==='verb (intransitive)'&&source(w.source)&&
+      items(w.inflections,100).some(f=>norm(f.form)===norm(j.written)&&
+       f.evidence==='text'&&f.category==='Historically transcribed finite form'&&
+       f.source===j.source));
+    const finiteEntry=lexical.length===1?
+      lexical[0].inflections.find(f=>norm(f.form)===norm(j.written)&&
+       f.evidence==='text'&&f.category==='Historically transcribed finite form'&&
+       f.source===j.source):null;
+    const editorial2sg=/\b(?:second[-\s]person singular|2sg)\b/i
+      .test(String(finiteEntry?.gloss||'')+' '+String(finiteEntry?.note||''));
+    if(!finiteEntry||j.subjectPerson!==(editorial2sg?'2sg':'unresolved')||
+      cl.tokens?.[j.tokenIndex]!==j.written||
+      (p.nounPhrase&&lexicalSource(p.nounPhrase.lemma,p.nounPhrase.written)!==p.nounPhrase.source)||
+      (p.nounPhrase&&editorial2sg)||
+      (p.adverb&&items(dictionary?.words,2000).filter(w=>w.word===p.adverb.lemma&&
+       String(w.pos).startsWith('adverb')&&w.source===p.adverb.source).length!==1)||
+      (p.relational&&items(dictionary?.words,2000).filter(w=>w.word===p.relational.lemma&&
+       w.pos==='relational noun / locative'&&w.source===p.relational.source&&
+       [w.word,...String(w.original||'').split(/[;,/]/)]
+         .some(x=>norm(x.trim())===norm(p.relational.written))).length!==1))continue;
+    const v=variant(i,'source-finite-context',n,p.grade,p.sources);if(!v)continue;
+    const fin=predicate(i,j.written,j.lemma,j.subjectPerson,v,0,j.source,j.tokenIndex);
+    if(fin){
+     const node=byId.get(fin);
+     node.personStatus=j.personStatus;
+     node.tenseStatus=j.tenseStatus;
+     node.agreementCertified=false;
+    }
+    if(p.nounPhrase){
+     const h=p.nounPhrase;
+     const nm=mention(i,{written:h.written,lemma:h.lemma,source:h.source},v,
+       'possible-conditional-nominal-argument');
+     if(fin&&nm)newEdge(fin,nm,'possible-conditional-argument',{
+      readingId:v,roleStatus:h.roleStatus,requiresUnverified3sg:true,
+      agreementCertified:false,referentResolved:false
+     });
+    }
+    if(p.relational){
+     const h=p.relational,t=span(i,h.written);
+     if(t!==null){
+      const loc=newNode('possible-relational-adjunct',{
+       unit:i,tokenIndex:t,written:h.written,lemma:h.lemma,source:h.source,
+       possessorReferent:null,attachment:'unresolved'});
+      if(loc&&fin){
+       newEdge(v,loc,'contains-unresolved-relational',{readingId:v});
+       newEdge(fin,loc,'possible-relational-attachment',{
+        readingId:v,attachmentResolved:false,possessorResolved:false});
+      }
+     }
+    }
+    if(p.adverb){
+     const h=p.adverb,t=span(i,h.written);
+     if(t!==null){
+      const adv=newNode('possible-adverbial-modifier',{
+       unit:i,tokenIndex:t,written:h.written,lemma:h.lemma,
+       source:h.source,scope:'unresolved'});
+      if(adv&&fin){
+       newEdge(v,adv,'contains-possible-adverb',{readingId:v});
+       newEdge(fin,adv,'possible-adverbial-scope',{
+        readingId:v,scopeResolved:false,referentResolved:false});
+      }
+     }
+    }
+   }
    for(const [n,p] of items(cl.nominalInProposals,8).entries()){
     if(!p||p.coverage!==cl.tokens?.length)continue;
     const v=variant(i,'finite-in-complement',n,p.grade,p.sources);if(!v)continue;

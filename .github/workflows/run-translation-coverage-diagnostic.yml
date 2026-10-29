@@ -1,0 +1,31 @@
+name: One-off translation coverage diagnostic (development, not accuracy)
+on:
+  push:
+    branches: [diagnostics/translation-coverage-2026-10-29]
+    paths:
+      - 'tools/diagnose_translation_coverage_batch.js'
+      - '.github/workflows/run-translation-coverage-diagnostic.yml'
+permissions:
+  contents: read
+jobs:
+  pinned-real-text-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Retrieve exact SHA-pinned published development CSV (temporary only)
+        run: |
+          curl --fail --location --show-error --silent --retry 3 --connect-timeout 12 --max-time 120 \
+            "https://raw.githubusercontent.com/ElotlMX/py-elotl/157f34300f4ca92c3d75b74ec14142916d75c30b/elotl/corpora/axolotl.csv" \
+            --output "$RUNNER_TEMP/tlahtolli-axolotl-source.csv"
+      - name: Exercise reproducible 36, 48, 96 and 200-record development cohorts and source excerpts
+        run: |
+          node --check tools/diagnose_translation_coverage_batch.js
+          node tools/diagnose_translation_coverage_batch.js "$RUNNER_TEMP/tlahtolli-axolotl-source.csv"
+      - name: Ensure no misleading translation-accuracy report is admitted
+        run: |
+          node tools/evaluate_translation_readiness.js
+          node tools/test_translation_readiness.js

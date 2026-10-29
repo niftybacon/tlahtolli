@@ -29,7 +29,7 @@ Explicitly reviewed intransitives with a source-listed, identical-vowel 1sg pret
 | [aztayoa](https://nahuatl.wired-humanities.org/content/aztayoa) | verb (intransitive) | Index-sourced; further lexical review pending | — | unverified | withheld: provisional |
 | [ehco](https://en.wiktionary.org/wiki/ehco) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |
 | [ezhuiā](https://en.wiktionary.org/wiki/ezhuia) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |
-| [ichtequi](https://nahuatl.wired-humanities.org/content/ichtequi) | verb (intransitive) | Checked against source | ōnichtec | unverified | direct n-/t- + verified 1sg template |
+| [ichtequi](https://nahuatl.wired-humanities.org/content/ichtequi) | verb (intransitive) | Checked against source | ōnichtec | dictionary | direct n-/t- + verified 1sg template |
 | [icza](https://en.wiktionary.org/wiki/icza) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |
 | [ihca](https://en.wiktionary.org/wiki/ihca) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |
 | [ihcequi](https://en.wiktionary.org/wiki/ihcequi) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |
@@ -53,7 +53,7 @@ Explicitly reviewed intransitives with a source-listed, identical-vowel 1sg pret
 | [ixca](https://en.wiktionary.org/wiki/ixca) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |
 | [ixhui](https://nahuatl.wired-humanities.org/content/ixhui) | verb (intransitive) | Checked against source | onixuic | unverified | direct n-/t- + verified 1sg template |
 | [iztaya](https://nahuatl.wired-humanities.org/content/iztaya) | verb (intransitive) | Checked against source | oniztaz | unverified | direct n-/t- + verified 1sg template |
-| [iztlacati](https://nahuatl.wired-humanities.org/content/iztlacati) | verb (intransitive) | Checked against source | ōniztlacat | unverified | direct n-/t- + verified 1sg template |
+| [iztlacati](https://nahuatl.wired-humanities.org/content/iztlacati) | verb (intransitive) | Checked against source | ōniztlacat | dictionary | direct n-/t- + verified 1sg template |
 | [ohza](https://en.wiktionary.org/wiki/ohza) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |
 | [oncah](https://en.wiktionary.org/wiki/oncah) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |
 | [ono](https://en.wiktionary.org/wiki/ono) | verb (provisional archive index) | Archive-indexed; lexical review pending | — | unverified | withheld: provisional |

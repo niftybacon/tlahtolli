@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-29.8.0",
+  "version": "2026-10-29.9.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -25845,7 +25845,7 @@
       "word": "ichtequi",
       "meaning": "to steal, rob",
       "pos": "verb (intransitive)",
-      "stem": "",
+      "stem": "ichtequi-; ichtec-",
       "original": "",
       "variety": "Classical Nahuatl",
       "status": "Checked against source",
@@ -25860,7 +25860,7 @@
       "absolutive": "",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/ichtequi",
-      "grammarNotes": "Batch 08: Karttunen 1992 p.93; Lockhart 2001 p.219. Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed.",
+      "grammarNotes": "Batch 08: Karttunen 1992 p.93; Lockhart 2001 p.219. Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed. | Batch 09: n- conditioned before initial vowel; source-linked Class 2 base pair. No transitive/weak-i extrapolation.",
       "inflections": [
         {
           "form": "ōnichtec",
@@ -25902,11 +25902,11 @@
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://en.wiktionary.org/wiki/ichtequi",
-          "locator": "",
-          "note": "Source-reviewed lexical item, but no unique source-licensed productive stem class. Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ichtequi",
+          "locator": "Lockhart 2001 p.219 (i)chtequi n. Class 2: ōnichtec; Karttunen 1992 p.93 (I)CHTEQU(I), pret -TEC",
+          "note": "Batch 09 source-documented Class 2 intransitive base pair. Exact ōnichtec = ō augment + n- first-person before vowel + ichtec past stem. Future and plural forms are ONLY grammar hypotheses. Distinct intransitive n. ōnichtec; source also lists transitive niqu. ōniquichtec, which is NOT included in this class/frame. Weak initial-i variation after object prefix remains withheld.",
+          "reviewer": "AI-assisted ODN lexicographic review; Lockhart/Molina/Karttunen locators; no original folio collation",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -27144,7 +27144,7 @@
       "word": "iztlacati",
       "meaning": "to lie, to deceive",
       "pos": "verb (intransitive)",
-      "stem": "",
+      "stem": "iztlacati-; iztlacat-",
       "original": "",
       "variety": "Classical Nahuatl",
       "status": "Checked against source",
@@ -27159,7 +27159,7 @@
       "absolutive": "",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/iztlacati",
-      "grammarNotes": "Batch 08: Molina II f.49v col.1; Lockhart 2001 p.222. Lockhart explicitly marks Class 2. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed.",
+      "grammarNotes": "Batch 08: Molina II f.49v col.1; Lockhart 2001 p.222. Lockhart explicitly marks Class 2. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed. | Batch 09: n- conditioned before initial vowel; source-linked Class 2 base pair. No transitive/weak-i extrapolation.",
       "inflections": [
         {
           "form": "ōniztlacat",
@@ -27201,11 +27201,11 @@
         },
         {
           "field": "stem",
-          "assessment": "unverified",
-          "source": "https://en.wiktionary.org/wiki/iztlacati",
-          "locator": "",
-          "note": "Source-reviewed lexical item, but no unique source-licensed productive stem class. Lockhart explicitly marks Class 2. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule.",
-          "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iztlacati",
+          "locator": "Lockhart 2001 p.222 Class 2: ōniztlacat; Molina 1571 II f.49v col.1 oniztlacat; Karttunen 1992 p.125 (I)ZTLACAT(I)",
+          "note": "Batch 09 source-documented Class 2 intransitive base pair. Exact ōniztlacat = ō augment + n- first-person before vowel + iztlacat past stem. Future and plural forms are ONLY grammar hypotheses. Intransitive ni. Prefix conditioned n- + vowel initial iztlacat. Do not use the transitive/reflexive (I)ZTLACATĪHUA or infer a weak-i-deleting object prefix.",
+          "reviewer": "AI-assisted ODN lexicographic review; Lockhart/Molina/Karttunen locators; no original folio collation",
           "checkedAt": "2026-10-29"
         }
       ]

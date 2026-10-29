@@ -22,10 +22,10 @@ const entries=[
  ['tlachia','tlachix-; tlachia-','onitlachix','nitlachiaz','otitlachix'],
  ['tītlani','tītlan-; tītlani-','ōnictītlan',null,'ōtictītlan']
 ];
-assert.equal(dictionary.version,'2026-10-29.2.0');
-assert.equal(dictionary.words.length,128);
+assert.equal(dictionary.version,'2026-10-29.3.0');
+assert(dictionary.words.length>=128);
 assert.equal(Object.keys(paradigms.paradigms).length,12);
-assert.deepEqual(dictionary.words.slice(-10).map(x=>x.word),entries.map(x=>x[0]));
+assert.deepEqual(dictionary.words.slice(118,128).map(x=>x.word),entries.map(x=>x[0]));
 assert.deepEqual(lex.words.map(x=>x.word),morphology.entries.map(x=>x.word));
 assert.deepEqual(lex.words.map(x=>x.word),evidence.entries.map(x=>x.word));
 const source=read('tools/morphology_engine.js')

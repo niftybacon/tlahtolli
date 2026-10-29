@@ -100,6 +100,55 @@ Only an explicit `approved` status and verified permissions authorize training u
 
 **Do not bulk scrape.** Begin with small, individually reviewed passages, proper attribution, and explicit permission checks.
 
+## First operational development-corpus diagnostics (2026-10-29)
+
+Instead of treating the thousands of available historical parallel fragments as
+unusable until certified for a *blind* evaluation, Tlahtōlli now has a repeatable
+**development analysis** over the *actual pinned* upstream Axolotl CSV:
+
+```sh
+curl -fsSL \
+ https://raw.githubusercontent.com/ElotlMX/py-elotl/157f34300f4ca92c3d75b74ec14142916d75c30b/elotl/corpora/axolotl.csv \
+ -o /tmp/tlahtolli-axolotl.csv
+node tools/diagnose_axolotl_development.js /tmp/tlahtolli-axolotl.csv --limit 36
+node tools/diagnose_axolotl_development.js /tmp/tlahtolli-axolotl.csv --limit 48 --json
+```
+
+The tool reuses the existing lexicon lookup, canonical morphology analyzer and
+source-aware sentence parser. It does **not** create a second translator, infer
+rules from Spanish translations, or copy bilingual passage text into the repo.
+It verifies the original upstream git blob SHA and row/classification totals
+before processing. The bounded sample is deterministic, de-duplicated and
+round-robin stratified by source-work title; the 3–18 word filter prioritizes
+phrase/sentence candidates rather than chapter-length OCR or one-word labels.
+
+This produces exact **in-sample engineering coverage** categories:
+curated lexical forms found/unrecognized, approximate or ambiguous matches,
+unknown tokens with *provisional* morphology analyses, complete indexed
+sentence grammar candidates, source-backed partial grammar windows,
+conditional structural analyses, and source-work-level differences. The
+diagnostic never compares Spanish wording to generated English: those are not
+equivalent representations. A morphology proposal is not counted as a secure
+lexical match; a full grammar candidate is **not** a verified translation.
+
+The GitHub translator regression workflow automatically downloads the exact
+pinned CSV to temporary runner storage, runs a reproducible 36-row sample,
+and reports the aggregate counts without uploading the original bilingual
+sentences or adding examples to `pairs.csv`.
+The separate fixture regression checks sample determinism, non-Classical
+exclusion, duplicate exclusion, source-byte integrity, real-engine use, and
+no fabricated translation score. Developer-created examples exist *only* in
+the fixture tests and do not contribute to the real-corpus report.
+
+**Limitations:** The upstream 'Classical Nahuatl' label is an editorial dataset
+classification. Its Spanish translations can be paraphrastic and its source
+orthography/digitization uneven. Work-level stratification is based on the
+upstream source title. The tool measures *current capability gaps*, not whether
+the original manuscript is authentic or whether a proposed English reading
+would be correct. Fixes must be justified by linguistic evidence; the first
+priority is the highest-impact failure class in the resulting report, not an
+arbitrary additional grammar rule.
+
 ## Seven additional inspected Nahuatl–English anchor pairs (2026-10-29)
 
 [ENL short parallel-anchor pointers](enl_parallel_alignment_pointers.json) record

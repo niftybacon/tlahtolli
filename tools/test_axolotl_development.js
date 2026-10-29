@@ -39,6 +39,11 @@ assert(engines.archive.lookupEvidence('on').total>0,
  'Classical lexical evidence must be accessible from the existing archive');
 assert.equal(engines.lex.stats.passageCandidates,0,
  'No saved sentence translations may be imported into the lexical lookup');
+const q=engines.sentence.analyze('Quil? nichōca.');
+assert.equal(q.complete,false);
+assert.equal(q.clauses[0].tokens.join(' '),'Quil nichōca',
+ 'One question mark must not erase all token diagnostics');
+assert.equal(q.clauses[0].candidates.length,0);
 assert.equal(engines.sentence.analyze('chōca in cihuātl').complete,true,
  'Existing sentence grammar still works; no new constructed parser');
 const sample=[

@@ -1407,7 +1407,16 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  function analyze(input,allowPartialRecovery=true){
   const raw=String(input||'');
   if(raw.length>7000)return {clauses:[],complete:false,reason:'Input exceeds 7000 characters.'};
-  if(/[?¿]/u.test(raw))return {clauses:[{text:raw,tokens:[],candidates:[],complete:false,reason:'Question scope is not yet supported.'}],complete:false};
+  if(/[?¿]/u.test(raw)){
+   // Question scope is NOT licensed by the present finite-clause grammar.
+   // Still retain each original written word for bounded morphology clues:
+   // previously a single ? anywhere in an input discarded every token.
+   const tokens=raw.match(/[\p{L}\p{M}’'\-\u00AF]+/gu)||[];
+   return {clauses:[{text:raw,tokens,candidates:[],complete:false,
+    morphologicalClues:partialClues(tokens),
+    reason:'Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred.'}],
+    complete:false};
+  }
   const multi=analyzeMultiClause(raw);
   if(multi)return multi;
   const clauses=raw.split(/[.!;\n]+/u).filter(s=>s.trim()).map(text=>{

@@ -1870,6 +1870,56 @@ const TlahtolliMorphEngine = (() => {
       parts,example.source,head.locator||'',
       'The 1sg preterite is source-listed; this 2sg substitution is NOT independently attested. No person-plural agreement, irregular-base inference, context-specific tense force or English translation is established.'));
     }
+    // The source may independently specify DIFFERENT present (base 1) and
+    // preterite (base 2) stems. Use them only when this exact documented
+    // preterite validates the shorter stem: never infer an arbitrary class
+    // from a citation headword or from the 36K unreviewed archive.
+    const stemClaim=sourceClaim(w,'stem');
+    const stemBases=String(w.stem||'').split(';')
+     .map(x=>x.trim().match(/^([\p{L}\p{M}]{2,110})-$/u))
+     .filter(Boolean).map(x=>x[1].normalize('NFC').toLocaleLowerCase('en'));
+    const shortBase=remainder.slice(object.length);
+    const classLicensed=stemClaim&&/^https:\/\//u.test(stemClaim.source||'')&&
+     stemBases.length===2&&stemBases.includes(lemma)&&
+     stemBases.includes(shortBase)&&lemma!==shortBase&&
+     // Exact short-base evidence belongs to this lexeme and finite cell.
+     ['verb (intransitive)','verb (transitive)'].includes(pos);
+    if(classLicensed){
+     const stronger=()=>all.some(a=>a.lemma===w.word&&
+      ['manuscript','lexical','grammar','paradigm'].includes(a.grade));
+     // The zero-subject 3sg preterite keeps the *whole* short base and
+     // augment. Object agreement can alternate for transitive third person:
+     // refuse it rather than invent a c-/qui- allomorph.
+     if(pos==='verb (intransitive)'&&written===augment+shortBase&&!stronger())
+      all.push(make(w.word,'Source-stem-class third-person preterite hypothesis','hypothesis',
+       {tense:'Preterite',subject:'3sg',object:'intransitive',
+        stemClass:'Independently located long/short lexical bases'},
+       [{surface:augment,role:'Source-listed preterite augment'},
+        {surface:'Ø',role:'Third-person singular subject (zero prefix)'},
+        {surface:shortBase,role:'Exact source-checked preterite short base'}],
+       stemClaim.source,stemClaim.locator,
+       'The source establishes this lexical short base, not this complete third-person token. Grammatical combination is a NOT independently attested hypothesis, not translated English.'));
+     // Future singular uses the *present* base followed by -z, not the
+     // short preterite base. Only the same explicitly recorded indefinite
+     // object is retained; do NOT extrapolate specific c-/qui- forms.
+     if(pos==='verb (intransitive)'||object==='tla'){
+      const subjects=pos==='verb (intransitive)'?
+       [PEOPLE[0],PEOPLE[1],PEOPLE[2]]:[PEOPLE[0],PEOPLE[1]];
+      for(const who of subjects){
+       const surface=who.surface+object+lemma+'z';
+       if(written!==surface||stronger())continue;
+       all.push(make(w.word,'Source-stem-class future hypothesis','hypothesis',
+        {tense:'Future',subject:who.person,object:objectRole||'intransitive',
+         stemClass:'Source-checked present base with -z future'},
+        [{surface:who.surface||'Ø',role:'Singular subject '+who.person+' (zero for 3sg)'},
+         ...(object?[{surface:object,role:objectRole+'; retained from exact preterite evidence'}]:[]),
+         {surface:lemma,role:'Source-checked long/present lexical base'},
+         {surface:'z',role:'Singular future -z; grammatical rule, not attestation'}],
+        stemClaim.source,stemClaim.locator,
+        'The lexical bases and source-listed 1sg preterite justify a class-limited future hypothesis. The generated whole word is NOT independently attested or a verified contextual translation.'));
+      }
+     }
+    }
     // The citation form is the source-checked present base, but only an
     // INDEPENDENTLY documented object slot (tla or te) licenses transitive
     // present agreement. We do NOT infer arbitrary objects, c/qui
@@ -2002,7 +2052,7 @@ const TlahtolliMorphEngine = (() => {
   }).join('');
   return '<section class="analysis-proposal"><h4>Advanced morphology · '+matches.length+
    ' candidate analysis'+(matches.length===1?'':'es')+'</h4>'+
-   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular present, source-template second-person preterite and source-recorded indefinite-object hypotheses, transitive object, source-bound possessed-noun and separately cited possessive analogies. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
+   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular present, independently checked long/short stem-class future and third-person preterite hypotheses, source-template second-person preterite, source-recorded indefinite objects, transitive objects, and source-bound possession analogies. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
    (hasQuantityAmbiguity?'<p class="analysis-caution">Macron-insensitive matching may collapse historically meaningful vowel length differences. Check the original orthography and context.</p>':'')+
    columns+(matches.length>24?'<p>Showing 24 of '+matches.length+' candidates.</p>':'')+
    '<p class="analysis-caution"><strong>Research boundary:</strong> no analysis proves a manuscript occurrence, contextual interpretation, or unmodeled allomorph. No unattested proposal is added to the public dictionary or evidence ledger.</p></section>';

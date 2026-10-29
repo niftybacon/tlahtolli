@@ -51,6 +51,58 @@ function showResult(){
     for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
    }
+   if(clause.relativeClauseProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-relative-in-proposals';
+    panel.append(el('summary','','In-relative clauses · '+clause.relativeClauseProposals.length+
+     ' unranked head/antecedent alternative'+(clause.relativeClauseProposals.length===1?'':'s')+
+     ' (NOT a verified translation)'));
+    panel.append(el('p','translator-caution',
+     'The first in introduces a noun; the second may introduce a relative. '+
+     'The noun is an explicit head, but its possible role in the relative verb follows agreement constraints—not pronoun identity.'));
+    for(const proposal of clause.relativeClauseProposals){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',proposal.head.written+' → '+proposal.relative.written+
+      ' · '+proposal.relative.headGapRole),
+      el('p','translator-meta','Head: '+proposal.head.lemma+
+       ' · relative verb '+proposal.relative.lemma+' · '+proposal.relative.tense+
+       ' · relative subject agreement '+proposal.relative.subjectPerson),
+      el('p','translator-meta',proposal.construction+' · '+proposal.grade),
+      el('p','translator-caution',proposal.relative.status),
+      el('p','translator-caution',proposal.note));
+     if(proposal.matrix)item.append(el('p','translator-meta',
+      'Matrix verb '+proposal.matrix.written+' · head in '+proposal.matrix.headRole+' slot'));
+     for(const source of proposal.sources){
+      const link=safeLink(source,'Inspect relative grammar evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
+   if(clause.nominalInProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-nominal-in-proposals';
+    panel.append(el('summary','','In-introduced dependent finite clause · '+
+     clause.nominalInProposals.length+' proposal'+(clause.nominalInProposals.length===1?'':'s')+
+     ' (NOT a translation)'));
+    for(const proposal of clause.nominalInProposals){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',proposal.matrix.written+' + in '+
+      proposal.dependent.written),
+      el('p','translator-meta',proposal.construction+' · '+proposal.grade),
+      el('p','translator-meta','Matrix '+proposal.matrix.lemma+
+       ' · indexed '+proposal.matrix.subjectPerson+
+       '; subordinate '+proposal.dependent.lemma+' · indexed '+proposal.dependent.subjectPerson),
+      el('p','translator-caution',proposal.note));
+     for(const source of proposal.sources){
+      const link=safeLink(source,'Inspect subordinate grammar evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.complexClauseProposals?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-complex-clause-proposals';
@@ -242,6 +294,25 @@ function showResult(){
      const link=safeLink(url,'Inspect multi-clause grammar evidence');
      if(link)panel.append(link);
     }
+   }
+   passages.append(panel);
+  }
+  if(result.antecedentProposals?.length){
+   const panel=el('details','translator-morph-panel');
+   panel.className+=' translator-antecedent-proposals';
+   panel.append(el('summary','','Constrained possible antecedents · '+
+    result.antecedentProposals.length+
+    ' (NO pronoun identity resolution)'));
+   for(const candidate of result.antecedentProposals){
+    panel.append(el('p','translator-meta',
+     'Clause '+(candidate.fromClause+1)+' → '+(candidate.toClause+1)+
+     ' · noun '+candidate.antecedent.written+
+     ' · '+candidate.pronounSlot),
+     el('p','translator-caution',candidate.status),
+     el('p','translator-caution',candidate.alternatives),
+     el('p','translator-caution',candidate.note));
+    const source=safeLink(candidate.antecedent.source,'Inspect antecedent noun evidence');
+    if(source)panel.append(source);
    }
    passages.append(panel);
   }

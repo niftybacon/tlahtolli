@@ -452,6 +452,137 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    reason:'Two or more finite-containing units linked by an explicit historical marker. Their relationship is only a bounded structural hypothesis.'
   };
  }
+ // "in" is not always an article: historic Classical sources license
+ // postnominal relatives and certain clausal complements. Each form below
+ // consumes EXACT tokens. No spelling reconstruction or unseen argument.
+ const IN_SOURCES=[
+  'https://nahuatl.wired-humanities.org/content/in',
+  'https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/attributives-relative-clauses-copula-verbs-semiauxiliaries/E39B0BBF93FA2B6E7E906C8F6702EAFB',
+  'https://www.languageinindia.com/nov2011/bedellnawatorugo.pdf'
+ ];
+ const CLAUSE_SOURCE='https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/noun-clauses/F671D417C8996C3D444F793A9B73F550';
+ function finiteAt(token){
+  return (index.get(norm(token))||[]).filter(p=>{
+   const lex=words.filter(w=>w.word===p.lemma&&String(w.pos).startsWith('verb')&&
+    /^https:\/\//.test(w.source||''));
+   return lex.length===1&&/^https:\/\//.test(p.source||'')&&
+    (p.tense==='present'||p.tense==='future');
+  });
+ }
+ function relativeInProposals(tokens,negative){
+  if(negative||!(tokens.length===4||tokens.length===5))return [];
+  const offset=tokens.length===5?1:0;
+  if(offset&&norm(tokens[0])==='in')return [];
+  if(norm(tokens[offset])!=='in'||norm(tokens[offset+2])!=='in')return [];
+  const head=noun(tokens[offset+1]);if(!head||!/^https:\/\//.test(head.source||''))return [];
+  const relatives=finiteAt(tokens[offset+3]);
+  if(!relatives.length)return [];
+  let matrix=[];
+  if(offset){
+   matrix=finiteAt(tokens[0]);
+   if(!matrix.length)return [];
+  }else matrix=[null];
+  const results=[];
+  for(const rel of relatives){
+   // The head noun is third-person singular in our current lexical subset.
+   // 3sg intransitive relative: head as SUBJECT. 1st/2nd-person transitive
+   // relative: head as OBJECT. 3sg transitive: both remain possible.
+   const gaps=!rel.transitive?(rel.person===2?['relative subject']:[]):
+    rel.person===2?['relative subject','relative object']:['relative object'];
+   if(!gaps.length)continue;
+   for(const m of matrix){
+    let matrixSlots=[null];
+    if(m){
+     // The matrix noun can be subject only under indexed 3sg agreement.
+     // For nonthird-person transitive matrix, 3sg head can only be object.
+     // An intransitive nonthird-person matrix cannot absorb a third-party NP.
+     matrixSlots=!m.transitive?(m.person===2?['matrix subject']:[]):
+      m.person===2?['matrix subject','matrix object']:['matrix object'];
+    }
+    for(const gap of gaps)for(const slot of matrixSlots){
+     results.push({
+      grade:'agreement-constrained in-relative hypothesis (NOT an attested sentence translation)',
+      construction:offset?'matrix verb + headed relative noun phrase':'externally headed relative noun phrase (nonfinite)',
+      head:{written:tokens[offset+1],lemma:head.word,meaning:head.meaning,
+       article:tokens[offset],antecedentStatus:'explicit lexical head; referent identity NOT determined'},
+      relative:{marker:tokens[offset+2],written:tokens[offset+3],
+       lemma:rel.lemma,tense:rel.tense,subjectPerson:PERSON_CODES[rel.person],
+       transitive:rel.transitive,headGapRole:gap,
+       status:'possible syntactic antecedent linked by indexed person/object agreement'},
+      matrix:m?{written:tokens[0],lemma:m.lemma,tense:m.tense,
+       subjectPerson:PERSON_CODES[m.person],headRole:slot}:null,
+      coverage:tokens.length,
+      sources:[...new Set([...IN_SOURCES,head.source,rel.source,m?.source].filter(Boolean))],
+      note:'In before the noun is article-like; in before the indexed verb is a possible relative introducer. '+
+       'The head may fill only a person-compatible omitted argument slot. 3sg transitive ambiguity is retained '+
+       'as separate unranked subject/object readings; it does not identify a pronoun, speaker or real-world entity. '+
+       'Verb cells are generated, not independently attested. No other subordinate senses are ruled out.'
+     });
+     if(results.length>=12)return results;
+    }
+   }
+  }
+  return results;
+ }
+ function nominalInProposals(tokens,negative){
+  // Source-based nominal/complement ambiguity, not a universal "in V" rule.
+  // Permit ONLY a source-supported matrix predicate with a 3sg object index.
+  if(negative||tokens.length!==3||norm(tokens[1])!=='in')return [];
+  const matrix=finiteAt(tokens[0]).filter(p=>p.transitive&&
+   (p.lemma==='mati'||p.lemma==='itta'));
+  const embedded=finiteAt(tokens[2]);
+  if(!matrix.length||!embedded.length)return [];
+  const proposals=[];
+  for(const m of matrix)for(const e of embedded){
+   proposals.push({
+    grade:'in-introduced clausal-dependency hypothesis (argument/adjunct unresolved)',
+    construction:'possible nominalized complement or adverbial subordinate clause',
+    matrix:{written:tokens[0],lemma:m.lemma,subjectPerson:PERSON_CODES[m.person],
+     objectAgreement:'3sg indexed; clause as referent is a hypothesis'},
+    dependent:{marker:tokens[1],written:tokens[2],lemma:e.lemma,
+     subjectPerson:PERSON_CODES[e.person],tense:e.tense,
+     subjectStatus:'indexed person, not resolved to an individual'},
+    coverage:3,sources:[...new Set([...IN_SOURCES,CLAUSE_SOURCE,m.source,e.source])],
+    note:'This in precedes a FINITE indexed verb, not a noun headword. '+
+     'A dependent clause is structurally possible, but no clause type, causal/purpose/temporal sense, '+
+     'cross-clause coreference or authoritative English complement is inferred.'
+   });
+  }
+  return proposals.slice(0,8);
+ }
+ function possibleAntecedents(clauses){
+  const links=[];
+  for(let i=1;i<clauses.length;i++){
+   const first=clauses[i-1],second=clauses[i];
+   // Previous simple clause must have exactly one unambiguous overt 3sg
+   // intransitive subject. No object, other noun, or source-only reading.
+   const earlier=(first.candidates||[]).filter(c=>c.grade==='grammar-derived candidate');
+   const later=(second.candidates||[]).filter(c=>c.grade==='grammar-derived candidate');
+   if(!earlier.length||!later.length||
+    first.relativeClauseProposals?.length||second.relativeClauseProposals?.length||
+    first.complexClauseProposals?.length||second.complexClauseProposals?.length)continue;
+   const participants=new Set(earlier.map(c=>JSON.stringify([
+    c.frame.subjectPerson,c.frame.subjectNoun,c.frame.objectNoun,c.frame.predicate])));
+   const next=new Set(later.map(c=>JSON.stringify([
+    c.frame.subjectPerson,c.frame.subjectNoun,c.frame.objectNoun,c.frame.predicate])));
+   if(participants.size!==1||next.size!==1)continue;
+   const prev=earlier[0].frame,nextFrame=later[0].frame;
+   if(prev.subjectPerson!==2||!prev.subjectNoun||prev.objectNoun||
+    nextFrame.subjectPerson!==2||nextFrame.subjectNoun||nextFrame.objectNoun)continue;
+   const n=noun(prev.subjectNoun);
+   if(!n||!/^https:\/\//.test(n.source||''))continue;
+   links.push({
+    fromClause:i-1,toClause:i,
+    antecedent:{written:n.word,meaning:n.meaning,source:n.source},
+    pronounSlot:'unexpressed 3sg subject indexed on subsequent finite verb',
+    status:'single agreement-compatible antecedent candidate, NOT resolved reference',
+    alternatives:'Unmentioned third-person discourse referents may still be intended.',
+    note:'Adjacent clause and matching 3sg subject agreement license only a candidate. '+
+      'This DOES NOT prove that the same person or entity acts in both clauses.'
+   });
+  }
+  return links;
+ }
  function analyze(input){
   const raw=String(input||'');
   if(raw.length>7000)return {clauses:[],complete:false,reason:'Input exceeds 7000 characters.'};
@@ -501,6 +632,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    }
    return {text,tokens:original,candidates,complete:candidates.length>0,
     fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),
+    relativeClauseProposals:candidates.length?[]:relativeInProposals(original,negative),
+    nominalInProposals:candidates.length?[]:nominalInProposals(original,negative),
     locativeInterpretations:candidates.length?[]:locativeAnalyze(tokens,negative),
     complexClauseProposals:candidates.length?[]:finiteLocativeProposals(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
@@ -509,7 +642,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
     reason:candidates.length?'':'Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.'};
   });
   return {clauses,complete:clauses.length>0&&clauses.every(c=>c.complete),
-   contextLinks:explicitContextLinks(clauses)};
+   contextLinks:explicitContextLinks(clauses),
+   antecedentProposals:possibleAntecedents(clauses)};
  }
  return {analyze};
 }

@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.1.0",
+  "version": "2026-10-29.2.0",
   "entries": [
     {
       "word": "ātl",
@@ -3758,6 +3758,334 @@
       "grammarSource": "https://nahuatl.wired-humanities.org/content/ompa",
       "grammarNotes": "Molina source spelling ompa; Karttunen/Carochi discuss editorial long initial vowel. The early spelling is not a context-selected length or an automatically spatial reading.",
       "inflections": [],
+      "formsEdited": false
+    },
+    {
+      "word": "tēmi",
+      "variety": "Classical Nahuatl",
+      "stem": "tēn-; tēmi-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/temi",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "tēmi",
+          "category": "Dictionary headword",
+          "gloss": "to be full; to fill up (intransitive)",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temi",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "ōnitēn",
+          "category": "Preterite 1sg (Lockhart or Molina)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/temi",
+          "note": "Lockhart (2001) p.233: ōnitēn. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "huetzi",
+      "variety": "Classical Nahuatl",
+      "stem": "huetz-; huetzi-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/huetzi",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "huetzi",
+          "category": "Dictionary headword",
+          "gloss": "to fall; fall down",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "ōnihuetz",
+          "category": "Preterite 1sg (Lockhart or Molina)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+          "note": "Lockhart (2001) p.218: ōnihuetz. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlācati",
+      "variety": "Classical Nahuatl",
+      "stem": "tlācat-; tlācati-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlacati",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "tlācati",
+          "category": "Dictionary headword",
+          "gloss": "to be born",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "ōnitlācat",
+          "category": "Preterite 1sg (Lockhart or Molina)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+          "note": "Lockhart (2001) p.235: ōnitlācat. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "nāhuati",
+      "variety": "Classical Nahuatl",
+      "stem": "nāhuat-; nāhuati-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nahuati",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "nāhuati",
+          "category": "Dictionary headword",
+          "gloss": "to speak clearly or loudly; to make a clear sound",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "ōnināhuat",
+          "category": "Preterite 1sg (Lockhart or Molina)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+          "note": "Lockhart (2001) p.226: ōnināhuat. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlatzihui",
+      "variety": "Classical Nahuatl",
+      "stem": "tlatziuh-; tlatzihui-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/node/176525",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "tlatzihui",
+          "category": "Dictionary headword",
+          "gloss": "to be idle, lazy or slothful",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176525",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "ōnitlatziuh",
+          "category": "Preterite 1sg (Lockhart or Molina)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/176525",
+          "note": "Lockhart (2001) p.239: ōnitlatziuh. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "patlāni",
+      "variety": "Classical Nahuatl",
+      "stem": "patlān-; patlāni-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/patlani",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "patlāni",
+          "category": "Dictionary headword",
+          "gloss": "to fly",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/patlani",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "ōnipatlān",
+          "category": "Preterite 1sg (Lockhart or Molina)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/patlani",
+          "note": "Lockhart (2001) p.229: ōnipatlān. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlanahui",
+      "variety": "Classical Nahuatl",
+      "stem": "tlanauh-; tlanahui-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlanahui",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "tlanahui",
+          "category": "Dictionary headword",
+          "gloss": "to worsen or become gravely ill",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "ōnitlanauh",
+          "category": "Preterite 1sg (Lockhart or Molina)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+          "note": "Lockhart (2001) p.237: ōnitlanauh. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tequi",
+      "variety": "Classical Nahuatl",
+      "stem": "tec-; tequi-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tequi",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "tequi",
+          "category": "Dictionary headword",
+          "gloss": "to cut or cut off something",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequi",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "onitlatec",
+          "category": "Preterite 1sg, unspecified object (Molina 1571)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequi",
+          "note": "Molina (1571), II f.105r col.2: pret. onitlatec. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        },
+        {
+          "form": "ōnictec",
+          "category": "Preterite 1sg, specific object (Lockhart 2001)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequi",
+          "note": "Lockhart (2001), p.234: ōnictec. Lexicographic form, not verified corpus attestation."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tlachia",
+      "variety": "Classical Nahuatl",
+      "stem": "tlachix-; tlachia-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlachia",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "tlachia",
+          "category": "Dictionary headword",
+          "gloss": "to look; to observe or watch",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlachia",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "onitlachix",
+          "category": "Preterite 1sg (Lockhart or Molina)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlachia",
+          "note": "Molina (1571), II f.117r col.1: onitlachix. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
+      "formsEdited": false
+    },
+    {
+      "word": "tītlani",
+      "variety": "Classical Nahuatl",
+      "stem": "tītlan-; tītlani-",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "inapplicable",
+      "absolutive": "not applicable",
+      "possessed": "",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/titlani",
+      "grammarNotes": "Only two citation/preterite bases recorded for this lemma. Other tenses and persons require an independently licensed morphological rule and retain hypothesis status. No 60-cell table is asserted.",
+      "inflections": [
+        {
+          "form": "tītlani",
+          "category": "Dictionary headword",
+          "gloss": "to send a messenger; to dispatch someone on an errand",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/titlani",
+          "note": "Source-listed citation lemma; editorial long-vowel normalization follows Karttunen/Lockhart when available, not an original-text occurrence."
+        },
+        {
+          "form": "ōnictītlan",
+          "category": "Preterite 1sg, specific object (Lockhart 2001)",
+          "gloss": "",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/titlani",
+          "note": "Lockhart (2001), p.235: ōnictītlan. A grammar/dictionary preterite example is not independently collated manuscript text; the ō- and long vowels may reflect editorial normalization."
+        }
+      ],
       "formsEdited": false
     }
   ]

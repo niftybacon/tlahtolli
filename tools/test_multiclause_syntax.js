@@ -40,7 +40,7 @@ assert.equal(linked('ninemi, auh nichōca','explicit discourse / clause coordina
 const three=linked('ninemi auh nichōca auh niquitta in cihuātl',
  'explicit discourse / clause coordination',3).link;
 assert.deepEqual(Array.from(three.markers),['auh','auh']);
-assert.equal(three.coverage,6);
+assert.equal(three.coverage,7);
 assert.equal(linked('ahmo ninemi auh niquittaz in cihuātl',
  'explicit discourse / clause coordination',2).link.segments[0].text,'ahmo ninemi');
 const conditional=linked('intla ninemi, nichōca','conditional antecedent and consequent',2).link;

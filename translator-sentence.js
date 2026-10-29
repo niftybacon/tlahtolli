@@ -363,10 +363,98 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
   }
   return links;
  }
+ // Only overt, independently documented clause-linking markers. "auh" can
+ // mean and/but/new discourse turn, so this yields a structural link, never a
+ // selected English conjunction. Conditional intla needs an explicit boundary.
+ const MULTICLAUSE_GRAMMAR={
+  auh:'https://nahuatl.wired-humanities.org/node/171956',
+  intla:'https://nahuatl.wired-humanities.org/content/intla',
+  conditions:'https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/conditions-more-particles/76A81C0D005DA60A951D4B578416020A'
+ };
+ function analyzeMultiClause(raw){
+  if(typeof raw!=='string'||raw.length>7000||raw.length<8||
+   /[?¿!¡."“”()\n]/u.test(raw))return null;
+  const input=raw.trim(),parts=[];
+  let relation,marker,markers=[];
+  if(/^intla\s/iu.test(input)){
+   // Require a visible comma or semicolon separating condition and outcome.
+   // No nested connectives, conditional-negative contractions or unknown mood.
+   const match=/^intla\s+([^,;]+?)\s*[,;]\s*([^,;]+?)$/iu.exec(input);
+   if(!match)return null;
+   if(/\bauh\b|\bintla\b|\bihuan\b/iu.test(match[1]+' '+match[2]))return null;
+   parts.push(match[1].trim(),match[2].trim());
+   relation='conditional antecedent and consequent';
+   marker='intla';markers=['intla'];
+  }else{
+   if(!/\bauh\b/iu.test(input))return null;
+   // "auh" only: other conjunctives such as ihuan can connect nouns or
+   // differently scoped constituents; don't silently reclassify them.
+   if(/\bintla\b|\bihuan\b/iu.test(input))return null;
+   const split=input.split(/\s*,?\s+auh\s+/iu).map(x=>x.trim());
+   if(split.length<2||split.length>3||split.some(x=>!x||/[,;]/u.test(x)))return null;
+   parts.push(...split);relation='explicit discourse / clause coordination';
+   marker='auh';markers=split.slice(1).map(()=>marker);
+  }
+  if(parts.some(x=>x.length>500||/[\p{C}]/u.test(x)))return null;
+  const children=[];
+  for(const part of parts){
+   const r=analyze(part);
+   if(r.clauses?.length!==1||r.multiClauseProposals?.length)return null;
+   const clause=r.clauses[0];
+   // Accept only grammar-indexed finite forms (not a merely recorded
+   // isolated gloss) or the already bounded finite+locative composition.
+   const complete=(clause.candidates||[]).filter(c=>
+    c.grade==='grammar-derived candidate'&&c.coverage===clause.tokens.length);
+   const complex=(clause.complexClauseProposals||[]).filter(c=>
+    c.grade==='grammar-composed verb + relational location (unattested; NOT a verified translation)'&&
+    c.coverage===clause.tokens.length);
+   if(!complete.length&&!complex.length)return null;
+   children.push({clause,finiteReadings:complete,complexReadings:complex});
+  }
+  const clauses=children.map(c=>c.clause);
+  const segments=children.map((item,i)=>{
+   const finite=item.finiteReadings.length?item.finiteReadings:item.complexReadings;
+   const subjectPersons=[...new Set(finite.map(c=>
+    item.finiteReadings.length?PERSON_CODES[c.frame.subjectPerson]:c.verb.subjectPerson))];
+   return {
+    index:i,text:parts[i],
+    role:relation==='conditional antecedent and consequent'?
+     i===0?'conditional antecedent (mood/force NOT independently verified)':
+      'proposed consequent (consequence type NOT independently verified)':
+     'independent clause / discourse unit',
+    finiteAnalysisKind:item.finiteReadings.length?'indexed complete clause grammar':
+     'finite+locative structural proposals only',
+    alternativeCount:finite.length,
+    subjectPersons,
+    locationExpressions:[...new Set(item.complexReadings.map(c=>c.location.written))],
+    unresolved:item.finiteReadings.length?
+     'Grammar-derived English sense candidates are NOT exhaustive or independently verified':
+     'Locative attachment and lexical senses remain unresolved; not a completed sentence translation'
+   };
+  });
+  return {
+   clauses,complete:false,
+   contextLinks:explicitContextLinks(clauses),
+   multiClauseProposals:[{
+    relation,markers,segments,
+    clauseCount:parts.length,
+    coverage:parts.reduce((total,x)=>total+x.split(/\s+/u).length,0)+markers.length,
+    grade:'overt Classical clause-linking hypothesis (NOT an independently verified translation)',
+    sources:[MULTICLAUSE_GRAMMAR[marker],...(marker==='intla'?[MULTICLAUSE_GRAMMAR.conditions]:[]),
+     grammar,tenseSource],
+    note:marker==='auh'?
+     'Auh marks a clause or discourse transition and may have continuative or contrastive force. Its English value (and/but/well) is NOT selected. No omitted subject, logical entailment or shared speaker is inferred.':
+     'Intla introduces a conditional antecedent in historical grammar, but verb mood, type of condition, truth, causal relation and English if/then realization are NOT established by this bounded pattern. The comma/semicolon is a user-provided segmentation cue, not verified manuscript punctuation.'
+   }],
+   reason:'Two or more finite-containing units linked by an explicit historical marker. Their relationship is only a bounded structural hypothesis.'
+  };
+ }
  function analyze(input){
   const raw=String(input||'');
   if(raw.length>7000)return {clauses:[],complete:false,reason:'Input exceeds 7000 characters.'};
   if(/[?¿]/u.test(raw))return {clauses:[{text:raw,tokens:[],candidates:[],complete:false,reason:'Question scope is not yet supported.'}],complete:false};
+  const multi=analyzeMultiClause(raw);
+  if(multi)return multi;
   const clauses=raw.split(/[.!;\n]+/u).filter(s=>s.trim()).map(text=>{
    const tokens=text.trim().split(/\s+/u),original=tokens.slice();
    let negative=false;

@@ -327,7 +327,119 @@ function create(dictionary){
     nestedDependencies:edges.filter(e=>e.relation==='in-subordinate-dependency').length,
     antecedentCandidates:edges.filter(e=>e.relation==='antecedent-candidate').length}};
  }
- return {build};
+ // Inspect output from the EXISTING English composer; do not realize text or
+ // derive new grammar here. Every relative wording must map to a reading
+ // alternative already admitted by THIS source-gated graph and its role audit.
+ // Finite/location text remains delegated to the existing source-aware composer
+ // and is labeled accordingly, never claimed to be IR-confirmed translation.
+ function auditEnglish(composition,analysis,graph){
+  const fail=reason=>({available:false,verified:false,reason,units:[],joins:[],
+   audit:{scope:'structural provenance only; not historical translation verification',
+    approved:0,rejected:0,graphMatchedRelatives:0}});
+  if(!composition?.available)return composition;
+  const units=composition.units,clauses=analysis?.clauses;
+  if(graph?.schema!=='tlahtolli-grammar-ir-v1'||
+   !Array.isArray(units)||!Array.isArray(clauses)||units.length!==clauses.length||
+   !Array.isArray(graph.clauseIds)||graph.clauseIds.length!==clauses.length||
+   !Array.isArray(graph.alternatives)||!Array.isArray(graph.edges)||
+   !Array.isArray(composition.joins)||composition.joins.length!==units.length-1)
+   return fail('Shared grammatical evidence is unavailable or disagrees with the passage.');
+  const isSourceList=list=>Array.isArray(list)&&list.length>0&&
+   list.every(u=>source(u)!==null);
+  const hasSources=(option,needed)=>isSourceList(option?.sources)&&
+   isSourceList(needed)&&needed.every(u=>option.sources.includes(u));
+  const frameSame=(a,b)=>!!a&&!!b&&
+   ['subjectPerson','subjectNoun','objectNoun','predicate','tense','negative']
+    .every(k=>a[k]===b[k]);
+  const PERSONS=['1sg','2sg','3sg','1pl','2pl','3pl'];
+  const counters={approved:0,rejected:0,graphMatchedRelatives:0,
+   existingFinite:0,existingLocation:0};
+  const approved=units.map((unit,i)=>{
+   const cl=clauses[i],options=[];
+   if(unit.index!==i||unit.written!==String(cl?.text||'').trim()||
+    !Array.isArray(unit.options)||unit.options.length>128)return {...unit,options};
+   for(const option of unit.options){
+    const st=option?.structure;
+    if(!st||typeof option.text!=='string'||!option.text.trim()||
+     !isSourceList(option.sources)){counters.rejected++;continue;}
+    let status=null;
+    if(st.kind==='finite'){
+     const accepted=(cl.candidates||[]).some(c=>
+      c?.grade==='grammar-derived candidate'&&
+      c.coverage===cl.tokens?.length&&frameSame(c.frame,st.frame)&&
+      Array.isArray(c.english)&&c.english.includes(option.text)&&
+      hasSources(option,c.sources));
+     if(accepted){status='existing-indexed-finite-source';counters.existingFinite++;}
+    }else if(st.kind==='headed-relative'){
+     for(const [n,r] of (cl.relativeClauseProposals||[]).entries()){
+      if(r.coverage!==cl.tokens?.length||!r.matrix||
+       st.head!==r.head?.lemma||
+       st.relativeGap!==r.relative?.headGapRole||
+       st.matrixRole!==r.matrix?.headRole||
+       !st.relativeFrame||!st.matrixFrame||
+       st.relativeFrame.predicate!==r.relative.lemma||
+       st.relativeFrame.tense!==r.relative.tense||
+       PERSONS[st.relativeFrame.subjectPerson]!==r.relative.subjectPerson||
+       st.matrixFrame.predicate!==r.matrix.lemma||
+       st.matrixFrame.tense!==r.matrix.tense||
+       PERSONS[st.matrixFrame.subjectPerson]!==r.matrix.subjectPerson||
+       !hasSources(option,r.sources))continue;
+      const alt=graph.alternatives.find(a=>a.unit===i&&
+       a.family==='headed-in-relative'&&a.index===n);
+      if(!alt||!hasSources({sources:alt.sources},r.sources))continue;
+      const edges=graph.edges.filter(e=>e.readingId===alt.id&&
+       e.status==='candidate-only'&&e.notIdentity===true);
+      if(!edges.some(e=>e.relation==='possible-relative-gap'&&
+       e.gapRole===st.relativeGap)||
+       !edges.some(e=>e.relation==='possible-matrix-argument'&&
+       e.role===st.matrixRole))continue;
+      status='graph-consistent-relative-roles';
+      counters.graphMatchedRelatives++;
+      break;
+     }
+    }else if(st.kind==='relational-location'){
+     // The shared IR does NOT parse relational locations. Retain only an
+     // already licensed full-coverage location proposal and clearly label
+     // that its attachments are outside the current IR agreement audit.
+     const accepted=(cl.complexClauseProposals||[]).some(p=>
+      p?.grade==='grammar-composed verb + relational location (unattested; NOT a verified translation)'&&
+      p.coverage+(p.verb?.negative?1:0)===cl.tokens?.length&&
+      p.verb?.lemma===st.frame?.predicate&&
+      p.verb?.tense===st.frame?.tense&&
+      p.location?.place?.lemma===st.place&&
+      p.location?.relation?.lemma===st.relation&&
+      (p.location.possibleSenses||[]).includes(st.selectedRelation)&&
+      ((st.attachment==='event'&&
+       p.location.attachmentAlternatives?.includes('possible clause/event location'))||
+       (['subject','object'].includes(st.attachment)&&
+       p.location.attachmentAlternatives?.includes('possible modification of the overt noun phrase')))&&
+      hasSources(option,p.sources));
+     if(accepted){status='existing-location-scope-not-ir-audited';counters.existingLocation++;}
+    }
+    if(!status){counters.rejected++;continue;}
+    counters.approved++;
+    options.push({...option,grammarAudit:{
+     status,sourceBounded:true,verifiedTranslation:false,
+     note:status==='graph-consistent-relative-roles'?
+      'The relative and matrix roles occur in one admitted grammar-IR alternative; this does not prove the English wording or referent identity.':
+      status==='existing-location-scope-not-ir-audited'?
+       'Location attachment was licensed by the separate location analyzer; the grammar IR has NOT checked that attachment.':
+       'Finite wording was sourced from an existing full-coverage indexed reading, not a grammatical IR role verdict.'}});
+   }
+   return {...unit,options};
+  });
+  if(approved.some(u=>!u.options.length))return fail(
+   'The grammar graph rejected one or more English clause readings; inspect the structural candidates instead.');
+  return {...composition,units:approved,verified:false,
+   audit:{...counters,scope:'structural provenance, never historical truth or entity identity',
+    optionsRetained:approved.every(u=>u.options.length>0)},
+   note:composition.note+' Grammar-graph audit: '+counters.graphMatchedRelatives+
+    ' relative role reading(s) matched a single source-bounded alternative; '+
+    counters.existingFinite+' finite and '+counters.existingLocation+
+    ' location reading(s) keep their existing analyzers. Rejected '+counters.rejected+
+    ' unsupported option(s). This is not a verified translation.'};
+ }
+ return {build,auditEnglish};
 }
 root.TlahtolliGrammarIR={create};
 })(typeof window==='undefined'?globalThis:window);

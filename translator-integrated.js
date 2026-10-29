@@ -171,6 +171,16 @@ function showResult(){
        'Finite leaf: '+p.terminal.written+' · '+p.terminal.subjectPerson),
       el('p','translator-meta','Exact token coverage: '+p.coverage+' · '+p.grade),
       el('p','translator-caution',p.note));
+     if(p.terminal.kind==='headed-relative'&&p.terminal.head.possessiveEvidence){
+      item.append(
+       el('p','translator-meta','Source-listed possessed relative head: '+
+        p.terminal.head.possessiveEvidence.written+
+        ' · nominal possessor '+p.terminal.head.possessor),
+       el('p','translator-caution',p.terminal.head.possessorStatus),
+       el('p','translator-caution',
+        'Possession is lexical evidence for the noun only; neither the outer '+
+        'matrix subject nor the inner relative subject is identified with its possessor.'));
+     }
      for(const source of p.sources||[]){
       const link=safeLink(source,'Inspect nested grammar evidence');
       if(link)item.append(link);

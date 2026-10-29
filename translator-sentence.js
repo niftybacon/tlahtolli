@@ -381,7 +381,10 @@ function create(dictionary,paradigms,morphology,researchExamples,locative){
    // No nested connectives, conditional-negative contractions or unknown mood.
    const match=/^intla\s+([^,;]+?)\s*[,;]\s*([^,;]+?)$/iu.exec(input);
    if(!match)return null;
-   if(/\bauh\b|\bintla\b|\bihuan\b/iu.test(match[1]+' '+match[2]))return null;
+   if(/\bauh\b|\bintla\b|\bihuan\b/iu.test(match[1]+' '+match[2])||
+    /^ahm[oō]\s/iu.test(match[1].trim()))return null;
+   // Negative protasis is historically marked with a different conjunction
+   // (intlācamo), not an automatically generated "intla ahmo" sequence.
    parts.push(match[1].trim(),match[2].trim());
    relation='conditional antecedent and consequent';
    marker='intla';markers=['intla'];

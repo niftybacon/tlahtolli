@@ -692,7 +692,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     c.grade==='grammar-derived candidate'&&c.coverage===clause.tokens.length);
    const complex=(clause.complexClauseProposals||[]).filter(c=>
     c.grade==='grammar-composed verb + relational location (unattested; NOT a verified translation)'&&
-    c.coverage===clause.tokens.length);
+    // Locative parsing receives tokens after the clause-initial negative.
+    c.coverage+(c.verb.negative?1:0)===clause.tokens.length);
    const nested=(clause.nestedInProposals||[]).filter(c=>c.coverage===clause.tokens.length);
    const dependent=(clause.nominalInProposals||[]).filter(c=>c.coverage===clause.tokens.length);
    const relative=(clause.relativeClauseProposals||[]).filter(c=>
@@ -1078,8 +1079,16 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    antecedentProposals:possibleAntecedents(clauses),
    discourseReferenceProposals:discourseReferenceProposals(clauses)};
  }
- return {analyze};
+ // Reuse citation-noun wording without inventing English number for inflected forms.
+ function describeNoun(written){
+  const n=noun(written);
+  if(!n||!/^https:\/\//u.test(n.source||''))return null;
+  return {lemma:n.word,text:nounLabel(n),
+   sense:{lemma:n.word,selected:nouns[n.word]||null,fullMeaning:n.meaning,source:n.source}};
+ }
+ return {analyze,describeNoun};
 }
 root.TlahtolliSentence={create};
 })(window);
+
 

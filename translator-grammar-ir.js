@@ -231,7 +231,6 @@ function create(dictionary){
       (p.adverb&&items(dictionary?.words,2000).filter(w=>w.word===p.adverb.lemma&&
        String(w.pos).startsWith('adverb')&&w.source===p.adverb.source).length!==1))continue;
     const v=variant(i,'source-finite-context',n,p.grade,p.sources);if(!v)continue;
-    const j=p.verb;
     const fin=predicate(i,j.written,j.lemma,j.subjectPerson,v,0,j.source,j.tokenIndex);
     if(fin){
      const node=byId.get(fin);

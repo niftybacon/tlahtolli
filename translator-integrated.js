@@ -482,6 +482,30 @@ function showResult(){
     }
     block.append(panel);
    }
+   if(clause.coordinatedSubjectProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-coordinated-subject';
+    panel.append(el('summary','','Coordinated nouns + finite predicate · '+
+     clause.coordinatedSubjectProposals.length+' agreement-licensed structural candidate(s) · NOT a translation'));
+    panel.append(el('p','translator-caution',
+     'The existing noun-coordination parser and exact indexed intransitive verb are connected only where curated animacy and a separate Classical agreement source permit it. This is NOT an attested sentence, ranked interpretation, verified subject identity or English translation.'));
+    for(const p of clause.coordinatedSubjectProposals){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',p.written.join(' ')),
+      el('p','translator-meta','Predicate: '+p.predicate.written+' ('+
+       p.predicate.lemma+', '+p.predicate.subjectPerson+', '+p.predicate.tense+')'),
+      el('p','translator-meta','Conditional subject heads: '+
+       p.nominal.nouns.map(n=>n.headword).join(' / ')+
+       ' · cited lexical animacy: '+p.nominalAnimacy),
+      el('p','translator-caution',p.note));
+     for(const url of p.sources){
+      const link=safeLink(url,'Inspect agreement and nominal evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.partialSpans?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-partial-grammar-spans';
@@ -942,13 +966,17 @@ async function init(){
     script.onload=resolve;script.onerror=reject;window.document.head.append(script);
    });
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
-   if(response.ok&&window.TlahtolliSentence)sentenceModel=window.TlahtolliSentence.create(
-    document,await response.json(),
+   if(response.ok&&window.TlahtolliSentence){
+    const parsedParadigms=await response.json();
+    grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages,parsedParadigms)||null;
+    sentenceModel=window.TlahtolliSentence.create(
+    document,parsedParadigms,
     explainMorphology,corpus,locative,
     clauseGrammar.status==='fulfilled'?clauseGrammar.value:null,
     possessiveEvidence.status==='fulfilled'?possessiveEvidence.value:null,
     sourceFiniteEvidence.status==='fulfilled'?sourceFiniteEvidence.value:null,
     citedPassages);
+   }
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(sentenceModel)try{
    if(!window.TlahtolliEnglish)await new Promise((resolve,reject)=>{

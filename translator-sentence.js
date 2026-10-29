@@ -319,6 +319,58 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  }
 
 
+ // Attach the EXISTING noun-coordination analysis to an indexed INTRANSITIVE
+ // third-person finite predicate only when independently documented number
+ // agreement and the curated noun animacy classes permit the proposal.
+ // This does not declare a historical sentence or produce English wording.
+ const COORDINATED_AGREEMENT_SOURCE='https://gdn.iib.unam.mx/diccionario/ihuan/50956';
+ function coordinatedSubjectProposals(tokens,negative){
+  if(negative||tokens.length<4||tokens.length>6)return [];
+  const out=[];
+  for(const position of [0,tokens.length-1]){
+   const verb=tokens[position],start=position===0?1:0;
+   const nominalTokens=position===0?tokens.slice(1):tokens.slice(0,-1);
+   const nps=nominalCoordinationProposals(nominalTokens,false);
+   if(nps.length!==1)continue;
+   const np=nps[0];
+   const entries=np.nouns.map(h=>noun(tidyCoordToken(h.written)));
+   if(entries.some((x,i)=>!x||x.word!==np.nouns[i].headword||
+      x.source!==np.nouns[i].headSource||
+      !['animate','inanimate'].includes(x.animacy)))continue;
+   if(entries[0].animacy!==entries[1].animacy)continue;
+   const animacy=entries[0].animacy;
+   const lexicalVerbs=index.get(norm(verb))||[];
+   for(const parse of lexicalVerbs){
+    if(parse.transitive||![2,5].includes(parse.person)||parse.tense!=='present')continue;
+    // An inanimate pair can only accompany singular verbal agreement;
+    // two animate singulars may take singular OR plural, not an inferred choice.
+    if(animacy==='inanimate'&&parse.person!==2)continue;
+    const lexical=words.filter(w=>w.word===parse.lemma&&w.source===parse.source);
+    if(lexical.length!==1||!/^https:\/\/[^/\s]+/u.test(parse.source||''))continue;
+    const agreement=parse.person===2?'3sg':'3pl';
+    const sources=[...new Set([...np.sources,parse.source,grammar,
+      COORDINATED_AGREEMENT_SOURCE])];
+    out.push({family:'coordinated-subject-attachment',coverage:tokens.length,
+     written:tokens.slice(),nominalStart:start,nominal:np,
+     predicate:{written:verb,tokenIndex:position,lemma:parse.lemma,
+      tense:parse.tense,transitive:false,subjectPerson:agreement,source:parse.source},
+     nominalAnimacy:animacy,possibleRole:'coordinated nominal subject',
+     subjectAgreement:agreement,numberAgreementSource:COORDINATED_AGREEMENT_SOURCE,
+     grade:'source-licensed coordination + indexed intransitive agreement hypothesis; NOT a translation',
+     sources,
+     note:'A complete-token structural hypothesis, NOT an independently attested '+ 
+      'sentence or English translation. Two singular citation nouns are joined '+ 
+      'by an unresolved and/with construction; grammatical subject attachment '+ 
+      'is a conditional proposal, not a resolved meaning. The independent '+ 
+      'Classical source permits singular or plural agreement with two animate '+ 
+      'singulars, but only singular with inanimates. Lexical sense, coordination '+ 
+      'versus comitative scope, discourse reference and actual occurrence remain unverified.'});
+   }
+  }
+  return out.slice(0,8);
+ }
+
+
  // General Classical-period comparative-fragment rule. The morphological
  // composition is reusable for *unique curated nouns*, not restricted to the
  // one Florentine Codex example that first motivated it. It is not a clause.
@@ -1300,6 +1352,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  function recoverPartialSpans(clause){
   const original=clause.tokens||[];
   if(clause.complete||clause.nominalCoordinationProposals?.length||
+     clause.coordinatedSubjectProposals?.length||
      original.length<4||original.length>18)return [];
   if(original.some(t=>typeof t!=='string'||t.length>120||
     /[()[\]{}<>]/u.test(t)))return [];
@@ -1403,6 +1456,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     morphosyntactic: morphologyClauseCandidates(tokens,negative),
     historicalFiniteProposals:candidates.length?[]:historicalFiniteContextProposals(tokens,negative),
     nominalCoordinationProposals:candidates.length?[]:nominalCoordinationProposals(tokens,negative),
+    coordinatedSubjectProposals:candidates.length?[]:coordinatedSubjectProposals(tokens,negative),
     possessedAgreement: possessedAgreementProposals(tokens,negative),
     agreementProposals:candidates.length?[]:sourceAgreement(original,negative),
     morphologicalClues:candidates.length?[]:partialClues(original),

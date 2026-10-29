@@ -114,7 +114,6 @@ for(const text of [
  'chōca in cihuātl. nichōca.', // 1sg next verb
  'chōca in cihuātl. nemi in conetl.', // next has explicit subject
  'chōca in cihuātl. niquitta in conetl.',
- 'chōca in cihuātl. ninemi. nemi.', // non-adjacent antecedent not inherited
  'in cihuātl in chōca. nemi.', // relative fragment not matrix assertion
  'niquitta in cihuātl in chōca. nemi.',
  'chōca in cihuātl. unknown.',
@@ -123,6 +122,13 @@ for(const text of [
  const r=analyze(text);
  assert.equal(r.antecedentProposals?.length||0,0,'Do not guess participant identity: '+text);
 }
+const three=analyze('chōca in cihuātl. nemi. nichōca.');
+assert.equal(three.antecedentProposals.length,1,
+ 'The overt noun can license exactly the immediate next clause, not third-sentence inheritance');
+assert.equal(three.antecedentProposals[0].fromClause,0);
+assert.equal(three.antecedentProposals[0].toClause,1);
+assert.equal(analyze('chōca in cihuātl. ninemi. nemi.').antecedentProposals.length,0,
+ 'A nonmatching middle clause interrupts the overt-antecedent chain');
 const normal=analyze('niquitta in cihuātl');
 assert.equal(normal.complete,true);
 assert.equal(normal.clauses[0].candidates[0].english[0],'I see the woman');

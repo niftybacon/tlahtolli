@@ -40,7 +40,8 @@ function showResult(){
   const result=sentenceModel.analyze(content);
   const graph=grammarIR?.build(content,result)||null;
   if(englishModel){
-   const composition=englishModel.compose(content,result);
+   const baseComposition=englishModel.compose(content,result);
+   const composition=grammarIR?.auditEnglish(baseComposition,result,graph)||baseComposition;
    if(composition.available){
     const panel=el('section','translator-candidate translator-composed-english');
     panel.append(el('h4','','Draft English · compare readings'));
@@ -49,6 +50,12 @@ function showResult(){
     const unitChoices=[],joinChoices=[];
     const update=()=>{output.textContent=englishModel.render(composition,unitChoices,joinChoices)||'';};
     panel.append(output,el('p','translator-caution',composition.note));
+    if(composition.audit)panel.append(el('p','translator-meta',
+     'Grammar-graph evidence: '+composition.audit.graphMatchedRelatives+
+     ' relative role alternatives cross-checked · '+composition.audit.existingFinite+
+     ' finite and '+composition.audit.existingLocation+' location alternatives retained '+
+     'from their existing source-aware analyzers · '+composition.audit.rejected+
+     ' unsupported proposals withheld. No verified translation.'));
     for(const unit of composition.units){
      const label=el('label','','Clause '+(unit.index+1)+' reading ');
      const select=el('select');

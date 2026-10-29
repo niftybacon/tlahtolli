@@ -23,7 +23,7 @@ const safeLink=(value,title)=>{
 };
 const form=$('translatorForm');
 if(!form)return;
-let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null,sourceMorphology=null,englishModel=null;
+let model=null,latest=null,dataMode='none',morphBridge=null,sentenceModel=null,sourceMorphology=null,englishModel=null,grammarIR=null;
 const input=$('translatorInput'),direction=$('translatorDirection');
 const note=$('translatorStatus'),gloss=$('translatorGloss');
 const parts=$('translatorAnalyses'),passages=$('translatorPassages');
@@ -38,6 +38,7 @@ function showResult(){
  gloss.textContent=latest.gloss;
  if(sentenceModel&&direction.value==='nh-en'){
   const result=sentenceModel.analyze(content);
+  const graph=grammarIR?.build(content,result)||null;
   if(englishModel){
    const composition=englishModel.compose(content,result);
    if(composition.available){
@@ -498,6 +499,45 @@ function showResult(){
    }
    passages.append(panel);
   }
+  if(graph?.nodes?.length){
+   const panel=el('details','translator-morph-panel');
+   panel.className+=' translator-shared-grammar-ir';
+   panel.append(el('summary','','Shared grammatical representation · '+
+    graph.counts.clauses+' clauses · '+
+    graph.counts.nestedDependencies+' subordinate links · '+
+    graph.counts.nominalMentions+' noun mentions · '+
+    graph.counts.antecedentCandidates+' possible antecedent link'+
+    (graph.counts.antecedentCandidates===1?'':'s')));
+   panel.append(el('p','translator-caution',
+    'Structural analysis only. Clause nesting, a noun’s possessor, grammatical subject, '+
+    'and a candidate discourse antecedent are separate features. No candidate link '+
+    'establishes an individual’s identity, co-reference, or an attested full translation.'));
+   for(const n of graph.nodes.filter(x=>x.kind==='nominal-mention').slice(0,10)){
+    panel.append(el('p','translator-meta',
+     'Clause '+(n.unit+1)+' · written noun '+n.written+
+     ' · lexical head '+n.lemma+
+     ' · nominal possessor '+(n.possessor||'not established')));
+    if(n.possessorEvidence){
+     const link=safeLink(n.possessorEvidence,'Inspect source of exact possessed noun');
+     if(link)panel.append(link);
+    }
+   }
+   for(const e of graph.edges.filter(x=>[
+    'in-subordinate-dependency','terminal-relative-dependency',
+    'possible-relative-gap','possible-grammatical-argument',
+    'antecedent-candidate'].includes(x.relation)).slice(0,18)){
+    const a=graph.nodes.find(x=>x.id===e.from),b=graph.nodes.find(x=>x.id===e.to);
+    panel.append(el('p','translator-meta',
+     (a?.written||a?.kind||'?')+' → '+(b?.written||b?.kind||'?')+
+     ' · '+e.relation+
+     (e.role?' · '+e.role:'')+
+     (e.gapRole?' · '+e.gapRole:'')+
+     ' · candidate only, NOT identity'));
+   }
+   if(graph.diagnostics.length)panel.append(el('p','translator-caution',
+    'Graph diagnostics: '+graph.diagnostics.join(', ')));
+   passages.append(panel);
+  }
   if(result.contextLinks?.length){
    const panel=el('details','translator-morph-panel');
    panel.className+=' translator-context-links';
@@ -758,6 +798,7 @@ async function init(){
   }else throw Error('No published or bundled dictionary data found');
   const corpus=candidates.status==='fulfilled'?candidates.value:{entries:[]};
   model=window.TlahtolliTranslator.create(document,corpus);
+  grammarIR=window.TlahtolliGrammarIR?.create(document)||null;
   if(window.TlahtolliSourceMorphology&&sourceReview.status==='fulfilled'&&sourceReview.value)
    sourceMorphology=window.TlahtolliSourceMorphology.create(sourceReview.value);
   const locative=window.TlahtolliLocative?.create(document,corpus)||null;

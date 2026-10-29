@@ -3,6 +3,7 @@
 const assert=require('node:assert/strict');
 const {selectRows,loadExistingEngines,diagnose,runCsv}=
  require('./diagnose_axolotl_development.js');
+(async()=>{
 const original='Classical Nahuatl',iso='nci';
 const rows=[
  ['La mujer llora','chōca in cihuātl',original,'Work A',iso],
@@ -23,11 +24,14 @@ assert.equal(a.selected.length,3);
 assert.equal(new Set(a.selected.map(x=>x.work)).size,3);
 assert(a.selected.every(x=>x.sourceRow!==5),'Modern variation must be excluded');
 assert.throws(()=>selectRows(rows,201),/limit/);
-assert.throws(()=>runCsv(Buffer.from('fake'),2,{
+await assert.rejects(runCsv(Buffer.from('fake'),2,{
  lex:{},sentence:{},morph:()=>[]
 }),/Pinned Axolotl blob SHA mismatch/);
 
-const engines=loadExistingEngines();
+const engines=await loadExistingEngines();
+assert.equal(engines.archive.ready,true,'Already-shipped 36K archive is reused');
+assert(engines.archive.lookupEvidence('on').total>0,
+ 'Classical lexical evidence must be accessible from the existing archive');
 assert.equal(engines.lex.stats.passageCandidates,0,
  'No saved sentence translations may be imported into the lexical lookup');
 assert.equal(engines.sentence.analyze('chōca in cihuātl').complete,true,
@@ -58,3 +62,5 @@ assert(r.inspectedRowReferences.every(x=>typeof x.grammarCandidate==='boolean'))
 assert(r.inspectedRowReferences.every(x=>!('spanish' in x)&&!('nahuatl' in x)));
 assert(!('translationScore' in r));
 console.log('PASS Axolotl real-development diagnostics: deterministic unique source-work sample, Classical-only gate, pinned blob refusal, existing engines, missing-lexicon/grammar distinctions and no Spanish/gold leakage.');
+})().catch(e=>{console.error(e);process.exitCode=1;});
+

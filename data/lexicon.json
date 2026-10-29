@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-29.3.0",
+  "version": "2026-10-29.3.1",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -2552,14 +2552,14 @@
     {
       "word": "tepoztehuia",
       "meaning": "to hammer metal",
-      "pos": "verb",
-      "original": "",
+      "pos": "verb (transitive)",
+      "original": "tepuzteuia",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tepoztehuia",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN entry transcribes Molina (1571) Part II folio 104r column 2. Historical source spells tepuzteuia and quotes onitlatepuzteui; the present normalized headword is not identical. No independent original-folio collation, verified preterite stem class, general future paradigm or contextual English interpretation."
     },
     {
       "word": "tepoztemailpiloni",
@@ -2637,13 +2637,13 @@
       "word": "tepoztia",
       "meaning": "to become hard as iron",
       "pos": "verb (intransitive)",
-      "original": "",
+      "original": "tepuztia",
       "variety": "Classical Nahuatl",
-      "status": "Index-sourced; further lexical review pending",
-      "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/tepoztia",
       "example": "",
       "translation": "",
-      "notes": "Indexed short gloss only. ODN combines Classical, colonial and modern regional material; period, precise POS, vowel length and historical forms NOT separately verified. Do not promote to finite grammar or attested spelling."
+      "notes": "ODN entry transcribes Molina (1571) Part II folio 104r column 2. Historical source spells tepuztia and quotes onitepuztiac; the present normalized headword is not identical. No independent original-folio collation, verified preterite stem class, general future paradigm or contextual English interpretation."
     },
     {
       "word": "tepoztic",

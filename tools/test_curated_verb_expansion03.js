@@ -22,7 +22,7 @@ const entries=[
  ['tlachia','tlachix-; tlachia-','onitlachix','nitlachiaz','otitlachix'],
  ['tītlani','tītlan-; tītlani-','ōnictītlan',null,'ōtictītlan']
 ];
-assert.equal(dictionary.version,'2026-10-29.3.0');
+assert.equal(dictionary.version,JSON.parse(read('release.json')).version);
 assert(dictionary.words.length>=128);
 assert.equal(Object.keys(paradigms.paradigms).length,12);
 assert.deepEqual(dictionary.words.slice(118,128).map(x=>x.word),entries.map(x=>x[0]));

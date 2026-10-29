@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-29.3.0",
+  "version": "2026-10-29.3.1",
   "entries": [
     {
       "word": "ātl",
@@ -11764,37 +11764,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepoztehuia.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztehuia",
+          "locator": "Molina (1571), Part II f.104r col.2: tepuzteuia nitla, preterite onitlatepuzteui",
+          "note": "ODN links this headword to the cited Molina spelling; not an independently collated historical manuscript form.",
+          "reviewer": "Tlahtōlli ODN entry-level verification (2026-10-29; printed folio not independently collated)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepoztehuia.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztehuia",
+          "locator": "Molina (1571), Part II f.104r col.2: tepuzteuia nitla, preterite onitlatepuzteui",
+          "note": "Conservative listed dictionary sense only; not a contextual translation.",
+          "reviewer": "Tlahtōlli ODN entry-level verification (2026-10-29; printed folio not independently collated)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepoztehuia.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztehuia",
+          "locator": "Molina (1571), Part II f.104r col.2: tepuzteuia nitla, preterite onitlatepuzteui",
+          "note": "Molina specifies the nitla transitive/indefinite-object construction; do not infer additional valencies.",
+          "reviewer": "Tlahtōlli ODN entry-level verification (2026-10-29; printed folio not independently collated)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztehuia",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "Source-listed whole preterite onitlatepuzteui does not independently establish a base 1/base 2 class or substitution between tepuzteuia and tepoztehuia.",
+          "reviewer": "Tlahtōlli ODN entry-level verification (2026-10-29; printed folio not independently collated)",
           "checkedAt": "2026-10-29"
         }
       ]
@@ -12058,37 +12058,37 @@
         {
           "field": "headword",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepoztia.” and its adjacent English summary",
-          "note": "Headword appears at this index locator; this is a searchable lexeme candidate, NOT a collated sixteenth-century form.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztia",
+          "locator": "Molina (1571), Part II f.104r col.2: tepuztia ni, preterite onitepuztiac",
+          "note": "ODN links this headword to the cited Molina spelling; not an independently collated historical manuscript form.",
+          "reviewer": "Tlahtōlli ODN entry-level verification (2026-10-29; printed folio not independently collated)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "meaning",
           "assessment": "dictionary",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepoztia.” and its adjacent English summary",
-          "note": "Short paraphrase of this index's principal English summary only; semantic variants/context require reading full entry.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztia",
+          "locator": "Molina (1571), Part II f.104r col.2: tepuztia ni, preterite onitepuztiac",
+          "note": "Conservative listed dictionary sense only; not a contextual translation.",
+          "reviewer": "Tlahtōlli ODN entry-level verification (2026-10-29; printed folio not independently collated)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "pos",
-          "assessment": "inference",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
-          "locator": "ODN headword listing, page 628, result headed “tepoztia.” and its adjacent English summary",
-          "note": "Coarse editorial POS inferred from the English index gloss; must not be treated as a source-verified grammatical class.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztia",
+          "locator": "Molina (1571), Part II f.104r col.2: tepuztia ni, preterite onitepuztiac",
+          "note": "Molina specifies the ni intransitive construction; do not infer additional valencies.",
+          "reviewer": "Tlahtōlli ODN entry-level verification (2026-10-29; printed folio not independently collated)",
           "checkedAt": "2026-10-29"
         },
         {
           "field": "stem",
           "assessment": "unverified",
-          "source": "https://nahuatl.wired-humanities.org/advanced-search-headword?page=628&title_1=&title_1_op=%3D",
+          "source": "https://nahuatl.wired-humanities.org/content/tepoztia",
           "locator": "",
-          "note": "No source-specified verbal or nominal stem; never derive a paradigm from this field.",
-          "reviewer": "Tlahtōlli index-assisted vocabulary expansion; listing checked 2026-10-29; original entries/primary folios not collated",
+          "note": "Source-listed whole preterite onitepuztiac does not independently establish a base 1/base 2 class or substitution between tepuztia and tepoztia.",
+          "reviewer": "Tlahtōlli ODN entry-level verification (2026-10-29; printed folio not independently collated)",
           "checkedAt": "2026-10-29"
         }
       ]

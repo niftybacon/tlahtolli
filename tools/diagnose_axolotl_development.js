@@ -17,6 +17,12 @@ const isClassical=r=>r.length===5&&r[2]==='Classical Nahuatl'&&r[4]==='nci';
 const count=s=>String(s||'').trim().split(/\s+/u).filter(Boolean).length;
 const digest=s=>crypto.createHash('sha256').update(s).digest('hex');
 
+// Pinned row IDs from the source-byte-verified 2026-10-29, 36-record
+// DEVELOPMENT COHORT. This prevents later refactors from quietly changing
+// the reported denominator. IDs are not a ground-truth sentence/translation set.
+const DEVELOPMENT_36_ROW_IDS=[12592,9712,10818,13267,3962,4474,9869,5048,12629,4508,13342,990,5812,16060,6321,5241,8684,13664,4751,13452,7877,5011,12741,8228,902,13193,12894,5216,10014,6818,759,4519,5515,7245,11739,12395];
+
+
 function selectRows(rows,limit=48){
  if(!Number.isInteger(limit)||limit<1||limit>200)throw Error('limit must be 1..200');
  const works=new Map(),seenNh=new Set(),seenEs=new Set();
@@ -100,6 +106,7 @@ async function loadExistingEngines(){
 }
 function diagnose(sample,engines,options={}){
  const byWork=new Map(),unknownForms=new Map(),orthographicForms=new Map(),perRow=[];
+ const categoryForms=new Map(),categoryTotals=new Map();
  const stats={selected:0,nahuatlTokens:0,curatedMatches:0,unknownTokens:0,
   approximateMatches:0,lexicalAmbiguousTokens:0,sourceMorphologyUnknownTokens:0,
   unknownExactClassicalArchive:0,unknownOnlyApproxClassicalArchive:0,
@@ -118,6 +125,7 @@ function diagnose(sample,engines,options={}){
   const parts=lexical.parts.filter(x=>x.kind==='word');
   const unknown=parts.filter(x=>x.status==='unknown');
   let plausibleMorph=0;
+  const unknownAudit=[];
   for(const token of unknown){
    const key=token.value.toLowerCase().normalize('NFC');
    unknownForms.set(key,(unknownForms.get(key)||0)+1);
@@ -148,6 +156,17 @@ function diagnose(sample,engines,options={}){
       orthographicForms.set(key,prev);
      }
     }
+    const category=exact?'classical_exact':approximate?'classical_diacritic_only':
+     simeon?'historical_ocr_only':'no_archive_evidence';
+    const previous=categoryForms.get(key);
+    if(previous&&previous!==category)throw Error('Inconsistent archival classification for '+key);
+    categoryForms.set(key,category);
+    categoryTotals.set(category,(categoryTotals.get(category)||0)+1);
+    unknownAudit.push({written:token.value,category,
+     canonicalMorphologyCandidates:engines.morph(token.value)?.length||0,
+     historicalArchivePossibility:!!(engines.historicalVariants&&
+      engines.archive.lookupHistoricalEvidence?.(token.value,
+       engines.historicalVariants(token.value,'general'),{limit:1}).total)});
     if(exact)stats.unknownExactClassicalArchive++;
     else if(approximate)stats.unknownOnlyApproxClassicalArchive++;
     else if(simeon)stats.unknownSimeonOcrArchive++;
@@ -174,9 +193,16 @@ function diagnose(sample,engines,options={}){
   if(full)w.grammarCandidates++;
   if(hasWindow)w.partialWindowRows++;
   byWork.set(row.work,w);
+  const clauseReasons=clauses.map(c=>({wordTokens:c.tokens?.length||0,
+   complete:!!c.complete,partialSpans:c.partialSpans?.length||0,
+   sourceMorphologyHints:c.morphologicalClues?.length||0,
+   reason:c.reason||''}));
   perRow.push({upstreamRow:row.sourceRow,work:row.work,tokens:lexical.stats.total,
    unknown:lexical.stats.unknown,grammarCandidate:full,
-   partialWindowPresent:hasWindow,structuralOnly:structural&&!full});
+   partialWindowPresent:hasWindow,structuralOnly:structural&&!full,
+   sentenceHasQuestionMark:/[?¿]/u.test(row.nahuatl),
+   sentenceHasParentheses:/[()\[\]{}<>]/u.test(row.nahuatl),
+   clauses:clauseReasons,unknownAudit});
  }
  const unknown=[...unknownForms.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
  return {format:'tlahtolli-parallel-development-diagnostic-v1',
@@ -190,7 +216,11 @@ function diagnose(sample,engines,options={}){
   highFrequencyUnknownForms:unknown.slice(0,16).map(([form,occurrences])=>({form,occurrences})),
   tentativeHistoricalArchiveForms:[...orthographicForms.values()].sort((a,b)=>
    b.occurrences-a.occurrences||a.form.localeCompare(b.form)).slice(0,12),
+  unknownCategoryTotals:Object.fromEntries([...categoryTotals.entries()].sort()),
+  unknownDistinctForms:categoryForms.size,
   inspectedRowReferences:perRow,
+  sourceRowsAreIndependentlySentenceVerified:false,
+  individualSourceRowsMayBeNamesDatesOrFragments:true,
   accuracy:null,approvedHeldoutPairs:0,
   caveat:'Counts are mechanical lexical or grammar coverage on published development material; they are not correctness judgments. Morphological guesses remain guesses.'};
 }
@@ -215,7 +245,7 @@ async function runCsv(buffer,limit=48,engines=null){
 async function main(){
  const input=process.argv[2],flagIndex=process.argv.indexOf('--limit');
  if(!input||input.startsWith('--')){
-  console.error('Usage: node tools/diagnose_axolotl_development.js /local/pinned/axolotl.csv [--limit 48] [--json]');
+  console.error('Usage: node tools/diagnose_axolotl_development.js /local/pinned/axolotl.csv [--limit 48] [--json] [--audit-36]');
   process.exitCode=2;return;
  }
  let limit=48;
@@ -225,6 +255,11 @@ async function main(){
   limit=Number(value);
  }
  const report=await runCsv(fs.readFileSync(input),limit);
+ if(process.argv.includes('--audit-36')){
+  const observed=report.inspectedRowReferences.map(r=>r.upstreamRow);
+  if(JSON.stringify(observed)!==JSON.stringify(DEVELOPMENT_36_ROW_IDS))
+   throw Error('Pinned 36-row development cohort has changed: refuse incomparable audit');
+ }
  if(process.argv.includes('--json'))return console.log(JSON.stringify(report,null,2));
  const c=report.counts;
  console.log('REAL AXOLOTL DEVELOPMENT SAMPLE: '+c.selected+' parallel rows across '+
@@ -248,6 +283,17 @@ async function main(){
   c.unknownWithTentativeHistoricalArchiveCandidates+' unknown-token occurrences; examples: '+
   report.tentativeHistoricalArchiveForms.map(x=>x.form+' → '+x.candidates.join('/')+
    ' ('+x.occurrences+')').join(', '));
+ console.log('Source-record unit warning: no row certified as a complete linguistic sentence; short name/date fragments may occur.');
+ console.log('Distinct unknown spellings: '+report.unknownDistinctForms+
+  '; category occurrence totals: '+JSON.stringify(report.unknownCategoryTotals));
+ if(process.argv.includes('--audit-36'))for(const p of report.inspectedRowReferences){
+  console.log('ROW AUDIT '+p.upstreamRow+' | '+p.work+' | '+p.tokens+' tokens, '+
+   p.unknown+' unknown; clauses='+p.clauses.map(c=>c.wordTokens).join('/')+
+   '; punctuationBlocks='+Number(p.sentenceHasQuestionMark)+'/'+Number(p.sentenceHasParentheses)+
+   '; unknown='+p.unknownAudit.map(t=>t.written+':'+t.category+
+    (t.canonicalMorphologyCandidates?':M'+t.canonicalMorphologyCandidates:'')+
+    (t.historicalArchivePossibility?':H':'')).join(', '));
+ }
  console.log('High-frequency unknown surface forms: '+
   report.highFrequencyUnknownForms.map(x=>x.form+' ('+x.occurrences+')').join(', '));
  for(const w of report.byWork)

@@ -361,9 +361,9 @@ const TlahtolliMorphEngine = (() => {
      stemBases.includes(shortBase)&&lemma!==shortBase&&
      // Exact short-base evidence belongs to this lexeme and finite cell.
      ['verb (intransitive)','verb (transitive)'].includes(pos);
+    const stronger=()=>all.some(a=>a.lemma===w.word&&
+     ['manuscript','lexical','grammar','paradigm'].includes(a.grade));
     if(classLicensed){
-     const stronger=()=>all.some(a=>a.lemma===w.word&&
-      ['manuscript','lexical','grammar','paradigm'].includes(a.grade));
      // The zero-subject 3sg preterite keeps the *whole* short base and
      // augment. Object agreement can alternate for transitive third person:
      // refuse it rather than invent a c-/qui- allomorph.
@@ -395,6 +395,40 @@ const TlahtolliMorphEngine = (() => {
         stemClaim.source,stemClaim.locator,
         'The lexical bases and source-listed 1sg preterite justify a class-limited future hypothesis. The generated whole word is NOT independently attested or a verified contextual translation.'));
       }
+     }
+    }
+    // A verified base-2 (preterite) and base-1 (present) also permit
+    // narrowly bounded plural morphology: -queh follows the short past
+    // base and -zqueh follows the long future base. The PERSON prefix is
+    // the already indexed Tēntli plural inventory (ti-/an-/Ø).
+    // Do not generate other tense/aspect classes, reflexives, or c-/qui-
+    // object allomorphs; an explicit tla- example is required for transitives.
+    if(classLicensed&&(pos==='verb (intransitive)'||object==='tla')){
+     for(const who of PEOPLE.slice(3)){
+      const preterite=augment+who.surface+object+shortBase+'queh';
+      if(written===preterite&&!stronger())
+       all.push(make(w.word,'Source-stem-class plural preterite hypothesis','hypothesis',
+        {tense:'Preterite',subject:who.person,object:objectRole||'intransitive',
+         stemClass:'Source-checked short base + nonpresent plural -queh'},
+        [{surface:augment,role:'Augment exactly as source-recorded'},
+         {surface:who.surface||'Ø',role:'Plural subject '+who.person},
+         ...(object?[{surface:object,role:'Recorded indefinite object prefix'}]:[]),
+         {surface:shortBase,role:'Independently checked preterite short base'},
+         {surface:'queh',role:'Classical nonpresent plural -queh'}],
+        stemClaim.source,stemClaim.locator,
+        'Classical plural preterite construction from sourced base 2 and a recorded 1sg form. Generated token is NOT independently attested; number, dialectal suffix variants and English remain unverified.'));
+      const future=who.surface+object+lemma+'zqueh';
+      if(written===future&&!stronger())
+       all.push(make(w.word,'Source-stem-class plural future hypothesis','hypothesis',
+        {tense:'Future',subject:who.person,object:objectRole||'intransitive',
+         stemClass:'Source-checked present base + -zqueh'},
+        [{surface:who.surface||'Ø',role:'Plural subject '+who.person},
+         ...(object?[{surface:object,role:'Recorded indefinite object prefix'}]:[]),
+         {surface:lemma,role:'Independently checked long/present base'},
+         {surface:'z',role:'Classical future marker -z'},
+         {surface:'queh',role:'Classical nonpresent plural -queh'}],
+        stemClaim.source,stemClaim.locator,
+        'Classical plural future construction from sourced base 1 and recorded valency. Generated token is NOT independently attested or a complete English translation.'));
      }
     }
     // The citation form is the source-checked present base, but only an
@@ -529,7 +563,7 @@ const TlahtolliMorphEngine = (() => {
   }).join('');
   return '<section class="analysis-proposal"><h4>Advanced morphology · '+matches.length+
    ' candidate analysis'+(matches.length===1?'':'es')+'</h4>'+
-   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular present, independently checked long/short stem-class future and third-person preterite hypotheses, source-template second-person preterite, source-recorded indefinite objects, transitive objects, and source-bound possession analogies. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
+   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular present, independently checked long/short stem-class singular and plural future/preterite hypotheses, source-template second-person preterite, source-recorded indefinite objects, transitive objects, and source-bound possession analogies. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
    (hasQuantityAmbiguity?'<p class="analysis-caution">Macron-insensitive matching may collapse historically meaningful vowel length differences. Check the original orthography and context.</p>':'')+
    columns+(matches.length>24?'<p>Showing 24 of '+matches.length+' candidates.</p>':'')+
    '<p class="analysis-caution"><strong>Research boundary:</strong> no analysis proves a manuscript occurrence, contextual interpretation, or unmodeled allomorph. No unattested proposal is added to the public dictionary or evidence ledger.</p></section>';

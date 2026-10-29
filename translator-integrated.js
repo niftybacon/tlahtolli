@@ -450,6 +450,38 @@ function showResult(){
     }
     block.append(panel);
    }
+   if(clause.nominalCoordinationProposals?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-nominal-coordination';
+    panel.append(el('summary','','Classical nominal coordination · '+
+     clause.nominalCoordinationProposals.length+' structural reading'+
+     (clause.nominalCoordinationProposals.length===1?'':'s')+
+     ' (NOT a sentence translation)'));
+    panel.append(el('p','translator-caution',
+     'Two cited noun headwords and a conjunction/with-form occur in a '+
+     'bounded written phrase. Grammatical role, number, verb agreement, '+
+     'scope and referent identity remain unresolved.'));
+    for(const p of clause.nominalCoordinationProposals){
+     const item=el('div','translator-analysis');
+     item.append(el('strong','',p.written.join(' ')),
+      el('p','translator-meta','Heads: '+
+       p.nouns.map(n=>n.written+' → '+n.headword+
+        ' ('+(n.gloss||n.fullMeaning)+')').join(' · ')),
+      el('p','translator-meta','Connector: '+p.connector.written+
+       ' → '+p.connector.lemma+' · possible relations: '+
+       p.connector.meaningAlternatives.join(' / ')),
+      el('p','translator-caution',p.note));
+     if(p.sourceWindow)item.append(el('p','translator-meta',
+      'Exact editorial word window: '+p.sourceWindow.passageId+
+      ' · '+p.sourceWindow.status));
+     for(const url of p.sources){
+      const link=safeLink(url,'Inspect nominal coordination evidence');
+      if(link)item.append(link);
+     }
+     panel.append(item);
+    }
+    block.append(panel);
+   }
    if(clause.partialSpans?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-partial-grammar-spans';

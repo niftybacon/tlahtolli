@@ -50,7 +50,10 @@ with sync_playwright() as pw:
     assert "Original words 3–5" in content,content
     assert "source-finite" in content and "NOT a translation" in content
     assert "Words without a recovered structural window:" in content
-    assert "1: injn" in content and "7: tlapalli" in content
+    assert "1: injn" in content
+    assert "2: itoca" in content
+    assert "7: tlapalli" not in content, "New sourced NP window covers word 7"
+    assert "Original words 5–7" in content and "nominal-coordination" in content
     assert partial.get_by_role("link",name="Inspect partial-window evidence").count()>=2
 
     for sample,expected in (

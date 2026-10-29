@@ -20,6 +20,7 @@ on:
       - 'data/source_finite_context.json'
       - 'tools/test_source_finite_context.js'
       - 'tools/test_partial_grammar_spans.js'
+      - 'tools/test_nominal_coordination.js'
       - 'tools/test_translator*.js'
       - 'tools/test_shared_grammar_ir.js'
       - 'tools/test_ir_audited_english.js'
@@ -60,6 +61,7 @@ on:
       - 'data/source_finite_context.json'
       - 'tools/test_source_finite_context.js'
       - 'tools/test_partial_grammar_spans.js'
+      - 'tools/test_nominal_coordination.js'
       - 'tools/test_translator*.js'
       - 'tools/test_shared_grammar_ir.js'
       - 'tools/test_ir_audited_english.js'
@@ -141,5 +143,7 @@ jobs:
         run: node --check translator-sentence.js && node --check translator-grammar-ir.js && node --check translator-integrated.js && node tools/test_source_finite_context.js
       - name: General bounded historical grammar windows and graph evidence
         run: node tools/test_partial_grammar_spans.js
+      - name: Sourced noun coordination and historical spelling refusal
+        run: node --check translator-sentence.js && node --check translator-grammar-ir.js && node --check translator-integrated.js && node tools/test_nominal_coordination.js
       - name: Historical edited-excerpt sentence diagnostics (not accuracy)
         run: node --check tools/diagnose_historical_sentences.js && node tools/test_historical_sentence_diagnostics.js && node tools/diagnose_historical_sentences.js

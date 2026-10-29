@@ -133,13 +133,22 @@ def apply(write=False):
  ix={w["word"]:i for i,w in enumerate(lex["words"])}
  must(all(k in ix for k in (s["word"] for s in allrows)),"Source manifest contains unknown headword")
  if not write:
-  must(release["version"]==manifest["target_version"],"Batch not yet applied to edition")
+  must(release["version"] in (manifest["target_version"],"2026-10-29.9.0"),"Batch 08 baseline not present in edition")
   for spec in manifest["entries"]:
    i=ix[spec["word"]];w=lex["words"][i];m=morph["entries"][i];e=evid["entries"][i]
    must(w["status"]=="Checked against source" and w["pos"]==spec["pos"] and w["source"]==spec["source"],"Source-reviewed entry mismatch")
    if spec["preterite"]:must(has_form(m,spec["preterite"]),"Missing source form "+spec["word"])
    if spec["class"]:must(any(c["field"]=="stem" and c["assessment"] in ("dictionary","grammar") for c in e["claims"]),"Missing stem evidence")
-   else:must(not m["stem"],"Unlicensed stem "+spec["word"])
+   else:
+    # Batch 09 separately licensed two earlier refusals after source-level review.
+    if release["version"]=="2026-10-29.9.0" and spec["word"] in ("iztlacati","ichtequi"):
+     item=read("research/batches/source_vowel_class2_batch09_2026_10_29.json")
+     added=next(x for x in item["entries"] if x["word"]==spec["word"])
+     must(m["stem"]==added["base1"]+"-; "+added["base2"]+"-" and
+          any(c["field"]=="stem" and c["assessment"]=="dictionary" and
+              c["source"]==spec["source"] for c in e["claims"]),
+          "Batch 09 historical promotion missing "+spec["word"])
+    else:must(not m["stem"],"Unlicensed stem "+spec["word"])
   for spec in manifest["older"]:
    i=ix[spec["word"]]
    must(morph["entries"][i]["stem"]==spec["word"]+"-","Prior Class 1 missing "+spec["word"])

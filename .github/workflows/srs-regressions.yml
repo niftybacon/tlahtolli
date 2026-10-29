@@ -11,6 +11,7 @@ on:
       - 'tools/test_srs.py'
       - 'tools/test_srs_v3.py'
       - 'tools/test_srs_session.js'
+      - 'tools/test_srs_waiting_browser.py'
       - '.github/workflows/srs-regressions.yml'
   push:
     branches: [main]
@@ -22,6 +23,7 @@ on:
       - 'tools/fsrs_ui.js'
       - 'tools/fsrs_stage2.js'
       - 'tools/test_srs_session.js'
+      - 'tools/test_srs_waiting_browser.py'
       - '.github/workflows/srs-regressions.yml'
 permissions:
   contents: read
@@ -46,4 +48,4 @@ jobs:
           python -m pip install playwright==1.57.0
           python -m playwright install chromium --only-shell
       - name: SRS/Anki browser regression
-        run: python tools/test_srs.py && python tools/test_srs_v3.py
+        run: python tools/test_srs.py && python tools/test_srs_v3.py && python tools/test_srs_waiting_browser.py

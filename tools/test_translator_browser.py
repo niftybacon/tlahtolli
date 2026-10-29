@@ -35,7 +35,7 @@ with sync_playwright() as pw:
     page.route("**/*", respond)
     page.goto("https://tlahtolli.test/", wait_until="load", timeout=30000)
     page.locator("#tabTranslator").click()
-    page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('128')")
+    page.wait_for_function("document.querySelector('#translatorStatus').textContent.includes('headwords')")
     assert page.locator("#translatorView").is_visible(), "Translator tab did not open"
     assert page.locator("#dictionaryView").is_hidden(), "Dictionary remained visible"
     assert page.locator("#tabTranslator").get_attribute("aria-selected") == "true"

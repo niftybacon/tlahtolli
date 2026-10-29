@@ -82,10 +82,12 @@ assert.equal(JSON.stringify(ir),JSON.stringify(back),'Deterministic IDs and non-
 assert(!JSON.stringify(analyzed).includes('referentId'),'Never write identity IDs into original analysis');
 const bad=JSON.parse(JSON.stringify(analyzed));
 bad.discourseReferenceProposals[0].candidates[0].antecedent.source='javascript:alert(1)';
+for(const link of bad.antecedentProposals||[])link.antecedent.source='javascript:alert(1)';
 const rejected=graphEngine.build(input,bad);
 assert.equal(rejected.counts.antecedentCandidates,0,'Malicious evidence source cannot grant reference link');
 const invalidLink=JSON.parse(JSON.stringify(analyzed));
 invalidLink.discourseReferenceProposals[0].candidates[0].agreement='1sg ↔ 3sg';
+for(const link of invalidLink.antecedentProposals||[])link.personConstraint='1sg ↔ 3sg';
 assert.equal(graphEngine.build(input,invalidLink).counts.antecedentCandidates,0);
 const absent=graphEngine.build('in iicxi in '+rel,grammarEngine.analyze('in iicxi in '+rel));
 assert(!absent.edges.some(e=>e.relation==='antecedent-candidate'));

@@ -4,7 +4,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const D=JSON.parse(read('dictionary.json')),M=JSON.parse(read('research/batches/source_stem_batch08_2026_10_29.json'));
 const R=JSON.parse(read('release.json')),P=JSON.parse(read('paradigms.json'));
-assert.equal(D.version,R.version);assert.equal(D.version,M.target_version);
+assert.equal(D.version,R.version);assert.equal(M.target_version,'2026-10-29.8.0');
+assert(['2026-10-29.8.0','2026-10-29.9.0'].includes(D.version));
 assert.equal(D.words.length,2142);assert.equal(R.headwords,2142);assert.equal(M.entries.length,38);
 assert.equal(M.entries.filter(x=>!!x.class).length,13);assert.equal(M.older.length,4);
 assert.equal(D.words.filter(w=>w.status==='Checked against source').length,225);
@@ -40,7 +41,13 @@ for(const spec of M.entries){
  }
  const stem=w.claims.find(c=>c.field==='stem');
  if(!spec.class){
-  assert(!w.stem&&stem.assessment==='unverified',spec.word+' cannot be fully classified');
+  // The historical Batch 08 manifest stays immutable; Batch 09 independently
+  // licenses exactly two formerly refused intransitive Class 2 verbs.
+  if(D.version==='2026-10-29.9.0'&&['iztlacati','ichtequi'].includes(spec.word)){
+   assert.equal(stem.assessment,'dictionary');
+   assert.equal(stem.source,spec.source);
+   assert.equal(w.stem,spec.word+'-; '+(spec.word==='iztlacati'?'iztlacat':'ichtec')+'-');
+  }else assert(!w.stem&&stem.assessment==='unverified',spec.word+' cannot be fully classified');
   withheld++;
   continue;
  }
@@ -77,7 +84,9 @@ for(const spec of M.older){
 }
 for(const item of M.refusals){
  const w=index.get(item.word);assert(w);
- assert(!w.claims.some(c=>c.field==='stem'&&['dictionary','grammar'].includes(c.assessment)),item.word);
+ if(D.version==='2026-10-29.9.0'&&['iztlacati','ichtequi'].includes(item.word)){
+  assert(w.claims.some(c=>c.field==='stem'&&c.assessment==='dictionary'));
+ }else assert(!w.claims.some(c=>c.field==='stem'&&['dictionary','grammar'].includes(c.assessment)),item.word);
 }
 // Never promote merely from a single source-listed preterite or changed stem without its claim.
 {

@@ -60,6 +60,10 @@ jobs:
         run: python tools/validate_translation_corpus.py
       - name: Test source-aware translation engine
         run: node tools/test_translator.js
+      - name: Declarative grammar and indexed morphology regressions
+        run: node tools/test_declarative_grammar.js && node tools/test_morphology_clause_bridge.js
+      - name: Source-located possessed noun and agreement tests
+        run: node tools/test_possessed_agreement.js
       - name: Test lexical ambiguity and vowel-length abstention
         run: node tools/test_translation_abstention.js
       - name: Test historical spelling and morphology bridge
@@ -86,6 +90,8 @@ jobs:
           python -m playwright install chromium --only-shell
       - name: Integrated translator browser and tab regression
         run: python tools/test_translator_browser.py
+      - name: Morphology-assisted clause browser regression
+        run: python tools/test_morphology_clause_browser.py
       - name: Test expanded Amoxcalli archive search and cautious translator fallback
         run: python tools/test_amoxcalli_browser.py
       - name: Test Florentine Codex grammar reader and manuscript verification safeguards

@@ -69,6 +69,14 @@ function showResult(){
        ' · relative subject agreement '+proposal.relative.subjectPerson),
       el('p','translator-meta',proposal.construction+' · '+proposal.grade),
       el('p','translator-caution',proposal.relative.status),
+      ...(proposal.head.possessiveEvidence?[
+       el('p','translator-meta','Source-listed possessed head: '+
+        proposal.head.possessiveEvidence.written+' · nominal possessor '+
+        proposal.head.possessor),
+       el('p','translator-caution',proposal.head.possessorStatus),
+       el('p','translator-caution','The possessed head and its relative '+
+        'clause have NOT been verified as a historical combined sentence. ')
+      ]:[]),
       el('p','translator-caution',proposal.note));
      if(proposal.matrix)item.append(el('p','translator-meta',
       'Matrix verb '+proposal.matrix.written+' · head in '+proposal.matrix.headRole+' slot'));

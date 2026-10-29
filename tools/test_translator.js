@@ -10,7 +10,7 @@ vm.runInNewContext(fs.readFileSync(path.join(root,'translator-engine.js'),'utf8'
 const source=JSON.parse(fs.readFileSync(path.join(root,'dictionary.json'),'utf8'));
 const examples=JSON.parse(fs.readFileSync(path.join(root,'research/translation_corpus/research_examples.json'),'utf8'));
 const model=context.window.TlahtolliTranslator.create(source,examples);
-assert.equal(model.stats.headwords,115,'unexpected headword count; review test corpus change');
+assert.equal(model.stats.headwords,118,'unexpected headword count; review source-driven dictionary changes');
 assert.equal(model.stats.passageCandidates,3);
 const lookup=model.lookup('xōchitl','nh-en');
 assert.equal(lookup.candidates[0].lemma,'xōchitl');

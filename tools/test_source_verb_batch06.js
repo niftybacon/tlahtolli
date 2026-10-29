@@ -84,23 +84,23 @@ const copy=()=>JSON.parse(JSON.stringify(D.words));
 for(const field of ['headword','pos','stem']){
  const ws=copy(),w=ws.find(x=>x.word==='miqui');
  w.claims=w.claims.filter(c=>c.field!==field);
- assert(!loader(ws).morph.analyze('ōtimic').some(x=>x.lemma==='miqui'&&x.kind.startsWith(cls)),
+ assert(!loader(ws).morph.analyze('otimic').some(x=>x.lemma==='miqui'&&x.kind.startsWith(cls)),
   'Removal of '+field+' must disable the sourced class');
 }
 {
  const ws=copy(),w=ws.find(x=>x.word==='miqui');
- w.inflections=[];assert(!loader(ws).morph.analyze('ōtimic')
+ w.inflections=[];assert(!loader(ws).morph.analyze('otimic')
   .some(x=>x.lemma==='miqui'&&x.kind.startsWith(cls)),
   'Removal of source-recorded preterite must disable productivity');
 }
 {
  const ws=copy(),w=ws.find(x=>x.word==='miqui');
  w.stem='miqui-; mīc-';
- assert(!loader(ws).morph.analyze('ōtimic')
+ assert(!loader(ws).morph.analyze('otimic')
   .some(x=>x.lemma==='miqui'&&x.kind.startsWith(cls)),
   'Unlicensed macron/base change must be refused');
 }
-for(const form of ['ōtimīc','ōtipoyomic','ōtitēn','nitēmoz','ōtinonamic','nicotōnh']){
+for(const form of ['ōtimic','ōtimīc','ōtipoyomic','ōtitēn','nitēmoz','ōtinonamic','nicotōnh']){
  assert(!analyze(form).some(x=>x.lemma==='miqui'&&gradable.has(x.kind)),
   'Do not force unrelated/diacritic-near words into miqui');
 }

@@ -40,9 +40,14 @@ with sync_playwright() as pw:
     page.get_by_role("combobox", name="Clause 1 English reading", exact=True).select_option(label="I inspect the woman that cries")
     assert output.inner_text() == "I inspect the woman that cries."
     panel = page.locator(".translator-composed-english")
-    panel.locator("summary").click()
-    assert "wife" in panel.inner_text()
-    assert panel.get_by_role("link", name="Inspect composition evidence").count() > 0
+    details = panel.locator("details")
+    details.locator("summary").click()
+    assert details.evaluate("(d) => d.open"), "Evidence panel did not expand"
+    assert any("wife" in value for value in details.locator("p.translator-meta").all_text_contents())
+    sources = details.locator("a", has_text="Inspect composition evidence")
+    assert sources.count() > 0, "Source links must be present in the expanded panel"
+    assert sources.first.is_visible(), "A source link exists but is not actually visible"
+    assert all(url.startswith("https://") for url in sources.evaluate_all("(a) => a.map(e => e.href)"))
     analyze("nichōca auh ahmo niquittaz in cihuātl auh nitlacua")
     assert output.inner_text() == "I cry. I will not see the woman. I eat."
     page.get_by_role("combobox", name="Connector 1 English reading", exact=True).select_option(label="and")

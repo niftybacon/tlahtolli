@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.7.0",
+  "version": "2026-10-29.8.0",
   "entries": [
     {
       "word": "ātl",
@@ -5479,8 +5479,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cocoa",
+      "grammarNotes": "Batch 08: Molina II f.23v col.1; Karttunen 1992 p.38. Noun/verb homographs and multiple person frames; keep source disagreement and no new finite form. No whole sentence translation or 10×6 paradigm licensed.",
       "inflections": [],
       "formsEdited": false
     },
@@ -5589,7 +5589,7 @@
     {
       "word": "panō",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "panō-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
@@ -5597,7 +5597,7 @@
       "absolutive": "",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/pano",
-      "grammarNotes": "Reviewed Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229. Future/preterite class 1 not extrapolated beyond existing source template Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "grammarNotes": "Reviewed Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229. Future/preterite class 1 not extrapolated beyond existing source template Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted. | Batch 08 source-form-constrained Class 1; -c is a suffix, not a shorter stem. New additional exact Lockhart spelling; retain earlier Molina onipanoc.",
       "inflections": [
         {
           "form": "onipanoc",
@@ -5606,6 +5606,14 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/pano",
           "note": "Exact first-person token sourced in Molina 1571 II f.79v col.1; Karttunen 1992 p.187; Lockhart 2001 p.229; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. Future/preterite class 1 not extrapolated beyond existing source template"
+        },
+        {
+          "form": "ōnipanōc",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of panō; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pano",
+          "note": "ODN entry quotes Lockhart 2001 p.229 Class 1. This exact token is source LISTED, not manuscript-collated. New additional exact Lockhart spelling; retain earlier Molina onipanoc."
         }
       ],
       "formsEdited": false
@@ -5713,9 +5721,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlazotla",
+      "grammarNotes": "Batch 08: Molina II f.119r col.2; Karttunen 1992 p.306. Long/short lexical orthographic h differs in source; no automatic normalized class. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitetlazotlac",
+          "category": "Preterite 1sg (animate indefinite object)",
+          "gloss": "Historical dictionary-listed completed form of tlazohtla; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlazotla",
+          "note": "ODN entry quotes Molina II f.119r col.2; Karttunen 1992 p.306. This exact token is source LISTED, not manuscript-collated. Long/short lexical orthographic h differs in source; no automatic normalized class."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -5760,7 +5777,7 @@
     {
       "word": "temo",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "temo-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
@@ -5768,7 +5785,7 @@
       "absolutive": "",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/temo",
-      "grammarNotes": "Reviewed Molina 1571 II f.97v col.2; Karttunen 1992 p.223; Lockhart 2001 p.233. Class 1 -c is not the same as the attested base-2 alternation required by the current stem engine Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "grammarNotes": "Reviewed Molina 1571 II f.97v col.2; Karttunen 1992 p.223; Lockhart 2001 p.233. Class 1 -c is not the same as the attested base-2 alternation required by the current stem engine Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted. | Batch 08 source-form-constrained Class 1; -c is a suffix, not a shorter stem. Only Molina's unmarked vowel-length version, not reconstructed temō.",
       "inflections": [
         {
           "form": "onitemoc",
@@ -6063,7 +6080,7 @@
     {
       "word": "cuīca",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "cuīca-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
@@ -6071,7 +6088,7 @@
       "absolutive": "",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/cuica",
-      "grammarNotes": "Reviewed Molina 1571 II f.26v col.1; Lockhart 2001 p.216.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "grammarNotes": "Reviewed Molina 1571 II f.26v col.1; Lockhart 2001 p.216.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted. | Batch 08 source-form-constrained Class 1; -c is a suffix, not a shorter stem. New additional exact Lockhart spelling; retain earlier Molina onicuicac.",
       "inflections": [
         {
           "form": "onicuicac",
@@ -6080,6 +6097,14 @@
           "evidence": "dictionary",
           "source": "https://nahuatl.wired-humanities.org/content/cuica",
           "note": "Exact first-person token sourced in Molina 1571 II f.26v col.1; Lockhart 2001 p.216; no independent facsimile collation. Do NOT extrapolate stem, number, object allomorph or sentence meaning without separate evidence. "
+        },
+        {
+          "form": "ōnicuīcac",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of cuīca; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cuica",
+          "note": "ODN entry quotes Lockhart 2001 p.216 Class 1. This exact token is source LISTED, not manuscript-collated. New additional exact Lockhart spelling; retain earlier Molina onicuicac."
         }
       ],
       "formsEdited": false
@@ -6345,7 +6370,7 @@
     {
       "word": "popoca",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "popoca-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
@@ -6353,7 +6378,7 @@
       "absolutive": "",
       "possessed": "",
       "grammarSource": "https://nahuatl.wired-humanities.org/content/popoca",
-      "grammarNotes": "Reviewed Molina 1571 II f.83r col.2; Karttunen 1992 p.203.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted.",
+      "grammarNotes": "Reviewed Molina 1571 II f.83r col.2; Karttunen 1992 p.203.  Morphological hypotheses require exact source-linked person, object and Class 2 stem evidence; no new verb paradigms asserted. | Batch 08 source-form-constrained Class 1; -c is a suffix, not a shorter stem. Molina's ni- smoking sense, no impersonal transfer.",
       "inflections": [
         {
           "form": "onipopocac",
@@ -6742,24 +6767,42 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/potoni",
+      "grammarNotes": "Batch 08: Molina II f.83v col.1; Karttunen 1992 p.203. Molina unmarked vowel length; do not claim the exact normalized short base without separate evidence. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onipoton",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of potōni; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/potoni",
+          "note": "ODN entry quotes Molina II f.83v col.1; Karttunen 1992 p.203. This exact token is source LISTED, not manuscript-collated. Molina unmarked vowel length; do not claim the exact normalized short base without separate evidence."
+        }
+      ],
       "formsEdited": false
     },
     {
       "word": "pāqui",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "pāqui-; pāc-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/paqui",
+      "grammarNotes": "Batch 08: Molina II f.80r col.1; Lockhart 2001 p.229. Lockhart supplies Class 2 and normalized vowel length; Molina also reports onipac. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōnipāc",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of pāqui; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/paqui",
+          "note": "ODN entry quotes Molina II f.80r col.1; Lockhart 2001 p.229. This exact token is source LISTED, not manuscript-collated. Lockhart supplies Class 2 and normalized vowel length; Molina also reports onipac."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6787,9 +6830,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/toca",
+      "grammarNotes": "Batch 08: Molina II f.148r col.1; Lockhart 2001 p.239. Homographic senses, reflexive and vowel-length distinctions; no generic class promotion. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlatocac",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of tōca; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/toca",
+          "note": "ODN entry quotes Molina II f.148r col.1; Lockhart 2001 p.239. This exact token is source LISTED, not manuscript-collated. Homographic senses, reflexive and vowel-length distinctions; no generic class promotion."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -6990,16 +7042,25 @@
     {
       "word": "nequi",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "nequi-; nec-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/nequi",
+      "grammarNotes": "Batch 08: Molina II f.69v col.1; Lockhart 2001 p.227. Source-listed 3sg c- object only; no generated c-/qui- allomorphs or plural-object forms. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōnicnec",
+          "category": "Preterite 1sg (specific object)",
+          "gloss": "Historical dictionary-listed completed form of nequi; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/nequi",
+          "note": "ODN entry quotes Molina II f.69v col.1; Lockhart 2001 p.227. This exact token is source LISTED, not manuscript-collated. Source-listed 3sg c- object only; no generated c-/qui- allomorphs or plural-object forms."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7050,16 +7111,25 @@
     {
       "word": "teci",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "teci-; tez-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/teci",
+      "grammarNotes": "Batch 08: Molina II f.92v col.1; Karttunen 1992 TEC(I) pret TEZ. Only the source's ni- grinding sense; no automatically inferred transitive object marker. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitez",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of teci; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/teci",
+          "note": "ODN entry quotes Molina II f.92v col.1; Karttunen 1992 TEC(I) pret TEZ. This exact token is source LISTED, not manuscript-collated. Only the source's ni- grinding sense; no automatically inferred transitive object marker."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7087,9 +7157,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ana",
+      "grammarNotes": "Batch 08: Molina II f.5v col.2. A distinct intransitive growth sense is also listed; no uniform class or semantic inference. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlaan",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of āna; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ana",
+          "note": "ODN entry quotes Molina II f.5v col.2. This exact token is source LISTED, not manuscript-collated. A distinct intransitive growth sense is also listed; no uniform class or semantic inference."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7237,9 +7316,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ichtequi",
+      "grammarNotes": "Batch 08: Karttunen 1992 p.93; Lockhart 2001 p.219. Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōnichtec",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of ichtequi; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ichtequi",
+          "note": "ODN entry quotes Karttunen 1992 p.93; Lockhart 2001 p.219. This exact token is source LISTED, not manuscript-collated. Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7522,9 +7610,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ixhui",
+      "grammarNotes": "Batch 08: Molina II f.48v col.2. Molina writes ixui, so normalization and stem alternation remain unresolved. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onixuic",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of ixhui; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ixhui",
+          "note": "ODN entry quotes Molina II f.48v col.2. This exact token is source LISTED, not manuscript-collated. Molina writes ixui, so normalization and stem alternation remain unresolved."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7552,9 +7649,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/iztlacati",
+      "grammarNotes": "Batch 08: Molina II f.49v col.1; Lockhart 2001 p.222. Lockhart explicitly marks Class 2. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōniztlacat",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of iztlacati; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iztlacati",
+          "note": "ODN entry quotes Molina II f.49v col.1; Lockhart 2001 p.222. This exact token is source LISTED, not manuscript-collated. Lockhart explicitly marks Class 2. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7642,9 +7748,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ilpia",
+      "grammarNotes": "Batch 08: Molina II f.37v col.2; Lockhart 2001 p.220. Class 3 reflexive/animate/indefinite senses not licensed by Class 2 short-base machinery. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlalpi",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of ilpia; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ilpia",
+          "note": "ODN entry quotes Molina II f.37v col.2; Lockhart 2001 p.220. This exact token is source LISTED, not manuscript-collated. Class 3 reflexive/animate/indefinite senses not licensed by Class 2 short-base machinery."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7665,16 +7780,25 @@
     {
       "word": "patla",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "patla-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/patla",
+      "grammarNotes": "Batch 08: Molina II f.80r col.2; Lockhart 2001 p.229. Retain the specific nitla- exchange sense; reflexive and animate transitive senses remain separate. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlapatlac",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of patla; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/patla",
+          "note": "ODN entry quotes Molina II f.80r col.2; Lockhart 2001 p.229. This exact token is source LISTED, not manuscript-collated. Retain the specific nitla- exchange sense; reflexive and animate transitive senses remain separate."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7792,9 +7916,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/petzcoa",
+      "grammarNotes": "Batch 08: Molina II f.81r col.2; Karttunen 1992 p.192. Source only nino- reflexive, not a general nitla- transitive. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "oninopetzco",
+          "category": "Preterite 1sg reflexive",
+          "gloss": "Historical dictionary-listed completed form of petzcoa; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/petzcoa",
+          "note": "ODN entry quotes Molina II f.81r col.2; Karttunen 1992 p.192. This exact token is source LISTED, not manuscript-collated. Source only nino- reflexive, not a general nitla- transitive."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -7837,9 +7970,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/huitequi",
+      "grammarNotes": "Batch 08: Molina II f.157v col.2; Lockhart 2001 p.219. Distinct nite/nitla sense; huī-/ui orthography in exact past unresolved. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlauitec",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of huītequi; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huitequi",
+          "note": "ODN entry quotes Molina II f.157v col.2; Lockhart 2001 p.219. This exact token is source LISTED, not manuscript-collated. Distinct nite/nitla sense; huī-/ui orthography in exact past unresolved."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8092,9 +8234,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ilcahua",
+      "grammarNotes": "Batch 08: Molina II f.37r col.2; Lockhart 2001 p.220. Prefix/stem elision and orthography cannot be generalized from one token. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlalcauh",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of ilcāhua; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ilcahua",
+          "note": "ODN entry quotes Molina II f.37r col.2; Lockhart 2001 p.220. This exact token is source LISTED, not manuscript-collated. Prefix/stem elision and orthography cannot be generalized from one token."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8332,8 +8483,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/quiquici",
+      "grammarNotes": "Batch 08: Karttunen 1992 p.212 QUIQUIC(I), pret QUIQUIZ. Dictionary gives base but not an exact first-person source token; no full class license. No whole sentence translation or 10×6 paradigm licensed.",
       "inflections": [],
       "formsEdited": false
     },
@@ -8370,16 +8521,25 @@
     {
       "word": "mahui",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "mahui-; mauh-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/mahui",
+      "grammarNotes": "Batch 08: Molina II f.54r col.2; Karttunen 1992 p.132. Molina's exact first-person short form supports this orthographic pair; not a vowel-length conjecture. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onimauh",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of mahui; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/mahui",
+          "note": "ODN entry quotes Molina II f.54r col.2; Karttunen 1992 p.132. This exact token is source LISTED, not manuscript-collated. Molina's exact first-person short form supports this orthographic pair; not a vowel-length conjecture."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8467,24 +8627,42 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/pinahua",
+      "grammarNotes": "Batch 08: Molina II f.82r col.1; Karttunen 1992 p.196. Molina also gives onipinauac; separate modern source spelling and Class 1/2 ambiguity. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onipinauh",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of pīnāhua; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pinahua",
+          "note": "ODN entry quotes Molina II f.82r col.1; Karttunen 1992 p.196. This exact token is source LISTED, not manuscript-collated. Molina also gives onipinauac; separate modern source spelling and Class 1/2 ambiguity."
+        }
+      ],
       "formsEdited": false
     },
     {
       "word": "tlaōcoya",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "tlaōcoya-; tlaōcox-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlaocoya",
+      "grammarNotes": "Batch 08: Molina II f.129v col.2; Lockhart 2001 p.237. Lockhart Class 2 spelling used verbatim; Molina writes onitlaocox. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōnitlaōcox",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of tlaōcoya; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlaocoya",
+          "note": "ODN entry quotes Molina II f.129v col.2; Lockhart 2001 p.237. This exact token is source LISTED, not manuscript-collated. Lockhart Class 2 spelling used verbatim; Molina writes onitlaocox."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8497,9 +8675,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/cualani",
+      "grammarNotes": "Batch 08: Molina II f.84v col.1; Lockhart 2001 p.230. Exact Lockhart spelling has qual- vs canonical cual-; reject silent cross-orthography generation. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōniqualān",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of cualāni; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/cualani",
+          "note": "ODN entry quotes Molina II f.84v col.1; Lockhart 2001 p.230. This exact token is source LISTED, not manuscript-collated. Exact Lockhart spelling has qual- vs canonical cual-; reject silent cross-orthography generation."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8647,9 +8834,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/iztaya",
+      "grammarNotes": "Batch 08: Molina II f.49r col.2; Karttunen 1992 p.124. Molina also lists oniztayac; alternative preterites, no unique stem class. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "oniztaz",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of iztaya; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/iztaya",
+          "note": "ODN entry quotes Molina II f.49r col.2; Karttunen 1992 p.124. This exact token is source LISTED, not manuscript-collated. Molina also lists oniztayac; alternative preterites, no unique stem class."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8677,9 +8873,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/patzca",
+      "grammarNotes": "Batch 08: Molina II f.80r col.2; Karttunen 1992 p.189. Historical spelling and normalized long vowel differ; preserve source token, no automatic alternation. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlapatzcac",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of pātzca; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/patzca",
+          "note": "ODN entry quotes Molina II f.80r col.2; Karttunen 1992 p.189. This exact token is source LISTED, not manuscript-collated. Historical spelling and normalized long vowel differ; preserve source token, no automatic alternation."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8715,16 +8920,25 @@
     {
       "word": "quetza",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "quetza-; quetz-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/quetza",
+      "grammarNotes": "Batch 08: Molina II f.89r col.2. Only Molina's nonhuman indefinite nitla- sense, not reflexive nino-/animate nite-. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlaquetz",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of quetza; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/quetza",
+          "note": "ODN entry quotes Molina II f.89r col.2. This exact token is source LISTED, not manuscript-collated. Only Molina's nonhuman indefinite nitla- sense, not reflexive nino-/animate nite-."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8745,16 +8959,25 @@
     {
       "word": "huetzca",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "huetzca-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/huetzca",
+      "grammarNotes": "Batch 08: Molina II f.156v col.2; Lockhart 2001 p.218. Lockhart explicitly Class 1 and full first-person form; vowel-length/spelling retained. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōnihuetzcac",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of huetzca; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huetzca",
+          "note": "ODN entry quotes Molina II f.156v col.2; Lockhart 2001 p.218. This exact token is source LISTED, not manuscript-collated. Lockhart explicitly Class 1 and full first-person form; vowel-length/spelling retained."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8775,16 +8998,25 @@
     {
       "word": "huāqui",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "huāqui-; huāc-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/huaqui",
+      "grammarNotes": "Batch 08: Molina II f.154r and f.155r; Lockhart 2001 p.218. Do not apply the source's separate weather/impersonal usage to personal agreement. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōnihuāc",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of huāqui; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/huaqui",
+          "note": "ODN entry quotes Molina II f.154r and f.155r; Lockhart 2001 p.218. This exact token is source LISTED, not manuscript-collated. Do not apply the source's separate weather/impersonal usage to personal agreement."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8820,16 +9052,25 @@
     {
       "word": "tequiti",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "tequiti-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tequiti",
+      "grammarNotes": "Batch 08: Molina II f.105v col.1; Lockhart 2001 p.234. Lockhart Class 1 despite a competing vowel-drop noted by Karttunen in a different variety. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōnitequitic",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of tequiti; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tequiti",
+          "note": "ODN entry quotes Molina II f.105v col.1; Lockhart 2001 p.234. This exact token is source LISTED, not manuscript-collated. Lockhart Class 1 despite a competing vowel-drop noted by Karttunen in a different variety."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8872,9 +9113,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/petlani",
+      "grammarNotes": "Batch 08: Molina II f.81r col.1; Karttunen 1992 p.192. No independently recorded first-person subject for this sense. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "opetlan",
+          "category": "Preterite (unmarked subject)",
+          "gloss": "Historical dictionary-listed completed form of petlāni; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/petlani",
+          "note": "ODN entry quotes Molina II f.81r col.1; Karttunen 1992 p.192. This exact token is source LISTED, not manuscript-collated. No independently recorded first-person subject for this sense."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8902,9 +9152,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/poyahua",
+      "grammarNotes": "Batch 08: Molina II f.83r col.1; Karttunen 1992 p.204. Historical source is transitive to color/darken; archive unreviewed intransitive sense must not license that frame. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlapoyauh",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of poyāhua; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/poyahua",
+          "note": "ODN entry quotes Molina II f.83r col.1; Karttunen 1992 p.204. This exact token is source LISTED, not manuscript-collated. Historical source is transitive to color/darken; archive unreviewed intransitive sense must not license that frame."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8932,24 +9191,42 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/ceceya",
+      "grammarNotes": "Batch 08: Molina II f.15r col.1; Karttunen 1992 p.27. Karttunen contrasts CECĒYAC with CECĒX: alternative preterites block a single base. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "oniceceyac",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of ceceya; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/ceceya",
+          "note": "ODN entry quotes Molina II f.15r col.1; Karttunen 1992 p.27. This exact token is source LISTED, not manuscript-collated. Karttunen contrasts CECĒYAC with CECĒX: alternative preterites block a single base."
+        }
+      ],
       "formsEdited": false
     },
     {
       "word": "pixca",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "pixca-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/pixca",
+      "grammarNotes": "Batch 08: Molina II f.82v col.1; Lockhart 2001 p.230. Lockhart directly lists Class 1. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ōnipixcac",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of pixca; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pixca",
+          "note": "ODN entry quotes Molina II f.82v col.1; Lockhart 2001 p.230. This exact token is source LISTED, not manuscript-collated. Lockhart directly lists Class 1."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -8962,8 +9239,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/poztequi",
+      "grammarNotes": "Batch 08: Karttunen 1992 p.205, pret -TEC. Karttunen reports multiple reflexive/transitive frames; no independently located ni- completed form. No whole sentence translation or 10×6 paradigm licensed.",
       "inflections": [],
       "formsEdited": false
     },
@@ -9022,9 +9299,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/chalani",
+      "grammarNotes": "Batch 08: Molina II f.19r col.1; Karttunen 1992 p.45. Cracking vessels and noise, no source ni- subject license. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ochalan",
+          "category": "Preterite (unmarked subject)",
+          "gloss": "Historical dictionary-listed completed form of chalāni; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/chalani",
+          "note": "ODN entry quotes Molina II f.19r col.1; Karttunen 1992 p.45. This exact token is source LISTED, not manuscript-collated. Cracking vessels and noise, no source ni- subject license."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9037,9 +9323,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/caxani",
+      "grammarNotes": "Batch 08: Molina II f.13r col.1; Karttunen 1992 p.26. Tied objects loosen; do not invent person-marked stem class. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "ocaxan",
+          "category": "Preterite (unmarked subject)",
+          "gloss": "Historical dictionary-listed completed form of caxani; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/caxani",
+          "note": "ODN entry quotes Molina II f.13r col.1; Karttunen 1992 p.26. This exact token is source LISTED, not manuscript-collated. Tied objects loosen; do not invent person-marked stem class."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9187,9 +9482,18 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/pozoni",
+      "grammarNotes": "Batch 08: Molina II f.83r col.1; Karttunen 1992 p.205. Molina lists third-person/impersonal pot/sea events, not first-person ni-. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "opozon",
+          "category": "Preterite (unmarked subject)",
+          "gloss": "Historical dictionary-listed completed form of pozōni; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/pozoni",
+          "note": "ODN entry quotes Molina II f.83r col.1; Karttunen 1992 p.205. This exact token is source LISTED, not manuscript-collated. Molina lists third-person/impersonal pot/sea events, not first-person ni-."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9450,16 +9754,25 @@
     {
       "word": "tlatla",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "tlatla-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/tlatla",
+      "grammarNotes": "Batch 08: Molina II f.136v col.2; Karttunen 1992 p.297. Source ni- sense with regular -c; not a source attestation of generated plurals. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlatlac",
+          "category": "Preterite 1sg",
+          "gloss": "Historical dictionary-listed completed form of tlatla; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/tlatla",
+          "note": "ODN entry quotes Molina II f.136v col.2; Karttunen 1992 p.297. This exact token is source LISTED, not manuscript-collated. Source ni- sense with regular -c; not a source attestation of generated plurals."
+        }
+      ],
       "formsEdited": false
     },
     {
@@ -9556,8 +9869,8 @@
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/yancuiya",
+      "grammarNotes": "Batch 08: Karttunen 1992 p.335 YANCUIY(A), pret YANCUIX. Modern IDIEZ meanings differ; historical past base is lexical clue, not person-marked Class 2 license. No whole sentence translation or 10×6 paradigm licensed.",
       "inflections": [],
       "formsEdited": false
     },
@@ -9657,16 +9970,25 @@
     {
       "word": "neltoca",
       "variety": "Classical Nahuatl",
-      "stem": "",
+      "stem": "neltoca-",
       "number": "not_applicable",
       "animacy": "not_applicable",
       "plural": "",
       "pluralStatus": "no_attested_form",
       "absolutive": "",
       "possessed": "",
-      "grammarSource": "",
-      "grammarNotes": "Source-index provisional lexeme only. No source-checked stem, valency, finite form or paradigm.",
-      "inflections": [],
+      "grammarSource": "https://nahuatl.wired-humanities.org/content/neltoca",
+      "grammarNotes": "Batch 08: Molina II f.66v col.2; Lockhart 2001 p.226. Retain Molina's nitla- sense and exact spelling; Lockhart also gives a nic- sense. No whole sentence translation or 10×6 paradigm licensed.",
+      "inflections": [
+        {
+          "form": "onitlaneltocac",
+          "category": "Preterite 1sg (unspecified object)",
+          "gloss": "Historical dictionary-listed completed form of neltoca; spelling and person only",
+          "evidence": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/neltoca",
+          "note": "ODN entry quotes Molina II f.66v col.2; Lockhart 2001 p.226. This exact token is source LISTED, not manuscript-collated. Retain Molina's nitla- sense and exact spelling; Lockhart also gives a nic- sense."
+        }
+      ],
       "formsEdited": false
     },
     {

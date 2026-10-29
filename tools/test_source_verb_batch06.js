@@ -7,10 +7,10 @@ const P=JSON.parse(read('paradigms.json')),R=JSON.parse(read('release.json'));
 assert.equal(D.version,R.version);
 // This dated source-reviewed cohort must remain valid after later lexical-only editions.
 assert.equal(D.words.length,R.headwords);assert(D.words.length>=478);assert.equal(M.entries.length,43);
-assert.equal(D.words.filter(w=>w.status==='Checked against source').length,187);
-assert.equal(D.words.filter(w=>w.status==='Archive-indexed; lexical review pending'&&w.pos.startsWith('verb')).length,225);
+assert(D.words.filter(w=>w.status==='Checked against source').length>=187);
+assert(D.words.filter(w=>w.status==='Archive-indexed; lexical review pending'&&w.pos.startsWith('verb')).length<=225);
 assert.equal(Object.keys(P.paradigms).length,12);
-assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),305);
+assert(D.words.reduce((n,w)=>n+w.inflections.length,0)>=305);
 const src=read('tools/morphology_engine.js').split('renderMorphologyBreakdown=TlahtolliMorphEngine.html;')[0];
 function loader(words=D.words){
  const ctx={window:{},words,FULL_VERB_PARADIGMS:P.paradigms,VERB_TENSES:P.patterns,

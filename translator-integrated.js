@@ -51,6 +51,43 @@ function showResult(){
     for(const sense of candidate.nounSenses||[])block.append(el('p','translator-meta',sense.lemma+' — selected English sense: '+(sense.selected||'unresolved')+'; full dictionary meaning: '+sense.fullMeaning));
     for(const url of candidate.sources){const link=safeLink(url,'Inspect analysis source');if(link)block.append(link);}
    }
+   if(clause.morphosyntactic?.items?.length){
+    const panel=el('details','translator-morph-panel');
+    panel.className+=' translator-morphosyntactic-proposals';
+    panel.append(el('summary','','Indexed morphology + clause grammar · '+
+     clause.morphosyntactic.items.length+' structural hypothesis'+
+     (clause.morphosyntactic.items.length===1?'':'es')+
+     ' (NOT a translation)'));
+    panel.append(el('p','translator-caution',
+     'A grammatical proposal for a complete written token sequence is NOT a completed translation. '+
+     'The finite form is a grammar-generated matrix cell, not a verified manuscript occurrence; '+
+     'tense, subject/object readings and dictionary senses may remain ambiguous.'));
+    if(clause.morphosyntactic.truncated)panel.append(el('p','translator-caution',
+     'Only the first 32 analyses are shown; additional alternatives were not displayed.'));
+    for(const p of clause.morphosyntactic.items){
+     const entry=el('div','translator-analysis');
+     entry.append(el('strong','',p.verb.written+' → '+p.verb.lemma+
+      ' · '+p.verb.pattern+' · '+p.verb.subjectPerson),
+      el('p','translator-meta','Construction: '+p.constructionId+
+       ' · all '+p.coverage+' written tokens covered · '+p.grade),
+      el('p','translator-meta','Possible noun subject: '+
+       (p.argumentRoles.subjectNoun||'none stated')+
+       ' · possible noun object: '+(p.argumentRoles.objectNoun||'none stated')+
+       (p.argumentRoles.implicitObject?
+        ' · '+p.argumentRoles.implicitObject:'')),
+      el('p','translator-meta','Dictionary verb senses (unresolved): '+
+       p.verb.lexicalMeaning));
+     for(const n of p.argumentRoles.nominalMeanings)entry.append(
+      el('p','translator-meta','Noun '+n.lemma+' · full source meaning: '+n.meaning));
+     entry.append(el('p','translator-caution',p.note));
+     for(const url of p.sources){
+      const link=safeLink(url,'Inspect indexed morphology and grammar source');
+      if(link)entry.append(link);
+     }
+     panel.append(entry);
+    }
+    block.append(panel);
+   }
    if(clause.locativeInterpretations?.length){
     const panel=el('details','translator-morph-panel');
     panel.className+=' translator-locative-interpretations';

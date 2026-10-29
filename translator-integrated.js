@@ -169,9 +169,26 @@ function showResult(){
       el('p','translator-meta',p.terminal.kind==='headed-relative'?
        'Relative head: '+p.terminal.head.written+' · gap: '+
        p.terminal.relative.headGapRole+' · '+p.terminal.relative.written:
+       p.terminal.kind==='finite-with-arguments'?
+       'Embedded clause: '+p.terminal.written+
+       ' · finite '+p.terminal.predicate.written:
        'Finite leaf: '+p.terminal.written+' · '+p.terminal.subjectPerson),
       el('p','translator-meta','Exact token coverage: '+p.coverage+' · '+p.grade),
       el('p','translator-caution',p.note));
+     if(p.terminal.kind==='finite-with-arguments'){
+      item.append(el('p','translator-meta',
+       'Embedded declarative rule: '+p.terminal.ruleId+
+       ' · '+p.terminal.roleStatus));
+      for(const role of ['subject','object']){
+       const arg=role==='subject'?p.terminal.subjectArgument:p.terminal.objectArgument;
+       if(!arg)continue;
+       item.append(el('p','translator-meta',
+        'Overt embedded '+role+': '+arg.written+' ('+arg.lemma+')'+
+        (arg.possessor?' · noun possessor '+arg.possessor:'')));
+       if(arg.possessor)item.append(el('p','translator-caution',
+        'Nominal possessor does not establish the embedded verb subject or real-world identity.'));
+      }
+     }
      if(p.terminal.kind==='headed-relative'&&p.terminal.head.possessiveEvidence){
       item.append(
        el('p','translator-meta','Source-listed possessed relative head: '+

@@ -40,8 +40,8 @@ with sync_playwright() as pw:
         return page.locator("#translatorPassages")
 
     for value, lemma, marker in (
-        ("qujça in xochitl", "quiza", "conditional 3sg"),
-        ("in xochitl qujça", "quiza", "conditional 3sg"),
+        ("qujça in xochitl", "quiza", "ONLY IF unresolved verb person is 3sg"),
+        ("in xochitl qujça", "quiza", "ONLY IF unresolved verb person is 3sg"),
         ("cen tipolihui", "polihui", "2sg"),
         ("tipolihui cen", "polihui", "2sg"),
     ):

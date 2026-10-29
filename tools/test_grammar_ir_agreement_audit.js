@@ -24,7 +24,7 @@ function morphology(token){
  }
  return ret;
 }
-const sentence=ctx.window.TlahtolliSentence.create(d,p,morph,null,null,rules,poss);
+const sentence=ctx.window.TlahtolliSentence.create(d,p,morphology,null,null,rules,poss);
 const engine=ctx.window.TlahtolliGrammarIR.create(d),analyze=text=>sentence.analyze(text);
 const graph=(text,result=analyze(text))=>engine.build(text,result);
 const form=(lemma,who=2)=>p.paradigms[lemma].cells[0][who];

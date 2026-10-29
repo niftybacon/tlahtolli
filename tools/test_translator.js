@@ -27,8 +27,8 @@ for(const [word,sourceUrl] of manuscriptParticles){
  assert.equal(w.number,'not_applicable');
  assert(w.claims.filter(c=>['headword','meaning','pos'].includes(c.field)&&
   c.assessment==='dictionary'&&c.locator.includes('1571')).length===3);
- assert.deepEqual(w.inflections.map(f=>f.form),[word],
-  'No invented inflectional forms for a particle');
+ assert.deepEqual(w.inflections,[],
+  'The headword is already indexed; do not duplicate it as an inflection');
  const x=model.lookup(word);
  assert.equal(x.candidates.length,1);
  assert.equal(x.candidates[0].source,sourceUrl);

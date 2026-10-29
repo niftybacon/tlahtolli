@@ -110,6 +110,32 @@ with sync_playwright() as pw:
         analyze(unsupported)
         assert page.locator("#translatorPassages .translator-possessed-agreement-proposals").count() == 0
 
+    # Exact recorded possessive forms can head bounded in-relative hypotheses.
+    for surface, lemma, owner in (("nocal", "calli", "1sg"),
+                                  ("iicxi", "icxitl", "3sg"),
+                                  ("itoca", "tocaitl", "3sg")):
+        analyze("in " + surface + " in chōca")
+        relation = page.locator("#translatorPassages .translator-relative-in-proposals")
+        assert relation.count() == 1
+        relation.evaluate("(node) => node.open=true")
+        display = relation.inner_text()
+        assert "Source-listed possessed head: " + surface in display
+        assert "nominal possessor " + owner in display
+        assert "NOT the finite verb subject" in display
+        assert "relative subject" in display
+        assert lemma in display
+        assert "NOT a verified translation" in display
+        assert relation.get_by_role("link", name="Inspect relative grammar evidence").count() >= 2
+    analyze("niquitta in iicxi in chōca")
+    relation = page.locator("#translatorPassages .translator-relative-in-proposals")
+    relation.evaluate("(node) => node.open=true")
+    assert "nominal possessor 3sg" in relation.inner_text()
+    assert "Matrix verb niquitta" in relation.inner_text()
+    for unlicensed in ("in inxiuh in chōca", "in itlatqui in chōca",
+                       "in iicxi in nichōca", "in iicxi in chōca extra"):
+        analyze(unlicensed)
+        assert page.locator("#translatorPassages .translator-relative-in-proposals").count() == 0
+
     for rejected in ["ahmo " + first + " in cihuātl",
                      first + " cihuātl", first + " in cihuātl extra"]:
         analyze(rejected)

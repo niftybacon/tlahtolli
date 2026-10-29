@@ -64,6 +64,8 @@ jobs:
         run: node tools/test_declarative_grammar.js && node tools/test_morphology_clause_bridge.js
       - name: Source-located possessed noun and agreement tests
         run: node tools/test_possessed_agreement.js
+      - name: Possessed noun relative-head integration and refusal tests
+        run: node tools/test_possessed_relative_heads.js
       - name: Test lexical ambiguity and vowel-length abstention
         run: node tools/test_translation_abstention.js
       - name: Test historical spelling and morphology bridge

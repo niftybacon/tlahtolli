@@ -1773,6 +1773,37 @@ const TlahtolliMorphEngine = (() => {
    }
   }
  }
+ // Reuse source-checked regular intransitive citation forms as the complete
+ // present stem for singular ni-/ti- subject agreement. This extends analysis
+ // beyond the 12 curated *full* paradigm matrices without creating a second
+ // conjugator or inferring a whole past/future paradigm.
+ // Exact NFC spelling is required: no silent loss of vowel-length contrast.
+ function fromRegularIntransitivePresent(raw,all){
+  const written=String(raw||'').normalize('NFC').toLocaleLowerCase('en');
+  for(const w of words){
+   if(String(w.pos||'').trim().toLowerCase()!=='verb (intransitive)'||
+      Object.prototype.hasOwnProperty.call(FULL_VERB_PARADIGMS,w.word))continue;
+   const head=sourceClaim(w,'headword'),category=sourceClaim(w,'pos');
+   if(!head||!category||!/^https:\/\//u.test(head.source||'')||
+      !/^https:\/\//u.test(category.source||''))continue;
+   const lemma=String(w.word||'').normalize('NFC').toLocaleLowerCase('en');
+   if(!/^[\p{L}\p{M}]{3,120}$/u.test(lemma))continue;
+   for(const subject of PEOPLE.slice(0,2)){
+    // Only 1sg ni- and 2sg ti-; 1pl/2pl/3pl require distinct
+    // suffix/number treatment. Do not derive a transitive without an object.
+    if(written!==subject.surface+lemma)continue;
+    if(all.some(c=>c.lemma===w.word&&
+       ['manuscript','lexical','grammar'].includes(c.grade)))continue;
+    all.push(make(w.word,'Regular intransitive present hypothesis','hypothesis',
+     {tense:'Present',subject:subject.person,category:'verb',
+      sourceStatus:'Curated intransitive headword + general singular subject rule'},
+     [{surface:raw.slice(0,subject.surface.length),role:'Subject '+subject.person+' prefix; grammar-derived'},
+      {surface:raw.slice(subject.surface.length),role:'Source-listed intransitive citation form; proposed present base'}],
+     head.source,head.locator||'',
+     'Analytical ni-/ti- plus source-checked intransitive citation form. This exact finite word is NOT independently attested by the source, and no plural, nonpresent, incorporated or transitive forms are inferred.'));
+   }
+  }
+ }
  function fromPossessiveAnalogy(q,all){
   // Only an actual source-located complete no- form can license an analogy.
   // Never extrapolate from naked -possessed stems or from a generic noun.
@@ -1801,6 +1832,7 @@ const TlahtolliMorphEngine = (() => {
   for(const w of words)fromForms(q,w,out);
   fromParadigms(q,out);
   fromProductiveVerb(q,out);
+  fromRegularIntransitivePresent(raw,out);
   fromPossessiveAnalogy(q,out);
   const seen=new Set(),clean=[];
   for(const candidate of out){
@@ -1841,7 +1873,7 @@ const TlahtolliMorphEngine = (() => {
   }).join('');
   return '<section class="analysis-proposal"><h4>Advanced morphology · '+matches.length+
    ' candidate analysis'+(matches.length===1?'':'es')+'</h4>'+
-   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus guarded productive transitive and possessed-noun hypotheses. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
+   '<p>Reverse analysis of indexed historical/lexical forms and all 720 grammar-derived verb cells, plus strictly bounded regular singular intransitive present, transitive object, and possessed-noun hypotheses. Higher-ranked analyses have more specific documentary support, <strong>not</strong> greater grammatical certainty in every context.</p>'+
    (hasQuantityAmbiguity?'<p class="analysis-caution">Macron-insensitive matching may collapse historically meaningful vowel length differences. Check the original orthography and context.</p>':'')+
    columns+(matches.length>24?'<p>Showing 24 of '+matches.length+' candidates.</p>':'')+
    '<p class="analysis-caution"><strong>Research boundary:</strong> no analysis proves a manuscript occurrence, contextual interpretation, or unmodeled allomorph. No unattested proposal is added to the public dictionary or evidence ledger.</p></section>';

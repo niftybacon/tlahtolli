@@ -32,6 +32,8 @@ on:
       - 'tools/test_possessed_agreement.js'
       - 'tools/test_possessed_relative_heads.js'
       - 'tools/test_morphology_clause_bridge.js'
+      - 'tools/morphology_engine.js'
+      - 'tools/test_regular_present_morphology.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -79,6 +81,8 @@ on:
       - 'tools/test_possessed_agreement.js'
       - 'tools/test_possessed_relative_heads.js'
       - 'tools/test_morphology_clause_bridge.js'
+      - 'tools/morphology_engine.js'
+      - 'tools/test_regular_present_morphology.js'
       - 'tools/test_declarative_grammar.js'
       - 'data/clause_grammar.json'
       - 'data/possessed_form_evidence.json'
@@ -127,6 +131,8 @@ jobs:
         run: node tools/test_declarative_grammar.js
       - name: Indexed morphology to clause bridge tests
         run: node tools/test_morphology_clause_bridge.js
+      - name: Canonical Tēntli regular singular present hypotheses
+        run: node tools/test_regular_present_morphology.js
       - name: Exact possessed noun and person agreement safeguards
         run: node tools/test_possessed_agreement.js
       - name: Exact possessed noun heads in constrained Classical in-relatives

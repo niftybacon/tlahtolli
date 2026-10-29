@@ -93,8 +93,45 @@ function schedule(prior,grade,now=Date.now(),cardKey=''){
   history:[...(Array.isArray(prev.history)?prev.history:[]).slice(-99),{at:now,grade,wasReview:review,interval:span,due,phase:next}]};
 }
 let excluded=new Set(),undo=null;
+const SESSION_KEY='tlahtolli_srs_session_retries_v1',PRACTICE_RETRY=60000;
+// Retry intent belongs to this tab, not to the long-term SRS review history.
+function loadSession(){
+ try{
+  const entries=JSON.parse(sessionStorage.getItem(SESSION_KEY)||'[]'),now=Date.now();
+  return new Map(Array.isArray(entries)?entries.filter(([key,r])=>typeof key==='string'&&r&&
+   Number.isFinite(r.at)&&Number.isFinite(r.since)&&r.since>now-DAY&&r.since<=now&&r.at>now-DAY&&r.at<now+31*DAY):[]);
+ }catch{return new Map()}
+}
+let sessionRetries=loadSession();
+function storeSession(){
+ try{sessionStorage.setItem(SESSION_KEY,JSON.stringify([...sessionRetries]));}catch{}
+}
+function retryReady(key,now){const r=sessionRetries.get(key);return !!r&&r.at<=now;}
+function waiting(mode,now=Date.now()){
+ const filter=$(mode==='words'?'studySubset':'drillSubset').value;
+ if(filter==='all')return null;
+ const keys=[];
+ if(mode==='words')for(const w of words)if(w.word&&w.meaning)keys.push(studyKey(w));
+ else for(const [lemma,m] of Object.entries(FULL_VERB_PARADIGMS)){
+  if($('drillVerb').value!=='all'&&$('drillVerb').value!==lemma)continue;
+  for(let ti=0;ti<($('drillScope').value==='core'?4:10);ti++)for(let pi=0;pi<6;pi++){
+   const form=m.cells[ti]?.[pi];if(form)keys.push(drillKey(lemma,ti,pi,form));
+  }
+ }
+ let count=0,next=Infinity;
+ for(const key of keys){
+  const record=studyRecords[key],entry=sessionRetries.get(key);
+  if(!record||record.suspended||phase(record)==='suspended')continue;
+  const at=entry?.at??(['learning','relearning'].includes(phase(record))?record.due:null);
+  if(Number.isFinite(at)&&at>now){count++;next=Math.min(next,at);}
+ }
+ return count?{count,next}:null;
+}
+function clearSession(){sessionRetries.clear();storeSession();}
+
 function allowed(key,r,filter,stats,now){
  if(phase(r)==='suspended'||r?.suspended||excluded.has(key))return false;
+ if(filter!=='all'&&r&&sessionRetries.has(key))return retryReady(key,now);
  if(filter==='dueOnly'&&!r)return false;
  if(filter!=='all'&&r&&r.due>now)return false;
  if(filter!=='all'&&!r&&stats.introduced>=opts.newLimit)return false;
@@ -132,7 +169,7 @@ function queueDrill(now=Date.now()){
    const form=m.cells[ti]?.[pi];if(!form)continue;
    const key=drillKey(lemma,ti,pi,form),r=studyRecords[key];
    if(!allowed(key,r,filter==='active'?'due':filter,stats,now))continue;
-   if(opts.burySiblings&&filter!=='all'&&siblingDone(lemma,key,now))continue;
+   if(opts.burySiblings&&filter!=='all'&&!retryReady(key,now)&&siblingDone(lemma,key,now))continue;
    out.push({lemma,form,ti,pi,key,record:r});
   }
  }
@@ -146,6 +183,11 @@ function preview(root,key){
  const el=$(root),box=el?.querySelector('.study-grades');if(!box)return;
  for(const button of box.querySelectorAll('[data-study-grade],[data-drill-grade]')){
   const grade=button.dataset.studyGrade||button.dataset.drillGrade;
+  const pending=sessionRetries.get(key),mastery=!!pending?.practice&&pending.at<=Date.now();
+  if(mastery&&grade!=='again'){
+   button.textContent=grade.slice(0,1).toUpperCase()+grade.slice(1)+(grade==='hard'?' · 1m':' · finish retry');
+   continue;
+  }
   const record=schedule(studyRecords[key],grade,Date.now(),key);
   if(record)button.textContent=grade.slice(0,1).toUpperCase()+grade.slice(1)+' · '+interval(record.due-Date.now());
  }
@@ -160,9 +202,29 @@ function rate(key,grade,filter){
  if(!key||!['again','hard','good','easy'].includes(grade))return;
  if(filter==='all'){excluded.add(key);message('Practice-only review: schedule unchanged.');}
  else{
-  undo={key,before:studyRecords[key]?JSON.parse(JSON.stringify(studyRecords[key])):null};
-  studyRecords[key]=schedule(studyRecords[key],grade,Date.now(),key);saveStudyRecords();
-  if(studyRecords[key].suspended)message('Leech card suspended after repeated lapses. Use a backup to restore or reset progress.');
+  const now=Date.now(),pending=sessionRetries.get(key);
+  const practice=!!pending?.practice&&pending.at<=now;
+  undo={key,before:studyRecords[key]?JSON.parse(JSON.stringify(studyRecords[key])):null,
+   pending:pending?{...pending}:null};
+  if(practice&&grade!=='again'){
+   // A Hard long-term card needs a mastery check, not a second premature SRS review.
+   // If the retest fails, an actual Again must record the lapse.
+   if(grade==='hard')sessionRetries.set(key,{at:now+PRACTICE_RETRY,practice:true,since:now});
+   else sessionRetries.delete(key);
+  }else{
+   const next=schedule(studyRecords[key],grade,now,key);
+   if(!next)return;
+   studyRecords[key]=next;saveStudyRecords();
+   if(next.suspended){
+    sessionRetries.delete(key);
+    message('Leech card suspended after repeated lapses. Resume it in study options to continue.');
+   }else if(['learning','relearning'].includes(phase(next))){
+    sessionRetries.set(key,{at:next.due,practice:false,since:now});
+   }else if(grade==='hard'){
+    sessionRetries.set(key,{at:now+PRACTICE_RETRY,practice:true,since:now});
+   }else sessionRetries.delete(key);
+  }
+  storeSession();
  }
  if(key.startsWith('paradigm§')){drillCurrentKey='';drillRevealed=false;renderDrill();}
  else{studyCurrentKey='';studyRevealed=false;renderStudy();}
@@ -170,8 +232,9 @@ function rate(key,grade,filter){
 }
 function undoLast(){if(!undo)return;
  if(undo.before)studyRecords[undo.key]=undo.before;else delete studyRecords[undo.key];
+ if(undo.pending)sessionRetries.set(undo.key,undo.pending);else sessionRetries.delete(undo.key);
  undo=null;excluded.clear();studyCurrentKey='';drillCurrentKey='';
- saveStudyRecords();renderStudy();renderDrill();message('Last graded review undone.');
+ storeSession();saveStudyRecords();renderStudy();renderDrill();message('Last graded review undone.');
 }
 function exportAnki(paradigms=false){
  const reverse=paradigms==='reverse',isParadigms=paradigms===true;
@@ -219,6 +282,6 @@ function applySettings(newSettings){
  excluded.clear();studyCurrentKey='';drillCurrentKey='';
  renderStudy();renderDrill();statsText();
 }
-return {DEFAULT,PRESETS,FIELDS,config,steps,schedule,midnight,usage,queueWords,queueDrill,rate,undoLast,
+return {DEFAULT,PRESETS,FIELDS,config,steps,schedule,midnight,usage,queueWords,queueDrill,waiting,clearSession,rate,undoLast,
  preview,statsText,applySettings,exportAnki,resumeSuspended,getSettings:()=>({...opts})};
 })();

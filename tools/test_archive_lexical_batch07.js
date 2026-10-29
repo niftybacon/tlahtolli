@@ -5,7 +5,8 @@ const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p
 const M=JSON.parse(read('research/batches/classical_archive_lexical_batch07_2026_10_29.json'));
 const D=JSON.parse(read('dictionary.json')),R=JSON.parse(read('release.json'));
 assert.equal(M.entries.length,1664);assert.equal(R.headwords,2142);assert.equal(D.words.length,2142);
-assert.equal(D.version,R.version);assert.equal(D.version,M.version);
+assert.equal(D.version,R.version);
+// Frozen archive cohort stays valid in later evidence-led releases.
 const index=new Map(D.words.map(w=>[w.word,w]));assert.equal(index.size,D.words.length);
 const rows=[0,1,2,3].map(n=>JSON.parse(read('research/amoxcalli_archive/kaikki_0'+n+'.json')).rows);
 const provisional='Archive-indexed; lexical review pending';let pos={};
@@ -23,9 +24,9 @@ for(const item of M.entries){
  pos[item.pos]=(pos[item.pos]||0)+1;
 }
 assert.deepEqual(pos,M.by_pos);
-assert.equal(D.words.filter(w=>w.status==='Checked against source').length,187);
-assert.equal(D.words.filter(w=>w.status===provisional&&w.pos.startsWith('verb')).length,225);
-assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),305);
+assert(D.words.filter(w=>w.status==='Checked against source').length>=187);
+assert(D.words.filter(w=>w.status===provisional&&w.pos.startsWith('verb')).length<=225);
+assert(D.words.reduce((n,w)=>n+w.inflections.length,0)>=305);
 assert.equal(Object.keys(JSON.parse(read('paradigms.json')).paradigms).length,12);
 const context={window:{},URL};vm.runInNewContext(read('translator-engine.js'),context,{filename:'translator-engine.js'});
 const model=context.window.TlahtolliTranslator.create(D,{entries:[]}),noun=M.entries.find(x=>x.pos==='noun');

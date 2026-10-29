@@ -341,6 +341,9 @@ function showResult(){
      if(p.adverb)item.append(el('p','translator-meta',
       'Adverb: '+p.adverb.written+' → '+p.adverb.lemma+
       ' · '+p.adverb.status));
+     if(p.relational)item.append(el('p','translator-meta',
+      'Relational: '+p.relational.written+' → '+p.relational.lemma+
+      ' · '+p.relational.referentStatus));
      item.append(el('p','translator-caution',p.note));
      for(const url of p.sources){
       const link=safeLink(url,'Inspect source finite form and clause evidence');

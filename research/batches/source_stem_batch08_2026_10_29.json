@@ -5,7 +5,7 @@
   "baseline_headwords": 2142,
   "reviewed_candidates": 38,
   "existing_class1_review": 4,
-  "productive_class_count": 19,
+  "productive_class_count": 17,
   "policy": "Each row is bounded to quoted ODN historical lexicographic material. Grade historical dictionary entry separately from manuscript attestation. Only unambiguous exact person-marked and Class 1/-c or Class 2 short-base evidence licenses hypotheses.",
   "entries": [
     {
@@ -27,9 +27,9 @@
       "locator": "Molina II f.49v col.1; Lockhart 2001 p.222",
       "preterite": "ōniztlacat",
       "category": "Preterite 1sg",
-      "short_base": "iztlacat",
-      "class": "2",
-      "note": "Lockhart explicitly marks Class 2.",
+      "short_base": "",
+      "class": "",
+      "note": "Lockhart explicitly marks Class 2. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule.",
       "kind": "new-source-review"
     },
     {
@@ -87,9 +87,9 @@
       "locator": "Karttunen 1992 p.93; Lockhart 2001 p.219",
       "preterite": "ōnichtec",
       "category": "Preterite 1sg",
-      "short_base": "ichtec",
-      "class": "2",
-      "note": "Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame.",
+      "short_base": "",
+      "class": "",
+      "note": "Lockhart independently specifies intransitive n. and Class 2; transitive niqu form is a different frame. | Explicit refusal: published 1sg form does not reconstruct as o-/ō- + ni- + full canonical base under current source-constrained morphology; the initial i- boundary remains unresolved. No invented vowel-loss rule.",
       "kind": "new-source-review"
     },
     {
@@ -519,6 +519,16 @@
       "word": "ihcihui",
       "source": "https://nahuatl.wired-humanities.org/content/ihcihui",
       "reason": "Modern IDIEZ class evidence only; historical finite stem unconfirmed."
+    },
+    {
+      "word": "iztlacati",
+      "source": "https://nahuatl.wired-humanities.org/content/iztlacati",
+      "reason": "Canonical stem initial i- and exact source-listed 1sg ōniztlacat do not segment under the current verb analyzer; no guessed i-/ni- coalescence."
+    },
+    {
+      "word": "ichtequi",
+      "source": "https://nahuatl.wired-humanities.org/content/ichtequi",
+      "reason": "Canonical stem initial i- and source-listed 1sg ōnichtec need independently licensed phonology; no automatic i deletion."
     }
   ]
 }

@@ -539,12 +539,13 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     personStatus:record.person_status,tenseStatus:'not independently established',
     valency:'intransitive',evidence:'exact source-recorded finite form',
     source:record.source_url,locator:record.source_locator};
-  const output=(construction,rule,nounPhrase,adverb)=>({
+  const output=(construction,rule,nounPhrase,adverb,relational)=>({
    constructionId:rule?.id||construction,construction,
    grade:'source-recorded finite + bounded grammatical hypothesis (NOT an attested sentence)',
    coverage:tokens.length,verb,nounPhrase:nounPhrase||null,adverb:adverb||null,
+   relational:relational||null,
    sources:[...new Set([record.source_url,found.lexical.source,rule?.source_url,
-     nounPhrase?.source,adverb?.source].filter(Boolean))],
+     nounPhrase?.source,adverb?.source,relational?.source].filter(Boolean))],
    note:'Only this finite FORM is source-recorded. This complete token sequence is NOT thereby attested. '+
      'Person evidence: '+record.person_status+'. Tense, argument attachment, adverb scope and '+
      'referent identity are not independently verified. No English translation is licensed.'
@@ -576,6 +577,14 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     return [output('source finite + unscoped adverb',null,null,
       {written:tokens[ai],lemma:hits[0].word,source:hits[0].source,
        status:'possible modifier; semantic scope unknown'})];
+   const locations=words.filter(w=>w.pos==='relational noun / locative'&&
+     /^https:\/\/[^/\s]+/u.test(w.source||'')&&
+     [w.word,...String(w.original||'').split(/[;,/]/)]
+       .some(x=>norm(x.trim())===norm(tokens[ai])));
+   if(locations.length===1)
+    return [output('source finite + unresolved relational adjunct',null,null,null,
+      {written:tokens[ai],lemma:locations[0].word,source:locations[0].source,
+       referentStatus:'possessor and attachment remain unresolved'})];
   }
   return [];
  }

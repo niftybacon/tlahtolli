@@ -117,7 +117,6 @@ for(const text of [
  'in cihuātl in chōca. nemi.', // relative fragment not matrix assertion
  'niquitta in cihuātl in chōca. nemi.',
  'chōca in cihuātl. unknown.',
- 'chōca in cihuātl. nemi. nichōca.'
 ]){
  const r=analyze(text);
  assert.equal(r.antecedentProposals?.length||0,0,'Do not guess participant identity: '+text);

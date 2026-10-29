@@ -115,6 +115,28 @@ with sync_playwright() as pw:
     assert 'Unindexed form' in plural
     assert '[?alomeh]' in page.locator('#translatorGloss').inner_text()
 
+    # A real historical y→i candidate must surface through the existing
+    # archive + historical engine bridge, without changing the working gloss.
+    page.locator('#translatorInput').fill('yca')
+    page.locator('#translatorForm button[type=submit]').click()
+    page.wait_for_function("""() => {
+      const root=document.querySelector('#translatorAnalyses');
+      return !!root && root.textContent.includes('Tentative historical spelling')
+        && root.textContent.includes('yca → ica');
+    }""",timeout=30000)
+    page.locator('#translatorAnalyses details.translator-morph-panel').evaluate_all(
+        '(nodes)=>nodes.forEach(n=>n.open=true)')
+    spelling=page.locator('#translatorAnalyses').inner_text()
+    assert 'yca → ica' in spelling and 'unverified spelling hypothesis' in spelling
+    assert '[?yca]' in page.locator('#translatorGloss').inner_text()
+    assert '1 unknown' in page.locator('#translatorStatus').inner_text()
+
+    # Do not use a one-letter historical y→i suggestion to manufacture lexical
+    # coverage, even if the Classical archive happens to index 'i'.
+    direct=page.evaluate("""() => window.TlahtolliArchive.lookupHistoricalEvidence(
+      'y',window.TlahtolliHistoricalMorphology.variants('y','codex'))""")
+    assert direct['total']==0
+
     # The archive is explicitly source-separated: an Eastern Huasteca
     # entry can be queried only when opting out of classicalOnly.
     dialect=page.evaluate("""() => ({
@@ -125,5 +147,5 @@ with sync_playwright() as pw:
     })""")
     assert not dialect['classical'] and dialect['unrestricted'],dialect
     assert not errors,errors
-    print('PASS: 36,543 archive rows, historical/modern source isolation, verified vs unreviewed UI distinction, source-form grammar tags, and preserved unknown glosses')
+    print('PASS: 36,543 archive rows, historical/modern source isolation, verified vs unreviewed UI distinction, cautious yca→ica historical spelling bridge, source-form grammar tags, and preserved unknown glosses')
     browser.close()

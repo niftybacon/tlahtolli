@@ -145,6 +145,7 @@ function diagnose(sample,engines,options={}){
 }
 function runCsv(buffer,limit=48,engines=loadExistingEngines()){
  if(!Buffer.isBuffer(buffer))throw Error('Expected source CSV bytes');
+ if(buffer.length>12*1024*1024)throw Error('External CSV is above the 12 MiB bounded processing limit');
  if(gitBlobSha(buffer)!==manifest.upstream.blob_sha)
   throw Error('Pinned Axolotl blob SHA mismatch; refuses source drift');
  const rows=parseRows(buffer.toString('utf8'));

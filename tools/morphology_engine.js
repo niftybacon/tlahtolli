@@ -320,6 +320,9 @@ const TlahtolliMorphEngine = (() => {
     }else if(pos==='verb (transitive)'){
      if(/unspecified object/iu.test(example.category)&&remainder.startsWith('tla')){
       object='tla';objectRole='nonhuman indefinite (source-labelled)';
+     }else if(/animate indefinite object/iu.test(example.category)&&remainder.startsWith('te')){
+      // Molina's independently labelled nite- transitive class; no guessed vowel-length variation.
+      object='te';objectRole='human indefinite (exact source-spelled prefix)';
      }else if(/specific object/iu.test(example.category)&&remainder.startsWith('c')){
       object='c';objectRole='3sg object (source-labelled)';
      }else continue;

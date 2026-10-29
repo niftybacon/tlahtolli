@@ -11,6 +11,7 @@ on:
       - 'tools/test_locative_relations.js'
       - 'tools/test_complex_locative_clauses.js'
       - 'tools/test_multiclause_syntax.js'
+      - 'tools/test_relative_in_antecedents.js'
       - 'parallel-reading-*.js'
       - 'tools/test_parallel_reading.js'
       - 'index.html'
@@ -19,10 +20,10 @@ on:
       - 'tools/test_archive_lexical.js'
       - 'dictionary.json'
       - 'paradigms.json'
-      - 'data/clause_grammar.json'
-      - 'tools/test_declarative_grammar.js'
-      - 'tools/test_morphology_clause_bridge.js'
       - 'tools/test_possessed_agreement.js'
+      - 'tools/test_morphology_clause_bridge.js'
+      - 'tools/test_declarative_grammar.js'
+      - 'data/clause_grammar.json'
       - 'research/amoxcalli_archive/**'
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'
@@ -38,6 +39,7 @@ on:
       - 'tools/test_locative_relations.js'
       - 'tools/test_complex_locative_clauses.js'
       - 'tools/test_multiclause_syntax.js'
+      - 'tools/test_relative_in_antecedents.js'
       - 'parallel-reading-*.js'
       - 'tools/test_parallel_reading.js'
       - 'index.html'
@@ -46,10 +48,6 @@ on:
       - 'tools/test_archive_lexical.js'
       - 'dictionary.json'
       - 'paradigms.json'
-      - 'data/clause_grammar.json'
-      - 'tools/test_declarative_grammar.js'
-      - 'tools/test_morphology_clause_bridge.js'
-      - 'tools/test_possessed_agreement.js'
       - 'research/amoxcalli_archive/**'
       - 'research/translation_corpus/**'
       - 'tools/evaluate_translation_readiness.js'
@@ -89,6 +87,8 @@ jobs:
         run: node tools/test_possessed_agreement.js
       - name: Source-linked morphology bridge syntax and provenance regressions
         run: node --check translator-source-morphology.js && node tools/test_source_morphology.js
+      - name: Source-linked morphology bridge syntax and provenance regressions
+        run: node --check translator-source-morphology.js && node tools/test_source_morphology.js
       - name: Classical Nahuatl source-linked comparative fragment regressions
         run: node tools/test_contextual_fragments.js
       - name: Classical relational noun and locative evidence regressions
@@ -97,6 +97,8 @@ jobs:
         run: node --check translator-sentence.js && node tools/test_complex_locative_clauses.js
       - name: Classical overt coordination and bounded conditional syntax
         run: node tools/test_multiclause_syntax.js
+      - name: Classical in relatives, subordinate predicates and antecedent constraints
+        run: node --check translator-sentence.js && node tools/test_relative_in_antecedents.js
       - name: Archive form evidence and morphology cross-check regressions
         run: node tools/test_archive_lexical.js
       - name: Translation quality readiness and independent-holdout checks

@@ -275,6 +275,55 @@ with sync_playwright() as pw:
     page.locator("#translatorInput").fill("ninemi atl yitic nemjnj")
     page.locator("#translatorForm button[type=submit]").click()
     assert page.locator("#translatorPassages .translator-complex-clause-proposals").count()==0
+    # Relative in vs article-like in, plus non-identifying antecedent link.
+    page.locator("#translatorInput").fill("in cihuātl in chōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    relative=page.locator("#translatorPassages .translator-relative-in-proposals")
+    assert relative.count()==1
+    relative.evaluate("(node)=>node.open=true")
+    relative_text=relative.inner_text()
+    assert "relative subject" in relative_text
+    assert "explicit lexical head; referent identity NOT determined" in relative_text or "does not identify a pronoun" in relative_text
+    assert relative.get_by_role("link",name="Inspect relative grammar evidence").count()>=3
+    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
+    page.locator("#translatorInput").fill("in cihuātl in quitta")
+    page.locator("#translatorForm button[type=submit]").click()
+    relative=page.locator("#translatorPassages .translator-relative-in-proposals")
+    assert relative.locator(".translator-analysis").count()==2
+    relative.evaluate("(node)=>node.open=true")
+    assert "relative subject" in relative.inner_text()
+    assert "relative object" in relative.inner_text()
+    page.locator("#translatorInput").fill("niquitta in cihuātl in chōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    relative=page.locator("#translatorPassages .translator-relative-in-proposals")
+    assert relative.count()==1
+    relative.evaluate("(node)=>node.open=true")
+    assert "head in matrix object slot" in relative.inner_text()
+    page.locator("#translatorInput").fill("nicmati in nichōca")
+    page.locator("#translatorForm button[type=submit]").click()
+    dependent=page.locator("#translatorPassages .translator-nominal-in-proposals")
+    assert dependent.count()==1
+    dependent.evaluate("(node)=>node.open=true")
+    assert "possible nominalized complement or adverbial subordinate clause" in dependent.inner_text()
+    assert "no clause type" in dependent.inner_text().lower()
+    assert dependent.get_by_role("link",name="Inspect subordinate grammar evidence").count()>=3
+    page.locator("#translatorInput").fill("chōca in cihuātl. nemi.")
+    page.locator("#translatorForm button[type=submit]").click()
+    antecedent=page.locator("#translatorPassages .translator-antecedent-proposals")
+    assert antecedent.count()==1
+    antecedent.evaluate("(node)=>node.open=true")
+    antecedent_text=antecedent.inner_text()
+    assert "single agreement-compatible antecedent candidate, NOT resolved reference" in antecedent_text
+    assert "cihuātl" in antecedent_text
+    assert "Unmentioned third-person discourse referents" in antecedent_text
+    page.locator("#translatorInput").fill("quitta in cihuātl. nemi.")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert page.locator("#translatorPassages .translator-antecedent-proposals").count()==0
+    page.locator("#translatorInput").fill("niquitta in cihuātl")
+    page.locator("#translatorForm button[type=submit]").click()
+    assert "I see the woman" in page.locator("#translatorPassages").inner_text()
+    assert page.locator("#translatorPassages .translator-relative-in-proposals").count()==0
+    assert page.locator("#translatorPassages .translator-nominal-in-proposals").count()==0
     # Explicit Classical multi-clause markers. Never infer a single English
     # conjunction, conditional truth, or implicit reference.
     page.locator("#translatorInput").fill("ninemi auh nichōca")

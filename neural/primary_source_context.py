@@ -246,9 +246,11 @@ def examine(*, catalog: Path = CATALOG, live: bool = False, page_fetcher=fetch_p
         "new_gold_translations": 0,
         "approved_dictionary_changes": 0,
         "model_weights_updated": False,
-        "note": ("Checks whether three short quoted spellings genuinely appear on two "
-                 "digitized edited historical Nahuatl documents; not manuscript "
-                 "paleography or a translation accuracy judgment."),
+        "note": ("Attempts to check three short historical excerpts in two edited "
+                 "digital source pages. Only True live-check flags certify an exact "
+                 "static-HTML match. False means the Getty passage was not exposed "
+                 "in the downloaded page, not that the historical text is absent. "
+                 "No manuscript paleography or translation accuracy claim."),
         "investigations": investigations,
     }
 

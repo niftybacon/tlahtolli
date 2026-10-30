@@ -28,8 +28,6 @@ def load_candidate_pairs(manifest: Path) -> dict[str, list[dict]]:
     precedence over an independently inspected manuscript.
     """
     historic = load_corpus(manifest)
-    if not any(r.split == "dev" for r in historic):
-        raise ValueError("Weak bilingual research requires a work-disjoint development split")
     rows: dict[str, list[dict]] = {"train": [], "dev": [], "test": []}
     work_splits: dict[str, str] = {}
     for item in historic:

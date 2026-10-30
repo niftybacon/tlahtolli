@@ -91,7 +91,7 @@ jobs:
             --init-checkpoint "$RUNNER_TEMP/base-research-model" \
             --output "$RUNNER_TEMP/after-temoa-chimalpahin" \
             --width 48 --heads 4 --layers 1 --max-bytes 256 \
-            --epochs 6 --batch-size 8 --max-steps 1800
+            --epochs 7 --batch-size 8 --max-steps 1800
       - name: Confirm honest real training, not translation accuracy
         run: |
           python - <<'PY'
@@ -99,7 +99,7 @@ jobs:
           tmp=pathlib.Path(os.environ["RUNNER_TEMP"])
           corpus=json.loads((tmp/"temoa-historical.jsonl.meta.json").read_text(encoding="utf-8"))
           m=json.loads((tmp/"after-temoa-chimalpahin/metadata.json").read_text(encoding="utf-8"))
-          assert m["steps"]==1800,m["steps"]
+          assert m["steps"]==1800,m["steps"]  # 7 epochs allow full requested budget
           assert m["initialization"]=="teacher-distilled"
           assert m["source_inventory"]["works"]==5
           assert m["source_inventory"]["splits"]["train"]>0

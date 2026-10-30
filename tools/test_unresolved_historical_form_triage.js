@@ -6,6 +6,7 @@ const cp=require('node:child_process');
 const ROOT=path.resolve(__dirname,'..');
 const {buildTriage,distanceAtMostOne,resemblanceLeads,orthographicAndAffixHints}=
  require('./triage_unresolved_historical_forms.js');
+const {buildDossiers}=require('./build_phase6_historical_dossiers.js');
 const data=fs.mkdtempSync(path.join(os.tmpdir(),'tentli-unresolved-triage-'));
 try{
  const source=path.join(data,'source.json'),bridge=path.join(data,'bridge.json');
@@ -17,6 +18,63 @@ try{
  const current=JSON.parse(fs.readFileSync(bridge,'utf8'));
  const result=buildTriage(original,current);
  assert.equal(result.format,'tentli-unresolved-historical-form-triage-v1');
+ const packet=buildDossiers(result,80);
+ assert.equal(packet.format,'tentli-phase6-source-locked-gap-dossiers-v1');
+ assert.equal(packet.source_engine_gap_count,928);
+ assert(packet.candidate_count>=80,'Historical source evidence should supply a significant recurring case pool');
+ assert.equal(packet.prepared_dossier_count,80,'Phase 6 target is 80 real written surfaces, not 80 verified meanings');
+ assert.equal(packet.cases.length,80);
+ assert.equal(new Set(packet.cases.map(x=>x.written_surface)).size,80);
+ assert.deepEqual(new Set(packet.cases.filter(x=>x.independent_historical_dictionary_lead)
+  .map(x=>x.written_surface)),new Set(['yehuan','tepilhuan','noyollo','ipalnemohua','huiya']));
+ for(const row of packet.cases){
+  const origin=result.unresolved_forms.find(x=>x.written_surface===row.written_surface);
+  assert(origin,'Every packet must come from actual 928 engine misses');
+  assert.equal(row.new_verified_meaning,null);
+  assert.equal(row.approved_dictionary_rule,false);
+  assert.equal(row.train_eligible,false);
+  assert.equal(row.silver_approved,false);
+  assert.equal(row.gold,false);
+  assert.equal(row.original_form_not_a_lemma,true);
+  assert.equal(row.same_edition_is_not_independent_manuscript_confirmation,true);
+  assert(row.original_edition_examples.every(e=>
+   e.complete_stanza_english_reviewed===false&&
+   e.manuscript_image_independently_collated===false&&
+   e.source_url.startsWith('https://')&&
+   !/-(?:xxv|xxvi|xxvii)$/u.test(e.work_id)));
+ }
+ assert.equal(packet.verified_contextual_translations_added,0);
+ assert.equal(packet.canonical_grammar_rules_added,0);
+ assert.equal(packet.new_human_approved_gold,0);
+ assert.equal(packet.new_human_approved_silver,0);
+ assert.equal(packet.model_updates,0);
+ const songCase=packet.cases.find(x=>x.written_surface==='huiya');
+ assert(songCase&&songCase.previous_historical_context_notes.length===2&&
+   songCase.previous_historical_context_notes.every(x=>x.not_a_general_word_sense));
+ assert.equal(JSON.stringify(packet),JSON.stringify(buildDossiers(result,80)),
+   'Fixed source fingerprints and evidence must produce deterministic dossier order');
+ assert.throws(()=>buildDossiers(result,101),/bounded/i);
+ for(const mutation of [
+  x=>{x.no_model_training=false},
+  x=>{x.unresolved_forms[0].gold=true},
+  x=>{x.unresolved_forms[0].training_eligible=true},
+  x=>{x.unresolved_forms[0].written_surface='invented$urface'},
+  x=>{x.unresolved_forms[0].research_priority_not_translation_confidence=Infinity},
+  x=>{x.unresolved_forms[0].historical_edition_examples[0].printed_historical_source_url='http://unverified.test/'},
+  x=>{x.unresolved_forms[0].independent_dictionary_context_lead=
+   {source_url:'http://unverified.test/',exact_stanza_meaning_verified:true,
+    source_based_dictionary_lemma_promotion:true}},
+ ]){
+  const bad=JSON.parse(JSON.stringify(result));
+  mutation(bad);
+  assert.throws(()=>buildDossiers(bad),/Reject/i);
+ }
+ const dossierFile=path.join(data,'dossiers.json');
+ cp.execFileSync('node',['tools/build_phase6_historical_dossiers.js','--source',source,
+  '--bridge',bridge,'--output',dossierFile,'--limit','80'],
+  {cwd:ROOT,encoding:'utf8',timeout:120000});
+ assert.deepEqual(JSON.parse(fs.readFileSync(dossierFile,'utf8')),packet);
+ console.log('PASS Phase 6: 80 source-locked real historical-form dossiers, negative controls, no invented translation or independent Gold.');
  assert.equal(result.unresolved_engine_miss_count,928);
  assert.equal(result.unresolved_forms.length,928);
  assert.equal(result.investigated_all_unresolved_not_translated,true);

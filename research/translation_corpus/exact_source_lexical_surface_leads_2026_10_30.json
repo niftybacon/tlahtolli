@@ -1,0 +1,50 @@
+{
+  "format": "tentli-exact-historical-lexical-leads-v1",
+  "version": 1,
+  "record_scope": "only two independently located historical dictionary written-form entries; research-only source hints, NOT full syntax, attestation certification or approved bilingual supervision",
+  "human_source_review_independently_authenticated": false,
+  "facsimile_collation_independently_done": false,
+  "new_canonical_dictionary_headwords": 0,
+  "new_productive_morphological_rules": 0,
+  "train_eligible": false,
+  "silver_approved": false,
+  "gold_approved": false,
+  "records": [
+    {
+      "id": "odn-lockhart-yehuan-short-pronoun-form",
+      "written_form": "yehuan",
+      "lexicographic_lemma": "yehuantin",
+      "candidate_category": "independent-pronoun-form",
+      "source_url": "https://nahuatl.wired-humanities.org/content/yehuantin",
+      "source_locator": "Lockhart, Nahuatl as Written (2001), p. 242; Online Nahuatl Dictionary lists orthographic short form yehuan",
+      "corroborating_source_url": "https://gdn.iib.unam.mx/diccionario/yehuan/188287",
+      "corroborating_locator": "UNAM Gran Diccionario Nahuatl, Docs_México 1557 and historic index entries; separately records written yeuan, not an automatic equivalent",
+      "notable_non_equivalent_spelling": "yeuan",
+      "contextual_caveat": "The printed Brinton expression yehuan Dios has unresolved referent, scope and clause role; the dictionary form cannot itself license the English pronoun they for that stanza.",
+      "status": "source-indexed exact written-form hypothesis; not an independently adjudicated grammatical or contextual analysis",
+      "lemma_meaning_newly_approved": false,
+      "stanza_translation_verified": false,
+      "grammatical_role_verified": false,
+      "morphological_segmentation_verified": false,
+      "whole_original_manuscript_reading_verified": false
+    },
+    {
+      "id": "odn-molina-tepilhuan-headword",
+      "written_form": "tepilhuan",
+      "lexicographic_lemma": "tepilhuan",
+      "candidate_category": "historical-lexicographic-noun-form",
+      "source_url": "https://nahuatl.wired-humanities.org/node/188794",
+      "source_locator": "Molina, Vocabulario (1571), Part II, fol. 103r, col. 1, via Online Nahuatl Dictionary (Joe Campbell transcription)",
+      "corroborating_source_url": "https://nahuatl.wired-humanities.org/content/tepiltzin",
+      "corroborating_locator": "Related honorific/kindred lemma entry is separate lexicographic context, not evidence of a global substitution or stem paradigm",
+      "notable_non_equivalent_spelling": "tepiltzin",
+      "contextual_caveat": "The cited noun has children/offspring senses, while an original poetic audience or social honorific interpretation requires separate contextual review; no automatic children English rendering.",
+      "status": "source-indexed exact written-form hypothesis; not an independently adjudicated grammatical or contextual analysis",
+      "lemma_meaning_newly_approved": false,
+      "stanza_translation_verified": false,
+      "grammatical_role_verified": false,
+      "morphological_segmentation_verified": false,
+      "whole_original_manuscript_reading_verified": false
+    }
+  ]
+}

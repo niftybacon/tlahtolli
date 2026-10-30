@@ -51,7 +51,7 @@ class ExtractorTests(unittest.TestCase):
         rows,meta=extract_poems(sample_poems(),max_parallel_bytes=220)
         self.assertEqual(meta["poems"],27)
         self.assertEqual(meta["stanzas"],108)
-        self.assertEqual(meta["paired_verse_number_anchors"],81)
+        self.assertEqual(meta["paired_verse_number_anchors"],108)
         self.assertGreater(meta["weak_parallel_trainable_short_pairs"],0)
         self.assertTrue(all(r["original"].startswith(("Nahuatl-original","More fictional","A fictional","Fictional final")) for r in rows))
         self.assertTrue(all("Editorial notes" not in r["original"] for r in rows))

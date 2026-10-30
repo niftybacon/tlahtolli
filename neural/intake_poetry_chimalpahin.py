@@ -15,6 +15,11 @@ from .corpus import load_corpus
 
 POEMS_URL="https://www.gutenberg.org/ebooks/12219"
 PROSE_URL="https://www.gutenberg.org/ebooks/21802"
+# Immutable original Project Gutenberg edition bytes AFTER UTF-8-SIG decoding.
+# If an upstream transcription is corrected, reassess its segmentation before
+# admitting a new version, rather than silently changing training evidence.
+POEMS_SHA256="5b7c4a799063e22c1ce91a798bb86ffbd1ead3e093771220f7eba92d6070b2c0"
+PROSE_SHA256="db3f883ef2924c044dbc9edffbcd1d0dce2e837f24d74d810d02c79ef0f0b356"
 ROMANS=("I","II","III","IV","V","VI","VII","VIII","IX","X",
         "XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX",
         "XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII")
@@ -177,9 +182,14 @@ def main():
     p.add_argument("--output",required=True)
     p.add_argument("--max-parallel-bytes",type=int,default=254)
     a=p.parse_args()
-    poetry,pmeta=extract_poems(Path(a.poems).read_text(encoding="utf-8-sig"),
-                               max_parallel_bytes=a.max_parallel_bytes)
-    prose,hmeta=extract_prose(Path(a.prose).read_text(encoding="utf-8-sig"))
+    poems_text=Path(a.poems).read_text(encoding="utf-8-sig")
+    prose_text=Path(a.prose).read_text(encoding="utf-8-sig")
+    if hashlib.sha256(poems_text.encode("utf-8")).hexdigest()!=POEMS_SHA256:
+        raise ValueError("Brinton 27-poem edition hash changed: inspect before retraining")
+    if hashlib.sha256(prose_text.encode("utf-8")).hexdigest()!=PROSE_SHA256:
+        raise ValueError("Chimalpahin prose edition hash changed: inspect before retraining")
+    poetry,pmeta=extract_poems(poems_text,max_parallel_bytes=a.max_parallel_bytes)
+    prose,hmeta=extract_prose(prose_text)
     rows=poetry+prose
     out=Path(a.output)
     out.parent.mkdir(parents=True,exist_ok=True)

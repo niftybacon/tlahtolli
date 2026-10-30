@@ -5,6 +5,7 @@ on:
       - 'neural/**'
       - 'research/neural_training/**'
       - 'tools/test_historical_neural_corpus.py'
+      - 'tools/test_temoa_chimalpahin_intake.py'
       - 'tools/test_neural_fair_use_intake.py'
       - 'tools/test_neural_release_audit.py'
       - 'tools/test_tentli_neural_smoke.py'
@@ -17,6 +18,7 @@ on:
       - 'neural/**'
       - 'research/neural_training/**'
       - 'tools/test_historical_neural_corpus.py'
+      - 'tools/test_temoa_chimalpahin_intake.py'
       - 'tools/test_neural_fair_use_intake.py'
       - 'tools/test_neural_release_audit.py'
       - 'tools/test_tentli_neural_smoke.py'
@@ -36,12 +38,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install bounded HTML source fixture dependencies
+        run: python -m pip install requests beautifulsoup4
       - name: Validate historical provenance and model syntax
         run: |
           python -m compileall -q neural tools/test_historical_neural_corpus.py tools/test_tentli_neural_smoke.py
           python -m unittest discover -s tools -p 'test_historical_neural_corpus.py' -v
           python -m unittest discover -s tools -p 'test_neural_fair_use_intake.py' -v
           python -m unittest discover -s tools -p 'test_neural_release_audit.py' -v
+          python -m unittest discover -s tools -p 'test_temoa_chimalpahin_intake.py' -v
       - name: Verify canonical teacher export does not invent manuscript translations
         run: node tools/test_tentli_teacher.js
       - name: Ensure existing Tēntli/translator engines are intact

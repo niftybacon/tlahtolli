@@ -43,6 +43,35 @@ try{
   cat.advanced_browser_morphology_surface+
   cat.only_archival_dictionary_headword+
   cat.no_linked_engine_surface_match,1181);
+ assert.equal(cat.no_linked_engine_surface_match,928,
+  'Unreviewed lexical-form citations are not productive grammar or curated headword coverage');
+ assert.equal(cat.source_indexed_exact_lexical_surface_research_leads,2);
+ assert.equal(result.actual_grammar_or_full_english_coverage_from_lexical_leads,0);
+ assert.match(result.source_indexed_lexical_leads_source_sha256,/^[0-9a-f]{64}$/);
+ for(const [form,lemma] of [['yehuan','yehuantin'],['tepilhuan','tepilhuan']]){
+  const entry=result.token_engine_diagnostics.find(x=>x.written_surface===form);
+  assert(entry&&entry.analysis_route==='no_linked_engine_surface_match',
+   'Exact source dictionary lookup is not a certified grammar parse: '+form);
+  assert.equal(entry.source_indexed_exact_lexical_form_candidates.length,1);
+  const c=entry.source_indexed_exact_lexical_form_candidates[0];
+  assert.equal(c.lemma,lemma);
+  assert.equal(c.grade,'unreviewed');
+  assert.equal(c.role_not_inferred,true);
+  assert.equal(c.not_productive_morphology,true);
+  assert.equal(c.not_canonical_lexicon_hit,true);
+  assert.equal(c.contextual_english_not_verified,true);
+  assert.equal(c.approved_silver,false);
+  assert.equal(c.approved_gold,false);
+  assert.equal(c.training_eligible,false);
+  assert(c.source.startsWith('https://nahuatl.wired-humanities.org/'));
+  assert.equal(entry.source_reviewed_morphology_candidates.length,0,
+   'An external dictionary lemma must never become source-reviewed morphology');
+ }
+ for(const form of ['yeuan','yehuantin','tepilhuantzin','huiya']){
+  const x=result.token_engine_diagnostics.find(e=>e.written_surface===form);
+  if(x)assert.equal(x.source_indexed_exact_lexical_form_candidates.length,0,
+   'Do not silently create variants or generalize vocable homographs');
+ }
  const forms=new Set(result.token_engine_diagnostics.map(x=>x.written_surface));
  assert.equal(forms.size,1181);
  const byForm=Object.fromEntries(result.token_engine_diagnostics.map(x=>[x.written_surface,x]));

@@ -66,7 +66,7 @@ python -m neural.review_ledger implementation \
   --expected-head <CURRENT_64_HEX_HASH>
 ```
 
-The review declaration JSON must contain `source_fingerprint`, `decision`, `reviewer_name`, `rationale`, `evidence_urls` (1–12 distinct source pointers), and `rights_assessment` (`unknown`, `restricted`, or `declared_usable_for_research`). The human submits the declaration; the program does not invent a person or read a user's private files automatically.
+The review declaration JSON must contain `source_fingerprint`, `decision`, `reviewer_name`, `rationale`, `evidence_urls` (1–12 distinct source pointers, **including the original staged source URL**, not only unrelated citations), and `rights_assessment` (`unknown`, `restricted`, or `declared_usable_for_research`). The human submits the declaration; the program does not invent a person or read a user's private files automatically.
 
 The implementation JSON must contain the unchanged `source_fingerprint`, `implementation_pr`, `engine_commit` (40 hex), `changed_paths`, `regression_tests`, `outcome_note` and `measured_diagnostic`. The software refuses direct `pairs.csv` or Gold edits in a purported implementation report. The *real* human-controlled PR is the only place source promotion or official grammatical changes can occur.
 

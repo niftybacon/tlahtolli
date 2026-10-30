@@ -52,7 +52,7 @@ def check() -> None:
     must("Multi-agent coordination: must follow" in roadmap, "Roadmap missing change notification protocol")
     must("Mandatory six-phase plan" in agents, "AGENTS.md missing mandatory six-phase plan")
     must("Substantial change classification and notification record" in template, "PR template missing notification evidence")
-    must("source-written" in audit and "public translator" in audit.lower(), "Expected engine consumption audit is incomplete")
+    must("Historical material" in audit and "public translator" in audit.lower(), "Expected engine consumption audit is incomplete")
 
     for filename, text in (("README", readme), ("roadmap", roadmap), ("AGENTS", agents)):
         for phase in PHASE_TERMS:

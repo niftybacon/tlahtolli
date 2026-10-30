@@ -148,6 +148,42 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   externalLeads.set(r.form,r);
  }
  if(externalLeads.size!==5)throw Error('High-frequency source-research batch incomplete');
+ // A user's contextual judgment is evidence for TWO specified manuscript/song
+ // occurrences. It does not authorize a blanket morphological stopword rule.
+ const song=fromRepo('research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json');
+ const expectedSongIds=new Set(['brinton-xv-02-huiya','cantares-18v-304-huiya']);
+ const guard=song.guardrails||{};
+ const requiredTrue=['no_global_huiya_to_vocable_rewrite','no_global_huiya_to_go_rewrite',
+   'no_global_interjection_stopword_set','retain_original_poetic_refrains',
+   'retain_grapheme_spellings_and_diacritics','no_automatic_word_deletion',
+   'do_not_exclude_from_source_counts','no_new_grammar_rules',
+   'other_huiya_occurrences_pending_context_review'];
+ if(song.format!=='tentli-huiya-contextual-poetic-evidence-v1'||
+    song.method_source?.year!==1972||song.method_source?.printed_pages!=='53-54'||
+    !Array.isArray(song.method_source?.potential_vocable_spellings)||
+    !song.method_source.potential_vocable_spellings.includes('huiya')||
+    song.method_source.all_potential_spellings_context_dependent!==true||
+    song.method_source.verbal_and_particle_homographs_preserved!==true||
+    !Array.isArray(song.observations)||song.observations.length!==2||
+    song.observations.some(o=>!expectedSongIds.has(o.id)||o.exact_written_form!=='huiya'||
+       o.review_scope!=='this_occurrence_only'||o.interpretation_not_global!==true||
+       o.context_role!=='sung_interjection_or_poetic_vocable_in_this_stanza'||
+       !/^https:\/\//u.test(o.source_url)||o.manuscript_image_collated!==false||
+       o.whole_stanza_english_semantics_reviewed!==false||
+       o.reviewer_independence!=='not_independently_authenticated')||
+    new Set(song.observations.map(x=>x.id)).size!==2||
+    song.observations[0].record_id!=='brinton-1890-poetry-xv-02'||
+    song.observations[1].record_id!=='cantares-mexicanos-18v-304'||
+    !sourceStanzas.get('brinton-1890-poetry-xv-02')?.includes('in colcahuahtecpillotl huiya nican milacatzoa')||
+    song.separate_lexical_sense?.lexeme!=='yauh'||
+    song.separate_lexical_sense?.remains_allowed!==true||
+    !requiredTrue.every(k=>guard[k]===true)||
+    guard.approved_gold!==0||guard.approved_silver!==0||
+    guard.training_eligible!==false||guard.new_dictionary_edits!==0||
+    guard.model_weights_updated!==false)
+   throw Error('Cannot generalize context-sensitive sung huiya into a new universal word rule');
+ const reviewedSong=new Map([['huiya',song]]);
+
  const unresolved=[];
  const classes={
   prior_poetic_or_particle_research_lead:0,
@@ -157,6 +193,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   no_specific_lexical_or_morphology_lead:0,
   director_feedback_already_recorded:0,
   individually_cited_external_historical_dictionary_lead:0,
+  contextual_poetic_vocable_occurrence_review_complete_not_global:0,
  };
  for(const [surface,linkedRow] of byLink){
   const original=bySource.get(surface);
@@ -172,6 +209,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   const pre=prior.get(surface);
   const old=previouslyReviewed.has(surface);
   const sourced=externalLeads.get(surface)||null;
+  const contextReviewed=reviewedSong.get(surface)||null;
   const near=resemblanceLeads(surface,anchors);
   const shapes=orthographicAndAffixHints(surface);
   const repeats=original.historical_train_work_count>=2;
@@ -181,6 +219,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   if(repeats)classes.recurrent_across_same_edition_poem_units++;
   if(old)classes.director_feedback_already_recorded++;
   if(sourced)classes.individually_cited_external_historical_dictionary_lead++;
+  if(contextReviewed)classes.contextual_poetic_vocable_occurrence_review_complete_not_global++;
   if(!pre&&!sourced&&!near.length&&!shapes.length&&!repeats)
     classes.no_specific_lexical_or_morphology_lead++;
   const sources=original.historic_brinton_source_examples;
@@ -200,6 +239,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
     (original.human_contextual_review_priority?5:0)+
     (sourced?.ask_director_now?12:0);
   const route=pre?'already_in_poetic_particle_source_triage':
+   contextReviewed?'two_song_occurrences_are_context_reviewed_other_uses_pending':
    sourced?.ask_director_now?'independent_dictionary_verb_reading_conflicts_with_poetic_context':
    sourced?'source_located_lexical_lead_requires_only_contextual_engine_review':
    old?'already_has_director_feedback':
@@ -225,6 +265,14 @@ function buildTriage(source,linked,{maxHuman=12}={}){
     context_independent_gloss_verified:false,
    }:null,
    director_feedback_previously_recorded:old,
+   context_specific_poetic_occurrence_reviews:contextReviewed?contextReviewed.observations.map(o=>({
+    review_work_id:o.historical_work_id,review_passage_id:o.record_id,
+    source_url:o.source_url,short_source_fragment:o.short_source_fragment,
+    grammatical_function_hypothesis:o.context_role,
+    manuscript_image_collated:false,review_scope:'this_occurrence_only',
+    not_a_general_word_sense:true,verbal_homograph_still_available:true,
+   })):[],
+   is_all_occurrences_adjudicated:false,
    independent_dictionary_context_lead:sourced?{
     source_url:sourced.source_url,source_locator:sourced.source_locator,
     proposed_contextual_lead:sourced.lead,caveat:sourced.contextual_caveat,
@@ -251,6 +299,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
  // sent to a person again. Limit one initial user question to a few distinct
  // source-linked words, while machine follow-up can run across all 928.
  const eligible=unresolved.filter(r=>!r.prior_source_research&&!r.director_feedback_previously_recorded&&
+   r.context_specific_poetic_occurrence_reviews.length===0&&
    (!r.independent_dictionary_context_lead||r.independent_dictionary_context_lead.director_attention_warranted)&&
    (r.separate_poem_units_in_same_brinton_edition>=2||
     r.source_checked_similar_lemma_leads_not_equivalent.length||
@@ -284,6 +333,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   already_investigated_poetic_or_director_cases_not_requeued:
    unresolved.filter(x=>!!x.prior_source_research||x.director_feedback_previously_recorded).length,
   new_individually_source_indexed_high_frequency_leads:classes.individually_cited_external_historical_dictionary_lead,
+  previously_asked_huiya_song_contexts_recorded_not_universally_resolved:classes.contextual_poetic_vocable_occurrence_review_complete_not_global,
   prioritized_new_human_questions_count:queue.length,
   requires_human_for_every_form:false,
   no_new_dictionary_approvals:true,

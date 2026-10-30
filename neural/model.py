@@ -33,7 +33,17 @@ def inputs(text: str, task: str, max_bytes: int) -> list[int]:
     code = {"denoise": DENOISE, "translate": TRANSLATE, "analyze": ANALYZE}.get(task)
     if code is None:
         raise ValueError("Unknown neural objective")
-    return [code, *encode_text(text, max_bytes - 2), EOS]
+    # This guard is upstream of ALL callers, including experimental raw
+    # decoding. Two longer sentences with distinct endings must never
+    # collapse into the same first 254 UTF-8 bytes without an error.
+    normalized = unicodedata.normalize("NFC", text)
+    byte_length = len(normalized.encode("utf-8"))
+    if byte_length > max_bytes - 2:
+        raise ValueError(
+            f"Neural source is {byte_length} UTF-8 bytes; model supports at most "
+            f"{max_bytes - 2}. Refusing silent truncation. "
+            "Use a reviewed longer-context design, not a guessed suffix.")
+    return [code, *encode_text(normalized, max_bytes - 2), EOS]
 
 
 def targets(text: str, max_bytes: int) -> list[int]:

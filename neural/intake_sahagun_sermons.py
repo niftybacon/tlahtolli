@@ -63,6 +63,22 @@ def index_sermons(html: str) -> list[dict]:
     return found
 
 
+
+def presentation_page_range(html: str, *, sermon: int, start: int, next_start: int) -> tuple[int, int]:
+    """Get surviving folios from the source; don't invent missing pages."""
+    soup=BeautifulSoup(html,"html.parser")
+    heading=soup.find("h2")
+    if heading is None or not re.search(r"\\bSerm[oó]n\\s+"+str(sermon)+r"\\b",heading.get_text(" ",strip=True)):
+        raise ValueError(f"Presentation heading mismatch for sermon {sermon}")
+    txt=soup.get_text(" ",strip=True)
+    match=re.search(r"\\(Ms\\.\\s*1485,\\s*Col\\.\\s*Ayer,\\s*p\\.\\s*(\\d+)(?:[-–](\\d+))?\\)",txt,re.I)
+    if not match:
+        raise ValueError(f"Missing historical manuscript page interval for sermon {sermon}")
+    lo=int(match.group(1));hi=int(match.group(2) or lo)
+    if lo!=start or hi<lo or hi>next_start or hi-lo>40:
+        raise ValueError(f"Invalid source page span for sermon {sermon}: {lo}-{hi}; next starts {next_start}")
+    return lo,hi
+
 def score_nahuatl(text: str) -> tuple[int, float]:
     words = re.findall(r"[A-Za-zÀ-ÿ]+", text.casefold())
     if not words:
@@ -147,14 +163,15 @@ def download_sermons(*, output: str, max_sermons: int = 64, delay: float = 0.27)
     rows=[];works=[];total_page=0;discarded=0;estimated_source_chars=0
     for i,spec in enumerate(starts[:max_sermons]):
         num,start=spec["number"],spec["page"]
-        next_page=starts[i+1]["page"] if i+1<len(starts) else 199  # final sermon spans p.197–198
-        if next_page<=start or next_page-start>40:
-            raise ValueError(f"Unreasonable manuscript page range for sermon {num}")
+        next_start=starts[i+1]["page"] if i+1<len(starts) else 199
+        presentation=get(f"{BASE}ayer1485p?s=ayer1485-{start}")
+        lo,hi=presentation_page_range(presentation,sermon=num,start=start,next_start=next_start)
+        if delay:time.sleep(delay)
         # Entire sermon reserved as a single independent unit for dev,
         # preventing adjacent-page language memorization in evaluation.
         split="dev" if num % 8==0 else "train"
         locators=[];paragraphs=0;sermon_chars=0
-        for page in range(start,next_page):
+        for page in range(lo,hi+1):
             url=f"{BASE}ayer1485c?p={page}&s=ayer1485-{start}"
             html=get(url)
             result=page_source(html,expected_sermon=num)

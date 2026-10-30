@@ -6,6 +6,7 @@ on:
       - 'research/neural_training/**'
       - 'tools/test_historical_neural_corpus.py'
       - 'tools/test_neural_fair_use_intake.py'
+      - 'tools/test_neural_release_audit.py'
       - 'tools/test_tentli_neural_smoke.py'
       - 'tools/test_tentli_teacher_distill.py'
       - 'tools/test_tentli_teacher.js'
@@ -17,6 +18,7 @@ on:
       - 'research/neural_training/**'
       - 'tools/test_historical_neural_corpus.py'
       - 'tools/test_neural_fair_use_intake.py'
+      - 'tools/test_neural_release_audit.py'
       - 'tools/test_tentli_neural_smoke.py'
       - 'tools/test_tentli_teacher_distill.py'
       - 'tools/test_tentli_teacher.js'
@@ -39,6 +41,7 @@ jobs:
           python -m compileall -q neural tools/test_historical_neural_corpus.py tools/test_tentli_neural_smoke.py
           python -m unittest discover -s tools -p 'test_historical_neural_corpus.py' -v
           python -m unittest discover -s tools -p 'test_neural_fair_use_intake.py' -v
+          python -m unittest discover -s tools -p 'test_neural_release_audit.py' -v
       - name: Verify canonical teacher export does not invent manuscript translations
         run: node tools/test_tentli_teacher.js
       - name: Ensure existing Tēntli/translator engines are intact

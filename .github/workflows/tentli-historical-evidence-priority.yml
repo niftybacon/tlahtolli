@@ -1,0 +1,68 @@
+name: Tēntli historical bilingual evidence triage (research only)
+on:
+  pull_request:
+    paths:
+      - 'neural/historical_evidence_prioritizer.py'
+      - 'research/verified_44_source_index.csv'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+      - 'tools/test_historical_evidence_prioritizer.py'
+      - '.github/workflows/tentli-historical-evidence-priority.yml'
+  push:
+    paths:
+      - 'neural/historical_evidence_prioritizer.py'
+      - 'research/verified_44_source_index.csv'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+      - 'tools/test_historical_evidence_prioritizer.py'
+      - '.github/workflows/tentli-historical-evidence-priority.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  historical-evidence-priority:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test non-gold source-linked evidence classification
+        run: |
+          python -m unittest discover -s tools -p 'test_historical_evidence_prioritizer.py' -v
+          python -m unittest discover -s tools -p 'test_brinton_weak_parallel.py' -v
+          python -m unittest discover -s tools -p 'test_historical_candidate_english.py' -v
+          python tools/validate_translation_corpus.py
+      - name: Produce bounded review queue and lexical-sense anchors
+        run: |
+          python -m neural.historical_evidence_prioritizer \
+            --limit 40 --max-per-work 4 \
+            --output "$RUNNER_TEMP/tentli-history-review-queue.json" \
+            --anchors-output "$RUNNER_TEMP/tentli-lexical-anchors.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])
+          q=json.loads((p/"tentli-history-review-queue.json").read_text(encoding="utf-8"))
+          a=json.loads((p/"tentli-lexical-anchors.json").read_text(encoding="utf-8"))
+          assert len(a["claims"]) == 47
+          assert q["selected_for_human_review"] == 40
+          assert q["approved_parallel_pairs_added"] == 0
+          assert q["independent_gold_translation_accuracy"] is None
+          assert all(x["split"] == "train" and x["independent_gold"] is False for x in q["queue"])
+          print("## Tēntli source-backed bilingual alignment triage")
+          print("- 47 cited lexical-sense anchors, including context-dependent **in** (no invariant English translation)")
+          print("- 40 bounded Brinton stanza **review priorities**, not reviewer-approved alignments")
+          print("- Reserved development poems remain out of the ranked training-review queue")
+          print("- New Gold translations: **0**; model accuracy: **unmeasured**")
+          print("- Review pointer IDs:")
+          for item in q["queue"][:12]:
+              print("  - `"+item["record_id"]+"` (score="+str(item["review_priority_not_confidence"])+")")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-47-lexical-anchors-and-40-bilingual-review-priorities
+          path: |
+            ${{ runner.temp }}/tentli-history-review-queue.json
+            ${{ runner.temp }}/tentli-lexical-anchors.json
+          retention-days: 30
+          if-no-files-found: error

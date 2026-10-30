@@ -4,7 +4,7 @@ from copy import deepcopy
 import unittest
 
 from tools.verify_brinton_parallel_source import (
-    AttestationError, SOURCE_BLOB_SHA, SOURCE_REPO, git_blob_sha, verify_record
+    AttestationError, SOURCE_BLOB_SHA, SOURCE_REPO, SOURCE_COMMIT, git_blob_sha, verify_record
 )
 
 
@@ -15,7 +15,7 @@ class BrintonPrintedSourceAuditTests(unittest.TestCase):
             "1. atl.\n", "1. water.\n",
             "2. xochitl.\n", "2. flower.\n", "NOTES.\n",
         ]
-        root = f"https://github.com/{SOURCE_REPO}/blob/master/12219.txt"
+        root = f"https://github.com/{SOURCE_REPO}/blob/{SOURCE_COMMIT}/12219.txt"
         row = {
             "record_id": "brinton-1890-poetry-i-01",
             "source_blob_sha": SOURCE_BLOB_SHA,

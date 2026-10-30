@@ -431,14 +431,20 @@ with sync_playwright() as pw:
     page.locator("#translatorForm button[type=submit]").click()
     assert page.locator("#translatorPassages .translator-multiclause-proposals").count()==0
     # The native sentence tab now reuses canonical source-located morphology:
-    # source-listed finite forms can show their exact recorded glosses, but a
-    # following noun does not become a magically parsed sentence.
+    # the productive bridge composes a draft from an exact source-listed past,
+    # preserving lexical evidence. An incompatible noun cannot become its object.
     page.locator("#translatorInput").fill("onicoch")
     page.locator("#translatorForm button[type=submit]").click()
     finite=page.locator("#translatorPassages").inner_text()
     assert "I slept" in finite
-    assert "source-listed finite-form gloss (unverified in context)" in finite
-    assert "NOT a generated sentence translation" in finite
+    assert page.locator('.translator-english-output').inner_text() == 'I slept.'
+    assert "The word evidence remains lexical" in finite
+    assert "NOT independently attested" in finite
+    evidence = page.locator('details.translator-composition-evidence')
+    evidence.locator('summary').click()
+    assert 'onicoch → cochi' in evidence.inner_text()
+    assert 'Molina (1571)' in evidence.inner_text()
+    assert 'Selected English is editorial' in evidence.inner_text()
     page.locator("#translatorInput").fill("onicoch in cihuātl")
     page.locator("#translatorForm button[type=submit]").click()
     partial=page.locator("#translatorPassages").inner_text()
@@ -448,8 +454,9 @@ with sync_playwright() as pw:
     assert "I slept" not in partial
     page.locator("#translatorInput").fill("ahmo onicoch")
     page.locator("#translatorForm button[type=submit]").click()
-    assert "Outside supported clause grammar" in page.locator("#translatorPassages").inner_text()
-    assert "I did not sleep" not in page.locator("#translatorPassages").inner_text()
+    assert page.locator('.translator-english-output').inner_text() == 'I did not sleep.'
+    assert 'The word evidence remains lexical' in page.locator('#translatorPassages').inner_text()
+    assert 'NOT independently attested' in page.locator('#translatorPassages').inner_text()
     page.locator("#translatorInput").fill("ahmo nichōca")
     page.locator("#translatorForm button[type=submit]").click()
     assert "I do not cry" in page.locator("#translatorPassages").inner_text()

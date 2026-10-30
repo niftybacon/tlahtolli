@@ -16,6 +16,9 @@ files['translator-sentence.js'] = 'changed\r\n'
 assert generate(second, read) == second, 'Windows newline conversion must not change cache keys'
 files['dictionary.json'] = 'new lexical data'
 assert generate(second, read) != second
+third = generate(second, read)
+files['data/predicate_english.json'] = 'changed editorial English realization'
+assert generate(third, read) != third, 'Predicate wording changes must change the runtime fingerprint'
 try:
     generate('<html></html>', read)
 except ValueError:

@@ -1,0 +1,34 @@
+name: Prepare productive predicate runtime URLs
+on:
+  push:
+    branches: [fix/productive-predicate-english]
+    paths:
+      - '.github/workflows/prepare-predicate-runtime.yml'
+permissions:
+  contents: write
+concurrency:
+  group: tlahtolli-predicate-runtime-preparation
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/productive-predicate-english
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and verify content-versioned script URLs
+        run: |
+          python tools/build_runtime_assets.py --write
+          python tools/test_runtime_assets.py
+          python tools/build_runtime_assets.py --check
+      - name: Commit only generated runtime HTML on the feature branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Regenerate runtime URLs for productive predicate composition"
+          git push origin HEAD:refs/heads/fix/productive-predicate-english

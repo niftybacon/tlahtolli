@@ -8,7 +8,7 @@ const MAX_NODES=240,MAX_EDGES=480,MAX_ALTERNATIVES=48;
 const norm=x=>String(x||'').normalize('NFC').toLowerCase();
 const source=x=>typeof x==='string'&&/^https:\/\/[^\s/]+/u.test(x)?x:null;
 const items=(x,max=32)=>Array.isArray(x)?x.slice(0,max):[];
-function create(dictionary,historicalPassages,paradigms){
+function create(dictionary,historicalPassages,paradigms,sentenceModel){
  // A lexical head source must originate from an unambiguous curated entry,
  // never from the preceding in-relative grammar marker.
  const grammarSource='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
@@ -612,7 +612,7 @@ function create(dictionary,historicalPassages,paradigms){
    isSourceList(needed)&&needed.every(u=>option.sources.includes(u));
   const frameSame=(a,b)=>!!a&&!!b&&
    ['subjectPerson','subjectNoun','objectNoun','predicate','tense','negative']
-    .every(k=>a[k]===b[k]);
+    .every(k=>a[k]===b[k])&&JSON.stringify(a.morphologyEvidence)===JSON.stringify(b.morphologyEvidence);
   const PERSONS=['1sg','2sg','3sg','1pl','2pl','3pl'];
   const counters={approved:0,rejected:0,graphMatchedRelatives:0,
    existingFinite:0,existingLocation:0};
@@ -625,13 +625,21 @@ function create(dictionary,historicalPassages,paradigms){
     if(!st||typeof option.text!=='string'||!option.text.trim()||
      !isSourceList(option.sources)){counters.rejected++;continue;}
     let status=null;
+    // Reconsult the same canonical morphology provider for each productive
+    // predicate; English options cannot strip or alter their evidence tier.
+    const frames=[st.frame,st.relativeFrame,st.matrixFrame].filter(Boolean);
+    if(frames.some(f=>{
+     const expanded=!!f.morphologyEvidence||paradigms&&!paradigms.paradigms?.[f.predicate];
+     if(!expanded)return false;
+     try{return !sentenceModel?.validateProductiveFrame(f);}catch{return true;}
+    })){counters.rejected++;continue;}
     if(st.kind==='finite'){
      const accepted=(cl.candidates||[]).some(c=>
       c?.grade==='grammar-derived candidate'&&
       c.coverage===cl.tokens?.length&&frameSame(c.frame,st.frame)&&
       Array.isArray(c.english)&&c.english.includes(option.text)&&
       hasSources(option,c.sources));
-     if(accepted){status='existing-indexed-finite-source';counters.existingFinite++;}
+     if(accepted){status=st.frame.morphologyEvidence?'source-gated-productive-finite':'existing-indexed-finite-source';counters.existingFinite++;}
     }else if(st.kind==='headed-relative'){
      for(const [n,r] of (cl.relativeClauseProposals||[]).entries()){
       if(r.coverage!==cl.tokens?.length||!r.matrix||
@@ -684,7 +692,9 @@ function create(dictionary,historicalPassages,paradigms){
     counters.approved++;
     options.push({...option,grammarAudit:{
      status,sourceBounded:true,verifiedTranslation:false,
-     note:status==='graph-consistent-relative-roles'?
+     note:status==='source-gated-productive-finite'?
+      'Canonical morphology and lexical evidence were rechecked; the word keeps its original grade and the sentence remains an unverified draft.':
+      status==='graph-consistent-relative-roles'?
       'The relative and matrix roles occur in one admitted grammar-IR alternative; this does not prove the English wording or referent identity.':
       status==='existing-location-scope-not-ir-audited'?
        'Location attachment was licensed by the separate location analyzer; the grammar IR has NOT checked that attachment.':

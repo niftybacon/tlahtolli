@@ -1,0 +1,1183 @@
+{
+  "format": "tlahtolli-predicate-english-v1",
+  "version": 1,
+  "grade": "editorial English realization of source-checked lexical senses; not historical sentence evidence",
+  "entries": [
+    {
+      "lemma": "cochi",
+      "source": "https://nahuatl.wired-humanities.org/content/cochi",
+      "dictionaryMeaning": "to sleep",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "sleep",
+          "third": "sleeps",
+          "past": "slept"
+        }
+      ]
+    },
+    {
+      "lemma": "caqui",
+      "source": "https://nahuatl.wired-humanities.org/node/171996",
+      "dictionaryMeaning": "to hear; understand; listen",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "hear",
+          "third": "hears",
+          "past": "heard"
+        },
+        {
+          "base": "understand",
+          "third": "understands",
+          "past": "understood"
+        }
+      ]
+    },
+    {
+      "lemma": "tlazotla",
+      "source": "https://nahuatl.wired-humanities.org/content/tlazotla",
+      "dictionaryMeaning": "to love or esteem someone; reflexively to love oneself",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "love",
+          "third": "loves",
+          "past": "loved"
+        },
+        {
+          "base": "esteem",
+          "third": "esteems",
+          "past": "esteemed"
+        }
+      ]
+    },
+    {
+      "lemma": "cuiloa",
+      "source": "https://nahuatl.wired-humanities.org/content/cuiloa",
+      "dictionaryMeaning": "to write or paint something; make a record",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "write",
+          "third": "writes",
+          "past": "wrote"
+        },
+        {
+          "base": "paint",
+          "third": "paints",
+          "past": "painted"
+        }
+      ]
+    },
+    {
+      "lemma": "quiza",
+      "source": "https://nahuatl.wired-humanities.org/node/172619",
+      "dictionaryMeaning": "to go out; emerge; come from; arise; issue forth",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "go out",
+          "third": "goes out",
+          "past": "went out"
+        },
+        {
+          "base": "emerge",
+          "third": "emerges",
+          "past": "emerged"
+        }
+      ]
+    },
+    {
+      "lemma": "polihui",
+      "source": "https://nahuatl.wired-humanities.org/content/polihui",
+      "dictionaryMeaning": "to disappear; be lost; perish; die; be destroyed",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "disappear",
+          "third": "disappears",
+          "past": "disappeared"
+        },
+        {
+          "base": "perish",
+          "third": "perishes",
+          "past": "perished"
+        }
+      ]
+    },
+    {
+      "lemma": "tēmi",
+      "source": "https://nahuatl.wired-humanities.org/content/temi",
+      "dictionaryMeaning": "to be full; to fill up (intransitive)",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be full",
+          "third": "is full",
+          "past": "was full"
+        }
+      ]
+    },
+    {
+      "lemma": "huetzi",
+      "source": "https://nahuatl.wired-humanities.org/content/huetzi",
+      "dictionaryMeaning": "to fall; fall down",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "fall",
+          "third": "falls",
+          "past": "fell"
+        }
+      ]
+    },
+    {
+      "lemma": "tlācati",
+      "source": "https://nahuatl.wired-humanities.org/content/tlacati",
+      "dictionaryMeaning": "to be born",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be born",
+          "third": "is born",
+          "past": "was born"
+        }
+      ]
+    },
+    {
+      "lemma": "nāhuati",
+      "source": "https://nahuatl.wired-humanities.org/content/nahuati",
+      "dictionaryMeaning": "to speak clearly or loudly; to make a clear sound",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "speak clearly",
+          "third": "speaks clearly",
+          "past": "spoke clearly"
+        }
+      ]
+    },
+    {
+      "lemma": "tlatzihui",
+      "source": "https://nahuatl.wired-humanities.org/node/176525",
+      "dictionaryMeaning": "to be idle, lazy or slothful",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be idle",
+          "third": "is idle",
+          "past": "was idle"
+        }
+      ]
+    },
+    {
+      "lemma": "patlāni",
+      "source": "https://nahuatl.wired-humanities.org/content/patlani",
+      "dictionaryMeaning": "to fly",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "fly",
+          "third": "flies",
+          "past": "flew"
+        }
+      ]
+    },
+    {
+      "lemma": "tlanahui",
+      "source": "https://nahuatl.wired-humanities.org/content/tlanahui",
+      "dictionaryMeaning": "to worsen or become gravely ill",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "worsen",
+          "third": "worsens",
+          "past": "worsened"
+        }
+      ]
+    },
+    {
+      "lemma": "tequi",
+      "source": "https://nahuatl.wired-humanities.org/content/tequi",
+      "dictionaryMeaning": "to cut or cut off something",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "cut",
+          "third": "cuts",
+          "past": "cut"
+        }
+      ]
+    },
+    {
+      "lemma": "tecpichoa",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpichoa",
+      "dictionaryMeaning": "to gather; yoke or pile up",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "gather",
+          "third": "gathers",
+          "past": "gathered"
+        }
+      ]
+    },
+    {
+      "lemma": "tecpillahtoa",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpillahtoa",
+      "dictionaryMeaning": "to speak in an elegant or courtly manner",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "speak in an elegant manner",
+          "third": "speaks in an elegant manner",
+          "past": "spoke in an elegant manner"
+        }
+      ]
+    },
+    {
+      "lemma": "tecpillahuana",
+      "source": "https://nahuatl.wired-humanities.org/content/tecpillahuana",
+      "dictionaryMeaning": "to drink moderately",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "drink moderately",
+          "third": "drinks moderately",
+          "past": "drank moderately"
+        }
+      ]
+    },
+    {
+      "lemma": "tepozpitza",
+      "source": "https://nahuatl.wired-humanities.org/node/188946",
+      "dictionaryMeaning": "to smelt or melt metal",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "smelt metal",
+          "third": "smelts metal",
+          "past": "smelted metal"
+        }
+      ]
+    },
+    {
+      "lemma": "tepoztia",
+      "source": "https://nahuatl.wired-humanities.org/content/tepoztia",
+      "dictionaryMeaning": "to become hard as iron",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "become hard as iron",
+          "third": "becomes hard as iron",
+          "past": "became hard as iron"
+        }
+      ]
+    },
+    {
+      "lemma": "tlamatzoa",
+      "source": "https://nahuatl.wired-humanities.org/content/tlamatzoa",
+      "dictionaryMeaning": "to give well-intended advice",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "give advice",
+          "third": "gives advice",
+          "past": "gave advice"
+        }
+      ]
+    },
+    {
+      "lemma": "cocoa",
+      "source": "https://nahuatl.wired-humanities.org/content/cocoa",
+      "dictionaryMeaning": "to hurt",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "hurt",
+          "third": "hurts",
+          "past": "hurt"
+        }
+      ]
+    },
+    {
+      "lemma": "pāca",
+      "source": "https://nahuatl.wired-humanities.org/content/paca",
+      "dictionaryMeaning": "to wash",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "wash",
+          "third": "washes",
+          "past": "washed"
+        }
+      ]
+    },
+    {
+      "lemma": "mīna",
+      "source": "https://nahuatl.wired-humanities.org/content/mina",
+      "dictionaryMeaning": "to shoot arrows, to pierce something",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "pierce",
+          "third": "pierces",
+          "past": "pierced"
+        }
+      ]
+    },
+    {
+      "lemma": "panō",
+      "source": "https://nahuatl.wired-humanities.org/content/pano",
+      "dictionaryMeaning": "To cross over, cross a river",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "cross over",
+          "third": "crosses over",
+          "past": "crossed over"
+        }
+      ]
+    },
+    {
+      "lemma": "cecmiqui",
+      "source": "https://nahuatl.wired-humanities.org/content/cecmiqui",
+      "dictionaryMeaning": "die of cold",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "die of cold",
+          "third": "dies of cold",
+          "past": "died of cold"
+        }
+      ]
+    },
+    {
+      "lemma": "tlazohtla",
+      "source": "https://nahuatl.wired-humanities.org/content/tlazotla",
+      "dictionaryMeaning": "To love; cherish; treat well.",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "love",
+          "third": "loves",
+          "past": "loved"
+        },
+        {
+          "base": "cherish",
+          "third": "cherishes",
+          "past": "cherished"
+        }
+      ]
+    },
+    {
+      "lemma": "chicāhua",
+      "source": "https://nahuatl.wired-humanities.org/content/chicahua",
+      "dictionaryMeaning": "To strengthen.",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "strengthen",
+          "third": "strengthens",
+          "past": "strengthened"
+        }
+      ]
+    },
+    {
+      "lemma": "temo",
+      "source": "https://nahuatl.wired-humanities.org/content/temo",
+      "dictionaryMeaning": "to descend",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "descend",
+          "third": "descends",
+          "past": "descended"
+        }
+      ]
+    },
+    {
+      "lemma": "miqui",
+      "source": "https://nahuatl.wired-humanities.org/content/miqui",
+      "dictionaryMeaning": "To die.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "die",
+          "third": "dies",
+          "past": "died"
+        }
+      ]
+    },
+    {
+      "lemma": "poyōmiqui",
+      "source": "https://nahuatl.wired-humanities.org/content/poyomiqui",
+      "dictionaryMeaning": "To die through treachery.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "die through treachery",
+          "third": "dies through treachery",
+          "past": "died through treachery"
+        }
+      ]
+    },
+    {
+      "lemma": "mātoca",
+      "source": "https://nahuatl.wired-humanities.org/content/matoca",
+      "dictionaryMeaning": "to touch; fondle; masturbate",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "touch",
+          "third": "touches",
+          "past": "touched"
+        },
+        {
+          "base": "fondle",
+          "third": "fondles",
+          "past": "fondled"
+        }
+      ]
+    },
+    {
+      "lemma": "teōchīhua",
+      "source": "https://nahuatl.wired-humanities.org/content/teochihua",
+      "dictionaryMeaning": "To bless.",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "bless",
+          "third": "blesses",
+          "past": "blessed"
+        }
+      ]
+    },
+    {
+      "lemma": "pēhua",
+      "source": "https://nahuatl.wired-humanities.org/content/pehua",
+      "dictionaryMeaning": "begin, start",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "begin",
+          "third": "begins",
+          "past": "began"
+        },
+        {
+          "base": "start",
+          "third": "starts",
+          "past": "started"
+        }
+      ]
+    },
+    {
+      "lemma": "cuīca",
+      "source": "https://nahuatl.wired-humanities.org/content/cuica",
+      "dictionaryMeaning": "To sing.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "sing",
+          "third": "sings",
+          "past": "sang"
+        }
+      ]
+    },
+    {
+      "lemma": "āpīzmiqui",
+      "source": "https://nahuatl.wired-humanities.org/content/apizmiqui",
+      "dictionaryMeaning": "To starve.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "starve",
+          "third": "starves",
+          "past": "starved"
+        }
+      ]
+    },
+    {
+      "lemma": "cotōni",
+      "source": "https://nahuatl.wired-humanities.org/content/cotoni",
+      "dictionaryMeaning": "to snap, to break off. Intransitive counterpart of cotona.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "snap",
+          "third": "snaps",
+          "past": "snapped"
+        },
+        {
+          "base": "break off",
+          "third": "breaks off",
+          "past": "broke off"
+        }
+      ]
+    },
+    {
+      "lemma": "tzacua",
+      "source": "https://nahuatl.wired-humanities.org/content/tzacua",
+      "dictionaryMeaning": "To close; block.",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "close",
+          "third": "closes",
+          "past": "closed"
+        },
+        {
+          "base": "block",
+          "third": "blocks",
+          "past": "blocked"
+        }
+      ]
+    },
+    {
+      "lemma": "īxcuepa",
+      "source": "https://nahuatl.wired-humanities.org/content/ixcuepa",
+      "dictionaryMeaning": "To deceive; confuse.",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "deceive",
+          "third": "deceives",
+          "past": "deceived"
+        },
+        {
+          "base": "confuse",
+          "third": "confuses",
+          "past": "confused"
+        }
+      ]
+    },
+    {
+      "lemma": "tzinti",
+      "source": "https://nahuatl.wired-humanities.org/content/tzinti",
+      "dictionaryMeaning": "To begin.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "begin",
+          "third": "begins",
+          "past": "began"
+        }
+      ]
+    },
+    {
+      "lemma": "cua",
+      "source": "https://nahuatl.wired-humanities.org/content/cua",
+      "dictionaryMeaning": "To eat.",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "eat",
+          "third": "eats",
+          "past": "ate"
+        }
+      ]
+    },
+    {
+      "lemma": "popoca",
+      "source": "https://nahuatl.wired-humanities.org/content/popoca",
+      "dictionaryMeaning": "To smoke; emit smoke.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "emit smoke",
+          "third": "emits smoke",
+          "past": "emitted smoke"
+        }
+      ]
+    },
+    {
+      "lemma": "ēlēhuiā",
+      "source": "https://nahuatl.wired-humanities.org/content/elehuia",
+      "dictionaryMeaning": "To desire.",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "desire",
+          "third": "desires",
+          "past": "desired"
+        }
+      ]
+    },
+    {
+      "lemma": "mayana",
+      "source": "https://nahuatl.wired-humanities.org/content/mayana",
+      "dictionaryMeaning": "to be hungry",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be hungry",
+          "third": "is hungry",
+          "past": "was hungry"
+        }
+      ]
+    },
+    {
+      "lemma": "āmiqui",
+      "source": "https://nahuatl.wired-humanities.org/content/amiqui",
+      "dictionaryMeaning": "To die of thirst.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "die of thirst",
+          "third": "dies of thirst",
+          "past": "died of thirst"
+        }
+      ]
+    },
+    {
+      "lemma": "tzatzi",
+      "source": "https://nahuatl.wired-humanities.org/content/tzatzi",
+      "dictionaryMeaning": "To shout; yell; vocalize (of both humans and animals).",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "shout",
+          "third": "shouts",
+          "past": "shouted"
+        },
+        {
+          "base": "yell",
+          "third": "yells",
+          "past": "yelled"
+        }
+      ]
+    },
+    {
+      "lemma": "cuepōni",
+      "source": "https://nahuatl.wired-humanities.org/content/cueponi",
+      "dictionaryMeaning": "To bloom.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "bloom",
+          "third": "blooms",
+          "past": "bloomed"
+        }
+      ]
+    },
+    {
+      "lemma": "xōtla",
+      "source": "https://nahuatl.wired-humanities.org/content/xotla",
+      "dictionaryMeaning": "to burn",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "burn",
+          "third": "burns",
+          "past": "burned"
+        }
+      ]
+    },
+    {
+      "lemma": "potōni",
+      "source": "https://nahuatl.wired-humanities.org/content/potoni",
+      "dictionaryMeaning": "To stink.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "stink",
+          "third": "stinks",
+          "past": "stank"
+        }
+      ]
+    },
+    {
+      "lemma": "pāqui",
+      "source": "https://nahuatl.wired-humanities.org/content/paqui",
+      "dictionaryMeaning": "To be happy.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be happy",
+          "third": "is happy",
+          "past": "was happy"
+        }
+      ]
+    },
+    {
+      "lemma": "tōca",
+      "source": "https://nahuatl.wired-humanities.org/content/toca",
+      "dictionaryMeaning": "to bury, to plant something",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "bury",
+          "third": "buries",
+          "past": "buried"
+        },
+        {
+          "base": "plant",
+          "third": "plants",
+          "past": "planted"
+        }
+      ]
+    },
+    {
+      "lemma": "nequi",
+      "source": "https://nahuatl.wired-humanities.org/content/nequi",
+      "dictionaryMeaning": "to want something, to desire",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "want",
+          "third": "wants",
+          "past": "wanted"
+        },
+        {
+          "base": "desire",
+          "third": "desires",
+          "past": "desired"
+        }
+      ]
+    },
+    {
+      "lemma": "teci",
+      "source": "https://nahuatl.wired-humanities.org/content/teci",
+      "dictionaryMeaning": "to grind maize",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "grind maize",
+          "third": "grinds maize",
+          "past": "ground maize"
+        }
+      ]
+    },
+    {
+      "lemma": "āna",
+      "source": "https://nahuatl.wired-humanities.org/content/ana",
+      "dictionaryMeaning": "seize, to take, to take prisoner",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "seize",
+          "third": "seizes",
+          "past": "seized"
+        },
+        {
+          "base": "take",
+          "third": "takes",
+          "past": "took"
+        }
+      ]
+    },
+    {
+      "lemma": "ichtequi",
+      "source": "https://nahuatl.wired-humanities.org/content/ichtequi",
+      "dictionaryMeaning": "to steal, rob",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "steal",
+          "third": "steals",
+          "past": "stole"
+        }
+      ]
+    },
+    {
+      "lemma": "ixhui",
+      "source": "https://nahuatl.wired-humanities.org/content/ixhui",
+      "dictionaryMeaning": "to be full, to sate one's appetite",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be full",
+          "third": "is full",
+          "past": "was full"
+        }
+      ]
+    },
+    {
+      "lemma": "iztlacati",
+      "source": "https://nahuatl.wired-humanities.org/content/iztlacati",
+      "dictionaryMeaning": "to lie, to deceive",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "lie",
+          "third": "lies",
+          "past": "lied"
+        }
+      ]
+    },
+    {
+      "lemma": "ilpia",
+      "source": "https://nahuatl.wired-humanities.org/content/ilpia",
+      "dictionaryMeaning": "to tie something, to bind",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "tie",
+          "third": "ties",
+          "past": "tied"
+        },
+        {
+          "base": "bind",
+          "third": "binds",
+          "past": "bound"
+        }
+      ]
+    },
+    {
+      "lemma": "patla",
+      "source": "https://nahuatl.wired-humanities.org/content/patla",
+      "dictionaryMeaning": "to change something, to exchange",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "change",
+          "third": "changes",
+          "past": "changed"
+        },
+        {
+          "base": "exchange",
+          "third": "exchanges",
+          "past": "exchanged"
+        }
+      ]
+    },
+    {
+      "lemma": "petzcoa",
+      "source": "https://nahuatl.wired-humanities.org/content/petzcoa",
+      "dictionaryMeaning": "To slide something.",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "slide",
+          "third": "slides",
+          "past": "slid"
+        }
+      ]
+    },
+    {
+      "lemma": "huītequi",
+      "source": "https://nahuatl.wired-humanities.org/content/huitequi",
+      "dictionaryMeaning": "to strike something, to whip something",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "strike",
+          "third": "strikes",
+          "past": "struck"
+        },
+        {
+          "base": "whip",
+          "third": "whips",
+          "past": "whipped"
+        }
+      ]
+    },
+    {
+      "lemma": "ilcāhua",
+      "source": "https://nahuatl.wired-humanities.org/content/ilcahua",
+      "dictionaryMeaning": "to forget something",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "forget",
+          "third": "forgets",
+          "past": "forgot"
+        }
+      ]
+    },
+    {
+      "lemma": "quiquici",
+      "source": "https://nahuatl.wired-humanities.org/content/quiquici",
+      "dictionaryMeaning": "To whistle out; hiss.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "whistle",
+          "third": "whistles",
+          "past": "whistled"
+        },
+        {
+          "base": "hiss",
+          "third": "hisses",
+          "past": "hissed"
+        }
+      ]
+    },
+    {
+      "lemma": "mahui",
+      "source": "https://nahuatl.wired-humanities.org/content/mahui",
+      "dictionaryMeaning": "To fear, be frightened.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be frightened",
+          "third": "is frightened",
+          "past": "was frightened"
+        }
+      ]
+    },
+    {
+      "lemma": "pīnāhua",
+      "source": "https://nahuatl.wired-humanities.org/content/pinahua",
+      "dictionaryMeaning": "To be ashamed.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be ashamed",
+          "third": "is ashamed",
+          "past": "was ashamed"
+        }
+      ]
+    },
+    {
+      "lemma": "tlaōcoya",
+      "source": "https://nahuatl.wired-humanities.org/content/tlaocoya",
+      "dictionaryMeaning": "To be sad.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "be sad",
+          "third": "is sad",
+          "past": "was sad"
+        }
+      ]
+    },
+    {
+      "lemma": "cualāni",
+      "source": "https://nahuatl.wired-humanities.org/content/cualani",
+      "dictionaryMeaning": "To get angry.",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "get angry",
+          "third": "gets angry",
+          "past": "got angry"
+        }
+      ]
+    },
+    {
+      "lemma": "iztaya",
+      "source": "https://nahuatl.wired-humanities.org/content/iztaya",
+      "dictionaryMeaning": "To become white (like salt)",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "become white",
+          "third": "becomes white",
+          "past": "became white"
+        }
+      ]
+    },
+    {
+      "lemma": "quetza",
+      "source": "https://nahuatl.wired-humanities.org/content/quetza",
+      "dictionaryMeaning": "To raise",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "raise",
+          "third": "raises",
+          "past": "raised"
+        }
+      ]
+    },
+    {
+      "lemma": "huetzca",
+      "source": "https://nahuatl.wired-humanities.org/content/huetzca",
+      "dictionaryMeaning": "To laugh",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "laugh",
+          "third": "laughs",
+          "past": "laughed"
+        }
+      ]
+    },
+    {
+      "lemma": "huāqui",
+      "source": "https://nahuatl.wired-humanities.org/content/huaqui",
+      "dictionaryMeaning": "To become dry",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "become dry",
+          "third": "becomes dry",
+          "past": "became dry"
+        }
+      ]
+    },
+    {
+      "lemma": "tequiti",
+      "source": "https://nahuatl.wired-humanities.org/content/tequiti",
+      "dictionaryMeaning": "to work",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "work",
+          "third": "works",
+          "past": "worked"
+        }
+      ]
+    },
+    {
+      "lemma": "poyāhua",
+      "source": "https://nahuatl.wired-humanities.org/content/poyahua",
+      "dictionaryMeaning": "To darken",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "darken",
+          "third": "darkens",
+          "past": "darkened"
+        }
+      ]
+    },
+    {
+      "lemma": "ceceya",
+      "source": "https://nahuatl.wired-humanities.org/content/ceceya",
+      "dictionaryMeaning": "To become cold",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "become cold",
+          "third": "becomes cold",
+          "past": "became cold"
+        }
+      ]
+    },
+    {
+      "lemma": "pixca",
+      "source": "https://nahuatl.wired-humanities.org/content/pixca",
+      "dictionaryMeaning": "To harvest, reap",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "harvest",
+          "third": "harvests",
+          "past": "harvested"
+        },
+        {
+          "base": "reap",
+          "third": "reaps",
+          "past": "reaped"
+        }
+      ]
+    },
+    {
+      "lemma": "tlatla",
+      "source": "https://nahuatl.wired-humanities.org/content/tlatla",
+      "dictionaryMeaning": "to burn, be on fire",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "burn",
+          "third": "burns",
+          "past": "burned"
+        }
+      ]
+    },
+    {
+      "lemma": "choloa",
+      "source": "https://nahuatl.wired-humanities.org/content/choloa",
+      "dictionaryMeaning": "to flee, escape, bound away",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "flee",
+          "third": "flees",
+          "past": "fled"
+        },
+        {
+          "base": "escape",
+          "third": "escapes",
+          "past": "escaped"
+        }
+      ]
+    },
+    {
+      "lemma": "tzāhua",
+      "source": "https://nahuatl.wired-humanities.org/content/tzahua",
+      "dictionaryMeaning": "to spin",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "spin",
+          "third": "spins",
+          "past": "spun"
+        }
+      ]
+    },
+    {
+      "lemma": "tomāhua",
+      "source": "https://nahuatl.wired-humanities.org/content/tomahua",
+      "dictionaryMeaning": "to fatten, become plump",
+      "pos": "verb (intransitive)",
+      "senses": [
+        {
+          "base": "fatten",
+          "third": "fattens",
+          "past": "fattened"
+        },
+        {
+          "base": "become plump",
+          "third": "becomes plump",
+          "past": "became plump"
+        }
+      ]
+    },
+    {
+      "lemma": "neltoca",
+      "source": "https://nahuatl.wired-humanities.org/content/neltoca",
+      "dictionaryMeaning": "to believe in",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "believe in",
+          "third": "believes in",
+          "past": "believed in"
+        }
+      ]
+    },
+    {
+      "lemma": "nāmiqui",
+      "source": "https://nahuatl.wired-humanities.org/content/namiqui",
+      "dictionaryMeaning": "to meet",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "meet",
+          "third": "meets",
+          "past": "met"
+        }
+      ]
+    },
+    {
+      "lemma": "nāmictiā",
+      "source": "https://nahuatl.wired-humanities.org/content/namictia",
+      "dictionaryMeaning": "to marry.",
+      "pos": "verb (transitive/reflexive)",
+      "senses": [
+        {
+          "base": "marry",
+          "third": "marries",
+          "past": "married"
+        }
+      ]
+    },
+    {
+      "lemma": "pozōniā",
+      "source": "https://nahuatl.wired-humanities.org/content/pozonia",
+      "dictionaryMeaning": "to boil something",
+      "pos": "verb (transitive)",
+      "senses": [
+        {
+          "base": "boil",
+          "third": "boils",
+          "past": "boiled"
+        }
+      ]
+    }
+  ]
+}

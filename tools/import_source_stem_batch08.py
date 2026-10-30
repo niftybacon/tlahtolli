@@ -128,12 +128,18 @@ def apply(write=False):
  must(len({x["word"] for x in allrows})==len(allrows),"Duplicate candidate review")
  lex,morph,evid=(read(x) for x in ("data/lexicon.json","data/morphology.json","data/evidence.json"))
  p,refs,release=(read(x) for x in ("paradigms.json","references.json","release.json"))
- must(len(lex["words"])==len(morph["entries"])==len(evid["entries"])==2142,
+ must(len(lex["words"])==len(morph["entries"])==len(evid["entries"]) and
+      len(lex["words"]) in (2142,2144),
       "Baseline record count or canonical alignment changed")
+ if len(lex["words"])==2144:
+  must(release["version"]=="2026-10-30.1.0" and
+       [r["word"] for r in lex["words"][-2:]]==["yehuan","tepilhuan"] and
+       not any(m["stem"] or m["inflections"] for m in morph["entries"][-2:]),
+       "Only the two source-licensed exact historical forms may extend the frozen Batch 08 baseline")
  ix={w["word"]:i for i,w in enumerate(lex["words"])}
  must(all(k in ix for k in (s["word"] for s in allrows)),"Source manifest contains unknown headword")
  if not write:
-  must(release["version"] in (manifest["target_version"],"2026-10-29.9.0"),"Batch 08 baseline not present in edition")
+  must(release["version"] in (manifest["target_version"],"2026-10-29.9.0","2026-10-30.1.0"),"Batch 08 baseline not present in edition")
   for spec in manifest["entries"]:
    i=ix[spec["word"]];w=lex["words"][i];m=morph["entries"][i];e=evid["entries"][i]
    must(w["status"]=="Checked against source" and w["pos"]==spec["pos"] and w["source"]==spec["source"],"Source-reviewed entry mismatch")
@@ -141,7 +147,7 @@ def apply(write=False):
    if spec["class"]:must(any(c["field"]=="stem" and c["assessment"] in ("dictionary","grammar") for c in e["claims"]),"Missing stem evidence")
    else:
     # Batch 09 separately licensed two earlier refusals after source-level review.
-    if release["version"]=="2026-10-29.9.0" and spec["word"] in ("iztlacati","ichtequi"):
+    if release["version"] in ("2026-10-29.9.0","2026-10-30.1.0") and spec["word"] in ("iztlacati","ichtequi"):
      item=read("research/batches/source_vowel_class2_batch09_2026_10_29.json")
      added=next(x for x in item["entries"] if x["word"]==spec["word"])
      must(m["stem"]==added["base1"]+"-; "+added["base2"]+"-" and
@@ -154,7 +160,7 @@ def apply(write=False):
    must(morph["entries"][i]["stem"]==spec["word"]+"-","Prior Class 1 missing "+spec["word"])
   print("PASS: 38 source-review dispositions, 17 licensed verb stems, 6 explicit refusals")
   return
- must(release["version"]!=manifest["target_version"],"Already imported")
+ must(release["version"] not in (manifest["target_version"],"2026-10-30.1.0"),"Already imported or later frozen source release")
  for spec in manifest["entries"]:
   i=ix[spec["word"]]
   update_review(spec,lex["words"][i],morph["entries"][i],evid["entries"][i])

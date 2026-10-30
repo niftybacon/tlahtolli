@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'tools/investigator_engine_bridge.js'
+      - 'tools/investigator_advanced_morphology.js'
       - 'tools/test_investigator_engine_bridge.js'
       - '.github/workflows/tentli-investigator-engine-bridge.yml'
       - 'research/translation_corpus/INVESTIGATOR_ENGINE_INTEGRATION_2026_10_30.md'
@@ -10,6 +11,7 @@ on:
   push:
     paths:
       - 'tools/investigator_engine_bridge.js'
+      - 'tools/investigator_advanced_morphology.js'
       - 'tools/test_investigator_engine_bridge.js'
       - '.github/workflows/tentli-investigator-engine-bridge.yml'
       - 'research/translation_corpus/INVESTIGATOR_ENGINE_INTEGRATION_2026_10_30.md'
@@ -61,7 +63,7 @@ jobs:
           print("- **"+str(r["source_historical_contexts_run_through_engines"])+"** source-graded historic phrases passed into existing sentence grammar, English proposal/refusal and shared IR")
           for k,v in r["count_by_actual_existing_engine_route"].items():
               print("- "+k.replace("_"," ")+": **"+str(v)+"**")
-          print("- Advanced standalone *browser* supplementary morphology: **not yet included in Node adapter**")
+          print("- Advanced standalone browser morphology: **executed from the original source in isolated Node VM; candidate grades retained**")
           print("- Approved English/Gold or Silver, dictionary rules, neural learning or live translator changes: **0**")
           print("- This is autonomous *evidence use in engine diagnostics*, not continuous gradient training or independent semantic accuracy")
           PY

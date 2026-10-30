@@ -6,6 +6,7 @@ on:
       - 'neural/pretrained_english.py'
       - 'neural/correction_queue.py'
       - 'neural/train_reviewed_english.py'
+      - 'neural/grammar_teacher_practice.py'
       - 'neural/hybrid_infer.py'
       - 'tools/test_pretrained_english_review_loop.py'
       - '.github/workflows/tentli-pretrained-reviewed-learning.yml'
@@ -114,3 +115,41 @@ jobs:
                   "provenance":"synthetic_regression_fixture_not_reviewed_source",
                   "production_weights_modified":False}))
           PY
+      - name: Export ONLY source-linked canonical synthetic teacher English curriculum
+        run: |
+          node tools/export_tentli_neural_teacher.js "$RUNNER_TEMP/tentli-teacher.jsonl"
+          python -m neural.grammar_teacher_practice \
+            --teacher-manifest "$RUNNER_TEMP/tentli-teacher.jsonl" --audit-only
+      - name: Actually train a PRIVATE English LoRA adapter on source-gated SYNTHETIC grammar exercises
+        run: |
+          python -m neural.grammar_teacher_practice \
+            --teacher-manifest "$RUNNER_TEMP/tentli-teacher.jsonl" \
+            --output "$RUNNER_TEMP/teacher-english-adapter" --steps 24
+          python - <<'PY'
+          import os,pathlib,json
+          folder=pathlib.Path(os.environ["RUNNER_TEMP"])/"teacher-english-adapter"
+          m=json.loads((folder/"research_metadata.json").read_text(encoding="utf-8"))
+          assert m["evidence_tier"]=="synthetic_grammar_teacher"
+          assert m["actual_optimizer_steps"]==24
+          assert m["training_rows"]>0 and m["development_rows"]>0
+          assert m["human_reviewed_training_examples"]==0
+          assert m["historically_attested_sentence_translations_added"]==0
+          assert m["independent_translation_accuracy"] is None
+          assert (folder/"adapter_model.safetensors").is_file()
+          print("SYNTHETIC_TEACHER_ENGLISH_PRACTICE_COMPLETED",json.dumps({
+              "steps":m["actual_optimizer_steps"],
+              "synthetic_train":m["training_rows"],
+              "synthetic_dev":m["development_rows"],
+              "dev_loss_before":m["dev_teacher_forced_loss_before"],
+              "dev_loss_after":m["dev_teacher_forced_loss_after"],
+              "training_class":"synthetic_only_not_historical_reviewed"},sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-pretrained-english-synthetic-teacher-private-research
+          path: |
+            ${{ runner.temp }}/teacher-english-adapter/adapter_model.safetensors
+            ${{ runner.temp }}/teacher-english-adapter/adapter_config.json
+            ${{ runner.temp }}/teacher-english-adapter/research_metadata.json
+          retention-days: 30
+          if-no-files-found: error

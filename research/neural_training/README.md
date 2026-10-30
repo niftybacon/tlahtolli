@@ -96,3 +96,17 @@ translation evidence, documented source acquisition, extraction risk and
 release assessment. No Anderson–Dibble data or model weights have been
 imported as a result of this policy update.
 
+
+## Two more historical books actually trained
+
+The [2026-10-29 Brinton poetry + Chimalpahin training report](../../docs/TENTLI_TWO_HISTORICAL_BOOKS_TRAINING_2026_10_29.md)
+records a live training run that **continued** the existing canonical
+Tēntli-teacher + 112-hymn learned weights on two distinct source works:
+**217 Nahuatl stanzas spanning 27 Brinton poems**, including **165
+strictly size-bounded, weak English verse correspondences**, and **65
+Chimalpahin historical Nahuatl prose paragraphs**. The other 52 poem
+stanzas are **not** silently converted into truncated English bilingual
+examples. The two source versions are SHA256-pinned and their original
+texts remain off-repository; no canonical morphological or grammatical
+engine changes, modern dialect mixing or independent translation-accuracy
+claims are made.

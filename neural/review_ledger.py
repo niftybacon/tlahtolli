@@ -103,6 +103,7 @@ def _event_payload(kind, proposal_id, data, records):
                  len(urls) == len(set(urls)) and all(isinstance(u, str) and
                   len(u) <= 400 and _valid_url(u) for u in urls),
                  "Review needs distinct bounded evidence URLs")
+        _require(pending["source_url"] in urls, "Review must explicitly cite the original staged source URL")
         _require(not current["implemented"], "Review after implementation requires a new follow-up proposal")
     else:
         _require(set(data) == {"source_fingerprint", "implementation_pr",

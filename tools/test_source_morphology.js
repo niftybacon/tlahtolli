@@ -59,6 +59,76 @@ for(const patch of invalids){
  assert.equal(m.sourceCount,0,'Malformed or promoted evidence must fail closed');
  assert.equal(m.analyze('ticnamaca').length,0);
 }
+// Two exact historically INDEXED LEXICAL written forms: no agreement,
+ // productive morphology, inferred English sense or original-text reading.
+const lexicalPack=JSON.parse(fs.readFileSync(path.join(root,
+ 'research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json'),'utf8'));
+const lexicalResearch=require('./exact_source_lexical_research.js');
+const cited=lexicalResearch.create(make(review),lexicalPack);
+assert.equal(cited.sourceCount,3,'Existing morphology must remain unchanged');
+assert.equal(cited.exactLexicalFormCount,2);
+for(const [form,lemma,url] of [
+ ['yehuan','yehuantin','https://nahuatl.wired-humanities.org/content/yehuantin'],
+ ['tepilhuan','tepilhuan','https://nahuatl.wired-humanities.org/node/188794']
+]){
+ const observed=cited.analyze(form);
+ assert.equal(observed.length,1,form);
+ const m=observed[0];
+ assert.equal(m.lemma,lemma);
+ assert.equal(m.kind,'Source-indexed exact lexical written form (NOT morphology)');
+ assert.equal(m.grade,'unreviewed');
+ assert.equal(m.score,0);
+ assert.equal(m.parts.length,1);
+ assert.equal(m.parts[0].surface,form);
+ assert.equal(m.source,url);
+ assert.equal(m.features.grammarRole,'unresolved');
+ assert.equal(m.features.referent,'unresolved');
+ assert.equal(m.features.morphologicalSegmentation,'not-verified');
+ assert(m.note.includes('No new canonical lemma'));
+ assert(m.note.includes('English'));
+ assert(m.sources.length===2);
+}
+for(const fake of [
+ 'yeuan','yehuantin','yehuāntin','yēhuan','yehuān','yehuan Dios',
+ 'tepīlhuan','tepilhuān','tepiltzin','tepilhuantzin','nitepilhuan',
+ 'huiya','ohuaya','noyollo','ipalnemohua'
+])assert.equal(cited.analyze(fake).length,0,
+ 'Evidence never licenses variant spelling, poetic gloss or productive form: '+fake);
+const ye=cited.analyze('YEHUAN')[0];assert.equal(ye.lemma,'yehuantin');
+ye.features.referent='forged';
+assert.equal(cited.analyze('yehuan')[0].features.referent,'unresolved');
+const corrupt=[
+ p=>{p.train_eligible=true},
+ p=>{p.gold_approved=true},
+ p=>{p.silver_approved=true},
+ p=>{p.human_source_review_independently_authenticated=true},
+ p=>{p.facsimile_collation_independently_done=true},
+ p=>{p.new_canonical_dictionary_headwords=2},
+ p=>{p.records[0].written_form='yeuan'},
+ p=>{p.records[0].lexicographic_lemma='Dios'},
+ p=>{p.records[0].source_url='https://example.org/fake'},
+ p=>{p.records[0].source_locator='Lockhart editorial fabricated page 999, plausible historic source but not this citation'},
+ p=>{p.records[0].corroborating_source_url='https://gdn.iib.unam.mx/diccionario/false/1'},
+ p=>{p.records[1].corroborating_locator='Lockhart-related fake reference with enough words to look credible'},
+ p=>{p.records[1].contextual_caveat='This is fake edited contextual text claiming all poetic forms should always be literal offspring'},
+ p=>{p.records[0].grammatical_role_verified=true},
+ p=>{p.records[0].lemma_meaning_newly_approved=true},
+ p=>{p.records[0].stanza_translation_verified=true},
+ p=>{p.records[1].morphological_segmentation_verified=true},
+ p=>{p.records[1].source_locator='invented'},
+ p=>{p.records[1].corroborating_source_url='javascript:forged'},
+ p=>{p.records.push({...p.records[1],id:'fabricated'})}
+];
+for(const mut of corrupt){
+ const copy=JSON.parse(JSON.stringify(lexicalPack));mut(copy);
+ const blocked=lexicalResearch.create(make(review),copy);
+ assert.equal(blocked.exactLexicalFormCount,0,
+  'All lexical source proposals must fail closed if any item or policy is forged');
+ assert.equal(blocked.analyze('yehuan').length,0);
+ assert.equal(blocked.analyze('tepilhuan').length,0);
+ assert.equal(blocked.analyze('ticnamaca').length,2,
+  'Invalid optional lexical leads must not break original ENL morphological evidence');
+}
 const d=JSON.parse(fs.readFileSync(path.join(root,'dictionary.json'),'utf8'));
 const paradigms=JSON.parse(fs.readFileSync(path.join(root,'paradigms.json'),'utf8'));
 const win={window:{}};
@@ -137,6 +207,18 @@ assert.equal(sent.analyze('ticnamaca y¯ totlal extra').complete,false);
 const lexScope={window:{},URL};
 vm.runInNewContext(fs.readFileSync(path.join(root,'translator-engine.js'),'utf8'),lexScope);
 const lex=lexScope.window.TlahtolliTranslator.create(d,{entries:[]});
+assert.equal(lex.analyze('yehuan tepilhuan').stats.matched,0,
+ 'Two external source leads cannot be counted as approved curated headwords');
+const sentenceSource=win.window.TlahtolliSentence.create(d,paradigms,t=>cited.analyze(t));
+for(const example of ['yehuan Dios','tepilhuan','yehuan in tepilhuan']){
+ const analysis=sentenceSource.analyze(example);
+ assert.equal(analysis.complete,false,'Unreviewed source lexical evidence cannot certify a sentence');
+ assert.equal(analysis.clauses[0].candidates.length,0);
+ const original=(example.match(/yehuan|tepilhuan/gu)||[]);
+ assert(original.some(t=>analysis.clauses[0].morphologicalClues.some(p=>p.token===t&&p.grade==='unreviewed')),
+  'Existing sentence analyzer must expose exact source-graded clues');
+}
+
 const word=lex.analyze('ticnamaca y¯ totlal','nh-en');
 assert.equal(word.stats.matched,0,'Research-only proposals cannot change curated lexical glosses');
 assert(word.gloss.includes('[?ticnamaca]'));

@@ -3,6 +3,11 @@ on:
   pull_request:
     paths:
       - 'tools/investigator_engine_bridge.js'
+      - 'translator-source-morphology.js'
+      - 'tools/diagnose_historical_sentences.js'
+      - 'tools/exact_source_lexical_research.js'
+      - 'research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json'
+      - 'tools/test_source_morphology.js'
       - 'tools/investigator_advanced_morphology.js'
       - 'tools/test_investigator_engine_bridge.js'
       - '.github/workflows/tentli-investigator-engine-bridge.yml'
@@ -11,6 +16,11 @@ on:
   push:
     paths:
       - 'tools/investigator_engine_bridge.js'
+      - 'translator-source-morphology.js'
+      - 'tools/diagnose_historical_sentences.js'
+      - 'tools/exact_source_lexical_research.js'
+      - 'research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json'
+      - 'tools/test_source_morphology.js'
       - 'tools/investigator_advanced_morphology.js'
       - 'tools/test_investigator_engine_bridge.js'
       - '.github/workflows/tentli-investigator-engine-bridge.yml'
@@ -34,6 +44,7 @@ jobs:
       - name: Validate exact research provenance and actual existing Tēntli engines
         run: |
           node tools/test_investigator_engine_bridge.js
+          node tools/test_source_morphology.js
           node tools/test_historical_sentence_diagnostics.js
           node tools/test_morphology_clause_bridge.js
           node tools/test_shared_grammar_ir.js
@@ -58,11 +69,16 @@ jobs:
           assert r["source_gold_or_silver_approved"]==0
           assert r["no_persistent_learning_or_model_update"] is True
           assert r["english_meaning_accuracy"] is None
+          assert r["count_by_actual_existing_engine_route"]["no_linked_engine_surface_match"]==928
+          assert r["count_by_actual_existing_engine_route"]["source_indexed_exact_lexical_surface_research_leads"]==2
+          assert r["actual_grammar_or_full_english_coverage_from_lexical_leads"]==0
           print("## Historical evidence ↔ existing Tēntli engines")
           print("- All **"+str(r["research_investigation_count"])+"** investigated historical forms passed through existing lexical/paradigm/source morphology lookup")
           print("- **"+str(r["source_historical_contexts_run_through_engines"])+"** source-graded historic phrases passed into existing sentence grammar, English proposal/refusal and shared IR")
           for k,v in r["count_by_actual_existing_engine_route"].items():
+              if k=="source_indexed_exact_lexical_surface_research_leads": continue
               print("- "+k.replace("_"," ")+": **"+str(v)+"**")
+          print("- **2** exact sourced *lexical-form research leads* via existing source adapter (overlap with **928** unrecognized grammar surfaces; **not** two new grammar parses)")
           print("- Advanced standalone browser morphology: **executed from the original source in isolated Node VM; candidate grades retained**")
           print("- Approved English/Gold or Silver, dictionary rules, neural learning or live translator changes: **0**")
           print("- This is autonomous *evidence use in engine diagnostics*, not continuous gradient training or independent semantic accuracy")

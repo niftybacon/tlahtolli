@@ -146,7 +146,8 @@ function bridge(report,{models=loadModels()}={}){
   no_linked_engine_surface_match:0,
   context_engine_english_draft_proposals:0,
   context_engine_full_finite_clause_proposals:0,
-  context_with_lexical_gaps:0};
+  context_with_lexical_gaps:0,
+  source_indexed_exact_lexical_surface_research_leads:0};
  const records=[];
  for(const row of report.investigations){
   const form=row.written_surface;
@@ -154,7 +155,15 @@ function bridge(report,{models=loadModels()}={}){
   // original-source morphology; source morphology is exact record only.
   const lex=models.lexical.analyze(form,'nh-en');
   const lexicalHits=(Array.isArray(lex?.parts)?lex.parts:[]).filter(p=>p.kind==='word'&&p.status!=='unknown');
-  const morph=models.sourceMorphology.analyze(form);
+  const sourceCandidates=models.sourceMorphology.analyze(form);
+  const lexicalSourceCandidates=sourceCandidates.filter(m=>
+   m.kind==='Source-indexed exact lexical written form (NOT morphology)');
+  // Lexical dictionary citations cannot become source-reviewed morphology.
+  // These two source leads are orthogonal to the original exclusive 928
+  // actual parser/morphology coverage routes; do not reduce that baseline.
+  const morph=sourceCandidates.filter(m=>
+   m.kind!=='Source-indexed exact lexical written form (NOT morphology)');
+  if(lexicalSourceCandidates.length)tally.source_indexed_exact_lexical_surface_research_leads++;
   const indexed=paradigms.get(norm(form))||[];
   const advancedCandidates=advanced.analyze(form);
   const archive=(row.source_families_exact_headword_matched!=='neither');
@@ -171,6 +180,14 @@ function bridge(report,{models=loadModels()}={}){
    exact_verb_paradigm_candidates:indexed.slice(0,4),
    advanced_browser_morphology_candidates:advancedCandidates.slice(0,5),
    advanced_browser_morphology_grades:[...new Set(advancedCandidates.map(c=>c.grade))],
+   source_indexed_exact_lexical_form_candidates:lexicalSourceCandidates.slice(0,4).map(m=>({
+    form,lemma:m.lemma,grade:'unreviewed',source:m.source,
+    secondary_sources:m.sources,note:m.note,
+    role_not_inferred:true,not_productive_morphology:true,
+    not_canonical_lexicon_hit:true,original_manuscript_not_collated:true,
+    contextual_english_not_verified:true,
+    approved_silver:false,approved_gold:false,training_eligible:false
+   })),
    source_reviewed_morphology_candidates:morph.slice(0,4).map(m=>({
     lemma:m.lemma,grade:m.grade,source:m.source,
     note:'Research source-review adapter only; not independently source-approved whole text'
@@ -257,11 +274,14 @@ function bridge(report,{models=loadModels()}={}){
    lexical:'translator-engine.js actual curated browser lexical analyzer',
    indexed_verb_morphology:'paradigms.json all cells exact surface only',
    source_morphology:'translator-source-morphology.js exact source-review tokens',
+   exact_source_indexed_lexical_forms:'translator-source-morphology.js optional original-spelling research-only lexical candidates, excluded from actual grammar recognition route',
    sentence:'translator-sentence.js source-gated grammar rules and exact source-cited poetic-vocable observations',
    english:'translator-english.js abstention-preserving composer',
    grammar_ir:'translator-grammar-ir.js shared candidate graph',
    advanced_browser_supplementary_morphology:'tools/morphology_engine.js source executed in isolated Node VM; proposals separately graded and never attested',
   },
+  source_indexed_lexical_leads_source_sha256:sha('research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json'),
+  actual_grammar_or_full_english_coverage_from_lexical_leads:0,
   count_by_actual_existing_engine_route:tally,
   advanced_browser_morphology_source_revision:advanced.matchingInputVersion,
   no_persistent_learning_or_model_update:true,

@@ -5,6 +5,7 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const vm=require('node:vm');
+const {create:createExactLexicalResearch}=require('./exact_source_lexical_research.js');
 const ROOT=path.resolve(__dirname,'..');
 const read=filename=>fs.readFileSync(path.join(ROOT,filename),'utf8');
 const json=filename=>JSON.parse(read(filename));
@@ -44,19 +45,21 @@ function createModels(files){
  const api=scope.window,dictionary=JSON.parse(files['dictionary.json']);
  const examples=JSON.parse(files['research/translation_corpus/research_examples.json']);
  const sourceReview=JSON.parse(files['research/translation_corpus/source_reviews/ENL_BC16_1573.json']);
+ const exactLexicalSource=JSON.parse(files['research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json']);
  const canonicalSource=api.TlahtolliSourceMorphology.create(sourceReview);
+ const sourceHints=createExactLexicalResearch(canonicalSource,exactLexicalSource);
  const lexical=api.TlahtolliTranslator.create(dictionary,examples);
  const locative=api.TlahtolliLocative.create(dictionary,examples);
  // Source-reviewed exact-token adapter only: browser's embedded Tēntli supplementary
  // morphology is not available in this Node diagnostic. Clause rules and indexed
  // paradigms ARE loaded. Do not call this a complete browser morphology test.
  const sentence=api.TlahtolliSentence.create(dictionary,JSON.parse(files['paradigms.json']),
-  token=>canonicalSource.analyze(token),examples,locative,JSON.parse(files['data/clause_grammar.json']),
+  token=>sourceHints.analyze(token),examples,locative,JSON.parse(files['data/clause_grammar.json']),
   JSON.parse(files['data/possessed_form_evidence.json']),
   null,null,null,
   JSON.parse(files['research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json']));
  return {lexical,sentence,english:api.TlahtolliEnglish.create(sentence),
-  graph:api.TlahtolliGrammarIR.create(dictionary),sourceMorphology:canonicalSource};
+  graph:api.TlahtolliGrammarIR.create(dictionary),sourceMorphology:sourceHints};
 }
 const MODEL_FILES=[
  'dictionary.json','paradigms.json','translator-engine.js','translator-locative.js',
@@ -64,6 +67,7 @@ const MODEL_FILES=[
  'translator-grammar-ir.js','data/clause_grammar.json','data/possessed_form_evidence.json',
  'research/translation_corpus/research_examples.json',
  'research/translation_corpus/source_reviews/ENL_BC16_1573.json',
+ 'research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json',
  'research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json'];
 function loadModels(){return createModels(Object.fromEntries(MODEL_FILES.map(f=>[f,read(f)])));}
 const proposalCounts=clause=>Object.fromEntries(Object.entries(clause||{})

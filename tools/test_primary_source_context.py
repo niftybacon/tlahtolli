@@ -79,6 +79,18 @@ class ControlledPrimarySourceTests(unittest.TestCase):
         self.assertFalse(match_located_excerpt("... yniquexcan manitlalli calpilco ...",
                                                 "yniquexcan mani tlalli calpilco"))
 
+    def test_inline_edited_transcription_spans_do_not_invent_word_boundaries(self):
+        from neural.primary_source_context import VisibleText
+        parser=VisibleText()
+        parser.feed("<section><p><span>qujiolte</span><i>vujaia</i> in "
+                    "<span>cuj</span><span>catl</span>:</p>"
+                    "<script>fake passage should not be trusted</script>"
+                    "<p>ayac tle quitoz oncan tlatoz</p></section>")
+        visible="".join(parser.chunks)
+        self.assertTrue(match_located_excerpt(visible, "qujioltevujaia in cujcatl"))
+        self.assertTrue(match_located_excerpt(visible, "ayac tle quitoz oncan tlatoz"))
+        self.assertNotIn("fake passage", visible)
+
     def test_live_page_collation_simulated_without_reading_unsourced_text(self):
         seen=[]
         pages={

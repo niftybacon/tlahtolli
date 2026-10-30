@@ -80,7 +80,12 @@ class HistoricalEvidencePriorityTests(unittest.TestCase):
 
     def test_any_test_gold_row_must_fail_closed(self):
         data = [json.loads(line) for line in CANDIDATES.read_text(encoding="utf-8").splitlines() if line.strip()]
-        data[-1]["split"] = "test"
+        # Change a complete source work: the corpus validator must not
+        # reject *work leakage* before our separate gold/test admission gate.
+        heldout_work = data[-1]["work_id"]
+        for row in data:
+            if row["work_id"] == heldout_work:
+                row["split"] = "test"
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "injected.jsonl"
             p.write_text("\n".join(json.dumps(x) for x in data) + "\n", encoding="utf-8")

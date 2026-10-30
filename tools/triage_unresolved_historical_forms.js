@@ -210,7 +210,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
     followup:item.triage_route,
     question_to_human_required:false,
     reviewer_can_defer:true,
-    no_gold_or_silver:false,
+    no_gold_or_silver_promoted:true,
   });
   if(queue.length===maxHuman)break;
  }

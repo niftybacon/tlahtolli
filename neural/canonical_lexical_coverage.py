@@ -163,6 +163,7 @@ def inspect(manifest: Path = MANIFEST, *, limit: int = 40, per_work: int = 4,
     matched_tokens = 0
     unique_recognized = set()
     unknown_counts = Counter()
+    unknown_examples = defaultdict(list)
     ambiguous_count = 0
     witness_only = 0
     for item in rows:
@@ -180,6 +181,15 @@ def inspect(manifest: Path = MANIFEST, *, limit: int = 40, per_work: int = 4,
             if not options:
                 unknown[word] += 1
                 unknown_counts[word] += 1
+                # Research examples refer ONLY to prior training poems.
+                # Never expose reserved dev English or a model-fabricated gloss.
+                case = {
+                    "record_id": item.record_id,
+                    "work_id": item.work_id,
+                    "printed_source_url": item.source_url,
+                }
+                if case not in unknown_examples[word] and len(unknown_examples[word]) < 12:
+                    unknown_examples[word].append(case)
                 continue
             matched_tokens += 1
             unique_recognized.add(word)
@@ -226,6 +236,27 @@ def inspect(manifest: Path = MANIFEST, *, limit: int = 40, per_work: int = 4,
         chosen.append(item)
         if len(chosen) >= limit:
             break
+    # Work-spread prioritization, not a determination that each unknown
+    # surface constitutes an independent lexical headword.
+    unknown_proposals = []
+    for surface, occurrences in unknown_examples.items():
+        distinct_works = len({e["work_id"] for e in occurrences})
+        unknown_proposals.append({
+            "written_surface": surface,
+            "token_occurrences_in_training_poems": unknown_counts[surface],
+            "sampled_distinct_training_works": distinct_works,
+            "training_source_examples": occurrences[:4],
+            "requires_historical_spelling_segmentation_and_context_review": True,
+            "could_be_poetic_vocable_particle_or_inflection": True,
+            "candidate_meaning": None,
+            "auto_source_checked": False,
+            "training_eligible": False,
+            "human_review_status": "unreviewed_frequency_lead",
+        })
+    unknown_proposals.sort(
+        key=lambda x: (-x["sampled_distinct_training_works"],
+                       -x["token_occurrences_in_training_poems"],
+                       x["written_surface"]))
     return {
         "format": "tentli-canonical-source-checked-lexical-coverage-v1",
         "canonical_release": lexicon["version"],
@@ -243,6 +274,8 @@ def inspect(manifest: Path = MANIFEST, *, limit: int = 40, per_work: int = 4,
         "ambiguous_surface_token_occurrences": ambiguous_count,
         "unique_recognized_surfaces": len(unique_recognized),
         "common_unmatched_surfaces": unknown_counts.most_common(30),
+        "proposed_unmatched_surface_review": unknown_proposals[:40],
+        "unmatched_surface_proposals_count": min(40, len(unknown_proposals)),
         "review_queue_size": len(chosen),
         "review_work_groups": len(grouped),
         "approved_historical_translation_pairs_added": 0,

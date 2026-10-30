@@ -146,6 +146,21 @@ jobs:
               "dev_loss_after":m["dev_teacher_forced_loss_after"],
               "training_class":"synthetic_only_not_historical_reviewed"},sort_keys=True))
           PY
+      - name: Reload the ACTUALLY trained synthetic adapter through the guarded English decoder
+        run: |
+          python - <<'PY'
+          import os,pathlib,json
+          from neural.pretrained_english import pretrained_english,approved_research_adapter
+          folder=pathlib.Path(os.environ["RUNNER_TEMP"])/"teacher-english-adapter"
+          m=approved_research_adapter(folder)
+          assert m["evidence_tier"]=="synthetic_grammar_teacher"
+          for nahuatl in ("nichōca","nitlacua","niquitta in cihuātl"):
+              result=pretrained_english(nahuatl,adapter_dir=str(folder),local_files_only=True)
+              assert result["english"] in ("I cry.","I weep.","I eat.","I see the woman.","I inspect the woman.","I look at the woman.")
+              assert result["pretrained_model"]["adapter_evidence_tier"]=="synthetic_grammar_teacher"
+              assert result["verified_translation"] is False
+              print("REAL_TRAINED_ADAPTER_LOADED_GUARDED",nahuatl,result["status"],result["english"])
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: tentli-pretrained-english-synthetic-teacher-private-research

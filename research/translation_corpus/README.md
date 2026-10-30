@@ -1,5 +1,7 @@
 # Tlahtōlli · Classical Nahuatl Translation Corpus (Stage 1)
 
+**Related neural-learning distinction (2026-10-29):** This directory continues to govern **verified parallel translation datasets, approved supervised training rows, and independent gold evaluation**. The new [Tēntli neural research laboratory](../neural_training/README.md) separately admits **traceable, appropriately licensed, unreviewed Classical manuscript transcription into monolingual self-supervised learning** without first approving every lexical or grammatical analysis. That permission does not change `pairs.csv`, clear modern transcription/translation rights, certify a Spanish/Nahuatl alignment, authorize gold claims, or change existing morph/grammar engines. Candidate bilingual alignments there remain weak and experimental, not `approved` examples here.
+
 **Status: source intake, not a released training dataset.** The objective is a rights-cleared, provenance-rich, reviewed collection of aligned Classical Nahuatl passages. No row is approved for model training merely because a text and translation are available online.
 
 ## What contributors should send

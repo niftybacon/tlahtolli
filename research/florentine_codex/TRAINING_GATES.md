@@ -1,5 +1,24 @@
 # Florentine Codex review-to-training gates (2026-10-28)
 
+> **Policy refinement — experimental neural monolingual learning (2026-10-29).**
+> The older gates below govern **approved bilingual translation pairs, independently
+> validated grammar claims, and publication**. They are **not** a per-token
+> verification requirement for the new `neural/` manuscript-text denoising
+> laboratory. Under [the separate experimental intake policy](../neural_training/README.md),
+> a traceable Classical-period historical transcription can train a **monolingual**
+> model even if its segmentation, morphological interpretation or English
+> translation has not been individually reviewed. The historical work ID,
+> source URL, original spelling, variety tag, date and **transcription-specific
+> reuse rights** remain required. In particular, the original manuscript's
+> public-domain status does not automatically grant permission for the modern
+> Berthoud transcription or Anderson–Dibble editions. Weak aligned English
+> may train with explicit rights, source URL and reduced weight, but it never
+> becomes verified gold or a source-authoritative morphological claim.
+> **No Florentine Codex text has been trained into a checkpoint in this PR.**
+> All legacy research, canonical morphotactics and independent-test
+> exclusion rules remain in force.
+
+
 ## Present state
 
 - All twelve books have **aggregate orthographic counts** at [analysis.json](analysis.json). These counts do not supply sentence pairs, accurate word segmentation, or machine-translation training labels.

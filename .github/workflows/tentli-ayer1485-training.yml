@@ -44,6 +44,9 @@ jobs:
           assert len([x for x in m["sermons"] if x["split"]=="dev"])==8
           assert len([x for x in m["sermons"] if x["split"]=="train"])==56
           assert m["bilingual_targets"]==0
+          assert m["physical_folio_train_dev_disjoint"] is True
+          assert m["training_paragraphs_excluded_to_prevent_shared_folio_leakage"]>0
+          assert m["distinct_physical_folios"]<m["pages"]
           print("ACTUAL_64_SERMON_SOURCE_INTAKE_VERIFIED",m["pages"],m["Nahuatl_majority_editorial_paragraphs"],m["historical_transcription_chars"])
           PY
       - name: Restore actual previously trained Florentine and Axolotl neural weights

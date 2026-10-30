@@ -22,7 +22,7 @@ Reuse these existing components rather than writing rival engines:
 | --- | --- |
 | 1 | Stabilize canonical engines and build a source-grounded semantic verifier, especially [Issue #95](https://github.com/niftybacon/tlahtolli/issues/95), with negative/regression tests |
 | 2 | Expand independent **bilingual evidence**: reviewed Silver and protected, genuinely blind Gold ([Issue #98](https://github.com/niftybacon/tlahtolli/issues/98)); currently 150 *candidate* Brinton alignments, 40 *pending* Silver reviews and zero approved Gold/reviewed Silver |
-| 3 | Improve grammatical diversity of the existing 6,176 **Bronze synthetic** cases; don't inflate a known grammar by repetitive sentence combinations |
+| 3 | Expand grammar teacher coverage and improve grammatical diversity of the existing 6,176 **Bronze synthetic** cases; don't inflate a known grammar by repetitive sentence combinations |
 | 4 | Improve English with genuine reviewed bilingual supervision before further large neural training; preserve source-gated English and abstention |
 | 5 | Build a durable **proposal → review → source-authorized promotion → regression** process; current scheduled audits only propose research |
 | 6 | Make authentic historical text more analyzable: 1,181 researched written forms and 928 unconnected forms are triage measurements, not 928 dictionary lemmas |

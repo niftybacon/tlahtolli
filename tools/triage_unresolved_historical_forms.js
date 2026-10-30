@@ -78,6 +78,27 @@ function orthographicAndAffixHints(s){
   out.push('poetic_refrain_like_surface_only');
  return out;
 }
+function originalLanguageStanzaContexts(){
+ const raw=fs.readFileSync(path.join(ROOT,'research/neural_training/brinton_1890_poetry_weak_en.jsonl'),'utf8');
+ const byId=new Map();
+ for(const line of raw.split(/\r?\n/u).filter(Boolean)){
+  const r=JSON.parse(line);
+  if(r.split!=='train')continue;
+  if(r.translation?.alignment!=='candidate')throw Error('No human-reviewed training parallel permitted');
+  if(typeof r.original!=='string'||!r.original||byId.has(r.record_id))
+   throw Error('Bad or duplicate Brinton original-language reference');
+  byId.set(r.record_id,r.original);
+ }
+ if(byId.size!==133)throw Error('Expected unchanged 133 original-language TRAIN stanzas only');
+ return byId;
+}
+function shortOriginalSourceWindow(source,word){
+ if(typeof source!=='string')return null;
+ const words=source.match(/\p{L}+/gu)||[];
+ const at=words.findIndex(w=>norm(w)===word);
+ if(at<0)return null;
+ return words.slice(Math.max(0,at-5),Math.min(words.length,at+6)).join(' ').slice(0,200);
+}
 function buildTriage(source,linked,{maxHuman=12}={}){
  validateResearch(source);
  if(linked?.format!=='tentli-research-engine-bridge-v1'||
@@ -108,6 +129,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
    throw Error('Director feedback reference changed');
  const previouslyReviewed=new Set(feedback.entries.map(x=>norm(x.exact_written_form)));
  const anchors=locatedSourceAnchors(fromRepo('dictionary.json'));
+ const sourceStanzas=originalLanguageStanzaContexts();
  const unresolved=[];
  const classes={
   prior_poetic_or_particle_research_lead:0,
@@ -165,7 +187,12 @@ function buildTriage(source,linked,{maxHuman=12}={}){
    written_surface:surface,
    source_poem_occurrences:original.historical_training_token_occurrences,
    separate_poem_units_in_same_brinton_edition:original.historical_train_work_count,
-   historical_edition_examples:sources,
+   historical_edition_examples:sources.map(entry=>({
+    ...entry,
+    original_language_short_context:shortOriginalSourceWindow(
+     sourceStanzas.get(entry.record_id),surface),
+    short_context_not_independent_translation:true,
+   })),
    historical_document_context_leads:original.original_edition_contexts,
    prior_source_research:pre?{
     evidence_class:pre.class,

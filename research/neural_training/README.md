@@ -110,3 +110,18 @@ examples. The two source versions are SHA256-pinned and their original
 texts remain off-repository; no canonical morphological or grammatical
 engine changes, modern dialect mixing or independent translation-accuracy
 claims are made.
+
+## Temoa narrative corpus and larger Chimalpahin manuscripts
+
+The [source-verified Temoa + Chimalpahin research report](../../docs/TEMOA_CHIMALPAHIN_RESEARCH.md)
+records a completed **1,800-step** real PyTorch continuation of the same
+prior Tēntli model on **five named work-level historical Nahuatl
+sources**: Chimalpahin's Third and Eighth `Relaciones`, the *Anales
+de Cuauhtitlan*, *Leyenda de los Soles* and *Anales Mexicanos*.
+The intake admitted **450 provenance-bearing text records and 499,938
+editorial transcription characters**, **zero** new translation pairs
+and no source text redistribution. Rights are independently assessed
+for noncommercial private research only; previously encountered
+Axolotl source overlap remains known. Development denoising loss
+(~2.0455) is **not** human-scored translation adequacy. Canonical
+Tēntli morphology, grammar and dictionary remain unchanged.

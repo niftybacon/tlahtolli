@@ -1,0 +1,8 @@
+# No experimental neural weights or raw local manuscripts in Git.
+neural/__pycache__/
+*.pyc
+*.pyo
+research/neural_training/checkpoints/
+research/neural_training/local_corpora/
+research/neural_training/*.pt
+research/neural_training/*.pth

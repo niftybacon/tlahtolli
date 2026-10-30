@@ -58,7 +58,9 @@ def teacher_curriculum(manifest:Path)->dict[str,list[dict]]:
                 "id":"synthetic-"+hashlib.sha256((source+"\\0"+target).encode()).hexdigest()[:16],
                 "source":source,"target":target,"work":"synthetic-lemma-"+lemma,
                 "source_url":row["source_urls"][0],
-                "evidence_grade":"synthetic_grammar_proposal_not_historical_review"
+                "evidence_grade":"synthetic_grammar_proposal_not_historical_review",
+                "alternative_english_count":row["alternative_english_count"],
+                "example_weight":0.15 if row["alternative_english_count"]>1 else 0.6,
             })
     else:
         # The older teacher exported only unambiguous English choices.
@@ -88,7 +90,9 @@ def teacher_curriculum(manifest:Path)->dict[str,list[dict]]:
                 "source":item.input,"target":item.target,
                 "work":"synthetic-lemma-"+lemma,
                 "source_url":item.source_urls[0],
-                "evidence_grade":"synthetic_grammar_proposal_not_historical_review"
+                "evidence_grade":"synthetic_grammar_proposal_not_historical_review",
+                "alternative_english_count":1,
+                "example_weight":0.2,
             })
     lemmas=sorted(k for k,v in by_lemma.items() if v)
     if len(lemmas)<3 or sum(len(x) for x in by_lemma.values())<8:
@@ -112,6 +116,9 @@ def practice(manifest:Path,output:Path,*,steps:int=24)->dict:
                        source_fingerprint=fingerprint)
     result["human_reviewed_training_examples"]=0
     result["synthetic_grammar_examples"]=len(rows["train"])
+    result["ambiguous_synthetic_training_examples"]=sum(r["alternative_english_count"]>1 for r in rows["train"])
+    result["ambiguous_synthetic_weight"]=0.15
+    result["unambiguous_synthetic_weight"]=0.6
     result["historically_attested_sentence_translations_added"]=0
     result["accuracy"]=None
     (output/"research_metadata.json").write_text(

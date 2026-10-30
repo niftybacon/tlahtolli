@@ -55,7 +55,7 @@ function validateResearch(report){
     report.historical_dev_stanzas_excluded!==17||
     report.human_silver_added!==0||report.gold_added!==0||
     report.model_updated!==false||report.dictionary_updated!==false||
-    JSON.stringify(report.evidence_fingerprints)!==JSON.stringify(currentEvidence()))
+    JSON.stringify(Object.entries(report.evidence_fingerprints||{}).sort(([a],[b])=>a.localeCompare(b)))!==\n    JSON.stringify(Object.entries(currentEvidence()).sort(([a],[b])=>a.localeCompare(b))))
    throw Error('Reject stale, incomplete or non-research-only investigator report');
  const seen=new Set();
  for(const r of report.investigations){

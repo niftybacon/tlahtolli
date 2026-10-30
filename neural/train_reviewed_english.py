@@ -90,11 +90,20 @@ def _encode_pairs(rows:list[dict],tokenizer,max_source:int,max_target:int):
         yield row,src,tgt["input_ids"]
 
 
-def supervised_adapt(pairs:Path,output:Path,*,max_steps:int=80,
-                     learning_rate:float=0.0003,seed:int=19)->dict:
+def fit_adapter(rows:dict[str,list[dict]],output:Path,*,max_steps:int,
+                learning_rate:float=0.0003,seed:int=19,
+                evidence_tier:str,source_fingerprint:str)->dict:
+    """One actual optimizer shared by strictly segregated evidence tiers."""
+    if evidence_tier not in {"human_reviewed_bilingual","synthetic_grammar_teacher"}:
+        raise ValueError("Unknown supervised learning tier")
     if not 1<=max_steps<=2000 or not 0<learning_rate<=0.002:
         raise ValueError("Bounded adaptation requires 1..2000 steps and safe learning rate")
-    rows=load_reviewed_pairs(pairs)
+    if not rows.get("train") or not rows.get("dev"):
+        raise ValueError("Supervised adaptation requires train and dev data")
+    train_works={r["work"] for r in rows["train"]}
+    dev_works={r["work"] for r in rows["dev"]}
+    if train_works & dev_works:
+        raise ValueError("Grammatical or historical source group train/dev contamination")
     import torch
     from peft import LoraConfig,TaskType,get_peft_model
     from transformers import AutoTokenizer,AutoModelForSeq2SeqLM
@@ -130,35 +139,46 @@ def supervised_adapt(pairs:Path,output:Path,*,max_steps:int=80,
         optimizer.zero_grad(set_to_none=True)
         loss=model(**src,labels=target).loss
         if not torch.isfinite(loss):
-            raise ValueError("Nonfinite reviewed supervision loss")
+            raise ValueError("Nonfinite supervised loss")
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(),1.0)
         optimizer.step()
         actual+=1
     after=evaluate()
-    # Do not modify the caller's user-facing English model or repo weights.
     output.mkdir(parents=True,exist_ok=True)
     model.save_pretrained(output)
     report={
-        "format":"tentli-reviewed-english-lora-v1",
+        "format":"tentli-english-supervision-lora-v1",
+        "evidence_tier":evidence_tier,
         "base_model":MODEL_ID,"revision":MODEL_REVISION,
         "base_license":"Apache-2.0",
         "training_rows":len(train),"development_rows":len(dev),
-        "test_rows_not_used":len(rows["test"]),
-        "train_work_ids":sorted({x[0]["work"] for x in train}),
-        "dev_work_ids":sorted({x[0]["work"] for x in dev}),
-        "approved_parallel_csv_sha256":hashlib.sha256(pairs.read_bytes()).hexdigest(),
+        "test_rows_not_used":len(rows.get("test",[])),
+        "train_work_ids":sorted(train_works),
+        "dev_work_ids":sorted(dev_works),
+        "source_manifest_sha256":source_fingerprint,
         "actual_optimizer_steps":actual,
         "dev_teacher_forced_loss_before":round(before,6),
         "dev_teacher_forced_loss_after":round(after,6),
         "automatically_approved_for_public_translation":False,
         "independent_translation_accuracy":None,
-        "claim":"Only review-approved English pairs; no model-based self-reward or teacher synthetic promotion",
+        "claim":(
+            "Reviewed historical English pairs require independent human verification and full permissions"
+            if evidence_tier=="human_reviewed_bilingual" else
+            "Synthetic canonical teacher practice, NOT historical English translations or independent gold"),
     }
     (output/"research_metadata.json").write_text(
         json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     return report
 
+
+def supervised_adapt(pairs:Path,output:Path,*,max_steps:int=80,
+                     learning_rate:float=0.0003,seed:int=19)->dict:
+    rows=load_reviewed_pairs(pairs)
+    return fit_adapter(rows,output,max_steps=max_steps,
+        learning_rate=learning_rate,seed=seed,
+        evidence_tier="human_reviewed_bilingual",
+        source_fingerprint=hashlib.sha256(pairs.read_bytes()).hexdigest())
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)

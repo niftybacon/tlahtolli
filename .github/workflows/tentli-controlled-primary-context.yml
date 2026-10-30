@@ -45,17 +45,20 @@ jobs:
           r=json.loads((Path(os.environ['RUNNER_TEMP'])/'primary-edited-source-collation.json').read_text(encoding='utf-8'))
           assert r["specific_short_historical_contexts"]==3
           assert r["network_source_pages_checked"]==2
-          assert r["live_edition_text_checks"]==3
+          assert r["live_edition_text_checks"]>=2
+          assert r["edited_text_not_exposed_in_static_html"]<=1
+          assert r["live_edition_text_checks"]+r["edited_text_not_exposed_in_static_html"]==3
           assert r["independent_manuscript_facsimile_collations"]==0
           assert r["new_approved_silver_translations"]==r["new_gold_translations"]==0
           assert all(c["exact_visible_edition_phrase_checked"] is True
-                     for c in r["investigations"])
+                     for c in r["investigations"] if c["primary_collection_id"]=="enl-bc19-coyoacan-1621")
           print('## Original-source edited Nahuatl evidence collation')
           print('- **Two** historical source web pages read: ENL Coyoacan 1621 and Digital Florentine Codex Book 10')
-          print('- **Three** specific, short historical phrases located exactly in the edited Nahuatl transcription pages')
+          print('- **Two** 1621 ENL phrases validated live against editable HTML')
+          print('- Florentine Codex cujcatl remains source-linked but may require a rendered browser to read its dynamically supplied transcription')
           print('- **can** as numbered place suffix in *yniquexcan*, distinct from optative -cān and independent question *can*')
           print('- **ayac** negative indefinite in the 1621 document, *aiaac* documented only as a separate indexed variant')
-          print('- **cuicatl** spelling *cujcatl* in sixteenth-century Florentine original-source transcription')
+          print('- **cuicatl** spelling *cujcatl* located in sixteenth-century Florentine scholarly edition, live HTML checked='+str(next(x['exact_visible_edition_phrase_checked'] for x in r['investigations'] if x['id']=='dfc-book10-cujcatl')))
           print('- Facsimile independently deciphered: **NO**. Modern English meaning independently verified: **NO**.')
           print('- Training-approved Silver and Gold additions: **0**; public translator unchanged')
           PY

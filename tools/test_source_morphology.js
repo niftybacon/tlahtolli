@@ -63,7 +63,8 @@ for(const patch of invalids){
  // productive morphology, inferred English sense or original-text reading.
 const lexicalPack=JSON.parse(fs.readFileSync(path.join(root,
  'research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json'),'utf8'));
-const cited=make(review,lexicalPack);
+const lexicalResearch=require('./exact_source_lexical_research.js');
+const cited=lexicalResearch.create(make(review),lexicalPack);
 assert.equal(cited.sourceCount,3,'Existing morphology must remain unchanged');
 assert.equal(cited.exactLexicalFormCount,2);
 for(const [form,lemma,url] of [
@@ -120,7 +121,7 @@ const corrupt=[
 ];
 for(const mut of corrupt){
  const copy=JSON.parse(JSON.stringify(lexicalPack));mut(copy);
- const blocked=make(review,copy);
+ const blocked=lexicalResearch.create(make(review),copy);
  assert.equal(blocked.exactLexicalFormCount,0,
   'All lexical source proposals must fail closed if any item or policy is forged');
  assert.equal(blocked.analyze('yehuan').length,0);

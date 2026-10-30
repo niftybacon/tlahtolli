@@ -135,9 +135,14 @@ def fit_adapter(rows:dict[str,list[dict]],output:Path,*,max_steps:int,
     rng=random.Random(seed)
     actual=0
     for step in range(max_steps):
-        _,src,target=rng.choice(train)
+        record,src,target=rng.choice(train)
+        weight=record.get("example_weight",1.0)
+        if not isinstance(weight,(int,float)) or not 0<weight<=1:
+            raise ValueError("Invalid supervised example evidence weight")
+        if evidence_tier=="human_reviewed_bilingual" and weight!=1:
+            raise ValueError("Human-reviewed supervision weight was silently downgraded")
         optimizer.zero_grad(set_to_none=True)
-        loss=model(**src,labels=target).loss
+        loss=model(**src,labels=target).loss * weight
         if not torch.isfinite(loss):
             raise ValueError("Nonfinite supervised loss")
         loss.backward()
@@ -158,6 +163,9 @@ def fit_adapter(rows:dict[str,list[dict]],output:Path,*,max_steps:int,
         "dev_work_ids":sorted(dev_works),
         "source_manifest_sha256":source_fingerprint,
         "actual_optimizer_steps":actual,
+        "synthetic_ambiguous_train_records":sum(
+            r.get("alternative_english_count",1)>1 for r in rows["train"])
+            if evidence_tier=="synthetic_grammar_teacher" else 0,
         "dev_teacher_forced_loss_before":round(before,6),
         "dev_teacher_forced_loss_after":round(after,6),
         "automatically_approved_for_public_translation":False,

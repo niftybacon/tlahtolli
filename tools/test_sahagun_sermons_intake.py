@@ -61,6 +61,8 @@ class TestSahagunIntake(unittest.TestCase):
         self.assertEqual(presentation_page_range(h,sermon=57,start=177,next_start=181),(177,177))
         with self.assertRaisesRegex(ValueError,"Invalid source page span"):
             presentation_page_range(h,sermon=57,start=176,next_start=181)
+        h_alt='<html><h2>[Sermón 26]</h2><div>(Ms. 1485 Ayer, p. 90-93)</div></html>'
+        self.assertEqual(presentation_page_range(h_alt,sermon=26,start=90,next_start=94),(90,93))
         h2='<html><h2>[Sermón 64]</h2><div>(Ms. 1485, Col. Ayer, p. 197-198)</div></html>'
         self.assertEqual(presentation_page_range(h2,sermon=64,start=197,next_start=199),(197,198))
 

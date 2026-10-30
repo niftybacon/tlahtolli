@@ -22,7 +22,7 @@ EXACT_WORKS = {
 EXACT_PROBES = {
     "bc16-sale-ticnamaca": ("enl-bc16-1573", "ticnamaca", "ticnamaca y¯ totlal"),
     "bc16-necoc-measure": ("enl-bc16-1573", "necoc", "çan necoc cempohualli quahuitl"),
-    "bc26-tecpancalli": ("enl-bc26-early16", "tecpancalli", "yn don juan tecpancalli ytech poviz"),
+    "bc26-tecpancalli": ("enl-bc26-early16", "tecpancalli", "yn don juan tecpancalli ytech pohuiz"),
     "bc26-field-ordinal": ("enl-bc26-early16", "ocoçacapan", "ynic cecni ocoçacapan"),
 }
 

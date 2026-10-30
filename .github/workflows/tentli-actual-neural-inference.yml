@@ -1,0 +1,96 @@
+name: Actually evaluate Tēntli historical trained neural weights
+on:
+  push:
+    branches: [test/tentli-actual-model-inference-20261029]
+    paths:
+      - 'tools/probe_actual_tentli_neural.py'
+      - '.github/workflows/tentli-actual-neural-inference.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  real-model-probes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch pre-expansion neural checkpoint (Florentine and Classical Axolotl)
+        uses: actions/download-artifact@v4
+        with:
+          name: tentli-florentine-axolotl-private-research-checkpoint
+          run-id: 40987019137
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/early
+      - name: Fetch actual latest checkpoint (Temoa and two larger Chimalpahin Relaciones)
+        uses: actions/download-artifact@v4
+        with:
+          name: tentli-temoa-chimalpahin-independent-prose-research-checkpoint
+          run-id: 40993235240
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/latest
+      - name: Verify both distinct actual weight sets and normalize nested artifact paths
+        run: |
+          python - <<'PY'
+          import hashlib,os,pathlib,shutil,json
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])
+          found=[]
+          for part,step in (('early',480),('latest',1800)):
+              folder=root/part
+              candidates=[p.parent for p in folder.rglob('metadata.json') if (p.parent/'weights.pt').is_file()]
+              if len(candidates)!=1:
+                  raise ValueError(f"Expected one actual checkpoint artifact for {part}, got {candidates}")
+              if candidates[0]!=folder:
+                  for name in ('metadata.json','weights.pt'):
+                      shutil.copy2(candidates[0]/name,folder/name)
+              meta=json.loads((folder/'metadata.json').read_text(encoding='utf-8'))
+              assert meta['format']=='tentli-experimental-neural-v1'
+              assert meta['steps']==step
+              assert meta['trainable_parameters']==104039
+              assert meta['model_config']['width']==48
+              assert meta['model_config']['max_bytes']==256
+              assert meta['trained_translation_examples']>=4000
+              assert meta['independent_translation_accuracy'] is None
+              digest=hashlib.sha256((folder/'weights.pt').read_bytes()).hexdigest()
+              found.append(digest)
+              print('VERIFIED_REAL_MODEL',part,'SHA256',digest,'STEPS',step)
+          assert found[0]!=found[1]
+          PY
+      - name: Install original PyTorch CPU implementation
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Run fixed greedy generation, output raw texts, do not turn development into gold
+        run: |
+          python -m tools.probe_actual_tentli_neural \
+            --before "$RUNNER_TEMP/early" \
+            --after "$RUNNER_TEMP/latest" \
+            --output "$RUNNER_TEMP/tentli-actual-inference-probes.json" \
+            --generation-limit 72
+      - name: Validate benchmark completeness and no fake accuracy
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'tentli-actual-inference-probes.json'
+          data=json.loads(p.read_text(encoding='utf-8'))
+          s=data['summary']
+          assert s['english_software_probes']==8
+          assert s['enl_development_anchors_not_gold']==7
+          assert s['negative_controls']==2
+          assert s['spanish_unscored_probes']==5
+          assert s['analysis_unscored_probes']==4
+          assert s['denoising_unscored_probes']==2
+          assert s['human_reviewed_test_count']==0 and s['heldout_gold_count']==0
+          assert s['translation_accuracy'] is None
+          assert len(data['english_probes'])==17
+          assert all('latest_neural_en' in row for row in data['english_probes'])
+          assert all('latest_neural_es' in row for row in data['spanish_probes'])
+          print('RAW_NEURAL_BENCHMARK_COMPLETE',json.dumps(s,ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-actual-neural-inference-benchmark-results
+          path: ${{ runner.temp }}/tentli-actual-inference-probes.json
+          if-no-files-found: error
+          retention-days: 30

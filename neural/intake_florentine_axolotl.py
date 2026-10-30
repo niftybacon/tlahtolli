@@ -149,7 +149,9 @@ def main():
     parser.add_argument("--output-dir",required=True)
     args=parser.parse_args()
     root=Path(args.florentine_dir)
-    allbooks={n:(root/f"Book {n} - {title}.txt").read_text(encoding="utf-8-sig") for n,title in BOOKS}
+    # read_text() silently normalizes CRLF to LF. Previous Tlahtōlli
+    # scan hashes the original decoded UTF-8 bytes, so preserve newlines.
+    allbooks={n:(root/f"Book {n} - {title}.txt").read_bytes().decode("utf-8-sig") for n,title in BOOKS}
     prior=json.loads(Path(args.prior_scan).read_text(encoding="utf-8"))
     fc,fcs=florentine_rows(allbooks,prior)
     ax,axs=axolotl_rows(Path(args.axolotl_file).read_bytes())

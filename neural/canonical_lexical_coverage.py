@@ -164,6 +164,7 @@ def inspect(manifest: Path = MANIFEST, *, limit: int = 40, per_work: int = 4,
     unique_recognized = set()
     unknown_counts = Counter()
     unknown_examples = defaultdict(list)
+    unknown_work_ids = defaultdict(set)
     ambiguous_count = 0
     witness_only = 0
     for item in rows:
@@ -181,6 +182,7 @@ def inspect(manifest: Path = MANIFEST, *, limit: int = 40, per_work: int = 4,
             if not options:
                 unknown[word] += 1
                 unknown_counts[word] += 1
+                unknown_work_ids[word].add(item.work_id)
                 # Research examples refer ONLY to prior training poems.
                 # Never expose reserved dev English or a model-fabricated gloss.
                 case = {
@@ -240,11 +242,11 @@ def inspect(manifest: Path = MANIFEST, *, limit: int = 40, per_work: int = 4,
     # surface constitutes an independent lexical headword.
     unknown_proposals = []
     for surface, occurrences in unknown_examples.items():
-        distinct_works = len({e["work_id"] for e in occurrences})
+        distinct_works = len(unknown_work_ids[surface])
         unknown_proposals.append({
             "written_surface": surface,
             "token_occurrences_in_training_poems": unknown_counts[surface],
-            "sampled_distinct_training_works": distinct_works,
+            "distinct_training_work_count": distinct_works,
             "training_source_examples": occurrences[:4],
             "requires_historical_spelling_segmentation_and_context_review": True,
             "could_be_poetic_vocable_particle_or_inflection": True,
@@ -254,7 +256,7 @@ def inspect(manifest: Path = MANIFEST, *, limit: int = 40, per_work: int = 4,
             "human_review_status": "unreviewed_frequency_lead",
         })
     unknown_proposals.sort(
-        key=lambda x: (-x["sampled_distinct_training_works"],
+        key=lambda x: (-x["distinct_training_work_count"],
                        -x["token_occurrences_in_training_poems"],
                        x["written_surface"]))
     return {

@@ -45,11 +45,21 @@ class VisibleText(HTMLParser):
         self.skip = 0
         self.chunks: list[str] = []
 
+    # Keep inline <span>/<b> boundaries *within words*; a digital edition
+    # can use an individual tag for each syllable. Insert word boundaries
+    # only for actual block-like text separators, not for all HTML tags.
+    BLOCKS = {"p", "div", "br", "li", "td", "tr", "table", "h1", "h2",
+              "h3", "h4", "h5", "h6", "section", "article", "blockquote"}
+
     def handle_starttag(self, tag: str, attrs) -> None:
         if tag in {"script", "style", "noscript", "svg"}:
             self.skip += 1
+        if tag in self.BLOCKS and not self.skip:
+            self.chunks.append(" ")
 
     def handle_endtag(self, tag: str) -> None:
+        if tag in self.BLOCKS and not self.skip:
+            self.chunks.append(" ")
         if tag in {"script", "style", "noscript", "svg"} and self.skip:
             self.skip -= 1
 
@@ -172,7 +182,7 @@ def fetch_page(source_url: str) -> str:
     parser.feed(data.decode("utf-8", errors="replace"))
     # Full fetched page remains in memory only and is never written out,
     # published or used as a newly approved neural training example.
-    return " ".join(parser.chunks)
+    return "".join(parser.chunks)
 
 
 def examine(*, catalog: Path = CATALOG, live: bool = False, page_fetcher=fetch_page) -> dict:

@@ -180,7 +180,7 @@ class PrivateGoldTests(unittest.TestCase):
         self.assertEqual(exposure["historical_candidate_records_considered"], 150)
         self.assertIn("brinton-1890-ancient-nahuatl-poetry", exposure["collections"])
         self.assertIn("brinton-1890-poetry-i", exposure["works"])
-        self.assertIn("nichōca", exposure["normalized_content"] if "nichōca" in exposure["normalized_content"] else {"nichōca"})
+        self.assertTrue(exposure["normalized_content"])
         with self.assertRaisesRegex(ValueError, "No independently human-reviewed"):
             validate_private_gold({"format": FORMAT, "examples": [],
                                    "labels_available_to_training": False,

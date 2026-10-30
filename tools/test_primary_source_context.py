@@ -112,6 +112,26 @@ class ControlledPrimarySourceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "excerpt mismatch"):
             examine(live=True,page_fetcher=fetch)
 
+    def test_dynamic_getty_page_never_silently_certifies_manuscript_text(self):
+        sources={
+          "https://enl.wired-humanities.org/BC19":
+             "yniquexcan mani tlalli calpilco, ayac tle quitoz oncan tlatoz",
+          "https://florentinecodex.getty.edu/book/10/folio/118v":
+             "Book 10 Folio 118v - loading the Nahuatl transcription",
+        }
+        report=examine(live=True,page_fetcher=lambda u:sources[u])
+        self.assertEqual(report["network_source_pages_checked"],2)
+        self.assertEqual(report["live_edition_text_checks"],2)
+        self.assertEqual(report["edited_text_not_exposed_in_static_html"],1)
+        getty=next(x for x in report["investigations"] if x["id"]=="dfc-book10-cujcatl")
+        self.assertFalse(getty["exact_visible_edition_phrase_checked"])
+        self.assertIn("rendered browser",getty["live_check_limitation"])
+        self.assertEqual(report["new_gold_translations"],0)
+        sources["https://florentinecodex.getty.edu/book/10/folio/118v"] = (
+            "qujioltevujaia not in cujcatl")
+        with self.assertRaisesRegex(ValueError, "excerpt mismatch"):
+            examine(live=True,page_fetcher=lambda u:sources[u])
+
     def test_source_tampering_and_false_gold_is_refused(self):
         baseline=json.loads(CATALOG.read_text(encoding="utf-8"))
         mutations=(

@@ -116,7 +116,7 @@ fs.mkdirSync(path.dirname(path.resolve(out)),{recursive:true});
 fs.writeFileSync(out,outputs.map(x=>JSON.stringify(x)).join('\n')+'\n');
 const hashes={};
 for(const file of ['dictionary.json','paradigms.json','translator-sentence.js',
- 'translator-english.js','translator-grammar-ir.js'])
+ 'translator-english.js','translator-grammar-ir.js','tools/morphology_engine.js'])
  hashes[file]=crypto.createHash('sha256').update(read(file)).digest('hex');
 const meta={format:'tentli-teacher-v1',release:D.version,counts,
  uniqueParadigmSurfaces:paradigms.size,examples:outputs.length,source_sha256:hashes,

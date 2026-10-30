@@ -22,14 +22,15 @@ try{
  assert.equal(result.no_auto_grammatical_rule_creation,true);
  assert.equal(result.english_meaning_accuracy,null);
  assert.equal(result.no_gold_reference_exposure,true);
- assert.equal(result.engine_wiring.advanced_browser_supplementary_morphology,
-  'not_connected_in_this_Node_bridge');
+ assert(result.engine_wiring.advanced_browser_supplementary_morphology.includes('source executed in isolated Node VM'));
+ assert(result.advanced_browser_morphology_source_revision.source.includes('tools/morphology_engine.js'));
  assert.equal(result.token_engine_diagnostics.length,1181);
  assert.equal(result.historical_context_engine_diagnostics.length,7);
  const cat=result.count_by_actual_existing_engine_route;
  assert.equal(cat.curated_lexical_headword_surface+
   cat.exact_indexed_grammar_paradigm_surface+
   cat.exact_source_review_morphology_surface+
+  cat.advanced_browser_morphology_surface+
   cat.only_archival_dictionary_headword+
   cat.no_linked_engine_surface_match,1181);
  const forms=new Set(result.token_engine_diagnostics.map(x=>x.written_surface));
@@ -37,11 +38,14 @@ try{
  const byForm=Object.fromEntries(result.token_engine_diagnostics.map(x=>[x.written_surface,x]));
  for(const word of ['zanio','can','ayac','cuicatl','tecpancalli','necoc'])
   assert(byForm[word],word+' not included in engine-bridge 1181-form scan');
+ assert(result.token_engine_diagnostics.some(x=>x.advanced_browser_morphology_candidates.length>0),
+  'Actual advanced morphology engine must produce some candidate readings');
  assert(result.token_engine_diagnostics.every(x=>
   x.silver===false&&x.gold===false&&x.training_eligible===false&&
   x.semantic_agreement_verified===false&&
   x.sentence_english_certified===false&&
-  x.approved_lexicon_morpheme_added===false));
+  x.approved_lexicon_morpheme_added===false&&
+  x.advanced_browser_morphology_candidates.every(c=>c.source===null||c.source.startsWith('https://'))));
  assert(result.historical_context_engine_diagnostics.every(x=>
   x.analyzed_by_existing_engines===true&&
   x.lexical_engine_token_count>=1&&

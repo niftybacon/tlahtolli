@@ -80,3 +80,19 @@ The [teacher/historical neural training report](../../docs/NEURAL_TEACHER_HISTOR
 
 A distinct pinned, US-public-domain historical cohort draws **112 stanzas from 20 songs** in Daniel G. Brinton's 1890 edition derived mainly from Sahagún's Madrid witness. The model learns from original spellings (with contiguous chunking) but **does not** auto-import Brinton's paraphrastic English, Getty's all-rights-reserved Anderson–Dibble Nahuatl-to-English text, or other modern dialects. A GitHub Actions workflow creates the neural checkpoints without committing manuscript text or assuming translator accuracy. Weights remain **experimental**, not the browser translator.
 
+
+## Research intake update: fair use can be distinct from source redistribution
+
+Copyrighted training text is not automatically disallowed solely because its
+rights are reserved: U.S. fair use may apply depending on how the text was
+acquired, the purpose of training and the market impact. The
+[Anderson–Dibble fair-use and model-release protocol](ANDERSON_DIBBLE_FAIR_USE.md)
+now permits an explicitly **source-specific assessed-fair-use** training
+metadata tier for private, lawfully obtained input without allowing source
+text into public artifacts. This is not a claim that Getty's licensed display
+is a general bulk-training license, nor does it independently authorize
+redistribution of weights. `neural/release_audit.py` separately checks
+translation evidence, documented source acquisition, extraction risk and
+release assessment. No Anderson–Dibble data or model weights have been
+imported as a result of this policy update.
+

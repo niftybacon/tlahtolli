@@ -46,6 +46,21 @@ function currentEvidence(){
  out.individual_archived_lexical_source_sha256=files;
  return out;
 }
+function independentlyAttestedResearchSurfaces(){
+ const labels=new Set();
+ const historical=fs.readFileSync(path.join(ROOT,sources[0]),'utf8').split(/\r?\n/u).filter(Boolean);
+ for(const line of historical){
+  const row=JSON.parse(line);
+  if(!['train','dev'].includes(row.split))throw Error('Unapproved research train/dev split');
+  if(row.split!=='train')continue;
+  for(const token of String(row.original).normalize('NFC').match(/[^\W\d_]+/gu)||[])
+   labels.add(norm(token));
+ }
+ for(const row of readJSON(sources[4]).contexts)labels.add(norm(row.form));
+ for(const row of readJSON(sources[5]).probes)labels.add(norm(row.form));
+ for(const row of readJSON(sources[6]).entries)labels.add(norm(row.exact_written_form));
+ return labels;
+}
 function validateResearch(report){
  if(!report||report.format!==INPUT||
     !Array.isArray(report.investigations)||
@@ -53,15 +68,16 @@ function validateResearch(report){
     report.processed_form_count<1||report.processed_form_count>10000||
     report.historical_train_stanzas!==133||
     report.historical_dev_stanzas_excluded!==17||
+    report.distinct_written_forms_available!==1181||
     report.human_silver_added!==0||report.gold_added!==0||
     report.model_updated!==false||report.dictionary_updated!==false||
     JSON.stringify(Object.entries(report.evidence_fingerprints||{}).sort(([a],[b])=>a.localeCompare(b)))!==
     JSON.stringify(Object.entries(currentEvidence()).sort(([a],[b])=>a.localeCompare(b))))
    throw Error('Reject stale, incomplete or non-research-only investigator report');
- const seen=new Set();
+ const seen=new Set(), independent=independentlyAttestedResearchSurfaces();
  for(const r of report.investigations){
   if(typeof r.written_surface!=='string'||r.written_surface.length>120||
-      !r.written_surface||seen.has(r.written_surface)||
+      !r.written_surface||!independent.has(r.written_surface)||seen.has(r.written_surface)||
       r.written_surface!==norm(r.written_surface)||
       r.gold!==false||r.silver_approved!==false||r.training_eligible!==false||
       r.automatically_certified_meaning!==false||

@@ -125,3 +125,27 @@ for noncommercial private research only; previously encountered
 Axolotl source overlap remains known. Development denoising loss
 (~2.0455) is **not** human-scored translation adequacy. Canonical
 Tēntli morphology, grammar and dictionary remain unchanged.
+
+## Actual saved-weight inference diagnostic (2026-10-29)
+
+The [first real two-checkpoint inference test](../../docs/TENTLI_REAL_NEURAL_INFERENCE_EVALUATION_2026_10_29.md)
+ran fixed short Nahuatl inputs against the preserved Florentine/Axolotl
+and latest Temoa/Chimalpahin **actual weights**, not synthetic smoke
+tests. **The experimental neural decoder fails even basic English
+translation:** zero exact outputs on eight grammar-development
+controls and seven previously inspected ENL historical anchors; its
+five Spanish-conditioned probes are likewise unusable. It also
+produced invented text for one nonsense control. The source-backed
+canonical grammar composer correctly rendered **all eight constructed
+grammar controls** and **refused all seven unsupported ENL anchors
+plus two nonsense inputs**. These known development checks and ENL
+anchors are NOT independently reviewed held-out gold; actual
+human-scored translation accuracy remains unknown.
+
+Do **not** route these neural outputs into the public translator.
+The inherited Spanish-training lineage is also missing from the final
+stage's per-language `source_inventory`, causing the standard
+Spanish inference API to reject the saved checkpoint: repair the
+cumulative training provenance rather than bypassing source gates
+in released inference. New historical corpora alone are not a
+substitute for verified parallel translation learning.

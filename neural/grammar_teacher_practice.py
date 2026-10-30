@@ -18,40 +18,83 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def teacher_curriculum(manifest:Path)->dict[str,list[dict]]:
-    teacher,ledger=load_teacher(manifest,root=ROOT)
-    pack=json.loads((ROOT/"paradigms.json").read_text(encoding="utf-8"))
-    mappings=defaultdict(set)
-    for lemma,paradigm in pack["paradigms"].items():
-        for row in paradigm["cells"]:
-            for written in row:
-                mappings[written].add(lemma)
+    metadata=json.loads(Path(str(manifest)+".meta.json").read_text(encoding="utf-8"))
     by_lemma=defaultdict(list)
     seen=set()
-    for item in teacher:
-        if item.task!="translate" or item.grade!="grammar-composed-English":
-            continue
-        written=item.input.removeprefix("ahmo ").strip()
-        lemmas=mappings.get(written,set())
-        if len(lemmas)!=1:
-            continue
-        lemma=next(iter(lemmas))
-        key=(item.input,item.target)
-        if key in seen:raise ValueError("Duplicate English grammar teacher pair")
-        seen.add(key)
-        if not item.source_urls or any(not x.startswith("https://") for x in item.source_urls):
-            raise ValueError("Grammar teacher has no original source evidence")
-        by_lemma[lemma].append({
-            "id":"synthetic-"+hashlib.sha256((item.input+"\0"+item.target).encode()).hexdigest()[:16],
-            "source":item.input,"target":item.target,
-            "work":"synthetic-lexical-lemma-"+lemma,
-            "source_url":item.source_urls[0],
-            "evidence_grade":"synthetic_source_gated_grammar_not_manuscript",
-        })
-    lemmas=sorted(by_lemma)
+
+    if metadata.get("format")=="tentli-source-grammar-english-practice-v1":
+        if metadata.get("human_reviewed") is not False or metadata.get("historical_gold")!=0:
+            raise ValueError("Synthetic curriculum attempted to claim human review")
+        for path,digest in metadata.get("source_sha256",{}).items():
+            if path.startswith("/") or ".." in Path(path).parts:
+                raise ValueError("Unsafe synthetic source hash path")
+            expected=hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
+            if digest!=expected:
+                raise ValueError(f"Canonical grammar source changed after teacher export: {path}")
+        if len(metadata.get("source_sha256",{}))<7:
+            raise ValueError("Synthetic source hash ledger is incomplete")
+        lines=[json.loads(line) for line in manifest.read_text(encoding="utf-8").splitlines() if line.strip()]
+        if len(lines)!=metadata.get("examples"):
+            raise ValueError("Incomplete synthetic teacher source manifest")
+        for row in lines:
+            if (row.get("training_status")!="synthetic_teacher_only_not_historical_gold" or
+                row.get("human_reviewed") is not False or
+                row.get("historically_attested_sentence") is not False or
+                row.get("evidence_grade")!="editorial_grammar_not_independently_reviewed"):
+                raise ValueError("Synthetic teacher row improperly claims historical truth")
+            if not row.get("source_urls") or any(not x.startswith("https://") for x in row["source_urls"]):
+                raise ValueError("Source-grammatical English teacher lacks scholarly locators")
+            lemma=row.get("lemma")
+            if not isinstance(lemma,str) or row.get("work")!="synthetic-lemma-"+lemma:
+                raise ValueError("Source teacher lemma and work group mismatch")
+            source,target=row.get("source"),row.get("target")
+            if not isinstance(source,str) or not isinstance(target,str) or not source or not target:
+                raise ValueError("Empty synthetic source/English")
+            key=(source,target)
+            if key in seen:
+                raise ValueError("Repeated synthetic grammar pair")
+            seen.add(key)
+            by_lemma[lemma].append({
+                "id":"synthetic-"+hashlib.sha256((source+"\\0"+target).encode()).hexdigest()[:16],
+                "source":source,"target":target,"work":"synthetic-lemma-"+lemma,
+                "source_url":row["source_urls"][0],
+                "evidence_grade":"synthetic_grammar_proposal_not_historical_review"
+            })
+    else:
+        # The older teacher exported only unambiguous English choices.
+        # It is allowed if sufficiently diverse, but cannot pretend the
+        # old 24 'tlacuā' forms generalize to unseen verbal lemmas.
+        teacher,ledger=load_teacher(manifest,root=ROOT)
+        pack=json.loads((ROOT/"paradigms.json").read_text(encoding="utf-8"))
+        mappings=defaultdict(set)
+        for lemma,paradigm in pack["paradigms"].items():
+            for row in paradigm["cells"]:
+                for written in row:
+                    mappings[written].add(lemma)
+        for item in teacher:
+            if item.task!="translate" or item.grade!="grammar-composed-English":
+                continue
+            written=item.input.removeprefix("ahmo ").strip()
+            lemmas=mappings.get(written,set())
+            if len(lemmas)!=1:continue
+            lemma=next(iter(lemmas))
+            if not item.source_urls or any(not x.startswith("https://") for x in item.source_urls):
+                raise ValueError("Grammar teacher missing original citations")
+            key=(item.input,item.target)
+            if key in seen:raise ValueError("Repeated teacher source example")
+            seen.add(key)
+            by_lemma[lemma].append({
+                "id":"synthetic-"+hashlib.sha256((item.input+"\\0"+item.target).encode()).hexdigest()[:16],
+                "source":item.input,"target":item.target,
+                "work":"synthetic-lemma-"+lemma,
+                "source_url":item.source_urls[0],
+                "evidence_grade":"synthetic_grammar_proposal_not_historical_review"
+            })
+    lemmas=sorted(k for k,v in by_lemma.items() if v)
     if len(lemmas)<3 or sum(len(x) for x in by_lemma.values())<8:
         raise ValueError("Insufficient independent grammar-teacher lexical groups: "+repr({x:len(y) for x,y in sorted(by_lemma.items())}))
-    # Completely withhold entire lemma paradigms. This is a SYNTHETIC
-    # generalization control, not a blind historical work-level gold test.
+    # Hold out whole lexical paradigms. Still a synthetic study,
+    # NOT an independently reviewed historical manuscript benchmark.
     holdout=set(lemmas[-max(1,len(lemmas)//5):])
     rows={"train":[],"dev":[],"test":[]}
     for lemma in lemmas:

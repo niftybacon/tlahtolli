@@ -80,6 +80,37 @@ SHA-256 hashes.
 - All preexisting original phonology, source grammar, agreement,
   possession, and grammar-IR engines are preserved unchanged.
 
+## Verified end-to-end training run (2026-10-29)
+
+[Successful source and PyTorch run #40990926995](https://github.com/niftybacon/tlahtolli/actions/runs/40990926995):
+
+- **64 historical sermons**, represented across **191 distinct physical
+  manuscript folios** and 243 sermon-specific page views (multiple sermons
+  may share a physical page).
+- **403 accepted Nahuatl-majority editorial paragraphs** comprising
+  **572,317 characters**; 255 short or non-Nahuatl paragraphs excluded.
+  **14 further training paragraphs excluded** because their physical
+  pages also occur in the eight development sermons. Physical folios
+  therefore do not leak between the 56 training sermons and eight held-out
+  development sermons.
+- **1,200 actual additional gradient steps** on the existing 104,039-
+  parameter Tēntli Transformer checkpoint inherited from our successful
+  Florentine+Classical Axolotl run. The prior 4,585 historical/weak bilingual
+  training examples remain in model metadata, with **zero** new English
+  or Spanish translation pairs from the sermons.
+- The independently held-out sermon-denoising mean loss was **2.1202**.
+  This is NOT human-scored translation quality. Translation accuracy is
+  unknown.
+- GitHub Actions research artifact
+  `tentli-sahagun-64-sermons-research-checkpoint` holds only model
+  weights, training statistics and source URL/hash inventory, **no
+  original full text or modern translations**; it expires after 30 days.
+
+The source-content heuristic selects *Nahuatl-majority* passages; some
+historical Latin, Spanish borrowings, editorial manuscript additions and
+Christian terminology remain. Neither a pure-language guarantee nor
+reviewed historical translation examples are claimed.
+
 ## How to reproduce
 
 Run [the source-bound Ayer 1485 research workflow](../.github/workflows/tentli-ayer1485-training.yml)

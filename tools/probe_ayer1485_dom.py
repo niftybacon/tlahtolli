@@ -18,3 +18,16 @@ for url in urls:
     for tag in soup.select("h1,h2,h3,h4,h5,h6"):
         print("HEADING",tag.name,tag.get_text(" ",strip=True)[:80],tag.get("class"))
     print("DIV CLASSES",[x.get("class") for x in soup.select("div[class]") if any(z in str(x.get("class")).lower() for z in ["trans","tradu","conten","text","tab"])][:18])
+
+    if "ayer1485c" in url:
+        for heading in soup.find_all("h5",string=lambda x:x and x.strip() in ("Transcripción","Traducción")):
+            card=heading.find_parent("div",class_="card")
+            body=card.select_one(".card-body")
+            print("SECTION",heading.get_text(" ",strip=True),"CARD",card.get("class"),
+                  "BODY",body.get("class"),"CHILDREN",
+                  [(tag.name,tag.get("class"),len(tag.get_text(" ",strip=True))) for tag in body.find_all(recursive=False)][:16])
+            print("PARA COUNT",len(body.select("p")),"FOOTNOTECOUNT",len(body.select("sup")))
+    if "ayer1485i" in url:
+        import re
+        starts=[int(m.group(1)) for a in soup.select("a[href]") if (m:=re.search(r"ayer1485p\\?s=ayer1485-(\\d+)",a.get("href") or ""))]
+        print("INDEX STARTS",len(starts),starts[:6],starts[-7:])

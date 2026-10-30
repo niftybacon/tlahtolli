@@ -130,6 +130,24 @@ function buildTriage(source,linked,{maxHuman=12}={}){
  const previouslyReviewed=new Set(feedback.entries.map(x=>norm(x.exact_written_form)));
  const anchors=locatedSourceAnchors(fromRepo('dictionary.json'));
  const sourceStanzas=originalLanguageStanzaContexts();
+ const loc=fromRepo('research/translation_corpus/unresolved_high_frequency_source_leads_2026_10_30.json');
+ if(loc.format!=='tentli-unresolved-lexicographic-context-leads-v1'||
+    loc.recorded?.length!==5||loc.gold_approved!==0||loc.silver_approved!==0||
+    loc.new_training_examples!==0||loc.approved_dictionary_edits!==0||
+    loc.verified_whole_clause_translations!==0||
+    loc.rule_generation_allowed!==false||loc.model_training_allowed!==false)
+   throw Error('Source-graded contextual leads cannot become new approved training');
+ const externalLeads=new Map();
+ const allowed=new Set(['yehuan','tepilhuan','noyollo','ipalnemohua','huiya']);
+ for(const r of loc.recorded){
+  if(!allowed.has(r.form)||externalLeads.has(r.form)||
+     !/^https:\/\/(?:nahuatl\.wired-humanities\.org|gdn\.iib\.unam\.mx)\//u.test(r.source_url)||
+     !r.source_locator||!r.lead||!r.contextual_caveat||
+     typeof r.ask_director_now!=='boolean'||!r.candidate_category)
+    throw Error('Invalid historical external dictionary source for recurring word');
+  externalLeads.set(r.form,r);
+ }
+ if(externalLeads.size!==5)throw Error('High-frequency source-research batch incomplete');
  const unresolved=[];
  const classes={
   prior_poetic_or_particle_research_lead:0,
@@ -138,6 +156,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   recurrent_across_same_edition_poem_units:0,
   no_specific_lexical_or_morphology_lead:0,
   director_feedback_already_recorded:0,
+  individually_cited_external_historical_dictionary_lead:0,
  };
  for(const [surface,linkedRow] of byLink){
   const original=bySource.get(surface);
@@ -152,6 +171,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
    throw Error('Unresolved claim contradicts existing morphology or dictionary engine');
   const pre=prior.get(surface);
   const old=previouslyReviewed.has(surface);
+  const sourced=externalLeads.get(surface)||null;
   const near=resemblanceLeads(surface,anchors);
   const shapes=orthographicAndAffixHints(surface);
   const repeats=original.historical_train_work_count>=2;
@@ -160,7 +180,8 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   if(shapes.length)classes.initial_or_terminal_morphology_shape_only++;
   if(repeats)classes.recurrent_across_same_edition_poem_units++;
   if(old)classes.director_feedback_already_recorded++;
-  if(!pre&&!near.length&&!shapes.length&&!repeats)
+  if(sourced)classes.individually_cited_external_historical_dictionary_lead++;
+  if(!pre&&!sourced&&!near.length&&!shapes.length&&!repeats)
     classes.no_specific_lexical_or_morphology_lead++;
   const sources=original.historic_brinton_source_examples;
   if(sources.some(x=>!x.record_id||!x.work_id||
@@ -176,8 +197,11 @@ function buildTriage(source,linked,{maxHuman=12}={}){
     Math.min(3,near.length)*2+
     Math.min(2,shapes.length)+
     (original.contextual_primary_edition_evidence.length?8:0)+
-    (original.human_contextual_review_priority?5:0);
+    (original.human_contextual_review_priority?5:0)+
+    (sourced?.ask_director_now?12:0);
   const route=pre?'already_in_poetic_particle_source_triage':
+   sourced?.ask_director_now?'independent_dictionary_verb_reading_conflicts_with_poetic_context':
+   sourced?'source_located_lexical_lead_requires_only_contextual_engine_review':
    old?'already_has_director_feedback':
    near.length?'compare_original_spellings_and_source_lexicon_entry':
    shapes.length?'reinspect_exact_historical_morpheme_boundaries':
@@ -201,6 +225,13 @@ function buildTriage(source,linked,{maxHuman=12}={}){
     context_independent_gloss_verified:false,
    }:null,
    director_feedback_previously_recorded:old,
+   independent_dictionary_context_lead:sourced?{
+    source_url:sourced.source_url,source_locator:sourced.source_locator,
+    proposed_contextual_lead:sourced.lead,caveat:sourced.contextual_caveat,
+    category:sourced.candidate_category,
+    director_attention_warranted:sourced.ask_director_now,
+    exact_stanza_meaning_verified:false,source_based_dictionary_lemma_promotion:false,
+   }:null,
    source_checked_similar_lemma_leads_not_equivalent:near,
    unverified_morphological_surface_shape_hints:shapes,
    triage_route:route,
@@ -220,6 +251,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
  // sent to a person again. Limit one initial user question to a few distinct
  // source-linked words, while machine follow-up can run across all 928.
  const eligible=unresolved.filter(r=>!r.prior_source_research&&!r.director_feedback_previously_recorded&&
+   (!r.independent_dictionary_context_lead||r.independent_dictionary_context_lead.director_attention_warranted)&&
    (r.separate_poem_units_in_same_brinton_edition>=2||
     r.source_checked_similar_lemma_leads_not_equivalent.length||
     r.historical_document_context_leads.length));
@@ -234,6 +266,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
     first_example:item.historical_edition_examples[0]||
      item.historical_document_context_leads[0]||null,
     potential_cited_headwords:item.source_checked_similar_lemma_leads_not_equivalent,
+    independent_external_dictionary_lead:item.independent_dictionary_context_lead,
     followup:item.triage_route,
     question_to_human_required:false,
     reviewer_can_defer:true,
@@ -250,6 +283,7 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   source_checked_comparison_anchors:anchors.length,
   already_investigated_poetic_or_director_cases_not_requeued:
    unresolved.filter(x=>!!x.prior_source_research||x.director_feedback_previously_recorded).length,
+  new_individually_source_indexed_high_frequency_leads:classes.individually_cited_external_historical_dictionary_lead,
   prioritized_new_human_questions_count:queue.length,
   requires_human_for_every_form:false,
   no_new_dictionary_approvals:true,

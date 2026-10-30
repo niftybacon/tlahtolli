@@ -94,7 +94,8 @@ def fit_adapter(rows:dict[str,list[dict]],output:Path,*,max_steps:int,
                 learning_rate:float=0.0003,seed:int=19,
                 evidence_tier:str,source_fingerprint:str)->dict:
     """One actual optimizer shared by strictly segregated evidence tiers."""
-    if evidence_tier not in {"human_reviewed_bilingual","synthetic_grammar_teacher"}:
+    if evidence_tier not in {"human_reviewed_bilingual","synthetic_grammar_teacher",
+                              "candidate_historical_bilingual"}:
         raise ValueError("Unknown supervised learning tier")
     if not 1<=max_steps<=2000 or not 0<learning_rate<=0.002:
         raise ValueError("Bounded adaptation requires 1..2000 steps and safe learning rate")
@@ -141,6 +142,8 @@ def fit_adapter(rows:dict[str,list[dict]],output:Path,*,max_steps:int,
             raise ValueError("Invalid supervised example evidence weight")
         if evidence_tier=="human_reviewed_bilingual" and weight!=1:
             raise ValueError("Human-reviewed supervision weight was silently downgraded")
+        if evidence_tier=="candidate_historical_bilingual" and weight!=0.15:
+            raise ValueError("Historical candidate must retain exactly 0.15 weak supervision weight")
         optimizer.zero_grad(set_to_none=True)
         loss=model(**src,labels=target).loss * weight
         if not torch.isfinite(loss):
@@ -173,7 +176,9 @@ def fit_adapter(rows:dict[str,list[dict]],output:Path,*,max_steps:int,
         "claim":(
             "Reviewed historical English pairs require independent human verification and full permissions"
             if evidence_tier=="human_reviewed_bilingual" else
-            "Synthetic canonical teacher practice, NOT historical English translations or independent gold"),
+            ("Historical source-provided but interpretive bilingual candidate, weak supervision only; NOT scholar-reviewed, independently evaluated, or gold"
+             if evidence_tier=="candidate_historical_bilingual" else
+             "Synthetic canonical teacher practice, NOT historical English translations or independent gold")),
     }
     (output/"research_metadata.json").write_text(
         json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")

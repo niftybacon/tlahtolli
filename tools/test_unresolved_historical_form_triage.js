@@ -20,16 +20,16 @@ try{
  assert.equal(result.format,'tentli-unresolved-historical-form-triage-v1');
  const packet=buildDossiers(result,80);
  assert.equal(packet.format,'tentli-phase6-source-locked-gap-dossiers-v1');
- assert.equal(packet.source_engine_gap_count,928);
+ assert.equal(packet.source_engine_gap_count,926);
  assert(packet.candidate_count>=80,'Historical source evidence should supply a significant recurring case pool');
  assert.equal(packet.prepared_dossier_count,80,'Phase 6 target is 80 real written surfaces, not 80 verified meanings');
  assert.equal(packet.cases.length,80);
  assert.equal(new Set(packet.cases.map(x=>x.written_surface)).size,80);
  assert.deepEqual(new Set(packet.cases.filter(x=>x.independent_historical_dictionary_lead)
-  .map(x=>x.written_surface)),new Set(['yehuan','tepilhuan','noyollo','ipalnemohua','huiya']));
+  .map(x=>x.written_surface)),new Set(['noyollo','ipalnemohua','huiya']));
  for(const row of packet.cases){
   const origin=result.unresolved_forms.find(x=>x.written_surface===row.written_surface);
-  assert(origin,'Every packet must come from actual 928 engine misses');
+  assert(origin,'Every packet must come from actual 926 current exact-engine misses');
   assert.equal(row.new_verified_meaning,null);
   assert.equal(row.approved_dictionary_rule,false);
   assert.equal(row.train_eligible,false);
@@ -75,8 +75,8 @@ try{
   {cwd:ROOT,encoding:'utf8',timeout:120000});
  assert.deepEqual(JSON.parse(fs.readFileSync(dossierFile,'utf8')),packet);
  console.log('PASS Phase 6: 80 source-locked real historical-form dossiers, negative controls, no invented translation or independent Gold.');
- assert.equal(result.unresolved_engine_miss_count,928);
- assert.equal(result.unresolved_forms.length,928);
+ assert.equal(result.unresolved_engine_miss_count,926);
+ assert.equal(result.unresolved_forms.length,926);
  assert.equal(result.investigated_all_unresolved_not_translated,true);
  assert.equal(result.requires_human_for_every_form,false);
  assert.equal(result.no_model_training,true);
@@ -86,8 +86,8 @@ try{
  assert.equal(result.untouched_gold_review_count,0);
  assert.equal(result.no_silver_or_gold_promotions,true);
  assert(result.source_checked_comparison_anchors>20);
- assert.equal(result.new_individually_source_indexed_high_frequency_leads,5);
- for(const form of ['yehuan','tepilhuan','noyollo','ipalnemohua','huiya']){
+ assert.equal(result.new_individually_source_indexed_high_frequency_leads,3);
+ for(const form of ['noyollo','ipalnemohua','huiya']){
   const row=result.unresolved_forms.find(x=>x.written_surface===form);
   assert(row&&row.independent_dictionary_context_lead&&
    row.independent_dictionary_context_lead.exact_stanza_meaning_verified===false&&
@@ -123,10 +123,10 @@ try{
   e.historical_spelling_equivalence_verified===false&&
   e.grammatical_derivation_verified===false&&e.source_url.startsWith('https://'))));
  const distinct=new Set(result.unresolved_forms.map(x=>x.written_surface));
- assert.equal(distinct.size,928);
+ assert.equal(distinct.size,926);
  const rawUnresolved=new Set(current.token_engine_diagnostics.filter(x=>
   x.analysis_route==='no_linked_engine_surface_match').map(x=>x.written_surface));
- assert.equal(rawUnresolved.size,928);
+ assert.equal(rawUnresolved.size,926);
  assert([...distinct].every(x=>rawUnresolved.has(x)));
  assert(result.review_queue.every(q=>!q.question_to_human_required&&q.reviewer_can_defer&&
   q.no_gold_or_silver_promoted===true&&!['zanio','ohuaya','zan','ye','ya'].includes(q.written_surface)));
@@ -155,8 +155,8 @@ try{
   const bad=JSON.parse(JSON.stringify(original));mutator(bad);
   assert.throws(()=>buildTriage(bad,current),/Reject|Invalid/i);
  }
- const wrong=JSON.parse(JSON.stringify(current));wrong.count_by_actual_existing_engine_route.no_linked_engine_surface_match=927;
- assert.throws(()=>buildTriage(original,wrong),/928/i);
+ const wrong=JSON.parse(JSON.stringify(current));wrong.count_by_actual_existing_engine_route.no_linked_engine_surface_match=925;
+ assert.throws(()=>buildTriage(original,wrong),/926/i);
  const injected=JSON.parse(JSON.stringify(current));
  const badRow=injected.token_engine_diagnostics.find(x=>x.analysis_route==='no_linked_engine_surface_match');
  badRow.advanced_browser_morphology_candidates=[{lemma:'madeup'}];

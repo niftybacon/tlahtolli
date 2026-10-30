@@ -49,3 +49,24 @@ The dedicated GitHub Actions workflow runs the real research pipeline through th
 4. Only after source-graded reviews and independent evaluation are available, consider scheduled retraining of an English-capable model with promotion gates. Repeated self-generated drafts do not constitute verified English learning.
 
 **Learning assessment:** Tēntli now researches autonomously and the new bridge operates the **existing advanced morphology**, curated lexical, indexed paradigm, source morphology, sentence grammar, English composition/abstention and shared IR engines against source-graded research automatically. It does **not** autonomously approve new historical morphemes, acquire validated new grammatical knowledge, or update the public translation model from each run.
+
+
+## Verified first full integrated execution
+
+[Successful research bridge workflow](https://github.com/niftybacon/tlahtolli/actions/runs/41097899517) executed the current archived source investigator through all listed engine routes. **1,181** researched written forms received these mutually exclusive *first-supported-route* outcomes:
+
+| Existing analyzer surface route | Distinct forms |
+| --- | ---: |
+| Curated lexical recognition | 97 |
+| Additional exact indexed verb paradigm | 4 |
+| Additional exact ENL source-review morphology | 1 |
+| Additional browser advanced morphology hypothesis | 4 |
+| Archival dictionary headword only, no linked translator analysis | 147 |
+| No linked engine surface match | **928** |
+| **Total** | **1,181** |
+
+All seven short historical source contexts reached the genuine sentence grammar, English proposal/abstention and shared grammar IR, but **none** produced a complete supported finite-clause analysis or supported English draft. Each retained some lexical gap. **This is structural diagnostic coverage, not independent translation accuracy or zero real understanding**.
+
+The advanced browser morphology's original `TlahtolliMorphEngine.analyze` implementation is executed directly inside an isolated Node VM with canonical dictionary and verb matrices. Unlike the full website environment, its **historicalSpellings browser helper is not invoked here**: the VM deliberately supplies an empty helper rather than inventing an unknown spelling transformation. Individually cited historical forms are still tracked separately by the source atlas. Hence these figures are **conservative research adapter results**, not complete parity with every browser UI behavior. Normalization is NFC lowercase without stripping macrons. Detailed evidence grades remain attached to morphological hypotheses and source-recorded indexes.
+
+**No automatic learning or Gold certification occurred.** The bridge analyzes frozen source evidence and writes a separate auditable research report; it does not add lexical facts, approved morphological rules, neural gradients or published English translations.

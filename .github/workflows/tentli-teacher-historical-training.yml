@@ -1,0 +1,77 @@
+name: Tēntli teacher + public-domain Nahuatl research training
+on:
+  push:
+    branches: [feat/tentli-neural-teacher-distillation-20261029]
+    paths:
+      - 'neural/**'
+      - 'tools/export_tentli_neural_teacher.js'
+      - 'tools/test_tentli_teacher.js'
+      - 'tools/test_brinton_hymn_intake.py'
+      - '.github/workflows/tentli-teacher-historical-training.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  teacher-and-1890-hymns:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PyTorch CPU-only
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Validate unchanged source-derived teacher and Brinton extraction logic
+        run: |
+          node tools/test_tentli_teacher.js
+          python -m unittest discover -s tools -p 'test_brinton_hymn_intake.py' -v
+      - name: Export sources directly from canonical Tēntli engines
+        run: |
+          mkdir -p "$RUNNER_TEMP/tentli"
+          node tools/export_tentli_neural_teacher.js "$RUNNER_TEMP/tentli/teacher.jsonl"
+      - name: Fetch Brinton 1890 historical hymns (U.S. public domain, temporary)
+        run: |
+          curl --fail --location --show-error --silent --retry 3 --connect-timeout 12 --max-time 120             -A "Tlahtolli historical language research; https://github.com/niftybacon/tlahtolli"             "https://www.gutenberg.org/ebooks/14993.txt.utf-8"             --output "$RUNNER_TEMP/tentli/brinton-1890.txt"
+          python -m neural.intake_brinton --input "$RUNNER_TEMP/tentli/brinton-1890.txt"             --output "$RUNNER_TEMP/tentli/historical.jsonl"
+      - name: Distill canonically sourced morphology and English drafts into actual neural weights
+        run: |
+          python -m neural.distill --teacher-manifest "$RUNNER_TEMP/tentli/teacher.jsonl"             --output "$RUNNER_TEMP/tentli/teacher-weights"             --width 48 --heads 4 --layers 1 --max-bytes 256             --epochs 3 --batch-size 8 --max-steps 96
+      - name: Continue those weights on actual public-domain historical Nahuatl
+        run: |
+          python -m neural.train --manifest "$RUNNER_TEMP/tentli/historical.jsonl"             --init-checkpoint "$RUNNER_TEMP/tentli/teacher-weights"             --output "$RUNNER_TEMP/tentli/teacher-and-hymns"             --width 48 --heads 4 --layers 1 --max-bytes 256             --epochs 4 --batch-size 8 --max-steps 64
+      - name: Assert provenance and independently unsupported translation are explicit
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'tentli'
+          teacher=json.loads((root/'teacher-weights/metadata.json').read_text())
+          combined=json.loads((root/'teacher-and-hymns/metadata.json').read_text())
+          hymn=json.loads((root/'historical.jsonl.meta.json').read_text())
+          assert hymn['hymns']==20 and hymn['stanzas']>40, hymn
+          assert hymn['translation_pairs']==0, hymn
+          assert teacher['trained_analysis_examples']>800,teacher
+          assert combined['initialization']=='teacher-distilled',combined
+          assert combined['trained_analysis_examples']==teacher['trained_analysis_examples']
+          assert combined['trained_translation_examples']==0
+          assert combined['independent_translation_accuracy'] is None
+          assert (root/'teacher-and-hymns/weights.pt').exists()
+          print('TRAINED REAL ENGINE+HISTORICAL NEURAL MODEL',json.dumps({
+              'source_sha256':hymn['source_sha256'],
+              'hymns':hymn['hymns'],'historical_stanzas':hymn['stanzas'],
+              'teacher_examples':teacher['teacher_examples'],
+              'teacher_steps':teacher['steps'],'historical_steps':combined['steps'],
+              'translation_accuracy':None},sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-teacher-and-brinton-research-checkpoint
+          path: |
+            ${{ runner.temp }}/tentli/teacher-and-hymns/weights.pt
+            ${{ runner.temp }}/tentli/teacher-and-hymns/metadata.json
+            ${{ runner.temp }}/tentli/teacher-weights/metadata.json
+            ${{ runner.temp }}/tentli/historical.jsonl.meta.json
+          retention-days: 30

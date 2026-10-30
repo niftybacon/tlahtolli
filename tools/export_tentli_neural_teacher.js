@@ -53,12 +53,12 @@ for(const w of D.words){
 // implement a competing analyzer or treat its suggestions as attestations.
 const mctx={window:{},words:D.words,FULL_VERB_PARADIGMS:P.paradigms,
  VERB_TENSES:P.patterns,
- norm:t=>String(t).normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase(),
- stripToken:t=>String(t).replace(/^[^\\p{L}\\p{M}]+|[^\\p{L}\\p{M}]+$/gu,''),
+ norm:t=>String(t).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase(),
+ stripToken:t=>String(t).trim(),
  historicalSpellings:w=>String(w.original||'').split(/[;,/]+/).map(z=>z.trim()).filter(Boolean),
  safe:String,validUrl:()=>true,safeLink:()=>''};
 const msource=read('tools/morphology_engine.js').split('renderMorphologyBreakdown=TlahtolliMorphEngine.html;')[0];
-vm.runInNewContext(msource+'\\nthis.Morph=TlahtolliMorphEngine;',mctx);
+vm.runInNewContext(msource+String.fromCharCode(10)+'this.Morph=TlahtolliMorphEngine;',mctx);
 const parsedMorph=mctx.Morph,derived=new Map();
 for(const w of D.words){
  if(w.status!=='Checked against source'||!String(w.pos).startsWith('verb')||
@@ -66,7 +66,7 @@ for(const w of D.words){
  const bases=[w.word,...String(w.stem||'').split(';').map(z=>z.trim().replace(/-$/,'')).filter(Boolean)];
  const candidates=new Set();
  for(const base of bases)for(const suffix of ['', 'z', 'queh'])
-  for(const prefix of ['ni','ti','n','t','nitla','titla','nite','tite','ōni','ōti','oni','oti'])
+  for(const prefix of ['ni','ti','n','t','nitla','titla','ōni','ōti'])
    candidates.add(prefix+base+suffix);
  for(const word of candidates){
   if(paradigms.has(word))continue;

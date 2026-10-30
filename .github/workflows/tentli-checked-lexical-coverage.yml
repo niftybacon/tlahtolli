@@ -58,6 +58,11 @@ jobs:
           print("- Individually cited early historical surface spellings: **"+str(x["early_cited_witness_form_spellings"])+"**")
           print("- Exact or cited witnessed matches in Brinton TRAIN: **"+str(x["matched_exact_or_cited_witness_token_occurrences"])+"/"+str(x["train_token_occurrences"])+"** tokens")
           print("- Unresolved spans: see audit and untouched 17 dev stanzas")
+          print("- Unmatched word-form hypotheses for human investigation: **"+str(x["unmatched_surface_proposals_count"])+"** (zero assigned meanings)")
+          for lead in x["proposed_unmatched_surface_review"][:12]:
+              print("  - "+repr(lead["written_surface"])+": "+str(lead["token_occurrences_in_training_poems"])+
+                    " occurrences across "+str(lead["distinct_training_work_count"])+
+                    " historical poems; all judgments pending")
           print("- Gold human-reviewed translation accuracy: **unknown**")
           print("- Canonical morphology/English translator: **unchanged**")
           PY

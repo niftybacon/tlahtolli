@@ -17,7 +17,8 @@ We reuse the current 2,142-headword dictionary, 12 full paradigm matrices, canon
 | Source-recorded full inflected forms admitted by teacher rules | 303 |
 | English sentence drafts having only **one distinct English wording** after the current grammar-IR audit | **24** |
 | English drafts with unresolved alternatives **withheld** | 264 |
-| **Unique task examples** | **1,167** |
+| Additional source-licensed productive Tēntli hypotheses (low weight; NOT attestations) | **200** |
+| **Unique task examples** | **1,367** |
 
 Each row retains an evidence grade, original surface form, source URLs and reduced teacher weight. Equivalent finite forms are grouped into **one surface with all supported morphological readings**, not a randomly chosen person/tense. The current English composer and shared IR are the **only** sources of synthetic English teacher output; most ambiguous constructed cells are deliberately withheld. A source URL citing a lemma does not magically attest every grammar-derived cell.
 
@@ -31,7 +32,7 @@ The original research inventory already identified [Daniel G. Brinton's *Rig Ved
 
 `neural/intake_brinton.py` isolates only the numbered Nahuatl stanza sections from all 20 Brinton hymns in the original Project Gutenberg plain text, explicitly stopping at glosses, variants, commentary and English interpretation. Original Brinton spellings remain intact; printed line wraps are joined, but no spelling repair, macron invention or forced word segmentation is performed. It emits source-location identifiers and source/work/date/variety/rights metadata for **monolingual denoising only**. Every extracted record belongs to the same `work_id`, preventing bogus verse-level train/test independence.
 
-The exact source file is downloaded temporarily by the GitHub research workflow and its SHA-256 recorded. Neither bulk text nor an externally copyrighted modern edition is checked in. `neural/train.py` splits long historical text into contiguous Unicode-preserving chunks, with **no silent truncation**, and supports a compatible teacher-weight warm start.
+The exact source file is downloaded temporarily by the GitHub research workflow and verified against pinned SHA-256 `a9fd291536d2b106e331d3727acfb47e55720fa77165a173c2a76af5e5654fbe`. The published edition yielded **112 Nahuatl stanzas in 20 hymns** (Madrid-dominant Brinton witness); editorial variants and English paraphrases are excluded. Neither bulk text nor an externally copyrighted modern edition is checked in. `neural/train.py` splits long historical text into contiguous Unicode-preserving chunks, with **no silent truncation**, and supports a compatible teacher-weight warm start.
 
 **No Brinton English translations are automatically aligned or trained yet.** Further verse-by-verse checking is necessary; interpretative renderings should be downweighted and kept outside actual gold evaluations.
 

@@ -12,6 +12,7 @@ const assert=require('node:assert/strict');
 const crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..');
 const {loadModels,analyzeText}=require('./diagnose_historical_sentences.js');
+const {create:createAdvancedMorphology}=require('./investigator_advanced_morphology.js');
 const FORMAT='tentli-research-engine-bridge-v1';
 const INPUT='tentli-paged-historical-evidence-batch-v1';
 const sources=[
@@ -134,9 +135,11 @@ function bridge(report,{models=loadModels()}={}){
  validateResearch(report);
  const dictionary=readJSON('dictionary.json');
  const paradigms=buildParadigmIndex();
+ const advanced=createAdvancedMorphology();
  const tally={curated_lexical_headword_surface:0,
   exact_indexed_grammar_paradigm_surface:0,
   exact_source_review_morphology_surface:0,
+  advanced_browser_morphology_surface:0,
   only_archival_dictionary_headword:0,
   no_linked_engine_surface_match:0,
   context_engine_english_draft_proposals:0,
@@ -151,10 +154,12 @@ function bridge(report,{models=loadModels()}={}){
   const lexicalHits=(Array.isArray(lex?.parts)?lex.parts:[]).filter(p=>p.kind==='word'&&p.status!=='unknown');
   const morph=models.sourceMorphology.analyze(form);
   const indexed=paradigms.get(norm(form))||[];
+  const advancedCandidates=advanced.analyze(form);
   const archive=(row.source_families_exact_headword_matched!=='neither');
   const category=lexicalHits.length?'curated_lexical_headword_surface':
    indexed.length?'exact_indexed_grammar_paradigm_surface':
    morph.length?'exact_source_review_morphology_surface':
+   advancedCandidates.length?'advanced_browser_morphology_surface':
    archive?'only_archival_dictionary_headword':'no_linked_engine_surface_match';
   tally[category]++;
   records.push({
@@ -162,6 +167,8 @@ function bridge(report,{models=loadModels()}={}){
    analysis_route:category,
    curated_lexical_surface_count:lexicalHits.length,
    exact_verb_paradigm_candidates:indexed.slice(0,4),
+   advanced_browser_morphology_candidates:advancedCandidates.slice(0,5),
+   advanced_browser_morphology_grades:[...new Set(advancedCandidates.map(c=>c.grade))],
    source_reviewed_morphology_candidates:morph.slice(0,4).map(m=>({
     lemma:m.lemma,grade:m.grade,source:m.source,
     note:'Research source-review adapter only; not independently source-approved whole text'
@@ -174,6 +181,7 @@ function bridge(report,{models=loadModels()}={}){
    proposed_engine_followup:lexicalHits.length?'check_historical_contextual_sense_and_grammar':
     indexed.length?'test_indexed_finite_structure_in_context':
     morph.length?'inspect_external_source_morphology_analysis':
+    advancedCandidates.length?'evaluate_existing_browser_morphology_candidate_in_original_historical_context':
     archive?'evaluate_source_dictionary_and_inflection_context':
     'investigate_original_spelling_segment_compound_vocable_or_unmodeled_inflection',
    semantic_agreement_verified:false,
@@ -222,9 +230,10 @@ function bridge(report,{models=loadModels()}={}){
    sentence:'translator-sentence.js source-gated grammar rules',
    english:'translator-english.js abstention-preserving composer',
    grammar_ir:'translator-grammar-ir.js shared candidate graph',
-   advanced_browser_supplementary_morphology:'not_connected_in_this_Node_bridge',
+   advanced_browser_supplementary_morphology:'tools/morphology_engine.js source executed in isolated Node VM; proposals separately graded and never attested',
   },
   count_by_actual_existing_engine_route:tally,
+  advanced_browser_morphology_source_revision:advanced.matchingInputVersion,
   no_persistent_learning_or_model_update:true,
   no_auto_grammatical_rule_creation:true,
   source_gold_or_silver_approved:0,

@@ -1,0 +1,119 @@
+name: Tēntli guarded neural and canonical English integration
+on:
+  push:
+    branches: [feat/tentli-source-gated-neural-english-hybrid-20261029]
+    paths:
+      - 'neural/hybrid_infer.py'
+      - 'neural/infer.py'
+      - 'tools/source_gated_english_bridge.js'
+      - 'tools/test_source_gated_english_bridge.js'
+      - 'tools/test_tentli_hybrid_infer.py'
+      - '.github/workflows/tentli-source-gated-hybrid.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  guarded-hybrid-actual-checkpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Validate canonical source-grammar integration with original Node engines
+        run: |
+          node tools/test_source_gated_english_bridge.js
+          node tools/test_english_composition.js
+          node tools/test_translator_sentence_groups.js
+          node tools/test_translator.js
+          python -m unittest discover -s tools -p 'test_tentli_hybrid_infer.py' -v
+      - name: Restore genuine source-trained Temoa Chimalpahin checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: tentli-temoa-chimalpahin-independent-prose-research-checkpoint
+          run-id: 40993235240
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/real-checkpoint
+      - name: Require real complete learned model, not fixture
+        run: |
+          python - <<'PY'
+          import os,json,pathlib,shutil,hashlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'real-checkpoint'
+          hits=[m.parent for m in root.rglob('metadata.json') if (m.parent/'weights.pt').is_file()]
+          assert len(hits)==1,hits
+          if hits[0]!=root:
+              for name in ('metadata.json','weights.pt'):
+                  shutil.copy2(hits[0]/name,root/name)
+          meta=json.loads((root/'metadata.json').read_text(encoding='utf-8'))
+          assert meta['format']=='tentli-experimental-neural-v1'
+          assert meta['trainable_parameters']==104039
+          assert meta['trained_translation_examples']>=4585
+          assert meta['steps']==1800
+          assert meta['independent_translation_accuracy'] is None
+          print('GENUINE_PREVIOUS_MODEL',hashlib.sha256((root/'weights.pt').read_bytes()).hexdigest())
+          PY
+      - name: Install original CPU Transformer for genuinely constrained ranking
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Run safe default English inference with ACTUAL weights, and experimental candidate scoring
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          from neural.hybrid_infer import infer_hybrid
+          from neural.infer import infer
+          folder=str(pathlib.Path(os.environ['RUNNER_TEMP'])/'real-checkpoint')
+          items=[
+            ('nichōca','I cry.'),
+            ('nitlacua','I eat.'),
+            ('niquitta in cihuātl','I see the woman.'),
+            ('ahmo niquittaz in cihuātl','I will not see the woman.'),
+            ('niquitta in cihuātl in chōca','I see the woman that cries.'),
+            ('nichōca auh nitlacua','I cry. I eat.'),
+            ('chōca in cihuātl. chōca','The woman cries. He / she / it cries.'),
+          ]
+          results=[]
+          for source,expected in items:
+              h=infer(folder,source,task='translate')
+              assert h['proposal']==expected,(source,h)
+              assert h['neural_free_generation_used'] is False
+              assert h['hybrid']['neural']['status']=='scored_unvalidated'
+              assert h['grade']=='source_bounded_grammatical_draft'
+              assert any(x['average_nll'] is not None for x in h['hybrid']['neural']['candidate_scores'])
+              score=infer_hybrid(source,folder,selection='experimental-neural-ranked')
+              assert score['english'] in {x['english'] for x in score['candidates']}
+              results.append(dict(source=source,canonical=h['proposal'],
+                  neural_best_scored=h['hybrid']['neural']['best_scored_english'],
+                  scores=h['hybrid']['neural']['candidate_scores']))
+              print('ACTUAL_HYBRID_ENG',json.dumps(results[-1],ensure_ascii=False),flush=True)
+          for junk in ('xyzzy','asfdghjk xyzwe','nichōca auh xyzzy'):
+              a=infer(folder,junk,task='translate')
+              assert a['proposal'] is None and a['grade']=='abstain'
+              assert a['hybrid']['neural']['status']=='not_scored_unsupported_grammar'
+          # 24 self-contained, licensed sentence units exceed 254 bytes.
+          long='niquitta in cihuātl. '*18
+          outcome=infer(folder,long,task='translate')
+          assert outcome['proposal'] is not None,outcome
+          assert outcome['hybrid']['neural']['status']=='skipped_source_exceeds_neural_context'
+          assert outcome['neural_free_generation_used'] is False
+          print('LONG_NEURAL_CONTEXT_EXPLICITLY_SKIPPED',len(long.encode('utf-8')))
+          outcome_data={'format':'tentli-hybrid-genuine-model-v1',
+             'grammar_constructed_controls':len(items),
+             'all_canonical_controls_retained':True,
+             'out_of_scope_abstentions':3,
+             'raw_model_translation_output_exposed':False,
+             'long_neural_context_not_silently_truncated':True,
+             'translation_accuracy':None,
+             'entries':results}
+          dest=pathlib.Path(os.environ['RUNNER_TEMP'])/'hybrid-real-checkpoint-results.json'
+          dest.write_text(json.dumps(outcome_data,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+          PY
+      - name: Existing neural test suite and source-integrity smoke
+        run: |
+          python -m unittest discover -s tools -p 'test_tentli_neural_smoke.py' -v
+          python -m unittest discover -s tools -p 'test_tentli_teacher_distill.py' -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-real-neural-grammar-gated-english-tests
+          path: ${{ runner.temp }}/hybrid-real-checkpoint-results.json
+          retention-days: 30
+          if-no-files-found: error

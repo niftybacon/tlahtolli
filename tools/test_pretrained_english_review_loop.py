@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 from neural.pretrained_english import (
-    MODEL_ID,MODEL_REVISION,guarded_english_realization,pretrained_english
+    MODEL_ID,MODEL_REVISION,guarded_english_realization,pretrained_english,approved_research_adapter
 )
 from neural.correction_queue import append_pending,read_queue,summarize,stage
 from neural.train_reviewed_english import load_reviewed_pairs
@@ -30,6 +30,24 @@ class TestEnglishSafety(unittest.TestCase):
     def test_flant5_is_pinned(self):
         self.assertEqual(MODEL_ID,"google/flan-t5-small")
         self.assertEqual(len(MODEL_REVISION),40)
+
+    def test_adapter_identity_fail_closed(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)
+            with self.assertRaisesRegex(ValueError,"Missing private research adapter"):
+                approved_research_adapter(path)
+            (path/"adapter_model.safetensors").write_bytes(b"fixture-not-weights")
+            (path/"research_metadata.json").write_text(json.dumps({
+                "format":"tentli-english-supervision-lora-v1",
+                "evidence_tier":"synthetic_grammar_teacher",
+                "base_model":MODEL_ID,
+                "revision":MODEL_REVISION,
+                "automatically_approved_for_public_translation":True,
+                "independent_translation_accuracy":None,
+                "actual_optimizer_steps":24
+            }))
+            with self.assertRaisesRegex(ValueError,"Untrusted adapter"):
+                approved_research_adapter(path)
 
     def test_pretrained_cannot_insert_semantics(self):
         result=guarded_english_realization("niquitta in cihuātl",

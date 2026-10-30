@@ -1,0 +1,54 @@
+name: Tēntli Phase 5 reviewed-evidence ledger integrity
+
+on:
+  push:
+    paths:
+      - 'neural/review_ledger.py'
+      - 'neural/correction_queue.py'
+      - 'tools/test_review_ledger.py'
+      - 'tools/test_pretrained_english_review_loop.py'
+      - 'research/translation_corpus/review_ledger.jsonl'
+      - '.github/workflows/tentli-review-ledger.yml'
+  pull_request:
+    paths:
+      - 'neural/review_ledger.py'
+      - 'neural/correction_queue.py'
+      - 'tools/test_review_ledger.py'
+      - 'tools/test_pretrained_english_review_loop.py'
+      - 'research/translation_corpus/review_ledger.jsonl'
+      - '.github/workflows/tentli-review-ledger.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-research-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test append-only research ledger, stale source fingerprints and prohibition of Gold/Silver promotions
+        run: python -m unittest discover -s tools -p 'test_review_ledger.py' -v
+      - name: Validate existing correction staging and human-reviewed pair gates
+        run: |
+          python -m unittest discover -s tools -p 'test_pretrained_english_review_loop.py' -v
+          python tools/validate_translation_corpus.py
+      - name: Report real empty/pending review ledger without publishing private user submissions
+        run: |
+          python -m neural.review_ledger report --ledger research/translation_corpus/review_ledger.jsonl
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          from pathlib import Path
+          from neural.review_ledger import summarize
+          s=summarize(Path("research/translation_corpus/review_ledger.jsonl"))
+          assert s["approved_gold"]==s["approved_silver"]==s["training_pairs_created"]==0
+          assert s["canonical_engine_changes_automatically_applied"]==0
+          print("## Evidence-graded persistent review ledger (Phase 5)")
+          print(f"- Recorded events: **{s['events']}**; distinct proposed corrections: **{s['distinct_proposals']}**")
+          print("- Ledger head SHA-256: "+s["head_hash"])
+          print("- Approvals or automatic grammar/model promotions from this ledger: **zero**")
+          print("- Reviewer identities, historic source meanings and rights are **NOT verified by software**")
+          PY

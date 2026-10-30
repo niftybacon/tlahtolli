@@ -63,14 +63,22 @@ function create(review,exactLexicalEvidence){
  // A rejected optional pack does not disrupt the existing ENL morphology.
  const exactLexical=new Map();
  const expected=new Map([
-  ['yehuan',{id:'odn-lockhart-yehuan-short-pronoun-form',
-   lemma:'yehuantin',category:'independent-pronoun-form',
-   url:'https://nahuatl.wired-humanities.org/content/yehuantin',
-   alternate:'yeuan'}],
-  ['tepilhuan',{id:'odn-molina-tepilhuan-headword',
-   lemma:'tepilhuan',category:'historical-lexicographic-noun-form',
-   url:'https://nahuatl.wired-humanities.org/node/188794',
-   alternate:'tepiltzin'}]
+  ["yehuan",{id:"odn-lockhart-yehuan-short-pronoun-form",
+   lemma:"yehuantin",category:"independent-pronoun-form",
+   url:"https://nahuatl.wired-humanities.org/content/yehuantin",
+   sourceLocator:"Lockhart, Nahuatl as Written (2001), p. 242; Online Nahuatl Dictionary lists orthographic short form yehuan",
+   corroboratingURL:"https://gdn.iib.unam.mx/diccionario/yehuan/188287",
+   corroboratingLocator:"UNAM Gran Diccionario Nahuatl, Docs_México 1557 and historic index entries; separately records written yeuan, not an automatic equivalent",
+   caveat:"The printed Brinton expression yehuan Dios has unresolved referent, scope and clause role; the dictionary form cannot itself license the English pronoun they for that stanza.",
+   alternate:"yeuan"}],
+  ["tepilhuan",{id:"odn-molina-tepilhuan-headword",
+   lemma:"tepilhuan",category:"historical-lexicographic-noun-form",
+   url:"https://nahuatl.wired-humanities.org/node/188794",
+   sourceLocator:"Molina, Vocabulario (1571), Part II, fol. 103r, col. 1, via Online Nahuatl Dictionary (Joe Campbell transcription)",
+   corroboratingURL:"https://nahuatl.wired-humanities.org/content/tepiltzin",
+   corroboratingLocator:"Related honorific/kindred lemma entry is separate lexicographic context, not evidence of a global substitution or stem paradigm",
+   caveat:"The cited noun has children/offspring senses, while an original poetic audience or social honorific interpretation requires separate contextual review; no automatic children English rendering.",
+   alternate:"tepiltzin"}]
  ]);
  const pack=exactLexicalEvidence;
  if(pack?.format==='tentli-exact-historical-lexical-leads-v1'&&
@@ -89,11 +97,11 @@ function create(review,exactLexicalEvidence){
      item.candidate_category!==known.category||
      item.source_url!==known.url||
      item.notable_non_equivalent_spelling!==known.alternate||
-     typeof item.source_locator!=='string'||item.source_locator.length<30||
-     typeof item.corroborating_locator!=='string'||item.corroborating_locator.length<30||
-     typeof item.contextual_caveat!=='string'||item.contextual_caveat.length<70||
+     item.source_locator!==known.sourceLocator||
+     item.corroborating_source_url!==known.corroboratingURL||
+     item.corroborating_locator!==known.corroboratingLocator||
+     item.contextual_caveat!==known.caveat||
      item.status!=='source-indexed exact written-form hypothesis; not an independently adjudicated grammatical or contextual analysis'||
-     !/^https:\/\/(?:nahuatl\.wired-humanities\.org|gdn\.iib\.unam\.mx)\//u.test(item.corroborating_source_url)||
      item.lemma_meaning_newly_approved!==false||
      item.stanza_translation_verified!==false||
      item.grammatical_role_verified!==false||

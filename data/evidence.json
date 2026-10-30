@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-evidence-source",
   "schema": 1,
-  "version": "2026-10-29.9.0",
+  "version": "2026-10-30.1.0",
   "entries": [
     {
       "word": "ātl",
@@ -93891,6 +93891,72 @@
           "note": "No source-verified base pair, finite form or justified productive morphology.",
           "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
           "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "yehuan",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yehuantin",
+          "locator": "James Lockhart, Nahuatl as Written (2001), p. 242; ODN orthographic variant yehuan",
+          "note": "Exact historical wordform in cited source. Does not license variant rewrites or grammatical segmentation.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yehuantin",
+          "locator": "James Lockhart, Nahuatl as Written (2001), p. 242; ODN orthographic variant yehuan",
+          "note": "Independent pronoun form",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yehuantin",
+          "locator": "James Lockhart, Nahuatl as Written (2001), p. 242; ODN orthographic variant yehuan",
+          "note": "Short independent third-person plural form as reported by Lockhart through ODN; UNAM GDN documents separate 1557 spelling yeuan. Neither historic spelling nor poetic yehuan Dios permits an automatic contextual pronoun referent. Dictionary gloss only; no verified full English translation.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "word": "tepilhuan",
+      "variety": "Classical Nahuatl",
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/188794",
+          "locator": "Molina, Vocabulario (1571), Nahuatl-Spanish Part II, fol. 103r, col. 1; transcribed through ODN",
+          "note": "Exact historical wordform in cited source. Does not license variant rewrites or grammatical segmentation.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/188794",
+          "locator": "Molina, Vocabulario (1571), Nahuatl-Spanish Part II, fol. 103r, col. 1; transcribed through ODN",
+          "note": "Historically documented noun form; no nominal morphology inferred.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/188794",
+          "locator": "Molina, Vocabulario (1571), Nahuatl-Spanish Part II, fol. 103r, col. 1; transcribed through ODN",
+          "note": "Exact source-documented noun form. No verified possessive morphology or historical stanza translation. Reading a particular poetic occurrence as literal children rather than elite offspring requires additional source review. Dictionary gloss only; no verified full English translation.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
         }
       ]
     }

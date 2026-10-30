@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-morphology-source",
   "schema": 1,
-  "version": "2026-10-29.9.0",
+  "version": "2026-10-30.1.0",
   "entries": [
     {
       "word": "ātl",
@@ -35065,6 +35065,36 @@
       "possessed": "",
       "grammarSource": "",
       "grammarNotes": "Archive lexical index only. No source-checked noun class, stem, animacy, plural, possession, verbal morphology or paradigm.",
+      "inflections": [],
+      "formsEdited": false
+    },
+    {
+      "word": "yehuan",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "",
+      "possessed": "",
+      "grammarSource": "",
+      "grammarNotes": "Dictionary exact wordform only; grammatical segmentation, possessor, referent, plural paradigm and syntactic role are not independently verified.",
+      "inflections": [],
+      "formsEdited": false
+    },
+    {
+      "word": "tepilhuan",
+      "variety": "Classical Nahuatl",
+      "stem": "",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "",
+      "possessed": "",
+      "grammarSource": "",
+      "grammarNotes": "Dictionary exact wordform only; grammatical segmentation, possessor, referent, plural paradigm and syntactic role are not independently verified.",
       "inflections": [],
       "formsEdited": false
     }

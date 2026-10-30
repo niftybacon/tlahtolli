@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-verb-paradigms",
   "schema": 1,
-  "version": "2026-10-29.9.0",
+  "version": "2026-10-30.1.0",
   "patterns": [
     "present",
     "preterite",

@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-published-dictionary",
   "schema": 1,
-  "version": "2026-10-29.9.0",
+  "version": "2026-10-30.1.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -137826,6 +137826,110 @@
           "note": "No source-verified base pair, finite form or justified productive morphology.",
           "reviewer": "AI-assisted bulk source-index transfer; no independent historical source collation",
           "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "word": "yehuan",
+      "meaning": "independent third-person plural pronoun; contextual referent and syntactic scope unverified",
+      "pos": "pronoun",
+      "stem": "",
+      "original": "yehuan",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/yehuantin",
+      "example": "",
+      "translation": "",
+      "notes": "Short independent third-person plural form as reported by Lockhart through ODN; UNAM GDN documents separate 1557 spelling yeuan. Neither historic spelling nor poetic yehuan Dios permits an automatic contextual pronoun referent. Lexical citation only; original editions/Gold and contextual syntax are NOT independently human-reviewed.",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "",
+      "possessed": "",
+      "grammarSource": "",
+      "grammarNotes": "Dictionary exact wordform only; grammatical segmentation, possessor, referent, plural paradigm and syntactic role are not independently verified.",
+      "inflections": [],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yehuantin",
+          "locator": "James Lockhart, Nahuatl as Written (2001), p. 242; ODN orthographic variant yehuan",
+          "note": "Exact historical wordform in cited source. Does not license variant rewrites or grammatical segmentation.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yehuantin",
+          "locator": "James Lockhart, Nahuatl as Written (2001), p. 242; ODN orthographic variant yehuan",
+          "note": "Independent pronoun form",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/content/yehuantin",
+          "locator": "James Lockhart, Nahuatl as Written (2001), p. 242; ODN orthographic variant yehuan",
+          "note": "Short independent third-person plural form as reported by Lockhart through ODN; UNAM GDN documents separate 1557 spelling yeuan. Neither historic spelling nor poetic yehuan Dios permits an automatic contextual pronoun referent. Dictionary gloss only; no verified full English translation.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "word": "tepilhuan",
+      "meaning": "sons; daughters; children / offspring (poetic social context unreviewed)",
+      "pos": "noun",
+      "stem": "",
+      "original": "tepilhuan",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/188794",
+      "example": "",
+      "translation": "",
+      "notes": "Exact source-documented noun form. No verified possessive morphology or historical stanza translation. Reading a particular poetic occurrence as literal children rather than elite offspring requires additional source review. Lexical citation only; original editions/Gold and contextual syntax are NOT independently human-reviewed.",
+      "number": "not_applicable",
+      "animacy": "not_applicable",
+      "plural": "",
+      "pluralStatus": "no_attested_form",
+      "absolutive": "",
+      "possessed": "",
+      "grammarSource": "",
+      "grammarNotes": "Dictionary exact wordform only; grammatical segmentation, possessor, referent, plural paradigm and syntactic role are not independently verified.",
+      "inflections": [],
+      "formsEdited": false,
+      "claims": [
+        {
+          "field": "headword",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/188794",
+          "locator": "Molina, Vocabulario (1571), Nahuatl-Spanish Part II, fol. 103r, col. 1; transcribed through ODN",
+          "note": "Exact historical wordform in cited source. Does not license variant rewrites or grammatical segmentation.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "field": "pos",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/188794",
+          "locator": "Molina, Vocabulario (1571), Nahuatl-Spanish Part II, fol. 103r, col. 1; transcribed through ODN",
+          "note": "Historically documented noun form; no nominal morphology inferred.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
+        },
+        {
+          "field": "meaning",
+          "assessment": "dictionary",
+          "source": "https://nahuatl.wired-humanities.org/node/188794",
+          "locator": "Molina, Vocabulario (1571), Nahuatl-Spanish Part II, fol. 103r, col. 1; transcribed through ODN",
+          "note": "Exact source-documented noun form. No verified possessive morphology or historical stanza translation. Reading a particular poetic occurrence as literal children rather than elite offspring requires additional source review. Dictionary gloss only; no verified full English translation.",
+          "reviewer": "Tlahtōlli AI-assisted direct dictionary check; no independent human specialist approval",
+          "checkedAt": "2026-10-30"
         }
       ]
     }

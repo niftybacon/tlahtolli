@@ -1,7 +1,7 @@
 {
   "format": "tlahtolli-lexicon-source",
   "schema": 1,
-  "version": "2026-10-29.9.0",
+  "version": "2026-10-30.1.0",
   "variety": "Classical Nahuatl",
   "editorial_policy": "Classification, citations and form evidence are separate. A source URL is a research pointer, not a guarantee that each claim is verified. Grammar-derived forms are not independently text-attested. No scholar has peer-reviewed this data.",
   "words": [
@@ -26008,6 +26008,30 @@
       "example": "",
       "translation": "",
       "notes": "Unreviewed Kaikki/Wiktionary nci-labelled noun source index only; source spelling, historical era, precise meaning and grammar are NOT independently verified. Source tags: none. Shard 2, row 587. Wiktionary CC BY-SA 3.0/GFDL; derived Amoxcalli CC BY-SA 4.0."
+    },
+    {
+      "word": "yehuan",
+      "meaning": "independent third-person plural pronoun; contextual referent and syntactic scope unverified",
+      "pos": "pronoun",
+      "original": "yehuan",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/content/yehuantin",
+      "example": "",
+      "translation": "",
+      "notes": "Short independent third-person plural form as reported by Lockhart through ODN; UNAM GDN documents separate 1557 spelling yeuan. Neither historic spelling nor poetic yehuan Dios permits an automatic contextual pronoun referent. Lexical citation only; original editions/Gold and contextual syntax are NOT independently human-reviewed."
+    },
+    {
+      "word": "tepilhuan",
+      "meaning": "sons; daughters; children / offspring (poetic social context unreviewed)",
+      "pos": "noun",
+      "original": "tepilhuan",
+      "variety": "Classical Nahuatl",
+      "status": "Checked against source",
+      "source": "https://nahuatl.wired-humanities.org/node/188794",
+      "example": "",
+      "translation": "",
+      "notes": "Exact source-documented noun form. No verified possessive morphology or historical stanza translation. Reading a particular poetic occurrence as literal children rather than elite offspring requires additional source review. Lexical citation only; original editions/Gold and contextual syntax are NOT independently human-reviewed."
     }
   ]
 }

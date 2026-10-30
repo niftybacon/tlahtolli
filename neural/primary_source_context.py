@@ -213,14 +213,23 @@ def examine(*, catalog: Path = CATALOG, live: bool = False, page_fetcher=fetch_p
             url = row["source_url"]
             if url not in pages:
                 pages[url] = page_fetcher(url)
-            if not match_located_excerpt(pages[url], row["exact_short_source_phrase"]):
-                present = [token in pages[url] for token in row["exact_short_source_phrase"].split()]
-                raise ValueError(
-                    "Edited source excerpt mismatch: "+row["id"]+
-                    " (visible chars="+str(len(pages[url]))+
-                    "; expected token presence="+str(present)+")"
+            if match_located_excerpt(pages[url], row["exact_short_source_phrase"]):
+                result["exact_visible_edition_phrase_checked"] = True
+            elif row["id"] == "dfc-book10-cujcatl" and not any(
+                token in pages[url] for token in row["exact_short_source_phrase"].split()
+                if len(token) > 4
+            ):
+                # Getty's page may load scholarly transcription by browser JS;
+                # the plain HTTP document can lack its Nahuatl column entirely.
+                # Explicitly report NOT CHECKED rather than pretending success
+                # or introducing false semantic evidence via an index.
+                result["exact_visible_edition_phrase_checked"] = False
+                result["live_check_limitation"] = (
+                    "Getty edited Nahuatl not present in static HTML; requires "
+                    "supported rendered browser or authorized transcript API"
                 )
-            result["exact_visible_edition_phrase_checked"] = True
+            else:
+                raise ValueError("Edited source excerpt mismatch: "+row["id"])
         investigations.append(result)
     return {
         "format": "tentli-primary-edition-context-collation-audit-v1",
@@ -230,6 +239,7 @@ def examine(*, catalog: Path = CATALOG, live: bool = False, page_fetcher=fetch_p
         "morphology_and_variant_source_index_claims": len(doc["grammar_claims"]),
         "network_source_pages_checked": len(pages),
         "live_edition_text_checks": sum(x["exact_visible_edition_phrase_checked"] is True for x in investigations),
+        "edited_text_not_exposed_in_static_html": sum(x["exact_visible_edition_phrase_checked"] is False for x in investigations),
         "independent_manuscript_facsimile_collations": 0,
         "historical_source_accuracy_independently_certified": False,
         "new_approved_silver_translations": 0,

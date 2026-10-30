@@ -17,7 +17,7 @@ This change adds a **small research-only source-evidence wrapper around that sam
 
 These are **lexicographic source observations**, not independently facsimile-collated manuscript occurrences or qualified human approval of a contextual translation. The source sites aggregate material of differing provenance, so the attached locator and original written form matter. The newly added file `research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json` records the two source URLs, source editions and caveats with **all** approval/translation/morphology flags false.
 
-The source adapter refuses a malformed or promotion-bearing optional pack and returns:
+The research-only wrapper refuses a malformed or promotion-bearing optional pack and returns:
 ```js
 {
   kind: 'Source-indexed exact lexical written form (NOT morphology)',

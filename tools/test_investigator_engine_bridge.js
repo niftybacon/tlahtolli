@@ -64,7 +64,7 @@ try{
   x=>{x.investigations[0].written_surface='injected'},
   x=>{x.investigations[0].original_edition_contexts.push({source_url:'http://unsafe'})},
   x=>{x.evidence_fingerprints.canonical_lexicon='0'.repeat(64)},
-  x=>{x.evidence_fingerprints.individual_archived_lexical_source_sha256.simeon_00.json='0'.repeat(64)},
+  x=>{x.evidence_fingerprints.individual_archived_lexical_source_sha256['simeon_00.json']='0'.repeat(64)},
   x=>{x.historical_dev_stanzas_excluded=0},
  ]){const candidate=JSON.parse(JSON.stringify(report));tamper(candidate);
   assert.throws(()=>bridge.bridge(candidate),/Reject|Invalid|historical/i);}

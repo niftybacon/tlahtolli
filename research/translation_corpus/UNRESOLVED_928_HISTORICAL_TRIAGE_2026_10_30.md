@@ -45,3 +45,22 @@ The triage rejects an altered source fingerprint, invented word not in the origi
 This is a **Phase 2/3/6** workflow from the original roadmap: better historical evidence, a source-graded language teacher and more original document analysis. It contributes precise error-localization data to Phase 4/5 without claiming that neural model training, validated interactive self-learning, or independent Gold accuracy has already been achieved.
 
 The next task after this audit is to compare the highest-value source-cited morphological alternatives in their original stanzas, paying special attention to syllabic poetry, inflection, noun incorporation, historical `-cān` functions, and editorial punctuation. Only a small group of genuinely ambiguous cases needs project-director input; linguistic confidence cannot come from an unreviewed model proposal.
+
+
+## Additional independently source-indexed findings for five recurring forms
+
+The source report shows **796 of the 928** unmatched forms occur just once; **84** occur in two or more poem units. Six were covered already by the previous ten-form poetic/particle research, and **`zanio`** already has project-director feedback. These are overlapping categories; they must not be summed as a partition.
+
+Historical dictionary/source-index research independently found five important recurring written forms that the current **automated source-morphology lookup** still fails to analyze:
+
+| Form and number of Brinton occurrences | Historical reference evidence | Safe next step |
+| --- | --- | --- |
+| **`yehuan`** — 15 occurrences, nine poem units | [ODN's Lockhart-sourced `yehuantin` entry](https://nahuatl.wired-humanities.org/content/yehuantin) explicitly lists short form `yehuan`; independent [UNAM archival entry](https://gdn.iib.unam.mx/diccionario/yehuan/188287) records the form. | Investigate the pronoun's actual referent in each original poetic construction. It need not force “they” mechanically when adjacent to `Dios`. |
+| **`tepilhuan`** — 12, eight units | [Molina (1571) II f.103r via ODN](https://nahuatl.wired-humanities.org/node/188794) explicitly has this form meaning offspring/children; [Lockhart notes](https://nahuatl.wired-humanities.org/content/tepiltzin) explain broader social/noble uses. | Investigate which poetry units address children, descendants, nobles or young people. Do not confuse the attested whole form with proof of a universal productive affix rule. |
+| **`noyollo`** — 12, seven units | [ODN yōllōtl](https://nahuatl.wired-humanities.org/node/180964) cites Molina 1571 II f.40v and Lockhart 2001 p.242 for possessed `-yōllo`. | Examine whether heart, soul, mind or intention is the best contextual reading. The written possession is not itself a fully reviewed English poem alignment. |
+| **`ipalnemohua`** — 9, four units | [UNAM Gran Diccionario Nahuatl](https://gdn.iib.unam.mx/diccionario/ipalnemohua/51268) indexes Wimmer's deity/verbal reading; related [ODN `ipalnemohuani`](https://nahuatl.wired-humanities.org/content/ipalnemohuani) records the full divine title and contextual lexical derivation. | Do not indiscriminately turn the form into `ipalnemohuani` or replace the full context with generic English `God`. |
+| **`huiya`** — 9, seven units | [ODN `huiya`](https://nahuatl.wired-humanities.org/content/huiya) identifies a form of `yauh` “to go”. But numerous Brinton poems place `huiya` amid other performed or repeated syllables, and the existing catalog separately treats `huia` as unresolved. | **Optional high-value human/context review:** Is `huiya` there a finite verb, a refrain, or different things in different locations? Do not globally collapse spellings or force one meaning. |
+
+**Important distinction:** these five now have *located external lexicographic leads*, not independently approved manuscript-based analysis of their individual Brinton stanzas. They remain within the 928 **engine-recognition gaps** until the existing morphology/lexicon is updated via the review-gated process. No new production dictionary entry, grammar, Silver, Gold or model parameter was approved here.
+
+The scheduled 928 research triage reuses these cited findings rather than asking the user to reverify ordinary, already documented lexical words. Only **`huiya`** is singled out for a possible human contextual discussion, and that discussion would still be provisional project-director feedback, not independent blind Gold adjudication.

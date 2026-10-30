@@ -255,6 +255,22 @@ class PrivateGoldTests(unittest.TestCase):
                         result["approximate_95pct_wilson_interval"][1])
         self.assertFalse(result["reference_labels_logged"])
         bad = deepcopy(pred)
+        bad["predictions"][0]["model_revision"] = "different-model-revision-abcdef1234"
+        with self.assertRaisesRegex(ValueError, "single frozen model"):
+            score_blind(data, bad, judgments, exposures=synthetic_exposure())
+        single_work = deepcopy(data)
+        for row in single_work["examples"]:
+            row["work_id"] = "fictional-single-work-only"
+            row["source_collection_id"] = "fictional-test-collection-a"
+        meta_single = validate_private_gold(single_work, exposures=synthetic_exposure())
+        preds_single = deepcopy(pred)
+        judgments_single = deepcopy(judgments)
+        preds_single["gold_reference_sha256"] = meta_single["reference_content_sha256"]
+        judgments_single["gold_reference_sha256"] = meta_single["reference_content_sha256"]
+        with self.assertRaisesRegex(ValueError, "at least two wholly unseen"):
+            score_blind(single_work, preds_single, judgments_single,
+                        exposures=synthetic_exposure())
+        bad = deepcopy(pred)
         bad["predictions"][0]["english"] = ""
         with self.assertRaisesRegex(ValueError, "Nonempty English"):
             score_blind(data, bad, judgments, exposures=synthetic_exposure())

@@ -58,7 +58,8 @@ try{
   assert.equal(c.grade,'unreviewed');
   assert.equal(c.role_not_inferred,true);
   assert.equal(c.not_productive_morphology,true);
-  assert.equal(c.not_canonical_lexicon_hit,true);
+  assert.equal(c.not_canonical_lexicon_hit,false);
+  assert.equal(entry.curated_lexical_surface_count,1,'Single dictionary headword, not a double-counted source hint');
   assert.equal(c.contextual_english_not_verified,true);
   assert.equal(c.approved_silver,false);
   assert.equal(c.approved_gold,false);

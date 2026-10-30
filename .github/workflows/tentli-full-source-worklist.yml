@@ -4,6 +4,7 @@ on:
     paths:
       - 'neural/paged_historical_investigator.py'
       - 'tools/triage_unresolved_historical_forms.js'
+      - 'research/translation_corpus/unresolved_high_frequency_source_leads_2026_10_30.json'
       - 'tools/test_unresolved_historical_form_triage.js'
       - 'tools/investigator_engine_bridge.js'
       - 'tools/investigator_advanced_morphology.js'
@@ -16,6 +17,7 @@ on:
     paths:
       - 'neural/paged_historical_investigator.py'
       - 'tools/triage_unresolved_historical_forms.js'
+      - 'research/translation_corpus/unresolved_high_frequency_source_leads_2026_10_30.json'
       - 'tools/test_unresolved_historical_form_triage.js'
       - 'tools/investigator_engine_bridge.js'
       - 'tools/investigator_advanced_morphology.js'

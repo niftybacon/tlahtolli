@@ -82,24 +82,35 @@ class FlanEnglishDecoder:
         self.model.eval()
         torch.set_num_threads(min(torch.get_num_threads(), 4))
 
-    def rewrite(self, canonical: str) -> str:
-        # English-only request: semantics have ALREADY been supplied
-        # by the canonical linguistic engines, not inferred by FLAN.
-        prompt = (
-            "Rewrite this English sentence as clear, natural English. "
-            "Preserve the exact meaning, arguments, tense, negation and "
-            "number. Do not invent any facts. Return only the English sentence.\n"
-            "Sentence: " + canonical
-        )
+    def _generate(self, prompt: str) -> str:
         toks = self.tokenizer(prompt, return_tensors="pt", truncation=False)
         if toks["input_ids"].shape[1] > MAX_ENCODER_TOKENS:
-            raise ValueError("English realization prompt exceeds reviewed token limit")
+            raise ValueError("Pretrained English input exceeds reviewed token limit; refusing truncation")
         import torch
         with torch.inference_mode():
             output = self.model.generate(
                 **toks, max_new_tokens=MAX_NEW_TOKENS,
                 num_beams=2, do_sample=False, early_stopping=True)
         return self.tokenizer.decode(output[0], skip_special_tokens=True).strip()
+
+    def rewrite(self, canonical: str) -> str:
+        # Pretrained English-only use; source-backed meaning supplied
+        # by the canonical engine before this operation.
+        return self._generate(
+            "Rewrite this English sentence as clear, natural English. "
+            "Preserve the exact meaning, arguments, tense, negation and "
+            "number. Do not invent any facts. Return only the English sentence.\\n"
+            "Sentence: "+canonical)
+
+    def translate_reviewed_nahuatl(self, source: str) -> str:
+        # The private LoRA is trained on the distinct bilingual
+        # Nahuatl -> English objective, not English-only rewriting.
+        # This raw proposal is NEVER output unless the source grammar
+        # independently admits EXACTLY the generated English.
+        if self.adapter_metadata is None:
+            raise ValueError("No supervised bilingual research adapter loaded")
+        from .train_reviewed_english import source_prompt
+        return self._generate(source_prompt(source))
 
 
 def guarded_english_realization(
@@ -170,10 +181,12 @@ def pretrained_english(source: str, *,
     engine=decoder if decoder is not None else FlanEnglishDecoder(
         model_id=model_id,revision=revision,local_files_only=local_files_only,
         adapter_path=adapter_dir)
-    result=guarded_english_realization(source,rewrite=engine.rewrite,admitted=candidate_set)
+    rewrite=(lambda _: engine.translate_reviewed_nahuatl(source)) if adapter_dir else engine.rewrite
+    result=guarded_english_realization(source,rewrite=rewrite,admitted=candidate_set)
     result["pretrained_model"]={
         "repository":MODEL_ID,"revision":MODEL_REVISION,"license":MODEL_LICENSE,
         "adapter_evidence_tier":getattr(engine,"adapter_metadata",None) and engine.adapter_metadata["evidence_tier"],
+        "generation_task":"supervised_nahuatl_to_english_gated" if adapter_dir else "pretrained_english_rewrite_gated",
         "claim":"pretrained English expression; NOT pretrained Classical Nahuatl translation"
     }
     return result

@@ -109,7 +109,7 @@ class ControlledPrimarySourceTests(unittest.TestCase):
         self.assertEqual(len(seen), 2)
         self.assertEqual(out["new_approved_silver_translations"], 0)
         pages["https://enl.wired-humanities.org/BC19"]="A different document"
-        with self.assertRaisesRegex(ValueError, "no longer matches"):
+        with self.assertRaisesRegex(ValueError, "excerpt mismatch"):
             examine(live=True,page_fetcher=fetch)
 
     def test_source_tampering_and_false_gold_is_refused(self):

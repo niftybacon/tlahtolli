@@ -95,7 +95,8 @@ function create(sentence,english,grammarIR){
   if(!analysis||!graph||serialize(analysis)!==serialize(freshAnalysis)||
      serialize(graph)!==serialize(freshGraph))
    return fail('Supplied morphological/grammatical evidence diverged from canonical reanalysis');
-  if(!Array.isArray(composition.units)||!Array.isArray(composition.joins)||
+  if(composition.verified!==false||serialize(composition.audit)!==serialize(fresh.audit)||
+     !Array.isArray(composition.units)||!Array.isArray(composition.joins)||
      serialize(composition.units)!==serialize(fresh.units)||
      serialize(composition.joins)!==serialize(fresh.joins))
    return fail('English options, roles, wording, source locators or joins diverged from canonical realization');

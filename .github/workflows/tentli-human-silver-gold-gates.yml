@@ -1,0 +1,75 @@
+name: Tēntli Silver human review and private Gold evaluation gates
+on:
+  pull_request:
+    paths:
+      - 'tools/prepare_silver_review.py'
+      - 'tools/independent_gold_gate.py'
+      - 'tools/test_silver_gold_review_gates.py'
+      - 'research/translation_corpus/SILVER_GOLD_REVIEW_PROTOCOL.md'
+      - '.github/workflows/tentli-human-silver-gold-gates.yml'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+  push:
+    paths:
+      - 'tools/prepare_silver_review.py'
+      - 'tools/independent_gold_gate.py'
+      - 'tools/test_silver_gold_review_gates.py'
+      - 'research/translation_corpus/SILVER_GOLD_REVIEW_PROTOCOL.md'
+      - '.github/workflows/tentli-human-silver-gold-gates.yml'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  human-reviewed-evidence-boundaries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify Silver/Gold fail-closed review policy using separately marked fictional fixtures
+        run: |
+          python -m unittest discover -s tools -p 'test_silver_gold_review_gates.py' -v
+          python -m unittest discover -s tools -p 'test_historical_evidence_prioritizer.py' -v
+          python -m unittest discover -s tools -p 'test_brinton_printed_source_audit.py' -v
+          python -m neural.historical_candidate_english --audit-only
+          python tools/validate_translation_corpus.py
+      - name: Produce 40 PRINTED Brinton stanza worksheets, never signed Silver or private Gold
+        run: |
+          python -m tools.prepare_silver_review \
+            --limit 40 --max-per-work 4 \
+            --output "$RUNNER_TEMP/tentli-pending-silver-review.json" \
+            > "$RUNNER_TEMP/tentli-review-summary.json"
+          python -m tools.independent_gold_gate > "$RUNNER_TEMP/tentli-no-real-gold.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          folder = Path(os.environ['RUNNER_TEMP'])
+          sheet = json.loads((folder/'tentli-pending-silver-review.json').read_text(encoding='utf-8'))
+          blank = json.loads((folder/'tentli-no-real-gold.json').read_text(encoding='utf-8'))
+          assert len(sheet['review_cases']) == 40
+          assert sheet['heldout_dev_stanzas_excluded'] == 17
+          assert sheet['human_reviewed_silver_count'] == 0
+          assert sheet['gold_count'] == 0
+          assert all(x['training_eligible'] is False and x['silver_approved'] is False
+                     and x['gold'] is False and x['reviewed_translation_text'] is None
+                     for x in sheet['review_cases'])
+          assert blank['registered_gold'] == 0 and blank['accuracy'] is None
+          print('## Human-reviewed historical evidence checkpoint')
+          print('- **40** original printed Brinton stanza candidates assembled with both source pointers and SHA-based edition fingerprints')
+          print('- All cases are **pending independent human contextual review**; 17 development cases left untouched')
+          print('- Independently reviewed Silver pairs: **0**')
+          print('- Truly blind, independent Gold pairs: **0**')
+          print('- Model training or dictionary/approved corpus changes: **none**')
+          print('- Gold source labels and semantic adjudications must be supplied privately and separately, never invented by CI')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-40-Brinton-pending-silver-human-review-cases
+          path: |
+            ${{ runner.temp }}/tentli-pending-silver-review.json
+            ${{ runner.temp }}/tentli-review-summary.json
+            ${{ runner.temp }}/tentli-no-real-gold.json
+          retention-days: 30
+          if-no-files-found: error

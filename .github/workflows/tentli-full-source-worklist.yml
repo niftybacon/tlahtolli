@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'neural/paged_historical_investigator.py'
+      - 'tools/triage_unresolved_historical_forms.js'
+      - 'tools/test_unresolved_historical_form_triage.js'
+      - 'tools/investigator_engine_bridge.js'
+      - 'tools/investigator_advanced_morphology.js'
       - 'neural/multidocument_evidence.py'
       - 'tools/test_paged_multi_document_investigator.py'
       - 'tools/independent_gold_gate.py'
@@ -11,6 +15,10 @@ on:
   push:
     paths:
       - 'neural/paged_historical_investigator.py'
+      - 'tools/triage_unresolved_historical_forms.js'
+      - 'tools/test_unresolved_historical_form_triage.js'
+      - 'tools/investigator_engine_bridge.js'
+      - 'tools/investigator_advanced_morphology.js'
       - 'neural/multidocument_evidence.py'
       - 'tools/test_paged_multi_document_investigator.py'
       - 'tools/independent_gold_gate.py'
@@ -30,12 +38,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Test pagination, resume, all-form source/variety safety and unseen Gold protection
         run: |
           python -m unittest discover -s tools -p 'test_paged_multi_document_investigator.py' -v
           python -m unittest discover -s tools -p 'test_primary_source_context.py' -v
           python -m unittest discover -s tools -p 'test_silver_gold_review_gates.py' -v
           python tools/validate_translation_corpus.py
+          node tools/test_unresolved_historical_form_triage.js
       - name: Check four original Nahuatl excerpts against two additional colonial source documents
         run: |
           python -m neural.multidocument_evidence --live-check \
@@ -77,6 +89,26 @@ jobs:
           print("- Gold, Silver, newly approved lexicon meanings, model updates: **0**")
           print("- Full report fingerprinted; use --batch-size/--offset or --previous to resume a smaller worklist")
           PY
+      - name: Reuse existing engines to classify all remaining historical source forms
+        run: |
+          node tools/investigator_engine_bridge.js --input "$RUNNER_TEMP/tentli-all-historical-forms.json" --output "$RUNNER_TEMP/tentli-current-engine-recognition.json" > "$RUNNER_TEMP/engine-recognition-summary.json"
+          node tools/triage_unresolved_historical_forms.js --source "$RUNNER_TEMP/tentli-all-historical-forms.json" --bridge "$RUNNER_TEMP/tentli-current-engine-recognition.json" --output "$RUNNER_TEMP/tentli-unresolved-provenance-triage.json" | tee "$RUNNER_TEMP/unresolved-triage-summary.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          from pathlib import Path
+          r=json.loads((Path(os.environ["RUNNER_TEMP"])/"tentli-unresolved-provenance-triage.json").read_text(encoding="utf-8"))
+          assert r["unresolved_engine_miss_count"]==len(r["unresolved_forms"])==928
+          assert r["no_model_training"] and r["no_new_morphological_rules"]
+          assert r["no_new_dictionary_approvals"] and r["no_silver_or_gold_promotions"]
+          assert r["prioritized_new_human_questions_count"]<=12
+          assert r["requires_human_for_every_form"] is False
+          print("### Existing-engine follow-up on historical-source gaps")
+          print("- **928** original written forms classified and source-linked, no word translated automatically")
+          print("- **"+str(r["already_investigated_poetic_or_director_cases_not_requeued"])+"** previously triaged or director-reviewed forms are not assigned redundant human review")
+          print("- **"+str(r["prioritized_new_human_questions_count"])+"** optional newly prioritized human investigations, not mandatory annotations of every form")
+          for k,v in r["nonexclusive_lead_counts"].items(): print("- "+k.replace("_"," ")+": **"+str(v)+"** (overlapping, unverified leads)")
+          print("- Gold, Silver, approved grammar rules and automatically learned model weights: **0**")
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: tentli-complete-source-worklist-and-additional-colonial-documents
@@ -85,5 +117,9 @@ jobs:
             ${{ runner.temp }}/new-documents-summary.json
             ${{ runner.temp }}/tentli-all-historical-forms.json
             ${{ runner.temp }}/all-forms-summary.json
+            ${{ runner.temp }}/tentli-current-engine-recognition.json
+            ${{ runner.temp }}/engine-recognition-summary.json
+            ${{ runner.temp }}/tentli-unresolved-provenance-triage.json
+            ${{ runner.temp }}/unresolved-triage-summary.json
           retention-days: 30
           if-no-files-found: error

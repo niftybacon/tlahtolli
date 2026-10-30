@@ -1,0 +1,32 @@
+{
+  "format": "tentli-human-feedback-provisional-v1",
+  "policy": "Voluntary project-director observations. Statements record user feedback, not signed third-party professional review, source certification, Silver promotion or Gold evidence.",
+  "entries": [
+    {
+      "record_id": "brinton-1890-poetry-v-01",
+      "exact_written_form": "zanio",
+      "word_assessment": [
+        "only",
+        "alone",
+        "just this one"
+      ],
+      "assessment": "Project director confirmed the written spelling and considers Brinton's published English meaning-preserving in this stanza.",
+      "scope": "single_stanza_editorial_feedback",
+      "original_url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt#L1734",
+      "published_translation_url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt#L1737",
+      "independent_lexicographic_reference": {
+        "aggregator": "Online Nahuatl Dictionary",
+        "url": "https://nahuatl.wired-humanities.org/node/172083",
+        "historical_underlying_source": "Alonso de Molina (1571), part II, f.14r col.2 (zanio = zaniyo)",
+        "secondary_source": "Frances Karttunen (1992), as indexed by ODN entry zaniyo"
+      },
+      "source_type": "project_director_assertion_plus_located_historical_dictionary_entry",
+      "reviewer_independence": "not_independently_authenticated",
+      "second_human_review": false,
+      "grammatical_sentence_analysis_complete": false,
+      "historical_alignment_approved": false,
+      "gold": false,
+      "training_eligible": false
+    }
+  ]
+}

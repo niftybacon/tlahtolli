@@ -1,0 +1,83 @@
+name: Tēntli 40-case autonomous source evidence investigator
+on:
+  pull_request:
+    paths:
+      - 'neural/autonomous_evidence_investigator.py'
+      - 'tools/test_autonomous_evidence_investigator.py'
+      - 'research/translation_corpus/project_director_provisional_feedback.json'
+      - 'research/amoxcalli_archive/**'
+      - '.github/workflows/tentli-autonomous-evidence-investigator.yml'
+      - 'research/translation_corpus/AUTONOMOUS_EVIDENCE_RESEARCH.md'
+  push:
+    paths:
+      - 'neural/autonomous_evidence_investigator.py'
+      - 'tools/test_autonomous_evidence_investigator.py'
+      - 'research/translation_corpus/project_director_provisional_feedback.json'
+      - 'research/amoxcalli_archive/**'
+      - '.github/workflows/tentli-autonomous-evidence-investigator.yml'
+      - 'research/translation_corpus/AUTONOMOUS_EVIDENCE_RESEARCH.md'
+  schedule:
+    - cron: '11 9 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  historical-dictionary-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test work-disjoint evidence provenance, source families, dialect and human promotion guards
+        run: |
+          python -m unittest discover -s tools -p 'test_autonomous_evidence_investigator.py' -v
+          python -m unittest discover -s tools -p 'test_canonical_lexical_coverage.py' -v
+          python -m unittest discover -s tools -p 'test_silver_gold_review_gates.py' -v
+          python tools/validate_translation_corpus.py
+      - name: Autonomously investigate 40 historical training-form research leads
+        run: |
+          python -m neural.autonomous_evidence_investigator \
+            --limit 40 \
+            --output "$RUNNER_TEMP/tentli-source-investigations-40.json" \
+            > "$RUNNER_TEMP/investigation-summary.json"
+          cat "$RUNNER_TEMP/investigation-summary.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import os,json
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])
+          r=json.loads((root/'tentli-source-investigations-40.json').read_text(encoding='utf-8'))
+          assert r['investigation_count']==40
+          assert r['historical_development_stanzas_excluded']==17
+          assert r['archive_record_counts']['simeon_total']==28709
+          assert r['archive_record_counts']['kaikki_total']==7834
+          assert r['human_reviewed_silver_added']==r['gold_added']==r['machine_verified_meanings']==0
+          assert r['canonical_source_changes']==0
+          assert r['training_weights_updated'] is False
+          assert all(x['training_eligible'] is False and x['gold'] is False and
+                     x['silver_approved'] is False and
+                     x['cross_language_semantic_equivalence_auto_verified'] is False
+                     for x in r['investigations'])
+          print('## Autonomous source-graded historical lexical investigation')
+          print('- **40** traceable, internally completed exact-source-index research cases')
+          print('- **36,543** archival records checked from two DISTINCT provenanced archive families')
+          print('- Siméon 1885 **unreviewed OCR French** and nci-only Kaikki/Wiktionary **community English** are not two primary Classical witnesses')
+          print('- Historical dev poems and every Gold work remained outside this research')
+          print('- Exact form multi-source lookup (not English semantic agreement): '+str(r['source_family_hit_summary']))
+          print('- Contextual human-review escalation count: '+str(r['escalation_count']))
+          print('- Lexical claims approved, real Silver, real Gold, model updates: **0**')
+          print('- Human-feedback zanio note remains provisional, even with a located Molina 1571 source')
+          print('- Source catalogs indexed and ambiguities detected autonomously, without human data entry')
+          for row in r['investigations'][:12]:
+              print('  - '+row['form']+': '+row['candidate_category']+
+                    ', exact archive families='+str(row['source_families_exact_headword_matched']))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-40-source-linked-automated-lexical-investigations
+          path: |
+            ${{ runner.temp }}/tentli-source-investigations-40.json
+            ${{ runner.temp }}/investigation-summary.json
+          retention-days: 30
+          if-no-files-found: error

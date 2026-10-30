@@ -31,6 +31,21 @@ jobs:
           run-id: 40983772892
           github-token: ${{ github.token }}
           path: ${{ runner.temp }}/tentli/base-checkpoint
+      - name: Normalize the prior checkpoint artifact's nested upload directory
+        run: |
+          python - <<'PY'
+          import json,os,pathlib,shutil
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'tentli/base-checkpoint'
+          folders=[p.parent for p in root.rglob('metadata.json')
+                   if p.parent.joinpath('weights.pt').exists()]
+          if len(folders)!=1:
+              raise ValueError(f"Expected one valid base checkpoint, got {folders}")
+          origin=folders[0]
+          if origin!=root:
+              shutil.copy2(origin/'weights.pt',root/'weights.pt')
+              shutil.copy2(origin/'metadata.json',root/'metadata.json')
+          print('REUSING_ACTUAL_PRIOR_MODEL',origin)
+          PY
       - name: Fetch all 12 Florentine files using the repository's existing archive downloader
         run: |
           python - <<'PY'

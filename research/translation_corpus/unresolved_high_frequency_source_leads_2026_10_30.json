@@ -1,0 +1,70 @@
+{
+  "format": "tentli-unresolved-lexicographic-context-leads-v1",
+  "date": "2026-10-30",
+  "scope": "Five recurring historical written forms without recognized current-engine analysis; cited lexical reference leads, not Gold or Silver, no change to the published translator.",
+  "source_policy": "Historical source references and their printed locations/secondary edition named; source gloss leads are not automatic per-stanza semantic translations.",
+  "recorded": [
+    {
+      "form": "yehuan",
+      "source_url": "https://nahuatl.wired-humanities.org/content/yehuantin",
+      "source_family": "Online Nahuatl Dictionary / Lockhart",
+      "source_locator": "James Lockhart, Nahuatl as Written (2001), p. 242; ODN yehuantin records yehuan short-form variant",
+      "external_parallel_source_url": "https://gdn.iib.unam.mx/diccionario/yehuan/188287",
+      "lead": "short emphatic 3rd-person plural pronoun; contextual address/referent is unresolved",
+      "contextual_caveat": "In Brinton expressions such as yehuan Dios the pronoun scope and archaic poetic syntax cannot be solved by inserting 'they' mechanically; separate printed occurrences need source-sensitive grammar review.",
+      "candidate_category": "scholarly_index_lexical_or_pronominal",
+      "ask_director_now": false
+    },
+    {
+      "form": "tepilhuan",
+      "source_url": "https://nahuatl.wired-humanities.org/node/188794",
+      "source_family": "Molina 1571 / Online Nahuatl Dictionary",
+      "source_locator": "Alonso de Molina, Vocabulario (1571), Nahuatl-to-Spanish part II f.103r col.1; Lockhart discussion via ODN tepiltzin",
+      "external_parallel_source_url": "https://nahuatl.wired-humanities.org/content/tepiltzin",
+      "lead": "children, offspring; in certain social contexts, noble or chiefly offspring/young people",
+      "contextual_caveat": "The source supports a form and multiple possible social senses; the broader poetic audience cannot automatically be translated as literal children.",
+      "candidate_category": "historical_lexicographic_headword",
+      "ask_director_now": false
+    },
+    {
+      "form": "noyollo",
+      "source_url": "https://nahuatl.wired-humanities.org/node/180964",
+      "source_family": "Lockhart / Molina via Online Nahuatl Dictionary",
+      "source_locator": "Lockhart, Nahuatl as Written (2001) p.242, possessed -yollo; Molina (1571) II f.40v for yollotl",
+      "external_parallel_source_url": "https://nahuatl.wired-humanities.org/content/yollo",
+      "lead": "my heart, spirit, state of mind (possessed heart-expression)",
+      "contextual_caveat": "A lexical/possessive source gloss is not proof of whether a given poetic phrase means heart, mind, intention or soul.",
+      "candidate_category": "scholarly_index_possessed_noun",
+      "ask_director_now": false
+    },
+    {
+      "form": "ipalnemohua",
+      "source_url": "https://gdn.iib.unam.mx/diccionario/ipalnemohua/51268",
+      "source_family": "UNAM Gran Diccionario Nahuatl / Wimmer",
+      "source_locator": "Wimmer (2004) entry ipalnemohua, divine title/verbal expression; UNAM indexed context Sahagun Book 6",
+      "external_parallel_source_url": "https://nahuatl.wired-humanities.org/content/ipalnemohuani",
+      "lead": "he by whom one lives; divine epithet, sometimes idiomatically Giver of Life",
+      "contextual_caveat": "Do not treat the form as an arbitrary inflection of a known verb or equate it with all related divine names without source analysis.",
+      "candidate_category": "scholarly_index_divine_epithet",
+      "ask_director_now": false
+    },
+    {
+      "form": "huiya",
+      "source_url": "https://nahuatl.wired-humanities.org/content/huiya",
+      "source_family": "Online Nahuatl Dictionary",
+      "source_locator": "ODN huiya entry, inflected form from yauh 'go'; compare Brinton 1890 song stanzas xiii.9, xv.2, xv.13 and xvii.15",
+      "external_parallel_source_url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt#L2375",
+      "lead": "historical dictionary records verbal went; repeated song-position uses may instead be sung interjection and must be individually differentiated",
+      "contextual_caveat": "A dictionary form alone must not override poetic placement, and a refrain-like position does not prove the form is never a finite verb; leave unresolved.",
+      "candidate_category": "conflicting_contextual_verb_versus_poetic_use",
+      "ask_director_now": true
+    }
+  ],
+  "gold_approved": 0,
+  "silver_approved": 0,
+  "new_training_examples": 0,
+  "approved_dictionary_edits": 0,
+  "verified_whole_clause_translations": 0,
+  "rule_generation_allowed": false,
+  "model_training_allowed": false
+}

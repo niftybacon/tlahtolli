@@ -20,8 +20,6 @@ on:
       - 'research/amoxcalli_archive/**'
       - '.github/workflows/tentli-autonomous-evidence-investigator.yml'
       - 'research/translation_corpus/AUTONOMOUS_EVIDENCE_RESEARCH.md'
-  schedule:
-    - cron: '11 9 * * 1'
   workflow_dispatch:
 permissions:
   contents: read

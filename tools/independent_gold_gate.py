@@ -81,6 +81,17 @@ def known_exposure(candidate_manifest: Path = CANDIDATES, pair_csv: Path = PAIRS
             works.add("Florentine-Codex")
     for context in source_catalog["contexts"]:
         content.add(" ".join(context["exact_short_source_phrase"].casefold().split()))
+    # Whole document families used in multi-document research cannot be
+    # quietly recycled as 'unseen' Gold, even if only four phrases were
+    # printed in this source catalog.
+    from neural.multidocument_evidence import load_catalog as load_multi
+    addition = load_multi()
+    for source in addition["works"]:
+        collections.add(source["collection_id"])
+        collections.add(source["id"])
+        works.add(source["work_id"])
+    for probe in addition["probes"]:
+        content.add(" ".join(probe["exact_short_nahuatl"].casefold().split()))
     return {"collections": collections, "works": works, "normalized_content": content,
             "historical_candidate_records_considered": len(train)}
 

@@ -1,0 +1,95 @@
+{
+  "format": "tentli-multi-document-short-edition-probes-v1",
+  "rights": "All Nahuatl snippets are <=6 words. James Lockhart scholarly transcriptions and translations are cited, not republished or used as approved bilingual training.",
+  "works": [
+    {
+      "id": "enl-bc16-1573",
+      "collection_id": "early-nahuatl-library-beyond-the-codices",
+      "title": "Coyoacán region land sale to a Spaniard",
+      "work_id": "AGN-Tierras-1735-exp2-f122-BC16",
+      "date": "1573",
+      "date_precision": "year",
+      "variety": "early_colonial_central_nahuatl",
+      "source_url": "https://enl.wired-humanities.org/bc16",
+      "editor": "James Lockhart",
+      "original_repository": "AGN Tierras 1735 exp.2 f.122",
+      "source_type": "digital_scholarly_edition_of_historical_nahuatl",
+      "rights": "Brief cited original-language excerpts, no transcription mirror",
+      "original_image_independently_collated": false,
+      "training_eligible": false,
+      "gold_eligible": false
+    },
+    {
+      "id": "enl-bc26-early16",
+      "collection_id": "early-nahuatl-library-beyond-the-codices",
+      "title": "Coyoacán perquisites of don Juan de Guzmán, Folio A",
+      "work_id": "AGN-Tierras-1735-exp2-BC26-folio-a",
+      "date": "mid-sixteenth century; section 1 perhaps 1540s, before 1549",
+      "date_precision": "editorial_estimate_not_exact_year",
+      "variety": "early_colonial_central_nahuatl",
+      "source_url": "https://enl.wired-humanities.org/bc26/elements/bc26a/000",
+      "editor": "James Lockhart; Stephanie Wood minor formatting",
+      "original_repository": "AGN Tierras 1735 exp.2",
+      "source_type": "digital_scholarly_edition_of_historical_nahuatl",
+      "rights": "Brief cited original-language excerpts, no transcription mirror",
+      "original_image_independently_collated": false,
+      "training_eligible": false,
+      "gold_eligible": false
+    }
+  ],
+  "probes": [
+    {
+      "id": "bc16-sale-ticnamaca",
+      "work_id": "enl-bc16-1573",
+      "form": "ticnamaca",
+      "exact_short_nahuatl": "ticnamaca y¯ totlal",
+      "context_role": "land_sale_predicate_context",
+      "printed_edition_locator": "BC16 folio A transcription, opening land-sale clause",
+      "lexical_sense_source_status": "source_context_only_no_independent_dictionary_sense_certification",
+      "review_status": "pending",
+      "note": "The seller voices a sale; written y¯ represents the editor's printed abbreviation. Preserve marks exactly."
+    },
+    {
+      "id": "bc16-necoc-measure",
+      "work_id": "enl-bc16-1573",
+      "form": "necoc",
+      "exact_short_nahuatl": "çan necoc cempohualli quahuitl",
+      "context_role": "measurement_both_sides",
+      "printed_edition_locator": "BC16 folio A, parcel dimensions",
+      "lexical_sense_source_status": "source_context_only_no_independent_dictionary_sense_certification",
+      "review_status": "pending",
+      "note": "Dimension/measure phrase; not an automatic general English translation."
+    },
+    {
+      "id": "bc26-tecpancalli",
+      "work_id": "enl-bc26-early16",
+      "form": "tecpancalli",
+      "exact_short_nahuatl": "yn don juan tecpancalli ytech pohuiz",
+      "context_role": "ruler_household_institution_not_just_building",
+      "printed_edition_locator": "BC26 Folio A, section 1, line ~27",
+      "lexical_sense_source_status": "source_editor_context_note_requires_independent_reassessment",
+      "review_status": "pending",
+      "note": "The original edited transcription has 'pohuiz' here. Lockhart's interpretation concerns the ruler's household/organization, not necessarily a physical palace building."
+    },
+    {
+      "id": "bc26-field-ordinal",
+      "work_id": "enl-bc26-early16",
+      "form": "ocoçacapan",
+      "exact_short_nahuatl": "ynic cecni ocoçacapan",
+      "context_role": "numbered_field_list_locative",
+      "printed_edition_locator": "BC26 Folio A, section 1, opening fields",
+      "lexical_sense_source_status": "source_context_only_no_independent_dictionary_sense_certification",
+      "review_status": "pending",
+      "note": "Ordinalized field list context; cannot generalize the suffix can to a verbal optative."
+    }
+  ],
+  "safeguards": {
+    "exact_quote_only": true,
+    "unreviewed_editorial_interpretations_not_gold": true,
+    "promote_to_dictionary": false,
+    "promote_to_silver": false,
+    "training_eligible": false,
+    "whole_work_reserved_from_gold": false,
+    "source_documents_exposed_for_research": true
+  }
+}

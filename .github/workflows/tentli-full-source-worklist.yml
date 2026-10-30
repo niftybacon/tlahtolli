@@ -1,0 +1,89 @@
+name: Tēntli complete historical worklist and multi-document source checks
+on:
+  pull_request:
+    paths:
+      - 'neural/paged_historical_investigator.py'
+      - 'neural/multidocument_evidence.py'
+      - 'tools/test_paged_multi_document_investigator.py'
+      - 'tools/independent_gold_gate.py'
+      - 'research/translation_corpus/multidocument_context_probes_2026_10_30.json'
+      - '.github/workflows/tentli-full-source-worklist.yml'
+  push:
+    paths:
+      - 'neural/paged_historical_investigator.py'
+      - 'neural/multidocument_evidence.py'
+      - 'tools/test_paged_multi_document_investigator.py'
+      - 'tools/independent_gold_gate.py'
+      - 'research/translation_corpus/multidocument_context_probes_2026_10_30.json'
+      - '.github/workflows/tentli-full-source-worklist.yml'
+  schedule:
+    - cron: '11 9 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-forms-and-historical-documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test pagination, resume, all-form source/variety safety and unseen Gold protection
+        run: |
+          python -m unittest discover -s tools -p 'test_paged_multi_document_investigator.py' -v
+          python -m unittest discover -s tools -p 'test_primary_source_context.py' -v
+          python -m unittest discover -s tools -p 'test_silver_gold_review_gates.py' -v
+          python tools/validate_translation_corpus.py
+      - name: Check four original Nahuatl excerpts against two additional colonial source documents
+        run: |
+          python -m neural.multidocument_evidence --live-check \
+            --output "$RUNNER_TEMP/tentli-new-source-documents.json" \
+            > "$RUNNER_TEMP/new-documents-summary.json"
+      - name: Process EVERY distinct available research form rather than the same weekly 40
+        run: |
+          python -m neural.paged_historical_investigator --all \
+            --output "$RUNNER_TEMP/tentli-all-historical-forms.json" \
+            > "$RUNNER_TEMP/all-forms-summary.json"
+          cat "$RUNNER_TEMP/all-forms-summary.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          from pathlib import Path
+          folder=Path(os.environ["RUNNER_TEMP"])
+          d=json.loads((folder/"tentli-new-source-documents.json").read_text(encoding="utf-8"))
+          r=json.loads((folder/"tentli-all-historical-forms.json").read_text(encoding="utf-8"))
+          assert d["historical_works_consulted"]==2
+          assert d["contextual_form_probes"]==4
+          assert d["live_original_edition_passages_checked"]==4
+          assert d["distinct_source_pages_fetched"]==2
+          assert d["gold_created"]==d["independent_human_reviewed_translation_pairs"]==0
+          assert r["processed_form_count"]==r["distinct_written_forms_available"]>200
+          assert r["remaining_distinct_forms_after_this_batch"]==0
+          assert r["historical_dev_stanzas_excluded"]==17
+          assert r["historical_train_stanzas"]==133
+          assert r["archived_source_records_indexed"]==36543
+          assert r["human_silver_added"]==r["gold_added"]==0
+          assert r["dictionary_updated"]==r["model_updated"]==False
+          assert all(x["training_eligible"]==x["silver_approved"]==x["gold"]==False
+                     for x in r["investigations"])
+          print("## Complete source-graded historical form worklist")
+          print("- All available **"+str(r["processed_form_count"])+"** distinct source-written forms scanned, no arbitrary weekly cap")
+          print("- **"+str(d["historical_works_consulted"])+"** newly linked early Nahuatl works, **"+str(d["live_original_edition_passages_checked"])+"** live original-language phrase matches")
+          print("- Original 1621 BC19 and Florentine research remains in prior source register")
+          print("- All **36,543** existing archived dictionary records indexed once")
+          print("- **"+str(r["human_context_review_proposals"])+"** prioritized contextual uncertainty proposals, not compulsory human checks of every form")
+          print("- No original manuscript image collated and no new independent English labels")
+          print("- Gold, Silver, newly approved lexicon meanings, model updates: **0**")
+          print("- Full report fingerprinted; use --batch-size/--offset or --previous to resume a smaller worklist")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-complete-source-worklist-and-additional-colonial-documents
+          path: |
+            ${{ runner.temp }}/tentli-new-source-documents.json
+            ${{ runner.temp }}/new-documents-summary.json
+            ${{ runner.temp }}/tentli-all-historical-forms.json
+            ${{ runner.temp }}/all-forms-summary.json
+          retention-days: 30
+          if-no-files-found: error

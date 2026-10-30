@@ -4,6 +4,7 @@ on:
     paths:
       - 'neural/paged_historical_investigator.py'
       - 'tools/triage_unresolved_historical_forms.js'
+      - 'tools/build_phase6_historical_dossiers.js'
       - 'research/translation_corpus/unresolved_high_frequency_source_leads_2026_10_30.json'
       - 'tools/test_unresolved_historical_form_triage.js'
       - 'tools/test_contextual_poetic_vocables.js'
@@ -24,6 +25,7 @@ on:
     paths:
       - 'neural/paged_historical_investigator.py'
       - 'tools/triage_unresolved_historical_forms.js'
+      - 'tools/build_phase6_historical_dossiers.js'
       - 'research/translation_corpus/unresolved_high_frequency_source_leads_2026_10_30.json'
       - 'tools/test_unresolved_historical_form_triage.js'
       - 'tools/test_contextual_poetic_vocables.js'
@@ -126,6 +128,30 @@ jobs:
           for k,v in r["nonexclusive_lead_counts"].items(): print("- "+k.replace("_"," ")+": **"+str(v)+"** (overlapping, unverified leads)")
           print("- Gold, Silver, approved grammar rules and automatically learned model weights: **0**")
           PY
+      - name: Prepare diversified Phase 6 historical source dossiers from the same engine evidence
+        run: |
+          node tools/build_phase6_historical_dossiers.js \
+            --source "$RUNNER_TEMP/tentli-all-historical-forms.json" \
+            --bridge "$RUNNER_TEMP/tentli-current-engine-recognition.json" \
+            --output "$RUNNER_TEMP/tentli-phase6-80-source-dossiers.json" --limit 80
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          from pathlib import Path
+          d=json.loads((Path(os.environ["RUNNER_TEMP"])/"tentli-phase6-80-source-dossiers.json").read_text(encoding="utf-8"))
+          assert d["prepared_dossier_count"]==80 and d["source_engine_gap_count"]==928
+          assert d["new_human_approved_gold"]==d["new_human_approved_silver"]==0
+          assert d["verified_contextual_translations_added"]==d["canonical_grammar_rules_added"]==d["model_updates"]==0
+          assert len({x["written_surface"] for x in d["cases"]})==80
+          assert all(x["new_verified_meaning"] is None and x["train_eligible"] is False
+                     and x["gold"] is False and x["silver_approved"] is False
+                     for x in d["cases"])
+          print("### Phase 6: source-locked historical investigation dossiers")
+          print("- **80** individually source-linked original written forms prioritized for linguistic investigation")
+          print("- Source-indexed, cross-poem comparisons and morphology-shape hypotheses are **not contextual lexical approvals**")
+          print("- Every form stays one of **928** actual unconnected engine surfaces; no invented coverage gain")
+          print("- Human-reviewed new original meanings, grammar rules, Silver, Gold and trained checkpoints: **0**")
+          print("- Results are reproducible with existing source fingerprints; original examples never enter Gold")
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: tentli-complete-source-worklist-and-additional-colonial-documents
@@ -138,5 +164,6 @@ jobs:
             ${{ runner.temp }}/engine-recognition-summary.json
             ${{ runner.temp }}/tentli-unresolved-provenance-triage.json
             ${{ runner.temp }}/unresolved-triage-summary.json
+            ${{ runner.temp }}/tentli-phase6-80-source-dossiers.json
           retention-days: 30
           if-no-files-found: error

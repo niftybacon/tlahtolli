@@ -6,6 +6,13 @@ on:
       - 'tools/triage_unresolved_historical_forms.js'
       - 'research/translation_corpus/unresolved_high_frequency_source_leads_2026_10_30.json'
       - 'tools/test_unresolved_historical_form_triage.js'
+      - 'tools/test_contextual_poetic_vocables.js'
+      - 'research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json'
+      - 'translator-sentence.js'
+      - 'translator-english.js'
+      - 'translator-grammar-ir.js'
+      - 'translator-integrated.js'
+      - 'tools/diagnose_historical_sentences.js'
       - 'tools/investigator_engine_bridge.js'
       - 'tools/investigator_advanced_morphology.js'
       - 'neural/multidocument_evidence.py'
@@ -19,6 +26,13 @@ on:
       - 'tools/triage_unresolved_historical_forms.js'
       - 'research/translation_corpus/unresolved_high_frequency_source_leads_2026_10_30.json'
       - 'tools/test_unresolved_historical_form_triage.js'
+      - 'tools/test_contextual_poetic_vocables.js'
+      - 'research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json'
+      - 'translator-sentence.js'
+      - 'translator-english.js'
+      - 'translator-grammar-ir.js'
+      - 'translator-integrated.js'
+      - 'tools/diagnose_historical_sentences.js'
       - 'tools/investigator_engine_bridge.js'
       - 'tools/investigator_advanced_morphology.js'
       - 'neural/multidocument_evidence.py'
@@ -49,6 +63,7 @@ jobs:
           python -m unittest discover -s tools -p 'test_primary_source_context.py' -v
           python -m unittest discover -s tools -p 'test_silver_gold_review_gates.py' -v
           python tools/validate_translation_corpus.py
+          node tools/test_contextual_poetic_vocables.js
           node tools/test_unresolved_historical_form_triage.js
       - name: Check four original Nahuatl excerpts against two additional colonial source documents
         run: |

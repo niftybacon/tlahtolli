@@ -46,3 +46,15 @@ The bridge's research-specific batch producer reuses **one initialized instance*
 A bounded, **separate** English-pretrained LoRA learning experiment can train on these examples and measure teacher-forced development loss on the two lexically held-out verb groups. No automatic weight deployment or Gold promotion is authorized. Even a large drop in synthetic held-out loss is not evidence for accurate unseen Classical Nahuatl manuscripts.
 
 Independent human-reviewed Gold (Issue #98) and source-reviewed Silver pairs remain the essential missing reference for any public model upgrade. The parallel [Brinton source review](TENTLI_BRINTON_CONTEXTUAL_FORMS_2026_10_30.md) identifies real vocabulary uncertainty that synthetic repetition cannot resolve.
+
+
+## Actual bounded English-pretrained learning result
+
+[Successful 40-step FLAN-T5 composition-supervision workflow #41075120001](https://github.com/niftybacon/tlahtolli/actions/runs/41075120001) produced a private research adapter after **40 real optimizer updates** on **6,000 Bronze training** examples; **176 development examples** contained lexically held-out verb groups. The training job re-generated the source-graded dataset under a recorded source-file hash ledger, inspected research metadata, reopened the actual adapter and verified both canonical English suggestions and `xyzzy` abstention.
+
+- **Development teacher-forced synthetic loss:** **3.742226 before → 3.377300 after**.
+- **5,980 of 6,000** training examples had **multiple English alternatives** and were therefore weakly weighted **0.15**, not treated as singular translation truth. This is a major limitation: combinatorial breadth is not independently annotated semantic diversity.
+- The model's proposal must remain inside exactly source-backed canonical English candidates. No model output or training step was authorized to rewrite the lexicon, claim Gold review, or deploy weights.
+- **Independent historical English semantic accuracy remains unknown**, so synthetic held-out loss cannot establish real manuscript translation competence.
+
+**Next priority:** improve evidence-graded, independently read historical *Silver* sentences and contexts, and eliminate unsafe ambiguity before further large-scale training. Repeated gradient updates on mostly weak, correlated Bronze cases are not a substitute for expert-reviewed translation evidence.

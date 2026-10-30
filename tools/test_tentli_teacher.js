@@ -14,6 +14,7 @@ try{
  assert(meta.uniqueParadigmSurfaces>100);
  assert(meta.counts.lemmas>=150);
  assert(meta.counts.forms>=100);
+ assert(meta.counts.hypotheses>0,'Canonical productive grammar must teach student');
  assert(meta.counts.english>0,'Need at least one unique IR-audited English teacher');
  assert.equal(rows.length,meta.examples);
  assert(rows.some(x=>x.grade==='grammar-paradigm'&&x.input==='nitlahtoa'));

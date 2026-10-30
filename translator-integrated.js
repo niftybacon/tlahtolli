@@ -77,11 +77,19 @@ function showResult(){
       joinLabel.append(choice);panel.append(joinLabel);
      }
     }
-    const evidence=el('details');
+    const evidence=el('details','translator-composition-evidence');
     evidence.append(el('summary','','Sources and lexical alternatives'));
     for(const unit of composition.units){
      const meanings=[...new Set(unit.options.flatMap(o=>o.nounSenses.map(n=>n.lemma+': '+n.fullMeaning)))];
      if(meanings.length)evidence.append(el('p','translator-meta',meanings.join(' · ')));
+     const predicates=unit.options.flatMap(o=>[o.structure.frame,o.structure.relativeFrame,o.structure.matrixFrame])
+      .filter(f=>f?.morphologyEvidence).map(f=>f.morphologyEvidence);
+     const seen=new Set();
+     for(const p of predicates)if(!seen.has(p.written+'|'+p.lemma)){
+      seen.add(p.written+'|'+p.lemma);
+      evidence.append(el('p','translator-meta',p.written+' → '+p.lemma+': '+p.meaning+
+       ' · '+p.grade+' · '+p.locator+' · Selected English is editorial; no verified sentence reading.'));
+     }
     }
     const urls=new Set([...composition.units.flatMap(u=>u.options.flatMap(o=>o.sources)),
      ...composition.joins.flatMap(j=>j.sources)]);
@@ -847,9 +855,21 @@ function showResult(){
        [...parent.querySelectorAll('details.translator-morph-panel')]
         .map((node,index)=>({index,open:node.open}))
         .filter(item=>item.open));
+      const compositionOpen=!!passages.querySelector('details.translator-composition-evidence')?.open;
+      const selectedReadings=[...passages.querySelectorAll('.translator-composed-english select')]
+       .map(s=>({label:s.getAttribute('aria-label'),value:s.value}));
       archiveMorphologyRendered=true;
       morphBridge?.clearCache();
       showResult();
+      const compositionDetails=passages.querySelector('details.translator-composition-evidence');
+      if(compositionDetails)compositionDetails.open=compositionOpen;
+      for(const saved of selectedReadings){
+       const select=[...passages.querySelectorAll('.translator-composed-english select')]
+        .find(s=>s.getAttribute('aria-label')===saved.label);
+       if(select&&[...select.options].some(o=>o.value===saved.value)){
+        select.value=saved.value;select.dispatchEvent(new Event('change'));
+       }
+      }
       [parts,passages].forEach((parent,section)=>{
        const panels=[...parent.querySelectorAll('details.translator-morph-panel')];
        for(const item of visibleNotes[section]){
@@ -988,9 +1008,11 @@ async function init(){
    fetch('./data/source_finite_context.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./data/passages.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./data/predicate_english.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -1018,14 +1040,14 @@ async function init(){
    const response=await fetch('./paradigms.json',{cache:'no-cache'});
    if(response.ok&&window.TlahtolliSentence){
     const parsedParadigms=await response.json();
-    grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages,parsedParadigms)||null;
     sentenceModel=window.TlahtolliSentence.create(
     document,parsedParadigms,
     explainMorphology,corpus,locative,
     clauseGrammar.status==='fulfilled'?clauseGrammar.value:null,
     possessiveEvidence.status==='fulfilled'?possessiveEvidence.value:null,
     sourceFiniteEvidence.status==='fulfilled'?sourceFiniteEvidence.value:null,
-    citedPassages);
+    citedPassages,predicateEnglish.status==='fulfilled'?predicateEnglish.value:null);
+    grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages,parsedParadigms,sentenceModel)||null;
    }
   }catch{} // Lexical analysis remains usable when paradigm loading fails.
   if(sentenceModel)try{

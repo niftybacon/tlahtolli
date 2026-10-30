@@ -151,7 +151,7 @@ function create(model){
    return fail('Some units still lack supported English wording; inspect their structural analysis below.');
   return {available:true,units,joins,verified:false,
    alternativeCount:units.reduce((n,u)=>n*u.options.length,1)*joins.reduce((n,j)=>n*j.options.length,1),
-   note:'Draft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context.'+
+   note:'Draft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context. Source-gated productive verb analyses keep their original hypothesis or recorded-form grade; composing English does not attest a sentence.'+
     (units.some(u=>u.options.some(o=>o.structure.kind==='relational-location'))?
      ' Location readings assume the relational possessor refers to the written place. Event versus noun attachment, relation sense, and negation scope remain hypotheses; no place is carried into another clause.':'')};
  }

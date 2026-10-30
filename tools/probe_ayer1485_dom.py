@@ -29,5 +29,5 @@ for url in urls:
             print("PARA COUNT",len(body.select("p")),"FOOTNOTECOUNT",len(body.select("sup")))
     if "ayer1485i" in url:
         import re
-        starts=[int(m.group(1)) for a in soup.select("a[href]") if (m:=re.search(r"ayer1485p\\?s=ayer1485-(\\d+)",a.get("href") or ""))]
+        starts=[int(m.group(1)) for a in soup.select("a[href]") if (m:=re.search(r"ayer1485p\?s=ayer1485-(\d+)",a.get("href") or ""))]
         print("INDEX STARTS",len(starts),starts[:6],starts[-7:])

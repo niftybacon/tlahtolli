@@ -64,12 +64,12 @@
       "id": "bc26-tecpancalli",
       "work_id": "enl-bc26-early16",
       "form": "tecpancalli",
-      "exact_short_nahuatl": "yn don juan tecpancalli ytech poviz",
+      "exact_short_nahuatl": "yn don juan tecpancalli ytech pohuiz",
       "context_role": "ruler_household_institution_not_just_building",
       "printed_edition_locator": "BC26 Folio A, section 1, line ~27",
       "lexical_sense_source_status": "source_editor_context_note_requires_independent_reassessment",
       "review_status": "pending",
-      "note": "Lockhart observes institutional household/palace interpretation; don't flatten into the physical building for every appearance."
+      "note": "The original edited transcription has 'pohuiz' here. Lockhart's interpretation concerns the ruler's household/organization, not necessarily a physical palace building."
     },
     {
       "id": "bc26-field-ordinal",

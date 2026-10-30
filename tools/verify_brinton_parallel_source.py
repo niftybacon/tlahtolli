@@ -52,7 +52,7 @@ def _normalized(s: str) -> str:
 def _line_number(url: str, label: str) -> int:
     if not isinstance(url, str):
         raise AttestationError(f"Missing {label} source URL")
-    prefix = f"https://github.com/{SOURCE_REPO}/blob/master/12219.txt"
+    prefix = f"https://github.com/{SOURCE_REPO}/blob/{SOURCE_COMMIT}/12219.txt"
     if not url.startswith(prefix + "#L"):
         raise AttestationError(f"{label} pointer does not refer to the pinned source")
     match = LINE.search(url)

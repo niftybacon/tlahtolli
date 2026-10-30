@@ -116,7 +116,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    guard.model_weights_updated!==false)return [];
   const expected=['brinton-xv-02-huiya','cantares-18v-304-huiya'];
   const original=String(input||'').normalize('NFC').toLowerCase()
-   .match(/[\\p{L}\\p{M}]+/gu)||[];
+   .match(/[\p{L}\p{M}]+/gu)||[];
   if(original.length>512)return [];
   const matched=[];
   for(const [i,row] of doc.observations.entries()){
@@ -127,10 +127,10 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     row.manuscript_image_collated!==false||
     row.whole_stanza_english_semantics_reviewed!==false||
     row.reviewer_independence!=='not_independently_authenticated'||
-    typeof row.source_url!=='string'||!/^https:\/\/[^\\s/]+\//u.test(row.source_url)||
+    typeof row.source_url!=='string'||!/^https:\/\/[^\s/]+\//u.test(row.source_url)||
     typeof row.short_source_fragment!=='string'||row.short_source_fragment.length>180)continue;
    const pattern=row.short_source_fragment.normalize('NFC').toLowerCase()
-    .match(/[\\p{L}\\p{M}]+/gu)||[];
+    .match(/[\p{L}\p{M}]+/gu)||[];
    if(pattern.length<5||pattern.filter(x=>x==='huiya').length!==1)continue;
    for(let start=0;start+pattern.length<=original.length;start++){
     if(!pattern.every((t,k)=>t===original[start+k]))continue;

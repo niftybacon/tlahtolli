@@ -12,9 +12,12 @@ def infer(model_dir: str, text: str, task: str = "denoise") -> dict:
     meta = json.loads((folder / "metadata.json").read_text(encoding="utf-8"))
     if meta.get("format") != "tentli-experimental-neural-v1":
         raise ValueError("Unsupported neural artifact")
-    if task == "translate" and not meta.get("trained_translation_examples", 0):
-        raise ValueError("This model has not learned from any licensed translation examples")
-    if task not in {"denoise", "translate"}:
+    if task == "translate" and not (meta.get("trained_translation_examples", 0) or
+                                    meta.get("teacher_translation_examples", 0)):
+        raise ValueError("This model has not learned from any English supervision")
+    if task == "analyze" and not meta.get("trained_analysis_examples", 0):
+        raise ValueError("This model has not learned canonical morphological analyses")
+    if task not in {"denoise", "translate", "analyze"}:
         raise ValueError("Unknown model task")
     model = TentliNeural(**meta["model_config"])
     model.load_state_dict(torch.load(folder / meta["weights_filename"],
@@ -24,7 +27,9 @@ def infer(model_dir: str, text: str, task: str = "denoise") -> dict:
         "proposal": model.generate(text, task=task),
         "grade": "experimental_neural_hypothesis",
         "translation_accuracy": None,
-        "warning": "Unverified neural output; not a historical attestation or a Tēntli grammar judgment",
+        "warning": ("Unverified neural output; never overrides the canonical Tēntli analysis. " +
+                    ("Teacher English is synthetic grammar output, not historical translation training."
+                     if task == "translate" and not meta.get("trained_translation_examples", 0) else "")),
     }
 
 
@@ -32,7 +37,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--model-dir", required=True)
     p.add_argument("--text", required=True)
-    p.add_argument("--task", choices=["denoise", "translate"], default="denoise")
+    p.add_argument("--task", choices=["denoise", "translate", "analyze"], default="denoise")
     a = p.parse_args()
     print(json.dumps(infer(a.model_dir, a.text, a.task), ensure_ascii=False, indent=2))
 

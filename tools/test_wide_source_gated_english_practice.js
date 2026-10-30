@@ -12,7 +12,10 @@ for(const source of [
 ]){
  const single=produce(source,32);
  const cached=batch(source,32);
- assert.deepEqual(cached,single,'Batch grammar provider must match single-source audited bridge on '+source);
+ // Array prototypes may come from separate Node VM contexts. Compare
+ // JSON representations rather than nonsemantic cross-realm prototypes.
+ assert.equal(JSON.stringify(cached),JSON.stringify(single),
+              'Batch grammar provider must match single-source audited bridge on '+source);
 }
 const {out,meta}=build();
 assert(out.length>0);

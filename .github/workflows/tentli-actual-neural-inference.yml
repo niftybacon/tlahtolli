@@ -68,6 +68,11 @@ jobs:
             --after "$RUNNER_TEMP/latest" \
             --output "$RUNNER_TEMP/tentli-actual-inference-probes.json" \
             --generation-limit 72
+      - name: Run the ORIGINAL canonical grammar composer on the SAME benchmark inputs
+        run: |
+          node tools/probe_actual_tentli_canonical.js \
+            "$RUNNER_TEMP/tentli-actual-inference-probes.json" \
+            "$RUNNER_TEMP/tentli-canonical-versus-neural.json"
       - name: Validate benchmark completeness and no fake accuracy
         run: |
           python - <<'PY'
@@ -83,6 +88,11 @@ jobs:
           assert s['denoising_unscored_probes']==2
           assert s['human_reviewed_test_count']==0 and s['heldout_gold_count']==0
           assert s['translation_accuracy'] is None
+          canonical=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'tentli-canonical-versus-neural.json').read_text(encoding='utf-8'))
+          assert canonical['summary']['constructed_grammar_probes']==8
+          assert canonical['summary']['historical_enl_anchor_probes']==7
+          assert canonical['summary']['human_translation_accuracy'] is None
+          assert canonical['summary']['negatives_correctly_refused']==2
           assert len(data['english_probes'])==17
           assert all('latest_neural_en' in row for row in data['english_probes'])
           assert all('latest_neural_es' in row for row in data['spanish_probes'])
@@ -91,6 +101,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: tentli-actual-neural-inference-benchmark-results
-          path: ${{ runner.temp }}/tentli-actual-inference-probes.json
+          path: |
+            ${{ runner.temp }}/tentli-actual-inference-probes.json
+            ${{ runner.temp }}/tentli-canonical-versus-neural.json
           if-no-files-found: error
           retention-days: 30

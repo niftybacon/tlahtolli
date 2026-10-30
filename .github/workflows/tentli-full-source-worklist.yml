@@ -46,6 +46,7 @@ jobs:
           python -m neural.paged_historical_investigator --all \
             --output "$RUNNER_TEMP/tentli-all-historical-forms.json" \
             > "$RUNNER_TEMP/all-forms-summary.json"
+          cat "$RUNNER_TEMP/all-forms-summary.json"
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
           import json,os
           from pathlib import Path

@@ -73,8 +73,9 @@ def score_licensed_candidates(source:str, candidates:list[dict], model_dir:str)-
     metadata=json.loads((folder/"metadata.json").read_text(encoding="utf-8"))
     if metadata.get("format")!="tentli-experimental-neural-v1":
         raise ValueError("Unknown neural model artifact")
-    if not metadata.get("trained_translation_examples",0):
-        raise ValueError("Checkpoint has no historical translation task lineage")
+    if not (metadata.get("trained_translation_examples",0) or
+            metadata.get("teacher_translation_examples",0)):
+        raise ValueError("Checkpoint has no translation task lineage at all")
     cfg=metadata["model_config"]
     limit=cfg["max_bytes"]-2
     if len(unicodedata.normalize("NFC",source).encode("utf-8"))>limit:

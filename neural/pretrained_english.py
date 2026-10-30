@@ -18,6 +18,7 @@ import re
 import unicodedata
 from collections.abc import Callable
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 from .hybrid_infer import canonical_candidates
@@ -35,6 +36,22 @@ def candidate_key(text: str) -> str:
     return " ".join(unicodedata.normalize("NFC", text).split())
 
 
+def approved_research_adapter(folder: Path) -> dict[str, Any]:
+    """Validate local experimental adapter identity, NOT its historical accuracy."""
+    path = folder / "research_metadata.json"
+    if not path.is_file() or not (folder / "adapter_model.safetensors").is_file():
+        raise ValueError("Missing private research adapter and provenance metadata")
+    meta=json.loads(path.read_text(encoding="utf-8"))
+    if (meta.get("format")!="tentli-english-supervision-lora-v1" or
+        meta.get("evidence_tier") not in {"synthetic_grammar_teacher","human_reviewed_bilingual"} or
+        meta.get("base_model")!=MODEL_ID or meta.get("revision")!=MODEL_REVISION or
+        meta.get("automatically_approved_for_public_translation") is not False or
+        meta.get("independent_translation_accuracy") is not None or
+        meta.get("actual_optimizer_steps",0)<1):
+        raise ValueError("Untrusted adapter or missing evidence-grade research restrictions")
+    return meta
+
+
 @dataclass
 class FlanEnglishDecoder:
     """Small pretrained English-capable seq2seq model; lazy optional dependency."""
@@ -42,6 +59,7 @@ class FlanEnglishDecoder:
     model_id: str = MODEL_ID
     revision: str = MODEL_REVISION
     local_files_only: bool = False
+    adapter_path: str | None = None
 
     def __post_init__(self) -> None:
         # Do not load the larger model at all on an unsupported Nahuatl input.
@@ -53,6 +71,14 @@ class FlanEnglishDecoder:
         self.model = AutoModelForSeq2SeqLM.from_pretrained(
             self.model_id, revision=self.revision, trust_remote_code=False,
             local_files_only=self.local_files_only)
+        self.adapter_metadata = None
+        if self.adapter_path:
+            metadata = approved_research_adapter(Path(self.adapter_path))
+            from peft import PeftModel
+            self.model = PeftModel.from_pretrained(
+                self.model,str(self.adapter_path),is_trainable=False,
+                local_files_only=True)
+            self.adapter_metadata = metadata
         self.model.eval()
         torch.set_num_threads(min(torch.get_num_threads(), 4))
 
@@ -134,7 +160,7 @@ def guarded_english_realization(
 
 def pretrained_english(source: str, *,
                        model_id: str=MODEL_ID, revision: str=MODEL_REVISION,
-                       local_files_only: bool=False,
+                       local_files_only: bool=False,adapter_dir:str|None=None,
                        decoder: FlanEnglishDecoder | None=None)->dict[str,Any]:
     candidate_set=canonical_candidates(source)
     if candidate_set["status"]!="candidates":
@@ -142,10 +168,12 @@ def pretrained_english(source: str, *,
     if model_id != MODEL_ID or revision != MODEL_REVISION:
         raise ValueError("Unreviewed English decoder model or revision")
     engine=decoder if decoder is not None else FlanEnglishDecoder(
-        model_id=model_id,revision=revision,local_files_only=local_files_only)
+        model_id=model_id,revision=revision,local_files_only=local_files_only,
+        adapter_path=adapter_dir)
     result=guarded_english_realization(source,rewrite=engine.rewrite,admitted=candidate_set)
     result["pretrained_model"]={
         "repository":MODEL_ID,"revision":MODEL_REVISION,"license":MODEL_LICENSE,
+        "adapter_evidence_tier":getattr(engine,"adapter_metadata",None) and engine.adapter_metadata["evidence_tier"],
         "claim":"pretrained English expression; NOT pretrained Classical Nahuatl translation"
     }
     return result
@@ -155,8 +183,9 @@ def main()->None:
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--text",required=True)
     p.add_argument("--local-files-only",action="store_true")
+    p.add_argument("--adapter-dir",help="Optional PRIVATE research LoRA adapter with checked provenance, never automatically published")
     a=p.parse_args()
-    print(json.dumps(pretrained_english(a.text,local_files_only=a.local_files_only),
+    print(json.dumps(pretrained_english(a.text,local_files_only=a.local_files_only,adapter_dir=a.adapter_dir),
                      indent=2,ensure_ascii=False))
 
 

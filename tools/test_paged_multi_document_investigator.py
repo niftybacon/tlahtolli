@@ -22,10 +22,10 @@ def fake_pages():
             "[Transcription by James Lockhart] "
             "Published English translation ...",
         "https://enl.wired-humanities.org/bc26/elements/bc26a/000":
-            "Introduction: yn don juan tecpancalli ytech poviz "
+            "Introduction: yn don juan tecpancalli ytech pohuiz "
             "English Translation: palace "
             "Analytic Transcription "
-            "yn don juan tecpancalli ytech poviz ynic cecni ocoçacapan "
+            "yn don juan tecpancalli ytech pohuiz ynic cecni ocoçacapan "
             "[Transcription by James Lockhart] "
             "English Translation: palace",
     }
@@ -71,7 +71,7 @@ class AdditionalDocuments(unittest.TestCase):
         # The contextual form is in the intro, not original Nahuatl section.
         pages=fake_pages()
         pages["https://enl.wired-humanities.org/bc26/elements/bc26a/000"]=(
-            "Intro yn don juan tecpancalli ytech poviz"
+            "Intro yn don juan tecpancalli ytech pohuiz"
             " Analytic Transcription ynic cecni ocoçacapan "
             "[Transcription by James Lockhart]")
         with self.assertRaisesRegex(ValueError,"excerpt mismatch"):

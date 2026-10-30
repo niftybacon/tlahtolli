@@ -60,9 +60,15 @@ def make_examples(rows, cap: int, *, rng: random.Random):
         for segment in source_chunks(row.original, cap - 2):
             yield corrupt(inputs(segment, "denoise", cap), rng=rng), targets(segment, cap), 1.0, "denoise"
         if row.translation is not None:
-            if len(row.original.encode("utf-8")) > cap-2 or len(row.translation.encode("utf-8")) > cap-2:
+            # The old English TRANSLATE task remains byte-identical. Spanish
+            # adds an in-band source-language conditioning prefix to the
+            # EXISTING byte Transformer, preserving earlier learned weights.
+            conditioned = ("es: " + row.original) if row.translation_language == "es" else row.original
+            if len(conditioned.encode("utf-8")) > cap-2 or len(row.translation.encode("utf-8")) > cap-2:
                 raise ValueError("Long bilingual alignment needs human segment review; cannot silently truncate")
-            yield inputs(row.original, "translate", cap), targets(row.translation, cap), row.translation_weight, "translate"
+            yield inputs(conditioned, "translate", cap), targets(row.translation, cap), row.translation_weight, (
+                "translate_es" if row.translation_language == "es" else "translate"
+            )
 
 
 def pad_sequences(sequences: list[list[int]], device: torch.device):

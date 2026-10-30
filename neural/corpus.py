@@ -74,6 +74,7 @@ class Example:
     alignment: str | None
     translation_weight: float
     fingerprint: str
+    translation_language: str | None = None
 
     @property
     def experimental_parallel(self) -> bool:
@@ -106,6 +107,7 @@ def inspect_record(obj: dict, *, allow_test_fixture: bool = False) -> Example:
         raise CorpusError(f"{record_id}: invalid train/dev/test split")
     trans = obj.get("translation")
     translation_text = alignment = None
+    language = None
     weight = 0.0
     if trans is not None:
         if not isinstance(trans, dict):
@@ -113,8 +115,9 @@ def inspect_record(obj: dict, *, allow_test_fixture: bool = False) -> Example:
         translation_text = _required_string(trans, "text")
         if len(translation_text) > MAX_TEXT_CHARS:
             raise CorpusError(f"{record_id}: translation exceeds length bound")
-        if _required_string(trans, "language") != "en":
-            raise CorpusError(f"{record_id}: only English parallel targets supported in this experiment")
+        language = _required_string(trans, "language")
+        if language not in {"en", "es"}:
+            raise CorpusError(f"{record_id}: only English and Spanish training targets are supported")
         _check_rights(trans, record_id, "English translation")
         if not _valid_url(trans.get("source_url")):
             raise CorpusError(f"{record_id}: source-specific translation URL required")
@@ -125,7 +128,7 @@ def inspect_record(obj: dict, *, allow_test_fixture: bool = False) -> Example:
     digest = hashlib.sha256((record_id + "\0" + work_id + "\0" + original +
                              "\0" + (translation_text or "")).encode("utf-8")).hexdigest()
     return Example(record_id, work_id, url, original, split, transcription,
-                   rights, translation_text, alignment, weight, digest)
+                   rights, translation_text, alignment, weight, digest, language)
 
 
 def load_corpus(path: str | Path, *, allow_test_fixture: bool = False) -> list[Example]:
@@ -166,6 +169,10 @@ def summarize(rows: list[Example]) -> dict:
         "splits": dict(sorted(by_split.items())),
         "monolingual_training_records": sum(r.split == "train" for r in rows),
         "translation_training_records": sum(r.split == "train" and r.experimental_parallel for r in rows),
+        "translation_language_counts": {
+            "en": sum(r.split == "train" and r.translation_language == "en" for r in rows),
+            "es": sum(r.split == "train" and r.translation_language == "es" for r in rows),
+        },
         "candidate_parallel_training_records": sum(r.split == "train" and r.alignment == "candidate" for r in rows),
         "historical_transcription_unreviewed": sum(r.transcription_status in {"unreviewed", "editorial"} for r in rows),
         "fair_use_assessed_source_records": sum(r.rights == "fair_use_assessed" for r in rows),

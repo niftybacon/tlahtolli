@@ -1,0 +1,147 @@
+name: Train Tēntli from pinned Florentine and Classical Axolotl
+on:
+  push:
+    branches: [feat/tentli-florentine-axolotl-training-20261029]
+    paths:
+      - 'neural/**'
+      - 'tools/test_florentine_axolotl_intake.py'
+      - '.github/workflows/tentli-florentine-axolotl-training.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  real-classical-research-training:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test original-source intake, work separation and Spanish task labels
+        run: |
+          python -m unittest discover -s tools -p 'test_florentine_axolotl_intake.py' -v
+          python -m unittest discover -s tools -p 'test_historical_neural_corpus.py' -v
+          python -m unittest discover -s tools -p 'test_neural_fair_use_intake.py' -v
+      - name: Obtain pinned existing Tēntli teacher and Brinton/Chimalpahin checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: tentli-neural-poems-and-chimalpahin-research-weights
+          run-id: 40983772892
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/tentli/base-checkpoint
+      - name: Normalize the prior checkpoint artifact's nested upload directory
+        run: |
+          python - <<'PY'
+          import json,os,pathlib,shutil
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'tentli/base-checkpoint'
+          folders=[p.parent for p in root.rglob('metadata.json')
+                   if p.parent.joinpath('weights.pt').exists()]
+          if len(folders)!=1:
+              raise ValueError(f"Expected one valid base checkpoint, got {folders}")
+          origin=folders[0]
+          if origin!=root:
+              shutil.copy2(origin/'weights.pt',root/'weights.pt')
+              shutil.copy2(origin/'metadata.json',root/'metadata.json')
+          print('REUSING_ACTUAL_PRIOR_MODEL',origin)
+          PY
+      - name: Fetch all 12 Florentine files using the repository's existing archive downloader
+        run: |
+          python - <<'PY'
+          import os,pathlib,time
+          from tools.analyze_florentine_codex import BOOKS,get_file
+          p=pathlib.Path(os.environ["RUNNER_TEMP"])/"tentli/florentine"
+          p.mkdir(parents=True,exist_ok=True)
+          for n,title in BOOKS:
+              text=get_file(n,title)
+              (p/f"Book {n} - {title}.txt").write_text(text,encoding="utf-8")
+              print("FETCHED_SOURCE_BOOK",n,len(text),flush=True)
+              time.sleep(0.2)
+          PY
+      - name: Download only the previously pinned public Axolotl CSV
+        run: |
+          mkdir -p "$RUNNER_TEMP/tentli"
+          curl --fail --location --silent --show-error --retry 3 --connect-timeout 20 --max-time 140 \
+            "https://raw.githubusercontent.com/ElotlMX/py-elotl/157f34300f4ca92c3d75b74ec14142916d75c30b/elotl/corpora/axolotl.csv" \
+            -o "$RUNNER_TEMP/tentli/axolotl.csv"
+      - name: Source checksums, provenance, Classical-only labels, Spanish correspondences
+        run: |
+          python -m neural.intake_florentine_axolotl \
+            --florentine-dir "$RUNNER_TEMP/tentli/florentine" \
+            --prior-scan "research/florentine_codex/analysis.json" \
+            --axolotl-file "$RUNNER_TEMP/tentli/axolotl.csv" \
+            --output-dir "$RUNNER_TEMP/tentli/corpora"
+      - name: Install CPU PyTorch (same model architecture, no new parser)
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Verify actual retained base checkpoint before learning
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          folder=pathlib.Path(os.environ['RUNNER_TEMP'])/"tentli/base-checkpoint"
+          x=json.loads((folder/'metadata.json').read_text())
+          assert x['format']=='tentli-experimental-neural-v1'
+          assert x['model_config']['width']==48 and x['model_config']['max_bytes']==256
+          assert x['trained_analysis_examples']>=1000
+          assert x['trained_translation_examples']>=165
+          assert (folder/'weights.pt').exists()
+          print('BASE_WEIGHTS_REUSED',x['trained_translation_examples'],x['trained_analysis_examples'])
+          PY
+      - name: Continue real Tēntli learning from Florentine Codex 11 train books, 1 dev book
+        run: |
+          python -m neural.train --manifest "$RUNNER_TEMP/tentli/corpora/florentine.jsonl" \
+            --init-checkpoint "$RUNNER_TEMP/tentli/base-checkpoint" \
+            --output "$RUNNER_TEMP/tentli/after-florentine" \
+            --width 48 --heads 4 --layers 1 --max-bytes 256 \
+            --epochs 2 --batch-size 8 --max-steps 320
+      - name: Continue same learned weights from strict Classical Axolotl, labelled Spanish
+        run: |
+          python -m neural.train --manifest "$RUNNER_TEMP/tentli/corpora/axolotl.jsonl" \
+            --init-checkpoint "$RUNNER_TEMP/tentli/after-florentine" \
+            --output "$RUNNER_TEMP/tentli/after-florentine-axolotl" \
+            --width 48 --heads 4 --layers 1 --max-bytes 256 \
+            --epochs 2 --batch-size 8 --max-steps 480
+      - name: Prove both actual corpora were used without fabricating English gold
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'tentli'
+          fc=json.loads((root/'corpora/florentine.jsonl.meta.json').read_text())
+          ax=json.loads((root/'corpora/axolotl.jsonl.meta.json').read_text())
+          f=json.loads((root/'after-florentine/metadata.json').read_text())
+          m=json.loads((root/'after-florentine-axolotl/metadata.json').read_text())
+          assert len(fc['books'])==12 and fc['validated_records']>100
+          assert fc['books']['5']['split']=='dev'
+          assert ax['strict_classical_label_records']==5993
+          assert ax['validated_records']>=4000
+          assert ax['short_candidate_spanish_pairs']>0
+          assert f['steps']>0 and m['steps']>0
+          assert m['source_inventory']['translation_language_counts']['es']==ax['short_candidate_spanish_pairs']
+          assert m['source_inventory']['translation_language_counts']['en']==0
+          assert m['trained_translation_examples']>=165
+          assert m['trained_analysis_examples']>=1000
+          assert m['independent_translation_accuracy'] is None
+          assert (root/'after-florentine-axolotl/weights.pt').exists()
+          print('FLORENTINE_AXOLOTL_REAL_TRAINING',json.dumps({
+             'codex_books':len(fc['books']),
+             'codex_training_books':11,
+             'codex_dev_books':1,
+             'codex_spans':fc['validated_records'],
+             'axolotl_strict_classical':ax['strict_classical_label_records'],
+             'axolotl_rows_admitted':ax['validated_records'],
+             'axolotl_candidate_spanish_pairs':ax['short_candidate_spanish_pairs'],
+             'florentine_gradient_steps':f['steps'],
+             'axolotl_gradient_steps':m['steps'],
+             'heldout_translation_accuracy':None,
+             'model_parameters':m['trainable_parameters']},sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-florentine-axolotl-private-research-checkpoint
+          path: |
+            ${{ runner.temp }}/tentli/after-florentine-axolotl/weights.pt
+            ${{ runner.temp }}/tentli/after-florentine-axolotl/metadata.json
+            ${{ runner.temp }}/tentli/after-florentine/metadata.json
+            ${{ runner.temp }}/tentli/corpora/florentine.jsonl.meta.json
+            ${{ runner.temp }}/tentli/corpora/axolotl.jsonl.meta.json
+          retention-days: 30

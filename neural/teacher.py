@@ -11,18 +11,20 @@ from pathlib import Path
 
 GRADE_WEIGHT = {
     "grammar-paradigm": 0.65,
+    "source-gated-hypothesis": 0.22,
     "source-checked-lexeme": 0.8,
     "source-listed-form": 0.8,
     "grammar-composed-English": 0.2,
 }
 GRADE_TASK = {
     "grammar-paradigm": "analyze",
+    "source-gated-hypothesis": "analyze",
     "source-checked-lexeme": "analyze",
     "source-listed-form": "analyze",
     "grammar-composed-English": "translate",
 }
 CHECKED = ("dictionary.json", "paradigms.json", "translator-sentence.js",
-           "translator-english.js", "translator-grammar-ir.js")
+           "translator-english.js", "translator-grammar-ir.js", "tools/morphology_engine.js")
 
 
 @dataclass(frozen=True)

@@ -43,15 +43,15 @@ try{
   cat.advanced_browser_morphology_surface+
   cat.only_archival_dictionary_headword+
   cat.no_linked_engine_surface_match,1181);
- assert.equal(cat.no_linked_engine_surface_match,928,
-  'Unreviewed lexical-form citations are not productive grammar or curated headword coverage');
+ assert.equal(cat.no_linked_engine_surface_match,926,
+  'Two historically cited exact lexical headwords are now recognized, not full grammar');
  assert.equal(cat.source_indexed_exact_lexical_surface_research_leads,2);
  assert.equal(result.actual_grammar_or_full_english_coverage_from_lexical_leads,0);
  assert.match(result.source_indexed_lexical_leads_source_sha256,/^[0-9a-f]{64}$/);
  for(const [form,lemma] of [['yehuan','yehuantin'],['tepilhuan','tepilhuan']]){
   const entry=result.token_engine_diagnostics.find(x=>x.written_surface===form);
-  assert(entry&&entry.analysis_route==='no_linked_engine_surface_match',
-   'Exact source dictionary lookup is not a certified grammar parse: '+form);
+  assert(entry&&entry.analysis_route==='curated_lexical_headword_surface',
+   'Direct historical headword citation is now indexed in the canonical lexicon, not complete grammar: '+form);
   assert.equal(entry.source_indexed_exact_lexical_form_candidates.length,1);
   const c=entry.source_indexed_exact_lexical_form_candidates[0];
   assert.equal(c.lemma,lemma);

@@ -34,7 +34,11 @@ try{
  assert.equal(result.unresolved_forms.filter(x=>x.grammatical_segmentation_newly_verified).length,0);
  assert.equal(result.unresolved_forms.filter(x=>x.original_clause_translation_verified).length,0);
  assert(result.unresolved_forms.every(x=>x.historical_edition_examples.every(e=>
-  !/-(?:xxv|xxvi|xxvii)$/.test(e.work_id))));
+  !/-(?:xxv|xxvi|xxvii)$/.test(e.work_id)&&
+  e.short_context_not_independent_translation===true&&
+  typeof e.original_language_short_context==='string'&&
+  e.original_language_short_context.length>0&&
+  e.original_language_short_context.length<=200)));
  assert(result.unresolved_forms.every(x=>x.source_checked_similar_lemma_leads_not_equivalent.every(e=>
   e.historical_spelling_equivalence_verified===false&&
   e.grammatical_derivation_verified===false&&e.source_url.startsWith('https://'))));

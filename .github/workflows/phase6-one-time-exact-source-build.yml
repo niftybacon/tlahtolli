@@ -1,0 +1,56 @@
+name: One-time isolated Phase 6 canonical source build
+on:
+  push:
+    branches:
+      - feat/tentli-phase6-canonical-lexical-yehuan-tepilhuan-20261030
+    paths:
+      - tools/migrate_exact_lexical_phase6.py
+      - .github/workflows/phase6-one-time-exact-source-build.yml
+permissions:
+  contents: write
+jobs:
+  source-checked-canonical-build:
+    if: github.repository == 'niftybacon/tlahtolli'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out strictly named feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feat/tentli-phase6-canonical-lexical-yehuan-tepilhuan-20261030
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Refuse moved feature branch or preexisting foreign edits
+        run: |
+          test "$(git branch --show-current)" = "feat/tentli-phase6-canonical-lexical-yehuan-tepilhuan-20261030"
+          test -z "$(git status --porcelain)"
+      - name: Write exact historic lexicographic entries only through canonical builder
+        run: |
+          python tools/migrate_exact_lexical_phase6.py --write
+          python tools/build_dictionary.py --check
+          python tools/build_morphology_engine.py --check
+          python tools/build_runtime_assets.py --check
+      - name: Commit only authorized canonical source and generated outputs to THIS branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/lexicon.json data/morphology.json data/evidence.json references.json paradigms.json release.json dictionary.json claim_audit.csv index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "build: source-restricted exact yehuan and tepilhuan canonical lexical release (generated assets)"
+            git push origin HEAD:refs/heads/feat/tentli-phase6-canonical-lexical-yehuan-tepilhuan-20261030
+          fi
+      - name: Record no general spelling rewrite or source translation promotion
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+          d=json.loads(Path('dictionary.json').read_text())
+          assert d['version']=='2026-10-30.1.0' and len(d['words'])==2144
+          for word in ('yehuan','tepilhuan'):
+              x=next(v for v in d['words'] if v['word']==word)
+              assert not x['inflections'] and not x['stem'] and not x['possessed']
+              assert not x['translation'] and not x['example']
+          print('Exact-form canonical source migration: **2 dictionary wordforms**; zero inferred productive morphology and no verified historical sentence translations.')
+          PY

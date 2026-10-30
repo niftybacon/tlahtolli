@@ -125,6 +125,10 @@ def load_feedback(path: Path = FEEDBACK, *, candidates: list[dict]) -> dict:
             raise ValueError("Invalid user-observation entry")
         ref = by_id.get(row.get("record_id"))
         word = row.get("exact_written_form")
+        # This particular human note was about *zanio*, not arbitrary
+        # words elsewhere in the same stanza (e.g. xochitl).
+        if row.get("record_id") != BRINTON or word != "zanio":
+            raise ValueError("Provisional feedback's exact lexeme and stanza scope changed")
         if (ref is None or ref.get("split") != "train" or
                 not isinstance(word, str) or word != clean(word) or
                 word not in tokens(ref["original"]) or

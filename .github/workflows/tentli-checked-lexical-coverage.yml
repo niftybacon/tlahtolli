@@ -42,6 +42,7 @@ jobs:
             --limit 40 --per-work 4 \
             --output "$RUNNER_TEMP/tentli-canonical-lexical-audit.json" \
             > "$RUNNER_TEMP/tentli-canonical-lexical-summary.json"
+          cat "$RUNNER_TEMP/tentli-canonical-lexical-summary.json"
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
           import json, os
           from pathlib import Path

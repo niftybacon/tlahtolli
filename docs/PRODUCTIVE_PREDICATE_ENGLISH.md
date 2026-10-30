@@ -124,3 +124,20 @@ Runtime hashes include the optional English pack. The narrowly scoped
 `prepare-predicate-runtime.yml` workflow regenerates only `index.html` on this
 feature branch using the existing builder before the PR is opened. Full PR CI
 must pass on that final generated head before merging.
+
+## Compatibility with subsequent research integration
+
+On resuming this PR, main also contained the source-gated neural candidate
+bridge, optional pretrained English realizer and reviewed-correction pipeline.
+Those files are preserved without modification. Their canonical bridge already
+accepts this optional predicate pack and passes its tests with it present,
+including `nicochi`, `ōnicoch` and `ahmo nimiquiz`. Sixteen Python tests covering
+hybrid inference, pretrained output gates and the review loop also pass with
+the integrated tree. This verifies interfaces and safeguards, not new model
+training or real pretrained-weight execution in this PR.
+
+The old integrated-browser expectation for isolated `onicoch` and negated
+`ahmo onicoch` is updated to the intentionally expanded draft behavior. It now
+asserts exact English, retained lexical grade, Molina attribution and the
+unattested-sentence label. The incompatible `onicoch in cihuātl` control still
+must fail: a first-person intransitive cannot absorb that overt noun.

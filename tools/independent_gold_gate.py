@@ -162,6 +162,8 @@ def score_blind(gold: dict, predictions: dict, adjudications: dict,
     refs = {r["gold_id"]: r for r in gold["examples"]}
     if len(refs) < min_gold:
         raise ValueError("Cannot publish meaningful Gold accuracy from fewer reviewed examples")
+    if len({r["work_id"] for r in refs.values()}) < 2:
+        raise ValueError("Gold scoring needs at least two wholly unseen source works; one document cannot benchmark translation")
     if (predictions.get("format") != PREDICTIONS or
             adjudications.get("format") != ADJUDICATIONS or
             predictions.get("gold_reference_sha256") != meta["reference_content_sha256"] or
@@ -181,6 +183,8 @@ def score_blind(gold: dict, predictions: dict, adjudications: dict,
         if row["status"] == "translation" and (not isinstance(row.get("english"), str) or not row["english"].strip()):
             raise ValueError("Nonempty English required for a model translation")
         predicted[key] = row
+    if len({item["model_revision"] for item in predicted.values()}) != 1:
+        raise ValueError("One Gold evaluation must use a single frozen model revision")
     for row in adjudications.get("judgments", []):
         key = row.get("gold_id")
         if key not in refs or key in judgments:

@@ -51,9 +51,11 @@ parser is introduced.** The Python scoring wrapper is
 The bridge automatically supplies the optional
 `data/predicate_english.json` when present, to work with PR #92's
 separately developed **82 lexically gated English predicate
-realizations**. It does not copy, merge or modify that PR. Without
-that pack the existing 12 built-in verbs remain available; the
-bridge must not invent `nicochi` English from bare morphology.
+realizations**. It does not copy, merge or modify that PR. A separate
+CI worktree/check-out tests this integration against a pinned snapshot
+of the other agent's PR without modifying it. Without that pack the
+existing 12 built-in verbs remain available; the bridge must not
+invent `nicochi` English from bare morphology.
 
 ### Meaning of the neural likelihood
 
@@ -82,7 +84,7 @@ fully ranked search.
 
 ## Authentic saved-weight experiment
 
-[GitHub Actions real-model guarded-English run](https://github.com/niftybacon/tlahtolli/actions/runs/40998248504)
+[GitHub Actions real-model guarded-English run](https://github.com/niftybacon/tlahtolli/actions/runs/40998525813)
 restored the **real trained checkpoint from
 Temoa/Chimalpahin #40993235240**, not a synthetic fixture.
 
@@ -117,6 +119,9 @@ trained model's **254 UTF-8 byte** input budget. The hybrid returns
 its complete canonical draft while **skipping** the neural model
 and recording the bound explicitly, rather than truncating it.
 Targets longer than 254 bytes similarly are not silently scored.
+The original `neural.model.inputs` entry point itself now **raises
+a clear ValueError on oversized inputs**, so raw experimental decoding
+cannot silently erase different sentence endings either.
 This is a correctness guard, **not a longer-context architecture**.
 
 ### Important limits

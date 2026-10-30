@@ -80,7 +80,7 @@ def check() -> None:
     must(has_link(readme, "AGENTS.md"), "README does not link to AGENTS.md")
     must(has_link(agents, "docs/TENTLI_CONSOLIDATED_LEARNING_ROADMAP_2026_10_29.md"), "AGENTS missing canonical roadmap link")
     must(has_link(agents, "README.md#required-development-roadmap-october-30-2026"), "AGENTS missing README roadmap entrypoint")
-    must("both" in agents.lower() and "readme.md" in agents and "TENTLI_CONSOLIDATED_LEARNING_ROADMAP" in agents,
+    must("both" in agents.lower() and "readme.md" in agents.lower() and "TENTLI_CONSOLIDATED_LEARNING_ROADMAP" in agents,
          "Agents must update both canonical roadmap locations for substantial changes")
 
     for filename, text in (("README", readme), ("roadmap", roadmap), ("AGENTS", agents), ("PR template", template)):

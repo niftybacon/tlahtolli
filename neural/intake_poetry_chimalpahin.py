@@ -47,6 +47,13 @@ def extract_poems(source:str, *, max_parallel_bytes:int=254):
         raise ValueError("Notes boundary missing; may absorb commentary")
     body=body[:note.start()]
     sections=list(HEADING.finditer(body))
+    # Poem I repeats its Roman heading once above the Nahuatl title and
+    # once above Brinton's English title. This is not a 28th manuscript
+    # poem and must not trigger a false corpus failure.
+    if len(sections)==28 and [m.group(1) for m in sections[:2]]==["I","I"]:
+        between=body[sections[0].end():sections[1].start()].strip()
+        if between.startswith("_") and between.endswith("_") and len(between)<150:
+            sections.pop(1)
     found=[match.group(1) for match in sections]
     if found != list(ROMANS):
         raise ValueError(f"Missing/reordered poem headings: {found!r}")

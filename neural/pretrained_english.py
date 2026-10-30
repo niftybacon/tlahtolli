@@ -43,12 +43,23 @@ def approved_research_adapter(folder: Path) -> dict[str, Any]:
         raise ValueError("Missing private research adapter and provenance metadata")
     meta=json.loads(path.read_text(encoding="utf-8"))
     if (meta.get("format")!="tentli-english-supervision-lora-v1" or
-        meta.get("evidence_tier") not in {"synthetic_grammar_teacher","human_reviewed_bilingual"} or
+        meta.get("evidence_tier") not in {"synthetic_grammar_teacher","human_reviewed_bilingual",
+                                         "candidate_historical_bilingual"} or
         meta.get("base_model")!=MODEL_ID or meta.get("revision")!=MODEL_REVISION or
         meta.get("automatically_approved_for_public_translation") is not False or
         meta.get("independent_translation_accuracy") is not None or
         meta.get("actual_optimizer_steps",0)<1):
         raise ValueError("Untrusted adapter or missing evidence-grade research restrictions")
+    if meta.get("evidence_tier") == "candidate_historical_bilingual":
+        if (meta.get("candidate_historical_training_records",0)<1 or
+            meta.get("candidate_translation_weight") != 0.15 or
+            meta.get("weak_candidate_rights_validated") is not True or
+            meta.get("human_reviewed_training_examples") != 0 or
+            meta.get("gold_translation_examples") != 0 or
+            meta.get("source_translation_quality_verified") is not False or
+            meta.get("historical_semantic_accuracy") is not None or
+            meta.get("historical_alignment_grade") != "published_interpretive_stanza_candidate"):
+            raise ValueError("Weak historical candidate adapter lacks explicit non-gold evidence restrictions")
     return meta
 
 
@@ -103,8 +114,8 @@ class FlanEnglishDecoder:
             "Sentence: "+canonical)
 
     def translate_reviewed_nahuatl(self, source: str) -> str:
-        # The private LoRA is trained on the distinct bilingual
-        # Nahuatl -> English objective, not English-only rewriting.
+        # The private LoRA is trained on an explicitly graded bilingual
+        # Nahuatl -> English objective (reviewed, synthetic, or weak historical), not English-only rewriting.
         # This raw proposal is NEVER output unless the source grammar
         # independently admits EXACTLY the generated English.
         if self.adapter_metadata is None:

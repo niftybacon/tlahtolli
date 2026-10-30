@@ -74,7 +74,8 @@ try{
  const part=bridge.bridge(limited);
  assert.equal(part.research_investigation_count,20);
  assert.equal(part.source_historical_contexts_run_through_engines,7);
- assert.equal(JSON.stringify(result),JSON.stringify(bridge.bridge(report)),\n  'Re-run must produce identical JSON diagnostic; browser VM prototypes may differ');
+ assert.equal(JSON.stringify(result),JSON.stringify(bridge.bridge(report)),
+  'Re-run must produce identical JSON diagnostic; browser VM prototypes may differ');
  const out=path.join(temp,'from-cli.json');
  cp.execFileSync('node',['tools/investigator_engine_bridge.js',
   '--input',input,'--output',out],{cwd:root,encoding:'utf8',timeout:150000});

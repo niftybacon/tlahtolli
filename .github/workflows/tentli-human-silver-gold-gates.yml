@@ -37,11 +37,11 @@ jobs:
           python tools/validate_translation_corpus.py
       - name: Produce 40 PRINTED Brinton stanza worksheets, never signed Silver or private Gold
         run: |
-          python tools/prepare_silver_review.py \
+          python -m tools.prepare_silver_review \
             --limit 40 --max-per-work 4 \
             --output "$RUNNER_TEMP/tentli-pending-silver-review.json" \
             > "$RUNNER_TEMP/tentli-review-summary.json"
-          python tools/independent_gold_gate.py > "$RUNNER_TEMP/tentli-no-real-gold.json"
+          python -m tools.independent_gold_gate > "$RUNNER_TEMP/tentli-no-real-gold.json"
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
           import json, os
           from pathlib import Path

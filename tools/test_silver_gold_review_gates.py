@@ -246,6 +246,9 @@ class PrivateGoldTests(unittest.TestCase):
                 for i, r in enumerate(data["examples"])
             ],
         }
+        with self.assertRaisesRegex(ValueError, "cannot be weakened"):
+            score_blind(data, pred, judgments, min_gold=1,
+                        exposures=synthetic_exposure())
         result = score_blind(data, pred, judgments, exposures=synthetic_exposure())
         self.assertEqual(result["adjudication_counts"]["faithful"], 7)
         self.assertEqual(result["adjudication_counts"]["incorrect"], 3)

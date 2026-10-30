@@ -65,3 +65,15 @@ Prioritize areas of high-frequency words and sentence meaning, including context
 ## Release gate
 
 A candidate neural checkpoint is **not** a public translation upgrade unless independent, rights-cleared, source-work-disjoint human evaluation demonstrates better semantic faithfulness and coverage, and there is no regression in Tēntli's morphological/grammar-IR source guarantees or hallucination/abstention controls. Until then the canonical English reading remains authoritative.
+
+## Actual pretrained candidate training result (October 29, 2026 local)
+
+[Successful candidate FLAN-T5 research workflow #41004161971](https://github.com/niftybacon/tlahtolli/actions/runs/41004161971) completed the newly introduced weak-history training job, the source/Gold-separation tests, a 40-step FLAN-T5 LoRA optimizer run, actual adapter load, and canonical translation/unknown-input gate probes. Results from its emitted research metadata:
+
+- 133 train, 17 development candidates, drawn from disjoint Brinton poems; weak-alignment gradient weight **0.15**.
+- 40 actual LoRA optimizer steps; English-pretrained base model remains `google/flan-t5-small`, pinned revision.
+- Held-out **Brinton development teacher-forced loss**: **3.980656 before → 3.886141 after**. This is not a human semantic evaluation or translation accuracy.
+- All three constructed free-generation probes were **rejected** by the canonical English candidate gate: `nichōca` → proposal `Preserve every argument, negation, number and tense.`; `nitlacua` → empty proposal; `niquitta in cihuātl` → instructional fragment. The existing canonical outputs (`I cry.`, `I eat.`, `I see the woman.`) remained unchanged; unknown `xyzzy` abstained.
+- Independent human-scored accuracy remains **null**; zero Gold examples; no adapter publicly deployed. Actual adapter stored as a time-limited research-only GitHub Actions artifact (30 days).
+
+This result supports continued *carefully graded* bilingual supervision **and better data/architecture**, not merely more unsupervised repetition. Separate [Issue #98](https://github.com/niftybacon/tlahtolli/issues/98) tracks independent Gold review; [Issue #99](https://github.com/niftybacon/tlahtolli/issues/99) tracks an existing main-branch English evidence-panel browser regression. The latter is independently visible in [main workflow #41002514274](https://github.com/niftybacon/tlahtolli/actions/runs/41002514274) and should be fixed in parallel without mixing unrelated user-interface changes into this neural training PR.

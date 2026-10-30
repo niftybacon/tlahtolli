@@ -58,6 +58,13 @@ class BrintonPrintedSourceAuditTests(unittest.TestCase):
         with self.assertRaisesRegex(AttestationError, "cannot promote"):
             verify_record(row, lines, prose_begin=0, prose_end=7)
 
+    def test_mutable_master_branch_links_are_rejected(self):
+        lines, row = self.fixture()
+        row["source_url"] = row["source_url"].replace(
+            f"/blob/{SOURCE_COMMIT}/", "/blob/master/")
+        with self.assertRaisesRegex(AttestationError, "pinned source"):
+            verify_record(row, lines, prose_begin=0, prose_end=7)
+
     def test_bad_git_object_rejected(self):
         lines, row = self.fixture()
         row["source_blob_sha"] = "0" * 40

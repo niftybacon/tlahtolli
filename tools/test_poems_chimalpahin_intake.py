@@ -21,7 +21,9 @@ def sample_poems():
                       "2. More fictional Nahuatl writing.",
                       "2. Further synthetic English translation.",
                       "3. A fictional third historical stanza, never an actual quotation.",
-                      "3. A matching third English paraphrase."])
+                      "3. A matching third English paraphrase.",
+                      "4. Fictional final source stanza.",
+                      "4. An English paraphrase of a synthetic stanza."])
     lines.extend(["NOTES.","1. Editorial notes definitely not source language.",
                   "*** END OF THE PROJECT GUTENBERG EBOOK ANCIENT NAHUATL POETRY ***"])
     return "\n".join(lines)
@@ -34,7 +36,7 @@ def sample_prose():
            "Yntemoca yntlacamecayo, yn tlahtoque yn teteuhctin.",
            "auh yn mochiuh culhuacan, yn altepetl yn tlaca.",
            ""]
-    for i in range(45):
+    for i in range(140):
         lines.extend([f"Auh yn tlahtoque {i}, yn tlaca ypan altepetl yn otonal.", 
                       "Auh yn teteuhctin yn chalca yn ic neçi tecpan.", ""])
     lines.extend(["[A page or more is missing here.]",
@@ -48,10 +50,10 @@ class ExtractorTests(unittest.TestCase):
     def test_poems_segment_historical_verses_from_commentary_and_english(self):
         rows,meta=extract_poems(sample_poems(),max_parallel_bytes=220)
         self.assertEqual(meta["poems"],27)
-        self.assertEqual(meta["stanzas"],81)
+        self.assertEqual(meta["stanzas"],108)
         self.assertEqual(meta["paired_verse_number_anchors"],81)
         self.assertGreater(meta["weak_parallel_trainable_short_pairs"],0)
-        self.assertTrue(all(r["original"].startswith(("Nahuatl-original","More fictional","A fictional")) for r in rows))
+        self.assertTrue(all(r["original"].startswith(("Nahuatl-original","More fictional","A fictional","Fictional final")) for r in rows))
         self.assertTrue(all("Editorial notes" not in r["original"] for r in rows))
         self.assertTrue(all(r["work_id"]=="brinton1890-27-poems-all" for r in rows))
         self.assertTrue(all(r.get("translation",{}).get("alignment","candidate")=="candidate" for r in rows))

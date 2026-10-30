@@ -30,7 +30,17 @@ def filehash(file: Path) -> str:
 
 
 def evidence_fingerprints(manifest: Path = MANIFEST) -> dict:
+    # Hash actual archived source rows, not merely the manifest. This prevents
+    # resuming on stale lexical evidence after silent row-level source edits.
+    archive_manifest=json.loads((ARCHIVE / "manifest.json").read_text(encoding="utf-8"))
+    source_files={}
+    for family in ("simeon","kaikki"):
+        for name in archive_manifest[family]["files"]:
+            if not name.startswith(family+"_") or "/" in name or "\\" in name:
+                raise ValueError("Unsafe source file name in archival provenance")
+            source_files[name]=filehash(ARCHIVE / name)
     return {
+        "individual_archived_lexical_source_sha256": source_files,
         "historical_brinton_train_dev_manifest": filehash(manifest),
         "canonical_lexicon": filehash(LEXICON),
         "source_checked_claims": filehash(EVIDENCE),
@@ -117,6 +127,7 @@ def run(*, batch_size: int = 200, offset: int = 0, all_forms: bool = False,
     proposals, samples, checked = candidate_worklist(manifest)
     candidate_count = len(proposals)
     previously_seen: set[str] = set()
+    source_by_form={p["written_surface"]:p for p in proposals}
     if previous:
         past = json.loads(previous.read_text(encoding="utf-8"))
         if (past.get("format") != FORMAT or
@@ -125,12 +136,17 @@ def run(*, batch_size: int = 200, offset: int = 0, all_forms: bool = False,
         old_rows = past.get("investigations")
         if not isinstance(old_rows, list):
             raise ValueError("Prior audit lacks original investigative records")
+        if past.get("processed_form_count") != len(old_rows) or past.get("distinct_written_forms_available") != candidate_count:
+            raise ValueError("Prior research report count is inconsistent with current corpus")
         for row in old_rows:
             form = row.get("written_surface")
             if not isinstance(form, str) or not form or form in previously_seen:
                 raise ValueError("Tampered or duplicate prior investigation")
             if row.get("gold") is not False or row.get("training_eligible") is not False:
                 raise ValueError("Prior output attempted Gold/training upgrade")
+            original=source_by_form.get(form)
+            if original is None or any(row.get(k)!=v for k,v in original.items()):
+                raise ValueError("Prior report is not traceable to the same original source contexts")
             previously_seen.add(form)
         if not previously_seen.issubset({p["written_surface"] for p in proposals}):
             raise ValueError("Previous audit contains forms outside the current source")

@@ -63,6 +63,34 @@ class AdditionalDocuments(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "transcription"):
             inspect_documents(live=True, fetcher=source)
 
+    def test_entire_consulted_historical_collection_is_disqualified_from_gold(self):
+        from tools.independent_gold_gate import known_exposure, validate_private_gold
+        refs=known_exposure()
+        self.assertIn("early-nahuatl-library-beyond-the-codices", refs["collections"])
+        self.assertIn("enl-bc16-1573", refs["collections"])
+        self.assertIn("enl-bc26-early16", refs["collections"])
+        self.assertIn("AGN-Tierras-1735-exp2-f122-BC16", refs["works"])
+        self.assertIn("AGN-Tierras-1735-exp2-BC26-folio-a", refs["works"])
+        self.assertIn("çan necoc cempohualli quahuitl", refs["normalized_content"])
+        for collection,work in (
+            ("early-nahuatl-library-beyond-the-codices","unused-document"),
+            ("unused-collection","AGN-Tierras-1735-exp2-f122-BC16"),
+            ("enl-bc26-early16","unused-document"),
+        ):
+            fake={
+               "format":"tentli-independent-human-gold-benchmark-v1",
+               "labels_available_to_training":False,
+               "automatic_human_review":False,
+               "examples":[{
+                  "gold_id":"fictional-fixture-only",
+                  "source_collection_id":collection,"work_id":work,
+                  "nahuatl":"THIS IS NOT A HISTORICAL SOURCE",
+                  "reviewed_english":"FICTIONAL TEST ONLY",
+               }],
+            }
+            with self.subTest(collection=collection,work=work), self.assertRaisesRegex(ValueError,"unseen"):
+                validate_private_gold(fake)
+
     def test_english_or_introduction_cannot_prove_original_occurrence(self):
         with self.assertRaisesRegex(ValueError,"section"):
             original_language_section(

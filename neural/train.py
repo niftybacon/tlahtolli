@@ -31,10 +31,37 @@ def corrupt(source: list[int], *, rng: random.Random, probability: float = 0.20)
     return out
 
 
+def source_chunks(text: str, max_payload_bytes: int):
+    """Read the WHOLE historical source, never silently truncate long stanzas.
+
+    Every Unicode codepoint from the normalized source is included exactly
+    once in successive bounded chunks. No invented word boundaries or changes
+    to the underlying manuscript evidence are asserted.
+    """
+    import unicodedata
+    if max_payload_bytes < 4:
+        raise ValueError("Chunk limit too small")
+    buffer, size = [], 0
+    for char in unicodedata.normalize("NFC", text):
+        width = len(char.encode("utf-8"))
+        if width > max_payload_bytes:
+            raise ValueError("Codepoint exceeds model limit")
+        if buffer and size + width > max_payload_bytes:
+            yield "".join(buffer)
+            buffer, size = [], 0
+        buffer.append(char)
+        size += width
+    if buffer:
+        yield "".join(buffer)
+
+
 def make_examples(rows, cap: int, *, rng: random.Random):
     for row in rows:
-        yield corrupt(inputs(row.original, "denoise", cap), rng=rng), targets(row.original, cap), 1.0, "denoise"
+        for segment in source_chunks(row.original, cap - 2):
+            yield corrupt(inputs(segment, "denoise", cap), rng=rng), targets(segment, cap), 1.0, "denoise"
         if row.translation is not None:
+            if len(row.original.encode("utf-8")) > cap-2 or len(row.translation.encode("utf-8")) > cap-2:
+                raise ValueError("Long bilingual alignment needs human segment review; cannot silently truncate")
             yield inputs(row.original, "translate", cap), targets(row.translation, cap), row.translation_weight, "translate"
 
 

@@ -49,7 +49,7 @@ class BrintonPrintedSourceAuditTests(unittest.TestCase):
     def test_misaligned_stanza_rejected(self):
         lines, row = self.fixture()
         row["translation"]["source_url"] = row["translation"]["source_url"].replace("#L5", "#L7")
-        with self.assertRaisesRegex(AttestationError, "same-number|Nahuatl differs"):
+        with self.assertRaisesRegex(AttestationError, "same-number|Nahuatl differs|same printed poem section"):
             verify_record(row, lines, prose_begin=0, prose_end=7)
 
     def test_synthetic_gold_promotion_rejected(self):

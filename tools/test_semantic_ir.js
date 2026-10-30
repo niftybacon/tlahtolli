@@ -78,7 +78,7 @@ deny(person,(a,g,o)=>{o.units[0].options[0].grammarAudit.status='verified';},'fo
 deny(person,(a,g,o)=>{o.verified=true;},'fake translation verification');
 deny(person,(a,g,o)=>{o.audit.scope='expert certified';},'fake audit scope');
 deny(person,(a,g,o)=>{a.clauses[0].tokens=['other'];},'changed analysis tokens');
-deny(person,(a,g,o)=>{g.edges[0].status='verified';},'altered graph');
+deny(relative,(a,g,o)=>{assert(g.edges.length>0);g.edges[0].status='verified';},'altered graph');
 deny(negative,(a,g,o)=>{o.units[0].options[0].text='I will see the woman';},'dropped negation');
 deny(negative,(a,g,o)=>{o.units[0].options[0].structure.frame.objectNoun=null;},'object reassignment');
 deny(relative,(a,g,o)=>{o.units[0].options[0].structure.relativeGap='relative object';},'relative role changed');

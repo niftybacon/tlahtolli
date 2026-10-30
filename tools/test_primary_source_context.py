@@ -125,6 +125,57 @@ class ControlledPrimarySourceTests(unittest.TestCase):
                 with self.subTest(data=doc), self.assertRaises(ValueError):
                     read_catalog(path)
 
+    def test_previously_examined_historical_works_cannot_be_gold(self):
+        from tools.independent_gold_gate import known_exposure, validate_private_gold
+        exposure=known_exposure()
+        self.assertIn("enl-bc19-coyoacan-1621", exposure["collections"])
+        self.assertIn("ENL-BC19-1621", exposure["works"])
+        self.assertIn("florentine-codex", exposure["collections"])
+        self.assertIn("Florentine-Codex", exposure["works"])
+        self.assertIn("yniquexcan mani tlalli calpilco",
+                      exposure["normalized_content"])
+        self.assertIn("qujioltevujaia in cujcatl",
+                      exposure["normalized_content"])
+
+        # Exact collection exposure must block an otherwise schema-valid
+        # declared Gold item (no invented human reviewers are enrolled here).
+        for coll, work in [
+            ("enl-bc19-coyoacan-1621", "imaginary-other-work"),
+            ("imaginary-new-collection", "ENL-BC19-1621"),
+            ("florentine-codex", "imaginary-other-work"),
+            ("imaginary-new-collection", "Florentine-Codex"),
+        ]:
+            gold={
+               "format":"tentli-independent-human-gold-benchmark-v1",
+               "labels_available_to_training": False,
+               "automatic_human_review": False,
+               "examples":[{
+                   "gold_id":"synthetic-unit-test",
+                   "work_id":work,
+                   "source_collection_id":coll,
+                   "nahuatl":"NOT A REAL NAHUATL SAMPLE",
+                   "reviewed_english":"NOT A REAL TRANSLATION",
+               }]
+            }
+            with self.subTest(c=coll,w=work), self.assertRaisesRegex(ValueError, "unseen"):
+                validate_private_gold(gold)
+
+    def test_investigator_attaches_primary_context_without_promotion(self):
+        from neural.autonomous_evidence_investigator import investigate
+        data=investigate()
+        self.assertEqual(data["cited_original_document_edition_contexts_in_repository"],3)
+        self.assertEqual(data["distinct_original_document_edition_collections"],2)
+        names={x["form"]:x for x in data["investigations"]}
+        for form in ("can","ayac","cuicatl"):
+            self.assertIn(form,names)
+            examples=names[form]["exact_digitized_historical_edition_contexts"]
+            self.assertEqual(len(examples),1)
+            self.assertFalse(examples[0]["source_based_silver_approved"])
+            self.assertIsNone(examples[0]["exact_visible_edition_phrase_checked"])
+            self.assertFalse(names[form]["training_eligible"])
+        self.assertEqual(names["can"]["exact_digitized_historical_edition_contexts"][0]
+                         ["morphological_role_hypothesis"], "numbered_locative_suffix")
+
     def test_remote_download_host_allowlist(self):
         for url in ("http://enl.wired-humanities.org/BC19",
                     "https://evil.example/BC19",

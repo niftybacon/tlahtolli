@@ -1,0 +1,220 @@
+"""Primary edition passage checks: distinct grammar roles, exact short text and Gold protections."""
+from __future__ import annotations
+from copy import deepcopy
+import json
+from pathlib import Path
+import tempfile
+import unittest
+
+from neural.primary_source_context import (
+    CATALOG, examine, read_catalog, match_located_excerpt, fetch_page
+)
+
+
+class ControlledPrimarySourceTests(unittest.TestCase):
+    def test_stable_graded_catalog_and_no_automatic_translations(self):
+        r = examine()
+        self.assertEqual(r["specific_short_historical_contexts"], 3)
+        self.assertEqual(r["primary_edited_source_collections"], 2)
+        self.assertEqual(r["morphology_and_variant_source_index_claims"], 5)
+        self.assertEqual(r["network_source_pages_checked"], 0)
+        self.assertEqual(r["live_edition_text_checks"], 0)
+        self.assertEqual(r["independent_manuscript_facsimile_collations"], 0)
+        self.assertFalse(r["historical_source_accuracy_independently_certified"])
+        self.assertEqual(r["new_approved_silver_translations"], 0)
+        self.assertEqual(r["new_gold_translations"], 0)
+        self.assertEqual(r["approved_dictionary_changes"], 0)
+        self.assertFalse(r["model_weights_updated"])
+        self.assertEqual(r, examine())
+        ids = {x["id"] for x in r["investigations"]}
+        self.assertEqual(ids, {"enl-bc19-numbered-can", "enl-bc19-ayac",
+                               "dfc-book10-cujcatl"})
+        for row in r["investigations"]:
+            self.assertFalse(row["training_eligible"])
+            self.assertFalse(row["source_based_silver_approved"])
+            self.assertFalse(row["contextual_english_translation_certified"])
+            self.assertFalse(row["independent_manuscript_image_read"])
+            self.assertTrue(row["cannot_generalize_spelling_or_suffix"])
+            self.assertIsNone(row["exact_visible_edition_phrase_checked"])
+
+    def test_can_locative_optative_and_interrogative_are_distinct(self):
+        data=read_catalog()
+        roles = {x["id"]: x["function"] for x in data["grammar_claims"]}
+        self.assertEqual(roles["can-optative"], "plural_optative_verb_suffix")
+        self.assertEqual(roles["can-interrogative"], "independent_interrogative_or_locative")
+        self.assertEqual(roles["can-abundance"], "abundant_locative_derivation")
+        c = next(x for x in data["contexts"] if x["id"] == "enl-bc19-numbered-can")
+        self.assertEqual(c["role"], "numbered_locative_suffix")
+        self.assertEqual(c["written_form"], "yniquexcan")
+        self.assertNotEqual(c["written_form"], "can")
+        self.assertTrue(all(x["evidence_grade"].startswith(("cited_historical",
+                           "historic_lexicographic", "modern_grammar",
+                           "indexed_historical", "historical_lexicographic"))
+                           for x in data["grammar_claims"]))
+
+    def test_ayac_written_vs_aiaac_and_cuicatl_vs_cujcatl_remain_explicit(self):
+        data=read_catalog()
+        record={x["form"]:x for x in data["contexts"]}
+        self.assertEqual(record["ayac"]["written_form"], "ayac")
+        self.assertEqual(record["cuicatl"]["written_form"], "cujcatl")
+        gram={x["id"]:x for x in data["grammar_claims"]}
+        self.assertEqual(gram["ayac-alternate"]["historical_indexed_variant"], "aiaac")
+        self.assertEqual(gram["cuicatl-derivation"]["related_verb_source_url"],
+                         "https://nahuatl.wired-humanities.org/node/176079")
+        self.assertTrue(all(x["not_a_general_rule"] for x in data["contexts"]))
+
+    def test_syntax_assessment_uses_exact_whole_phrase_not_suffix_substring(self):
+        self.assertTrue(match_located_excerpt("... yniquexcan mani tlalli calpilco ...",
+                                               "yniquexcan mani tlalli calpilco"))
+        self.assertTrue(match_located_excerpt("... ayac tle quitoz oncan tlatoz ...",
+                                               "ayac tle quitoz oncan tlatoz"))
+        self.assertTrue(match_located_excerpt("... qujioltevujaia in cujcatl: ...",
+                                               "qujioltevujaia in cujcatl"))
+        self.assertFalse(match_located_excerpt("... ayacan tle quitoz ...",
+                                                "ayac tle quitoz"))
+        self.assertFalse(match_located_excerpt("... qujioltevujaia in cuicatl ...",
+                                                "qujioltevujaia in cujcatl"))
+        self.assertFalse(match_located_excerpt("... can mani tlalli calpilco ...",
+                                                "yniquexcan mani tlalli calpilco"))
+        self.assertFalse(match_located_excerpt("... yniquexcan manitlalli calpilco ...",
+                                                "yniquexcan mani tlalli calpilco"))
+
+    def test_inline_edited_transcription_spans_do_not_invent_word_boundaries(self):
+        from neural.primary_source_context import VisibleText
+        parser=VisibleText()
+        parser.feed("<section><p><span>qujiolte</span><i>vujaia</i> in "
+                    "<span>cuj</span><span>catl</span>:</p>"
+                    "<script>fake passage should not be trusted</script>"
+                    "<p>ayac tle quitoz oncan tlatoz</p></section>")
+        visible="".join(parser.chunks)
+        self.assertTrue(match_located_excerpt(visible, "qujioltevujaia in cujcatl"))
+        self.assertTrue(match_located_excerpt(visible, "ayac tle quitoz oncan tlatoz"))
+        self.assertNotIn("fake passage", visible)
+
+    def test_live_page_collation_simulated_without_reading_unsourced_text(self):
+        seen=[]
+        pages={
+          "https://enl.wired-humanities.org/BC19":
+            "Land grant of 1621: ayac tle quitoz oncan tlatoz, "
+            "yniquexcan mani tlalli calpilco.",
+          "https://florentinecodex.getty.edu/book/10/folio/118v":
+            "Tolteca: qujioltevujaia in cujcatl.",
+        }
+        def fetch(url):
+            seen.append(url)
+            return pages[url]
+        out=examine(live=True,page_fetcher=fetch)
+        self.assertEqual(out["network_source_pages_checked"], 2)
+        self.assertEqual(out["live_edition_text_checks"], 3)
+        self.assertEqual(len(seen), 2)
+        self.assertEqual(out["new_approved_silver_translations"], 0)
+        pages["https://enl.wired-humanities.org/BC19"]="A different document"
+        with self.assertRaisesRegex(ValueError, "excerpt mismatch"):
+            examine(live=True,page_fetcher=fetch)
+
+    def test_dynamic_getty_page_never_silently_certifies_manuscript_text(self):
+        sources={
+          "https://enl.wired-humanities.org/BC19":
+             "yniquexcan mani tlalli calpilco, ayac tle quitoz oncan tlatoz",
+          "https://florentinecodex.getty.edu/book/10/folio/118v":
+             "Book 10 Folio 118v - loading the Nahuatl transcription",
+        }
+        report=examine(live=True,page_fetcher=lambda u:sources[u])
+        self.assertEqual(report["network_source_pages_checked"],2)
+        self.assertEqual(report["live_edition_text_checks"],2)
+        self.assertEqual(report["edited_text_not_exposed_in_static_html"],1)
+        getty=next(x for x in report["investigations"] if x["id"]=="dfc-book10-cujcatl")
+        self.assertFalse(getty["exact_visible_edition_phrase_checked"])
+        self.assertIn("rendered browser",getty["live_check_limitation"])
+        self.assertEqual(report["new_gold_translations"],0)
+        sources["https://florentinecodex.getty.edu/book/10/folio/118v"] = (
+            "qujioltevujaia not in cujcatl")
+        with self.assertRaisesRegex(ValueError, "excerpt mismatch"):
+            examine(live=True,page_fetcher=lambda u:sources[u])
+
+    def test_source_tampering_and_false_gold_is_refused(self):
+        baseline=json.loads(CATALOG.read_text(encoding="utf-8"))
+        mutations=(
+         lambda d: d["contexts"][0].update(written_form="can"),
+         lambda d: d["contexts"][0].update(role="plural_optative_verb_suffix"),
+         lambda d: d["contexts"][0].update(source_url="https://attacker.test/text"),
+         lambda d: d["contexts"][0].update(exact_short_source_phrase="can"),
+         lambda d: d["contexts"][1].update(independent_manuscript_facsimile_checked=True),
+         lambda d: d["contexts"][2].update(english_alignment_human_reviewed=True),
+         lambda d: d["source_collections"][0].update(training_allowed=True),
+         lambda d: d["source_collections"][0].update(gold_holdout_eligible=True),
+         lambda d: d["grammar_claims"][0].update(function="plural_optative_verb_suffix"),
+         lambda d: d["global_guardrails"].update(human_silver_approved=1),
+         lambda d: d["global_guardrails"].update(gold_created=1),
+         lambda d: d["global_guardrails"].update(allow_bulk_copyrighted_transcription=True),
+        )
+        for mutate in mutations:
+            doc=deepcopy(baseline)
+            mutate(doc)
+            with tempfile.TemporaryDirectory() as td:
+                path=Path(td)/"untrusted-source.json"
+                path.write_text(json.dumps(doc,ensure_ascii=False),encoding="utf-8")
+                with self.subTest(data=doc), self.assertRaises(ValueError):
+                    read_catalog(path)
+
+    def test_previously_examined_historical_works_cannot_be_gold(self):
+        from tools.independent_gold_gate import known_exposure, validate_private_gold
+        exposure=known_exposure()
+        self.assertIn("enl-bc19-coyoacan-1621", exposure["collections"])
+        self.assertIn("ENL-BC19-1621", exposure["works"])
+        self.assertIn("florentine-codex", exposure["collections"])
+        self.assertIn("Florentine-Codex", exposure["works"])
+        self.assertIn("yniquexcan mani tlalli calpilco",
+                      exposure["normalized_content"])
+        self.assertIn("qujioltevujaia in cujcatl",
+                      exposure["normalized_content"])
+
+        # Exact collection exposure must block an otherwise schema-valid
+        # declared Gold item (no invented human reviewers are enrolled here).
+        for coll, work in [
+            ("enl-bc19-coyoacan-1621", "imaginary-other-work"),
+            ("imaginary-new-collection", "ENL-BC19-1621"),
+            ("florentine-codex", "imaginary-other-work"),
+            ("imaginary-new-collection", "Florentine-Codex"),
+        ]:
+            gold={
+               "format":"tentli-independent-human-gold-benchmark-v1",
+               "labels_available_to_training": False,
+               "automatic_human_review": False,
+               "examples":[{
+                   "gold_id":"synthetic-unit-test",
+                   "work_id":work,
+                   "source_collection_id":coll,
+                   "nahuatl":"NOT A REAL NAHUATL SAMPLE",
+                   "reviewed_english":"NOT A REAL TRANSLATION",
+               }]
+            }
+            with self.subTest(c=coll,w=work), self.assertRaisesRegex(ValueError, "unseen"):
+                validate_private_gold(gold)
+
+    def test_investigator_attaches_primary_context_without_promotion(self):
+        from neural.autonomous_evidence_investigator import investigate
+        data=investigate()
+        self.assertEqual(data["cited_original_document_edition_contexts_in_repository"],3)
+        self.assertEqual(data["distinct_original_document_edition_collections"],2)
+        names={x["form"]:x for x in data["investigations"]}
+        for form in ("can","ayac","cuicatl"):
+            self.assertIn(form,names)
+            examples=names[form]["exact_digitized_historical_edition_contexts"]
+            self.assertEqual(len(examples),1)
+            self.assertFalse(examples[0]["source_based_silver_approved"])
+            self.assertIsNone(examples[0]["exact_visible_edition_phrase_checked"])
+            self.assertFalse(names[form]["training_eligible"])
+        self.assertEqual(names["can"]["exact_digitized_historical_edition_contexts"][0]
+                         ["morphological_role_hypothesis"], "numbered_locative_suffix")
+
+    def test_remote_download_host_allowlist(self):
+        for url in ("http://enl.wired-humanities.org/BC19",
+                    "https://evil.example/BC19",
+                    "https://user:password@enl.wired-humanities.org/BC19"):
+            with self.assertRaises(ValueError):
+                fetch_page(url)
+
+
+if __name__ == "__main__":
+    unittest.main()

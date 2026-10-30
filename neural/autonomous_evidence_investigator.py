@@ -17,6 +17,7 @@ import unicodedata
 
 from .canonical_lexical_coverage import MANIFEST, EVIDENCE, LEXICON, WITNESSES, source_claims
 from .canonical_lexical_coverage import inspect, tokens, witness_forms, clean
+from .primary_source_context import examine as examine_primary_sources
 
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / "research/amoxcalli_archive"
@@ -164,6 +165,10 @@ def investigate(*, max_cases: int = 40, archive: Path = ARCHIVE,
             if line.strip()]
     feedback = load_feedback(feedback_path, candidates=rows)
     indexes, archive_stats = build_indexes(archive)
+    primary = examine_primary_sources(live=False)
+    primary_by_form = defaultdict(list)
+    for context in primary["investigations"]:
+        primary_by_form[clean(context["form"])].append(context)
     preferred = list(baseline["proposed_unmatched_surface_review"])
     selected = preferred[:max_cases]
     # Explicit feedback must be investigated, not silently lost because it
@@ -252,6 +257,8 @@ def investigate(*, max_cases: int = 40, archive: Path = ARCHIVE,
             next_action = "investigate_segmentation_inflection_vocable_and_spelling_with_primary_source"
         records.append({
             "form": form,
+            "exact_digitized_historical_edition_contexts": primary_by_form.get(sym, []),
+            "primary_edition_excerpt_checked_live_in_this_run": False,
             "training_work_count": target["distinct_training_work_count"],
             "training_token_count": target["token_occurrences_in_training_poems"],
             "sampled_source_locations": target["training_source_examples"][:4],
@@ -285,6 +292,9 @@ def investigate(*, max_cases: int = 40, archive: Path = ARCHIVE,
         "investigation_count": len(records),
         "historical_development_stanzas_excluded": baseline["dev_stanzas_reserved"],
         "historical_training_stanzas": baseline["train_stanzas_examined"],
+        "cited_original_document_edition_contexts_in_repository": primary["specific_short_historical_contexts"],
+        "distinct_original_document_edition_collections": primary["primary_edited_source_collections"],
+        "primary_source_context_catalog_sha256": primary["catalog_sha256"],
         "archive_record_counts": dict(archive_stats),
         "source_family_hit_summary": dict(family_hits),
         "high_priority_manual_context_escalations": escalations[:12],

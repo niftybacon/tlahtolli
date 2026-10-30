@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'neural/autonomous_evidence_investigator.py'
+      - 'neural/primary_source_context.py'
+      - 'research/translation_corpus/primary_context_findings_2026_10_30.json'
       - 'tools/test_autonomous_evidence_investigator.py'
       - 'research/translation_corpus/project_director_provisional_feedback.json'
       - 'research/amoxcalli_archive/**'
@@ -11,6 +13,8 @@ on:
   push:
     paths:
       - 'neural/autonomous_evidence_investigator.py'
+      - 'neural/primary_source_context.py'
+      - 'research/translation_corpus/primary_context_findings_2026_10_30.json'
       - 'tools/test_autonomous_evidence_investigator.py'
       - 'research/translation_corpus/project_director_provisional_feedback.json'
       - 'research/amoxcalli_archive/**'
@@ -33,6 +37,7 @@ jobs:
       - name: Test work-disjoint evidence provenance, source families, dialect and human promotion guards
         run: |
           python -m unittest discover -s tools -p 'test_autonomous_evidence_investigator.py' -v
+          python -m unittest discover -s tools -p 'test_primary_source_context.py' -v
           python -m unittest discover -s tools -p 'test_canonical_lexical_coverage.py' -v
           python -m unittest discover -s tools -p 'test_silver_gold_review_gates.py' -v
           python tools/validate_translation_corpus.py
@@ -73,11 +78,28 @@ jobs:
               print('  - '+row['form']+': '+row['candidate_category']+
                     ', exact archive families='+str(row['source_families_exact_headword_matched']))
           PY
+      - name: Revisit historical source-context evidence from original edited text
+        run: |
+          python -m neural.primary_source_context --live-check \
+            --output "$RUNNER_TEMP/tentli-primary-context-check.json" \
+            > "$RUNNER_TEMP/primary-summary.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          from pathlib import Path
+          r=json.loads((Path(os.environ["RUNNER_TEMP"])/"tentli-primary-context-check.json").read_text(encoding="utf-8"))
+          assert r["live_edition_text_checks"]>=2
+          assert r["new_gold_translations"]==r["new_approved_silver_translations"]==0
+          print('- Live *original* ENL 1621 expressions still found: **'+str(r["live_edition_text_checks"])+'**')
+          print('- Additional DFC phrase still behind dynamically rendered Getty interface: **'+str(r["edited_text_not_exposed_in_static_html"])+' unverified**')
+          print('- Independent image-collation and Gold: **0**')
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: tentli-40-source-linked-automated-lexical-investigations
           path: |
             ${{ runner.temp }}/tentli-source-investigations-40.json
             ${{ runner.temp }}/investigation-summary.json
+            ${{ runner.temp }}/tentli-primary-context-check.json
+            ${{ runner.temp }}/primary-summary.json
           retention-days: 30
           if-no-files-found: error

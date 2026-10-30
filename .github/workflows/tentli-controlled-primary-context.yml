@@ -1,0 +1,72 @@
+name: Tēntli controlled primary-source context and morphology evidence
+on:
+  pull_request:
+    paths:
+      - 'research/translation_corpus/primary_context_findings_2026_10_30.json'
+      - 'neural/primary_source_context.py'
+      - 'neural/autonomous_evidence_investigator.py'
+      - 'tools/test_primary_source_context.py'
+      - 'tools/independent_gold_gate.py'
+      - '.github/workflows/tentli-controlled-primary-context.yml'
+  push:
+    paths:
+      - 'research/translation_corpus/primary_context_findings_2026_10_30.json'
+      - 'neural/primary_source_context.py'
+      - 'neural/autonomous_evidence_investigator.py'
+      - 'tools/test_primary_source_context.py'
+      - 'tools/independent_gold_gate.py'
+      - '.github/workflows/tentli-controlled-primary-context.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-edited-original-source-passages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test context-sensitive can morphemes, historical spelling and Gold boundaries
+        run: |
+          python -m unittest discover -s tools -p 'test_primary_source_context.py' -v
+          python -m unittest discover -s tools -p 'test_autonomous_evidence_investigator.py' -v
+          python -m unittest discover -s tools -p 'test_silver_gold_review_gates.py' -v
+          python tools/validate_translation_corpus.py
+      - name: Read two original-source edited transcription pages and match all three brief exact contexts
+        run: |
+          python -m neural.primary_source_context --live-check \
+            --output "$RUNNER_TEMP/primary-edited-source-collation.json" \
+            | tee "$RUNNER_TEMP/primary-summary.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          from pathlib import Path
+          r=json.loads((Path(os.environ['RUNNER_TEMP'])/'primary-edited-source-collation.json').read_text(encoding='utf-8'))
+          assert r["specific_short_historical_contexts"]==3
+          assert r["network_source_pages_checked"]==2
+          assert r["live_edition_text_checks"]>=2
+          assert r["edited_text_not_exposed_in_static_html"]<=1
+          assert r["live_edition_text_checks"]+r["edited_text_not_exposed_in_static_html"]==3
+          assert r["independent_manuscript_facsimile_collations"]==0
+          assert r["new_approved_silver_translations"]==r["new_gold_translations"]==0
+          assert all(c["exact_visible_edition_phrase_checked"] is True
+                     for c in r["investigations"] if c["primary_collection_id"]=="enl-bc19-coyoacan-1621")
+          print('## Original-source edited Nahuatl evidence collation')
+          print('- **Two** historical source web pages read: ENL Coyoacan 1621 and Digital Florentine Codex Book 10')
+          print('- **Two** 1621 ENL phrases validated live against editable HTML')
+          print('- Florentine Codex cujcatl remains source-linked but may require a rendered browser to read its dynamically supplied transcription')
+          print('- **can** as numbered place suffix in *yniquexcan*, distinct from optative -cān and independent question *can*')
+          print('- **ayac** negative indefinite in the 1621 document, *aiaac* documented only as a separate indexed variant')
+          print('- **cuicatl** spelling *cujcatl* located in sixteenth-century Florentine scholarly edition, live HTML checked='+str(next(x['exact_visible_edition_phrase_checked'] for x in r['investigations'] if x['id']=='dfc-book10-cujcatl')))
+          print('- Facsimile independently deciphered: **NO**. Modern English meaning independently verified: **NO**.')
+          print('- Training-approved Silver and Gold additions: **0**; public translator unchanged')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-3-graded-source-contexts-with-exact-live-check-status
+          path: |
+            ${{ runner.temp }}/primary-edited-source-collation.json
+            ${{ runner.temp }}/primary-summary.json
+          retention-days: 30
+          if-no-files-found: error

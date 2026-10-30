@@ -1,0 +1,106 @@
+name: Tēntli English pretrained historical candidate supervision (research)
+on:
+  pull_request:
+    paths:
+      - 'neural/historical_candidate_english.py'
+      - 'neural/train_reviewed_english.py'
+      - 'neural/pretrained_english.py'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+      - 'tools/test_historical_candidate_english.py'
+      - '.github/workflows/tentli-historical-candidate-english.yml'
+  push:
+    paths:
+      - 'neural/historical_candidate_english.py'
+      - 'neural/train_reviewed_english.py'
+      - 'neural/pretrained_english.py'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+      - 'tools/test_historical_candidate_english.py'
+      - '.github/workflows/tentli-historical-candidate-english.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  candidate-evidence-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify historical train/dev split and non-gold adapter identity
+        run: |
+          python -m unittest discover -s tools -p 'test_historical_candidate_english.py' -v
+          python -m unittest discover -s tools -p 'test_brinton_weak_parallel.py' -v
+          python -m unittest discover -s tools -p 'test_pretrained_english_review_loop.py' -v
+          python -m neural.historical_candidate_english --audit-only
+          python -m neural.train_reviewed_english --audit-only
+          python tools/validate_translation_corpus.py
+  pretrained-candidate-adaptation:
+    needs: candidate-evidence-gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      TOKENIZERS_PARALLELISM: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU PyTorch
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Install exact pretrained English adaptation dependencies
+        run: python -m pip install 'transformers==4.46.3' 'peft==0.13.2' sentencepiece safetensors
+      - name: Train 40 gradient steps with public-domain weak historical English at 0.15 loss weight
+        run: |
+          python -m neural.historical_candidate_english \
+            --manifest research/neural_training/brinton_1890_poetry_weak_en.jsonl \
+            --output "$RUNNER_TEMP/tentli-historical-candidate-english" \
+            --steps 40
+      - name: Check metadata, reload actual adapter through source-audited English gate
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          from neural.pretrained_english import approved_research_adapter,pretrained_english
+          folder = Path(os.environ["RUNNER_TEMP"])/"tentli-historical-candidate-english"
+          m = approved_research_adapter(folder)
+          assert m["evidence_tier"] == "candidate_historical_bilingual"
+          assert m["actual_optimizer_steps"] == 40
+          assert m["training_rows"] == 133 and m["development_rows"] == 17
+          assert m["human_reviewed_training_examples"] == m["gold_translation_examples"] == 0
+          assert m["candidate_translation_weight"] == 0.15
+          assert m["independent_translation_accuracy"] is None
+          assert (folder/"adapter_model.safetensors").is_file()
+          for nahuatl in ("nichōca","nitlacua","niquitta in cihuātl"):
+              r = pretrained_english(nahuatl,adapter_dir=str(folder),local_files_only=True)
+              assert r["verified_translation"] is False
+              assert r["pretrained_model"]["adapter_evidence_tier"] == "candidate_historical_bilingual"
+              assert r["english"] in (
+                  "I cry.", "I weep.", "I eat.", "I see the woman.",
+                  "I inspect the woman.", "I look at the woman.")
+              print("CANDIDATE_ADAPTER_CANONICAL_GATED",json.dumps({
+                  "nahuatl":nahuatl,"status":r["status"],
+                  "output":r["english"],"model_proposal":r["model_proposal"]},ensure_ascii=False))
+          missing = pretrained_english("xyzzy",adapter_dir=str(folder),local_files_only=True)
+          assert missing["status"] == "abstain"
+          assert missing["english"] is None and missing["pretrained_used"] is False
+          print("ACTUAL_40_STEP_PRETRAINED_CANDIDATE_LEARNING_COMPLETE",json.dumps({
+              "train":m["training_rows"],"dev":m["development_rows"],
+              "steps":m["actual_optimizer_steps"],
+              "dev_loss_before":m["dev_teacher_forced_loss_before"],
+              "dev_loss_after":m["dev_teacher_forced_loss_after"],
+              "independent_accuracy":None,
+              "production_deployed":False},sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-flan-t5-brinton-weak-english-lora-40step-private-research
+          path: |
+            ${{ runner.temp }}/tentli-historical-candidate-english/adapter_model.safetensors
+            ${{ runner.temp }}/tentli-historical-candidate-english/adapter_config.json
+            ${{ runner.temp }}/tentli-historical-candidate-english/research_metadata.json
+          retention-days: 30
+          if-no-files-found: error

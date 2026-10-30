@@ -158,7 +158,7 @@ def wilson(success: int, total: int, z: float = 1.96) -> tuple[float, float]:
 def score_blind(gold: dict, predictions: dict, adjudications: dict,
                 *, min_gold: int = 10, exposures: dict | None = None) -> dict:
     """All final meanings require independent human judgment, never exact string equality."""
-    meta = validate_private_gold(gold, exposures=exposures)
+    if min_gold < 10:\n        raise ValueError("Independent Gold scoring minimum cannot be weakened below 10")\n    meta = validate_private_gold(gold, exposures=exposures)
     refs = {r["gold_id"]: r for r in gold["examples"]}
     if len(refs) < min_gold:
         raise ValueError("Cannot publish meaningful Gold accuracy from fewer reviewed examples")

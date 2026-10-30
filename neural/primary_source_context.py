@@ -214,7 +214,7 @@ def examine(*, catalog: Path = CATALOG, live: bool = False, page_fetcher=fetch_p
             if url not in pages:
                 pages[url] = page_fetcher(url)
             if not match_located_excerpt(pages[url], row["exact_short_source_phrase"]):
-                raise ValueError("Edition text or cited contextual phrase no longer matches: "+row["id"])
+                raise ValueError("Edition text or cited contextual phrase no longer matches: "+row["id"]+\n                                 " (visible edition chars="+str(len(pages[url]))+\n                                 "; expected tokens visible="+\n                                 ",".join(str(token in pages[url]) for token in row["exact_short_source_phrase"].split())+")")
             result["exact_visible_edition_phrase_checked"] = True
         investigations.append(result)
     return {

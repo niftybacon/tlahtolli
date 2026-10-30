@@ -68,10 +68,10 @@ def presentation_page_range(html: str, *, sermon: int, start: int, next_start: i
     """Get surviving folios from the source; don't invent missing pages."""
     soup=BeautifulSoup(html,"html.parser")
     heading=soup.find("h2")
-    if heading is None or not re.search(r"\\bSerm[oó]n\\s+"+str(sermon)+r"\\b",heading.get_text(" ",strip=True)):
+    if heading is None or not re.search(r"\bSerm[oó]n\s+"+str(sermon)+r"\b",heading.get_text(" ",strip=True)):
         raise ValueError(f"Presentation heading mismatch for sermon {sermon}")
     txt=soup.get_text(" ",strip=True)
-    match=re.search(r"\\(Ms\\.\\s*1485,\\s*Col\\.\\s*Ayer,\\s*p\\.\\s*(\\d+)(?:[-–](\\d+))?\\)",txt,re.I)
+    match=re.search(r"\(Ms\.\s*1485,\s*Col\.\s*Ayer,\s*p\.\s*(\d+)(?:[-–](\d+))?\)",txt,re.I)
     if not match:
         raise ValueError(f"Missing historical manuscript page interval for sermon {sermon}")
     lo=int(match.group(1));hi=int(match.group(2) or lo)

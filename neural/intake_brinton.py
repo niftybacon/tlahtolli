@@ -61,9 +61,24 @@ def extract(source: str) -> tuple[list[dict], dict]:
             continue
         stanza=STANZA.match(line)
         if stanza:
+            candidate=int(stanza.group(1))
+            if chapters[current] and candidate <= chapters[current][-1][0]:
+                # Brinton XVIII has a numbered list of *variants* after its
+                # sixth stanza without the expected _Var._ label. Do not
+                # mistake this restarted 1. list for the original hymn.
+                flush()
+                active=False
+                continue
             flush()
-            number=int(stanza.group(1))
+            number=candidate
             chunks=[stanza.group(2).strip()]
+            continue
+        if re.match(r"^\s*\d+\.\s",line):
+            # Another unlabelled variants/annotation list, not continued
+            # manuscript text. Only genuine indented, consecutive stanza
+            # markers are admitted.
+            flush()
+            active=False
             continue
         if number is not None and line.strip():
             # Preserve the exact chosen Brinton spelling; join print-line wraps

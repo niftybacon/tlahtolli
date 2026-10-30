@@ -24,6 +24,8 @@ jobs:
         run: python tools/import_archive_lexical_batch.py --check && node tools/test_archive_lexical_batch07.js
       - name: Batch 08 historical lexeme/source stem class and negative controls
         run: python tools/import_source_stem_batch08.py --check && node tools/test_source_stem_batch08.js
+      - name: Productive predicate English integration and evidence negative controls
+        run: node tools/test_productive_predicate_english.js
       - name: Check content-versioned runtime scripts
         run: python tools/test_runtime_assets.py && python tools/build_runtime_assets.py --check
       - name: Check source-controlled SRS embed

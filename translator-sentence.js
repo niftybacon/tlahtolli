@@ -84,7 +84,7 @@ function compileClauseRules(pack){
  return valid;
 }
 
-function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages){
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -241,6 +241,104 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     list.push({lemma,person,tense,transitive:p.trans,source:p.lemmaSource});index.set(k,list);
    });
   }
+ }
+ // Optional editorial English lexicon. This licenses wording only; every
+ // finite surface must still come from the existing canonical analyzer.
+ // Missing/stale data leaves legacy indexed grammar available.
+ const predicateLexicon=new Map(),duplicatePredicates=new Set();
+ const claim=(w,field)=>(w.claims||[]).filter(c=>c.field===field&&
+  ['dictionary','grammar','text'].includes(c.assessment)&&
+  /^https:\/\//u.test(c.source||'')&&typeof c.locator==='string'&&c.locator.trim());
+ if(predicateEnglish?.format==='tlahtolli-predicate-english-v1'&&predicateEnglish.version===1)
+  for(const e of Array.isArray(predicateEnglish.entries)?predicateEnglish.entries:[]){
+   if(predicateLexicon.has(e?.lemma)){duplicatePredicates.add(e.lemma);continue;}
+   const matches=words.filter(w=>w.word===e?.lemma);
+   if(matches.length!==1)continue;
+   const w=matches[0];
+   if(w.status!=='Checked against source'||w.source!==e.source||w.pos!==e.pos||
+    w.meaning!==e.dictionaryMeaning||!['verb (intransitive)','verb (transitive)',
+     'verb (transitive/reflexive)'].includes(w.pos)||
+    !['headword','meaning','pos'].every(f=>claim(w,f).some(c=>c.source===e.source))||
+    !Array.isArray(e.senses)||!e.senses.length||e.senses.length>8||
+    !e.senses.every(s=>['base','third','past'].every(k=>typeof s[k]==='string'&&
+     /^[a-z]+(?: [a-z]+){0,9}$/u.test(s[k]))))continue;
+   predicateLexicon.set(e.lemma,{...e,word:w});
+  }
+ for(const lemma of duplicatePredicates)predicateLexicon.delete(lemma);
+ const productiveKinds=new Set(['Regular intransitive present hypothesis',
+  'Source-template singular preterite hypothesis','Source-template transitive present hypothesis',
+  ...['Source-class1','Source-stem-class'].flatMap(prefix=>[
+   'third-person preterite','future','plural preterite','plural future','plural present'
+  ].map(kind=>prefix+' '+kind+' hypothesis'))]);
+ function productiveReadings(token){
+  if(!predicateLexicon.size)return [];
+  const readings=[],seen=new Set();
+  for(const m of exactMorphology(token)){
+   const e=predicateLexicon.get(m.lemma);
+   if(!e||paradigms.paradigms?.[m.lemma])continue;
+   const w=e.word;
+   let person=PERSON_CODES.indexOf(m.features?.subject),tense=String(m.features?.tense||'').toLowerCase();
+   let object=m.features?.object||null,recorded=null;
+   if(m.grade==='hypothesis'&&productiveKinds.has(m.kind)){
+    if(norm(m.parts.filter(p=>p.surface!=='Ø').map(p=>p.surface).join(''))!==norm(token)||
+     ![...w.claims,...(w.inflections||[])].some(c=>c.source===m.source)||
+     !m.locator||!['present','future','preterite'].includes(tense)||person<0)continue;
+    if(m.kind==='Regular intransitive present hypothesis'){
+     if(w.pos!=='verb (intransitive)'||tense!=='present'||person>1)continue;
+     object='intransitive';
+    }else{
+     if(!(w.inflections||[]).some(f=>/^Preterite 1sg\b/u.test(f.category)&&
+      ['dictionary','text'].includes(f.evidence)&&/^https:\/\//u.test(f.source||'')))continue;
+     if(/^Source-(class1|stem-class)/u.test(m.kind)&&!claim(w,'stem').length)continue;
+    }
+   }else if(['lexical','manuscript'].includes(m.grade)){
+    // Never use the morphology engine's diacritic-folded match as an exact
+    // historical form. Person/tense must be explicitly in the recorded label.
+    recorded=(w.inflections||[]).find(f=>norm(f.form)===norm(token)&&
+     f.category===m.kind&&f.source===m.source&&['dictionary','text'].includes(f.evidence)&&
+     /^Preterite 1sg\b/u.test(f.category));
+    if(!recorded||typeof recorded.note!=='string'||!recorded.note.trim())continue;
+    person=0;tense='preterite';
+    object=w.pos==='verb (intransitive)'?'intransitive':
+     /\banimate indefinite object/iu.test(recorded.category)?'human indefinite (recorded)':
+     /unspecified object/iu.test(recorded.category)?'nonhuman indefinite (recorded)':null;
+   }else continue;
+   const intransitive=object==='intransitive'&&w.pos==='verb (intransitive)';
+   const indefinite=!intransitive&&w.pos!=='verb (intransitive)'&&
+    /^(?:nonhuman|human) indefinite \(/u.test(object||'');
+   if(!intransitive&&!indefinite)continue; // no invented specific/reflexive object
+   const objectEnglish=intransitive?null:object.startsWith('nonhuman')?'something':'someone';
+   const evidence={written:token,lemma:m.lemma,kind:m.kind,grade:m.grade,
+    source:m.source,locator:recorded?.note||m.locator,person,tense,
+    object:intransitive?'intransitive':objectEnglish,meaning:e.dictionaryMeaning};
+   const key=JSON.stringify([m.lemma,person,tense,evidence.object]);
+   if(seen.has(key))continue;seen.add(key);
+   readings.push({lemma:m.lemma,person,tense,transitive:!intransitive,
+    source:m.source,indefiniteObject:objectEnglish,productive:evidence,senses:e.senses});
+  }
+  return readings;
+ }
+ const readFinite=token=>[...(index.get(norm(token))||[]),...productiveReadings(token)];
+ function predicateSenses(parse){return parse.senses||
+  (verbs[parse.lemma]||[]).map(([base,third])=>({base,third}));}
+ function englishVerb(s,parse,negative){
+  if(parse.tense==='future')return 'will '+(negative?'not ':'')+s.base;
+  if(s.base.startsWith('be ')){
+   const be=parse.tense==='preterite'?(parse.person===0||parse.person===2?'was':'were'):
+    parse.person===0?'am':parse.person===2?'is':'are';
+   return be+(negative?' not':'')+s.base.slice(2);
+  }
+  if(negative)return (parse.tense==='preterite'?'did':parse.person===2?'does':'do')+' not '+s.base;
+  return parse.tense==='preterite'?s.past:parse.person===2?s.third:s.base;
+ }
+ function validateProductiveFrame(frame){
+  const evidence=frame?.morphologyEvidence;
+  if(!evidence)return false;
+  return productiveReadings(evidence.written).some(p=>
+   JSON.stringify(p.productive)===JSON.stringify(evidence)&&p.lemma===frame.predicate&&
+   p.person===frame.subjectPerson&&p.tense===frame.tense&&
+   (!p.indefiniteObject||frame.object===p.indefiniteObject&&!frame.objectNoun)&&
+   (p.transitive||frame.object===null&&frame.objectNoun===null));
  }
  function noun(token){
   const hits=words.filter(w=>w.pos==='noun'&&[w.word,...String(w.original||'').split(/[;,/]/)].some(f=>norm(f.trim())===norm(token)));
@@ -459,7 +557,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   if(tokens.length<3||tokens.length>8)return [];
   const proposals=[];
   for(let vi=0;vi<tokens.length;vi++){
-   const verbReadings=index.get(norm(tokens[vi]))||[];
+   const verbReadings=readFinite(tokens[vi]);
    if(!verbReadings.length)continue;
    for(let li=0;li<tokens.length;li++)for(const ln of [2,3]){
     if(li+ln>tokens.length||vi>=li&&vi<li+ln)continue;
@@ -489,9 +587,10 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
      const lex=words.filter(w=>w.word===parse.lemma&&
       String(w.pos).startsWith('verb')&&/^https:\/\//.test(w.source||''));
      if(lex.length!==1||!/^https:\/\//.test(parse.source||''))continue;
-     const semantic=verbs[parse.lemma];
+     const semantic=predicateSenses(parse);
      if(!Array.isArray(semantic)||!semantic.length)continue;
      for(const [subjectNoun,objectNoun] of assignments(parse,phrases)){
+      if(parse.indefiniteObject&&objectNoun)continue;
       const locativeWritten=locationTokens.join(' ');
       const attachmentAlternatives=phrases.length?
        ['possible clause/event location','possible modification of the overt noun phrase']:
@@ -499,6 +598,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
       const subj=subjectNoun?nounLabel(subjectNoun):people[parse.person];
       const role=parse.transitive?
        objectNoun?{type:'overt third-person object',word:objectNoun.word,meaning:objectNoun.meaning}:
+       parse.indefiniteObject?{type:'indefinite object preserved from morphology',word:null,meaning:parse.indefiniteObject}:
        {type:'implicit third-person object; referent unresolved',word:null,meaning:null}:
        {type:'intransitive predicate; no object licensed',word:null,meaning:null};
       const sources=[...new Set([grammar,tenseSource,parse.source,lex[0].source,
@@ -509,7 +609,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
        verb:{written:tokens[vi],lemma:parse.lemma,tense:parse.tense,
         subjectPerson:PERSON_CODES[parse.person],subject:subj,negative,
         transitive:!!parse.transitive,meaning:lex[0].meaning,
-        indexedEvidence:'generated present/future paradigm, not independently attested'},
+        indexedEvidence:parse.productive?'source-gated morphology hypothesis or recorded form; not contextual attestation':'generated present/future paradigm, not independently attested'},
        arguments:{subjectNoun:subjectNoun?.word||null,object:role,
         overtNounPhrase:phrases.length?'in '+tokens[leftovers[1]]:null},
        location:{written:locativeWritten,place:location.place,
@@ -567,7 +667,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  const activeClauseRules=compileClauseRules(grammarRules===undefined||grammarRules===null?
   DEFAULT_CLAUSE_PACK:grammarRules);
  function matchClauseRules(tokens,readVerbs,options){
-  const getVerbs=typeof readVerbs==='function'?readVerbs:key=>index.get(norm(key))||[];
+  const getVerbs=typeof readVerbs==='function'?readVerbs:readFinite;
   const proposals=[];
   for(const rule of activeClauseRules){
    let cursor=0,verbsAt=null,phrases=[],valid=true;
@@ -607,8 +707,10 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     else if(rule.roles==='both')assignments=[
       [phrases[0],phrases[1]],[phrases[1],phrases[0]]
     ];
-    for(const [subjectNoun,objectNoun] of assignments)
+    for(const [subjectNoun,objectNoun] of assignments){
+     if(parse.indefiniteObject&&objectNoun)continue;
      proposals.push({parse,rule,subjectNoun,objectNoun});
+    }
    }
   }
   return proposals;
@@ -1051,9 +1153,10 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   /^https:\/\//.test(w.source||''))
   finiteLexemeCounts.set(w.word,(finiteLexemeCounts.get(w.word)||0)+1);
  function finiteAt(token){
-  return (index.get(norm(token))||[]).filter(p=>{
+  return readFinite(token).filter(p=>{
    return finiteLexemeCounts.get(p.lemma)===1&&/^https:\/\//.test(p.source||'')&&
-    (p.tense==='present'||p.tense==='future');
+    (p.tense==='present'||p.tense==='future'||p.productive&&p.tense==='preterite')&&
+    !p.indefiniteObject; // indefinite objects cannot become relative gaps
   });
  }
  function relativeInProposals(tokens,negative){
@@ -1454,13 +1557,13 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
     const lexical=words.filter(w=>w.word===parse.lemma);
     if(lexical.length!==1)continue;
     const subject=subjectNoun?nounLabel(subjectNoun):people[parse.person];
-    const object=objectNoun?nounLabel(objectNoun):parse.transitive?'him / her / it':null;
+    const object=objectNoun?nounLabel(objectNoun):parse.indefiniteObject|| (parse.transitive?'him / her / it':null);
     const frame={subject,subjectPerson:parse.person,subjectNoun:subjectNoun?.word||null,
      predicate:parse.lemma,tense:parse.tense,negative,object,objectNoun:objectNoun?.word||null,
-     lexicalMeaning:lexical[0].meaning};
-    const englishParts=(verbs[parse.lemma]||[]).map(([base,third])=>{
-     const verb=parse.tense==='future'?'will '+(negative?'not ':'')+base:
-      negative?(parse.person===2?'does':'do')+' not '+base:parse.person===2?third:base;
+     lexicalMeaning:lexical[0].meaning,
+     ...(parse.productive?{morphologyEvidence:parse.productive}: {})};
+    const englishParts=predicateSenses(parse).map(s=>{
+     const verb=englishVerb(s,parse,negative);
      return {subject,verb,object};
     });
     const english=englishParts.map(({subject,verb,object})=>{
@@ -1474,7 +1577,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
      sources:[...new Set([grammar,tenseSource,rule.source_url,parse.source,lexical[0].source,
       subjectNoun?.source,objectNoun?.source].filter(Boolean))],
      grade:'grammar-derived candidate',
-     note:'Illustrative English sense choices, not exhaustive translations. Noun articles, lexical senses, aspect and third-person referents require context; candidate order is not a ranking. Construction '+rule.id+' is editorial grammar formalization, not individually attested.'});
+     note:(parse.productive?'Source-gated morphological analysis composed with editorial English. The word evidence remains '+parse.productive.grade+'; this sentence is NOT independently attested. ':'')+
+      'Illustrative English sense choices, not exhaustive translations. Noun articles, lexical senses, aspect and third-person referents require context; candidate order is not a ranking. Construction '+rule.id+' is editorial grammar formalization, not individually attested.'});
    }
    // Only an isolated, explicitly source-labeled finite token can contribute
    // a new gloss. No words on either side may be silently discarded.
@@ -1514,7 +1618,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   return {lemma:n.word,text:nounLabel(n),
    sense:{lemma:n.word,selected:nouns[n.word]||null,fullMeaning:n.meaning,source:n.source}};
  }
- return {analyze,describeNoun};
+ return {analyze,describeNoun,validateProductiveFrame};
 }
 root.TlahtolliSentence={create};
 })(window);

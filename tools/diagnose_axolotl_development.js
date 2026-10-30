@@ -108,11 +108,11 @@ async function loadExistingEngines(){
  const sentence=context.window.TlahtolliSentence.create(dictionary,paradigms,sentenceMorph,
   research,locative,json('data/clause_grammar.json'),
   json('data/possessed_form_evidence.json'),json('data/source_finite_context.json'),
-  json('data/passages.json'));
+  json('data/passages.json'),json('data/predicate_english.json'));
  // Crucial: NO stored bilingual sentence lookup passed to lexical model.
  const lex=context.window.TlahtolliTranslator.create(dictionary,{entries:[]});
  const english=context.window.TlahtolliEnglish.create(sentence);
- const ir=context.window.TlahtolliGrammarIR.create(dictionary,json('data/passages.json'),paradigms);
+ const ir=context.window.TlahtolliGrammarIR.create(dictionary,json('data/passages.json'),paradigms,sentence);
  return {lex,sentence,morph,archiveMorph,archive,english,ir,canonicalMorph:token=>context.canonicalMorph.analyze(token),
   historicalVariants:context.window.TlahtolliHistoricalMorphology.variants};
 }

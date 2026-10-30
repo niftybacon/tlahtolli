@@ -12,7 +12,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ["dictionary.json", "paradigms.json", "tools/morphology_engine.js",
-        "data/clause_grammar.json", "data/possessed_form_evidence.json",
+        "data/clause_grammar.json", "data/possessed_form_evidence.json", "data/predicate_english.json",
         "data/source_finite_context.json", "data/passages.json",
         "research/translation_corpus/research_examples.json",
         "research/translation_corpus/source_reviews/ENL_BC16_1573.json"]

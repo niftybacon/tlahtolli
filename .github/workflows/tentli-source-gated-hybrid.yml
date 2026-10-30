@@ -29,6 +29,35 @@ jobs:
           node tools/test_translator_sentence_groups.js
           node tools/test_translator.js
           python -m unittest discover -s tools -p 'test_tentli_hybrid_infer.py' -v
+      - name: Read-only checkout of other agent's predicate-English work at an exact PR #92 SHA
+        uses: actions/checkout@v4
+        with:
+          ref: 5c61ce1dc50250779b3582c70370605d0bd9d74d
+          path: predicate-pr92-snapshot
+          persist-credentials: false
+      - name: Verify our unchanged bridge consumes all 82 source-gated predicate English mappings
+        run: |
+          cp tools/source_gated_english_bridge.js predicate-pr92-snapshot/tools/source_gated_english_bridge.js
+          cp tools/test_source_gated_english_bridge.js predicate-pr92-snapshot/tools/test_source_gated_english_bridge.js
+          cd predicate-pr92-snapshot
+          node tools/test_source_gated_english_bridge.js
+          node - <<'JS'
+          const assert=require('node:assert/strict');
+          const {produce}=require('./tools/source_gated_english_bridge.js');
+          for(const [nh,en] of [
+            ['nicochi','I sleep.'],
+            ['ōnicoch','I slept.'],
+            ['ahmo nimiquiz','I will not die.'],
+            ['niquitta in cihuātl in cochiz','I see the woman that will sleep.']
+          ]) {
+            const got=produce(nh);
+            assert.equal(got.canonical_draft,en,nh);
+            assert.equal(got.predicate_pack_available,true);
+            assert(got.candidates.every(c=>c.source_urls.length>0));
+            console.log('PREDICATE_PR92_INTEROPERABLE',nh,en);
+          }
+          assert.equal(produce('nicochi xyzzy').status,'abstain');
+          JS
       - name: Restore genuine source-trained Temoa Chimalpahin checkpoint
         uses: actions/download-artifact@v4
         with:

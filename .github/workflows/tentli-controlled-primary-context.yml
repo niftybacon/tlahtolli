@@ -64,7 +64,7 @@ jobs:
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: tentli-3-verified-edition-source-contexts-no-silver-promotion
+          name: tentli-3-graded-source-contexts-with-exact-live-check-status
           path: |
             ${{ runner.temp }}/primary-edited-source-collation.json
             ${{ runner.temp }}/primary-summary.json

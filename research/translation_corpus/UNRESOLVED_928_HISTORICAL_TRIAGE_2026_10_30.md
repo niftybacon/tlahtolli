@@ -3,7 +3,7 @@
 
 ## Autonomy: what really happens with no user present
 
-Only [`.github/workflows/tentli-full-source-worklist.yml`](../../.github/workflows/tentli-full-source-worklist.yml) is scheduled: **11:09 UTC on Mondays**, subject to GitHub Actions scheduling delays and repository settings. It is also invoked when relevant source or workflow files change, and on manual request. This is a bounded and auditable batch, not an LLM that decides spontaneously to search other websites.
+Only [`.github/workflows/tentli-full-source-worklist.yml`](../../.github/workflows/tentli-full-source-worklist.yml) is scheduled: **09:11 UTC on Mondays**, subject to GitHub Actions scheduling delays and repository settings. It is also invoked when relevant source or workflow files change, and on manual request. This is a bounded and auditable batch, not an LLM that decides spontaneously to search other websites.
 
 Until this extension, the weekly worklist did not automatically invoke the existing `tools/investigator_engine_bridge.js`. This change composes the existing operations **within the same job**: original source scan → existing lexical and morphology engines → grammar/English/IR historical-context diagnostics → unresolved-form research triage. The prior bridge workflow remains for **code-change and manual regression only**, with no added recurring schedule.
 

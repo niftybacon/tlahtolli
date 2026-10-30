@@ -165,9 +165,9 @@ def infer_hybrid(text:str,model_dir:str|None=None, *,
         # Only after full canonical grammar and evidence audit has succeeded.
         # A rejection returns the unchanged canonical text, never a guess.
         english_decoder=FlanEnglishDecoder(adapter_path=pretrained_adapter_dir)
+        rewrite=(lambda _: english_decoder.translate_reviewed_nahuatl(candidate_set["source_text"])) if pretrained_adapter_dir else english_decoder.rewrite
         realizer=guarded_english_realization(
-            candidate_set["source_text"],
-            rewrite=english_decoder.rewrite,admitted=candidate_set)
+            candidate_set["source_text"],rewrite=rewrite,admitted=candidate_set)
         result["pretrained_english"]=realizer
         # A changed reading must be a known candidate, and the default
         # canonical output remains authoritative unless the caller

@@ -1,0 +1,91 @@
+{
+  "format": "tentli-huiya-contextual-poetic-evidence-v1",
+  "date": "2026-10-30",
+  "scope": "Exactly two cited original-language song passages and one separate dictionary sense. The review is contextual; it is not a global meaning of huiya or a learned production rule.",
+  "method_source": {
+    "author": "Birgitta Leander",
+    "title": "In xochitl in cuicatl: Flor y canto: La poesía de los aztecas",
+    "publisher": "Instituto Nacional Indigenista / SEP-INI",
+    "year": 1972,
+    "printed_pages": "53-54",
+    "section": "Partículas interjectivas",
+    "source_url": "https://docs.enriquedussel.com/txt/Textos_200_Obras/PyF_pueblos_originarios/Flor_Canto-Birgitta_Leander.pdf",
+    "analytical_claim": "Rhythmic sung particles including a, ah, ye, yan, iya, yya, ayyah, huiya and ohuiya may resemble grammatical forms. Their presence in the scholarly list is not enough to decide their role in every passage.",
+    "potential_vocable_spellings": [
+      "a",
+      "ah",
+      "ye",
+      "yan",
+      "iya",
+      "yya",
+      "ayyah",
+      "huiya",
+      "ohuiya"
+    ],
+    "all_potential_spellings_context_dependent": true,
+    "verbal_and_particle_homographs_preserved": true
+  },
+  "observations": [
+    {
+      "id": "brinton-xv-02-huiya",
+      "record_id": "brinton-1890-poetry-xv-02",
+      "historical_work_id": "brinton-1890-poetry-xv",
+      "exact_written_form": "huiya",
+      "source_url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt#L2375",
+      "short_source_fragment": "in colcahuahtecpillotl huiya nican milacatzoa",
+      "context_role": "sung_interjection_or_poetic_vocable_in_this_stanza",
+      "reviewer": "project_director",
+      "reviewer_independence": "not_independently_authenticated",
+      "methodological_support": "Leander 1972 pp.53-54 on context-sensitive interjective particles",
+      "original_text_provenance": "printed_Brinton_1890_research_train_only",
+      "manuscript_image_collated": false,
+      "whole_stanza_english_semantics_reviewed": false,
+      "review_scope": "this_occurrence_only",
+      "interpretation_not_global": true
+    },
+    {
+      "id": "cantares-18v-304-huiya",
+      "record_id": "cantares-mexicanos-18v-304",
+      "historical_work_id": "cantares-mexicanos-18v",
+      "exact_written_form": "huiya",
+      "source_url": "https://temoa.iib.unam.mx/cantares-cantares-mexicanos/18v",
+      "source_locator": "Folio 18v, edited Nahuatl passage 304 (Yohyontzin; Cantares Mexicanos)",
+      "short_source_fragment": "ye niYohyontzin huiya ha noyol quimati ohuaya ohuaya",
+      "context_role": "sung_interjection_or_poetic_vocable_in_this_stanza",
+      "reviewer": "project_director",
+      "reviewer_independence": "not_independently_authenticated",
+      "methodological_support": "Leander 1972 pp.53-54; UNAM Temoa edition 18v §304 transcription with musical interjections and no separate lexical English/Spanish gloss for huiya",
+      "original_text_provenance": "scholarly_edited_manuscript_transcription_not_independent_folio_paleography",
+      "manuscript_image_collated": false,
+      "whole_stanza_english_semantics_reviewed": false,
+      "review_scope": "this_occurrence_only",
+      "interpretation_not_global": true
+    }
+  ],
+  "separate_lexical_sense": {
+    "exact_written_form": "huiya",
+    "lexeme": "yauh",
+    "grammatical_role": "finite_verbal_form",
+    "source_url": "https://nahuatl.wired-humanities.org/content/huiya",
+    "source_kind": "Online Nahuatl Dictionary, lexicographic sense, not a proof that either poem occurrence is verbal",
+    "possible_english_gloss": "he/she/they went",
+    "remains_allowed": true,
+    "not_imposed_on_songs": true
+  },
+  "guardrails": {
+    "no_global_huiya_to_vocable_rewrite": true,
+    "no_global_huiya_to_go_rewrite": true,
+    "no_global_interjection_stopword_set": true,
+    "retain_original_poetic_refrains": true,
+    "retain_grapheme_spellings_and_diacritics": true,
+    "no_automatic_word_deletion": true,
+    "do_not_exclude_from_source_counts": true,
+    "no_new_grammar_rules": true,
+    "approved_gold": 0,
+    "approved_silver": 0,
+    "training_eligible": false,
+    "new_dictionary_edits": 0,
+    "model_weights_updated": false,
+    "other_huiya_occurrences_pending_context_review": true
+  }
+}

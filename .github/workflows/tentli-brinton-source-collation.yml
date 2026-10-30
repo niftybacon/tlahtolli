@@ -1,0 +1,44 @@
+name: Tēntli historical source-pinned bilingual collation
+on:
+  pull_request:
+    paths:
+      - 'tools/verify_brinton_parallel_source.py'
+      - 'tools/test_brinton_printed_source_audit.py'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+      - '.github/workflows/tentli-brinton-source-collation.yml'
+  push:
+    paths:
+      - 'tools/verify_brinton_parallel_source.py'
+      - 'tools/test_brinton_printed_source_audit.py'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+      - '.github/workflows/tentli-brinton-source-collation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pin-and-collate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reject invented source-alignment or shifted printed lines (offline cases)
+        run: python -m unittest discover -s tools -p 'test_brinton_printed_source_audit.py' -v
+      - name: Verify all 150 published Nahuatl / English pairs against immutable source bytes
+        run: |
+          python tools/verify_brinton_parallel_source.py | tee "$RUNNER_TEMP/brinton-collation.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          from pathlib import Path
+          data=json.loads((Path(os.environ["RUNNER_TEMP"])/"brinton-collation.json").read_text(encoding="utf-8"))
+          assert data["historical_alignment_candidates_collated"] == 150
+          assert data["verified_literal_translations"] == 0
+          assert data["gold_translation_pairs"] == 0
+          assert data["independent_manuscript_facsimile_review"] is False
+          print("## Original-printed bilingual collation")
+          print("- 150 source-provided numbered stanza correspondences matched a SHA-pinned 1890 public-domain printed edition")
+          print("- This verifies *printing and pointer fidelity only*, NOT source-work-era manuscript identity or semantic correctness")
+          print("- Independently evaluated Gold: **zero**")
+          PY

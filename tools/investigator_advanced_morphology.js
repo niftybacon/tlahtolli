@@ -25,6 +25,10 @@ function create(){
     // Conservative NFC+case match; never remove macrons globally.
     norm:x=>String(x||'').normalize('NFC').toLocaleLowerCase('en'),
     stripToken:x=>String(x||'').replace(/^[.,;:!?\s]+|[.,;:!?\s]+$/gu,''),
+    // The browser's historicalSpellings() UI helper is not independently
+    // source-graded here. No variants are manufactured by this VM; source-
+    // attested witnesses remain separately indexed by Python research.
+    historicalSpellings:()=>[],
     // These functions are only for html() and the browser UI, which are
     // deliberately not called in evidence research.
     safe:x=>String(x),

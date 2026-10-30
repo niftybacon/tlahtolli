@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 from urllib.parse import urlparse
 
-ALLOWED_RIGHTS = {"public_domain", "cc0", "cc_by_4_0", "permission_documented"}
+ALLOWED_RIGHTS = {"public_domain", "cc0", "cc_by_4_0", "permission_documented", "fair_use_assessed"}
 ALLOWED_TRANSCRIPTION = {"unreviewed", "editorial", "facsimile_checked", "reviewed"}
 ALLOWED_SPLITS = {"train", "dev", "test"}
 ALLOWED_ALIGNMENTS = {"candidate", "reviewed"}
@@ -28,6 +28,30 @@ def _valid_url(value: object) -> bool:
         return False
     u = urlparse(value)
     return u.scheme in ("https", "http") and bool(u.netloc)
+
+
+def _check_rights(obj: dict, record_id: str, label: str) -> str:
+    """Classify source rights without pretending a model automatically clears law.
+
+    The fair-use tier is a *documented human legal assessment*, not a license,
+    a judge's finding, or blanket permission to scrape a website. Only private
+    training inputs may use the tier; release requires separate assessment.
+    """
+    rights = _required_string(obj, "rights")
+    if rights not in ALLOWED_RIGHTS:
+        raise CorpusError(f"{record_id}: {label} rights are undocumented")
+    if rights == "permission_documented" and not _valid_url(obj.get("permission_url")):
+        raise CorpusError(f"{record_id}: {label} permission_documented requires permission_url")
+    if rights == "fair_use_assessed":
+        if not _valid_url(obj.get("acquisition_url")):
+            raise CorpusError(f"{record_id}: {label} fair use requires lawfully acquired source URL")
+        if not _valid_url(obj.get("assessment_url")):
+            raise CorpusError(f"{record_id}: {label} fair use requires a source-specific review locator")
+        if obj.get("no_source_redistribution") is not True:
+            raise CorpusError(f"{record_id}: {label} restricted source cannot be redistributed")
+        if not isinstance(obj.get("assessment_note"), str) or len(obj["assessment_note"].strip()) < 30:
+            raise CorpusError(f"{record_id}: {label} fair-use basis must be explained")
+    return rights
 
 
 def _required_string(obj: dict, field: str) -> str:
@@ -73,11 +97,7 @@ def inspect_record(obj: dict, *, allow_test_fixture: bool = False) -> Example:
         raise CorpusError(f"{record_id}: historical excerpt exceeds length bound")
     if any(ord(c) < 32 and c not in "\n\t\r" for c in original):
         raise CorpusError(f"{record_id}: control characters are disallowed")
-    rights = _required_string(obj, "rights")
-    if rights not in ALLOWED_RIGHTS:
-        raise CorpusError(f"{record_id}: source transcription has no documented training rights")
-    if rights == "permission_documented" and not _valid_url(obj.get("permission_url")):
-        raise CorpusError(f"{record_id}: permission_documented requires permission_url")
+    rights = _check_rights(obj, record_id, "source transcription")
     transcription = _required_string(obj, "transcription_status")
     if transcription not in ALLOWED_TRANSCRIPTION:
         raise CorpusError(f"{record_id}: invalid transcription status")
@@ -95,10 +115,7 @@ def inspect_record(obj: dict, *, allow_test_fixture: bool = False) -> Example:
             raise CorpusError(f"{record_id}: translation exceeds length bound")
         if _required_string(trans, "language") != "en":
             raise CorpusError(f"{record_id}: only English parallel targets supported in this experiment")
-        if trans.get("rights") not in ALLOWED_RIGHTS:
-            raise CorpusError(f"{record_id}: translation rights are unconfirmed")
-        if trans.get("rights") == "permission_documented" and not _valid_url(trans.get("permission_url")):
-            raise CorpusError(f"{record_id}: documented translation permission_url is required")
+        _check_rights(trans, record_id, "English translation")
         if not _valid_url(trans.get("source_url")):
             raise CorpusError(f"{record_id}: source-specific translation URL required")
         alignment = _required_string(trans, "alignment")
@@ -151,6 +168,7 @@ def summarize(rows: list[Example]) -> dict:
         "translation_training_records": sum(r.split == "train" and r.experimental_parallel for r in rows),
         "candidate_parallel_training_records": sum(r.split == "train" and r.alignment == "candidate" for r in rows),
         "historical_transcription_unreviewed": sum(r.transcription_status in {"unreviewed", "editorial"} for r in rows),
+        "fair_use_assessed_source_records": sum(r.rights == "fair_use_assessed" for r in rows),
         "independent_translation_accuracy": None,
         "data_hash": hashlib.sha256("|".join(sorted(r.fingerprint for r in rows)).encode()).hexdigest(),
     }

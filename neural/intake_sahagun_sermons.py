@@ -148,7 +148,7 @@ def download_sermons(*, output: str, max_sermons: int = 64, delay: float = 0.27)
     for i,spec in enumerate(starts[:max_sermons]):
         num,start=spec["number"],spec["page"]
         next_page=starts[i+1]["page"] if i+1<len(starts) else 199  # final sermon spans p.197–198
-        if next_page<=start or next_page-start>9:
+        if next_page<=start or next_page-start>40:
             raise ValueError(f"Unreasonable manuscript page range for sermon {num}")
         # Entire sermon reserved as a single independent unit for dev,
         # preventing adjacent-page language memorization in evaluation.

@@ -53,7 +53,7 @@ function independentlyAttestedResearchSurfaces(){
   const row=JSON.parse(line);
   if(!['train','dev'].includes(row.split))throw Error('Unapproved research train/dev split');
   if(row.split!=='train')continue;
-  for(const token of String(row.original).normalize('NFC').match(/[^\W\d_]+/gu)||[])
+  for(const token of String(row.original).normalize('NFC').match(/\p{L}+/gu)||[])
    labels.add(norm(token));
  }
  for(const row of readJSON(sources[4]).contexts)labels.add(norm(row.form));

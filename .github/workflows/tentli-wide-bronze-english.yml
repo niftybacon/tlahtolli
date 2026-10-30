@@ -1,0 +1,70 @@
+name: Tēntli source-gated wide Bronze English curriculum (research only)
+on:
+  pull_request:
+    paths:
+      - 'tools/source_gated_english_bridge.js'
+      - 'tools/export_wide_source_gated_english_practice.js'
+      - 'tools/test_wide_source_gated_english_practice.js'
+      - '.github/workflows/tentli-wide-bronze-english.yml'
+      - 'data/predicate_english.json'
+  push:
+    paths:
+      - 'tools/source_gated_english_bridge.js'
+      - 'tools/export_wide_source_gated_english_practice.js'
+      - 'tools/test_wide_source_gated_english_practice.js'
+      - '.github/workflows/tentli-wide-bronze-english.yml'
+      - 'data/predicate_english.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact single/batch source-audited grammar and Bronze evidence
+        run: |
+          node tools/test_source_gated_english_bridge.js
+          node tools/test_wide_source_gated_english_practice.js
+      - name: Generate complete indexed Bronze practice without invented history
+        run: |
+          node tools/export_wide_source_gated_english_practice.js "$RUNNER_TEMP/tentli-wide-bronze.jsonl" > "$RUNNER_TEMP/tentli-wide-summary.txt"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          from pathlib import Path
+          import json,os
+          from neural.grammar_teacher_practice import teacher_curriculum
+          p=Path(os.environ['RUNNER_TEMP'])/'tentli-wide-bronze.jsonl'
+          meta=json.loads(Path(str(p)+'.meta.json').read_text(encoding='utf-8'))
+          rows=teacher_curriculum(p)
+          assert meta['examples']==len(rows['train'])+len(rows['dev'])
+          assert len(rows['test'])==0
+          assert len({x['work'] for x in rows['train']} & {x['work'] for x in rows['dev']})==0
+          assert meta['human_reviewed'] is False and meta['historical_gold']==0
+          assert meta['independent_accuracy'] is None
+          assert all(x['evidence_grade']=='synthetic_grammar_proposal_not_historical_review' for x in rows['train']+rows['dev'])
+          assert all(x['example_weight']==(0.15 if x['alternative_english_count']>1 else 0.6) for x in rows['train']+rows['dev'])
+          print('## Expanded source-gated Bronze grammar teacher')
+          print('- **'+str(meta['attempted'])+'** indexed tense/person/polarity combinations considered')
+          print('- **'+str(meta['examples'])+'** complete source-audited English teaching examples')
+          print('- **'+str(len(rows['train']))+'** train, **'+str(len(rows['dev']))+'** dev, split by whole verb lemma')
+          print('- Indexed grammatical patterns admitted: '+', '.join(meta['per_canonical_pattern']))
+          print('- Unambiguous/ambiguous evidence weights: 0.6 / 0.15')
+          print('- New historical sentence attestations, Gold, independent accuracy: **0 / 0 / unmeasured**')
+          print('- This is NOT a trained model or automatically deployed release')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-source-gated-wide-bronze-english-research-only
+          path: |
+            ${{ runner.temp }}/tentli-wide-bronze.jsonl
+            ${{ runner.temp }}/tentli-wide-bronze.jsonl.meta.json
+            ${{ runner.temp }}/tentli-wide-summary.txt
+          retention-days: 30
+          if-no-files-found: error

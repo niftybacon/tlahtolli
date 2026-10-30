@@ -4,7 +4,7 @@ import sys
 import unittest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from neural.intake_sahagun_sermons import index_sermons,page_source,score_nahuatl
+from neural.intake_sahagun_sermons import index_sermons,page_source,score_nahuatl,presentation_page_range
 
 
 def fake_index():
@@ -55,6 +55,14 @@ class TestSahagunIntake(unittest.TestCase):
             page_source(fake_page(2),expected_sermon=1)
         with self.assertRaisesRegex(ValueError,"No independent historical transcription"):
             page_source(fake_page().replace("Transcripción","Unrelated"),expected_sermon=1)
+
+    def test_manuscript_range_does_not_invent_missing_folios(self):
+        h='<html><h2>[Sermón 57]</h2><div>(Ms. 1485, Col. Ayer, p. 177)</div></html>'
+        self.assertEqual(presentation_page_range(h,sermon=57,start=177,next_start=181),(177,177))
+        with self.assertRaisesRegex(ValueError,"Invalid source page span"):
+            presentation_page_range(h,sermon=57,start=176,next_start=181)
+        h2='<html><h2>[Sermón 64]</h2><div>(Ms. 1485, Col. Ayer, p. 197-198)</div></html>'
+        self.assertEqual(presentation_page_range(h2,sermon=64,start=197,next_start=199),(197,198))
 
     def test_conservative_ratio(self):
         self.assertGreater(score_nahuatl("auh yn inic ca in yn nican")[1],0.5)

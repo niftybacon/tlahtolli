@@ -1,0 +1,43 @@
+name: Tēntli Ayer 1485 sermon source intake and neural learning
+on:
+  push:
+    branches: [feat/tentli-sahagun-sermons-ayer1485-20261029]
+    paths:
+      - 'neural/intake_sahagun_sermons.py'
+      - 'tools/test_sahagun_sermons_intake.py'
+      - '.github/workflows/tentli-ayer1485-training.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-verified-training:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source-page parser
+        run: python -m pip install requests beautifulsoup4
+      - name: Guard UNAM manuscript identity, Spanish separation and historical intake
+        run: |
+          python -m unittest discover -s tools -p 'test_sahagun_sermons_intake.py' -v
+          python -m unittest discover -s tools -p 'test_historical_neural_corpus.py' -v
+          python -m unittest discover -s tools -p 'test_neural_fair_use_intake.py' -v
+      - name: Pilot real historical UNAM HTML intake, no source book copied into Git
+        run: |
+          python -m neural.intake_sahagun_sermons \
+            --max-sermons 4 \
+            --delay 0.3 \
+            --output "$RUNNER_TEMP/ayer1485-private.jsonl"
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ["RUNNER_TEMP"])/"ayer1485-private.jsonl.meta.json"
+          m=json.loads(p.read_text(encoding="utf-8"))
+          assert m["sermons_imported"]==4
+          assert m["Nahuatl_majority_editorial_paragraphs"]>=8
+          assert m["bilingual_targets"]==0
+          print("ACTUAL_SOURCE_PILOT_VERIFIED",m["pages"],m["historical_transcription_chars"])
+          PY

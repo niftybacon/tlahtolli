@@ -32,6 +32,12 @@ The sentence engine receives `poeticEvidence` as its final, **optional** argumen
 
 **Validation:** `node tools/test_contextual_poetic_vocables.js` covers both cited historical contexts, corrupted or overly broad attestations, isolated `huiya`, `ye`, `ohuiya`, accent changes, and ordinary previously supported finite verbs. The existing 928-form and seven primary-edition regression tests remain in place. No duplicate recurring workflow was created.
 
+## October 30 Phase 1 semantic research bridge — additional consumer, not automatic historical learning
+
+The existing **research-only** `tools/source_gated_english_bridge.js` now also loads `translator-semantic-ir.js` and calls `TlahtolliSemanticIR.create(sentence, english, ir).verify(...)` after grammar-IR English auditing. This verifier **re-runs the existing** canonical source-aware analyzer, shared graph and English realizer, checking exact options, evidence, roles and clause joins rather than generating any new grammatical parse. Changed/unlicensed candidate wording, person, tense, negative polarity, object roles, relative gaps, sources or audit metadata is refused. Its read-only descriptors keep referents, gender, locative semantics and lexical sense uncertainty unresolved. [Dedicated documentation](../../docs/TENTLI_SEMANTIC_PRESERVATION_CONTRACT_2026_10_30.md).
+
+**Not connected to the public web translator:** no change to `translator-integrated.js` or deployed model; this component validates research English candidates before optional model scoring only. It does **not** ingest the 928 unresolved forms as truths, verify historical meaning or award independent Silver/Gold status. The historical translation-accuracy benchmark remains unbuilt (Gold = 0). Any future website integration requires explicit source-bound testing and separate release review.
+
 ## Where additional ingestion is still needed
 
 This is an incremental and evidence-driven integration, **not proof that every research entry has been absorbed by the translation grammar**. The unresolved 928 and historical `can` suffix distinctions need source-conditional morphological analyses, independent review and separate regression before becoming usable productions. A learning loop needs a durable, reviewed correction/promotion protocol and independent Gold accuracy testing. Merely having more data on disk, generating weak bilingual drafts, or rerunning GitHub Actions does not make Tēntli a fully self-training AI.

@@ -25,7 +25,7 @@ function engines(){
  const morphSource=read('tools/morphology_engine.js').split('renderMorphologyBreakdown=TlahtolliMorphEngine.html;')[0];
  if(!morphSource.includes('const TlahtolliMorphEngine'))throw Error('Canonical morphology provider changed');
  vm.runInNewContext(morphSource+'\nthis.canonicalMorph=TlahtolliMorphEngine;',context);
- for(const name of ['translator-sentence.js','translator-locative.js','translator-english.js','translator-grammar-ir.js'])
+ for(const name of ['translator-sentence.js','translator-locative.js','translator-english.js','translator-grammar-ir.js','translator-semantic-ir.js'])
   vm.runInNewContext(read(name),context,{filename:name});
  const original=data('research/translation_corpus/research_examples.json');
  const locative=context.window.TlahtolliLocative.create(dictionary,original);
@@ -38,7 +38,8 @@ function engines(){
  const english=context.window.TlahtolliEnglish.create(sentence);
  const ir=context.window.TlahtolliGrammarIR.create(dictionary,
    data('data/passages.json'),paradigms,sentence);
- return {sentence,english,ir,predicatePresent:!!predicate};
+ const semantic=context.window.TlahtolliSemanticIR.create(sentence,english,ir);
+ return {sentence,english,ir,semantic,predicatePresent:!!predicate};
 }
 function produce(text,maxCandidates=DEFAULT_MAX,preloadedEngines=null){
  if(typeof text!=='string'||!text.trim()||text.length>7000||
@@ -59,10 +60,20 @@ function produce(text,maxCandidates=DEFAULT_MAX,preloadedEngines=null){
   reason:audited?.reason||'Not all written input is licensed by the English grammar composer',
   predicate_pack_available:e.predicatePresent
  };
- // The entire input is composed through the original English renderer.
- // The model NEVER invents/free-decodes English; it may score ONLY
- // alternatives permitted by the shared morphology + source grammar + IR.
- const baseline=e.english.render(audited);
+ // Phase 1 semantic preservation: independently recompute the EXISTING
+ // canonical analysis, IR and English options before scoring any candidates.
+ // No automatic claims of historical semantic correctness are made.
+ const semantic=e.semantic.verify(source,analysis,graph,audited);
+ if(semantic.available!==true)return {
+  status:'abstain',source_text:source,canonical_draft:null,candidates:[],
+  grammar_complete:false,verified_translation:false,
+  reason:semantic.reason||'Semantic preservation audit refused the English proposal',
+  predicate_pack_available:e.predicatePresent,
+  semantic_verifier:{version:'tentli-semantic-contract-v1',passed:false}
+ };
+ // The model NEVER invents/free-decodes English; it can score only
+ // canonical alternatives that survived BOTH the grammar and semantic gates.
+ const baseline=semantic.canonicalDraft;
  if(typeof baseline!=='string'||!baseline.trim())throw Error('Audited composer did not render its baseline');
  const optionBounds=audited.units.map(u=>u.options.length);
  const joins=(audited.joins||[]).map(j=>j.options?.length||1);
@@ -101,7 +112,9 @@ function produce(text,maxCandidates=DEFAULT_MAX,preloadedEngines=null){
   possible_combinations_capped:combinations,
   partial_analysis_is_not_translation:true,
   predicate_pack_available:e.predicatePresent,
-  audit_scope:audited.audit?.scope||'canonical-source-and-grammar'
+  audit_scope:audited.audit?.scope||'canonical-source-and-grammar',
+  semantic_verifier:{version:semantic.version,passed:true,
+   option_count:semantic.optionsChecked,verified_historical_translation:false}
  };
 }
 function main(){

@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 
 SOURCE_URL = "https://www.gutenberg.org/ebooks/14993"
+EXPECTED_SOURCE_SHA256 = "a9fd291536d2b106e331d3727acfb47e55720fa77165a173c2a76af5e5654fbe"
 EDITION = "Brinton, Rig Veda Americanus (1890), Sahagun Madrid-based hymn edition"
 HEADING = re.compile(r"^\s*([IVXLCDM]+)\.\s+_(.+?)_\s*$")
 STANZA = re.compile(r"^\s{2,}(\d{1,2})\.\s+(.+)$")
@@ -119,6 +120,9 @@ def main():
     p.add_argument("--output",required=True,help="Local/private corpus JSONL path")
     a=p.parse_args()
     text=Path(a.input).read_text(encoding="utf-8-sig")
+    actual_hash=hashlib.sha256(text.encode("utf-8")).hexdigest()
+    if actual_hash != EXPECTED_SOURCE_SHA256:
+        raise ValueError("Pinned Brinton source bytes changed; audit the new edition before training")
     rows,summary=extract(text)
     from neural.corpus import load_corpus
     out=Path(a.output)

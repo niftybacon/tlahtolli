@@ -113,7 +113,7 @@ def score_licensed_candidates(source:str, candidates:list[dict], model_dir:str)-
 
 def infer_hybrid(text:str,model_dir:str|None=None, *,
                  selection:str="canonical",max_candidates:int=MAX_CANDIDATES,
-                 pretrained_english:bool=False)->dict:
+                 pretrained_english:bool=False,pretrained_adapter_dir:str|None=None)->dict:
     if selection not in {"canonical","experimental-neural-ranked"}:
         raise ValueError("Selection must be canonical or experimental-neural-ranked")
     if selection!="canonical" and not model_dir:
@@ -164,7 +164,7 @@ def infer_hybrid(text:str,model_dir:str|None=None, *,
         from .pretrained_english import FlanEnglishDecoder, guarded_english_realization
         # Only after full canonical grammar and evidence audit has succeeded.
         # A rejection returns the unchanged canonical text, never a guess.
-        english_decoder=FlanEnglishDecoder()
+        english_decoder=FlanEnglishDecoder(adapter_path=pretrained_adapter_dir)
         realizer=guarded_english_realization(
             candidate_set["source_text"],
             rewrite=english_decoder.rewrite,admitted=candidate_set)
@@ -184,9 +184,14 @@ def main():
     ap.add_argument("--max-candidates",type=int,default=MAX_CANDIDATES)
     ap.add_argument("--pretrained-english",action="store_true",
                     help="Opt-in licensed pretrained English decoder, still gated to source-audited candidates")
+    ap.add_argument("--pretrained-adapter-dir",
+                    help="Experimental reviewed/synthetic LoRA research adapter; must be used with --pretrained-english")
     a=ap.parse_args()
+    if a.pretrained_adapter_dir and not a.pretrained_english:
+        ap.error("--pretrained-adapter-dir requires --pretrained-english")
     report=infer_hybrid(a.text,a.model_dir,selection=a.selection,max_candidates=a.max_candidates,
-                        pretrained_english=a.pretrained_english)
+                        pretrained_english=a.pretrained_english,
+                        pretrained_adapter_dir=a.pretrained_adapter_dir)
     print(json.dumps(report,ensure_ascii=False,indent=2))
 
 

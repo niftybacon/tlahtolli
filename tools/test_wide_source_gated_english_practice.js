@@ -20,6 +20,11 @@ for(const source of [
 const {out,meta}=build();
 assert(out.length>0);
 assert.equal(meta.examples,out.length);
+assert.equal(meta.single_clause_examples,288,
+  'Only canonical fully audited single clauses are admitted, even though indexed patterns cover 1440 cells');
+assert(meta.two_clause_examples>0,'Source-gated conjunction must add genuinely new compositional Bronze cases');
+assert(out.length>288,'No actual expansion if the grammar auditor rejected all new composed sentences');
+assert.equal(meta.lemma_disjoint_components_verified,true);
 assert.equal(meta.human_reviewed,false);
 assert.equal(meta.historical_gold,0);
 assert.equal(meta.independent_accuracy,null);
@@ -44,7 +49,16 @@ for(const row of out){
  assert(row.source_urls.every(s=>s.startsWith('https://')));
  assert(row.alternative_english_count>=1);
  assert(row.work==='synthetic-lemma-'+row.lemma);
+ assert(Array.isArray(row.constituent_lemmas));
+ assert(row.constituent_lemmas.includes(row.lemma));
+ assert.equal(row.constituent_lemmas.length,row.construction==='canonical_two_clause_auh_coordination'?2:1);
+ if(row.constituent_lemmas.length===2){
+  assert(row.source.includes(' auh '));
+  const held=new Set(meta.heldout_lemmas);
+  assert.equal(held.has(row.constituent_lemmas[0]),held.has(row.constituent_lemmas[1]),
+    'Never leak a held-out lexical component across teacher splits');
+ }
 }
-console.log('PASS: indexed Bronze teacher, '+out.length+
+console.log('PASS: indexed and compositional Bronze teacher, '+out.length+
  ' source-audited examples from 1440 attempts, '+Object.keys(meta.per_canonical_pattern).length+
  ' distinct tense/mood patterns; none independently reviewed or Gold');

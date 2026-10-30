@@ -1,0 +1,129 @@
+name: Train Tēntli on Temoa Chimalpahin and historical prose
+on:
+  push:
+    branches: [feat/temoa-chimalpahin-long-prose-20261029]
+    paths:
+      - 'neural/intake_temoa_chimalpahin.py'
+      - 'tools/test_temoa_chimalpahin_intake.py'
+      - '.github/workflows/tentli-temoa-chimalpahin-training.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  manuscript-source-and-gradients:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install transparent public Temoa HTML parser, not a browser scraper
+        run: python -m pip install requests beautifulsoup4
+      - name: Test source work boundaries, original script, and fail-closed rights
+        run: |
+          python -m unittest discover -s tools -p 'test_temoa_chimalpahin_intake.py' -v
+          python -m unittest discover -s tools -p 'test_historical_neural_corpus.py' -v
+          python -m unittest discover -s tools -p 'test_neural_fair_use_intake.py' -v
+      - name: Fetch exact named Temoa historical transcriptions temporarily
+        run: |
+          python -m neural.intake_temoa_chimalpahin \
+            --delay 0.22 \
+            --output "$RUNNER_TEMP/temoa-historical.jsonl"
+      - name: Verify both larger Chimalpahin works and independent prose are real
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ["RUNNER_TEMP"])/"temoa-historical.jsonl.meta.json"
+          data=json.loads(p.read_text(encoding="utf-8"))
+          assert data["source_works"]==5,data["source_works"]
+          works=data["works"]
+          assert works["3-relacion-de-chimalpahin"]["source_folio_pages"]>=80
+          assert works["3-relacion-de-chimalpahin"]["source_chars_before_dedupe"]>=30000
+          assert works["8-relacion-de-chimalpahin"]["source_chars_before_dedupe"]>=20000
+          assert works["cuauhtitlan-anales"]["source_chars_before_dedupe"]>=100000
+          assert works["la-leyenda-de-los-soles"]["source_chars_before_dedupe"]>=10000
+          assert works["anales-mexicanos"]["source_chars_before_dedupe"]>=1000
+          assert data["source_records"]>=100
+          assert data["source_english_or_spanish_pairs"]==0
+          assert data["independent_translation_accuracy"] is None
+          print("TEMOA_CHIMALPAHIN_GENUINE_SOURCE_VERIFIED",json.dumps({
+             "works":data["source_works"],
+             "records":data["source_records"],
+             "source_chars":data["source_chars_in_admitted_records"],
+             "third_relation_folios":works["3-relacion-de-chimalpahin"]["source_folio_pages"],
+             "eighth_relation_chars":works["8-relacion-de-chimalpahin"]["source_chars_before_dedupe"]
+          }))
+          PY
+      - name: Restore previous genuine Sahagun sermon-trained neural checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: tentli-sahagun-64-sermons-research-checkpoint
+          run-id: 40990926995
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/base-research-model
+      - name: Normalize earlier checkpoint artifact root and fail on random weights
+        run: |
+          python - <<'PY'
+          import json,os,pathlib,shutil
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/"base-research-model"
+          folders=[f.parent for f in root.rglob("metadata.json")
+                   if (f.parent/"weights.pt").exists()]
+          if len(folders)!=1:raise ValueError(f"Expected exactly one prior model: {folders}")
+          if folders[0]!=root:
+              for name in ("weights.pt","metadata.json"):
+                  shutil.copy2(folders[0]/name,root/name)
+          m=json.loads((root/"metadata.json").read_text(encoding="utf-8"))
+          assert m["format"]=="tentli-experimental-neural-v1"
+          assert m["model_config"]["max_bytes"]==256
+          assert m["model_config"]["width"]==48 and m["model_config"]["layers"]==1
+          assert m["trained_translation_examples"]>=4585
+          assert m["steps"]==1200
+          assert m["initialization"]=="teacher-distilled"
+          print("SAME_PREVIOUS_SAHAGUN_WEIGHTS_VERIFIED",m["trainable_parameters"])
+          PY
+      - name: Install CPU PyTorch
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Train historical Chimalpahin and independent prose from preserved weights
+        run: |
+          python -m neural.train --manifest "$RUNNER_TEMP/temoa-historical.jsonl" \
+            --init-checkpoint "$RUNNER_TEMP/base-research-model" \
+            --output "$RUNNER_TEMP/after-temoa-chimalpahin" \
+            --width 48 --heads 4 --layers 1 --max-bytes 256 \
+            --epochs 6 --batch-size 8 --max-steps 1800
+      - name: Confirm honest real training, not translation accuracy
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          tmp=pathlib.Path(os.environ["RUNNER_TEMP"])
+          corpus=json.loads((tmp/"temoa-historical.jsonl.meta.json").read_text(encoding="utf-8"))
+          m=json.loads((tmp/"after-temoa-chimalpahin/metadata.json").read_text(encoding="utf-8"))
+          assert m["steps"]==1800,m["steps"]
+          assert m["initialization"]=="teacher-distilled"
+          assert m["source_inventory"]["works"]==5
+          assert m["source_inventory"]["splits"]["train"]>0
+          assert m["source_inventory"]["splits"]["dev"]>0
+          assert m["source_inventory"]["translation_training_records"]==0
+          assert m["trained_translation_examples"]>=4585
+          assert m["trained_analysis_examples"]>=1000
+          assert m["independent_translation_accuracy"] is None
+          assert (tmp/"after-temoa-chimalpahin/weights.pt").is_file()
+          print("TEMOA_CHIMALPAHIN_REAL_GRADIENT_TRAINING_SUCCESS",json.dumps({
+             "works":corpus["source_works"],
+             "manuscript_spans":corpus["source_records"],
+             "admitted_source_chars":corpus["source_chars_in_admitted_records"],
+             "gradient_steps":m["steps"],
+             "retained_previous_translation_examples":m["trained_translation_examples"],
+             "dev_denoising_loss_not_translation_accuracy":m["development_mean_loss"],
+             "human_translation_accuracy":None},sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-temoa-chimalpahin-independent-prose-research-checkpoint
+          path: |
+            ${{ runner.temp }}/after-temoa-chimalpahin/weights.pt
+            ${{ runner.temp }}/after-temoa-chimalpahin/metadata.json
+            ${{ runner.temp }}/temoa-historical.jsonl.meta.json
+          if-no-files-found: error
+          retention-days: 30

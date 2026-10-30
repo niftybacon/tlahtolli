@@ -57,3 +57,24 @@ Even a successful 40-case batch leaves independently human-reviewed Gold count u
 Extend precise manuscript source acquisition under rights controls (individual dated primary documents), expand **source family and period-qualified** orthographic variants without indiscriminate rewriting, connect reviewable unresolved cases to persistent proposed corrections, and add carefully constrained human acceptance of sources into reviewed Silver. Keep the real Gold reference out of iterative research entirely.
 
 The meaningful progress is removing repetitive lookup labor while preserving a narrow, auditable human-verification boundary.
+
+
+## Measured first execution — 40 lexical source investigations (October 30, 2026)
+
+[Successful GitHub Actions run #41085308258](https://github.com/niftybacon/tlahtolli/actions/runs/41085308258) read the exact pinned Brinton training split, canonical claim evidence, and all **36,543** archived Amoxcalli records, without training a model or promoting a word:
+
+| Exact written-form match category | Actual investigation cases |
+| --- | ---: |
+| Both Siméon 1885 OCR and Classical-labelled Kaikki community archive | **3** |
+| Siméon historical OCR archive only | **14** |
+| Classical-labelled Kaikki community archive only | **6** |
+| Neither dictionary archive | **17** |
+| **Total** | **40** |
+
+Of 7,834 raw Kaikki source rows, only **4,622** were indexed as explicitly Classical `nci`; **3,212** non-Classical rows were excluded. Siméon's **28,709** historical OCR rows remained separately attributed. The source-family comparison did **not** turn the 3 dual-source form matches into independently verified Spanish/French/English sense equivalences.
+
+The engine flagged **5** forms for closer, contextual linguistic attention: `can`, `ic`, `cuicatl`, `ayac`, and the manually noted `zanio`. These flags indicate potentially conflicting part-of-speech indexing or an important existing editorial assertion, not confirmed translation mistakes.
+
+The remaining **35** cases received source-citation lookup and an automatically generated next-research action but did not get a high-priority human escalation in this batch. **Zero independent primary-source checks**, **zero meaning certifications**, **zero approved Silver/Gold**, and **zero production lexicon or model changes** were made.
+
+The full 40-record report is the [GitHub Actions research artifact](https://github.com/niftybacon/tlahtolli/actions/runs/41085308258) retained for 30 days. These are real *research-source indexing checks*; new manuscript analysis, expert contextual verification and access to additional original sources remain future improvements.

@@ -156,6 +156,48 @@ Culhuacan lineage. The Anales de Cuauhtitlan and other Temoa texts may
 still overlap source passages in earlier Axolotl rows, so held-out
 denoising metrics must not be called unseen translation accuracy.
 
+## Real PyTorch continuation completed
+
+[Verified training run #40993235240](https://github.com/niftybacon/tlahtolli/actions/runs/40993235240)
+**successfully completed** with the real non-redistributed five-source
+historical Nahuatl corpus and the previous Sahagún-trained neural weights.
+
+- **5 work-group identities, 450 source-bounded Nahuatl technical records,
+  499,938 characters.** The source measurement above is from the live
+  Temoa download, not a synthetic corpus or words inferred by the
+  translator.
+- **1,800 actual gradient updates** using seven available training
+  epochs as an upper bound and stopping at the requested step budget.
+  The first diagnostic run exhausted six epochs after 1,614 real
+  updates; this corrected run completed the full 1,800, and the final
+  audit checks it exactly.
+- **104,039 trainable parameters**, retaining the previously fitted
+  teacher/hymns/Chimalpahin-short/Florentine/Axolotl/Sahagún weights
+  and previous **4,585 training translation examples** as recorded in
+  source-aware metadata. The Temoa batch supplies **zero** new
+  verified/weak parallel translations—it teaches written-language
+  structure and long historical prose through denoising.
+- **Development denoising mean loss 2.0455**, measured on
+  *Anales Mexicanos*. It is not a human-evaluated translation metric,
+  and overlap with earlier Axolotl sources must not be falsely
+  dismissed. **Independent translation accuracy remains null.**
+- A GitHub Actions artifact named
+  `tentli-temoa-chimalpahin-independent-prose-research-checkpoint`
+  contains learned `weights.pt`, `metadata.json` and
+  aggregate work/source hashes only. **No raw copyrighted
+  transcription, paragraph, Spanish/French translation or derivative
+  searchable edition** was committed or uploaded. Artifact retention:
+  **30 days**.
+- The older public translator, source morphology, grammar IR,
+  agreement/possession engines, dictionary and prior training
+  pipelines were unchanged; this batch only adds independent
+  source-specific research intake, tests, documentation and training.
+
+**Important:** 2.0455 is the average *denoising loss* of this held-out
+research source within the current model and objective, not an
+accuracy score. No model quality or fair-use clearance is established
+by successful weight optimization.
+
 ## Required validation before claiming success
 
 Training succeeds only after Temoa reports the exact five work groups

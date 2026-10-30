@@ -40,13 +40,13 @@ function engines(){
    data('data/passages.json'),paradigms,sentence);
  return {sentence,english,ir,predicatePresent:!!predicate};
 }
-function produce(text,maxCandidates=DEFAULT_MAX){
+function produce(text,maxCandidates=DEFAULT_MAX,preloadedEngines=null){
  if(typeof text!=='string'||!text.trim()||text.length>7000||
   /[\u0000-\u0008\u000b\u000c\u000e-\u001f]/u.test(text))
   throw Error('Text must be nonempty, control-free and at most 7000 characters');
  if(!Number.isInteger(maxCandidates)||maxCandidates<1||maxCandidates>MAX_CANDIDATES)
   throw Error('maxCandidates must be integer 1..64');
- const e=engines();
+ const e=preloadedEngines||engines();
  const source=text.trim(),analysis=e.sentence.analyze(source),graph=e.ir.build(source,analysis);
  const audited=e.ir.auditEnglish(e.english.compose(source,analysis),analysis,graph);
  const complete=audited?.available===true && Array.isArray(audited.units) &&
@@ -110,4 +110,10 @@ function main(){
  process.stdout.write(JSON.stringify(result)+'\n');
 }
 if(require.main===module)main();
-module.exports={produce};
+// Research exporters can call thousands of forms through one frozen instance.
+ // This does NOT change the public or single-input semantics of produce.
+function createBatchProducer(){
+ const e=engines();
+ return (text,maxCandidates=DEFAULT_MAX)=>produce(text,maxCandidates,e);
+}
+module.exports={produce,createBatchProducer};

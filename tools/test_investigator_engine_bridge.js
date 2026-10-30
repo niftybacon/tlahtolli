@@ -17,6 +17,16 @@ try{
  assert.equal(result.format,'tentli-research-engine-bridge-v1');
  assert.equal(result.research_investigation_count,1181);
  assert.equal(result.source_historical_contexts_run_through_engines,7);
+ assert.equal(result.source_cited_song_vocable_contexts_run_through_engines,2);
+ assert.equal(result.poetic_context_grammar_engine_diagnostics.length,2);
+ for(const o of result.poetic_context_grammar_engine_diagnostics){
+  assert.equal(o.sentence_engine_poetic_context_matches,1);
+  assert.equal(o.shared_grammar_ir_poetic_context_nodes,1);
+  assert.equal(o.english_composition_abstained,true);
+  assert.equal(o.verbal_yauh_homograph_preserved,true);
+  assert.equal(o.grammatical_sense_globally_approved,false);
+  assert.equal(o.silver,false);assert.equal(o.gold,false);
+ }
  assert.equal(result.source_gold_or_silver_approved,0);
  assert.equal(result.no_persistent_learning_or_model_update,true);
  assert.equal(result.no_auto_grammatical_rule_creation,true);

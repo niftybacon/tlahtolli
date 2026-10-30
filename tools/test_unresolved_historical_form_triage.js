@@ -38,9 +38,18 @@ try{
  for(const form of ['yehuan','tepilhuan','noyollo','ipalnemohua'])
   assert(!result.review_queue.some(x=>x.written_surface===form),
    form+' has independently located historical dictionary leads, not a new routine human task');
- assert(result.review_queue.some(x=>x.written_surface==='huiya'&&
-  x.independent_external_dictionary_lead.director_attention_warranted===true),
-  'Conflicting verbal vs poetic huiya requires optional genuine context discussion');
+ assert.equal(result.previously_asked_huiya_song_contexts_recorded_not_universally_resolved,1);
+ const huiya=result.unresolved_forms.find(x=>x.written_surface==='huiya');
+ assert(huiya,'huiya must remain an unresolved general form, even with two context reviews');
+ assert.equal(huiya.triage_route,'two_song_occurrences_are_context_reviewed_other_uses_pending');
+ assert.equal(huiya.context_specific_poetic_occurrence_reviews.length,2);
+ assert.equal(huiya.is_all_occurrences_adjudicated,false);
+ assert(huiya.context_specific_poetic_occurrence_reviews.every(x=>
+  x.not_a_general_word_sense===true&&x.verbal_homograph_still_available===true&&
+  x.review_scope==='this_occurrence_only'&&x.manuscript_image_collated===false));
+ assert(!result.review_queue.some(x=>x.written_surface==='huiya'),
+  'Director answered the two cited huiya contexts; do not re-ask or globally decide other stanzas');
+ assert(result.nonexclusive_lead_counts.contextual_poetic_vocable_occurrence_review_complete_not_global===1);
  assert(result.prioritized_new_human_questions_count<=12);
  assert(result.prioritized_new_human_questions_count>0);
  assert.equal(result.unresolved_forms.filter(x=>x.gold||x.silver_approved||x.training_eligible).length,0);
@@ -77,7 +86,8 @@ try{
  // never be automatically enrolled for another human question.
  for(const entry of result.review_queue){
   const sourceRow=result.unresolved_forms.find(x=>x.written_surface===entry.written_surface);
-  assert(sourceRow&&!sourceRow.prior_source_research&&!sourceRow.director_feedback_previously_recorded);
+  assert(sourceRow&&!sourceRow.prior_source_research&&!sourceRow.director_feedback_previously_recorded&&
+   sourceRow.context_specific_poetic_occurrence_reviews.length===0);
  }
  for(const mutator of [
   x=>{x.evidence_fingerprints.canonical_lexicon='0'.repeat(64)},

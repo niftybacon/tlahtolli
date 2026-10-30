@@ -105,7 +105,7 @@ class TestHistoricalSongFormTriage(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             file = Path(tmp) / "leaky.jsonl"
             file.write_text("\n".join(json.dumps(x) for x in items) + "\n", encoding="utf-8")
-            with self.assertRaisesRegex(ValueError, "test/Gold"):
+            with self.assertRaisesRegex(ValueError, "Gold/test"):
                 contextual_audit(file)
 
     def test_review_range_and_none_of_the_forms_are_synthetically_translated(self):

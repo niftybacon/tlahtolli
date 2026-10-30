@@ -21,6 +21,7 @@ from tools.prepare_silver_review import _human_identity
 ROOT = Path(__file__).resolve().parents[1]
 CANDIDATES = ROOT / "research/neural_training/brinton_1890_poetry_weak_en.jsonl"
 PAIRS = ROOT / "research/translation_corpus/pairs.csv"
+PRIMARY_CONTEXT = ROOT / "research/translation_corpus/primary_context_findings_2026_10_30.json"
 FORMAT = "tentli-independent-human-gold-benchmark-v1"
 PREDICTIONS = "tentli-gold-blind-model-predictions-v1"
 ADJUDICATIONS = "tentli-gold-independent-human-adjudications-v1"
@@ -67,6 +68,19 @@ def known_exposure(candidate_manifest: Path = CANDIDATES, pair_csv: Path = PAIRS
                 works.add(row["split_group"])
             if row.get("normalized_nahuatl"):
                 content.add(" ".join(row["normalized_nahuatl"].casefold().split()))
+    # Once an entire historical work is consulted for development, it cannot
+    # later be quietly recycled as independent Gold. Protect the edited
+    # 1621 ENL donation and the whole Florentine Codex (not merely Book 10).
+    from neural.primary_source_context import read_catalog
+    source_catalog = read_catalog(PRIMARY_CONTEXT)
+    for source in source_catalog["source_collections"]:
+        collections.add(source["id"])
+        works.add(source["work_id"])
+        if source["id"] == "florentine-codex":
+            collections.update({"Florentine Codex", "florentine-codex"})
+            works.add("Florentine-Codex")
+    for context in source_catalog["contexts"]:
+        content.add(" ".join(context["exact_short_source_phrase"].casefold().split()))
     return {"collections": collections, "works": works, "normalized_content": content,
             "historical_candidate_records_considered": len(train)}
 

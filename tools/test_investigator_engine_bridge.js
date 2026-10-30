@@ -74,11 +74,11 @@ try{
  const part=bridge.bridge(limited);
  assert.equal(part.research_investigation_count,20);
  assert.equal(part.source_historical_contexts_run_through_engines,7);
- assert.deepEqual(result,bridge.bridge(report),'Re-run must produce identical report');
+ assert.equal(JSON.stringify(result),JSON.stringify(bridge.bridge(report)),\n  'Re-run must produce identical JSON diagnostic; browser VM prototypes may differ');
  const out=path.join(temp,'from-cli.json');
  cp.execFileSync('node',['tools/investigator_engine_bridge.js',
   '--input',input,'--output',out],{cwd:root,encoding:'utf8',timeout:150000});
- assert.deepEqual(JSON.parse(fs.readFileSync(out,'utf8')),result);
+ assert.equal(JSON.stringify(JSON.parse(fs.readFileSync(out,'utf8'))),JSON.stringify(result));
  console.log('PASS: 1181 real evidence forms analyzed through existing lexical / indexed paradigm / exact-source morphology,');
  console.log('      7 historical source contexts through current clause grammar + English composer + shared IR;');
  console.log('      stale archive SHA, Gold, Silver, training and forged-source failures guarded. Routes: '+JSON.stringify(cat));

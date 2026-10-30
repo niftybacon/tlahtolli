@@ -194,6 +194,24 @@ python -m neural.hybrid_infer --text 'nichōca' --pretrained-english \
   --pretrained-adapter-dir /private/adapter-extracted-from-artifact
 ```
 
+**Final evidence-weighted, adapter-reloaded test:** The subsequently
+verified [GitHub Actions #41002254191](https://github.com/niftybacon/tlahtolli/actions/runs/41002254191)
+reduced the 264 ambiguous first-choice English examples to only
+**0.15 training weight** (unambiguous teacher choices use **0.6**).
+The genuine 24-step LoRA update completed on the same **240 source-graded
+synthetic training / 48 lemma-held-out development** examples, and
+held-out teacher-forced loss changed from **3.995994 to 3.846198**.
+
+The research adapter **reloaded successfully**. But when asked to
+generate from its actual *Nahuatl→English* training prompt, its
+proposal was **not an exact canonical-audited English alternative**
+for any of the three constructed test inputs. All three unsafe
+suggestions were **rejected**; canonical `I cry.`, `I eat.`
+and `I see the woman.` remained visible. **We did not obtain
+new demonstrated translation competence**. Lower synthetic dev
+loss is not evidence of semantic fidelity or successful English
+translation on unseen manuscripts.
+
 All candidate selections still require exact membership in
 the canonical grammar's source-audited alternatives.
 

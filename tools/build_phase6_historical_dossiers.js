@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 /* Phase 6: source-locked, reproducible research dossiers from the EXISTING
- * 928-form investigator/actual-engine triage. This script does not resolve
+ * 926-form investigator/actual-engine triage. This script does not resolve
  * meanings, create lexemes, alter morphology or certify translations.
  */
 const fs=require('node:fs');
@@ -50,8 +50,8 @@ const nextAction={
 };
 function validate(triage){
  insist(triage?.format==='tentli-unresolved-historical-form-triage-v1'&&
-   triage.unresolved_engine_miss_count===928&&
-   triage.unresolved_forms?.length===928&&
+   triage.unresolved_engine_miss_count===926&&
+   triage.unresolved_forms?.length===926&&
    triage.no_new_dictionary_approvals===true&&
    triage.no_new_morphological_rules===true&&
    triage.no_model_training===true&&
@@ -165,7 +165,7 @@ function buildDossiers(triage,limit=80){
   format:FORMAT,source_fingerprints:triage.source_fingerprints,
   parent_triage_format:triage.format,
   triage_source_sha256:sha(json(triage)),
-  candidate_count:eligible.length,source_engine_gap_count:928,
+  candidate_count:eligible.length,source_engine_gap_count:926,
   requested_dossier_limit:limit,prepared_dossier_count:packets.length,
   selection:'source-indexed and repeated same-edition witnesses, source-lemma comparisons; source-work-diversified and priority ranked',
   reviewed_original_manuscript_images:0,new_human_approved_silver:0,new_human_approved_gold:0,

@@ -49,6 +49,7 @@ def evidence_fingerprints(manifest: Path = MANIFEST) -> dict:
         "original_context_registry": filehash(PRIMARY),
         "added_historical_documents": filehash(MULTIDOC),
         "project_director_observations": filehash(FEEDBACK),
+        "contextual_poetic_vocable_evidence": filehash(ROOT / "research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json"),
     }
 
 

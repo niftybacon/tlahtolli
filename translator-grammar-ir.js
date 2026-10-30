@@ -69,6 +69,35 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
    completeAccordingToAnalyzer:cl?.complete===true,
    epistemicStatus:'analyzer output, not independent historical attestation'
   }));
+  // Provenance-graded musical interjection is *not* a finite predicate, a
+  // grammatical stopword or an English translation. The source word stays.
+  // No global 'huiya' rule is generated from the two reviewed song excerpts.
+  for(const p of items(analysis?.poeticVocableObservations,2)){
+   if(p?.originalWrittenForm!=='huiya'||p.universallyVocable!==false||
+      p.englishDeletionPermitted!==false||
+      p.wholeClauseTranslationVerified!==false||
+      p.sourceManuscriptImageChecked!==false||
+      p.remainingSongOccurrencesUnreviewed!==true||
+      !['brinton-xv-02-huiya','cantares-18v-304-huiya'].includes(p.sourceId)||
+      !source(p.originalSourceUrl)||!source(p.methodologyUrl)||
+      !source(p.competingVerbalSource)||
+      p.competingVerbalLemma!=='yauh'||
+      !Number.isInteger(p.originalTokenIndex))continue;
+   const actual=raw.normalize('NFC').toLowerCase().match(/[\p{L}\p{M}]+/gu)||[];
+   const excerpt=String(p.printedContext||'').normalize('NFC').toLowerCase()
+    .match(/[\p{L}\p{M}]+/gu)||[];
+   const location=p.originalTokenIndex,offset=excerpt.indexOf('huiya');
+   if(offset<0||location<offset||location>=actual.length||
+      excerpt.length<5||!excerpt.every((w,j)=>w===actual[location-offset+j]))continue;
+   newNode('poetic-vocable-context',{written:'huiya',
+    inputTokenIndex:location,historicalSource:p.originalSourceUrl,
+    methodologySource:p.methodologyUrl,competingVerbalSource:p.competingVerbalSource,
+    historicalContextId:p.sourceId,
+    reading:'project-director-supported sung interjection only in this source-matched passage',
+    alternative:'yauh verbal form remains valid outside this reviewed song context',
+    grammaticalRuleAdded:false,referentId:null,
+    status:'source-graded contextual editorial observation; NOT universal or a translation'});
+  }
   function mention(i,head,readingId,role){
    if(!head||typeof head.written!=='string'||typeof head.lemma!=='string'||!source(head.source))return null;
    const t=span(i,head.written);
@@ -585,6 +614,7 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
     nominalMentions:nodes.filter(n=>n.kind==='nominal-mention').length,
     nestedDependencies:edges.filter(e=>e.relation==='in-subordinate-dependency').length,
     antecedentCandidates:edges.filter(e=>e.relation==='antecedent-candidate').length,
+    poeticVocableContexts:nodes.filter(n=>n.kind==='poetic-vocable-context').length,
     partialSpans:nodes.filter(n=>n.kind==='partial-grammatical-span').length,
     nominalCoordinations:nodes.filter(n=>n.kind==='nominal-coordination-marker').length,
     coordinatedSubjectAttachments:edges.filter(e=>e.relation==='possible-coordinated-subject-attachment').length}};

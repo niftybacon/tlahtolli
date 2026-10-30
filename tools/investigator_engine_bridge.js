@@ -23,6 +23,7 @@ const sources=[
  'research/translation_corpus/primary_context_findings_2026_10_30.json',
  'research/translation_corpus/multidocument_context_probes_2026_10_30.json',
  'research/translation_corpus/project_director_provisional_feedback.json',
+ 'research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json',
 ];
 const sha=filename=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,filename))).digest('hex');
 const readJSON=filename=>JSON.parse(fs.readFileSync(path.join(ROOT,filename),'utf8'));
@@ -34,7 +35,8 @@ function currentEvidence(){
   canonical_lexicon:sha(sources[1]),source_checked_claims:sha(sources[2]),
   witness_atlas:sha(sources[3]),original_context_registry:sha(sources[4]),
   added_historical_documents:sha(sources[5]),
-  project_director_observations:sha(sources[6])};
+  project_director_observations:sha(sources[6]),
+  contextual_poetic_vocable_evidence:sha(sources[7])};
  const manifest=readJSON('research/amoxcalli_archive/manifest.json');
  out.archive_manifest=sha('research/amoxcalli_archive/manifest.json');
  const files={};
@@ -192,6 +194,33 @@ function bridge(report,{models=loadModels()}={}){
  }
  const sources=recordSourceContexts();
  const contextResults=[];
+ // Unlike the 7 short dictionary-context probes, these two scholarly song
+ // passages are entered as *context-scoped poetic evidence*, never finite
+ // clause English labels or Gold translations.
+ const songEvidence=readJSON('research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json');
+ if(songEvidence.format!=='tentli-huiya-contextual-poetic-evidence-v1'||
+    songEvidence.observations?.length!==2||
+    songEvidence.guardrails?.no_global_huiya_to_vocable_rewrite!==true||
+    songEvidence.guardrails?.no_automatic_word_deletion!==true||
+    songEvidence.separate_lexical_sense?.remains_allowed!==true)
+   throw Error('Rejected malformed contextual poetic evidence');
+ const poeticContextResults=songEvidence.observations.map(song=>{
+  const a=analyzeText(song.short_source_fragment,models);
+  if(a.sourceLinkedSongVocableObservations!==1||
+     a.grammarIRSongVocableNodes!==1||a.englishDraftAvailable!==false||
+     !String(a.englishRefusal).includes('huiya'))
+   throw Error('Current grammar/IR/English engines are not ingesting cited sung huiya');
+  return {
+   context_id:song.id,source_url:song.source_url,
+   original_short_cited_nahuatl:song.short_source_fragment,
+   sentence_engine_poetic_context_matches:a.sourceLinkedSongVocableObservations,
+   shared_grammar_ir_poetic_context_nodes:a.grammarIRSongVocableNodes,
+   english_composition_abstained:true,verbal_yauh_homograph_preserved:true,
+   grammatical_sense_globally_approved:false,
+   independent_manuscript_image_checked:false,
+   silver:false,gold:false,training_eligible:false
+  };
+ });
  for(const row of sources){
   const a=analyzeText(row.original,models);
   if(a.tokenCount<1)throw Error('Source context discarded by existing engine');
@@ -223,11 +252,12 @@ function bridge(report,{models=loadModels()}={}){
   input_evidence_fingerprints:report.evidence_fingerprints,
   research_investigation_count:records.length,
   source_historical_contexts_run_through_engines:contextResults.length,
+  source_cited_song_vocable_contexts_run_through_engines:poeticContextResults.length,
   engine_wiring:{
    lexical:'translator-engine.js actual curated browser lexical analyzer',
    indexed_verb_morphology:'paradigms.json all cells exact surface only',
    source_morphology:'translator-source-morphology.js exact source-review tokens',
-   sentence:'translator-sentence.js source-gated grammar rules',
+   sentence:'translator-sentence.js source-gated grammar rules and exact source-cited poetic-vocable observations',
    english:'translator-english.js abstention-preserving composer',
    grammar_ir:'translator-grammar-ir.js shared candidate graph',
    advanced_browser_supplementary_morphology:'tools/morphology_engine.js source executed in isolated Node VM; proposals separately graded and never attested',
@@ -241,6 +271,7 @@ function bridge(report,{models=loadModels()}={}){
   no_gold_reference_exposure:true,
   token_engine_diagnostics:records,
   historical_context_engine_diagnostics:contextResults,
+  poetic_context_grammar_engine_diagnostics:poeticContextResults,
  };
 }
 function main(){

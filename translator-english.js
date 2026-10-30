@@ -108,6 +108,13 @@ function create(model){
  }
  function compose(input,result){
   const fail=reason=>({available:false,reason,units:[],joins:[],verified:false});
+  // A reviewed *poetic* huiya is still a written token. No English draft
+  // may silently discard it or automatically render it as 'went'.
+  if(Array.isArray(result?.poeticVocableObservations)&&
+     result.poeticVocableObservations.some(x=>x?.originalWrittenForm==='huiya'&&
+      x.englishDeletionPermitted===false&&x.universallyVocable===false))
+   return fail('This original-language passage includes a cited poetic-vocable reading of huiya; English cannot omit it, choose the verbal homograph, or certify a whole-clause translation automatically.');
+
   if(typeof input!=='string'||input.length>7000||!result?.clauses?.length||
    result.clauses.length>24||/[?¿]/u.test(input))return fail('No supported complete passage structure.');
   const clauses=result.clauses;

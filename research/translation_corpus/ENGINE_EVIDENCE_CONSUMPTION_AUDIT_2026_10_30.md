@@ -1,0 +1,39 @@
+# Which Tēntli evidence is actually consumed by the engines?
+*October 30, 2026 — checked against the current code paths. Evidence inventory is not a blanket import into grammar.*
+
+## Critical architectural distinction
+
+Historical material is **not automatically learned merely because it appears in `research/`**. Tēntli consists of a curated production dictionary and grammar, source-labeled morphology, historical research catalogs, a lexicon/morphology/grammar/English diagnostic bridge, and separate experimental neural work.
+
+The **public translator** receives the cited song evidence only when `translator-integrated.js` loads `research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json` and passes it to the EXISTING `TlahtolliSentence.create` API. Previously the research file was read only by the investigator, not by the public sentence engine. That wiring is fixed in this PR, without introducing a competing grammar parser.
+
+| Earlier work / source | Actual engine connection after this PR | Scientific and trust boundary |
+| --- | --- | --- |
+| Curated lexical dictionary, inflections and source claims | Existing browser `translator-engine.js`, supplementary `tools/morphology_engine.js`, indexed `paradigms.json`, sentence grammar | Only approved existing entries and source-labeled inflections are available for direct English candidates |
+| `data/clause_grammar.json` and agreement/possessor analyses | Existing `translator-sentence.js`, `translator-grammar-ir.js`, `translator-english.js` | Source-graded grammatical *candidates*, not historically certified full-sentence translations |
+| 36,543 archived Siméon/Kaikki records, 1,181 Brinton and other originally written forms, plus 928 unresolved shapes | `neural/paged_historical_investigator.py` → `tools/investigator_engine_bridge.js` → `tools/triage_unresolved_historical_forms.js` | Active **research** and test diagnostics. No unsourced auto-correction or lexical promotion; modern varieties remain separate |
+| BC19 `yniquexcan`, BC19 `ayac`, Florentine `cujcatl`, and BC16/BC26 contexts | Original-source catalogs and the 7-context morphology/syntax diagnostic path | The dictionary/index might know lexical words; this does **not** automatically authorize a new `-cān` optative rule or a general `cuj` spelling rule. Getty static-HTML limitation remains |
+| Project-director `zanio` contextual interpretation | Provisional feedback record, hashed evidence research worklist, no duplicate review | Not an automatically approved global English gloss, Silver pair or Gold |
+| Five recurrent source-indexed lexical leads (`yehuan`, `tepilhuan`, `noyollo`, `ipalnemohua`, `huiya`) | 928-form source-led investigation and contextual review queue | Scholarly dictionary senses are not yet independent contextual semantic judgments for every Brinton stanza |
+| **Leander 1972 `partículas interjectivas` and two reviewed sung `huiya` occurrences** | **NOW LOADED INTO THE PUBLIC SENTENCE ENGINE**, exposed in the browser, included in the shared grammar IR, withheld from unsupported English, and tested in the weekly research bridge | **Only the two exact cited short passages** produce a musical-vocable observation. Bare `huiya`, `ye`, `a`, `ohuiya`, unrelated stanzas, near-spellings and other verbal contexts are **not** automatically classed as songs |
+| 150 Brinton 1890 weak bilingual stanza candidates / existing Bronze grammar cases | Separate source-labeled research neural data and optional experiments | No automatic conversion into historical Gold/Silver or scheduled neural retraining |
+| Gold benchmark and Silver review gates | `tools/independent_gold_gate.py` and corpus validators | Research-exposed source works are not blind Gold; model accuracy has not been independently certified |
+
+## The implemented grammar behavior
+
+The sentence engine receives `poeticEvidence` as its final, **optional** argument. Existing callers without the source record retain their previous narrow behavior.
+
+- **Exact original-language token sequence**, matching the individually reviewed short context; not a heuristic that labels any `huiya` in a large poem as a vocable
+- For Brinton poem XV.2 or UNAM *Cantares Mexicanos* folio 18v §304, return a **source-cited, nonfinite musical interpretation** alongside the still-possible `yauh` verbal homograph elsewhere
+- Do **not** add a productive derivation, a one-to-one English word gloss, a stopword rule, or a corpus-wide spelling equivalence for any member of Leander's list
+- Preserve written syllables and all unexplained words in the existing parse; the shared grammar IR adds **`poetic-vocable-context` evidence nodes**, not finite verbs or independently verified translation alternatives
+- The existing English composer declines to emit a whole-passage draft when it cannot preserve the source-matched musical sound; it never silently drops `huiya` or inserts “went”
+- The browser publicly displays the linked historical and lexicographic citations in its normal analysis results. The research bridge re-runs **both** song contexts through the same sentence engine, grammar IR and English refusal, rather than merely reading a JSON record
+
+**Validation:** `node tools/test_contextual_poetic_vocables.js` covers both cited historical contexts, corrupted or overly broad attestations, isolated `huiya`, `ye`, `ohuiya`, accent changes, and ordinary previously supported finite verbs. The existing 928-form and seven primary-edition regression tests remain in place. No duplicate recurring workflow was created.
+
+## Where additional ingestion is still needed
+
+This is an incremental and evidence-driven integration, **not proof that every research entry has been absorbed by the translation grammar**. The unresolved 928 and historical `can` suffix distinctions need source-conditional morphological analyses, independent review and separate regression before becoming usable productions. A learning loop needs a durable, reviewed correction/promotion protocol and independent Gold accuracy testing. Merely having more data on disk, generating weak bilingual drafts, or rerunning GitHub Actions does not make Tēntli a fully self-training AI.
+
+This inventory is the canonical distinction between **available evidence**, **actively used diagnostics**, and **approved grammar knowledge**, so future changes need not duplicate engines or invent claims of autonomous linguistic understanding.

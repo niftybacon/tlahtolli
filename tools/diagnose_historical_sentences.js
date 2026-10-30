@@ -52,7 +52,9 @@ function createModels(files){
  // paradigms ARE loaded. Do not call this a complete browser morphology test.
  const sentence=api.TlahtolliSentence.create(dictionary,JSON.parse(files['paradigms.json']),
   token=>canonicalSource.analyze(token),examples,locative,JSON.parse(files['data/clause_grammar.json']),
-  JSON.parse(files['data/possessed_form_evidence.json']));
+  JSON.parse(files['data/possessed_form_evidence.json']),
+  null,null,null,
+  JSON.parse(files['research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json']));
  return {lexical,sentence,english:api.TlahtolliEnglish.create(sentence),
   graph:api.TlahtolliGrammarIR.create(dictionary),sourceMorphology:canonicalSource};
 }
@@ -61,7 +63,8 @@ const MODEL_FILES=[
  'translator-source-morphology.js','translator-sentence.js','translator-english.js',
  'translator-grammar-ir.js','data/clause_grammar.json','data/possessed_form_evidence.json',
  'research/translation_corpus/research_examples.json',
- 'research/translation_corpus/source_reviews/ENL_BC16_1573.json'];
+ 'research/translation_corpus/source_reviews/ENL_BC16_1573.json',
+ 'research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json'];
 function loadModels(){return createModels(Object.fromEntries(MODEL_FILES.map(f=>[f,read(f)])));}
 const proposalCounts=clause=>Object.fromEntries(Object.entries(clause||{})
  .filter(([key,value])=>key.endsWith('Proposals')&&Array.isArray(value)&&value.length>0)
@@ -91,6 +94,8 @@ function analyzeText(input,models){
   tokenSurfaceDifferences,
   finiteCandidates,fullFiniteClauseAnalysis:syntax.complete===true,
   grammarAlternatives:graphAlt,grammarNodes:truthyList(graph.nodes).length,
+  sourceLinkedSongVocableObservations:truthyList(syntax.poeticVocableObservations).length,
+  grammarIRSongVocableNodes:truthyList(graph.nodes).filter(n=>n.kind==='poetic-vocable-context').length,
   proposalCounts:proposals,englishDraftAvailable:wording.available===true,
   // Diagnostic illustration ONLY: never compare automatically with an editorial reference.
   englishDraft:wording.available?models.english.render(wording):null,

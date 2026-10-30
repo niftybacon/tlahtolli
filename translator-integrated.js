@@ -41,6 +41,22 @@ function showResult(){
  if(sentenceModel&&direction.value==='nh-en'){
   const result=sentenceModel.analyze(content);
   const graph=grammarIR?.build(content,result)||null;
+  if(result.poeticVocableObservations?.length){
+   const panel=el('section','translator-candidate translator-poetic-vocable');
+   panel.append(el('h4','','Historical song: context-specific poetic interjection'),
+    el('p','translator-caution','A matched historical passage contains huiya as a likely sung vocable, not a universally disposable word. A different occurrence may instead be the verb yauh (“go”). This is a source-cited editorial interpretation, NOT a verified whole-passage translation.'));
+   for(const observation of result.poeticVocableObservations){
+    panel.append(el('p','translator-meta',
+     'Original: huiya · cited context '+observation.sourceId+
+     ' · no inferred English omission or global grammatical change.'));
+    for(const url of [observation.originalSourceUrl,observation.methodologyUrl,
+     observation.competingVerbalSource]){
+     const link=safeLink(url,'Inspect poetic, scholarly or verbal evidence');
+     if(link)panel.append(link);
+    }
+   }
+   passages.append(panel);
+  }
   if(englishModel){
    const baseComposition=englishModel.compose(content,result);
    const composition=grammarIR?.auditEnglish(baseComposition,result,graph)||baseComposition;
@@ -1010,9 +1026,11 @@ async function init(){
    fetch('./data/passages.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./data/predicate_english.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -1046,7 +1064,8 @@ async function init(){
     clauseGrammar.status==='fulfilled'?clauseGrammar.value:null,
     possessiveEvidence.status==='fulfilled'?possessiveEvidence.value:null,
     sourceFiniteEvidence.status==='fulfilled'?sourceFiniteEvidence.value:null,
-    citedPassages,predicateEnglish.status==='fulfilled'?predicateEnglish.value:null);
+    citedPassages,predicateEnglish.status==='fulfilled'?predicateEnglish.value:null,
+    poeticEvidence.status==='fulfilled'?poeticEvidence.value:null);
     grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages,parsedParadigms,sentenceModel)||null;
    }
   }catch{} // Lexical analysis remains usable when paradigm loading fails.

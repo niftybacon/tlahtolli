@@ -84,11 +84,78 @@ function compileClauseRules(pack){
  return valid;
 }
 
-function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish){
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
  const PERSON_CODES=['1sg','2sg','3sg','1pl','2pl','3pl'];
+ // Research-grade *passage-specific* analysis, not a new spelling normalizer
+ // or lexical rewrite. Only the two explicitly reviewed snippets in a trusted
+ // source file may be marked as likely sung vocables. The homographic yauh
+ // 'went' remains possible in all other sentences and is never hidden.
+ function poeticVocableObservations(input){
+  const doc=poeticEvidence;
+  const guard=doc?.guardrails;
+  if(doc?.format!=='tentli-huiya-contextual-poetic-evidence-v1'||
+   doc.method_source?.author!=='Birgitta Leander'||
+   doc.method_source?.year!==1972||
+   doc.method_source?.printed_pages!=='53-54'||
+   doc.method_source?.all_potential_spellings_context_dependent!==true||
+   doc.method_source?.verbal_and_particle_homographs_preserved!==true||
+   doc.separate_lexical_sense?.lexeme!=='yauh'||
+   doc.separate_lexical_sense?.exact_written_form!=='huiya'||
+   doc.separate_lexical_sense?.remains_allowed!==true||
+   !Array.isArray(doc.observations)||doc.observations.length!==2||
+   !['no_global_huiya_to_vocable_rewrite','no_global_huiya_to_go_rewrite',
+     'no_global_interjection_stopword_set','retain_original_poetic_refrains',
+     'retain_grapheme_spellings_and_diacritics','no_automatic_word_deletion',
+     'do_not_exclude_from_source_counts','other_huiya_occurrences_pending_context_review']
+      .every(key=>guard?.[key]===true)||
+   guard.approved_gold!==0||guard.approved_silver!==0||
+   guard.training_eligible!==false||guard.new_dictionary_edits!==0||
+   guard.model_weights_updated!==false)return [];
+  const expected=['brinton-xv-02-huiya','cantares-18v-304-huiya'];
+  const original=String(input||'').normalize('NFC').toLowerCase()
+   .match(/[\p{L}\p{M}]+/gu)||[];
+  if(original.length>512)return [];
+  const matched=[];
+  for(const [i,row] of doc.observations.entries()){
+   if(row?.id!==expected[i]||row.exact_written_form!=='huiya'||
+    row.review_scope!=='this_occurrence_only'||
+    row.interpretation_not_global!==true||
+    row.context_role!=='sung_interjection_or_poetic_vocable_in_this_stanza'||
+    row.manuscript_image_collated!==false||
+    row.whole_stanza_english_semantics_reviewed!==false||
+    row.reviewer_independence!=='not_independently_authenticated'||
+    typeof row.source_url!=='string'||!/^https:\/\/[^\s/]+\//u.test(row.source_url)||
+    typeof row.short_source_fragment!=='string'||row.short_source_fragment.length>180)continue;
+   const pattern=row.short_source_fragment.normalize('NFC').toLowerCase()
+    .match(/[\p{L}\p{M}]+/gu)||[];
+   if(pattern.length<5||pattern.filter(x=>x==='huiya').length!==1)continue;
+   for(let start=0;start+pattern.length<=original.length;start++){
+    if(!pattern.every((t,k)=>t===original[start+k]))continue;
+    matched.push({
+     originalWrittenForm:'huiya',
+     originalTokenIndex:start+pattern.indexOf('huiya'),
+     sourceId:row.id,historicalWorkId:row.historical_work_id,
+     originalSourceUrl:row.source_url,printedContext:row.short_source_fragment,
+     methodologyUrl:doc.method_source.source_url,
+     possibleRole:'sung-poetic-vocable-in-this-cited-passage',
+     competingVerbalLemma:'yauh',
+     competingVerbalSource:doc.separate_lexical_sense.source_url,
+     evidenceTier:'project-director-context-assessment-plus-scholarly-vocable-category',
+     wholeClauseTranslationVerified:false,
+     sourceManuscriptImageChecked:false,
+     universallyVocable:false,
+     englishDeletionPermitted:false,
+     remainingSongOccurrencesUnreviewed:true
+    });
+    break;
+   }
+  }
+  return matched;
+ }
+
  const locativeAnalyze=typeof locative?.analyze==='function'?locative.analyze:()=>[];
  const EVIDENCE_GRADES=new Set(['manuscript','lexical','grammar','lemma','paradigm','hypothesis','analogy','unreviewed']);
  let morphologyMemo=null;
@@ -1517,7 +1584,12 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   // requests, providers, or spelling variants (including vowel length).
   const owner=morphologyMemo===null;
   if(owner)morphologyMemo=new Map();
-  try{return analyzeInput(input,allowPartialRecovery);}
+  try{
+   const result=analyzeInput(input,allowPartialRecovery);
+   if(result&&typeof result==='object'&&!Array.isArray(result))
+    result.poeticVocableObservations=poeticVocableObservations(input);
+   return result;
+  }
   finally{if(owner)morphologyMemo=null;}
  }
  function analyzeInput(input,allowPartialRecovery){

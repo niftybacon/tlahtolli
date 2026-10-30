@@ -139,6 +139,12 @@ def prioritize(manifest: Path = CANDIDATES, *, max_items: int = 40,
         raise ValueError("Candidate research must not use or inspect gold/test source rows")
     examined = Counter(r.split for r in source)
     by_work = defaultdict(list)
+    # Source/translation pointers are read only for the candidate TRAIN split;
+    # the reserved dev poems must not influence ranking or lexical flags.
+    train_pointers = {
+        row["record_id"]: row["translation"]["source_url"]
+        for row in _read_raw(manifest) if row["split"] == "train"
+    }
     matched = Counter()
     for row in source:
         # NEVER rank or inspect reserved development English for targeted
@@ -173,9 +179,7 @@ def prioritize(manifest: Path = CANDIDATES, *, max_items: int = 40,
             "work_id": row.work_id,
             "split": row.split,
             "source_url": row.source_url,
-            "translation_url": next(
-                (x["translation"]["source_url"] for x in _read_raw(manifest)
-                 if x["record_id"] == row.record_id), None),
+            "translation_url": train_pointers[row.record_id],
             "review_priority_not_confidence": score,
             "exact_source_indexed_words": content,
             "ambiguous_in_particle_occurrences": n_in,
@@ -222,8 +226,8 @@ def prioritize(manifest: Path = CANDIDATES, *, max_items: int = 40,
 
 
 def _read_raw(manifest: Path) -> list[dict]:
-    # Only used for pointers to the *already licensed* source translation,
-    # never for adding candidate training examples or reviewing held-out dev.
+    # Parsing public candidate records does not inspect or score held-out
+    # development translations; the caller uses pointers from TRAIN only.
     return [json.loads(line) for line in manifest.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 

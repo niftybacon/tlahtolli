@@ -48,6 +48,47 @@ for(const w of D.words){
    'source-listed-form',[f.source],0.8);counts.forms++;
  }
 }
+// Additional source-gated Tēntli grammatical hypotheses remain LOW-WEIGHT
+// teacher examples. Query the existing canonical morphology engine; never
+// implement a competing analyzer or treat its suggestions as attestations.
+const mctx={window:{},words:D.words,FULL_VERB_PARADIGMS:P.paradigms,
+ VERB_TENSES:P.patterns,
+ norm:t=>String(t).normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase(),
+ stripToken:t=>String(t).replace(/^[^\\p{L}\\p{M}]+|[^\\p{L}\\p{M}]+$/gu,''),
+ historicalSpellings:w=>String(w.original||'').split(/[;,/]+/).map(z=>z.trim()).filter(Boolean),
+ safe:String,validUrl:()=>true,safeLink:()=>''};
+const msource=read('tools/morphology_engine.js').split('renderMorphologyBreakdown=TlahtolliMorphEngine.html;')[0];
+vm.runInNewContext(msource+'\\nthis.Morph=TlahtolliMorphEngine;',mctx);
+const parsedMorph=mctx.Morph,derived=new Map();
+for(const w of D.words){
+ if(w.status!=='Checked against source'||!String(w.pos).startsWith('verb')||
+  !w.claims?.some(c=>c.field==='stem'&&['grammar','dictionary'].includes(c.assessment)))continue;
+ const bases=[w.word,...String(w.stem||'').split(';').map(z=>z.trim().replace(/-$/,'')).filter(Boolean)];
+ const candidates=new Set();
+ for(const base of bases)for(const suffix of ['', 'z', 'queh'])
+  for(const prefix of ['ni','ti','n','t','nitla','titla','nite','tite','ōni','ōti','oni','oti'])
+   candidates.add(prefix+base+suffix);
+ for(const word of candidates){
+  if(paradigms.has(word))continue;
+  const readings=parsedMorph.analyze(word).filter(h=>h.lemma===w.word&&h.grade==='hypothesis'&&
+   url(h.source)&&h.parts?.filter(p=>p.surface!=='Ø').map(p=>p.surface).join('')===word);
+  if(!readings.length)continue;
+  const prev=derived.get(word)||{alternatives:new Set(),sources:new Set()};
+  for(const h of readings){
+   const feature=h.features||{};
+   prev.alternatives.add(w.word+':'+h.kind+':'+String(feature.subject||'')+':'+String(feature.tense||''));
+   prev.sources.add(h.source);
+  }
+  derived.set(word,prev);
+ }
+}
+counts.hypotheses=0;
+for(const [written,data] of derived){
+ const alternatives=[...data.alternatives].sort().join('|');
+ if(Buffer.byteLength(alternatives,'utf8')>240)continue;
+ add('analyze',written,alternatives,'source-gated-hypothesis',[...data.sources],0.22);
+ counts.hypotheses++;
+}
 for(const p of Object.values(P.paradigms))for(const row of [0,3])for(const form of p.cells[row]){
  for(const prefix of ['', 'ahmo ']){
   const written=prefix+form,parsed=S.analyze(written),graph=I.build(written,parsed);

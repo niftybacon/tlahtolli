@@ -1,0 +1,77 @@
+name: Tēntli investigator to grammar and morphology engine bridge
+on:
+  pull_request:
+    paths:
+      - 'tools/investigator_engine_bridge.js'
+      - 'tools/investigator_advanced_morphology.js'
+      - 'tools/test_investigator_engine_bridge.js'
+      - '.github/workflows/tentli-investigator-engine-bridge.yml'
+      - 'research/translation_corpus/INVESTIGATOR_ENGINE_INTEGRATION_2026_10_30.md'
+      - 'neural/paged_historical_investigator.py'
+  push:
+    paths:
+      - 'tools/investigator_engine_bridge.js'
+      - 'tools/investigator_advanced_morphology.js'
+      - 'tools/test_investigator_engine_bridge.js'
+      - '.github/workflows/tentli-investigator-engine-bridge.yml'
+      - 'research/translation_corpus/INVESTIGATOR_ENGINE_INTEGRATION_2026_10_30.md'
+      - 'neural/paged_historical_investigator.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-graded-real-engine-diagnostics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate exact research provenance and actual existing Tēntli engines
+        run: |
+          node tools/test_investigator_engine_bridge.js
+          node tools/test_historical_sentence_diagnostics.js
+          node tools/test_morphology_clause_bridge.js
+          node tools/test_shared_grammar_ir.js
+          python -m unittest discover -s tools -p 'test_paged_multi_document_investigator.py' -v
+      - name: Export actual 1,181-form existing-engine diagnostic review report
+        run: |
+          python -m neural.paged_historical_investigator --all \
+            --output "$RUNNER_TEMP/full-source-investigation.json" \
+            > "$RUNNER_TEMP/source-summary.json"
+          node tools/investigator_engine_bridge.js \
+            --input "$RUNNER_TEMP/full-source-investigation.json" \
+            --output "$RUNNER_TEMP/source-grammar-morphology-bridge.json" \
+            > "$RUNNER_TEMP/engine-bridge-summary.json"
+          cat "$RUNNER_TEMP/engine-bridge-summary.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])
+          r=json.loads((p/"source-grammar-morphology-bridge.json").read_text(encoding="utf-8"))
+          assert r["research_investigation_count"]==1181
+          assert r["source_historical_contexts_run_through_engines"]==7
+          assert r["source_gold_or_silver_approved"]==0
+          assert r["no_persistent_learning_or_model_update"] is True
+          assert r["english_meaning_accuracy"] is None
+          print("## Historical evidence ↔ existing Tēntli engines")
+          print("- All **"+str(r["research_investigation_count"])+"** investigated historical forms passed through existing lexical/paradigm/source morphology lookup")
+          print("- **"+str(r["source_historical_contexts_run_through_engines"])+"** source-graded historic phrases passed into existing sentence grammar, English proposal/refusal and shared IR")
+          for k,v in r["count_by_actual_existing_engine_route"].items():
+              print("- "+k.replace("_"," ")+": **"+str(v)+"**")
+          print("- Advanced standalone browser morphology: **executed from the original source in isolated Node VM; candidate grades retained**")
+          print("- Approved English/Gold or Silver, dictionary rules, neural learning or live translator changes: **0**")
+          print("- This is autonomous *evidence use in engine diagnostics*, not continuous gradient training or independent semantic accuracy")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-full-historical-evidence-through-existing-grammar-engines
+          path: |
+            ${{ runner.temp }}/source-grammar-morphology-bridge.json
+            ${{ runner.temp }}/engine-bridge-summary.json
+          retention-days: 30
+          if-no-files-found: error

@@ -156,6 +156,47 @@ fluency, model confidence, user clicks, repetition, or feedback
 that has not been independently checked. Otherwise it can
 reinforce hallucinated lexical senses.
 
+### Completed source-gated synthetic English practice
+
+[Successful research practice run #41001751736](https://github.com/niftybacon/tlahtolli/actions/runs/41001751736)
+revealed that the original conservative teacher contained only
+**24 unambiguous English examples from a single verb `tlacuā`**.
+That was inadequate for lexeme-disjoint testing. Rather than
+inventing new verbs, the new
+`tools/export_source_gated_english_practice.js` reuses the existing
+grammar/English/IR *full candidate audit* and includes the canonical
+editorial first-choice English reading, visibly marking any
+ambiguous alternatives.
+
+The broadened source-backed synthetic curriculum contained **288
+examples across 12 verb lemmas** (24 per lemma), of which **264
+have multiple possible English readings** and are therefore
+*editorial draft choices*, NOT a human-reviewed semantic gold target.
+It held out **48 examples from two entire verb lemmas**, using the
+remaining **240 examples from ten lemmas** for low-stakes practice.
+The CPU FLAN-T5 LoRA adapter executed **24 real optimizer steps**;
+held-out **synthetic target loss decreased from 3.995990 to
+3.825045**. This is a narrow observed training loss change,
+**not a Classical Nahuatl translation accuracy improvement**.
+No historical bilingual data was reclassified.
+
+The resulting **synthetic-only** adapter was saved as a
+**30-day research artifact** under
+`tentli-pretrained-english-synthetic-teacher-private-research`.
+It is **not deployed** or automatically elevated to reviewed
+training material. Optionally load the adapter for private,
+still-source-audited English research:
+
+```sh
+python -m neural.pretrained_english --text 'nichōca' \
+  --adapter-dir /private/adapter-extracted-from-artifact
+python -m neural.hybrid_infer --text 'nichōca' --pretrained-english \
+  --pretrained-adapter-dir /private/adapter-extracted-from-artifact
+```
+
+All candidate selections still require exact membership in
+the canonical grammar's source-audited alternatives.
+
 ## 5. Autonomous persistence, without autonomous invention
 
 Daily GitHub Actions reads the versioned pending queue and

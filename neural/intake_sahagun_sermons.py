@@ -100,7 +100,7 @@ def page_source(html: str, *, expected_sermon: int) -> dict:
         if not txt:
             continue
         hits,ratio = score_nahuatl(txt)
-        if len(txt) < 100 or hits < 4 or ratio < 0.025:
+        if len(txt) < 65 or hits < 3 or ratio < 0.025:
             diagnostic["paragraphs_rejected_non_nahuatl_or_short"] += 1
             continue
         if len(txt) > MAX_PAGE_CHARS:
@@ -111,10 +111,10 @@ def page_source(html: str, *, expected_sermon: int) -> dict:
         if re.search(r"(?:Luce|Mateo|Proverbios|Et tunc|capitulo|jesuchristo)",txt,re.I):
             diagnostic["mixed_language_markup"] = True
         paragraphs.append(txt)
-    if not paragraphs:
-        raise ValueError(f"Page of sermon {expected_sermon} had no high-confidence Nahuatl-majority prose paragraphs")
-    if not any(score_nahuatl(text)[0] >= 6 for text in paragraphs):
-        raise ValueError("Missing sufficiently Nahuatl-rich paragraph after source filtering")
+    # Some manuscript pages contain only a very short incomplete opening
+    # or Latin heading. The *sermon* must have source text; do not fabricate
+    # a Nahuatl paragraph for an individual page.
+
     return {"sermon_number":expected_sermon,"paragraphs":paragraphs,
             "text_sha256":hashlib.sha256("\n".join(paragraphs).encode()).hexdigest(),
             "diagnostic":diagnostic}
@@ -173,7 +173,7 @@ def download_sermons(*, output: str, max_sermons: int = 64, delay: float = 0.27)
                 })
                 found_page+=len(span)
             if found_page<=0:
-                raise ValueError("Empty Nahuatl sermon page rejected")
+                print("SERMON_PAGE_EXCLUDED_NO_NAHUATL",num,page,flush=True)
             estimated_source_chars+=found_page;sermon_chars+=found_page
             paragraphs+=len(result["paragraphs"])
             discarded+=result["diagnostic"]["paragraphs_rejected_non_nahuatl_or_short"]
@@ -182,6 +182,8 @@ def download_sermons(*, output: str, max_sermons: int = 64, delay: float = 0.27)
                              "source_characters":found_page})
             if delay:
                 time.sleep(delay)
+        if sermon_chars < 1000:
+            raise ValueError(f"Sermon {num} has insufficient historical Nahuatl: {sermon_chars} characters")
         works.append({
             "number":num, "name":spec["title"], "source_work_id":f"sahagun-ayer1485-sermon-{num:02d}",
             "split":split,"pages":locators,"paragraphs":paragraphs,"source_characters":sermon_chars

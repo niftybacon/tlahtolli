@@ -207,6 +207,23 @@ def download_sermons(*, output: str, max_sermons: int = 64, delay: float = 0.27)
         })
         print("SERMON_INTAKE",num,"pages",len(locators),"paragraphs",paragraphs,
               "characters",sermon_chars,"split",split,flush=True)
+    # The original manuscript frequently puts the END of one sermon and
+    # START of the next on the same physical folio. Hold out the *entire*
+    # physical page: no train record may share a source folio with dev,
+    # even if its sermon/work ID differs.
+    from urllib.parse import parse_qs, urlparse
+    def folio(r: dict) -> int:
+        return int(parse_qs(urlparse(r["source_url"]).query)["p"][0])
+    dev_folios={folio(r) for r in rows if r["split"]=="dev"}
+    removed_overlap=sum(r["split"]=="train" and folio(r) in dev_folios for r in rows)
+    rows=[r for r in rows if r["split"]=="dev" or folio(r) not in dev_folios]
+    if not rows or removed_overlap<1:
+        raise ValueError("Source folio overlap audit did not exercise shared sermon-boundary pages")
+    training_folios={folio(r) for r in rows if r["split"]=="train"}
+    if dev_folios & training_folios:
+        raise ValueError("Manuscript page leaked between train and dev")
+    source_chars=sum(len(r["original"]) for r in rows)
+    distinct_pages={loc["page"] for work in works for loc in work["pages"]}
     path=Path(output)
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text("\n".join(json.dumps(r,ensure_ascii=False) for r in rows)+"\n",encoding="utf-8")
@@ -215,8 +232,11 @@ def download_sermons(*, output: str, max_sermons: int = 64, delay: float = 0.27)
         "format":"tentli-sahagun-ayer1485-research-v1",
         "index_url":INDEX,"license_record_url":UNAM_LICENSE_RECORD,
         "sermons_found_in_live_index":len(starts),"sermons_imported":len(works),
-        "pages":total_page,"Nahuatl_majority_editorial_paragraphs":len(rows),
-        "historical_transcription_chars":estimated_source_chars,
+        "pages":total_page,"distinct_physical_folios":len(distinct_pages),
+        "Nahuatl_majority_editorial_paragraphs":len(rows),
+        "historical_transcription_chars":source_chars,
+        "training_paragraphs_excluded_to_prevent_shared_folio_leakage":removed_overlap,
+        "physical_folio_train_dev_disjoint":True,
         "non_nahuatl_or_short_paragraphs_excluded":discarded,
         "bilingual_targets":0,"language_of_modern_translation":"es_not_imported",
         "source_work_split":"sermon_disjoint","source_edition":"Sánchez Aguilera, UNAM 2022",

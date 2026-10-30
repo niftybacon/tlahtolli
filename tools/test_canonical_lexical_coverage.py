@@ -88,6 +88,29 @@ class CanonicalLexicalCoverageTests(unittest.TestCase):
         self.assertTrue(all(x["model_gold_or_train_promotion"] is False for x in result["review_queue"]))
         self.assertEqual(result, inspect())
 
+    def test_40_lexical_review_proposals_have_no_invented_glosses(self):
+        report = inspect()
+        proposals = report["proposed_unmatched_surface_review"]
+        self.assertEqual(report["unmatched_surface_proposals_count"], 40)
+        self.assertEqual(len(proposals), 40)
+        self.assertTrue(proposals)
+        for item in proposals:
+            with self.subTest(surface=item["written_surface"]):
+                self.assertIsNone(item["candidate_meaning"])
+                self.assertFalse(item["auto_source_checked"])
+                self.assertFalse(item["training_eligible"])
+                self.assertEqual(item["human_review_status"], "unreviewed_frequency_lead")
+                self.assertTrue(item["requires_historical_spelling_segmentation_and_context_review"])
+                self.assertGreater(item["token_occurrences_in_training_poems"], 0)
+                self.assertGreater(item["distinct_training_work_count"], 0)
+                self.assertTrue(item["training_source_examples"])
+                self.assertTrue(all("brinton-1890-poetry-" in v["record_id"]
+                                    and v["printed_source_url"].startswith("https://github.com/")
+                                    for v in item["training_source_examples"]))
+                self.assertTrue(all(v["work_id"].rsplit("-", 1)[-1] not in
+                                    {"xxv", "xxvi", "xxvii"}
+                                    for v in item["training_source_examples"]))
+
     def test_gold_test_source_rows_are_never_inspected(self):
         raw = [json.loads(x) for x in MANIFEST.read_text(encoding="utf-8").splitlines() if x.strip()]
         # Move a WHOLE poem group rather than introducing a fake split leakage.

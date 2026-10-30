@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const M=JSON.parse(read('research/batches/classical_archive_lexical_batch07_2026_10_29.json'));
 const D=JSON.parse(read('dictionary.json')),R=JSON.parse(read('release.json'));
-assert.equal(M.entries.length,1664);assert.equal(R.headwords,2142);assert.equal(D.words.length,2142);
+assert.equal(M.entries.length,1664);assert.equal(R.headwords,2144);assert.equal(D.words.length,2142);
 assert.equal(D.version,R.version);
 // Frozen archive cohort stays valid in later evidence-led releases.
 const index=new Map(D.words.map(w=>[w.word,w]));assert.equal(index.size,D.words.length);

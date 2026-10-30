@@ -1,0 +1,195 @@
+{
+  "format": "tentli-controlled-primary-context-evidence-v1",
+  "date": "2026-10-30",
+  "scope": "Curated short pointers to actual edited historical Nahuatl text (1621 Coyoacan, sixteenth-century Florentine Codex) and separately cited grammatical reference entries. No manuscript-image collation or newly approved bilingual translations.",
+  "rights_policy": "Store only brief identifying Nahuatl source phrases and citation links. Never mirror ENL/Florentine editorial transcription or Anderson-Dibble/Lockhart English translations.",
+  "source_collections": [
+    {
+      "id": "enl-bc19-coyoacan-1621",
+      "name": "Coyoacan Region 1621 land donation to Church of San Juan Bautista",
+      "date": "1621-08-07",
+      "period": "early_seventeenth_century_central_mexico",
+      "variety": "early_colonial_central_mexican_nahuatl",
+      "work_id": "ENL-BC19-1621",
+      "source_url": "https://enl.wired-humanities.org/BC19",
+      "manuscript_repository": "UCLA Library Special Collections, McAfee Collection",
+      "manuscript_image_collated": false,
+      "transcription_editor": "James Lockhart (via Early Nahuatl Library)",
+      "rights": "Scholarly edited transcription and translation; brief identifying excerpt and links only",
+      "training_allowed": false,
+      "gold_holdout_eligible": false
+    },
+    {
+      "id": "florentine-codex",
+      "name": "Florentine Codex Book 10",
+      "date": "sixteenth-century",
+      "period": "sixteenth_century_central_mexico",
+      "variety": "sixteenth_century_central_mexican_nahuatl",
+      "work_id": "Florentine-Codex-Book10",
+      "source_url": "https://florentinecodex.getty.edu/book/10/folio/118v",
+      "manuscript_repository": "Biblioteca Medicea Laurenziana, Florence",
+      "manuscript_image_collated": false,
+      "transcription_editor": "Anderson–Dibble, as hosted by Digital Florentine Codex/Getty",
+      "rights": "Editorial transcriptions and translations rights-restricted; cite and use brief identifying excerpts only",
+      "training_allowed": false,
+      "gold_holdout_eligible": false
+    }
+  ],
+  "contexts": [
+    {
+      "id": "enl-bc19-numbered-can",
+      "form": "can",
+      "canonical_lemma_or_morpheme": "-cān",
+      "role": "numbered_locative_suffix",
+      "written_form": "yniquexcan",
+      "exact_short_source_phrase": "yniquexcan mani tlalli calpilco",
+      "primary_collection_id": "enl-bc19-coyoacan-1621",
+      "source_url": "https://enl.wired-humanities.org/BC19",
+      "source_locator": "Analytic transcription, opening land-plot paragraph, third listed field",
+      "morphological_analysis_status": "source_indexed_candidate_ordinal_numbered_place",
+      "source_grade": "located_in_digitized_edited_historical_document",
+      "external_lexical_reference": "https://nahuatl.wired-humanities.org/node/175908",
+      "external_grammar_reference": "Lockhart Nahuatl as Written 2001 p.213; indexed by ODN",
+      "independent_manuscript_facsimile_checked": false,
+      "english_alignment_human_reviewed": false,
+      "source_text_edited_transcription_only": true,
+      "rights": "link_and_short_excerpt_only",
+      "meaning_leads": [
+        "numbered place",
+        "third plot"
+      ],
+      "not_a_general_rule": true
+    },
+    {
+      "id": "enl-bc19-ayac",
+      "form": "ayac",
+      "canonical_lemma_or_morpheme": "ayac",
+      "role": "negative_indefinite_pronoun",
+      "written_form": "ayac",
+      "exact_short_source_phrase": "ayac tle quitoz oncan tlatoz",
+      "primary_collection_id": "enl-bc19-coyoacan-1621",
+      "source_url": "https://enl.wired-humanities.org/BC19",
+      "source_locator": "Analytic transcription, opening paragraph, dispute/protest clause",
+      "morphological_analysis_status": "contextually_supported_no_one_not_grammatical_sentence_verified",
+      "source_grade": "located_in_digitized_edited_historical_document",
+      "external_lexical_reference": "https://nahuatl.wired-humanities.org/content/ayac",
+      "external_grammar_reference": "Molina 1571 II fol.3r; Carochi 1645/Lockhart edition 2001 p.498",
+      "independent_manuscript_facsimile_checked": false,
+      "english_alignment_human_reviewed": false,
+      "source_text_edited_transcription_only": true,
+      "rights": "link_and_short_excerpt_only",
+      "meaning_leads": [
+        "no one",
+        "nobody",
+        "someone absent in some contexts"
+      ],
+      "not_a_general_rule": true
+    },
+    {
+      "id": "dfc-book10-cujcatl",
+      "form": "cuicatl",
+      "canonical_lemma_or_morpheme": "cuīcatl",
+      "role": "noun_song_or_singing",
+      "written_form": "cujcatl",
+      "exact_short_source_phrase": "qujioltevujaia in cujcatl",
+      "primary_collection_id": "florentine-codex",
+      "source_url": "https://florentinecodex.getty.edu/book/10/folio/118v",
+      "source_locator": "Book 10 folio 118v, Nahuatl column, Tolteca singers/cantors passage",
+      "morphological_analysis_status": "attested_edition_written_form_cujcatl_corresponds_to_indexed_cuicatl",
+      "source_grade": "located_in_digitized_edited_historical_document",
+      "external_lexical_reference": "https://nahuatl.wired-humanities.org/content/cuicatl",
+      "external_grammar_reference": "Molina 1571 II fol.26v col.1 (canto o cancion); Lockhart 2001 p.216",
+      "independent_manuscript_facsimile_checked": false,
+      "english_alignment_human_reviewed": false,
+      "source_text_edited_transcription_only": true,
+      "rights": "link_and_short_excerpt_only",
+      "meaning_leads": [
+        "song",
+        "singing",
+        "music"
+      ],
+      "not_a_general_rule": true
+    }
+  ],
+  "grammar_claims": [
+    {
+      "id": "can-interrogative",
+      "headword": "can",
+      "function": "independent_interrogative_or_locative",
+      "meaning_leads": [
+        "where?",
+        "where",
+        "somewhere"
+      ],
+      "source_url": "https://nahuatl.wired-humanities.org/content/can-0",
+      "source_reference": "Molina 1571 II fol.12r col.2; Carochi 1645/Lockhart 2001 p.499",
+      "evidence_grade": "historic_lexicographic_index_only_no_separate_primary_text_context_in_this_batch",
+      "do_not_conflate_with": "-cān numbered locative suffix or verbal optative suffix"
+    },
+    {
+      "id": "can-optative",
+      "headword": "-cān",
+      "function": "plural_optative_verb_suffix",
+      "meaning_leads": [
+        "plural optative wish or polite command"
+      ],
+      "source_url": "https://nahuatl.wired-humanities.org/content/can",
+      "source_reference": "Carochi 1645/Lockhart 2001 p.499; Lockhart Nahuatl as Written 2001 p.213; indexed attestation Historia Tolteca-Chichimeca (ed.1976) p.136",
+      "brief_historical_example_as_indexed": "Macamo motequipachocan",
+      "evidence_grade": "cited_historical_grammar_and_source_index_not_original_manuscript_collated",
+      "do_not_conflate_with": "-cān numbered locative suffix"
+    },
+    {
+      "id": "can-abundance",
+      "headword": "-yocan",
+      "function": "abundant_locative_derivation",
+      "meaning_leads": [
+        "place full of",
+        "place with much of a noun"
+      ],
+      "source_url": "https://nahuatl.wired-humanities.org/content/yocan",
+      "source_reference": "Gordon Whittaker Deciphering Nahuatl Hieroglyphs (2021) p.100, as indexed by ODN",
+      "evidence_grade": "modern_grammar_explanation_no_independent_primary_occurrence_in_this_batch",
+      "do_not_conflate_with": "-cān verbal optative or interrogative can"
+    },
+    {
+      "id": "ayac-alternate",
+      "headword": "ayac",
+      "function": "documented_historical_spelling_variant",
+      "meaning_leads": [
+        "no one",
+        "nobody"
+      ],
+      "source_url": "https://nahuatl.wired-humanities.org/content/ayac",
+      "source_reference": "Molina 1571 II fol.3r; Carochi 1645/Lockhart 2001 p.498",
+      "historical_indexed_variant": "aiaac",
+      "evidence_grade": "indexed_historical_variant_not_attested_in_our_1621_excerpt",
+      "do_not_conflate_with": "the distinct 1621 written form ayac"
+    },
+    {
+      "id": "cuicatl-derivation",
+      "headword": "cuīcatl",
+      "function": "noun_related_to_verb_cuīca",
+      "meaning_leads": [
+        "song",
+        "singing",
+        "music"
+      ],
+      "source_url": "https://nahuatl.wired-humanities.org/content/cuicatl",
+      "source_reference": "Molina 1571 II fol.26v; Lockhart Nahuatl as Written 2001 p.216",
+      "related_verb_source_url": "https://nahuatl.wired-humanities.org/node/176079",
+      "evidence_grade": "historical_lexicographic_word_formation_sense_indexed",
+      "do_not_conflate_with": "automatic proof that every historical spelling variation is productive"
+    }
+  ],
+  "global_guardrails": {
+    "source_edition_strings_only": true,
+    "manuscript_images_verified_count": 0,
+    "whole_clauses_independently_translated": 0,
+    "human_silver_approved": 0,
+    "gold_created": 0,
+    "automatic_lexicon_promotion": false,
+    "automatic_source_language_semantic_accuracy": null,
+    "allow_bulk_copyrighted_transcription": false
+  }
+}

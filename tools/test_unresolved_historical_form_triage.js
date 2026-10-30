@@ -28,6 +28,19 @@ try{
  assert.equal(result.untouched_gold_review_count,0);
  assert.equal(result.no_silver_or_gold_promotions,true);
  assert(result.source_checked_comparison_anchors>20);
+ assert.equal(result.new_individually_source_indexed_high_frequency_leads,5);
+ for(const form of ['yehuan','tepilhuan','noyollo','ipalnemohua','huiya']){
+  const row=result.unresolved_forms.find(x=>x.written_surface===form);
+  assert(row&&row.independent_dictionary_context_lead&&
+   row.independent_dictionary_context_lead.exact_stanza_meaning_verified===false&&
+   row.independent_dictionary_context_lead.source_based_dictionary_lemma_promotion===false);
+ }
+ for(const form of ['yehuan','tepilhuan','noyollo','ipalnemohua'])
+  assert(!result.review_queue.some(x=>x.written_surface===form),
+   form+' has independently located historical dictionary leads, not a new routine human task');
+ assert(result.review_queue.some(x=>x.written_surface==='huiya'&&
+  x.independent_external_dictionary_lead.director_attention_warranted===true),
+  'Conflicting verbal vs poetic huiya requires optional genuine context discussion');
  assert(result.prioritized_new_human_questions_count<=12);
  assert(result.prioritized_new_human_questions_count>0);
  assert.equal(result.unresolved_forms.filter(x=>x.gold||x.silver_approved||x.training_eligible).length,0);

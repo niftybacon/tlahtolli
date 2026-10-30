@@ -9,8 +9,7 @@ const ROOT=path.resolve(__dirname,'..');
 function create(){
  const dictionary=JSON.parse(fs.readFileSync(path.join(ROOT,'dictionary.json'),'utf8'));
  const paradigms=JSON.parse(fs.readFileSync(path.join(ROOT,'paradigms.json'),'utf8'));
- if(dictionary.format!=='tlahtolli-dictionary'||
-    paradigms.format!=='tlahtolli-verb-paradigms'||
+ if(paradigms.format!=='tlahtolli-verb-paradigms'||
     !Array.isArray(dictionary.words)||!Array.isArray(paradigms.patterns)||
     paradigms.patterns.length!==10)throw Error('Unexpected canonical morphology input source');
  const src=fs.readFileSync(path.join(ROOT,'tools/morphology_engine.js'),'utf8');

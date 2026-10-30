@@ -9,7 +9,7 @@ import unicodedata
 import torch
 from torch import nn
 
-PAD, BOS, EOS, MASK, DENOISE, TRANSLATE, BYTE_OFFSET = range(7)
+PAD, BOS, EOS, MASK, DENOISE, TRANSLATE, ANALYZE, BYTE_OFFSET = range(8)
 VOCAB_SIZE = 256 + BYTE_OFFSET
 
 
@@ -30,7 +30,7 @@ def decode_bytes(tokens: list[int]) -> str:
 
 
 def inputs(text: str, task: str, max_bytes: int) -> list[int]:
-    code = DENOISE if task == "denoise" else TRANSLATE if task == "translate" else None
+    code = {"denoise": DENOISE, "translate": TRANSLATE, "analyze": ANALYZE}.get(task)
     if code is None:
         raise ValueError("Unknown neural objective")
     return [code, *encode_text(text, max_bytes - 2), EOS]

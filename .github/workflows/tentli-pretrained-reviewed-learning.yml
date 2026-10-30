@@ -7,6 +7,7 @@ on:
       - 'neural/correction_queue.py'
       - 'neural/train_reviewed_english.py'
       - 'neural/grammar_teacher_practice.py'
+      - 'tools/export_source_gated_english_practice.js'
       - 'neural/hybrid_infer.py'
       - 'tools/test_pretrained_english_review_loop.py'
       - '.github/workflows/tentli-pretrained-reviewed-learning.yml'
@@ -117,7 +118,8 @@ jobs:
           PY
       - name: Export ONLY source-linked canonical synthetic teacher English curriculum
         run: |
-          node tools/export_tentli_neural_teacher.js "$RUNNER_TEMP/tentli-teacher.jsonl"
+          node tools/export_tentli_neural_teacher.js "$RUNNER_TEMP/old-unambiguous-teacher.jsonl"
+          node tools/export_source_gated_english_practice.js "$RUNNER_TEMP/tentli-teacher.jsonl"
           python -m neural.grammar_teacher_practice \
             --teacher-manifest "$RUNNER_TEMP/tentli-teacher.jsonl" --audit-only
       - name: Actually train a PRIVATE English LoRA adapter on source-gated SYNTHETIC grammar exercises

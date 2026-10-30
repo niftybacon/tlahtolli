@@ -49,7 +49,7 @@ def teacher_curriculum(manifest:Path)->dict[str,list[dict]]:
         })
     lemmas=sorted(by_lemma)
     if len(lemmas)<3 or sum(len(x) for x in by_lemma.values())<8:
-        raise ValueError("Insufficient independent grammar-teacher lexical groups")
+        raise ValueError("Insufficient independent grammar-teacher lexical groups: "+repr({x:len(y) for x,y in sorted(by_lemma.items())}))
     # Completely withhold entire lemma paradigms. This is a SYNTHETIC
     # generalization control, not a blind historical work-level gold test.
     holdout=set(lemmas[-max(1,len(lemmas)//5):])

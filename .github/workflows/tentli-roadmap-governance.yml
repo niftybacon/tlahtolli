@@ -1,0 +1,39 @@
+name: Tēntli roadmap and agent governance
+
+on:
+  push:
+    paths:
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'docs/TENTLI_CONSOLIDATED_LEARNING_ROADMAP_2026_10_29.md'
+      - 'research/translation_corpus/ENGINE_EVIDENCE_CONSUMPTION_AUDIT_2026_10_30.md'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
+      - '.github/workflows/tentli-roadmap-governance.yml'
+      - 'tools/test_roadmap_governance.py'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'docs/TENTLI_CONSOLIDATED_LEARNING_ROADMAP_2026_10_29.md'
+      - 'research/translation_corpus/ENGINE_EVIDENCE_CONSUMPTION_AUDIT_2026_10_30.md'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
+      - '.github/workflows/tentli-roadmap-governance.yml'
+      - 'tools/test_roadmap_governance.py'
+      - 'translator-*.js'
+      - 'tools/morphology_engine.js'
+      - 'data/clause_grammar.json'
+      - 'neural/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  roadmap-contract:
+    name: Validate current roadmap and agent instructions
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate mandatory six-phase and evidence-tier policy links
+        run: python3 tools/test_roadmap_governance.py

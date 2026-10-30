@@ -55,9 +55,11 @@
       "source_locator": "ODN huiya entry, inflected form from yauh 'go'; compare Brinton 1890 song stanzas xiii.9, xv.2, xv.13 and xvii.15",
       "external_parallel_source_url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt#L2375",
       "lead": "historical dictionary records verbal went; repeated song-position uses may instead be sung interjection and must be individually differentiated",
-      "contextual_caveat": "A dictionary form alone must not override poetic placement, and a refrain-like position does not prove the form is never a finite verb; leave unresolved.",
+      "contextual_caveat": "Do not globally classify huiya as a sung interjection, even though two specific song contexts are now graded as likely vocables. Other instances can be the finite form of yauh ('went') or require separate review. Do not automatically delete a rhythmic particle or force an English 'went'.",
       "candidate_category": "conflicting_contextual_verb_versus_poetic_use",
-      "ask_director_now": true
+      "ask_director_now": false,
+      "context_specific_project_director_evidence": "research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json",
+      "source_based_context_findings": "User assessment plus Leander (1972, pp.53-54) supports a poetic vocable in Brinton XV.2 and UNAM Cantares Mexicanos fol.18v §304. The ODN finite-verbal interpretation remains valid as a separate possible grammatical use; all other occurrences await their own contextual analysis."
     }
   ],
   "gold_approved": 0,

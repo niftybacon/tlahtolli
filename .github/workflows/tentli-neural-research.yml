@@ -1,0 +1,50 @@
+name: Tēntli neural research (preserve canonical engines)
+on:
+  push:
+    paths:
+      - 'neural/**'
+      - 'research/neural_training/**'
+      - 'tools/test_historical_neural_corpus.py'
+      - 'tools/test_tentli_neural_smoke.py'
+      - '.github/workflows/tentli-neural-research.yml'
+  pull_request:
+    paths:
+      - 'neural/**'
+      - 'research/neural_training/**'
+      - 'tools/test_historical_neural_corpus.py'
+      - 'tools/test_tentli_neural_smoke.py'
+      - '.github/workflows/tentli-neural-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  historical-learning-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate historical provenance and model syntax
+        run: |
+          python -m compileall -q neural tools/test_historical_neural_corpus.py tools/test_tentli_neural_smoke.py
+          python -m unittest discover -s tools -p 'test_historical_neural_corpus.py' -v
+      - name: Ensure existing Tēntli/translator engines are intact
+        run: |
+          node tools/test_translator.js
+          node tools/test_translator_sentence.js
+          node tools/test_regular_present_morphology.js
+          node tools/test_vowel_initial_verbs.js
+  real-neural-gradient-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PyTorch CPU
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Actually train and reload neural weights (synthetic, non-Nahuatl smoke only)
+        run: python -m unittest discover -s tools -p 'test_tentli_neural_smoke.py' -v

@@ -7,7 +7,7 @@
 'use strict';
 const norm=x=>String(x||'').normalize('NFC').toLocaleLowerCase('en');
 const validURL=s=>{try{let u=new URL(s);return ['https:','http:'].includes(u.protocol)&&!!u.hostname;}catch{return false;}};
-function create(review){
+function create(review,exactLexicalEvidence){
  const audit=review?.source_crosschecked_morphology;
  const empty=()=>[];
  if(review?.format!=='tlahtolli-source-review-v1'||
@@ -56,13 +56,74 @@ function create(review){
   };
   const key=norm(rec.surface),list=forms.get(key)||[];list.push(candidate);forms.set(key,list);
  }
+
+ // Optional, source-located LEXICAL written-form leads. These are not
+ // productive morphology and never certify a headword, contextual syntax,
+ // individual manuscript transcription, translation pair or English sense.
+ // A rejected optional pack does not disrupt the existing ENL morphology.
+ const exactLexical=new Map();
+ const expected=new Map([
+  ['yehuan',{id:'odn-lockhart-yehuan-short-pronoun-form',
+   lemma:'yehuantin',category:'independent-pronoun-form',
+   url:'https://nahuatl.wired-humanities.org/content/yehuantin',
+   alternate:'yeuan'}],
+  ['tepilhuan',{id:'odn-molina-tepilhuan-headword',
+   lemma:'tepilhuan',category:'historical-lexicographic-noun-form',
+   url:'https://nahuatl.wired-humanities.org/node/188794',
+   alternate:'tepiltzin'}]
+ ]);
+ const pack=exactLexicalEvidence;
+ if(pack?.format==='tentli-exact-historical-lexical-leads-v1'&&
+    pack.version===1&&pack.human_source_review_independently_authenticated===false&&
+    pack.facsimile_collation_independently_done===false&&
+    pack.new_canonical_dictionary_headwords===0&&
+    pack.new_productive_morphological_rules===0&&
+    pack.train_eligible===false&&pack.silver_approved===false&&
+    pack.gold_approved===false&&Array.isArray(pack.records)&&
+    pack.records.length===expected.size){
+  let admissible=true;
+  for(const item of pack.records){
+   const known=expected.get(item?.written_form);
+   if(!known||exactLexical.has(item.written_form)||
+     item.id!==known.id||item.lexicographic_lemma!==known.lemma||
+     item.candidate_category!==known.category||
+     item.source_url!==known.url||
+     item.notable_non_equivalent_spelling!==known.alternate||
+     typeof item.source_locator!=='string'||item.source_locator.length<30||
+     typeof item.corroborating_locator!=='string'||item.corroborating_locator.length<30||
+     typeof item.contextual_caveat!=='string'||item.contextual_caveat.length<70||
+     item.status!=='source-indexed exact written-form hypothesis; not an independently adjudicated grammatical or contextual analysis'||
+     !/^https:\/\/(?:nahuatl\.wired-humanities\.org|gdn\.iib\.unam\.mx)\//u.test(item.corroborating_source_url)||
+     item.lemma_meaning_newly_approved!==false||
+     item.stanza_translation_verified!==false||
+     item.grammatical_role_verified!==false||
+     item.morphological_segmentation_verified!==false||
+     item.whole_original_manuscript_reading_verified!==false){
+    admissible=false;break;
+   }
+   exactLexical.set(norm(item.written_form),{
+    lemma:item.lexicographic_lemma,
+    kind:'Source-indexed exact lexical written form (NOT morphology)',
+    grade:'unreviewed',score:0,
+    features:{category:'unreviewed-lexical-surface-only',
+     candidateCategory:item.candidate_category,
+     grammarRole:'unresolved',referent:'unresolved',
+     morphologicalSegmentation:'not-verified',
+     originalManuscriptCollation:'not-verified'},
+    parts:[{surface:item.written_form,role:'exact external lexicographic written form; no morpheme analysis'}],
+    source:item.source_url,locator:item.source_locator,
+    sources:[item.source_url,item.corroborating_source_url],
+    note:item.contextual_caveat+' Exact original spelling only. No new canonical lemma, sentence meaning, person, noun possession, inflectional rule, macron restoration, or blanket historical spelling rewrite.'
+   });
+  }
+  if(!admissible||exactLexical.size!==expected.size)exactLexical.clear();
+ }
  function analyze(token){
   if(typeof token!=='string'||token.length>120)return [];
-  return (forms.get(norm(token))||[]).map(p=>({
-   ...p,features:{...p.features},parts:p.parts.map(x=>({...x})),sources:p.sources.slice()
-  }));
+  return [...(forms.get(norm(token))||[]),...(exactLexical.has(norm(token))?[exactLexical.get(norm(token))]:[])]
+   .map(p=>({...p,features:{...p.features},parts:p.parts.map(x=>({...x})),sources:p.sources.slice()}));
  }
- return {analyze,sourceCount:forms.size};
+ return {analyze,sourceCount:forms.size,exactLexicalFormCount:exactLexical.size};
 }
 root.TlahtolliSourceMorphology={create};
 })(window);

@@ -27,7 +27,8 @@ def reviewer(fp,decision="source_supported_hypothesis"):
         "source_fingerprint":fp, "decision":decision,
         "reviewer_name":"Fictional Fixture Reviewer (not a real person)",
         "rationale":"Software fixture only, not a source-approved grammatical or historical claim.",
-        "evidence_urls":["https://example.org/fake-published-source"],
+        "evidence_urls":["https://example.org/synthetic-fixture/1",
+                         "https://example.org/fake-published-source"],
         "rights_assessment":"unknown"
     }
 
@@ -133,6 +134,7 @@ class TestPersistentEvidenceLedger(unittest.TestCase):
             lambda x:x.update(decision="approved_silver"),
             lambda x:x.update(rights_assessment="automatically_licensed"),
             lambda x:x.update(evidence_urls=[]),
+            lambda x:x.update(evidence_urls=["https://example.org/unrelated"]),
             lambda x:x.update(evidence_urls=["https://example.org/one"]*2),
             lambda x:x.update(evidence_urls=["http://user:password@example.org/secret"]),
             lambda x:x.update(reviewer_name=""),

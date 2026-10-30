@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-/* Source-preserving, NON-semantic classification of ALL 928 historical
+/* Source-preserving, NON-semantic classification of ALL 926 currently unmatched historical
  * surfaces that remain unrecognized by currently connected engines.
  * This is the NEXT stage of the existing investigator/engine bridge, not
  * another morphology/grammar engine or an automatic source approval process.
@@ -292,12 +292,12 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   });
  }
  if(unresolved.length!==linked.count_by_actual_existing_engine_route.no_linked_engine_surface_match||
-    unresolved.length!==928)throw Error('Not the current exact 928 forms; rebase and rerun');
+    unresolved.length!==926)throw Error('Not the current exact 926 forms; rebase and rerun');
  unresolved.sort((a,b)=>b.research_priority_not_translation_confidence-
   a.research_priority_not_translation_confidence||a.written_surface.localeCompare(b.written_surface));
  // Existing 10 poetic-form cases and director feedback are not needlessly
  // sent to a person again. Limit one initial user question to a few distinct
- // source-linked words, while machine follow-up can run across all 928.
+ // source-linked words, while machine follow-up can run across all 926.
  const eligible=unresolved.filter(r=>!r.prior_source_research&&!r.director_feedback_previously_recorded&&
    r.context_specific_poetic_occurrence_reviews.length===0&&
    (!r.independent_dictionary_context_lead||r.independent_dictionary_context_lead.director_attention_warranted)&&
@@ -327,7 +327,9 @@ function buildTriage(source,linked,{maxHuman=12}={}){
   format:FORMAT, source_fingerprints:source.evidence_fingerprints,
   previous_engine_report_format:linked.format,
   unresolved_engine_miss_count:unresolved.length,
-  investigated_all_unresolved_not_translated:unresolved.length===928,
+  previous_release_unresolved_baseline:928,
+  dictionary_only_exact_forms_newly_connected:2,
+  investigated_all_unresolved_not_translated:unresolved.length===926,
   nonexclusive_lead_counts:classes,
   source_checked_comparison_anchors:anchors.length,
   already_investigated_poetic_or_director_cases_not_requeued:

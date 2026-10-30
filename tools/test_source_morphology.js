@@ -207,8 +207,12 @@ assert.equal(sent.analyze('ticnamaca y¯ totlal extra').complete,false);
 const lexScope={window:{},URL};
 vm.runInNewContext(fs.readFileSync(path.join(root,'translator-engine.js'),'utf8'),lexScope);
 const lex=lexScope.window.TlahtolliTranslator.create(d,{entries:[]});
-assert.equal(lex.analyze('yehuan tepilhuan').stats.matched,0,
- 'Two external source leads cannot be counted as approved curated headwords');
+assert.equal(lex.analyze('yehuan tepilhuan').stats.matched,2,
+ 'Both exact dictionary forms are now source-checked canonical headwords, not licensed contextual sentence meanings');
+assert.equal(lex.analyze('yeuan tepiltzin').stats.matched,0,
+ 'No automatic colonial orthographic variant or related kinship-form promotion');
+assert(lex.analyze('yehuan Dios').gloss.includes('multiple dictionary senses'),
+ 'Do not silently choose a referent or fabricate a complete English clause');
 const sentenceSource=win.window.TlahtolliSentence.create(d,paradigms,t=>cited.analyze(t));
 for(const example of ['yehuan Dios','tepilhuan','yehuan in tepilhuan']){
  const analysis=sentenceSource.analyze(example);

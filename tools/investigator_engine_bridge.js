@@ -184,7 +184,7 @@ function bridge(report,{models=loadModels()}={}){
     form,lemma:m.lemma,grade:'unreviewed',source:m.source,
     secondary_sources:m.sources,note:m.note,
     role_not_inferred:true,not_productive_morphology:true,
-    not_canonical_lexicon_hit:true,original_manuscript_not_collated:true,
+    not_canonical_lexicon_hit:lexicalHits.length===0,original_manuscript_not_collated:true,
     contextual_english_not_verified:true,
     approved_silver:false,approved_gold:false,training_eligible:false
    })),

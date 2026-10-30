@@ -120,13 +120,13 @@ jobs:
           import json,os
           from pathlib import Path
           r=json.loads((Path(os.environ["RUNNER_TEMP"])/"tentli-unresolved-provenance-triage.json").read_text(encoding="utf-8"))
-          assert r["unresolved_engine_miss_count"]==len(r["unresolved_forms"])==928
+          assert r["unresolved_engine_miss_count"]==len(r["unresolved_forms"])==926
           assert r["no_model_training"] and r["no_new_morphological_rules"]
           assert r["no_new_dictionary_approvals"] and r["no_silver_or_gold_promotions"]
           assert r["prioritized_new_human_questions_count"]<=12
           assert r["requires_human_for_every_form"] is False
           print("### Existing-engine follow-up on historical-source gaps")
-          print("- **928** original written forms classified and source-linked, no word translated automatically")
+          print("- **926** currently unmatched original written forms classified and source-linked, no word translated automatically")
           print("- **"+str(r["already_investigated_poetic_or_director_cases_not_requeued"])+"** previously triaged or director-reviewed forms are not assigned redundant human review")
           print("- **"+str(r["prioritized_new_human_questions_count"])+"** optional newly prioritized human investigations, not mandatory annotations of every form")
           for k,v in r["nonexclusive_lead_counts"].items(): print("- "+k.replace("_"," ")+": **"+str(v)+"** (overlapping, unverified leads)")
@@ -142,7 +142,7 @@ jobs:
           import json,os
           from pathlib import Path
           d=json.loads((Path(os.environ["RUNNER_TEMP"])/"tentli-phase6-80-source-dossiers.json").read_text(encoding="utf-8"))
-          assert d["prepared_dossier_count"]==80 and d["source_engine_gap_count"]==928
+          assert d["prepared_dossier_count"]==80 and d["source_engine_gap_count"]==926
           assert d["new_human_approved_gold"]==d["new_human_approved_silver"]==0
           assert d["verified_contextual_translations_added"]==d["canonical_grammar_rules_added"]==d["model_updates"]==0
           assert len({x["written_surface"] for x in d["cases"]})==80
@@ -152,7 +152,7 @@ jobs:
           print("### Phase 6: source-locked historical investigation dossiers")
           print("- **80** individually source-linked original written forms prioritized for linguistic investigation")
           print("- Source-indexed, cross-poem comparisons and morphology-shape hypotheses are **not contextual lexical approvals**")
-          print("- Every form stays one of **928** actual unconnected engine surfaces; no invented coverage gain")
+          print("- Every form stays one of **926** actual unconnected engine surfaces; no invented coverage gain")
           print("- Human-reviewed new original meanings, grammar rules, Silver, Gold and trained checkpoints: **0**")
           print("- Results are reproducible with existing source fingerprints; original examples never enter Gold")
           PY

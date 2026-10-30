@@ -1,0 +1,91 @@
+name: Tēntli bounded pretrained Bronze composition learning (research only)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tentli-bronze-composition-learning.yml'
+      - 'tools/export_wide_source_gated_english_practice.js'
+      - 'tools/source_gated_english_bridge.js'
+      - 'neural/grammar_teacher_practice.py'
+  push:
+    paths:
+      - '.github/workflows/tentli-bronze-composition-learning.yml'
+      - 'tools/export_wide_source_gated_english_practice.js'
+      - 'tools/source_gated_english_bridge.js'
+      - 'neural/grammar_teacher_practice.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pretrained-synthetic-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      TOKENIZERS_PARALLELISM: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate only source-audited and whole-lemma-disjoint Bronze English
+        run: |
+          node tools/export_wide_source_gated_english_practice.js "$RUNNER_TEMP/tentli-composition-bronze.jsonl"
+          python -m neural.grammar_teacher_practice --teacher-manifest "$RUNNER_TEMP/tentli-composition-bronze.jsonl" --audit-only
+      - name: Install pinned pretrained research dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+          python -m pip install 'transformers==4.46.3' 'peft==0.13.2' sentencepiece safetensors
+      - name: Run exactly 40 bounded English-pretrained LoRA updates from synthetic grammar curriculum
+        run: |
+          python -m neural.grammar_teacher_practice \
+            --teacher-manifest "$RUNNER_TEMP/tentli-composition-bronze.jsonl" \
+            --output "$RUNNER_TEMP/tentli-bronze-composed-40" \
+            --steps 40
+      - name: Validate actual adapter identity and publish honest experimental loss
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          from neural.pretrained_english import approved_research_adapter,pretrained_english
+          output=Path(os.environ['RUNNER_TEMP'])/'tentli-bronze-composed-40'
+          m=approved_research_adapter(output)
+          assert m['format']=='tentli-english-supervision-lora-v1'
+          assert m['evidence_tier']=='synthetic_grammar_teacher'
+          assert m['actual_optimizer_steps']==40
+          assert m['training_rows']==6000 and m['development_rows']==176
+          assert m['synthetic_grammar_examples']==6000
+          assert m['historically_attested_sentence_translations_added']==0
+          assert m['human_reviewed_training_examples']==0
+          assert m['independent_translation_accuracy'] is None
+          assert m['automatically_approved_for_public_translation'] is False
+          assert m['accuracy'] is None
+          assert (output/'adapter_model.safetensors').is_file()
+          for x in ('nichōca', 'niquitta in cihuātl', 'nichōca auh nitlacua'):
+              got=pretrained_english(x,adapter_dir=str(output),local_files_only=True)
+              assert got['verified_translation'] is False
+              assert got['pretrained_model']['adapter_evidence_tier']=='synthetic_grammar_teacher'
+              assert got['english'] is not None and got['status']!='abstain'
+          unknown=pretrained_english('xyzzy',adapter_dir=str(output),local_files_only=True)
+          assert unknown['status']=='abstain' and unknown['english'] is None
+          print('## Real 40-step English-pretrained LoRA composition experiment')
+          print('- 6000 Bronze train, 176 verb-lemma-heldout Bronze dev')
+          print('- Actual optimizer steps: **40**')
+          print('- Teacher-forced synthetic heldout loss BEFORE: **'+str(m['dev_teacher_forced_loss_before'])+'**')
+          print('- Teacher-forced synthetic heldout loss AFTER: **'+str(m['dev_teacher_forced_loss_after'])+'**')
+          print('- All proposed English still subject to exact canonical candidate gate')
+          print('- Genuine independent historical human translation accuracy: **UNKNOWN**')
+          print('- New Gold/approved Silver: **0**; public model deployed: **no**')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-flan-t5-bronze-composition-40step-research-only
+          path: |
+            ${{ runner.temp }}/tentli-bronze-composed-40/adapter_model.safetensors
+            ${{ runner.temp }}/tentli-bronze-composed-40/adapter_config.json
+            ${{ runner.temp }}/tentli-bronze-composed-40/research_metadata.json
+          retention-days: 30
+          if-no-files-found: error

@@ -1,0 +1,191 @@
+{
+  "format": "tentli-brinton-contextual-form-leads-v1",
+  "date": "2026-10-30",
+  "scope": "1890 Brinton edition, 133 research-train stanza candidates; dictionary locators are historical-source pointers, not independent line-by-line Brinton semantic review",
+  "policy": "Source-graded editorial triage only. No entry changes, Gold promotions, new independent translations, global spelling rewrites, synthetic glosses, or dropping sung syllables.",
+  "printed_source_edition": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt",
+  "independent_human_review_count": 0,
+  "approved_training_examples_added": 0,
+  "forms": [
+    {
+      "surface": "ohuaya",
+      "class": "documented_song_vocable",
+      "evidence": "historical_song_vocable_described_in_scholarly_dictionary",
+      "sources": [
+        {
+          "url": "https://nahuatl.wired-humanities.org/content/ohuaya",
+          "locator": "ODN citing Bierhorst, Ballads of the Lords of New Spain (2009), p. 42; historic song material ca. 1582"
+        }
+      ],
+      "comment": "Cited dictionary specifically describes this form as a song vocable, not a normal independently translatable lexical noun or verb. Each Brinton occurrence still requires contextual review.",
+      "may_be_poetic_vocable": true,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "zan",
+      "class": "documented_contextual_particle",
+      "evidence": "historical_dictionary_located",
+      "sources": [
+        {
+          "url": "https://nahuatl.wired-humanities.org/content/zan",
+          "locator": "Molina 1571 II f. 14r col. 1; Carochi 1645 as indexed by ODN"
+        }
+      ],
+      "comment": "Restrictive and adversative particle uses are separately documented (e.g. only/just versus but); never impose one English word for every instance.",
+      "may_be_poetic_vocable": false,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "ye",
+      "class": "documented_contextual_particle",
+      "evidence": "historical_dictionary_located",
+      "sources": [
+        {
+          "url": "https://nahuatl.wired-humanities.org/content/ye-0",
+          "locator": "Molina 1571 II f. 34v col. 1; Lockhart 2001 p. 35 and 242 as indexed by ODN"
+        }
+      ],
+      "comment": "Temporal discourse particle often already/now, sometimes not overtly translated; local context must select function.",
+      "may_be_poetic_vocable": false,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "ya",
+      "class": "documented_historical_variant_with_context_risk",
+      "evidence": "historical_dictionary_variant_located",
+      "sources": [
+        {
+          "url": "https://nahuatl.wired-humanities.org/node/173300",
+          "locator": "Karttunen, Analytical Dictionary (1992) p. 333; Carochi 1645 as indexed by ODN"
+        }
+      ],
+      "comment": "Dictionary records ya as related to ye; the same written syllable in song may also be rhythmic. Never globally rewrite ya to ye.",
+      "may_be_poetic_vocable": true,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "aya",
+      "class": "unresolved_poetic_or_grammatical_surface",
+      "evidence": "printed_source_only_no_verified_lexical_sense",
+      "sources": [
+        {
+          "url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt",
+          "locator": "Printed Brinton song passages; introduction describes metrical interjections and poetic repetition; check each position."
+        }
+      ],
+      "comment": "Do not equate an isolated sung aya with the grammatical negative-temporal construction ayamō; no context-independent gloss verified.",
+      "may_be_poetic_vocable": true,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "y",
+      "class": "unresolved_poetic_or_orthographic_surface",
+      "evidence": "printed_source_only_no_verified_lexical_sense",
+      "sources": [
+        {
+          "url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt",
+          "locator": "Printed Brinton song passages; introduction on poetic interjections and editorial notation"
+        }
+      ],
+      "comment": "A lone y may be editorial transcription, metrical sound, conjunction, or part of a different segmentation. Cannot determine from a one-character match.",
+      "may_be_poetic_vocable": true,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "a",
+      "class": "unresolved_poetic_or_orthographic_surface",
+      "evidence": "printed_source_only_no_verified_lexical_sense",
+      "sources": [
+        {
+          "url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt",
+          "locator": "Printed Brinton song passages; introduction on poetic metrical interjections"
+        }
+      ],
+      "comment": "Single vowel needs exact local analysis; never silently discard from the source or give it an English lexical target.",
+      "may_be_poetic_vocable": true,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "o",
+      "class": "unresolved_poetic_or_orthographic_surface",
+      "evidence": "printed_source_only_no_verified_lexical_sense",
+      "sources": [
+        {
+          "url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt",
+          "locator": "Printed Brinton song passages; introduction on poetic metrical interjections"
+        }
+      ],
+      "comment": "Could be rhetorical/metrical material or part of grammar; do not assign a universal meaning.",
+      "may_be_poetic_vocable": true,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "ohuaye",
+      "class": "unresolved_poetic_or_orthographic_surface",
+      "evidence": "printed_source_only_no_verified_lexical_sense",
+      "sources": [
+        {
+          "url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt",
+          "locator": "Printed Brinton stanzas; requires comparison with song-vocable research for ohuaya"
+        }
+      ],
+      "comment": "Resembles a vocable spelling but similarity is not licensed allomorphy; not automatically equivalent to ohuaya.",
+      "may_be_poetic_vocable": true,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    },
+    {
+      "surface": "huia",
+      "class": "unresolved_poetic_or_orthographic_surface",
+      "evidence": "printed_source_only_no_verified_lexical_sense",
+      "sources": [
+        {
+          "url": "https://github.com/GITenberg/Ancient-Nahuatl-Poetry-Containing-the-Nahuatl-Text-of-XXVII-Ancient-Mexican-Poems--13-Brinton__12219/blob/ab90a087b33d8c767caa867674dbf33e0cee084f/12219.txt",
+          "locator": "Printed Brinton stanzas; requires context-sensitive morphological and musical interpretation"
+        }
+      ],
+      "comment": "Not automatically a vocable or a finite verb; review local context first.",
+      "may_be_poetic_vocable": true,
+      "lexicon_promotion": false,
+      "training_eligible": false,
+      "independent_manuscript_review": false,
+      "fixed_english_target": null,
+      "contextual_translation_verified": false
+    }
+  ]
+}

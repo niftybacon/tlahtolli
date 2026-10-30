@@ -1,0 +1,76 @@
+name: Tēntli checked Classical vocabulary and historic witness coverage
+on:
+  pull_request:
+    paths:
+      - 'neural/canonical_lexical_coverage.py'
+      - 'tools/test_canonical_lexical_coverage.py'
+      - '.github/workflows/tentli-checked-lexical-coverage.yml'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+      - 'data/lexicon.json'
+      - 'data/evidence.json'
+      - 'references.json'
+  push:
+    paths:
+      - 'neural/canonical_lexical_coverage.py'
+      - 'tools/test_canonical_lexical_coverage.py'
+      - '.github/workflows/tentli-checked-lexical-coverage.yml'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+      - 'data/lexicon.json'
+      - 'data/evidence.json'
+      - 'references.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checked-classical-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check exact lexical evidence and disallow modern witness leakage
+        run: |
+          python -m unittest discover -s tools -p 'test_canonical_lexical_coverage.py' -v
+          python -m unittest discover -s tools -p 'test_historical_evidence_prioritizer.py' -v
+          python -m unittest discover -s tools -p 'test_brinton_weak_parallel.py' -v
+          python tools/validate_translation_corpus.py
+      - name: Save a reproducible work-disjoint 40-stanza source-checked lexical audit
+        run: |
+          python -m neural.canonical_lexical_coverage \
+            --limit 40 --per-work 4 \
+            --output "$RUNNER_TEMP/tentli-canonical-lexical-audit.json" \
+            > "$RUNNER_TEMP/tentli-canonical-lexical-summary.json"
+          cat "$RUNNER_TEMP/tentli-canonical-lexical-summary.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          src=Path(os.environ["RUNNER_TEMP"])/"tentli-canonical-lexical-audit.json"
+          x=json.loads(src.read_text(encoding="utf-8"))
+          assert x["train_stanzas_examined"] == 133
+          assert x["dev_stanzas_reserved"] == 17
+          assert x["review_queue_size"] == 40
+          assert x["approved_historical_translation_pairs_added"] == 0
+          assert x["independent_gold_accuracy"] is None
+          print("## Source-checked Classical lexeme coverage")
+          print("- Canonical independently source-graded headword/POS entries: **"+str(x["source_checked_classical_lemmas"])+"**")
+          print("- Individually cited early historical surface spellings: **"+str(x["early_cited_witness_form_spellings"])+"**")
+          print("- Exact or cited witnessed matches in Brinton TRAIN: **"+str(x["matched_exact_or_cited_witness_token_occurrences"])+"/"+str(x["train_token_occurrences"])+"** tokens")
+          print("- Unresolved spans: see audit and untouched 17 dev stanzas")
+          print("- Unmatched word-form hypotheses for human investigation: **"+str(x["unmatched_surface_proposals_count"])+"** (zero assigned meanings)")
+          for lead in x["proposed_unmatched_surface_review"][:12]:
+              print("  - "+repr(lead["written_surface"])+": "+str(lead["token_occurrences_in_training_poems"])+
+                    " occurrences across "+str(lead["distinct_training_work_count"])+
+                    " historical poems; all judgments pending")
+          print("- Gold human-reviewed translation accuracy: **unknown**")
+          print("- Canonical morphology/English translator: **unchanged**")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-checked-Classical-lexeme-and-Brinton-40-review-audit
+          path: |
+            ${{ runner.temp }}/tentli-canonical-lexical-audit.json
+            ${{ runner.temp }}/tentli-canonical-lexical-summary.json
+          retention-days: 30
+          if-no-files-found: error

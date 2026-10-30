@@ -1,0 +1,66 @@
+name: Tēntli poetic vocable and particle historical triage
+on:
+  pull_request:
+    paths:
+      - 'research/translation_corpus/brinton_contextual_form_leads_2026_10_30.json'
+      - 'neural/historical_form_triage.py'
+      - 'tools/test_historical_form_triage.py'
+      - '.github/workflows/tentli-brinton-contextual-form-triage.yml'
+      - 'research/neural_training/brinton_1890_poetry_weak_en.jsonl'
+  push:
+    paths:
+      - 'research/translation_corpus/brinton_contextual_form_leads_2026_10_30.json'
+      - 'neural/historical_form_triage.py'
+      - 'tools/test_historical_form_triage.py'
+      - '.github/workflows/tentli-brinton-contextual-form-triage.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  form-triage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run historical form classification and safety tests
+        run: |
+          python -m unittest discover -s tools -p 'test_historical_form_triage.py' -v
+          python -m unittest discover -s tools -p 'test_canonical_lexical_coverage.py' -v
+          python -m unittest discover -s tools -p 'test_historical_evidence_prioritizer.py' -v
+          python tools/validate_translation_corpus.py
+      - name: Produce stanza-grouped human research queue only
+        run: |
+          python -m neural.historical_form_triage \
+            --limit 40 --max-per-work 4 \
+            --output "$RUNNER_TEMP/brinton-contextual-form-audit.json" | tee "$RUNNER_TEMP/summary.json"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"])/"brinton-contextual-form-audit.json"
+          result = json.loads(p.read_text(encoding="utf-8"))
+          assert result["train_stanzas_only"] == 133
+          assert result["untouched_development_stanzas"] == 17
+          assert result["documented_song_vocable_occurrences_flagged_not_deleted"] == 106
+          assert result["unmatched_occurrences_excluding_flagged_vocable_as_workload_estimate"] == 2223
+          assert result["human_approved_bilingual_examples_created"] == 0
+          assert result["independent_gold_accuracy"] is None
+          assert len(result["forms"]) == 10
+          assert len(result["review_queue"]) == 40
+          print("## Historical-poetry form triage — not a translator upgrade")
+          print("- Source-graded form leads: **10** (4 cited lexical/particle findings, 6 unresolved poetic or orthographic possibilities)")
+          print("- Documented song vocable **ohuaya** flagged in **106** training-token occurrences; original poem retained")
+          print("- Approximate non-vocable unmatched surface workload: **2,223** out of 2,646 printed TRAIN tokens")
+          print("- 40 poem-diverse contexts queued for independent source review")
+          print("- Gold, reviewed Silver and public translation changes: **zero**")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-brinton-contextual-poetry-research-queue
+          path: |
+            ${{ runner.temp }}/brinton-contextual-form-audit.json
+            ${{ runner.temp }}/summary.json
+          retention-days: 30
+          if-no-files-found: error

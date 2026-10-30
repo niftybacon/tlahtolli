@@ -69,7 +69,7 @@ jobs:
           assert r["source_gold_or_silver_approved"]==0
           assert r["no_persistent_learning_or_model_update"] is True
           assert r["english_meaning_accuracy"] is None
-          assert r["count_by_actual_existing_engine_route"]["no_linked_engine_surface_match"]==928
+          assert r["count_by_actual_existing_engine_route"]["no_linked_engine_surface_match"]==926
           assert r["count_by_actual_existing_engine_route"]["source_indexed_exact_lexical_surface_research_leads"]==2
           assert r["actual_grammar_or_full_english_coverage_from_lexical_leads"]==0
           print("## Historical evidence ↔ existing Tēntli engines")

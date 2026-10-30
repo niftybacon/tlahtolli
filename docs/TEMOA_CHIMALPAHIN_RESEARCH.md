@@ -126,6 +126,36 @@ It will never silently restart from random weights and call that
 "continued training." All public canonical morphology, grammar-IR,
 lexicon and translator code remain unchanged.
 
+## Measured manuscript intake (real Temoa source, 2026-10-29)
+
+The first complete source ingestion fetched and checked the actual Temoa
+Nahuatl editions, excluding French/Spanish translation panels and
+pictorial/Florentine materials. These are source-extracted *character*
+counts, not linguistic word counts or independent English/Spanish gold.
+
+| Work | Indexed source pages / folio routes | Editorial Nahuatl articles | Nahuatl-majority chars before technical splitting |
+| --- | ---: | ---: | ---: |
+| Chimalpahin Third Relación | 94 | 310 | 137,492 |
+| Chimalpahin Eighth Relación | 3 | 43 | 126,664 |
+| Anales de Cuauhtitlan | 1 (aggregate/virtual) | 52 | 192,544 |
+| Leyenda de los Soles | 1 (aggregate/virtual) | 9 | 32,565 |
+| Anales Mexicanos | 3 | 27 | 10,673 |
+| **Total** | **102 source routes** | **441 editorial articles** | **499,938 source characters** |
+
+After purely technical chunking into bounded, provenance-bearing records
+and excluding unusable/duplicate material, **450 independent record
+identifiers** were admitted to the `neural/corpus.py` research intake.
+This is **not** 450 independently reviewed sentences, and a digital
+aggregate folio route is NOT necessarily one physical manuscript leaf.
+
+All five work titles are explicitly separated and source-located in the
+existing `research/translation_corpus/source_candidates.csv` to avoid
+a second bibliography. The Eighth/Third Relaciones are the actual larger
+Chimalpahin work witnesses, not the previously trained Gutenberg short
+Culhuacan lineage. The Anales de Cuauhtitlan and other Temoa texts may
+still overlap source passages in earlier Axolotl rows, so held-out
+denoising metrics must not be called unseen translation accuracy.
+
 ## Required validation before claiming success
 
 Training succeeds only after Temoa reports the exact five work groups

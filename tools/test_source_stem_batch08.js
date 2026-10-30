@@ -8,7 +8,7 @@ assert.equal(D.version,R.version);assert.equal(M.target_version,'2026-10-29.8.0'
 assert(['2026-10-29.8.0','2026-10-29.9.0','2026-10-30.1.0'].includes(D.version));
 assert.equal(D.words.length,2144);assert.equal(R.headwords,2144);assert.equal(M.entries.length,38);
 assert.equal(M.entries.filter(x=>!!x.class).length,13);assert.equal(M.older.length,4);
-assert.equal(D.words.filter(w=>w.status==='Checked against source').length,225);
+assert.equal(D.words.filter(w=>w.status==='Checked against source').length,227);
 assert.equal(D.words.filter(w=>w.status==='Archive-indexed; lexical review pending'&&w.pos.startsWith('verb')).length,187);
 assert.equal(Object.keys(P.paradigms).length,12);
 assert.equal(D.words.reduce((n,w)=>n+w.inflections.length,0),341);

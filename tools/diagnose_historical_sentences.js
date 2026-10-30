@@ -44,7 +44,8 @@ function createModels(files){
  const api=scope.window,dictionary=JSON.parse(files['dictionary.json']);
  const examples=JSON.parse(files['research/translation_corpus/research_examples.json']);
  const sourceReview=JSON.parse(files['research/translation_corpus/source_reviews/ENL_BC16_1573.json']);
- const canonicalSource=api.TlahtolliSourceMorphology.create(sourceReview);
+ const exactLexicalSource=JSON.parse(files['research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json']);
+ const canonicalSource=api.TlahtolliSourceMorphology.create(sourceReview,exactLexicalSource);
  const lexical=api.TlahtolliTranslator.create(dictionary,examples);
  const locative=api.TlahtolliLocative.create(dictionary,examples);
  // Source-reviewed exact-token adapter only: browser's embedded Tēntli supplementary
@@ -64,6 +65,7 @@ const MODEL_FILES=[
  'translator-grammar-ir.js','data/clause_grammar.json','data/possessed_form_evidence.json',
  'research/translation_corpus/research_examples.json',
  'research/translation_corpus/source_reviews/ENL_BC16_1573.json',
+ 'research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json',
  'research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json'];
 function loadModels(){return createModels(Object.fromEntries(MODEL_FILES.map(f=>[f,read(f)])));}
 const proposalCounts=clause=>Object.fromEntries(Object.entries(clause||{})

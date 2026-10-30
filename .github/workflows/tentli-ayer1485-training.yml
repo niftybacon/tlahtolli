@@ -13,7 +13,7 @@ permissions:
 jobs:
   source-verified-training:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,18 +26,99 @@ jobs:
           python -m unittest discover -s tools -p 'test_sahagun_sermons_intake.py' -v
           python -m unittest discover -s tools -p 'test_historical_neural_corpus.py' -v
           python -m unittest discover -s tools -p 'test_neural_fair_use_intake.py' -v
-      - name: Pilot real historical UNAM HTML intake, no source book copied into Git
+      - name: Retrieve and verify the FULL 64-sermon historical transcription, not Spanish
         run: |
           python -m neural.intake_sahagun_sermons \
-            --max-sermons 4 \
+            --max-sermons 64 \
             --delay 0.3 \
             --output "$RUNNER_TEMP/ayer1485-private.jsonl"
           python - <<'PY'
           import json,os,pathlib
           p=pathlib.Path(os.environ["RUNNER_TEMP"])/"ayer1485-private.jsonl.meta.json"
           m=json.loads(p.read_text(encoding="utf-8"))
-          assert m["sermons_imported"]==4
-          assert m["Nahuatl_majority_editorial_paragraphs"]>=8
+          assert m["sermons_found_in_live_index"]==64
+          assert m["sermons_imported"]==64
+          assert m["pages"]>=180
+          assert m["Nahuatl_majority_editorial_paragraphs"]>=220
+          assert m["historical_transcription_chars"]>=450000
+          assert len([x for x in m["sermons"] if x["split"]=="dev"])==8
+          assert len([x for x in m["sermons"] if x["split"]=="train"])==56
           assert m["bilingual_targets"]==0
-          print("ACTUAL_SOURCE_PILOT_VERIFIED",m["pages"],m["historical_transcription_chars"])
+          print("ACTUAL_64_SERMON_SOURCE_INTAKE_VERIFIED",m["pages"],m["Nahuatl_majority_editorial_paragraphs"],m["historical_transcription_chars"])
           PY
+      - name: Restore actual previously trained Florentine and Axolotl neural weights
+        uses: actions/download-artifact@v4
+        with:
+          name: tentli-florentine-axolotl-private-research-checkpoint
+          run-id: 40987019137
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/base-checkpoint
+      - name: Resolve the checkpoint artifact root, without random-weight fallback
+        run: |
+          python - <<'PY'
+          import json,os,pathlib,shutil
+          root=pathlib.Path(os.environ["RUNNER_TEMP"])/"base-checkpoint"
+          folders=[p.parent for p in root.rglob("metadata.json")
+                   if (p.parent/"weights.pt").exists()]
+          if len(folders)!=1:
+              raise ValueError(f"Expected one genuine prior model: {folders}")
+          if folders[0]!=root:
+              for name in ("weights.pt","metadata.json"):
+                  shutil.copy2(folders[0]/name,root/name)
+          m=json.loads((root/"metadata.json").read_text(encoding="utf-8"))
+          assert m["format"]=="tentli-experimental-neural-v1"
+          assert m["model_config"]["width"]==48
+          assert m["model_config"]["layers"]==1
+          assert m["model_config"]["max_bytes"]==256
+          assert m["trained_translation_examples"]>=4000
+          assert m["trained_analysis_examples"]>=1000
+          assert m["independent_translation_accuracy"] is None
+          print("GENUINE_BASE_WEIGHTS_VERIFIED",m["trained_translation_examples"])
+          PY
+      - name: Install CPU PyTorch for real gradient training
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Continue the SAME Tēntli checkpoint on historic sermon prose
+        run: |
+          python -m neural.train --manifest "$RUNNER_TEMP/ayer1485-private.jsonl" \
+            --init-checkpoint "$RUNNER_TEMP/base-checkpoint" \
+            --output "$RUNNER_TEMP/after-ayer1485" \
+            --width 48 --heads 4 --layers 1 --max-bytes 256 \
+            --epochs 5 --batch-size 8 --max-steps 1200
+      - name: Verify genuine source learning and sermon-disjoint dev metadata
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ["RUNNER_TEMP"])
+          m=json.loads((root/"after-ayer1485/metadata.json").read_text(encoding="utf-8"))
+          c=json.loads((root/"ayer1485-private.jsonl.meta.json").read_text(encoding="utf-8"))
+          assert m["steps"]==1200,m
+          assert m["initialization"]=="teacher-distilled"
+          assert m["source_inventory"]["works"]==64
+          assert m["source_inventory"]["splits"]["dev"]>0
+          assert m["source_inventory"]["splits"]["train"]>0
+          assert m["trained_translation_examples"]>=4000
+          assert m["trained_analysis_examples"]>=1000
+          assert m["source_inventory"]["translation_training_records"]==0
+          assert m["independent_translation_accuracy"] is None
+          assert (root/"after-ayer1485/weights.pt").exists()
+          print("SIXTY_FOUR_SERMONS_ACTUAL_TRAINING",json.dumps({
+            "sermons":c["sermons_imported"],
+            "pages":c["pages"],
+            "sermon_source_paragraphs":c["Nahuatl_majority_editorial_paragraphs"],
+            "historical_transcription_chars":c["historical_transcription_chars"],
+            "new_steps":m["steps"],
+            "development_mean_loss":m["development_mean_loss"],
+            "old_bilingual_training_preserved":m["trained_translation_examples"],
+            "source_english_pairs":0,
+            "independent_translation_accuracy":None
+          },sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-sahagun-64-sermons-research-checkpoint
+          path: |
+            ${{ runner.temp }}/after-ayer1485/weights.pt
+            ${{ runner.temp }}/after-ayer1485/metadata.json
+            ${{ runner.temp }}/ayer1485-private.jsonl.meta.json
+          if-no-files-found: error
+          retention-days: 30

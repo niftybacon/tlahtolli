@@ -1,0 +1,110 @@
+name: Train Tēntli on Brinton poems and Chimalpahin prose
+on:
+  push:
+    branches: [feat/train-brinton27-chimalpahin-prose-20261029]
+    paths:
+      - 'neural/**'
+      - 'tools/test_poems_chimalpahin_intake.py'
+      - '.github/workflows/tentli-poems-chimalpahin-training.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-source-and-neural-training:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check new original-source boundaries (no fabricated training gold)
+        run: |
+          python -m unittest discover -s tools -p 'test_poems_chimalpahin_intake.py' -v
+          python -m unittest discover -s tools -p 'test_historical_neural_corpus.py' -v
+          node tools/test_tentli_teacher.js
+          node tools/test_regular_present_morphology.js
+          node tools/test_shared_grammar_ir.js
+      - name: Download exact publicly accessible U.S.-public-domain Gutenberg source editions temporarily
+        run: |
+          mkdir -p "$RUNNER_TEMP/nahuatl"
+          for id in 14993 12219 21802; do
+            curl -fLsS --retry 3 --connect-timeout 15 --max-time 120 \
+              -A "Tlahtolli public-domain linguistic research https://github.com/niftybacon/tlahtolli" \
+              "https://www.gutenberg.org/ebooks/$id.txt.utf-8" \
+              -o "$RUNNER_TEMP/nahuatl/source-$id.txt"
+          done
+      - name: Extract 27 poems and Chimalpahin without importing English notes or misaligning long verses
+        run: |
+          python -m neural.intake_poetry_chimalpahin \
+            --poems "$RUNNER_TEMP/nahuatl/source-12219.txt" \
+            --prose "$RUNNER_TEMP/nahuatl/source-21802.txt" \
+            --output "$RUNNER_TEMP/nahuatl/new-works.jsonl"
+          python -m neural.intake_brinton \
+            --input "$RUNNER_TEMP/nahuatl/source-14993.txt" \
+            --output "$RUNNER_TEMP/nahuatl/original-hymns.jsonl"
+      - name: Export existing canonical morphological teacher
+        run: node tools/export_tentli_neural_teacher.js "$RUNNER_TEMP/nahuatl/teacher.jsonl"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU PyTorch
+        run: python -m pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.2,<3'
+      - name: Fit canonical Tēntli teacher weights
+        run: |
+          python -m neural.distill --teacher-manifest "$RUNNER_TEMP/nahuatl/teacher.jsonl" \
+            --output "$RUNNER_TEMP/nahuatl/teacher-weights" \
+            --width 48 --heads 4 --layers 1 --max-bytes 256 \
+            --epochs 3 --batch-size 8 --max-steps 96
+      - name: Continue source-bound learning on existing 20 Sahagún-related hymns
+        run: |
+          python -m neural.train --manifest "$RUNNER_TEMP/nahuatl/original-hymns.jsonl" \
+            --init-checkpoint "$RUNNER_TEMP/nahuatl/teacher-weights" \
+            --output "$RUNNER_TEMP/nahuatl/previous-hymn-weights" \
+            --width 48 --heads 4 --layers 1 --max-bytes 256 \
+            --epochs 4 --batch-size 8 --max-steps 56
+      - name: Continue on 27 historical poems and Chimalpahin narrative
+        run: |
+          python -m neural.train --manifest "$RUNNER_TEMP/nahuatl/new-works.jsonl" \
+            --init-checkpoint "$RUNNER_TEMP/nahuatl/previous-hymn-weights" \
+            --output "$RUNNER_TEMP/nahuatl/poems-and-chimalpahin" \
+            --width 48 --heads 4 --layers 1 --max-bytes 256 \
+            --epochs 4 --batch-size 8 --max-steps 160
+      - name: Check both sources actually trained and citation/release boundaries survived
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'nahuatl'
+          meta=json.loads((root/'new-works.jsonl.meta.json').read_text())
+          weights=json.loads((root/'poems-and-chimalpahin/metadata.json').read_text())
+          assert meta['poetry']['poems']==27,meta['poetry']
+          assert meta['poetry']['stanzas']>=100,meta['poetry']
+          assert meta['chimalpahin']['paragraphs']>=30,meta['chimalpahin']
+          assert weights['steps']>0
+          assert weights['initialization']=='teacher-distilled'
+          assert weights['trained_analysis_examples']>=1000
+          assert weights['teacher_translation_examples']>=20
+          assert weights['independent_translation_accuracy'] is None
+          assert (root/'poems-and-chimalpahin/weights.pt').exists()
+          print('TWO_SOURCE_NEURAL_TRAINING_SUCCESS',json.dumps({
+             'poems':meta['poetry']['poems'],
+             'poem_stanzas':meta['poetry']['stanzas'],
+             'poetry_short_english_pairs':meta['poetry']['weak_parallel_trainable_short_pairs'],
+             'prose_paragraphs':meta['chimalpahin']['paragraphs'],
+             'prose_source_characters':meta['chimalpahin']['source_chars'],
+             'new_training_steps':weights['steps'],
+             'bilingual_training_examples':weights['trained_translation_examples'],
+             'accuracy':None},sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tentli-neural-poems-and-chimalpahin-research-weights
+          path: |
+            ${{ runner.temp }}/nahuatl/poems-and-chimalpahin/weights.pt
+            ${{ runner.temp }}/nahuatl/poems-and-chimalpahin/metadata.json
+            ${{ runner.temp }}/nahuatl/new-works.jsonl.meta.json
+            ${{ runner.temp }}/nahuatl/original-hymns.jsonl.meta.json
+          retention-days: 30

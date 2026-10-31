@@ -140,7 +140,7 @@ function validateContextContrasts(doc,triage){
    new URL(row.original_printed_source_url).hostname==='www.gutenberg.org');
   // The original excerpt MUST match a source-pinned original-language window,
   // not a generated English alignment, near-spelling or modern token.
-  const tokenized=x=>String(x||'').normalize('NFC').toLocaleLowerCase('en').replace(/\\s+/gu,' ').trim();
+  const tokenized=x=>String(x||'').normalize('NFC').toLocaleLowerCase('en').replace(/\s+/gu,' ').trim();
   insist(existing.historical_edition_examples.some(x=>
    x.record_id===row.pinned_brinton_record_id&&
    x.work_id===row.pinned_brinton_work_id&&
@@ -148,7 +148,7 @@ function validateContextContrasts(doc,triage){
   insist(Array.isArray(row.historical_dictionary_contrasts)&&
    row.historical_dictionary_contrasts.length>=2&&row.historical_dictionary_contrasts.length<=4&&
    row.historical_dictionary_contrasts.every(x=>trustedUrl(x.url)&&
-    /^(?:nahuatl\\.wired-humanities\\.org|gdn\\.iib\\.unam\\.mx)$/u.test(new URL(x.url).hostname)&&
+    /^(?:nahuatl\.wired-humanities\.org|gdn\.iib\.unam\.mx)$/u.test(new URL(x.url).hostname)&&
     typeof x.locator==='string'&&x.locator.length>=10&&
     typeof x.lead==='string'&&x.lead.length>=15&&
     x.independent_original_clausal_interpretation===false));

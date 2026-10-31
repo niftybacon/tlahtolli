@@ -41,6 +41,20 @@ function showResult(){
  if(sentenceModel&&direction.value==='nh-en'){
   const result=sentenceModel.analyze(content);
   const graph=grammarIR?.build(content,result)||null;
+  if(result.attestedAyacObservations?.length){
+   const panel=el('section','translator-candidate');
+   panel.append(el('h4','','Historical ayac tle speech context'),
+    el('p','translator-caution',
+     'This exact historical documentary word sequence is source-located, but grammar, argument scope and complete English are not independently reviewed. quitoz and oquito remain distinct written forms.'));
+   for(const o of result.attestedAyacObservations){
+    panel.append(el('p','translator-meta','Witness '+o.witnessId+' · written '+o.speechWritten));
+    for(const url of [o.sourceUrl,o.lexicalSource]){
+     const link=safeLink(url,'Inspect historical document or lexical source');
+     if(link)panel.append(link);
+    }
+   }
+   passages.append(panel);
+  }
   if(result.poeticVocableObservations?.length){
    const panel=el('section','translator-candidate translator-poetic-vocable');
    panel.append(el('h4','','Historical song: context-specific poetic interjection'),
@@ -1028,9 +1042,11 @@ async function init(){
    fetch('./data/predicate_english.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./research/translation_corpus/attested_ayac_speech_contexts_2026_10_30.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,ayacEvidence]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -1065,7 +1081,8 @@ async function init(){
     possessiveEvidence.status==='fulfilled'?possessiveEvidence.value:null,
     sourceFiniteEvidence.status==='fulfilled'?sourceFiniteEvidence.value:null,
     citedPassages,predicateEnglish.status==='fulfilled'?predicateEnglish.value:null,
-    poeticEvidence.status==='fulfilled'?poeticEvidence.value:null);
+    poeticEvidence.status==='fulfilled'?poeticEvidence.value:null,
+    ayacEvidence.status==='fulfilled'?ayacEvidence.value:null);
     grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages,parsedParadigms,sentenceModel)||null;
    }
   }catch{} // Lexical analysis remains usable when paradigm loading fails.

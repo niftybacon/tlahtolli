@@ -20,6 +20,10 @@ assets **must be rebuilt and tested** before this becomes website behavior.
 This is a documented integration proposal, not a declaration of completed
 deployment or independently measured translation accuracy.
 
+## Draft October 31: actual original-spelling `noyollo` source reader
+
+The existing `tools/morphology_engine.js` already handles a source-derived bound `-yōllo` **analogy**, but that **length-marked** generated form is distinct from Brinton's **exact** unmarked `noyollo`. A bounded additional candidate in the **same canonical engine** now links Brinton VI/XI/XVII's original written `noyollo` to the source-checked `yollotl` headword and `-yōllo` citation. It exposes an `unreviewed` first-person `no-` possessor feature to the existing `translator-sentence.js` partial grammar clues. The research investigator includes the candidate in its diagnostics but intentionally does not elevate it to a **certified route** until independent source/grammatical review. It does not add a second parser, change English realization, remove original tokens, normalize macrons for all words, certify poetic `noyollo yehua` semantics or change 926. See [source/CI contract](../../docs/TENTLI_PHASE6_NOYOLLO_EXACT_SOURCE_2026_10_31.md).
+
 ## Critical architectural distinction
 
 Historical material is **not automatically learned merely because it appears in `research/`**. Tēntli consists of a curated production dictionary and grammar, source-labeled morphology, historical research catalogs, a lexicon/morphology/grammar/English diagnostic bridge, and separate experimental neural work.

@@ -17,6 +17,37 @@ try{
  const original=JSON.parse(fs.readFileSync(source,'utf8'));
  const current=JSON.parse(fs.readFileSync(bridge,'utf8'));
  const result=buildTriage(original,current);
+ // Original Brinton spells noyollo without macrons. A NEW but unreviewed
+ // partial first-person possessed-noun clue must neither vanish nor
+ // masquerade as a certified lexical recognition/whole-clause translation.
+ const heartRow=current.token_engine_diagnostics.find(r=>r.written_surface==='noyollo');
+ assert(heartRow&&heartRow.analysis_route==='no_linked_engine_surface_match');
+ const heartClues=heartRow.advanced_browser_morphology_candidates.filter(c=>
+  c.kind==='Exact Brinton first-person possessed heart research reading');
+ assert.equal(heartClues.length,1);
+ assert.equal(heartClues[0].grade,'unreviewed');
+ assert.equal(heartClues[0].source,
+  'https://www.gutenberg.org/files/12219/12219-h/12219-h.htm');
+ assert(heartClues[0].locator.includes('not an independently collated manuscript'));
+ assert.equal(heartClues[0].features,undefined,
+  'Research bridge must not expand privileged morphology internals into source claims');
+ assert(result.unresolved_forms.some(r=>r.written_surface==='noyollo'),
+  'An unreviewed original-form morphology candidate must not silently lower 926');
+ for(const bad of [
+  c=>{c.grade='lexical'},
+  c=>{c.kind='unreviewed-but-certified-source-grammar'},
+  c=>{c.lemma='wrong'},
+  c=>{c.source='https://example.org/forged'},
+  c=>{c.locator='Unverified historical source'}
+ ]){
+  const forged=JSON.parse(JSON.stringify(current));
+  bad(forged.token_engine_diagnostics.find(r=>r.written_surface==='noyollo')
+   .advanced_browser_morphology_candidates.find(c=>
+    c.kind==='Exact Brinton first-person possessed heart research reading'));
+  assert.throws(()=>buildTriage(original,forged),/Unresolved claim contradicts existing morphology/i,
+   'Forged noyollo source or grammatical confidence must be rejected');
+ }
+
  assert.equal(result.format,'tentli-unresolved-historical-form-triage-v1');
  // Newly source-indexed contrasts remain unresolved; corruptions cannot
  // impersonate independent evaluation, historical folio review or grammar.

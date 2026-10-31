@@ -91,4 +91,57 @@ for(const [form,lemma] of productive.slice(0,4)){
  assert.equal(result.clauses[0].candidates.length,0);
  assert(result.clauses[0].morphologicalClues.some(x=>x.lemma===lemma&&x.grade==='analogy'));
 }
+// Brinton 1890 prints an UNMARKED original noyollo. This exact printed
+// spelling must be a separate, source-linked research analysis, not a
+// general-purpose rule stripping historical vowel-length distinctions.
+const heartKind='Exact Brinton first-person possessed heart research reading';
+const heart=morph.analyze('noyollo').filter(x=>x.kind===heartKind);
+assert.equal(heart.length,1);
+assert.equal(heart[0].lemma,'yollotl');
+assert.equal(heart[0].grade,'unreviewed');
+assert.equal(heart[0].features.possessor,'1sg');
+assert.equal(heart[0].features.originalEditionSpellingAttested,true);
+assert.equal(heart[0].features.contextualHeartSoulIntentionSenseResolved,false);
+assert.equal(heart[0].features.fullHistoricalClauseTranslated,false);
+assert.deepEqual(Array.from(heart[0].parts,x=>x.surface),['no','yollo']);
+assert(heart[0].sources.includes('https://nahuatl.wired-humanities.org/content/yollotl'));
+assert(heart[0].source.includes('gutenberg.org'));
+for(const notExact of [
+ 'noyōllo','noyöllo','nōyollo','moyollo','iyollo','toyollo',
+ 'noyollotl','noyolloya','noyollo-yehua','noyolloyehua'
+]){
+ assert.equal(morph.analyze(notExact).filter(x=>x.kind===heartKind).length,0,
+  'No default vowel-stripping, prefix substitution or phrase fusion: '+notExact);
+}
+// Do not turn the source attestation into an unsupported full-sentence gloss.
+vm.runInNewContext(read('translator-english.js'),ctx);
+const english=ctx.window.TlahtolliEnglish.create(sentence);
+for(const original of [
+ 'noyollo','noyollo yehua','In can on nemian noyollo yehua?',
+ 'Macazo tleon xoconyoyocoya ti noyollo, yehua cuix ic nepohualoyan',
+ 'quen conchihuaz noyollo yehua onentacico'
+]){
+ const parsed=sentence.analyze(original);
+ assert.equal(parsed.complete,false,'Source-linked noun is NOT whole-sentence grammar: '+original);
+ assert.equal(english.compose(original,parsed).available,false,
+  'Do not invent complete historical English for an unresolved clause: '+original);
+}
+const lone=sentence.analyze('noyollo');
+assert(lone.clauses[0].morphologicalClues.some(x=>x.kind===heartKind&&
+ x.lemma==='yollotl'&&x.features?.possessor==='1sg'),
+ 'Sentence engine must consume the canonical morphological research clue');
+// The exact historical spelling is grounded jointly in the source edition
+// and checked yollotl bound-stem claim; stripping the evidence rejects it.
+for(const mutate of [
+ w=>{w.claims=w.claims.filter(c=>c.field!=='possessed')},
+ w=>{w.possessed='-yollo (unapproved rewrite)'},
+ w=>{w.status='Unreviewed'},
+ w=>{w.source='https://example.org/forged'},
+ w=>{w.claims.find(c=>c.field==='possessed').assessment='inference'}
+]){
+ const copy=JSON.parse(JSON.stringify(dictionary.words));
+ mutate(copy.find(w=>w.word==='yollotl'));
+ assert.equal(load(copy).morph.analyze('noyollo').filter(x=>x.kind===heartKind).length,0,
+  'Invalid dictionary provenance cannot support original-heart candidate');
+}
 console.log('PASS Tēntli source-bound noun morphology: nine unseen forms/nine located lemmas/five persons; abstention, exact spelling, source gates and negative tests');

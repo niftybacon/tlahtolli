@@ -28,7 +28,7 @@ function confidence(match){
  if(match.form_type==='historical spelling')return 'orthographic';
  return 'candidate';
 }
-function create(dictionary,passages){
+function create(dictionary,passages,contextPack){
  const list=(dictionary&&Array.isArray(dictionary.words)?dictionary.words:[]).filter(
   w=>w&&['Classical Nahuatl','Classical Nahuatl (historical dictionary lemma)'].includes(w.variety)&&typeof w.word==='string'&&w.word.trim());
  const index=new Map(),english=new Map();
@@ -60,6 +60,83 @@ function create(dictionary,passages){
   }
  }
  const candidates=Array.isArray(passages?.entries)?passages.entries.filter(e=>e&&e.variety==='Classical Nahuatl'&&e.train_eligible!==true):[];
+ // Phase 6: cite the ACTUAL already-indexed Molina/Olmos dictionary senses
+ // in English without pretending to choose a meaning for an isolated word.
+ // This is an annotation of the original written token, not a dictionary
+ // promotion, an English clause, an independent bilingual review or a rule
+ // identifying 'yehua' with other pronouns/orthographies.
+ const YEHUA_DEMONSTRATIVE='https://nahuatl.wired-humanities.org/content/yehua-0';
+ const YEHUA_TEMPORAL='https://nahuatl.wired-humanities.org/content/yehua';
+ const BRINTON_EDITION='https://www.gutenberg.org/files/12219/12219-h/12219-h.htm';
+ function validatedYehuaEnglish(){
+  if(contextPack?.format!=='tentli-phase6-exact-contextual-contrast-leads-v1'||
+    contextPack.research_only!==true||
+    contextPack.negative_guards?.no_automatic_english!==true||
+    contextPack.negative_guards?.no_gold_silver_or_training!==true||
+    !Array.isArray(contextPack.cases))return null;
+  const cases=contextPack.cases.filter(c=>c?.written_surface==='yehua');
+  if(cases.length!==1)return null;
+  const caseY=cases[0],note=caseY.editorial_yehua_engine_note;
+  if(note?.exact_written_form!=='yehua'||
+    note.independently_approved_sentence_translation!==false||
+    note.hard_engine_constraints?.no_single_default_gloss!==true||
+    note.hard_engine_constraints?.no_invented_english_translation!==true||
+    note.hard_engine_constraints?.abstain_on_unparsed_whole_clause!==true||
+    !Array.isArray(note.dictionary_supported_function_families))return null;
+  const families=note.dictionary_supported_function_families;
+  const demonstrative=families.find(f=>f.function==='demonstrative_or_independent_third_person');
+  const temporal=families.find(f=>f.function==='temporal_adverb');
+  if(!demonstrative||demonstrative.source_url!==YEHUA_DEMONSTRATIVE||
+    demonstrative.attested_spanish!=='aquel, aquella, aquello'||
+    demonstrative.per_occurrence_selection_approved!==false||
+    !temporal||temporal.source_url!==YEHUA_TEMPORAL||
+    temporal.attested_spanish!=='denantes, o ahora poco ha; rato ha'||
+    temporal.per_occurrence_selection_approved!==false||
+    !Array.isArray(note.published_original_contexts)||
+    note.published_original_contexts.filter(p=>p.locator==='Brinton 1890 Song VI stanza 2'&&
+      p.source_url===BRINTON_EDITION&&
+      p.original_short_span==='noyollo, yehua cuix ic nepohualoyan'&&
+      p.grammatical_role_verified===false).length!==1)return null;
+  return [
+   {english:'that / that one',function:'demonstrative or pronoun',
+    source:YEHUA_DEMONSTRATIVE,locator:'Molina 1571 II f.35r c.1',
+    status:'attested dictionary English alternatives; contextual use not selected'},
+   {english:'a little while ago / then',function:'temporal adverb',
+    source:YEHUA_TEMPORAL,locator:'Molina 1571 II f.36r c.1; Olmos Arte p.183',
+    status:'attested dictionary English alternatives; contextual use not selected'}
+  ];
+ }
+ const yehuaEnglish=validatedYehuaEnglish();
+ function sourceEnglishReadings(input,direction='nh-en'){
+  if(direction!=='nh-en'||!yehuaEnglish)return [];
+  const original=String(input||'').slice(0,7000);
+  const found=[...original.matchAll(/[\p{L}\p{M}]+(?:[¯‾][\p{L}\p{M}]*|['’\-][\p{L}\p{M}]+)*/gu)];
+  const words=found.map(m=>m[0]);
+  const normalized=words.map(norm);
+  const out=[];
+  for(let i=0;i<normalized.length&&i<90;i++){
+   if(normalized[i]!=='yehua')continue;
+   const at=found[i].index;
+   // A number attached without a word boundary cannot become a supported
+   // Nahuatl lexical token (yehua123 and 2yehua are negative controls).
+   if(/[\p{N}]/u.test(original[at-1]||'')||
+      /[\p{N}]/u.test(original[at+words[i].length]||''))continue;
+   // Brinton's English connective "that" is a contextual editorial choice,
+   // never a dictionary gloss or an automatic complementizer analysis.
+   const vi=normalized.slice(i-1,i+4).join(' ');
+   const brinton=vi==='noyollo yehua cuix ic nepohualoyan';
+   out.push({wordIndex:i,written:words[i],status:'cited English sense alternatives, not an English sentence',
+    options:yehuaEnglish.map(o=>({...o})),
+    editorialReading:brinton?{
+     english:'that',kind:'published editorial clause-linking choice',
+     source:BRINTON_EDITION,locator:'Brinton 1890 Song VI stanza 2',
+     note:'The printed English uses that after my heart. This does not prove yehua is a complementizer or determine which function it serves.'
+    }:null,
+    selectedEnglish:null,referent:null,clauseAttachment:null,verifiedTranslation:false});
+  }
+  return out;
+ }
+
  function lookup(query,direction='nh-en'){
   const q=norm(query);if(!q)return {candidates:[],approximate:false,alternatives:[],orthographyConflict:false,totalCandidates:0,truncated:false};
   const table=direction==='en-nh'?english:index;
@@ -120,11 +197,15 @@ function create(dictionary,passages){
  }
  function analyze(input,direction='nh-en'){
   const parts=tokenize(String(input||'').slice(0,7000));
+  const sourceReadings=sourceEnglishReadings(input,direction);
+  let wordIndex=-1;
   let matched=0,unknown=0,provisional=0,ambiguous=0,senseAmbiguities=0,approximate=0,orthographyConflicts=0,truncated=0;
   const annotated=parts.map(part=>{
    if(!isWord(part))return {kind:'separator',value:part};
+   wordIndex++;
+   const sourceEnglish=sourceReadings.find(reading=>reading.wordIndex===wordIndex)||null;
    const result=lookup(part,direction),hits=result.candidates;
-   if(!hits.length){unknown++;return {kind:'word',value:part,status:'unknown',candidates:[],alternatives:[]};}
+   if(!hits.length){unknown++;return {kind:'word',value:part,status:'unknown',candidates:[],alternatives:[],sourceEnglish};}
    const provisionalOnly=hits.every(hit=>hit.evidence==='archive-index');
    if(provisionalOnly){provisional++;unknown++;}else matched++;
    const ambiguousSense=distinctLexical(hits).length>1||result.totalCandidates>8;
@@ -142,7 +223,7 @@ function create(dictionary,passages){
   const gloss=annotated.map(x=>{
    if(x.kind==='separator')return x.value;
    const first=x.candidates[0];
-   if(!first)return '[?'+x.value+']';
+   if(!first)return x.sourceEnglish?'['+x.sourceEnglish.options.map(o=>o.english).join(' | ')+']':'[?'+x.value+']';
    if(x.status==='provisional')return '[?'+x.value+': unreviewed archive index gloss]';
    // Deliberate abstention: a plausible lookup is NOT a licensed sentence
    // translation and a missing macron must not decide among homographs.
@@ -155,11 +236,12 @@ function create(dictionary,passages){
   }).join('');
   return {parts:annotated,gloss,stats:{matched,unknown,provisional,ambiguous,senseAmbiguities,approximate,orthographyConflicts,truncated,total:matched+unknown},
    contextReadings:contextReadings(input,direction),
+   sourceEnglishReadings:sourceReadings,
    passages:direction==='nh-en'?passageMatches(input):[],
-   disclaimer:'Bracketed meanings are dictionary lookups, not contextual translations. Uncertain spelling, multiple lexical candidates and multiple dictionary senses are not auto-resolved.'};
+   disclaimer:'Bracketed meanings are dictionary lookups, not contextual translations. Source-labeled yehua alternatives are unranked choices from Molina/Olmos, not approved contextual readings or a complete English sentence. Uncertain spelling and lexical senses remain distinct.'};
  }
 
- return {analyze,lookup,passageMatches,stats:{headwords:list.length,wordForms:index.size,passageCandidates:candidates.length}};
+ return {analyze,lookup,passageMatches,sourceEnglishReadings,stats:{headwords:list.length,wordForms:index.size,passageCandidates:candidates.length}};
 }
 root.TlahtolliTranslator={create,norm,fold,tokenize};
 })(window);

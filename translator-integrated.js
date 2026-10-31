@@ -38,6 +38,41 @@ function showResult(){
  if(!content){gloss.textContent='Enter a word or a short passage and choose Analyze.';status(model.stats.headwords+' Classical Nahuatl headwords ready.');return;}
  latest=model.analyze(content,direction.value);
  gloss.textContent=latest.gloss;
+ // Lexical English options from existing Molina/Olmos source research are
+ // useful even when a historical clause cannot yet be parsed. Do not render
+ // them as verified sentence English or select one without context.
+ if(direction.value==='nh-en'&&latest.sourceEnglishReadings?.length){
+  const panel=el('section','translator-candidate translator-yehua-english');
+  panel.append(el('h4','','yehua · source-cited English possibilities'),
+   el('p','translator-caution',
+    'English words are available now: these are alternative dictionary senses, '+
+    'not missing meanings. The original word is retained; the appropriate '+ 
+    'function depends on its clause context, and no complete translation is claimed.'));
+  for(const reading of latest.sourceEnglishReadings){
+   const item=el('div','translator-analysis');
+   item.append(el('strong','',
+    'Original word '+(reading.wordIndex+1)+': '+reading.written),
+    el('p','translator-meta','English alternatives (unranked): '+
+     reading.options.map(o=>o.english).join('  /  ')));
+   for(const option of reading.options){
+    item.append(el('p','translator-meta',
+     option.english+' · '+option.function+' · '+option.locator));
+    const link=safeLink(option.source,'Inspect original dictionary evidence');
+    if(link)item.append(link);
+   }
+   if(reading.editorialReading){
+    item.append(el('p','translator-meta',
+     'Published poem English: "'+reading.editorialReading.english+
+     '" · '+reading.editorialReading.locator),
+     el('p','translator-caution',reading.editorialReading.note));
+    const link=safeLink(reading.editorialReading.source,
+     'Inspect Brinton original and English edition');
+    if(link)item.append(link);
+   }
+   panel.append(item);
+  }
+  passages.append(panel);
+ }
  if(sentenceModel&&direction.value==='nh-en'){
   const result=sentenceModel.analyze(content);
   const graph=grammarIR?.build(content,result)||null;
@@ -1046,9 +1081,11 @@ async function init(){
    fetch('./data/predicate_english.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,contextualEvidence]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -1056,7 +1093,8 @@ async function init(){
    document=window.TLAHTOLLI_OFFLINE_SEED;dataMode='offline';
   }else throw Error('No published or bundled dictionary data found');
   const corpus=candidates.status==='fulfilled'?candidates.value:{entries:[]};
-  model=window.TlahtolliTranslator.create(document,corpus);
+  model=window.TlahtolliTranslator.create(document,corpus,
+   contextualEvidence.status==='fulfilled'?contextualEvidence.value:null);
   const citedPassages=historicalPassages.status==='fulfilled'?historicalPassages.value:null;
   grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages)||null;
   if(window.TlahtolliSourceMorphology&&sourceReview.status==='fulfilled'&&sourceReview.value)

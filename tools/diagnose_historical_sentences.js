@@ -112,6 +112,8 @@ function analyzeText(input,models){
   grammarIRAyacContexts:truthyList(graph.nodes).filter(n=>n.kind==='attested-ayac-speech-context').length,
   grammarIRNegativeIndefinitePairs:truthyList(graph.nodes).filter(n=>n.kind==='negative-indefinite-pair-candidate').length,
   grammarIRSpeechFiniteShapes:truthyList(graph.nodes).filter(n=>n.kind==='source-graded-itoa-speech-shape').length,
+  grammarIRSpeechContentCandidates:truthyList(graph.nodes).filter(n=>n.kind==='source-graded-tle-content-candidate').length,
+  grammarIRMolinaComparators:truthyList(graph.nodes).filter(n=>n.kind==='source-graded-molina-1sg-comparator').length,
   proposalCounts:proposals,englishDraftAvailable:wording.available===true,
   // Diagnostic illustration ONLY: never compare automatically with an editorial reference.
   englishDraft:wording.available?models.english.render(wording):null,

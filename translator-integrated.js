@@ -73,6 +73,45 @@ function showResult(){
   }
   passages.append(panel);
  }
+ if(direction.value==='nh-en'&&latest.sourceZanReadings?.length){
+  const panel=el('section','translator-candidate translator-zan-english');
+  panel.append(el('h4','','zan / çan · source-cited English and contextual comparisons'),
+   el('p','translator-caution',
+    'Molina documents both only/just and but/however. These are unranked English '+
+    'options for the original tokens, not a complete sentence translation. '+
+    'Documented clusters and Brinton editorial English are separately labeled; '+
+    'zan ye cannot always be treated as but.'));
+  for(const reading of latest.sourceZanReadings){
+   const item=el('div','translator-analysis');
+   item.append(el('strong','','Original word '+(reading.wordIndex+1)+': '+reading.written),
+    el('p','translator-meta','English alternatives: '+
+     reading.options.map(o=>o.english).join(' / ')));
+   for(const option of reading.options){
+    item.append(el('p','translator-meta',
+     option.english+' · '+option.function+' · '+option.locator));
+    const link=safeLink(option.source,'Inspect Molina zan senses');
+    if(link)item.append(link);
+   }
+   if(reading.documentedPhrase){
+    const ph=reading.documentedPhrase;
+    item.append(el('p','translator-meta',
+     'Documented expression '+ph.original+' → '+ph.english+' · '+ph.locator),
+     el('p','translator-caution',ph.note));
+    const link=safeLink(ph.source,'Inspect sourced expression');
+    if(link)item.append(link);
+   }
+   if(reading.editorialReading){
+    const ed=reading.editorialReading;
+    item.append(el('p','translator-meta',
+     'Published Brinton English: "'+ed.english+'" · '+ed.locator),
+     el('p','translator-caution',ed.note));
+    const link=safeLink(ed.source,'Inspect original Brinton edition');
+    if(link)item.append(link);
+   }
+   panel.append(item);
+  }
+  passages.append(panel);
+ }
  if(sentenceModel&&direction.value==='nh-en'){
   const result=sentenceModel.analyze(content);
   const graph=grammarIR?.build(content,result)||null;
@@ -1083,9 +1122,11 @@ async function init(){
    fetch('./research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./research/translation_corpus/phase6_zan_english_context_2026_10_31.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,contextualEvidence]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,contextualEvidence,zanEvidence]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -1094,7 +1135,8 @@ async function init(){
   }else throw Error('No published or bundled dictionary data found');
   const corpus=candidates.status==='fulfilled'?candidates.value:{entries:[]};
   model=window.TlahtolliTranslator.create(document,corpus,
-   contextualEvidence.status==='fulfilled'?contextualEvidence.value:null);
+   contextualEvidence.status==='fulfilled'?contextualEvidence.value:null,
+   zanEvidence.status==='fulfilled'?zanEvidence.value:null);
   const citedPassages=historicalPassages.status==='fulfilled'?historicalPassages.value:null;
   grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages)||null;
   if(window.TlahtolliSourceMorphology&&sourceReview.status==='fulfilled'&&sourceReview.value)

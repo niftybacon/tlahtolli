@@ -1,0 +1,39 @@
+name: One-time cited yehua English options validation and runtime sync
+on:
+  push:
+    branches:
+      - feat/phase6-yehua-english-alternatives-public-20261031
+    paths:
+      - '.github/workflows/adhoc-yehua-options-sync.yml'
+permissions:
+  contents: write
+jobs:
+  validate_and_sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source-exact bilingual English choices (not invented full clause translations)
+        run: |
+          node tools/test_phase6_yehua_english_options.js
+          node tools/test_source_bound_possessives.js
+          node tools/test_phase6_source_morphology_ir_observations.js
+      - name: Install headless browser
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install chromium --only-shell
+      - name: Test public page English choices and safe whole-sentence refusal
+        run: python tools/test_phase6_yehua_english_browser.py
+      - name: Synchronize content-addressed runtime after both tests pass
+        run: |
+          python tools/build_runtime_assets.py --write
+          python tools/build_runtime_assets.py --check
+          git status --short
+          git add index.html
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'build: refresh versioned lexical English and translator browser assets'
+          git push origin HEAD:feat/phase6-yehua-english-alternatives-public-20261031

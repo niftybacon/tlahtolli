@@ -5,6 +5,7 @@ on:
       - research/translational-capability-audit-20261031
     paths:
       - 'tools/adhoc_translator_audit_2026_10_31.js'
+      - 'tools/adhoc_translator_browser_audit_2026_10_31.py'
       - '.github/workflows/tentli-unknown-input-audit.yml'
 permissions:
   contents: read
@@ -19,3 +20,18 @@ jobs:
           node-version: '22'
       - name: Run published translator against independent constructed and known source examples
         run: node tools/adhoc_translator_audit_2026_10_31.js
+
+  browser_audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser harness
+        run: |
+          pip install playwright==1.57.0
+          playwright install chromium --only-shell
+      - name: Run real translator tab against selected adversarial cases
+        run: python tools/adhoc_translator_browser_audit_2026_10_31.py

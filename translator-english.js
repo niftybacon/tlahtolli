@@ -71,7 +71,9 @@ function create(model){
  function optionsFor(clause){
   const options=[];
   for(const c of finite(clause))for(const p of c.englishParts)
-   options.push({text:capital(line(p)),structure:{kind:'finite',frame:c.frame},
+   options.push({text:capital(line(p)),structure:{kind:
+    c.constructionId==='source-bounded-antepilhuan-nominal-predicate'?
+     'source-bounded-nominal-predicate':'finite',frame:c.frame},
     sources:sources(c.sources),nounSenses:c.nounSenses||[]});
   if(options.length)return options;
   for(const r of clause.relativeClauseProposals||[]){

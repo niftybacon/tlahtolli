@@ -299,6 +299,44 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   }
   return proposals.slice(0,5);
  }
+ // This is the same canonical supplementary morphology provider, not an
+ // independent noun-conjugator. Only exact historical antepilhuan may be
+ // offered as a complete *isolated* nominal-predicate candidate. The
+ // unrecorded first-plural extension remains morphology-only.
+ function sourceNominalPredicate(token){
+  if(String(token||'').normalize('NFC').toLowerCase()!=='antepilhuan')return [];
+  const w=words.filter(x=>x.word==='tepilhuan'&&x.pos==='noun'&&
+   x.source==='https://nahuatl.wired-humanities.org/node/188794'&&
+   x.status==='Checked against source');
+  if(w.length!==1)return [];
+  const claims=['headword','pos','meaning'];
+  if(!claims.every(field=>w[0].claims?.some(c=>
+   c.field===field&&c.assessment==='dictionary'&&
+   c.source===w[0].source&&String(c.locator||'').includes('103r'))))return [];
+  const matches=exactMorphology(token).filter(x=>x.kind===
+   'Source-bounded plural nominal-predicate hypothesis'&&x.grade==='hypothesis'&&
+   x.lemma==='tepilhuan'&&x.features?.subject==='2pl'&&
+   x.features?.category==='nominal-predicate'&&
+   x.features?.exactOriginalAttestation===true&&x.source===w[0].source&&
+   x.parts?.map(p=>p.surface).join('')==='antepilhuan');
+  if(matches.length!==1)return [];
+  const source='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
+  const frame={subject:'you (plural)',subjectPerson:4,subjectNoun:null,
+   predicate:'tepilhuan',tense:'nominal present',negative:false,
+   object:null,objectNoun:null,lexicalMeaning:w[0].meaning,
+   morphologyEvidence:{written:token,lemma:'tepilhuan',grade:'hypothesis',
+    meaning:'someone\'s children / offspring',source:w[0].source,
+    locator:'Molina 1571 II f.103r',subject:'2pl'}};
+  // The generic isolated nominal predication is not Brinton's contextual
+  // poetic "O you princes"; that vocative is preserved in source research.
+  const englishParts=[{subject:'You (plural)',verb:'are',object:"someone's children"}];
+  return [{frame,english:["You (plural) are someone's children"],englishParts,
+   coverage:1,constructionId:'source-bounded-antepilhuan-nominal-predicate',
+   constructionSource:source,sources:[w[0].source,source,
+    'https://nahuatl.wired-humanities.org/content/pil-0'],
+   nounSenses:[],grade:'grammar-derived candidate',
+   note:'Only an isolated source-bounded plural nominal predicate reading. This does not certify Brinton\'s poetic vocative, an unrestricted pilli-derived plural paradigm, antecedents, or a longer passage.'}];
+ }
  const words=dictionary.words.filter(w=>String(w.variety).startsWith('Classical Nahuatl'));
  const index=new Map();
  for(const [lemma,p] of Object.entries(paradigms.paradigms||{})){
@@ -1655,7 +1693,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    // Only an isolated, explicitly source-labeled finite token can contribute
    // a new gloss. No words on either side may be silently discarded.
    if(!candidates.length&&!negative&&tokens.length===1){
-    candidates.push(...exactFiniteReadings(tokens[0],exactMorphology(tokens[0])));
+    candidates.push(...sourceNominalPredicate(tokens[0]));
+    if(!candidates.length)candidates.push(...exactFiniteReadings(tokens[0],exactMorphology(tokens[0])));
    }
    const clause={text,tokens:original,candidates,complete:candidates.length>0,
     fragmentInterpretations:candidates.length?[]:fragmentInterpretations(tokens,negative),

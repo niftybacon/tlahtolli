@@ -48,6 +48,35 @@ node tools/test_unresolved_historical_form_triage.js
 
 The test suite deliberately uses source material already admitted to the research set. The workflow saves the dossier JSON with the other historical investigator outputs; it does **not** add the 17 Brinton development stanzas, previously unseen Gold works, or private feedback to source research. Any printed English alignment remains unreviewed until a **separate** qualified human review and reuse-rights assessment.
 
+## Phase 6 refinement: overlapping failure *signals* and witness-independence audit
+
+The original 80-case dossier generator now emits a **nonexclusive set of investigative
+signals for every source-written form**, without changing its deterministic candidate
+selection, original triage, 926-miss baseline or underlying engine analyses.
+Possible source-indexed lexical ambiguity, poetic-vocable context, spelling
+comparison, morpheme-boundary resemblance, other original-document lead and
+repeat appearances across units of **the same Brinton edition** may coexist.
+A seventh fallback explicitly instructs a researcher to read the original clause
+before diagnosing an unknown shape. These categories are **questions to check,
+not independently verified grammatical failure labels**.
+
+Each dossier now carries an explicit source-independence accounting: distinct
+poem units in a single editorial collection remain **one edition**, and external
+historical-document references are *located research leads* until their
+independence and exact contexts have been checked. A dictionary entry is not
+independent attestation of the intended poetic referent. The source-locked report
+also summarizes overlapping signals for **all 926 unmatched written surfaces**
+and for the **80 selected dossiers**; category totals are not expected to sum
+to 926 or 80, respectively. New adversarial tests reject forged manuscript
+source grades and auto-approved similar-spelling claims.
+
+This makes it easier to choose evidence-gathering tasks without conflating
+lexical lookup, morphosyntax, original spelling, document provenance and
+English translation. **No new dictionary headword, source morphology,
+productive clause, reviewed English pair, manuscript collation, neural
+training, Silver or Gold approval is claimed.** The 926 development misses
+remain 926; human semantic evaluation remains unavailable.
+
 ## Next substantive development milestone
 
 The **next step is not to count another 80**. For the high-impact forms the dossiers identify, inspect original manuscript/edition contexts and independent dictionaries, preserve competing senses and orthography, and separate exact word-form source identification from productive morphological hypotheses. Only independently warranted constructions should be offered to the **existing** canonical source-claim, morphological, sentence, grammar-IR and English components, with positive and negative tests and before/after engine diagnostics. Link that change through the Phase 5 review ledger **after** source/editorial review; never self-certify an LLM suggestion. The committed review ledger currently contains no human approvals.

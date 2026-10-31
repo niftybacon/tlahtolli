@@ -1,17 +1,17 @@
-# Phase 6 — source-locked investigation dossiers from the 928 historical analysis gaps
+# Phase 6 — source-locked investigation dossiers from 926 current historical analysis gaps
 
 *October 30, 2026 · Research prioritization milestone, **not 80 verified words, 80 approved grammar rules, or a new English benchmark.***
 
 ## What this changes
 
-The canonical [928-form unresolved triage](../research/translation_corpus/UNRESOLVED_928_HISTORICAL_TRIAGE_2026_10_30.md) already investigates all distinct original written forms and reports existing lexical/grammar engine routes. It separately assembles a **small optional human question queue**. That queue deliberately avoids asking the project director to adjudicate every historical homograph.
+The original [928-form unresolved triage](../research/translation_corpus/UNRESOLVED_928_HISTORICAL_TRIAGE_2026_10_30.md) already investigates all distinct original written forms and reports existing lexical/grammar engine routes. It separately assembles a **small optional human question queue**. That queue deliberately avoids asking the project director to adjudicate every historical homograph.
 
 This Phase 6 batch now adds **source-grounded machine research dossiers**, built with `tools/build_phase6_historical_dossiers.js` using the **same existing source investigator and actual canonical engine bridge**, not a competing parser. Dossiers document what to inspect and what evidence already exists; **they do not assert new linguistic answers**. An 80-form research packet does not mean that 80 forms have been successfully translated, independently reviewed, or accepted into productive grammar.
 
 The existing Monday `.github/workflows/tentli-full-source-worklist.yml` workflow (not an additional scheduler) now:
 
 1. Enumerates the **1,181** distinct forms from the already allowed source training material; the 17 Brinton development stanzas remain excluded.
-2. Reuses the actual lexical, indexed verb, source-morphology, browser-morphology, sentence, English and shared-IR diagnostic bridge to count **928** unlinked written surfaces at the source-pinned baseline.
+2. Reuses the actual lexical, indexed verb, source-morphology, browser-morphology, sentence, English and shared-IR diagnostic bridge to measure **926** currently unlinked written surfaces on the same pinned source cohort, after two narrowly recognized exact lexical forms reduced the earlier 928 misses in PR #113.
 3. Reuses `buildTriage` to cross-check original source fingerprints, rejected source training/Gold claims, previous poetic investigations and independently located historical dictionary leads.
 4. Exports up to **80 high-priority, poem-diversified source research dossiers** into the existing 30-day GitHub Actions artifact, with their exact original short source contexts, document/work and edition URLs, comparison leads, ambiguity classifications and *proposed next investigation*. It does not silently write these into the lexicon, grammar or model weights.
 5. Runs negative-control tests on altered original source, unlicensed Gold claims, fake dictionary approval, invented surface, historical dev-work contamination and altered evidence URLs.
@@ -20,7 +20,7 @@ This is intentionally **more than the earlier 12 optional director questions** b
 
 ## Research selection and categories
 
-The input universe is all 928 actual unlinked original written surfaces. The initial pool favors recorded independent dictionary leads, recurrence across **poem units within the same nineteenth-century printed edition**, original historical-document context, and source-checked headword resemblance. It limits the number initially drawn from any one poem and then fills remaining places by deterministic research priority.
+The input universe is the **926** currently unlinked original written surfaces (the earlier 928 count predates the exact recognition of `yehuan` and `tepilhuan`). The initial pool favors recorded independent dictionary leads, recurrence across **poem units within the same nineteenth-century printed edition**, original historical-document context, and source-checked headword resemblance. It limits the number initially drawn from any one poem and then fills remaining places by deterministic research priority.
 
 Each dossier preserves:
 
@@ -32,7 +32,7 @@ Each dossier preserves:
 
 The independently located starting leads are **`yehuan`, `tepilhuan`, `noyollo`, `ipalnemohua`, `huiya`**. They are not all the same kind of problem: pronoun referent, possessed/kinship noun meaning, deity title versus related form, and a **verb/vocable homograph** are different categories. In particular, the two earlier `huiya` poetic-context assessments do **not** generalize to all nine Brinton occurrences, and the `yauh` verbal form remains a valid competing reading outside those exact contexts. These five source leads existed **before** this batch; the new capability is durable, diversified, source-linked structured review of a larger set of high-impact forms, not another five invented discoveries.
 
-**No original facsimile was newly collated, no independent translator scored, and no productive grammar was modified.** The written-form "928 gaps" baseline is unchanged until a separate source-licensed engine PR and repeated diagnostics justify changing it. Any increase or decrease in that count must be measured on the same pinned training source material and reported distinctly from full-clause accuracy.
+**No original facsimile was newly collated, no independent translator scored, and no productive grammar was modified.** The source-locked research worklist is now pinned to **926** gaps after PR #113's two exact dictionary matches; this refinement does **not** further change that count. Any additional coverage gain requires a separate source-licensed engine PR and before/after diagnostics. Any increase or decrease in that count must be measured on the same pinned training source material and reported distinctly from full-clause accuracy.
 
 ## Run, inspect and reproduce
 

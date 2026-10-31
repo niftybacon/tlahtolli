@@ -1,0 +1,85 @@
+{
+  "format": "tentli-cross-document-negative-speech-research-v2",
+  "date": "2026-10-30",
+  "review_status": "source-located editorial research, not independently approved grammar or translation",
+  "lexical_reference": {
+    "word": "ayac",
+    "source_url": "https://nahuatl.wired-humanities.org/content/ayac",
+    "locator": "Molina 1571 II fol. 3r; Lockhart 2001 p. 211",
+    "candidate_sense": "no one / nobody; historical alternatives and context require review"
+  },
+  "shared_exact_surface": "ayac tle plus source-specific quitoz/oquito; not a productive alternation",
+  "witnesses": [
+    {
+      "id": "enl-1621-coyoacan",
+      "work_id": "ENL-BC19-1621",
+      "date": "1621",
+      "short_excerpt": "ayac tle quitoz oncan tlatoz",
+      "source_url": "https://enl.wired-humanities.org/bc19/elements/bc19a/000",
+      "locator": "ENL BC19 folio a, Lockhart analytic transcription, 1621 Coyoacan donation",
+      "witnessed_speech_surface": "quitoz",
+      "manuscript_collated": false,
+      "grammar_approved": false
+    },
+    {
+      "id": "gdn-1569-testament",
+      "work_id": "GDN-DocsMexico-AntonioQuauitencatl-1569",
+      "date": "1569",
+      "short_excerpt": "omito ayac tle quitoz yuh niquitohua",
+      "source_url": "https://gdn.iib.unam.mx/diccionario/ayac/185330",
+      "locator": "GDN Docs_Mexico Antonio Quauitencatl testament 1569 [1157]",
+      "witnessed_speech_surface": "quitoz",
+      "manuscript_collated": false,
+      "grammar_approved": false
+    },
+    {
+      "id": "gdn-1585-possession",
+      "work_id": "GDN-DocsMexico-MelchorDeParada-1585",
+      "date": "1585",
+      "short_excerpt": "ayac tle oquito ayac otlachallani",
+      "source_url": "https://gdn.iib.unam.mx/diccionario/ayac/185330",
+      "locator": "GDN Docs_Mexico Melchor de Parada land/house possession 1585 [911]",
+      "witnessed_speech_surface": "oquito",
+      "manuscript_collated": false,
+      "grammar_approved": false
+    }
+  ],
+  "competing_interpretations": [
+    {
+      "scope": "lexical",
+      "hypothesis": "ayac is lexically a negative indefinite (no one/nobody)",
+      "evidence": "Molina/Lockhart as indexed by ODN",
+      "unresolved": "whether ayac is syntactic subject in each document"
+    },
+    {
+      "scope": "construction",
+      "hypothesis": "tle quitoz concerns something being said or objection",
+      "evidence": "parallel original written sequence in distinct legal documents",
+      "unresolved": "tense, person, negative scope, and tle constituent role not independently parsed"
+    },
+    {
+      "scope": "larger context",
+      "hypothesis": "following oncan tlatoz versus yuh niquitohua may differ in boundary and reference",
+      "evidence": "different written continuation in each document",
+      "unresolved": "no justified universal completion or English alignment"
+    }
+  ],
+  "guardrails": {
+    "source_quote_only": true,
+    "no_general_ayac_negation_rule": true,
+    "no_automatic_tle_english": true,
+    "no_person_tense_inference": true,
+    "no_historical_spelling_rewrite": true,
+    "no_english_translation_certification": true,
+    "no_training": true,
+    "no_gold_or_silver": true,
+    "source_rights": "short quotation and links; no mirrored full transcription",
+    "approved_gold": 0,
+    "approved_silver": 0
+  },
+  "observed_contrast": {
+    "no_cross_witness_rewrites": true,
+    "no_inflection_rule_inferred": true,
+    "grade": "attested_words_only_not_complete_historical_clause"
+  }
+}

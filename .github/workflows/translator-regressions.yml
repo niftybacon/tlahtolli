@@ -65,6 +65,7 @@ on:
       - 'tools/test_axolotl_development.js'
       - 'tools/diagnose_historical_sentences.js'
       - 'tools/test_historical_sentence_diagnostics.js'
+      - 'tools/test_attested_ayac_contexts.js'
       - 'data/passages.json'
       - '.github/workflows/translator-regressions.yml'
       - 'tools/test_translator_workflow_integrity.py'
@@ -132,6 +133,7 @@ on:
       - 'tools/test_axolotl_development.js'
       - 'tools/diagnose_historical_sentences.js'
       - 'tools/test_historical_sentence_diagnostics.js'
+      - 'tools/test_attested_ayac_contexts.js'
       - 'data/passages.json'
       - '.github/workflows/translator-regressions.yml'
       - 'tools/test_translator_workflow_integrity.py'
@@ -238,5 +240,7 @@ jobs:
         run: node tools/test_coordinated_subject_agreement.js
       - name: Historical edited-excerpt sentence diagnostics (not accuracy)
         run: node --check tools/diagnose_historical_sentences.js && node tools/test_historical_sentence_diagnostics.js && node tools/diagnose_historical_sentences.js
+      - name: Two independent historical ayac construction witnesses and English abstention
+        run: node tools/test_attested_ayac_contexts.js
       - name: Productive predicate English integration and evidence negative controls
         run: node tools/test_productive_predicate_english.js

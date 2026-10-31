@@ -84,7 +84,7 @@ function compileClauseRules(pack){
  return valid;
 }
 
-function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence){
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,ayacEvidence){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -93,6 +93,71 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  // or lexical rewrite. Only the two explicitly reviewed snippets in a trusted
  // source file may be marked as likely sung vocables. The homographic yauh
  // 'went' remains possible in all other sentences and is never hidden.
+
+ // Source-locked historical windows, NOT a productive negative or tense rule.
+ function attestedAyacObservations(input){
+  const doc=ayacEvidence,guard=doc?.guardrails;
+  const expected=[
+   ['enl-1621-coyoacan','ENL-BC19-1621','ayac tle quitoz oncan tlatoz',
+    'https://enl.wired-humanities.org/bc19/elements/bc19a/000','quitoz'],
+   ['gdn-1569-testament','GDN-DocsMexico-AntonioQuauitencatl-1569',
+    'omito ayac tle quitoz yuh niquitohua',
+    'https://gdn.iib.unam.mx/diccionario/ayac/185330','quitoz'],
+   ['gdn-1585-possession','GDN-DocsMexico-MelchorDeParada-1585',
+    'ayac tle oquito ayac otlachallani',
+    'https://gdn.iib.unam.mx/diccionario/ayac/185330','oquito']
+  ];
+  if(doc?.format!=='tentli-cross-document-negative-speech-research-v2'||
+   doc.lexical_reference?.source_url!=='https://nahuatl.wired-humanities.org/content/ayac'||
+   !Array.isArray(doc.witnesses)||doc.witnesses.length!==3||
+   doc.observed_contrast?.no_cross_witness_rewrites!==true||
+   doc.observed_contrast?.no_inflection_rule_inferred!==true||
+   guard?.approved_gold!==0||guard?.approved_silver!==0||
+   !['source_quote_only','no_general_ayac_negation_rule','no_automatic_tle_english',
+     'no_person_tense_inference','no_historical_spelling_rewrite',
+     'no_english_translation_certification','no_training','no_gold_or_silver']
+       .every(k=>guard[k]===true))return [];
+  // A corrupted, substituted, or partly reviewed evidence pack cannot
+  // silently leave another witness enabled. Reject the pack as a unit.
+  if(expected.some((e,i)=>{
+   const w=doc.witnesses[i];
+   return w?.id!==e[0]||w.work_id!==e[1]||w.short_excerpt!==e[2]||
+    w.source_url!==e[3]||w.witnessed_speech_surface!==e[4]||
+    w.manuscript_collated!==false||w.grammar_approved!==false||
+    typeof w.locator!=='string'||w.locator.length<35;
+  }))return [];
+  const raw=String(input||'').normalize('NFC');
+  if(raw.length>7000)return [];
+  const tokens=[...raw.matchAll(/[\p{L}\p{M}]+/gu)]
+   .map(m=>({word:norm(m[0]),start:m.index,end:m.index+m[0].length}));
+  if(tokens.length>512)return [];
+  const matches=[];
+  for(let i=0;i<expected.length;i++){
+   const e=expected[i],w=doc.witnesses[i],pattern=e[2].split(' ');
+   if(w?.id!==e[0]||w.work_id!==e[1]||w.short_excerpt!==e[2]||
+    w.source_url!==e[3]||w.witnessed_speech_surface!==e[4]||
+    w.manuscript_collated!==false||w.grammar_approved!==false||
+    typeof w.locator!=='string'||w.locator.length<35)continue;
+   for(let start=0;start+pattern.length<=tokens.length;start++){
+    if(!pattern.every((p,j)=>tokens[start+j].word===p))continue;
+    let same=true;
+    for(let j=1;j<pattern.length;j++)
+     if(!/^[ \t]+$/u.test(raw.slice(tokens[start+j-1].end,tokens[start+j].start)))
+      {same=false;break;}
+    if(!same)continue;
+    matches.push({witnessId:e[0],historicalWorkId:e[1],context:e[2],
+     sourceUrl:e[3],lexicalSource:doc.lexical_reference.source_url,
+     tokenStart:start,negativeTokenIndex:start+pattern.indexOf('ayac'),
+     negativeWritten:'ayac',nextWritten:'tle',speechWritten:e[4],
+     personResolved:false,tenseResolved:false,rolesResolved:false,
+     negativeScopeResolved:false,grammarRuleAdded:false,
+     wholeEnglishReviewed:false,manuscriptCollated:false,
+     trainingEligible:false,silverApproved:false,goldApproved:false});
+    if(matches.length>=8)return matches;
+   }
+  }
+  return matches;
+ }
  function poeticVocableObservations(input){
   const doc=poeticEvidence;
   const guard=doc?.guardrails;
@@ -1588,6 +1653,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    const result=analyzeInput(input,allowPartialRecovery);
    if(result&&typeof result==='object'&&!Array.isArray(result))
     result.poeticVocableObservations=poeticVocableObservations(input);
+     result.attestedAyacObservations=attestedAyacObservations(input);
    return result;
   }
   finally{if(owner)morphologyMemo=null;}

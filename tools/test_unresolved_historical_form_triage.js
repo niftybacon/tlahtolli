@@ -52,7 +52,7 @@ try{
  // a separate translation engine or a morphology-derived answer key.
  const originalStanzas=fs.readFileSync(path.join(ROOT,
   'research/neural_training/brinton_1890_poetry_weak_en.jsonl'),'utf8')
-  .split(/\\r?\\n/u).filter(Boolean).map(x=>JSON.parse(x));
+  .split(/\r?\n/u).filter(Boolean).map(x=>JSON.parse(x));
  const byOriginalStanza=new Map(originalStanzas.map(x=>[x.record_id,x]));
  const uniqueIds=new Set(contextLeads.cases.map(x=>x.pinned_brinton_record_id));
  assert.equal(uniqueIds.size,2,'The three contrast forms occur in two pinned Brinton research stanzas');

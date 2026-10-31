@@ -162,6 +162,19 @@ function validateContextContrasts(doc,triage){
     x.different_from_brinton_printed_work===true&&
     x.original_transcription_not_folio_image_collated===true&&
     x.existing_editorial_translation_not_gold===true));
+  // Project-director statements are preserved exactly as scoped feedback.
+  // A linguistic proposal is never an independent Silver/Gold evaluation.
+  if(row.written_surface==='antepilhuan'){
+   const d=row.project_director_contextual_assessment;
+   insist(d?.review_scope==='Brinton poem V, stanza 4 only'&&
+    JSON.stringify(d.proposed_segmentation)===JSON.stringify(['an-','te-','pil-','-huan'])&&
+    d.person==='second-person plural'&&
+    d.contextual_english==='O you princes'&&
+    JSON.stringify(d.sense_family)===JSON.stringify(['children','nobles','princes'])&&
+    d.interpretation_class==='source-cited project-director contextual analysis, not independently certified translation'&&
+    d.no_global_grammar_promotion===true&&d.independently_reviewed===false&&
+    d.whole_stanza_meaning_verified===false&&d.do_not_reask_without_new_evidence===true);
+  }else insist(row.project_director_contextual_assessment===undefined);
   insist(Array.isArray(row.competing_contextual_questions)&&
    row.competing_contextual_questions.length>=2&&
    row.competing_contextual_questions.every(q=>typeof q==='string'&&q.length>=20)&&

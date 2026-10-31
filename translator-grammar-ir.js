@@ -150,8 +150,56 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
    if(id)newEdge(readingId,id,'contains-finite-predicate',{readingId});
    return id;
   }
+  // Canonical morphology is a separate evidence layer from grammar. A
+  // SOURCE-EXACT unreviewed possessor observation may survive into the shared
+  // graph even when there is NO licensed clause parse, but cannot become a
+  // nominal argument, a pronoun antecedent or an English alternative.
+  // The original analyzer is re-run to prevent injected/cloned IR evidence.
+  const brintonHeart='https://www.gutenberg.org/files/12219/12219-h/12219-h.htm';
+  const heartLexicon='https://nahuatl.wired-humanities.org/content/yollotl';
+  const heartKind='Exact Brinton first-person possessed heart research reading';
+  const heartWanted=clauses.some(c=>items(c?.tokens,64).some(t=>norm(t)==='noyollo'));
+  const genuineHeart=heartWanted&&typeof sentenceModel?.analyze==='function'?
+   sentenceModel.analyze(raw)?.clauses:null;
+  const citedHeart=items(dictionary?.words,5000).filter(w=>
+   w.word==='yollotl'&&w.pos==='noun'&&w.source===heartLexicon);
   for(let i=0;i<clauses.length;i++){
    const cl=clauses[i]||{};
+   // Preserve only an original, source-linked morphological candidate, with
+   // exact token index and original spelling, as a NON-PARSING observation.
+   // Refuse all contradictory caller-supplied clues. Do not promote to the
+   // ordinary "nominal-mention" role used by supported full-clause parses.
+   const genuine=genuineHeart?.[i];
+   if(Array.isArray(genuineHeart)&&
+      JSON.stringify(items(genuine?.tokens,64))===JSON.stringify(items(cl.tokens,64))&&
+      citedHeart.length===1&&citedHeart[0].possessed==='-yōllo (bound form)'){
+    for(const clue of items(cl.morphologicalClues,24)){
+     if(clue?.kind!==heartKind||clue.lemma!=='yollotl'||
+       clue.grade!=='unreviewed'||clue.source!==brintonHeart||
+       !Array.isArray(clue.sources)||!clue.sources.includes(heartLexicon)||
+       clue.features?.category!=='noun'||clue.features?.possessor!=='1sg'||
+       clue.features?.originalEditionSpellingAttested!==true||
+       clue.features?.segmentationReviewedIndependently!==false||
+       clue.features?.contextualHeartSoulIntentionSenseResolved!==false||
+       clue.features?.fullHistoricalClauseTranslated!==false||
+       !Number.isInteger(clue.index)||clue.index<0||clue.index>=cl.tokens.length||
+       norm(cl.tokens[clue.index])!=='noyollo'||
+       !Array.isArray(clue.parts)||clue.parts.map(p=>p.surface).join('').normalize('NFC')!==cl.tokens[clue.index].normalize('NFC')||
+       !items(genuine.morphologicalClues,24).some(other=>
+        JSON.stringify(other)===JSON.stringify(clue)))continue;
+     const id=newNode('source-possessed-form-observation',{
+      unit:i,tokenIndex:clue.index,written:cl.tokens[clue.index],
+      lemma:'yollotl',possessionHypothesis:'1sg',lexicalSource:heartLexicon,
+      historicalEditionSource:brintonHeart,
+      morphologyGrade:'unreviewed',originalEditionSpellingAttested:true,
+      independentlyReviewedSegmentation:false,grammaticalRole:null,
+      referentId:null,antecedentResolved:false,contextualSenseResolved:false,
+      englishAvailable:false,
+      status:'unreviewed morphological observation only; NOT a grammatical reading or translation'});
+     if(id)newEdge(clauseIds[i],id,'contains-unresolved-source-morphology');
+    }
+   }
+
    // The canonical sentence analyzer and morphology gate jointly authorize
    // this ONE original nominal predicate. It is not a finite verb, an
    // independently reviewed English line or a productive noun paradigm.
@@ -652,6 +700,7 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
     nestedDependencies:edges.filter(e=>e.relation==='in-subordinate-dependency').length,
     antecedentCandidates:edges.filter(e=>e.relation==='antecedent-candidate').length,
     poeticVocableContexts:nodes.filter(n=>n.kind==='poetic-vocable-context').length,
+    sourcePossessedFormObservations:nodes.filter(n=>n.kind==='source-possessed-form-observation').length,
     partialSpans:nodes.filter(n=>n.kind==='partial-grammatical-span').length,
     nominalCoordinations:nodes.filter(n=>n.kind==='nominal-coordination-marker').length,
     coordinatedSubjectAttachments:edges.filter(e=>e.relation==='possible-coordinated-subject-attachment').length}};

@@ -24,6 +24,15 @@ try{
   'research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json'),'utf8'));
  const index=validateContextContrasts(contextLeads,result);
  assert.deepEqual(new Set(index.keys()),new Set(['yehua','antepilhuan','huel']));
+ const directorAnte=index.get('antepilhuan').project_director_contextual_assessment;
+ assert.deepEqual(directorAnte.proposed_segmentation,['an-','te-','pil-','-huan']);
+ assert.equal(directorAnte.person,'second-person plural');
+ assert.equal(directorAnte.contextual_english,'O you princes');
+ assert.deepEqual(directorAnte.sense_family,['children','nobles','princes']);
+ assert.equal(directorAnte.no_global_grammar_promotion,true);
+ assert.equal(directorAnte.independently_reviewed,false);
+ assert.equal(directorAnte.do_not_reask_without_new_evidence,true);
+
  for(const row of contextLeads.cases){
   const orig=result.unresolved_forms.find(x=>x.written_surface===row.written_surface);
   assert(orig&&orig.original_clause_translation_verified===false);
@@ -42,6 +51,11 @@ try{
   d=>{d.cases[2].historical_dictionary_contrasts[0].independent_original_clausal_interpretation=true},
   d=>{d.cases[2].pinned_brinton_work_id='brinton-1890-poetry-xxvi'},
   d=>{d.cases[1].written_surface='tepilhuan'},
+  d=>{d.cases[1].project_director_contextual_assessment.independently_reviewed=true},
+  d=>{d.cases[1].project_director_contextual_assessment.no_global_grammar_promotion=false},
+  d=>{d.cases[1].project_director_contextual_assessment.review_scope='every historical poem'},
+  d=>{d.cases[1].project_director_contextual_assessment.proposed_segmentation=['tepilhuan']},
+
  ]){
   const changed=cloneContext(contextLeads);tamper(changed);
   assert.throws(()=>validateContextContrasts(changed,result),/Reject/i);

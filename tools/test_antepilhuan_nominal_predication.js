@@ -13,7 +13,7 @@ function load(words=dictionary.words){
  const ctx={window:{},words,FULL_VERB_PARADIGMS:paradigms.paradigms,
   VERB_TENSES:paradigms.patterns,
   norm:s=>String(s||'').normalize('NFC').toLowerCase(),
-  stripToken:s=>String(s||'').replace(/^[^\p{L}\p{M}]+|[^\\p{L}\\p{M}]+$/gu,''),
+  stripToken:s=>String(s||'').replace(/^[^\p{L}\p{M}]+|[^\p{L}\p{M}]+$/gu,''),
   historicalSpellings:w=>String(w.original||'').split(/[;,/]+/).map(x=>x.trim()).filter(Boolean),
   safe:String,validUrl:()=>true,safeLink:()=>''};
  vm.runInNewContext(morphSrc+'\nthis.morph=TlahtolliMorphEngine;',ctx);

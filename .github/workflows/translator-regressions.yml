@@ -194,7 +194,9 @@ jobs:
       - name: Exact possessed noun heads in constrained Classical in-relatives
         run: node tools/test_possessed_relative_heads.js
       - name: Source-linked morphology bridge syntax and provenance regressions
-        run: node --check translator-source-morphology.js && node tools/test_source_morphology.js
+        run: |
+          node --check translator-source-morphology.js
+          node tools/test_source_morphology.js
           node tools/test_phase6_canonical_exact_forms.js
       - name: Classical Nahuatl source-linked comparative fragment regressions
         run: node tools/test_contextual_fragments.js

@@ -38,6 +38,8 @@ jobs:
         run: node tools/test_regular_present_morphology.js
       - name: Source-located possessed stem production and refusal cases
         run: node tools/test_source_bound_possessives.js
+      - name: Source-linked historical morphology observations in shared grammar IR
+        run: node tools/test_phase6_source_morphology_ir_observations.js
       - name: Source-located finite verb productivity and lexical provenance
         run: node tools/test_source_verb_productivity.js
       - name: Source-backed long/short stem class and future hypotheses

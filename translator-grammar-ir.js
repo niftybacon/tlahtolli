@@ -121,6 +121,14 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
   const negativeGrammar='https://languageinindia.com/nov2011/bedellnawatorugo.pdf';
   const negativeIndexed='https://gdn.iib.unam.mx/diccionario/ayac/41417';
   const negativeLexical='https://nahuatl.wired-humanities.org/content/ayac';
+  const speechShapeSources=[
+   ['quitoz','future-z surface-shape candidate','-z',
+    'https://gdn.iib.unam.mx/diccionario/itoa/186420',
+    'enl-1621-coyoacan,gdn-1569-testament'],
+   ['oquito','preterite-augment surface-shape candidate','o-',
+    'https://gdn.iib.unam.mx/diccionario/itoa/186409',
+    'gdn-1585-possession,gdn-1587-land-possession,gdn-1587-isabel-maria']
+  ];
   for(const p of items(analysis?.negativeIndefinitePairObservations,12)){
    if(!Array.isArray(p?.written)||p.written.length!==2||
     p.written[0]!=='ayac'||p.written[1]!=='tle'||
@@ -156,6 +164,47 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
     grammarSource:negativeIndexed,semanticRole:null});
    newEdge(parent,left,'observed-negative-indefinite',{negativeScopeBeyondPairResolved:false});
    newEdge(parent,right,'candidate-shared-negative-domain',{notUniversalScope:true});
+   // A finite-looking speech form is a distinct source-graded observation,
+   // NOT a verified person/tense/valency parse or a new lexical paradigm.
+   const f=p.finiteSpeechCandidate;
+   if(f&&parent){
+    const e=speechShapeSources.find(x=>x[0]===f.writtenForm);
+    const k=j+1;
+    const valid=e&&k<observedWords.length&&
+     Number.isInteger(f.tokenIndex)&&f.tokenIndex===k&&
+     observedWords[k].word===f.writtenForm&&
+     f.originalWritten===raw.slice(observedWords[k].start,observedWords[k].end)&&
+     /^[ \t]+$/u.test(raw.slice(observedWords[j].end,observedWords[k].start))&&
+     f.lemmaCandidate==='itoa'&&f.surfaceShape===e[1]&&
+     f.grammaticalIndicator===e[2]&&
+     f.sourceUrl===e[3]&&
+     Array.isArray(f.editedWitnessIds)&&f.editedWitnessIds.join(',')===e[4]&&
+     f.dictionarySource==='https://gdn.iib.unam.mx/diccionario/itoa/186409'&&
+     f.lexicalCrosscheck==='https://nahuatl.wired-humanities.org/content/itoa'&&
+     f.futureGrammar==='https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html'&&
+     f.preteriteGrammar==='https://nahuatl.wired-humanities.org/node/176799'&&
+     f.stemGrammar==='https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/preterite-tense/086BF0CAE349B08696892FE96A080C4F'&&
+     f.finiteMorphologyCandidateOnly===true&&
+     ['completeSegmentationVerified','contextualTenseAspectVerified',
+      'personNumberVerified','objectIdentityVerified','negativeScopeVerified',
+      'semanticArgumentRolesVerified','englishAlignmentVerified',
+      'trainingAllowed','variantRewritingAllowed'].every(x=>f[x]===false)&&
+     f.status==='source-graded finite surface morphology SHAPE, not complete clause analysis';
+    if(valid){
+     const node=newNode('source-graded-itoa-speech-shape',{
+      originalWritten:f.originalWritten,tokenIndex:k,lemmaCandidate:'itoa',
+      shape:e[1],grammaticalIndicator:e[2],documentarySource:e[3],
+      lexicalSource:f.lexicalCrosscheck,futureGrammar:f.futureGrammar,
+      preteriteGrammar:f.preteriteGrammar,stemGrammar:f.stemGrammar,
+      personNumberResolved:false,temporalSemanticsResolved:false,
+      objectReferenceResolved:false,clauseNegationScopeResolved:false,
+      entireClauseParsed:false,trainingAuthorized:false,
+      status:'original form and grammatically possible morphology only; no complete tense or English'});
+     newEdge(parent,node,'possible-source-graded-finite-speech-form',{
+      interpretationVerified:false,morphemeBoundariesFullyReviewed:false,
+      grammaticalArgumentsResolved:false,englishCertified:false});
+    }
+   }
   }
   // Provenance-graded musical interjection is *not* a finite predicate, a
   // grammatical stopword or an English translation. The source word stays.
@@ -705,6 +754,7 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
     poeticVocableContexts:nodes.filter(n=>n.kind==='poetic-vocable-context').length,
      attestedAyacContexts:nodes.filter(n=>n.kind==='attested-ayac-speech-context').length,
      negativeIndefinitePairs:nodes.filter(n=>n.kind==='negative-indefinite-pair-candidate').length,
+     sourceGradedSpeechShapes:nodes.filter(n=>n.kind==='source-graded-itoa-speech-shape').length,
     partialSpans:nodes.filter(n=>n.kind==='partial-grammatical-span').length,
     nominalCoordinations:nodes.filter(n=>n.kind==='nominal-coordination-marker').length,
     coordinatedSubjectAttachments:edges.filter(e=>e.relation==='possible-coordinated-subject-attachment').length}};

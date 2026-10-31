@@ -13,6 +13,16 @@
 
 All three Brinton song references belong to the **same edited 1890 collection**. Repeated printed poems are **not automatically independent manuscript witnesses**. Brinton himself cautions that his translations are imperfect; retain his scholarly renderings **as recorded editorial evidence**, neither discard them nor treat them as a blind independent reference corpus.
 
+## October 31 follow-up: contextual ambiguity does NOT mean English is unavailable
+
+The Molina/Olmos dictionaries already give **two English function families** for exact written `yehua`: **“that / that one”** (Molina II f.35r c.1; demonstrative/pronoun) and **“a little while ago / then”** (Molina II f.36r c.1 and Olmos *Arte* p.183; temporal adverb). These are known bilingual lexical correspondences. An unknown *specific contextual function* must never be a reason to hide the known English options or insist on a unique final solution before showing useful English.
+
+**Actual public-engine implementation:** The existing `translator-engine.js` accepts the pre-existing Phase 6 source-contrast JSON as optional cited evidence; `translator-integrated.js` loads it and displays both unranked English families **per exact original `yehua` token**, including repeated tokens. The lexical gloss now lists them instead of showing only `[?yehua]`, while the canonical dictionary headword recognition status and source tokens remain intact. Each lexical option links to its distinct dictionary entry. Matching the exact original Brinton VI.2 excerpt `noyollo, yehua cuix ic nepohualoyan` additionally displays the printed English **“that”** as a **source-specific editorial connecting choice** for that first occurrence; a second `yehua` is not automatically treated the same way.
+
+**Epistemic boundary:** The original context can make one lexical function more plausible, but the printed English “that” is not proof of a productive Nahuatl complementizer; the English alternatives are not a source-verified **whole-sentence translation**. Keep complete-clause English abstention, source-word conservation and uncertainty about the specific pronoun antecedent. The existing research pack's `no_automatic_english` guard continues to forbid **automatically generated historical clause translations**, not the already attested dictionary English meanings. Do not equate exact `yehua` with `yehuan`, `yehuatl`, `yeua`, `yēhua` or `yegua` by global spelling correction.
+
+Tests: `tools/test_phase6_yehua_english_options.js` (real lexical engine, original and adversarial contexts, source forgeries) and `tools/test_phase6_yehua_english_browser.py` (actual translator English choices and unchanged grammar abstention), both under existing CI. **No** new headword, 926/1,181 cohort recognition, grammatical rule, approved Silver, blind Gold, trained weights or independently verified whole-clause interpretation. Agents updating draft #114/#115 must preserve these source-cited options without turning them into syntax.
+
 ## Engine behavior contract (strict)
 
 | Evidence state | What is allowed | What is prohibited |

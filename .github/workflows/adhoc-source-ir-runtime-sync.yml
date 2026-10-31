@@ -1,0 +1,37 @@
+name: One-time historical source observation browser validation and asset sync
+on:
+  push:
+    branches: [feat/phase6-preserve-historical-heart-morphology-in-ir-20261031]
+    paths:
+      - '.github/workflows/adhoc-source-ir-runtime-sync.yml'
+permissions:
+  contents: write
+jobs:
+  validate_and_sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Canonical source morphology, sentence and IR regression
+        run: |
+          node tools/test_phase6_source_morphology_ir_observations.js
+          node tools/test_source_bound_possessives.js
+          node tools/test_antepilhuan_nominal_predication.js
+      - name: Install browser
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install chromium --only-shell
+      - name: Actual browser source observation visibility and safe English refusal
+        run: python tools/test_phase6_source_morphology_ir_browser.py
+      - name: Synchronize browser code/data hashes after passing browser test
+        run: |
+          python tools/build_runtime_assets.py --write
+          python tools/build_runtime_assets.py --check
+          git add index.html
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'build: refresh historical source observation IR and UI runtime fingerprints'
+          git push origin HEAD:feat/phase6-preserve-historical-heart-morphology-in-ir-20261031

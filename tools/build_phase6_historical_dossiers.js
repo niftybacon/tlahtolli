@@ -48,6 +48,63 @@ const nextAction={
  'read-source-context-no-proven-analysis':
   'Inspect exact cited original-language passage, its grammatical neighbors and any editorial ambiguities before proposing a lemma or rule',
 };
+// Overlapping REVIEW LEADS, not automatic failure diagnoses. One word can
+// require lexical, morphology, orthography AND poetic/sentence investigation.
+// Never turn a surface resemblance or citation into a productive parse.
+const SIGNALS=[
+ {id:'unreviewed-source-indexed-lexical-sense',
+  test:r=>!!r.independent_dictionary_context_lead,
+  action:'Check the cited lexical entry and each original clause separately; do not choose an English meaning from a headword alone'},
+ {id:'poetic-vocable-or-particle-context-needs-disambiguation',
+  test:r=>!!r.prior_source_research||r.context_specific_poetic_occurrence_reviews.length>0,
+  action:'Compare each exact original song or particle context against verbal alternatives; do not delete a written vocable'},
+ {id:'possible-spelling-relationship-not-established',
+  test:r=>r.source_checked_similar_lemma_leads_not_equivalent.length>0,
+  action:'Collate distinct original spellings and cited lexeme witnesses before asserting any historical equivalence'},
+ {id:'possible-morpheme-boundary-not-established',
+  test:r=>r.unverified_morphological_surface_shape_hints.length>0,
+  action:'Check the finite form, argument morphology and source-based segmentation in a full original-language clause'},
+ {id:'other-colonial-document-context-leads-to-inspect',
+  test:r=>r.historical_document_context_leads.length>0,
+  action:'Recheck the located non-Brinton document excerpts and original work identifiers; do not call them independent manuscript confirmations'},
+ {id:'recurrence-only-within-one-printed-Brinton-edition',
+  test:r=>r.separate_poem_units_in_same_brinton_edition>=2,
+  action:'Compare full clauses across distinct poem units; their shared printed edition is not independent source corroboration'}
+];
+function diagnosticSignals(r){
+ const out=SIGNALS.filter(x=>x.test(r)).map(x=>({
+  potential_failure_or_evidence_signal:x.id,
+  next_check:x.action,
+  is_grammatical_diagnosis:false,
+  independently_reviewed:false
+ }));
+ if(!out.length)out.push({
+  potential_failure_or_evidence_signal:'no-classified-lead-read-original-context-first',
+  next_check:'Locate and analyze the exact historical clause before even proposing a lexical or morphological hypothesis',
+  is_grammatical_diagnosis:false,independently_reviewed:false
+ });
+ return out;
+}
+function countSignals(rows){
+ const totals=Object.fromEntries([...SIGNALS.map(x=>x.id),
+  'no-classified-lead-read-original-context-first'].map(x=>[x,0]));
+ for(const r of rows)for(const s of diagnosticSignals(r))
+  totals[s.potential_failure_or_evidence_signal]++;
+ return totals; // Overlapping; sums need not equal the number of surfaces.
+}
+function witnessScope(r){
+ const documentLeads=r.historical_document_context_leads;
+ return {
+  brinton_distinct_poem_units_same_printed_edition:r.separate_poem_units_in_same_brinton_edition,
+  brinton_is_one_editorial_collection_not_independent_manuscript_witnesses:true,
+  other_original_document_context_lead_count:documentLeads.length,
+  other_document_work_ids_to_verify:[...new Set(documentLeads.map(x=>x.original_work_id))].sort(),
+  other_documents_are_source_register_leads_not_verified_independent_witnesses:true,
+  historical_dictionary_reference_is_not_contextual_manuscript_confirmation:true,
+  independently_collated_original_manuscript_witnesses_in_this_batch:0,
+  contextually_approved_english_alignments_in_this_batch:0
+ };
+}
 function validate(triage){
  insist(triage?.format==='tentli-unresolved-historical-form-triage-v1'&&
    triage.unresolved_engine_miss_count===926&&
@@ -81,6 +138,15 @@ function validate(triage){
    Array.isArray(r.source_checked_similar_lemma_leads_not_equivalent)&&
    Array.isArray(r.unverified_morphological_surface_shape_hints)&&
    Array.isArray(r.context_specific_poetic_occurrence_reviews));
+  for(const context of r.historical_document_context_leads)
+   insist(https(context.source_url)&&
+    typeof context.original_work_id==='string'&&context.original_work_id.length>0&&
+    context.source_grade==='short_original_edition_context_not_independent_english_translation'&&
+    typeof context.context_id==='string'&&context.context_id.length>0);
+  for(const comparison of r.source_checked_similar_lemma_leads_not_equivalent)
+   insist(https(comparison.source_url)&&
+    comparison.historical_spelling_equivalence_verified===false&&
+    comparison.grammatical_derivation_verified===false);
   for(const e of r.historical_edition_examples){
    insist(https(e.printed_historical_source_url)&&
     typeof e.record_id==='string'&&typeof e.work_id==='string'&&
@@ -141,6 +207,10 @@ function buildDossiers(triage,limit=80){
    triage_route:r.triage_route,
    research_category:c,
    suggested_next_source_check:nextAction[c],
+   overlapping_diagnostic_review_signals:diagnosticSignals(r),
+   grammatical_failure_type_independently_verified:false,
+   review_source_independence:witnessScope(r),
+   whole_clause_role_and_negation_scope_still_require_evidence:true,
    original_edition_examples:cited.map(e=>({
     original_record_id:e.record_id,work_id:e.work_id,
     source_url:e.printed_historical_source_url,
@@ -167,6 +237,10 @@ function buildDossiers(triage,limit=80){
   triage_source_sha256:sha(json(triage)),
   candidate_count:eligible.length,source_engine_gap_count:926,
   requested_dossier_limit:limit,prepared_dossier_count:packets.length,
+  diagnostic_signals_in_all_unmatched_forms_counted_with_overlap:countSignals(rows),
+  diagnostic_signals_in_selected_dossiers_counted_with_overlap:
+   countSignals(picked),
+  diagnostic_groups_are_not_independently_verified_grammatical_errors:true,
   selection:'source-indexed and repeated same-edition witnesses, source-lemma comparisons; source-work-diversified and priority ranked',
   reviewed_original_manuscript_images:0,new_human_approved_silver:0,new_human_approved_gold:0,
   verified_contextual_translations_added:0,canonical_grammar_rules_added:0,model_updates:0,

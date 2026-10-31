@@ -18,7 +18,7 @@ function create(sentence,english,grammarIR){
  // shared parser/composer mistake that silently drops an original word.
  // This does NOT resolve punctuation, lexical senses or contextual meaning.
  const sourceWords=text=>String(text||'').normalize('NFC')
-  .match(/[\\p{L}\\p{M}’'\\-\\u00AF]+/gu)||[];
+  .match(/[\p{L}\p{M}’'\-\u00AF]+/gu)||[];
  function allSourceWordsAccountedFor(input,units,joins){
   const expected=sourceWords(input),accounted=[];
   for(let i=0;i<units.length;i++){

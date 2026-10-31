@@ -25,7 +25,7 @@ for(const input of ['zan','Zan','çan','Çan','zan tontemiqui','amo tlatla, zan 
  assert.equal(model.analyze(input).sourceZanReadings.length,n);
  assert(model.analyze(input).gloss.includes('[only / just / merely | but / however]'));
 }
-const phrase=(s)=>model.sourceZanReadings(s)[0].documentedPhrase;
+const phrase=(s)=>model.sourceZanReadings(s)[0]?.documentedPhrase||null;
 assert.equal(phrase('zan ye').english,'but / however / yet');
 assert.equal(phrase('zan ye').source,YE);
 assert.equal(phrase('çan ye').english,'but / however / yet');

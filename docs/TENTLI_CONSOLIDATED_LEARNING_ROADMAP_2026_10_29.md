@@ -34,6 +34,9 @@ _Last reconciled October 30, 2026 (America/Chicago). This section is the CURRENT
 - Canonical lexical inventory (at the documented October 29 snapshot): **2,142** headword records, **225** individually source-checked at the entry level, **341** recorded lexical/inflected forms, **9,003** field claims and **12** full derived paradigm tables. None of these counts is an independent manuscript translation score.
 - The October 30 context-specific `huiya` evidence must match the **exact two cited contexts**, not globally rewrite `huiya` into a song interjection or "go." The existing grammar/IR/English abstention path and negative tests are the control; see [engine consumption audit](../research/translation_corpus/ENGINE_EVIDENCE_CONSUMPTION_AUDIT_2026_10_30.md).
 
+
+**New bounded Phase 6 cross-document grammatical failure case (October 30, 2026):** The 1621 Coyoacán document and 1569 testament of Antonio Quauitencatl each contain the exact historical written core `ayac tle quitoz`, with different surrounding context; see [source, rights, competing analyses and regression](TENTLI_PHASE6_AYAC_CROSS_DOCUMENT_CONTEXT_2026_10_30.md). The research harness now exercises both actual, previously exposed whole **context fragments** through the existing canonical sentence/IR/English diagnostic and asserts abstention plus normal finite-control preservation. These are **not** full independently analyzed clauses, gold references or source-confirmed productive grammar. Unresolved are `ayac` syntax, `tle` scope, `quitoz` person/tense and broader clause boundaries. Headwords remain 2,144, unmatched historical surfaces 926/1,181, independently approved Silver/Gold 0. Next step is independent source-grammatical review and then a separate engine-implementation PR with measured before/after clause coverage.
+
 ## Gold / Silver / Bronze: trust level is distinct from permission to train
 
 | Tier | Current verified status | Allowed action | Prohibited claim |

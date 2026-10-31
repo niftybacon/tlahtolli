@@ -46,11 +46,27 @@ for(const [written]of tests){
  assert.equal(l.candidates[0].form,written);
  assert.equal(l.candidates[0].evidence,'lexicon');
 }
+// A quantity-only spelling comparison may return an explicitly approximate
+// dictionary SEARCH HINT. It is neither an attested variant nor an exact
+// source-approved wordform. Do not confuse confidence=approximate with
+// confidence=lexicon in the source-grade regression.
 for(const form of ['yeuan','yehuantin','yehuān','yēhuan',
  'tepilhuantzin','tepiltzin','tepilhuān','nītepilhuan']){
- const entries=lexical.lookup(form).candidates;
- assert(!entries.some(x=>x.lemma==='yehuan'||x.lemma==='tepilhuan'),
-  'Source-licensed wordform must not spread into invented variants: '+form);
+ const result=lexical.lookup(form);
+ const related=result.candidates.filter(x=>
+  x.lemma==='yehuan'||x.lemma==='tepilhuan');
+ assert(!related.some(x=>x.confidence!=='approximate'),
+  'Unsupported exact/source-licensed promotion of a historical variant: '+form);
+ if(related.length){
+  assert.equal(result.approximate,true,
+   'Spelling-related dictionary clue must be marked approximate: '+form);
+  assert(related.every(x=>x.form!==form&&
+   /Macrons\/diacritics differ/.test(x.context)),
+   'Approximate historical spelling may not impersonate direct source evidence: '+form);
+  const word=lexical.analyze(form).parts.find(x=>x.kind==='word');
+  assert.equal(word.status,'approximate',
+   'Approximate lookup must remain labeled approximate in analysis: '+form);
+ }
 }
 const lexicalOnly=lexical.analyze('yehuan tepilhuan');
 assert.equal(lexicalOnly.stats.matched,2);

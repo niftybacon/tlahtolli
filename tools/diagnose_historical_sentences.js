@@ -58,7 +58,8 @@ function createModels(files){
   JSON.parse(files['data/possessed_form_evidence.json']),
   null,null,null,
   JSON.parse(files['research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json']),
-  JSON.parse(files['research/translation_corpus/attested_ayac_speech_contexts_2026_10_30.json']));
+  JSON.parse(files['research/translation_corpus/attested_ayac_speech_contexts_2026_10_30.json']),
+  JSON.parse(files['research/translation_corpus/source_graded_itoa_speech_morphology_2026_10_30.json']));
  return {lexical,sentence,english:api.TlahtolliEnglish.create(sentence),
   graph:api.TlahtolliGrammarIR.create(dictionary),sourceMorphology:sourceHints};
 }
@@ -70,7 +71,8 @@ const MODEL_FILES=[
  'research/translation_corpus/source_reviews/ENL_BC16_1573.json',
  'research/translation_corpus/exact_source_lexical_surface_leads_2026_10_30.json',
  'research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json',
- 'research/translation_corpus/attested_ayac_speech_contexts_2026_10_30.json'];
+ 'research/translation_corpus/attested_ayac_speech_contexts_2026_10_30.json',
+ 'research/translation_corpus/source_graded_itoa_speech_morphology_2026_10_30.json'];
 function loadModels(){return createModels(Object.fromEntries(MODEL_FILES.map(f=>[f,read(f)])));}
 const proposalCounts=clause=>Object.fromEntries(Object.entries(clause||{})
  .filter(([key,value])=>key.endsWith('Proposals')&&Array.isArray(value)&&value.length>0)
@@ -104,9 +106,12 @@ function analyzeText(input,models){
   sourceLinkedSongVocableObservations:truthyList(syntax.poeticVocableObservations).length,
   sourceLinkedAyacContexts:truthyList(syntax.attestedAyacObservations).length,
   grammaticalNegativeIndefinitePairs:truthyList(syntax.negativeIndefinitePairObservations).length,
+  sourceGradedSpeechFiniteShapes:truthyList(syntax.negativeIndefinitePairObservations)
+   .filter(p=>p.finiteSpeechCandidate).length,
   grammarIRSongVocableNodes:truthyList(graph.nodes).filter(n=>n.kind==='poetic-vocable-context').length,
   grammarIRAyacContexts:truthyList(graph.nodes).filter(n=>n.kind==='attested-ayac-speech-context').length,
   grammarIRNegativeIndefinitePairs:truthyList(graph.nodes).filter(n=>n.kind==='negative-indefinite-pair-candidate').length,
+  grammarIRSpeechFiniteShapes:truthyList(graph.nodes).filter(n=>n.kind==='source-graded-itoa-speech-shape').length,
   proposalCounts:proposals,englishDraftAvailable:wording.available===true,
   // Diagnostic illustration ONLY: never compare automatically with an editorial reference.
   englishDraft:wording.available?models.english.render(wording):null,

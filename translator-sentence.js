@@ -173,6 +173,8 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    if(tokens[i].word!=='ayac'||tokens[i+1].word!=='tle'||
     !/^[ \t]+$/u.test(raw.slice(tokens[i].end,tokens[i+1].start)))continue;
    found.push({written:['ayac','tle'],tokenIndices:[i,i+1],
+    originalWritten:[raw.slice(tokens[i].start,tokens[i].end),
+     raw.slice(tokens[i+1].start,tokens[i+1].end)],
     grammarSource:'https://languageinindia.com/nov2011/bedellnawatorugo.pdf',
     indexedGrammarSource:'https://gdn.iib.unam.mx/diccionario/ayac/41417',
     lexicalSource:'https://nahuatl.wired-humanities.org/content/ayac',

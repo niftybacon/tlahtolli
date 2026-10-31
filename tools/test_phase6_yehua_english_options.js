@@ -30,7 +30,8 @@ for(const text of [
  }
  const parsed=m.analyze(text,'nh-en');
  assert.equal(parsed.sourceEnglishReadings.length,n);
- assert.equal(parsed.stats.matched,0,'English source annotation must not promote canonical lexical or historical recognition');
+ assert.deepEqual(clone(parsed.stats),clone(make(null).analyze(text,'nh-en').stats),
+  'English alternatives must never increment canonical lexical or historical recognition');
  assert(parsed.gloss.includes('[that / that one | a little while ago / then]'));
 }
 const poem='Macazo tleon xoconyoyocoya ti noyollo, yehua cuix ic nepohualoyan in oncan nemohua yehua';

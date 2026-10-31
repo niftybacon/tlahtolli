@@ -105,6 +105,74 @@ function witnessScope(r){
   contextually_approved_english_alignments_in_this_batch:0
  };
 }
+const CONTRAST_PATH=path.resolve(__dirname,'../research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json');
+const CONTRAST_FORMAT='tentli-phase6-exact-contextual-contrast-leads-v1';
+const EXACT_CONTRAST_FORMS=new Set(['yehua','antepilhuan','huel']);
+const TRUSTED_CONTEXT_DOMAINS=new Set([
+ 'www.gutenberg.org','nahuatl.wired-humanities.org','gdn.iib.unam.mx','temoa.iib.unam.mx'
+]);
+function trustedUrl(url){
+ if(!https(url))return false;
+ try{return TRUSTED_CONTEXT_DOMAINS.has(new URL(url).hostname)}catch{return false}
+}
+function validateContextContrasts(doc,triage){
+ insist(doc?.format===CONTRAST_FORMAT&&doc.research_only===true&&
+   doc.approved_lexical_edits===0&&doc.productive_grammar_rules_added===0&&
+   doc.independently_reviewed_silver===0&&doc.independent_gold===0&&
+   doc.verified_complete_english_clauses===0&&doc.model_updates===0&&
+   typeof doc.status==='string'&&doc.status.includes('neither independent human review')&&
+   typeof doc.historical_source_cohort==='string'&&
+   Object.values(doc.negative_guards||{}).length===6&&
+   Object.values(doc.negative_guards).every(x=>x===true)&&
+   Array.isArray(doc.cases)&&doc.cases.length===3);
+ const known=new Map(triage.unresolved_forms.map(x=>[x.written_surface,x]));
+ const seen=new Set();
+ for(const row of doc.cases){
+  insist(EXACT_CONTRAST_FORMS.has(row.written_surface)&&!seen.has(row.written_surface));
+  seen.add(row.written_surface);
+  const existing=known.get(row.written_surface);
+  insist(!!existing&&Array.isArray(existing.historical_edition_examples)&&
+   typeof row.pinned_brinton_original_excerpt==='string'&&
+   row.pinned_brinton_original_excerpt.includes(row.written_surface)&&
+   row.pinned_brinton_original_excerpt.length<=160&&
+   row.pinned_brinton_work_id.startsWith('brinton-1890-poetry-')&&
+   trustedUrl(row.original_printed_source_url)&&
+   new URL(row.original_printed_source_url).hostname==='www.gutenberg.org');
+  // The original excerpt MUST match a source-pinned original-language window,
+  // not a generated English alignment, near-spelling or modern token.
+  const tokenized=x=>String(x||'').normalize('NFC').toLocaleLowerCase('en').replace(/\\s+/gu,' ').trim();
+  insist(existing.historical_edition_examples.some(x=>
+   x.record_id===row.pinned_brinton_record_id&&
+   x.work_id===row.pinned_brinton_work_id&&
+   tokenized(x.original_language_short_context).includes(tokenized(row.pinned_brinton_original_excerpt))));
+  insist(Array.isArray(row.historical_dictionary_contrasts)&&
+   row.historical_dictionary_contrasts.length>=2&&row.historical_dictionary_contrasts.length<=4&&
+   row.historical_dictionary_contrasts.every(x=>trustedUrl(x.url)&&
+    /^(?:nahuatl\\.wired-humanities\\.org|gdn\\.iib\\.unam\\.mx)$/u.test(new URL(x.url).hostname)&&
+    typeof x.locator==='string'&&x.locator.length>=10&&
+    typeof x.lead==='string'&&x.lead.length>=15&&
+    x.independent_original_clausal_interpretation===false));
+  insist(Array.isArray(row.other_exact_original_document_contexts)&&
+   row.other_exact_original_document_contexts.length<=2&&
+   row.other_exact_original_document_contexts.every(x=>trustedUrl(x.url)&&
+    x.historical_work_id?.length>8&&
+    typeof x.exact_short_original_excerpt==='string'&&
+    x.exact_short_original_excerpt.includes(row.written_surface)&&
+    x.exact_short_original_excerpt.length<=145&&
+    x.different_from_brinton_printed_work===true&&
+    x.original_transcription_not_folio_image_collated===true&&
+    x.existing_editorial_translation_not_gold===true));
+  insist(Array.isArray(row.competing_contextual_questions)&&
+   row.competing_contextual_questions.length>=2&&
+   row.competing_contextual_questions.every(q=>typeof q==='string'&&q.length>=20)&&
+   Array.isArray(row.non_equivalence_controls)&&row.non_equivalence_controls.length>=2&&
+   !row.non_equivalence_controls.includes(row.written_surface)&&
+   typeof row.risk==='string'&&row.risk.length>=45&&
+   typeof row.evidence_trust==='string'&&row.evidence_trust.length>=30);
+ }
+ insist(seen.size===EXACT_CONTRAST_FORMS.size);
+ return new Map(doc.cases.map(c=>[c.written_surface,c]));
+}
 function validate(triage){
  insist(triage?.format==='tentli-unresolved-historical-form-triage-v1'&&
    triage.unresolved_engine_miss_count===926&&
@@ -170,6 +238,9 @@ function buildDossiers(triage,limit=80){
  // The already source-indexed high-frequency forms are useful as cross-work
  // comparison seeds. Inclusion does NOT attest any individual contextual sense.
  const rows=triage.unresolved_forms;
+ const contrastSource=fs.readFileSync(CONTRAST_PATH,'utf8');
+ const contrastDoc=JSON.parse(contrastSource);
+ const contextContrastIndex=validateContextContrasts(contrastDoc,triage);
  const eligible=rows.filter(r=>
   r.independent_dictionary_context_lead||
   r.separate_poem_units_in_same_brinton_edition>=2||
@@ -208,6 +279,8 @@ function buildDossiers(triage,limit=80){
    research_category:c,
    suggested_next_source_check:nextAction[c],
    overlapping_diagnostic_review_signals:diagnosticSignals(r),
+   source_indexed_context_contrast_not_approved:
+    contextContrastIndex.get(r.written_surface)||null,
    grammatical_failure_type_independently_verified:false,
    review_source_independence:witnessScope(r),
    whole_clause_role_and_negation_scope_still_require_evidence:true,
@@ -237,6 +310,11 @@ function buildDossiers(triage,limit=80){
   triage_source_sha256:sha(json(triage)),
   candidate_count:eligible.length,source_engine_gap_count:926,
   requested_dossier_limit:limit,prepared_dossier_count:packets.length,
+  contextual_contrast_source_pack_sha256:sha(contrastSource),
+  source_indexed_context_contrasts_without_grammatical_approval:contextContrastIndex.size,
+  contextual_contrasts_in_selected_dossiers:
+   packets.filter(x=>x.source_indexed_context_contrast_not_approved!==null).length,
+  dictionary_context_lead_is_not_sentence_translation:true,
   diagnostic_signals_in_all_unmatched_forms_counted_with_overlap:countSignals(rows),
   diagnostic_signals_in_selected_dossiers_counted_with_overlap:
    countSignals(picked),
@@ -266,4 +344,4 @@ function main(){
   source_fingerprint:dossier.triage_source_sha256}));
 }
 if(require.main===module)main();
-module.exports={buildDossiers,validate};
+module.exports={buildDossiers,validate,validateContextContrasts};

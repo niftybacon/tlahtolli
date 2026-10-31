@@ -105,6 +105,19 @@ function formIsScopedNominalCandidate(written,c){
   c.grade==='hypothesis'&&c.lemma==='tepilhuan'&&
   c.source==='https://nahuatl.wired-humanities.org/node/188794';
 }
+function unreviewedNoyolloClue(written,c){
+ return written==='noyollo'&&
+  c?.kind==='Exact Brinton first-person possessed heart research reading'&&
+  c.lemma==='yollotl'&&c.grade==='unreviewed'&&
+  c.features?.category==='noun'&&c.features?.possessor==='1sg'&&
+  c.features?.originalEditionSpellingAttested===true&&
+  c.features?.segmentationReviewedIndependently===false&&
+  c.features?.contextualHeartSoulIntentionSenseResolved===false&&
+  c.features?.fullHistoricalClauseTranslated===false&&
+  c.parts?.map(p=>p.surface).join('')==='noyollo'&&
+  c.source==='https://www.gutenberg.org/files/12219/12219-h/12219-h.htm'&&
+  c.sources?.includes('https://nahuatl.wired-humanities.org/content/yollotl');
+}
 function buildTriage(source,linked,{maxHuman=12}={}){
  validateResearch(source);
  if(linked?.format!=='tentli-research-engine-bridge-v1'||
@@ -210,7 +223,8 @@ function buildTriage(source,linked,{maxHuman=12}={}){
     linkedRow.exact_verb_paradigm_candidates.length!==0||
     linkedRow.source_reviewed_morphology_candidates.length!==0||
     linkedRow.advanced_browser_morphology_candidates.some(c=>
-     !(formIsScopedNominalCandidate(linkedRow.written_surface,c)))||
+     !(formIsScopedNominalCandidate(linkedRow.written_surface,c)||
+       unreviewedNoyolloClue(linkedRow.written_surface,c)))||
     original.source_families_exact_headword_matched!=='neither')
    throw Error('Unresolved claim contradicts existing morphology or dictionary engine');
   const pre=prior.get(surface);

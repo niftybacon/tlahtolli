@@ -26,15 +26,19 @@ try{
   c.kind==='Exact Brinton first-person possessed heart research reading');
  assert.equal(heartClues.length,1);
  assert.equal(heartClues[0].grade,'unreviewed');
- assert.equal(heartClues[0].features.possessor,'1sg');
- assert.equal(heartClues[0].features.fullHistoricalClauseTranslated,false);
+ assert.equal(heartClues[0].source,
+  'https://www.gutenberg.org/files/12219/12219-h/12219-h.htm');
+ assert(heartClues[0].locator.includes('not an independently collated manuscript'));
+ assert.equal(heartClues[0].features,undefined,
+  'Research bridge must not expand privileged morphology internals into source claims');
  assert(result.unresolved_forms.some(r=>r.written_surface==='noyollo'),
   'An unreviewed original-form morphology candidate must not silently lower 926');
  for(const bad of [
   c=>{c.grade='lexical'},
-  c=>{c.features.fullHistoricalClauseTranslated=true},
-  c=>{c.features.possessor='2sg'},
-  c=>{c.sources=['https://example.org/forged']}
+  c=>{c.kind='unreviewed-but-certified-source-grammar'},
+  c=>{c.lemma='wrong'},
+  c=>{c.source='https://example.org/forged'},
+  c=>{c.locator='Unverified historical source'}
  ]){
   const forged=JSON.parse(JSON.stringify(current));
   bad(forged.token_engine_diagnostics.find(r=>r.written_surface==='noyollo')

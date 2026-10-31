@@ -94,7 +94,28 @@
         "amoteppilhuan"
       ],
       "risk": "Do not derive an- and -huan productively from surface resemblance or replace each occurrence with princes solely because of an interpretive Temoa rendering.",
-      "evidence_trust": "original Brinton and separately indexed Cantares transcription plus Molina/Lockhart lexicography; no original folio independently collated"
+      "evidence_trust": "original Brinton and separately indexed Cantares transcription plus Molina/Lockhart lexicography; no original folio independently collated",
+      "project_director_contextual_assessment": {
+        "review_scope": "Brinton poem V, stanza 4 only",
+        "proposed_segmentation": [
+          "an-",
+          "te-",
+          "pil-",
+          "-huan"
+        ],
+        "person": "second-person plural",
+        "contextual_english": "O you princes",
+        "sense_family": [
+          "children",
+          "nobles",
+          "princes"
+        ],
+        "interpretation_class": "source-cited project-director contextual analysis, not independently certified translation",
+        "no_global_grammar_promotion": true,
+        "independently_reviewed": false,
+        "whole_stanza_meaning_verified": false,
+        "do_not_reask_without_new_evidence": true
+      }
     },
     {
       "written_surface": "huel",

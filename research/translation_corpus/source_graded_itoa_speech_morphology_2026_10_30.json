@@ -1,0 +1,62 @@
+{
+  "format": "tlahtolli-source-graded-itoa-speech-morphology-v1",
+  "date": "2026-10-30",
+  "review_status": "source-indexed finite-surface and general Classical grammar comparison; editorial research, not specialist-adjudicated inflection, person or translation",
+  "origin": "distinct from source-exact full documentary phrase and from productive canonical lexical/morphology claims",
+  "attested_lemma": {
+    "candidate": "itoa",
+    "part_of_speech_in_source": "v.t.",
+    "source_url": "https://gdn.iib.unam.mx/diccionario/itoa/186409",
+    "crosscheck": "https://nahuatl.wired-humanities.org/content/itoa",
+    "locator": "GDN Docs_México and Sahagún Escolio source-indexed itoa (say/declare); original lexical surfaces and spelling vary"
+  },
+  "grammar_sources": {
+    "future": "https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html",
+    "preterite": "https://nahuatl.wired-humanities.org/node/176799",
+    "preterite_stem": "https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/preterite-tense/086BF0CAE349B08696892FE96A080C4F"
+  },
+  "witnessed_pair_context": "ayac tle",
+  "forms": [
+    {
+      "written": "quitoz",
+      "label": "future-z surface-shape candidate",
+      "grammatical_indicator": "-z",
+      "source_url": "https://gdn.iib.unam.mx/diccionario/itoa/186420",
+      "source_locator": "Antonio Quauitencatl 1569 testament [1155] gives ayac tle quitoz; ENL BC19 1621 similarly indexes it",
+      "context_ids": [
+        "enl-1621-coyoacan",
+        "gdn-1569-testament"
+      ],
+      "full_clause_tense_adjudicated": false,
+      "morphological_segmentation_adjudicated": false
+    },
+    {
+      "written": "oquito",
+      "label": "preterite-augment surface-shape candidate",
+      "grammatical_indicator": "o-",
+      "source_url": "https://gdn.iib.unam.mx/diccionario/itoa/186409",
+      "source_locator": "GDN Docs_México land possession 1585 and witness 1592 records include oquito; 1587 source contexts also show ayac tle oquito",
+      "context_ids": [
+        "gdn-1585-possession",
+        "gdn-1587-land-possession",
+        "gdn-1587-isabel-maria"
+      ],
+      "full_clause_tense_adjudicated": false,
+      "morphological_segmentation_adjudicated": false
+    }
+  ],
+  "guardrails": {
+    "source_quote_only": true,
+    "exact_surface_only": true,
+    "no_new_lexicon_entry": true,
+    "no_productive_stem_paradigm": true,
+    "no_object_reference_assumption": true,
+    "no_subject_person_assumption": true,
+    "no_past_vs_perfect_decision": true,
+    "no_automatic_english": true,
+    "no_spelling_equivalence": true,
+    "no_train_or_gold": true,
+    "approved_silver": 0,
+    "approved_gold": 0
+  }
+}

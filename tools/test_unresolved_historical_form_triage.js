@@ -24,6 +24,19 @@ try{
   'research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json'),'utf8'));
  const index=validateContextContrasts(contextLeads,result);
  assert.deepEqual(new Set(index.keys()),new Set(['yehua','antepilhuan','huel']));
+ const yehuaNote=index.get('yehua').editorial_yehua_engine_note;
+ assert.equal(yehuaNote.exact_written_form,'yehua');
+ assert.deepEqual(
+  Array.from(yehuaNote.dictionary_supported_function_families,x=>x.function),
+  ['demonstrative_or_independent_third_person','temporal_adverb',
+   'syncope_of_third_person_pronoun']);
+ assert.equal(yehuaNote.published_original_contexts.length,3);
+ assert(yehuaNote.published_original_contexts.every(x=>x.grammatical_role_verified===false));
+ assert.equal(yehuaNote.hard_engine_constraints.no_single_default_gloss,true);
+ assert.equal(yehuaNote.hard_engine_constraints.no_global_noyollo_yehua_resumptive_rule,true);
+ assert.equal(yehuaNote.hard_engine_constraints.abstain_on_unparsed_whole_clause,true);
+ assert.equal(yehuaNote.independently_approved_sentence_translation,false);
+ assert.equal(yehuaNote.proposed_productive_rules,0);
  const directorAnte=index.get('antepilhuan').project_director_contextual_assessment;
  assert.deepEqual(directorAnte.proposed_segmentation,['an-','te-','pil-','-huan']);
  assert.equal(directorAnte.person,'second-person plural');
@@ -47,6 +60,13 @@ try{
   d=>{d.negative_guards.no_automatic_english=false},
   d=>{d.cases[0].pinned_brinton_original_excerpt='yehua invented exact colonial text'},
   d=>{d.cases[0].historical_dictionary_contrasts[0].url='https://example.org/unsupported-sense'},
+  d=>{d.cases[0].editorial_yehua_engine_note.hard_engine_constraints.no_single_default_gloss=false},
+  d=>{d.cases[0].editorial_yehua_engine_note.hard_engine_constraints.no_global_noyollo_yehua_resumptive_rule=false},
+  d=>{d.cases[0].editorial_yehua_engine_note.published_original_contexts[0].grammatical_role_verified=true},
+  d=>{d.cases[0].editorial_yehua_engine_note.published_original_contexts[1].source_url='https://example.com/poem'},
+  d=>{d.cases[0].editorial_yehua_engine_note.dictionary_supported_function_families[1].per_occurrence_selection_approved=true},
+  d=>{d.cases[0].editorial_yehua_engine_note.proposed_productive_rules=1},
+
   d=>{d.cases[1].other_exact_original_document_contexts[0].original_transcription_not_folio_image_collated=false},
   d=>{d.cases[2].historical_dictionary_contrasts[0].independent_original_clausal_interpretation=true},
   d=>{d.cases[2].pinned_brinton_work_id='brinton-1890-poetry-xxvi'},

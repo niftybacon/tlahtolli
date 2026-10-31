@@ -172,10 +172,17 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   }catch{return [];} // A morphology failure must never manufacture a sentence reading.
  }
  function partialClues(tokens){
-  return tokens.slice(0,24).flatMap((token,index)=>exactMorphology(token).slice(0,3)
-   .map(m=>({token,index,lemma:m.lemma,kind:m.kind,grade:m.grade,
+  return tokens.slice(0,24).flatMap((token,index)=>{
+   // The Brinton edition prints "noyollo," before a following clause.
+   // Preserve that exact WRITTEN token while examining only its word
+   // boundary. Do not strip arbitrary punctuation, accents or macrons;
+   // this remains an unreviewed source clue, not a completed parse.
+   const examined=norm(token)==='noyollo,'?token.slice(0,-1):token;
+   return exactMorphology(examined).slice(0,3).map(m=>({
+    token,index,lemma:m.lemma,kind:m.kind,grade:m.grade,
     source:m.source||'',sources:Array.isArray(m.sources)?m.sources.slice(0,6):[],
-    features:m.features||{},parts:m.parts.slice(0,8)})));
+    features:m.features||{},parts:m.parts.slice(0,8)}));
+  });
  }
  // A partial construction is distinct from a complete sentence candidate.
  // It only connects a source-crosschecked verb to ONE fully consumed noun phrase

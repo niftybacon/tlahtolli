@@ -13,10 +13,10 @@ function load(words=dictionary.words){
  const ctx={window:{},words,FULL_VERB_PARADIGMS:paradigms.paradigms,
   VERB_TENSES:paradigms.patterns,
   norm:s=>String(s||'').normalize('NFC').toLowerCase(),
-  stripToken:s=>String(s||'').replace(/^[^\\p{L}\\p{M}]+|[^\\p{L}\\p{M}]+$/gu,''),
+  stripToken:s=>String(s||'').replace(/^[^\p{L}\p{M}]+|[^\\p{L}\\p{M}]+$/gu,''),
   historicalSpellings:w=>String(w.original||'').split(/[;,/]+/).map(x=>x.trim()).filter(Boolean),
   safe:String,validUrl:()=>true,safeLink:()=>''};
- vm.runInNewContext(morphSrc+'\\nthis.morph=TlahtolliMorphEngine;',ctx);
+ vm.runInNewContext(morphSrc+'\nthis.morph=TlahtolliMorphEngine;',ctx);
  for(const file of ['translator-sentence.js','translator-english.js','translator-grammar-ir.js'])
   vm.runInNewContext(read(file),ctx);
  const morph=token=>ctx.morph.analyze(token);
@@ -40,7 +40,7 @@ for(const [token,person,recorded] of [
  assert.equal(m[0].parts.map(p=>p.surface).join(''),token);
  assert.deepEqual(Array.from(m[0].parts,x=>x.surface),
   [person==='2pl'?'an':'ti','te','pil','huan']);
- assert.match(m[0].source,/nahuatl\\.wired-humanities\\.org/);
+ assert.match(m[0].source,/nahuatl\.wired-humanities\.org/);
 }
 for(const bad of [
  'antēpilhuan','antepilhuān','antepilhua','amtepilhuan',

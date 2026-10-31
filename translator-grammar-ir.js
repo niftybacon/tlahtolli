@@ -158,7 +158,11 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
   const brintonHeart='https://www.gutenberg.org/files/12219/12219-h/12219-h.htm';
   const heartLexicon='https://nahuatl.wired-humanities.org/content/yollotl';
   const heartKind='Exact Brinton first-person possessed heart research reading';
-  const heartWanted=clauses.some(c=>items(c?.tokens,64).some(t=>norm(t)==='noyollo'));
+  // Only the same source-printed word with its single editorial trailing comma
+  // may be used as the lexical surface; keep the original token untouched.
+  const heartSurface=t=>['noyollo','noyollo,'].includes(norm(t))?
+   String(t).replace(/,$/u,''):null;
+  const heartWanted=clauses.some(c=>items(c?.tokens,64).some(t=>heartSurface(t)!==null));
   const genuineHeart=heartWanted&&typeof sentenceModel?.analyze==='function'?
    sentenceModel.analyze(raw)?.clauses:null;
   const citedHeart=items(dictionary?.words,5000).filter(w=>
@@ -183,12 +187,13 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
        clue.features?.contextualHeartSoulIntentionSenseResolved!==false||
        clue.features?.fullHistoricalClauseTranslated!==false||
        !Number.isInteger(clue.index)||clue.index<0||clue.index>=cl.tokens.length||
-       norm(cl.tokens[clue.index])!=='noyollo'||
-       !Array.isArray(clue.parts)||clue.parts.map(p=>p.surface).join('').normalize('NFC')!==cl.tokens[clue.index].normalize('NFC')||
+       !heartSurface(cl.tokens[clue.index])||
+       !Array.isArray(clue.parts)||clue.parts.map(p=>p.surface).join('').normalize('NFC')!==heartSurface(cl.tokens[clue.index]).normalize('NFC')||
        !items(genuine.morphologicalClues,24).some(other=>
         JSON.stringify(other)===JSON.stringify(clue)))continue;
      const id=newNode('source-possessed-form-observation',{
-      unit:i,tokenIndex:clue.index,written:cl.tokens[clue.index],
+      unit:i,tokenIndex:clue.index,written:heartSurface(cl.tokens[clue.index]),
+      originalWrittenToken:cl.tokens[clue.index],
       lemma:'yollotl',possessionHypothesis:'1sg',lexicalSource:heartLexicon,
       historicalEditionSource:brintonHeart,
       morphologyGrade:'unreviewed',originalEditionSpellingAttested:true,

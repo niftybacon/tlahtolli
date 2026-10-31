@@ -69,6 +69,51 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
    completeAccordingToAnalyzer:cl?.complete===true,
    epistemicStatus:'analyzer output, not independent historical attestation'
   }));
+  // Preserve source word order without silently licensing clause meaning.
+  const ayacWitnesses=[
+   ['enl-1621-coyoacan','ENL-BC19-1621','ayac tle quitoz oncan tlatoz',
+    'https://enl.wired-humanities.org/bc19/elements/bc19a/000','quitoz'],
+   ['gdn-1569-testament','GDN-DocsMexico-AntonioQuauitencatl-1569',
+    'omito ayac tle quitoz yuh niquitohua',
+    'https://gdn.iib.unam.mx/diccionario/ayac/185330','quitoz'],
+   ['gdn-1585-possession','GDN-DocsMexico-MelchorDeParada-1585',
+    'ayac tle oquito ayac otlachallani',
+    'https://gdn.iib.unam.mx/diccionario/ayac/185330','oquito']
+  ];
+  const observedWords=[...raw.normalize('NFC').matchAll(/[\p{L}\p{M}]+/gu)]
+   .map(m=>({word:norm(m[0]),start:m.index,end:m.index+m[0].length}));
+  for(const o of items(analysis?.attestedAyacObservations,8)){
+   const e=ayacWitnesses.find(x=>x[0]===o?.witnessId);
+   if(!e||o.historicalWorkId!==e[1]||o.context!==e[2]||
+    o.sourceUrl!==e[3]||o.speechWritten!==e[4]||
+    o.lexicalSource!=='https://nahuatl.wired-humanities.org/content/ayac'||
+    o.negativeWritten!=='ayac'||o.nextWritten!=='tle'||
+    !['personResolved','tenseResolved','rolesResolved','negativeScopeResolved',
+      'grammarRuleAdded','wholeEnglishReviewed','manuscriptCollated',
+      'trainingEligible','silverApproved','goldApproved'].every(k=>o[k]===false)||
+    !Number.isInteger(o.tokenStart)||!Number.isInteger(o.negativeTokenIndex))continue;
+   const phrase=e[2].split(' '),start=o.tokenStart,core=phrase.indexOf('ayac');
+   if(start<0||start+phrase.length>observedWords.length||
+    o.negativeTokenIndex!==start+core||
+    !phrase.every((p,j)=>observedWords[start+j].word===p))continue;
+   let contiguous=true;
+   for(let j=1;j<phrase.length;j++)
+    if(!/^[ \t]+$/u.test(raw.slice(observedWords[start+j-1].end,observedWords[start+j].start)))
+     {contiguous=false;break;}
+   if(!contiguous)continue;
+   const parent=newNode('attested-ayac-speech-context',{
+    witnessId:e[0],historicalWorkId:e[1],source:e[3],
+    originalExcerpt:e[2],writtenSpeech:e[4],negativeTokenIndex:o.negativeTokenIndex,
+    negationScopeResolved:false,personResolved:false,tenseResolved:false,
+    semanticRolesResolved:false,completeEnglishVerified:false,productiveRule:false,
+    status:'cited edited documentary word order only; not independently parsed'});
+   for(let k=0;k<3;k++){
+    const child=newNode('attested-ayac-token',{
+     written:observedWords[o.negativeTokenIndex+k].word,
+     source:e[3],inputTokenIndex:o.negativeTokenIndex+k});
+    newEdge(parent,child,'attested-original-order',{position:k});
+   }
+  }
   // Provenance-graded musical interjection is *not* a finite predicate, a
   // grammatical stopword or an English translation. The source word stays.
   // No global 'huiya' rule is generated from the two reviewed song excerpts.
@@ -615,6 +660,7 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
     nestedDependencies:edges.filter(e=>e.relation==='in-subordinate-dependency').length,
     antecedentCandidates:edges.filter(e=>e.relation==='antecedent-candidate').length,
     poeticVocableContexts:nodes.filter(n=>n.kind==='poetic-vocable-context').length,
+     attestedAyacContexts:nodes.filter(n=>n.kind==='attested-ayac-speech-context').length,
     partialSpans:nodes.filter(n=>n.kind==='partial-grammatical-span').length,
     nominalCoordinations:nodes.filter(n=>n.kind==='nominal-coordination-marker').length,
     coordinatedSubjectAttachments:edges.filter(e=>e.relation==='possible-coordinated-subject-attachment').length}};

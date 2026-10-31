@@ -124,6 +124,12 @@ upgrades. **Follow-up requires human/editorial source review and a separate,
 regression-tested canonical implementation before claiming historical coverage
 improvement.** This batch itself leaves **926 misses and 2,144 headwords**.
 
+## Historical `yehua`: published translations are evidence, not a universal gloss
+
+**See the canonical [source-bounded `yehua` engine note](TENTLI_YEHUA_CONTEXT_ENGINE_NOTE_2026_10_31.md).** Molina and Olmos explicitly distinguish demonstrative/third-person and temporal functions. Brinton Songs VI.2, XI.4 and XVII.13–14 show published editorial renderings beside recurrent `noyollo yehua` expressions, but **no individual occurrence's referent, discourse function, or temporal value is independently settled** merely by comma placement or the English rendering.
+
+The existing three-form research JSON now carries `editorial_yehua_engine_note`: separate dictionary-function candidates, exact short source excerpts, cited editorial contexts, a **tentative** resumptive hypothesis, and strict instructions to preserve original tokens, retain ambiguity and abstain from unsupported complete English. The dossier validator and negative tests refuse forced default glosses, erased source tokens, forged authorizations or claims that one printed collection is independent manuscript confirmation. This **does not** add a new canonical translator `yehua` rule, nor is it a prerequisite to seek additional translations from the project director. Zero Silver/Gold, no new productive grammar, and the 926 current misses remain.
+
 ## Next substantive development milestone
 
 The **next step is not to count another 80**. For the high-impact forms the dossiers identify, inspect original manuscript/edition contexts and independent dictionaries, preserve competing senses and orthography, and separate exact word-form source identification from productive morphological hypotheses. Only independently warranted constructions should be offered to the **existing** canonical source-claim, morphological, sentence, grammar-IR and English components, with positive and negative tests and before/after engine diagnostics. Link that change through the Phase 5 review ledger **after** source/editorial review; never self-certify an LLM suggestion. The committed review ledger currently contains no human approvals.

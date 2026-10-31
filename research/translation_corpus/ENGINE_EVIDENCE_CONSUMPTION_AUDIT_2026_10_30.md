@@ -1,6 +1,25 @@
 # Which Tēntli evidence is actually consumed by the engines?
 *October 30, 2026 — checked against the current code paths. Evidence inventory is not a blanket import into grammar.*
 
+## Pending productive nominal-predicate integration (draft #119; not yet deployed)
+
+Unlike the Phase 6 JSON-only dossier record, draft #119 actually edits the
+canonical browser morphology source `tools/morphology_engine.js` and the
+already existing `translator-sentence.js` grammar. The sentence analysis
+may consume exactly one source-graded nominal candidate and forward its
+**isolated** unverified nominal-present English suggestion to the existing
+`translator-english.js` composer, and its grammar candidate to the shared
+`translator-grammar-ir.js`. No competing parser or independent model is
+introduced. The constructed `titepilhuan` remains a morphological clue
+only. Complete Brinton stanza translation, the project director's separate
+vocative “O you princes,” and automatic Gold/Silver review are not derived
+from the nominal candidate. The investigator must preserve hypothesis versus
+verified historical route distinctions; 926 remains the certified reporting
+baseline. The embedded `index.html` block and content-versioned runtime
+assets **must be rebuilt and tested** before this becomes website behavior.
+This is a documented integration proposal, not a declaration of completed
+deployment or independently measured translation accuracy.
+
 ## Critical architectural distinction
 
 Historical material is **not automatically learned merely because it appears in `research/`**. Tēntli consists of a curated production dictionary and grammar, source-labeled morphology, historical research catalogs, a lexicon/morphology/grammar/English diagnostic bridge, and separate experimental neural work.

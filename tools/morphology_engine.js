@@ -572,6 +572,41 @@ const TlahtolliMorphEngine = (() => {
  const TEPILHUAN_MOLINA='https://nahuatl.wired-humanities.org/node/188794';
  const NOMINAL_GRAMMAR='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
  const NOMINAL_KIND='Source-bounded plural nominal-predicate hypothesis';
+ // An exact EDITED-HISTORICAL written form, not macron stripping.
+ // Brinton prints "noyollo" in multiple poems; Karttunen/Lockhart
+ // document the related possessed -yōllo stem under yollotl.
+ // The unmarked written token is attested; segmentation and sense in each
+ // clause remain unreviewed. No sibling spelling/possessive paradigm follows.
+ const BRINTON_HEART='https://www.gutenberg.org/files/12219/12219-h/12219-h.htm';
+ const YOLLOTL_SOURCE='https://nahuatl.wired-humanities.org/content/yollotl';
+ const HEART_KIND='Exact Brinton first-person possessed heart research reading';
+ function fromBrintonExactPossessedHeart(raw,all){
+  const written=String(raw||'').normalize('NFC').toLocaleLowerCase('en');
+  if(written!=='noyollo')return;
+  const valid=words.filter(w=>w.word==='yollotl'&&w.pos==='noun'&&
+   w.source===YOLLOTL_SOURCE&&w.status==='Checked against source'&&
+   String(w.possessed||'').trim()==='-yōllo (bound form)'&&
+   ['headword','pos','meaning','possessed'].every(field=>{
+    const c=sourceClaim(w,field);
+    return c&&c.source===YOLLOTL_SOURCE&&
+     c.assessment==='dictionary'&&typeof c.locator==='string'&&c.locator.length>12;
+   }));
+  if(valid.length!==1)return;
+  // The original Brinton edition supplies the exact unmarked spelling.
+  // No equivalent rule applies to a different macron-bearing or compound form.
+  all.push({...make('yollotl',HEART_KIND,'unreviewed',
+   {category:'noun',possessor:'1sg',writtenForm:'noyollo',
+    originalEditionSpellingAttested:true,
+    segmentationReviewedIndependently:false,
+    contextualHeartSoulIntentionSenseResolved:false,
+    fullHistoricalClauseTranslated:false},
+   [{surface:raw.slice(0,2),role:'First-person singular possessed prefix no-; morphological proposal'},
+    {surface:raw.slice(2),role:'Unmarked yollo written in Brinton; compare source-cited bound -yōllo without automatic vowel-length restoration'}],
+   BRINTON_HEART,'Brinton (1890), Songs VI.2, XI.4, XVII.13; printed Nahuatl, not an independently collated manuscript',
+   'Exact-source token with 1sg possession analysis linked to Karttunen 1992 pp.342–343 / Lockhart 2001 pp.156,242. Brinton editorial meanings vary by context; no automatic English rendering, no general vowel normalization, and no fixed noyollo yehua discourse rule.'),
+   sources:[BRINTON_HEART,YOLLOTL_SOURCE,
+    'https://gdn.iib.unam.mx/diccionario/yollotl/28971']});
+ }
  function fromSourceNominalPredication(raw,all){
   const written=String(raw||'').normalize('NFC').toLocaleLowerCase('en');
   const attested=written==='antepilhuan',constructed=written==='titepilhuan';
@@ -660,6 +695,7 @@ const TlahtolliMorphEngine = (() => {
   fromSourceLocatedFiniteTemplates(raw,out);
   fromPossessiveAnalogy(q,out);
   fromSourceBoundPossessives(raw,out);
+  fromBrintonExactPossessedHeart(raw,out);
   fromSourceNominalPredication(raw,out);
   const seen=new Set(),clean=[];
   for(const candidate of out){

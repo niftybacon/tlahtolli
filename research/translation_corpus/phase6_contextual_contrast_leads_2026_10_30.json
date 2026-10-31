@@ -51,7 +51,83 @@
         "yegua"
       ],
       "risk": "Do not equate this written yehua with approved plural yehuan, assign third-person referents, or treat the colonial Spanish-loan yegua sense as this poem's meaning.",
-      "evidence_trust": "historical dictionary index contrast plus originally printed Brinton excerpt; context not independently judged"
+      "evidence_trust": "historical dictionary index contrast plus originally printed Brinton excerpt; context not independently judged",
+      "editorial_yehua_engine_note": {
+        "status": "historical dictionary meanings and published scholarly/edition translations available; specific grammatical function not independently determined",
+        "source_policy": "Use existing Molina, Olmos, and Brinton/Temoa editorial translations as the bounded evidence base; do not request speculative retranslation as a prerequisite for investigation",
+        "exact_written_form": "yehua",
+        "dictionary_supported_function_families": [
+          {
+            "function": "demonstrative_or_independent_third_person",
+            "source_url": "https://nahuatl.wired-humanities.org/content/yehua-0",
+            "source_locator": "Molina 1571 II f.35r col.1",
+            "attested_spanish": "aquel, aquella, aquello",
+            "per_occurrence_selection_approved": false
+          },
+          {
+            "function": "temporal_adverb",
+            "source_url": "https://nahuatl.wired-humanities.org/content/yehua",
+            "source_locator": "Molina 1571 II f.36r col.1; Olmos Arte p.183",
+            "attested_spanish": "denantes, o ahora poco ha; rato ha",
+            "per_occurrence_selection_approved": false
+          },
+          {
+            "function": "syncope_of_third_person_pronoun",
+            "source_url": "https://nahuatl.wired-humanities.org/content/yehua",
+            "source_locator": "Olmos Arte, ed. Siméon p.183",
+            "attested_spanish": "aquel",
+            "per_occurrence_selection_approved": false
+          }
+        ],
+        "published_original_contexts": [
+          {
+            "locator": "Brinton 1890 Song VI stanza 2",
+            "source_url": "https://www.gutenberg.org/files/12219/12219-h/12219-h.htm",
+            "original_short_span": "noyollo, yehua cuix ic nepohualoyan",
+            "editorial_observation": "Brinton's English uses an idiomatic subordinate-clause 'that' after 'my heart'; comma is printed-edition punctuation, not original syntax proof",
+            "contextual_resumptive_hypothesis": true,
+            "grammatical_role_verified": false
+          },
+          {
+            "locator": "Brinton 1890 Song XI stanza 4; also indexed in Temoa Cantares fol.5v",
+            "source_url": "https://gdn.iib.unam.mx/diccionario/nochan",
+            "original_short_span": "Yn canon nemian noyollo yehua",
+            "editorial_observation": "Brinton and indexed Temoa Spanish present the heart's location without a mandatory separate lexical gloss for yehua; translation omission does not authorize deleting the source token",
+            "contextual_resumptive_hypothesis": true,
+            "grammatical_role_verified": false
+          },
+          {
+            "locator": "Brinton 1890 Song XVII stanzas 13 and 14",
+            "source_url": "https://www.gutenberg.org/files/12219/12219-h/12219-h.htm",
+            "original_short_span": "quen conchihuaz noyollo yehua onentacico",
+            "editorial_observation": "Brinton's published English integrates the sense into the verse; no one-to-one 'that' or temporal gloss is demonstrated",
+            "contextual_resumptive_hypothesis": true,
+            "grammatical_role_verified": false
+          }
+        ],
+        "source_collection_warning": "Brinton VI, XI and XVII are separate songs in one 1890 edited collection, not independently collated manuscript witnesses; the GDN/Temoa cross-index does not by itself certify a new English translation",
+        "tentative_discourse_hypothesis": "In noyollo yehua passages an emphatic/resumptive third-person expression is plausible, but its antecedent, clause boundary, and contribution remain unresolved; a demonstrative or adverbial dictionary meaning must not be automatically excluded",
+        "hard_engine_constraints": {
+          "no_single_default_gloss": true,
+          "no_global_yehua_equals_english_that": true,
+          "no_automatic_temporal_only": true,
+          "no_global_noyollo_yehua_resumptive_rule": true,
+          "no_source_token_deletion": true,
+          "no_editorial_comma_as_syntax_proof": true,
+          "no_equation_with_yehuan_yehuatl_or_yegua": true,
+          "no_invented_english_translation": true,
+          "preserve_alternative_function_hypotheses": true,
+          "abstain_on_unparsed_whole_clause": true,
+          "no_promotion_to_gold_silver_or_training": true,
+          "no_change_to_926_gap_count": true,
+          "no_repeated_external_review_demand_without_new_material": true
+        },
+        "related_phrase_excluded": "miztemoa noyollo is not evidence for the grammatical function of yehua and must not seed a rule",
+        "implementation_scope": "Attach research-only engine-consumable caution to this existing Phase 6 context pack; no production sentence, morphology, IR, English realization or neural rules changed",
+        "human_review": "project-director says dictionary interpretations and published poem translations exhaust the practical evidence available; ambiguous functions may remain unresolved",
+        "independently_approved_sentence_translation": false,
+        "proposed_productive_rules": 0
+      }
     },
     {
       "written_surface": "antepilhuan",

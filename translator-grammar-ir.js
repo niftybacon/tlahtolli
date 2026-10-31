@@ -114,6 +114,45 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
     newEdge(parent,child,'attested-original-order',{position:k});
    }
   }
+  // Independent grammatical evidence: Bedell (2011) §14 p.19 and
+  // Wimmer's UNAM-indexed "ayâc tle"/Sahagún XII.6 example.
+  // Only exact *colonial* "ayac tle" word order is admitted here.
+  // The shared negative domain is a candidate, not a finite/English parse.
+  const negativeGrammar='https://languageinindia.com/nov2011/bedellnawatorugo.pdf';
+  const negativeIndexed='https://gdn.iib.unam.mx/diccionario/ayac/41417';
+  const negativeLexical='https://nahuatl.wired-humanities.org/content/ayac';
+  for(const p of items(analysis?.negativeIndefinitePairObservations,12)){
+   if(!Array.isArray(p?.written)||p.written.length!==2||
+    p.written[0]!=='ayac'||p.written[1]!=='tle'||
+    !Array.isArray(p.tokenIndices)||p.tokenIndices.length!==2||
+    p.grammarSource!==negativeGrammar||p.indexedGrammarSource!==negativeIndexed||
+    p.lexicalSource!==negativeLexical||
+    p.lexicallyNegativePersonIndefinite!==true||
+    p.secondIndefiniteUnderPotentialNegation!==true||
+    p.observedRelationship!=='negative-indefinite co-occurrence; potential shared negative domain'||
+    p.grade!=='grammar-source-bounded structural candidate, not historical whole-clause attestation'||
+    !['scopeBeyondPairResolved','syntacticSubjectResolved','objectRoleResolved',
+      'finitePredicateResolved','personResolved','tenseAspectResolved',
+      'englishReviewed','trainingEligible','spellingVariantsInferred',
+      'wholeClauseComplete'].every(k=>p[k]===false))continue;
+   const i=p.tokenIndices[0],j=p.tokenIndices[1];
+   if(!Number.isInteger(i)||i<0||j!==i+1||j>=observedWords.length||
+    observedWords[i].word!=='ayac'||observedWords[j].word!=='tle'||
+    !/^[ \t]+$/u.test(raw.slice(observedWords[i].end,observedWords[j].start)))continue;
+   const parent=newNode('negative-indefinite-pair-candidate',{
+    originalSpelling:'ayac tle',startTokenIndex:i,grammarSource:negativeGrammar,
+    indexedGrammarSource:negativeIndexed,lexicalSource:negativeLexical,
+    sharedNegativeDomainCandidate:true,fullScopeResolved:false,
+    grammaticalRolesResolved:false,finiteAnalysisResolved:false,
+    wholeEnglishVerified:false,canonicalRuleGenerated:false,
+    status:'source-supported local negative-indefinite pattern; not a full-clause parse'});
+   const left=newNode('negative-person-indefinite',{written:'ayac',tokenIndex:i,
+    lexicalSource:negativeLexical,referentId:null});
+   const right=newNode('cooccurring-indefinite',{written:'tle',tokenIndex:j,
+    grammarSource:negativeIndexed,semanticRole:null});
+   newEdge(parent,left,'observed-negative-indefinite',{negativeScopeBeyondPairResolved:false});
+   newEdge(parent,right,'candidate-shared-negative-domain',{notUniversalScope:true});
+  }
   // Provenance-graded musical interjection is *not* a finite predicate, a
   // grammatical stopword or an English translation. The source word stays.
   // No global 'huiya' rule is generated from the two reviewed song excerpts.
@@ -661,6 +700,7 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
     antecedentCandidates:edges.filter(e=>e.relation==='antecedent-candidate').length,
     poeticVocableContexts:nodes.filter(n=>n.kind==='poetic-vocable-context').length,
      attestedAyacContexts:nodes.filter(n=>n.kind==='attested-ayac-speech-context').length,
+     negativeIndefinitePairs:nodes.filter(n=>n.kind==='negative-indefinite-pair-candidate').length,
     partialSpans:nodes.filter(n=>n.kind==='partial-grammatical-span').length,
     nominalCoordinations:nodes.filter(n=>n.kind==='nominal-coordination-marker').length,
     coordinatedSubjectAttachments:edges.filter(e=>e.relation==='possible-coordinated-subject-attachment').length}};

@@ -28,14 +28,14 @@ const positives=[
  'noyollo','noyollo yehua','In can on nemian noyollo yehua?',
  'Macazo tleon xoconyoyocoya ti noyollo, yehua cuix ic nepohualoyan',
  'quen conchihuaz noyollo yehua onentacico',
- 'noyollo noyollo yehua'
+ 'noyollo noyollo yehua','noyollo,','noyollo, yehua'
 ];
 for(const input of positives){
  const {analysis,graph,observations}=observe(input);
  const expected=(input.match(/\bnoyollo\b/gu)||[]).length;
  assert.equal(observations.length,expected,'Exact observed token count: '+input);
  assert.equal(graph.counts.sourcePossessedFormObservations,expected);
- assert(observations.every(o=>o.lemma==='yollotl'&&
+ assert(observations.every(o=>o.originalWrittenToken===(input.includes('noyollo,')?'noyollo,':'noyollo')&&o.lemma==='yollotl'&&
    o.possessionHypothesis==='1sg'&&o.morphologyGrade==='unreviewed'&&
    o.grammaticalRole===null&&o.referentId===null&&
    o.antecedentResolved===false&&o.contextualSenseResolved===false&&
@@ -52,7 +52,7 @@ for(const input of positives){
 for(const input of [
  'noyōllo','noyöllo','nōyollo','moyollo','iyollo',
  'noyollotl','noyolloya','noyollo-yehua','noyolloyehua',
- 'antepilhuan','huiya','nichōca','xyzzy','noyollo,',
+ 'antepilhuan','huiya','nichōca','xyzzy','noyollo,,',
  'in noyōllo yehua','noyollox yehua'
 ]){
  assert.equal(observe(input).observations.length,0,
@@ -91,4 +91,4 @@ for(const [original,expected] of [
  assert.equal(english.render(composed),expected,original);
  assert.equal(graph.counts.sourcePossessedFormObservations,0);
 }
-console.log('PASS: 6 Brinton/constructed exact-form contexts, 16 refusal contexts, 7 injected-evidence controls, unchanged existing finite/nominal English; zero invented translation.');
+console.log('PASS: 8 Brinton/constructed original-word contexts (including editorial comma), 16 refusal contexts, 7 injected-evidence controls, unchanged existing English; zero invented translation.');

@@ -1,0 +1,133 @@
+{
+  "format": "tentli-phase6-zan-historical-english-choices-v1",
+  "date": "2026-10-31",
+  "status": "source-checked dictionary English families and separate Brinton editorial comparanda; no independent contextual grammar approval",
+  "research_only": true,
+  "canonical_headwords_added": 0,
+  "productive_grammar_rules_added": 0,
+  "independently_approved_silver": 0,
+  "blind_gold": 0,
+  "complete_historical_clauses_translated": 0,
+  "source_collection": "Brinton Ancient Nahuatl Poetry (1890), research-exposed train stanzas (NOT an independently held-out Gold collection)",
+  "frequency": {
+    "cohort": "150 Brinton research stanzas, 133 train and 17 dev; case-folded exact written form counts (no global cedilla normalization)",
+    "written_form": "zan",
+    "occurrences": 70,
+    "distinct_stanzas": 53,
+    "warning": "Research-exposed corpus only, not a language-wide frequency estimate or translator accuracy score"
+  },
+  "policies": {
+    "english_options_are_not_automatic_clause_translations": true,
+    "retain_original_word_tokens": true,
+    "do_not_replace_zanio_or_zaniyo": true,
+    "no_global_cedilla_normalization": true,
+    "no_forced_zan_ye_adversative": true,
+    "no_default_sung_particle_deletion": true,
+    "no_auto_english_for_unparsed_brinton": true,
+    "do_not_use_for_gold_silver_or_training": true
+  },
+  "sources": {
+    "zan": {
+      "url": "https://nahuatl.wired-humanities.org/content/zan",
+      "spanish_restrictive": "zan. solamente. (aduerbio.)",
+      "spanish_adversative": "çan. mas, o empero, coniunction aduersatiua.",
+      "locator": "Molina 1571, Nahuatl-to-Spanish II f.14r col.1; ODN citing Molina, Olmos, Lockhart and Carochi",
+      "orthographic_variant": "çan",
+      "olmos_note": "Olmos Arte ed. Siméon p.181 also identifies pronoun-like, affirmative and ornamental uses; not each use has a separate English lexical word"
+    },
+    "zanye": {
+      "url": "https://nahuatl.wired-humanities.org/content/zan-ye",
+      "spanish": "zanye. mas, o empero. (coniunction aduersatiua.)",
+      "locator": "Molina 1571 II f.14r col.2; historical zan ye phrase; does not force an adversative reading in every poetic stanza"
+    },
+    "zanyeno": {
+      "url": "https://nahuatl.wired-humanities.org/content/zan-ye-no",
+      "source_phrase": "çan ye nō",
+      "english": "likewise; the same",
+      "locator": "Carochi 1645 via Lockhart, p.499; also ODN headword zan ye no"
+    },
+    "brinton": {
+      "url": "https://www.gutenberg.org/files/12219/12219-h/12219-h.htm",
+      "locator": "Daniel G. Brinton, Ancient Nahuatl Poetry (1890), songs X stanza 1 and XI stanza 8"
+    }
+  },
+  "options": [
+    {
+      "english": "only / just / merely",
+      "function": "restrictive or exclusive particle",
+      "source_key": "zan",
+      "source_locator": "Molina 1571 II f.14r; Karttunen 1992 p.346; Carochi 1645"
+    },
+    {
+      "english": "but / however",
+      "function": "adversative conjunction",
+      "source_key": "zan",
+      "source_locator": "Molina 1571 II f.14r; Lockhart 2001 p.213"
+    }
+  ],
+  "documented_phrases": [
+    {
+      "tokens": [
+        "zan",
+        "ye"
+      ],
+      "english": "but / however / yet",
+      "source_key": "zanye",
+      "kind": "cited two-word adversative expression; may instead be independently composed in poetry",
+      "usage_verified_for_arbitrary_text": false
+    },
+    {
+      "tokens": [
+        "zan",
+        "ye",
+        "no"
+      ],
+      "english": "likewise / the same",
+      "source_key": "zanyeno",
+      "kind": "cited lexical cluster, not an inferred adversative clause; original no has unmarked vowel quantity",
+      "usage_verified_for_arbitrary_text": false
+    },
+    {
+      "tokens": [
+        "zan",
+        "ye",
+        "nō"
+      ],
+      "english": "likewise / the same",
+      "source_key": "zanyeno",
+      "kind": "Carochi's quantity-marked lexical cluster, not an inferred adversative clause",
+      "usage_verified_for_arbitrary_text": false
+    }
+  ],
+  "source_specific_editorial_comparisons": [
+    {
+      "original_tokens": [
+        "zan",
+        "tontemiqui"
+      ],
+      "editorial_english": "we only dream",
+      "source_key": "brinton",
+      "locator": "Brinton 1890, Song XI stanza 8",
+      "interpretation": "Published line favors restrictive only in the quoted context; not independently verified token alignment or complete-clause English"
+    },
+    {
+      "original_tokens": [
+        "zan",
+        "ye",
+        "in",
+        "cuicatlin"
+      ],
+      "editorial_english": "the only songs",
+      "source_key": "brinton",
+      "locator": "Brinton 1890, Song X stanza 1",
+      "interpretation": "Published editorial wording illustrates why zan ye need not be automatically translated as but; not verified word-level alignment"
+    }
+  ],
+  "source_example": {
+    "source_key": "zan",
+    "source_text": "amo tlatla, zan quintocaya",
+    "english": "they were not burning them, but they were burying them",
+    "locator": "ODN zan, Haskett and Wood notes from Lockhart sessions; an explanatory example, NOT a newly reviewed historical Brinton stanza",
+    "verified_complete_historical_translation": false
+  }
+}

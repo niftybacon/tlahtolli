@@ -40,6 +40,8 @@ jobs:
         run: node tools/test_source_bound_possessives.js
       - name: Molina-Olmos bilingual yehua lexical options, no invented syntax
         run: node tools/test_phase6_yehua_english_options.js
+      - name: Molina-Olmos-Lockhart zan contextual English with Brinton counterexamples
+        run: node tools/test_phase6_zan_english_options.js
       - name: Source-linked historical morphology observations in shared grammar IR
         run: node tools/test_phase6_source_morphology_ir_observations.js
       - name: Source-located finite verb productivity and lexical provenance
@@ -132,6 +134,8 @@ jobs:
         run: python tools/test_translator_browser.py
       - name: Public translator original yehua English alternatives and Brinton editorial contrast
         run: python tools/test_phase6_yehua_english_browser.py
+      - name: Public zan and cedilla variant bilingual lexical options and contextual contrasts
+        run: python tools/test_phase6_zan_english_browser.py
       - name: Compositional English browser choices and failure isolation
         run: python tools/test_english_composition_browser.py
       - name: Location context English browser regression

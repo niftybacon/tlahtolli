@@ -28,7 +28,7 @@ function confidence(match){
  if(match.form_type==='historical spelling')return 'orthographic';
  return 'candidate';
 }
-function create(dictionary,passages,contextPack){
+function create(dictionary,passages,contextPack,zanPack){
  const list=(dictionary&&Array.isArray(dictionary.words)?dictionary.words:[]).filter(
   w=>w&&['Classical Nahuatl','Classical Nahuatl (historical dictionary lemma)'].includes(w.variety)&&typeof w.word==='string'&&w.word.trim());
  const index=new Map(),english=new Map();
@@ -137,6 +137,115 @@ function create(dictionary,passages,contextPack){
   return out;
  }
 
+
+ // Phase 6: the exact written zan / çan has two ALREADY documented English
+ // families. Keep lexical English choices distinct from selecting syntactic
+ // scope in arbitrary poetry. The previous yehua path remains unchanged.
+ const ZAN_ODN='https://nahuatl.wired-humanities.org/content/zan';
+ const ZAN_YE_ODN='https://nahuatl.wired-humanities.org/content/zan-ye';
+ const ZAN_YE_NO_ODN='https://nahuatl.wired-humanities.org/content/zan-ye-no';
+ function validatedZanEnglish(){
+  const p=zanPack,src=p?.sources||{},policy=p?.policies||{};
+  if(p?.format!=='tentli-phase6-zan-historical-english-choices-v1'||
+     p.research_only!==true||p.canonical_headwords_added!==0||
+     p.productive_grammar_rules_added!==0||
+     p.independently_approved_silver!==0||p.blind_gold!==0||
+     p.complete_historical_clauses_translated!==0||
+     Object.values(policy).length!==8||
+     Object.values(policy).some(x=>x!==true)||
+     src.zan?.url!==ZAN_ODN||
+     src.zan.spanish_restrictive!=='zan. solamente. (aduerbio.)'||
+     src.zan.spanish_adversative!=='çan. mas, o empero, coniunction aduersatiua.'||
+     src.zan.orthographic_variant!=='çan'||
+     src.zanye?.url!==ZAN_YE_ODN||
+     src.zanye.spanish!=='zanye. mas, o empero. (coniunction aduersatiua.)'||
+     src.zanyeno?.url!==ZAN_YE_NO_ODN||
+     src.zanyeno.source_phrase!=='çan ye nō'||
+     src.zanyeno.english!=='likewise; the same'||
+     src.brinton?.url!==BRINTON_EDITION||
+     !Array.isArray(p.options)||p.options.length!==2||
+     p.options[0].english!=='only / just / merely'||
+     p.options[0].function!=='restrictive or exclusive particle'||
+     p.options[0].source_key!=='zan'||
+     p.options[1].english!=='but / however'||
+     p.options[1].function!=='adversative conjunction'||
+     p.options[1].source_key!=='zan'||
+     !Array.isArray(p.documented_phrases)||
+     !Array.isArray(p.source_specific_editorial_comparisons))return null;
+  const specs=[
+   {tokens:'zan ye',english:'but / however / yet',source:'zanye'},
+   {tokens:'zan ye no',english:'likewise / the same',source:'zanyeno'},
+   {tokens:'zan ye nō',english:'likewise / the same',source:'zanyeno'}
+  ];
+  if(p.documented_phrases.length!==3||specs.some((s,i)=>{
+   const x=p.documented_phrases[i];
+   return x?.tokens?.join(' ')!==s.tokens||x.english!==s.english||
+          x.source_key!==s.source||x.usage_verified_for_arbitrary_text!==false;
+  }))return null;
+  const editions=[
+   {tokens:'zan tontemiqui',english:'we only dream',locator:'Brinton 1890, Song XI stanza 8'},
+   {tokens:'zan ye in cuicatlin',english:'the only songs',locator:'Brinton 1890, Song X stanza 1'}
+  ];
+  if(p.source_specific_editorial_comparisons.length!==2||
+     editions.some((e,i)=>{
+      const x=p.source_specific_editorial_comparisons[i];
+      return x?.original_tokens?.join(' ')!==e.tokens||
+          x.editorial_english!==e.english||x.locator!==e.locator||
+          x.source_key!=='brinton';
+     })||
+     p.source_example?.source_key!=='zan'||
+     p.source_example.source_text!=='amo tlatla, zan quintocaya'||
+     p.source_example.english!=='they were not burning them, but they were burying them'||
+     p.source_example.verified_complete_historical_translation!==false)return null;
+  return p;
+ }
+ const sourcedZan=validatedZanEnglish();
+ function sourceZanReadings(input,direction='nh-en'){
+  if(direction!=='nh-en'||!sourcedZan)return [];
+  const original=String(input||'').slice(0,7000);
+  const found=[...original.matchAll(/[\p{L}\p{M}]+(?:[¯‾][\p{L}\p{M}]*|['’\-][\p{L}\p{M}]+)*/gu)];
+  const words=found.map(x=>x[0]);
+  const normalized=words.map(norm);
+  const out=[];
+  const contiguous=(start,size)=>start+size<=found.length&&
+   Array.from({length:size-1},(_,j)=>{
+    const i=start+j;
+    return /^\s+$/u.test(original.slice(found[i].index+words[i].length,found[i+1].index));
+   }).every(Boolean);
+  const tokenMatches=(start,match)=>contiguous(start,match.length)&&
+   match.every((x,j)=>normalized[start+j]===x||(j===0&&x==='zan'&&normalized[start]==='çan'));
+  for(let i=0;i<normalized.length&&i<90;i++){
+   if(normalized[i]!=='zan'&&normalized[i]!=='çan')continue;
+   const start=found[i].index;
+   if(/[\p{N}]/u.test(original[start-1]||'')||
+      /[\p{N}]/u.test(original[start+words[i].length]||''))continue;
+   // Longest documented lexical phrase wins over its own shorter prefix.
+   // Do NOT infer a clause-wide adversative interpretation from adjacency.
+   const phrase=sourcedZan.documented_phrases.slice().sort((a,b)=>b.tokens.length-a.tokens.length)
+    .find(x=>tokenMatches(i,x.tokens))||null;
+   const editorial=sourcedZan.source_specific_editorial_comparisons
+    .find(x=>tokenMatches(i,x.original_tokens))||null;
+   out.push({wordIndex:i,written:words[i],
+    status:'cited English lexical alternatives, not a complete sentence',
+    options:sourcedZan.options.map(o=>({
+     english:o.english,function:o.function,source:ZAN_ODN,locator:o.source_locator
+    })),
+    documentedPhrase:phrase?{
+     original:words.slice(i,i+phrase.tokens.length).join(' '),english:phrase.english,
+     source:sourcedZan.sources[phrase.source_key].url,
+     locator:sourcedZan.sources[phrase.source_key].locator,
+     note:phrase.kind,verifiedContextualUse:false,wordCount:phrase.tokens.length
+    }:null,
+    editorialReading:editorial?{
+     english:editorial.editorial_english,source:BRINTON_EDITION,
+     locator:editorial.locator,note:editorial.interpretation,
+     verifiedTokenAlignment:false
+    }:null,
+    selectedEnglish:null,scope:null,verifiedTranslation:false});
+  }
+  return out;
+ }
+
  function lookup(query,direction='nh-en'){
   const q=norm(query);if(!q)return {candidates:[],approximate:false,alternatives:[],orthographyConflict:false,totalCandidates:0,truncated:false};
   const table=direction==='en-nh'?english:index;
@@ -198,14 +307,16 @@ function create(dictionary,passages,contextPack){
  function analyze(input,direction='nh-en'){
   const parts=tokenize(String(input||'').slice(0,7000));
   const sourceReadings=sourceEnglishReadings(input,direction);
+  const zanReadings=sourceZanReadings(input,direction);
   let wordIndex=-1;
   let matched=0,unknown=0,provisional=0,ambiguous=0,senseAmbiguities=0,approximate=0,orthographyConflicts=0,truncated=0;
   const annotated=parts.map(part=>{
    if(!isWord(part))return {kind:'separator',value:part};
    wordIndex++;
    const sourceEnglish=sourceReadings.find(reading=>reading.wordIndex===wordIndex)||null;
+   const sourceZan=zanReadings.find(reading=>reading.wordIndex===wordIndex)||null;
    const result=lookup(part,direction),hits=result.candidates;
-   if(!hits.length){unknown++;return {kind:'word',value:part,status:'unknown',candidates:[],alternatives:[],sourceEnglish};}
+   if(!hits.length){unknown++;return {kind:'word',value:part,status:'unknown',candidates:[],alternatives:[],sourceEnglish,sourceZan};}
    const provisionalOnly=hits.every(hit=>hit.evidence==='archive-index');
    if(provisionalOnly){provisional++;unknown++;}else matched++;
    const ambiguousSense=distinctLexical(hits).length>1||result.totalCandidates>8;
@@ -216,12 +327,15 @@ function create(dictionary,passages,contextPack){
    if(result.orthographyConflict)orthographyConflicts++;
    if(result.truncated)truncated++;
    return {kind:'word',value:part,status:provisionalOnly?'provisional':result.approximate?'approximate':'matched',
-    candidates:hits,alternatives:result.alternatives,
+    candidates:hits,alternatives:result.alternatives,sourceEnglish,sourceZan,
     ambiguous:ambiguousSense,senseAmbiguous,orthographyConflict:result.orthographyConflict,
     truncated:result.truncated};
   });
   const gloss=annotated.map(x=>{
    if(x.kind==='separator')return x.value;
+   // Show the two source-backed English options even when an old lexical
+   // lookup picked a single (or uncertain) sense; do not alter lookup stats.
+   if(x.sourceZan)return '['+x.sourceZan.options.map(o=>o.english).join(' | ')+']';
    const first=x.candidates[0];
    if(!first)return x.sourceEnglish?'['+x.sourceEnglish.options.map(o=>o.english).join(' | ')+']':'[?'+x.value+']';
    if(x.status==='provisional')return '[?'+x.value+': unreviewed archive index gloss]';
@@ -237,11 +351,12 @@ function create(dictionary,passages,contextPack){
   return {parts:annotated,gloss,stats:{matched,unknown,provisional,ambiguous,senseAmbiguities,approximate,orthographyConflicts,truncated,total:matched+unknown},
    contextReadings:contextReadings(input,direction),
    sourceEnglishReadings:sourceReadings,
+   sourceZanReadings:zanReadings,
    passages:direction==='nh-en'?passageMatches(input):[],
    disclaimer:'Bracketed meanings are dictionary lookups, not contextual translations. Source-labeled yehua alternatives are unranked choices from Molina/Olmos, not approved contextual readings or a complete English sentence. Uncertain spelling and lexical senses remain distinct.'};
  }
 
- return {analyze,lookup,passageMatches,sourceEnglishReadings,stats:{headwords:list.length,wordForms:index.size,passageCandidates:candidates.length}};
+ return {analyze,lookup,passageMatches,sourceEnglishReadings,sourceZanReadings,stats:{headwords:list.length,wordForms:index.size,passageCandidates:candidates.length}};
 }
 root.TlahtolliTranslator={create,norm,fold,tokenize};
 })(window);

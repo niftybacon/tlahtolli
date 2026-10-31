@@ -18,16 +18,16 @@ Reuse these existing components rather than writing rival engines:
 
 ## Mandatory six-phase plan
 
-| Phase | Required objective |
+| Phase | Required objective (current roadmap) |
 | --- | --- |
-| 1 | Stabilize canonical engines and build a source-grounded semantic verifier, especially [Issue #95](https://github.com/niftybacon/tlahtolli/issues/95), with negative/regression tests |
-| 2 | Expand independent **bilingual evidence**: reviewed Silver and protected, genuinely blind Gold ([Issue #98](https://github.com/niftybacon/tlahtolli/issues/98)); currently 150 *candidate* Brinton alignments, 40 *pending* Silver reviews and zero approved Gold/reviewed Silver |
-| 3 | Expand grammar teacher coverage and improve grammatical diversity of the existing 6,176 **Bronze synthetic** cases; don't inflate a known grammar by repetitive sentence combinations |
-| 4 | Improve English with genuine reviewed bilingual supervision before further large neural training; preserve source-gated English and abstention |
-| 5 | Build a durable **proposal → review → source-authorized promotion → regression** process; current scheduled audits only propose research |
-| 6 | Make authentic historical text more analyzable: 1,181 researched written forms and 928 unconnected forms are triage measurements, not 928 dictionary lemmas |
+| 1 | **Finish** source-grounded semantic role/scope verification in Issue #95 using merged source-word and English-preservation checks (#108/#116) plus reviewed whole clauses. Do **not** build a duplicate semantic adapter. |
+| 2 | **Top priority:** independently review the 150 Brinton **candidate** alignments/40 pending Silver worksheets and prepare truly untouched, blind, work-disjoint Gold under #98. Current approved Silver/Gold = **0**; project-director research is not independent Gold. |
+| 3 | Improve productive grammar *diversity* from the existing **6,176 Bronze synthetic** examples with independently justified historical constructions; #114/#115 are draft stacked work, not merged grammar. |
+| 4 | Hold major stronger-English retraining until independently reviewed semantic supervision/evaluation exists; preserve canonical English source gates and abstention. |
+| 5 | **Use**, do not recreate, the merged versioned append-only source-fingerprinted review/implementation ledger (#109); keep director declarations separate from external expert approvals and tested promotions. |
+| 6 | **Top priority:** compare original clauses and exact written forms from the existing 1,181-form investigator, **926** current unmatched surfaces, 80 source-locked dossiers and 3 unapproved context leads (#117); never equate a research finding with a canonical grammar rule. |
 
-**Phases 2 and 6 guide other phases.** Prioritize semantic verification, historical-failure classification, source-licensed productive grammar connections, reviewed translation evaluation and persistent promotion. Follow the details, evidence limits and acceptance criteria in the authoritative roadmap.
+**Phases 2 and 6 lead concurrently.** They supply reviewed evidence to Phase 1 semantic safety and Phase 3 grammar, while the existing Phase 5 ledger retains provenance; only later should Phase 4 train on approved material. Preserve contextual lexical sense vs grammatical construction vs complete English translation as separate review outcomes. A director's stated contextual interpretation is a reviewable, source-cited proposal rather than automatic independently expert-certified Silver/Gold. Never reopen an already documented identical review question without a new source or unresolved distinction. See the revised authoritative roadmap for acceptance gates and open PR coordination.
 
 ## Evidence tiers and hard boundaries
 

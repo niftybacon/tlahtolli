@@ -6,7 +6,7 @@ const cp=require('node:child_process');
 const ROOT=path.resolve(__dirname,'..');
 const {buildTriage,distanceAtMostOne,resemblanceLeads,orthographicAndAffixHints}=
  require('./triage_unresolved_historical_forms.js');
-const {buildDossiers}=require('./build_phase6_historical_dossiers.js');
+const {buildDossiers,validateContextContrasts}=require('./build_phase6_historical_dossiers.js');
 const data=fs.mkdtempSync(path.join(os.tmpdir(),'tentli-unresolved-triage-'));
 try{
  const source=path.join(data,'source.json'),bridge=path.join(data,'bridge.json');
@@ -18,11 +18,51 @@ try{
  const current=JSON.parse(fs.readFileSync(bridge,'utf8'));
  const result=buildTriage(original,current);
  assert.equal(result.format,'tentli-unresolved-historical-form-triage-v1');
+ // Newly source-indexed contrasts remain unresolved; corruptions cannot
+ // impersonate independent evaluation, historical folio review or grammar.
+ const contextLeads=JSON.parse(fs.readFileSync(path.join(ROOT,
+  'research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json'),'utf8'));
+ const index=validateContextContrasts(contextLeads,result);
+ assert.deepEqual(new Set(index.keys()),new Set(['yehua','antepilhuan','huel']));
+ for(const row of contextLeads.cases){
+  const orig=result.unresolved_forms.find(x=>x.written_surface===row.written_surface);
+  assert(orig&&orig.original_clause_translation_verified===false);
+  assert(row.historical_dictionary_contrasts.every(e=>
+   e.independent_original_clausal_interpretation===false));
+  assert(row.other_exact_original_document_contexts.every(e=>
+   e.original_transcription_not_folio_image_collated&&e.existing_editorial_translation_not_gold));
+ }
+ const cloneContext=x=>JSON.parse(JSON.stringify(x));
+ for(const tamper of [
+  d=>{d.independent_gold=1},
+  d=>{d.negative_guards.no_automatic_english=false},
+  d=>{d.cases[0].pinned_brinton_original_excerpt='yehua invented exact colonial text'},
+  d=>{d.cases[0].historical_dictionary_contrasts[0].url='https://example.org/unsupported-sense'},
+  d=>{d.cases[1].other_exact_original_document_contexts[0].original_transcription_not_folio_image_collated=false},
+  d=>{d.cases[2].historical_dictionary_contrasts[0].independent_original_clausal_interpretation=true},
+  d=>{d.cases[2].pinned_brinton_work_id='brinton-1890-poetry-xxvi'},
+  d=>{d.cases[1].written_surface='tepilhuan'},
+ ]){
+  const changed=cloneContext(contextLeads);tamper(changed);
+  assert.throws(()=>validateContextContrasts(changed,result),/Reject/i);
+ }
  const packet=buildDossiers(result,80);
  assert.equal(packet.format,'tentli-phase6-source-locked-gap-dossiers-v1');
  assert.equal(packet.source_engine_gap_count,926);
  assert(packet.candidate_count>=80,'Historical source evidence should supply a significant recurring case pool');
  assert.equal(packet.prepared_dossier_count,80,'Phase 6 target is 80 real written surfaces, not 80 verified meanings');
+ assert.equal(packet.contextual_contrast_source_pack_sha256.length,64);
+ assert.equal(packet.source_indexed_context_contrasts_without_grammatical_approval,3);
+ assert(packet.contextual_contrasts_in_selected_dossiers>=1);
+ assert.equal(packet.dictionary_context_lead_is_not_sentence_translation,true);
+ for(const item of packet.cases){
+  const c=item.source_indexed_context_contrast_not_approved;
+  if(!c)continue;
+  assert(index.has(item.written_surface));
+  assert.deepEqual(c,index.get(item.written_surface));
+  assert.equal(c.historical_dictionary_contrasts.every(x=>
+   x.independent_original_clausal_interpretation===false),true);
+ }
  assert.equal(packet.cases.length,80);
  const wholeSignalCounts=packet.diagnostic_signals_in_all_unmatched_forms_counted_with_overlap;
  const selectedSignalCounts=packet.diagnostic_signals_in_selected_dossiers_counted_with_overlap;
@@ -106,7 +146,7 @@ try{
   '--bridge',bridge,'--output',dossierFile,'--limit','80'],
   {cwd:ROOT,encoding:'utf8',timeout:120000});
  assert.deepEqual(JSON.parse(fs.readFileSync(dossierFile,'utf8')),packet);
- console.log('PASS Phase 6: 80 source-locked real historical-form dossiers, negative controls, no invented translation or independent Gold.');
+ console.log('PASS Phase 6: 80 source-locked dossiers, three independently indexed unapproved contextual contrast leads, tampering refusals and no Gold.');
  assert.equal(result.unresolved_engine_miss_count,926);
  assert.equal(result.unresolved_forms.length,926);
  assert.equal(result.investigated_all_unresolved_not_translated,true);

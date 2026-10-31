@@ -1,0 +1,150 @@
+{
+  "format": "tentli-phase6-exact-contextual-contrast-leads-v1",
+  "status": "AI-assisted external-source comparison for editorial follow-up; neither independent human review nor canonical promotion",
+  "research_only": true,
+  "historical_source_cohort": "Original Brinton 1890 train-set excerpts and separately indexed Temoa colonial manuscript transcription; compare distinct editions without asserting manuscript collation",
+  "negative_guards": {
+    "no_gold_silver_or_training": true,
+    "no_automatic_english": true,
+    "no_automatic_morphology": true,
+    "no_global_spelling_normalization": true,
+    "no_referent_or_negation_scope_assignment": true,
+    "no_independent_manuscript_witness_claim": true
+  },
+  "cases": [
+    {
+      "written_surface": "yehua",
+      "pinned_brinton_record_id": "brinton-1890-poetry-vi-02",
+      "pinned_brinton_work_id": "brinton-1890-poetry-vi",
+      "pinned_brinton_original_excerpt": "yehua cuix ic nepohualoyan in oncan",
+      "original_printed_source_url": "https://www.gutenberg.org/files/12219/12219-h/12219-h.htm",
+      "historical_dictionary_contrasts": [
+        {
+          "url": "https://nahuatl.wired-humanities.org/content/yehua-0",
+          "locator": "Molina 1571, part 2, f.35r col.1",
+          "lead": "demonstrative / independent-person reference candidate; context required",
+          "independent_original_clausal_interpretation": false
+        },
+        {
+          "url": "https://nahuatl.wired-humanities.org/content/yehua",
+          "locator": "Molina 1571, part 2, f.36r col.1; Olmos Arte, ed. Siméon p.183",
+          "lead": "temporal adverb or clipped third-person pronoun depending on context",
+          "independent_original_clausal_interpretation": false
+        },
+        {
+          "url": "https://gdn.iib.unam.mx/diccionario/yehua/18920",
+          "locator": "Carochi 1645, GDN time-adverb indexed examples",
+          "lead": "temporal adverb with source-specific vowel quantity; do not normalize all short-vowel forms",
+          "independent_original_clausal_interpretation": false
+        }
+      ],
+      "other_exact_original_document_contexts": [],
+      "competing_contextual_questions": [
+        "Does this occurrence function as temporal adverb, pronominal reference, or other song/discourse item?",
+        "Are its two tokens in the same Brinton clause performing the same function?",
+        "Is a source-licensed clause segmentation available without supplying a referent?"
+      ],
+      "non_equivalence_controls": [
+        "yehuan",
+        "yehuatl",
+        "yeua",
+        "yegua"
+      ],
+      "risk": "Do not equate this written yehua with approved plural yehuan, assign third-person referents, or treat the colonial Spanish-loan yegua sense as this poem's meaning.",
+      "evidence_trust": "historical dictionary index contrast plus originally printed Brinton excerpt; context not independently judged"
+    },
+    {
+      "written_surface": "antepilhuan",
+      "pinned_brinton_record_id": "brinton-1890-poetry-v-04",
+      "pinned_brinton_work_id": "brinton-1890-poetry-v",
+      "pinned_brinton_original_excerpt": "quimati in antepilhuan in anquauhtin amo celo ca",
+      "original_printed_source_url": "https://www.gutenberg.org/files/12219/12219-h/12219-h.htm",
+      "historical_dictionary_contrasts": [
+        {
+          "url": "https://nahuatl.wired-humanities.org/node/188794",
+          "locator": "Molina 1571, part 2, f.103r col.1",
+          "lead": "tepilhuan as children or offspring; this does not itself analyze antepilhuan",
+          "independent_original_clausal_interpretation": false
+        },
+        {
+          "url": "https://nahuatl.wired-humanities.org/content/tepiltzin",
+          "locator": "Lockhart, personal communication indexed by ODN; tepilhuan contextual social senses",
+          "lead": "tepilhuan may refer to children, descendants, nobles or population in different contexts",
+          "independent_original_clausal_interpretation": false
+        }
+      ],
+      "other_exact_original_document_contexts": [
+        {
+          "url": "https://temoa.iib.unam.mx/cantares-cantares-mexicanos/32r",
+          "historical_work_id": "Cantares Mexicanos, fol.32r, segment 595",
+          "exact_short_original_excerpt": "oncan amonmani a antepilhuan çan chichimeca",
+          "different_from_brinton_printed_work": true,
+          "original_transcription_not_folio_image_collated": true,
+          "existing_editorial_translation_not_gold": true
+        }
+      ],
+      "competing_contextual_questions": [
+        "Is the attested antepilhuan an addressee/nominal form in each cited clause, and what evidence bears on its internal segmentation?",
+        "Do nearby person-indexed words support an address reading without proving a productive morphological rule?",
+        "When is children/offspring, nobility, or another social group the apt contextual English meaning?"
+      ],
+      "non_equivalence_controls": [
+        "tepilhuan",
+        "antepilhua",
+        "amoteppilhuan"
+      ],
+      "risk": "Do not derive an- and -huan productively from surface resemblance or replace each occurrence with princes solely because of an interpretive Temoa rendering.",
+      "evidence_trust": "original Brinton and separately indexed Cantares transcription plus Molina/Lockhart lexicography; no original folio independently collated"
+    },
+    {
+      "written_surface": "huel",
+      "pinned_brinton_record_id": "brinton-1890-poetry-vi-02",
+      "pinned_brinton_work_id": "brinton-1890-poetry-vi",
+      "pinned_brinton_original_excerpt": "in antecocolia huel on yecnemiz in tlalticpac",
+      "original_printed_source_url": "https://www.gutenberg.org/files/12219/12219-h/12219-h.htm",
+      "historical_dictionary_contrasts": [
+        {
+          "url": "https://nahuatl.wired-humanities.org/content/huel-0",
+          "locator": "Molina 1571, part 2, f.156r col.1; Karttunen 1992 p.86",
+          "lead": "intensifier, manner adverb, or ability/possibility depending on construction",
+          "independent_original_clausal_interpretation": false
+        },
+        {
+          "url": "https://nahuatl.wired-humanities.org/node/172127",
+          "locator": "Carochi 1645 interpreted in ODN as intensifier and modal particle; Olmos distinct examples",
+          "lead": "modal vs scalar functions must be determined in full clause",
+          "independent_original_clausal_interpretation": false
+        }
+      ],
+      "other_exact_original_document_contexts": [
+        {
+          "url": "https://gdn.iib.unam.mx/diccionario/ixpa/184708",
+          "historical_work_id": "Cantares Mexicanos, fol.13v, segment 205 (GDN Temoa index)",
+          "exact_short_original_excerpt": "Yn tlaca ayac huel ixpa yn Ipalnemohua",
+          "different_from_brinton_printed_work": true,
+          "original_transcription_not_folio_image_collated": true,
+          "existing_editorial_translation_not_gold": true
+        }
+      ],
+      "competing_contextual_questions": [
+        "Is huel an intensifier, ability modal, or another licensed function in each full original clause?",
+        "Does neighboring overt negation affect modal scope in the other folio context?",
+        "Can the existing grammar and English audit express the licensed reading without assuming a fixed gloss?"
+      ],
+      "non_equivalence_controls": [
+        "hueli",
+        "ahuel",
+        "uel",
+        "huell"
+      ],
+      "risk": "Do not force English very in every context, infer permission or ability from an unreviewed clause, or assign scope to adjacent ayac automatically.",
+      "evidence_trust": "colonial lexical/grammar indexes plus Brinton and separately cited colonial verse text; semantic scope unresolved"
+    }
+  ],
+  "approved_lexical_edits": 0,
+  "productive_grammar_rules_added": 0,
+  "independently_reviewed_silver": 0,
+  "independent_gold": 0,
+  "verified_complete_english_clauses": 0,
+  "model_updates": 0
+}

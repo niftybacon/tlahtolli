@@ -6,7 +6,7 @@ const cp=require('node:child_process');
 const ROOT=path.resolve(__dirname,'..');
 const {buildTriage,distanceAtMostOne,resemblanceLeads,orthographicAndAffixHints}=
  require('./triage_unresolved_historical_forms.js');
-const {buildDossiers}=require('./build_phase6_historical_dossiers.js');
+const {buildDossiers,validateContextContrasts}=require('./build_phase6_historical_dossiers.js');
 const data=fs.mkdtempSync(path.join(os.tmpdir(),'tentli-unresolved-triage-'));
 try{
  const source=path.join(data,'source.json'),bridge=path.join(data,'bridge.json');
@@ -18,12 +18,83 @@ try{
  const current=JSON.parse(fs.readFileSync(bridge,'utf8'));
  const result=buildTriage(original,current);
  assert.equal(result.format,'tentli-unresolved-historical-form-triage-v1');
+ // Newly source-indexed contrasts remain unresolved; corruptions cannot
+ // impersonate independent evaluation, historical folio review or grammar.
+ const contextLeads=JSON.parse(fs.readFileSync(path.join(ROOT,
+  'research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json'),'utf8'));
+ const index=validateContextContrasts(contextLeads,result);
+ assert.deepEqual(new Set(index.keys()),new Set(['yehua','antepilhuan','huel']));
+ for(const row of contextLeads.cases){
+  const orig=result.unresolved_forms.find(x=>x.written_surface===row.written_surface);
+  assert(orig&&orig.original_clause_translation_verified===false);
+  assert(row.historical_dictionary_contrasts.every(e=>
+   e.independent_original_clausal_interpretation===false));
+  assert(row.other_exact_original_document_contexts.every(e=>
+   e.original_transcription_not_folio_image_collated&&e.existing_editorial_translation_not_gold));
+ }
+ const cloneContext=x=>JSON.parse(JSON.stringify(x));
+ for(const tamper of [
+  d=>{d.independent_gold=1},
+  d=>{d.negative_guards.no_automatic_english=false},
+  d=>{d.cases[0].pinned_brinton_original_excerpt='yehua invented exact colonial text'},
+  d=>{d.cases[0].historical_dictionary_contrasts[0].url='https://example.org/unsupported-sense'},
+  d=>{d.cases[1].other_exact_original_document_contexts[0].original_transcription_not_folio_image_collated=false},
+  d=>{d.cases[2].historical_dictionary_contrasts[0].independent_original_clausal_interpretation=true},
+  d=>{d.cases[2].pinned_brinton_work_id='brinton-1890-poetry-xxvi'},
+  d=>{d.cases[1].written_surface='tepilhuan'},
+ ]){
+  const changed=cloneContext(contextLeads);tamper(changed);
+  assert.throws(()=>validateContextContrasts(changed,result),/Reject/i);
+ }
+ // Historical complete-passage development controls: use only Brinton
+ // research-train originals, never human-reviewed Gold or invented English.
+ // Reuse the EXISTING canonical source-gated English bridge; this is NOT
+ // a separate translation engine or a morphology-derived answer key.
+ const originalStanzas=fs.readFileSync(path.join(ROOT,
+  'research/neural_training/brinton_1890_poetry_weak_en.jsonl'),'utf8')
+  .split(/\r?\n/u).filter(Boolean).map(x=>JSON.parse(x));
+ const byOriginalStanza=new Map(originalStanzas.map(x=>[x.record_id,x]));
+ const uniqueIds=new Set(contextLeads.cases.map(x=>x.pinned_brinton_record_id));
+ assert.equal(uniqueIds.size,2,'The three contrast forms occur in two pinned Brinton research stanzas');
+ const makeEnglish=require('./source_gated_english_bridge.js').createBatchProducer();
+ for(const recordId of uniqueIds){
+  const originalRow=byOriginalStanza.get(recordId);
+  assert(originalRow&&originalRow.split==='train'&&originalRow.translation?.alignment==='candidate');
+  const inspected=makeEnglish(originalRow.original);
+  assert.equal(inspected.status,'abstain',
+   'Unsupported complete original stanza must not be passed as semantically approved: '+recordId);
+  assert.equal(inspected.verified_translation,false);
+  assert.deepEqual(inspected.candidates,[]);
+ }
  const packet=buildDossiers(result,80);
  assert.equal(packet.format,'tentli-phase6-source-locked-gap-dossiers-v1');
  assert.equal(packet.source_engine_gap_count,926);
  assert(packet.candidate_count>=80,'Historical source evidence should supply a significant recurring case pool');
  assert.equal(packet.prepared_dossier_count,80,'Phase 6 target is 80 real written surfaces, not 80 verified meanings');
+ assert.equal(packet.contextual_contrast_source_pack_sha256.length,64);
+ assert.equal(packet.source_indexed_context_contrasts_without_grammatical_approval,3);
+ assert(packet.contextual_contrasts_in_selected_dossiers>=1);
+ assert.equal(packet.dictionary_context_lead_is_not_sentence_translation,true);
+ for(const item of packet.cases){
+  const c=item.source_indexed_context_contrast_not_approved;
+  if(!c)continue;
+  assert(index.has(item.written_surface));
+  assert.deepEqual(c,index.get(item.written_surface));
+  assert.equal(c.historical_dictionary_contrasts.every(x=>
+   x.independent_original_clausal_interpretation===false),true);
+ }
  assert.equal(packet.cases.length,80);
+ const wholeSignalCounts=packet.diagnostic_signals_in_all_unmatched_forms_counted_with_overlap;
+ const selectedSignalCounts=packet.diagnostic_signals_in_selected_dossiers_counted_with_overlap;
+ assert.equal(Object.keys(wholeSignalCounts).length,7);
+ assert.deepEqual(Object.keys(wholeSignalCounts),Object.keys(selectedSignalCounts));
+ assert(Object.values(wholeSignalCounts).every(n=>Number.isInteger(n)&&n>=0&&n<=926));
+ assert(Object.values(selectedSignalCounts).every(n=>Number.isInteger(n)&&n>=0&&n<=80));
+ assert.equal(packet.diagnostic_groups_are_not_independently_verified_grammatical_errors,true);
+ assert.equal(wholeSignalCounts['unreviewed-source-indexed-lexical-sense'],3);
+ assert.equal(selectedSignalCounts['unreviewed-source-indexed-lexical-sense'],3);
+ assert(wholeSignalCounts['recurrence-only-within-one-printed-Brinton-edition']>0);
+ assert(wholeSignalCounts['possible-morpheme-boundary-not-established']>0);
  assert.equal(new Set(packet.cases.map(x=>x.written_surface)).size,80);
  assert.deepEqual(new Set(packet.cases.filter(x=>x.independent_historical_dictionary_lead)
   .map(x=>x.written_surface)),new Set(['noyollo','ipalnemohua','huiya']));
@@ -31,6 +102,16 @@ try{
   const origin=result.unresolved_forms.find(x=>x.written_surface===row.written_surface);
   assert(origin,'Every packet must come from actual 926 current exact-engine misses');
   assert.equal(row.new_verified_meaning,null);
+  assert.equal(row.grammatical_failure_type_independently_verified,false);
+  assert.equal(row.whole_clause_role_and_negation_scope_still_require_evidence,true);
+  assert(row.overlapping_diagnostic_review_signals.length>=1);
+  assert(row.overlapping_diagnostic_review_signals.every(s=>
+   s.is_grammatical_diagnosis===false&&s.independently_reviewed===false));
+  assert.equal(row.review_source_independence.brinton_is_one_editorial_collection_not_independent_manuscript_witnesses,true);
+  assert.equal(row.review_source_independence.other_documents_are_source_register_leads_not_verified_independent_witnesses,true);
+  assert.equal(row.review_source_independence.independently_collated_original_manuscript_witnesses_in_this_batch,0);
+  assert.equal(row.review_source_independence.contextually_approved_english_alignments_in_this_batch,0);
+  assert.equal(row.review_source_independence.brinton_distinct_poem_units_same_printed_edition,row.same_edition_distinct_poem_units);
   assert.equal(row.approved_dictionary_rule,false);
   assert.equal(row.train_eligible,false);
   assert.equal(row.silver_approved,false);
@@ -49,7 +130,11 @@ try{
  assert.equal(packet.new_human_approved_silver,0);
  assert.equal(packet.model_updates,0);
  const songCase=packet.cases.find(x=>x.written_surface==='huiya');
- assert(songCase&&songCase.previous_historical_context_notes.length===2&&
+ assert(songCase&&songCase.overlapping_diagnostic_review_signals.some(s=>
+  s.potential_failure_or_evidence_signal==='unreviewed-source-indexed-lexical-sense')&&
+  songCase.overlapping_diagnostic_review_signals.some(s=>
+   s.potential_failure_or_evidence_signal==='poetic-vocable-or-particle-context-needs-disambiguation')&&
+  songCase.previous_historical_context_notes.length===2&&
    songCase.previous_historical_context_notes.every(x=>x.not_a_general_word_sense));
  assert.equal(JSON.stringify(packet),JSON.stringify(buildDossiers(result,80)),
    'Fixed source fingerprints and evidence must produce deterministic dossier order');
@@ -59,6 +144,13 @@ try{
   x=>{x.unresolved_forms[0].gold=true},
   x=>{x.unresolved_forms[0].training_eligible=true},
   x=>{x.unresolved_forms[0].written_surface='invented$urface'},
+  x=>{x.unresolved_forms[0].source_checked_similar_lemma_leads_not_equivalent.push({
+   source_url:'https://example.org/fake',historical_spelling_equivalence_verified:true,grammatical_derivation_verified:false
+  })},
+  x=>{x.unresolved_forms[0].historical_document_context_leads.push({
+   source_url:'https://example.org/fake',original_work_id:'fabricated',
+   source_grade:'expert_reviewed_whole_clause',context_id:'fiction'
+  })},
   x=>{x.unresolved_forms[0].research_priority_not_translation_confidence=Infinity},
   x=>{x.unresolved_forms[0].historical_edition_examples[0].printed_historical_source_url='http://unverified.test/'},
   x=>{x.unresolved_forms[0].independent_dictionary_context_lead=
@@ -74,7 +166,7 @@ try{
   '--bridge',bridge,'--output',dossierFile,'--limit','80'],
   {cwd:ROOT,encoding:'utf8',timeout:120000});
  assert.deepEqual(JSON.parse(fs.readFileSync(dossierFile,'utf8')),packet);
- console.log('PASS Phase 6: 80 source-locked real historical-form dossiers, negative controls, no invented translation or independent Gold.');
+ console.log('PASS Phase 6: 80 source-locked dossiers, three independently indexed unapproved contextual contrast leads, tampering refusals and no Gold.');
  assert.equal(result.unresolved_engine_miss_count,926);
  assert.equal(result.unresolved_forms.length,926);
  assert.equal(result.investigated_all_unresolved_not_translated,true);

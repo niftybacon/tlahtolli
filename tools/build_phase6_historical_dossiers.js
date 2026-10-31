@@ -48,6 +48,131 @@ const nextAction={
  'read-source-context-no-proven-analysis':
   'Inspect exact cited original-language passage, its grammatical neighbors and any editorial ambiguities before proposing a lemma or rule',
 };
+// Overlapping REVIEW LEADS, not automatic failure diagnoses. One word can
+// require lexical, morphology, orthography AND poetic/sentence investigation.
+// Never turn a surface resemblance or citation into a productive parse.
+const SIGNALS=[
+ {id:'unreviewed-source-indexed-lexical-sense',
+  test:r=>!!r.independent_dictionary_context_lead,
+  action:'Check the cited lexical entry and each original clause separately; do not choose an English meaning from a headword alone'},
+ {id:'poetic-vocable-or-particle-context-needs-disambiguation',
+  test:r=>!!r.prior_source_research||r.context_specific_poetic_occurrence_reviews.length>0,
+  action:'Compare each exact original song or particle context against verbal alternatives; do not delete a written vocable'},
+ {id:'possible-spelling-relationship-not-established',
+  test:r=>r.source_checked_similar_lemma_leads_not_equivalent.length>0,
+  action:'Collate distinct original spellings and cited lexeme witnesses before asserting any historical equivalence'},
+ {id:'possible-morpheme-boundary-not-established',
+  test:r=>r.unverified_morphological_surface_shape_hints.length>0,
+  action:'Check the finite form, argument morphology and source-based segmentation in a full original-language clause'},
+ {id:'other-colonial-document-context-leads-to-inspect',
+  test:r=>r.historical_document_context_leads.length>0,
+  action:'Recheck the located non-Brinton document excerpts and original work identifiers; do not call them independent manuscript confirmations'},
+ {id:'recurrence-only-within-one-printed-Brinton-edition',
+  test:r=>r.separate_poem_units_in_same_brinton_edition>=2,
+  action:'Compare full clauses across distinct poem units; their shared printed edition is not independent source corroboration'}
+];
+function diagnosticSignals(r){
+ const out=SIGNALS.filter(x=>x.test(r)).map(x=>({
+  potential_failure_or_evidence_signal:x.id,
+  next_check:x.action,
+  is_grammatical_diagnosis:false,
+  independently_reviewed:false
+ }));
+ if(!out.length)out.push({
+  potential_failure_or_evidence_signal:'no-classified-lead-read-original-context-first',
+  next_check:'Locate and analyze the exact historical clause before even proposing a lexical or morphological hypothesis',
+  is_grammatical_diagnosis:false,independently_reviewed:false
+ });
+ return out;
+}
+function countSignals(rows){
+ const totals=Object.fromEntries([...SIGNALS.map(x=>x.id),
+  'no-classified-lead-read-original-context-first'].map(x=>[x,0]));
+ for(const r of rows)for(const s of diagnosticSignals(r))
+  totals[s.potential_failure_or_evidence_signal]++;
+ return totals; // Overlapping; sums need not equal the number of surfaces.
+}
+function witnessScope(r){
+ const documentLeads=r.historical_document_context_leads;
+ return {
+  brinton_distinct_poem_units_same_printed_edition:r.separate_poem_units_in_same_brinton_edition,
+  brinton_is_one_editorial_collection_not_independent_manuscript_witnesses:true,
+  other_original_document_context_lead_count:documentLeads.length,
+  other_document_work_ids_to_verify:[...new Set(documentLeads.map(x=>x.original_work_id))].sort(),
+  other_documents_are_source_register_leads_not_verified_independent_witnesses:true,
+  historical_dictionary_reference_is_not_contextual_manuscript_confirmation:true,
+  independently_collated_original_manuscript_witnesses_in_this_batch:0,
+  contextually_approved_english_alignments_in_this_batch:0
+ };
+}
+const CONTRAST_PATH=path.resolve(__dirname,'../research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json');
+const CONTRAST_FORMAT='tentli-phase6-exact-contextual-contrast-leads-v1';
+const EXACT_CONTRAST_FORMS=new Set(['yehua','antepilhuan','huel']);
+const TRUSTED_CONTEXT_DOMAINS=new Set([
+ 'www.gutenberg.org','nahuatl.wired-humanities.org','gdn.iib.unam.mx','temoa.iib.unam.mx'
+]);
+function trustedUrl(url){
+ if(!https(url))return false;
+ try{return TRUSTED_CONTEXT_DOMAINS.has(new URL(url).hostname)}catch{return false}
+}
+function validateContextContrasts(doc,triage){
+ insist(doc?.format===CONTRAST_FORMAT&&doc.research_only===true&&
+   doc.approved_lexical_edits===0&&doc.productive_grammar_rules_added===0&&
+   doc.independently_reviewed_silver===0&&doc.independent_gold===0&&
+   doc.verified_complete_english_clauses===0&&doc.model_updates===0&&
+   typeof doc.status==='string'&&doc.status.includes('neither independent human review')&&
+   typeof doc.historical_source_cohort==='string'&&
+   Object.values(doc.negative_guards||{}).length===6&&
+   Object.values(doc.negative_guards).every(x=>x===true)&&
+   Array.isArray(doc.cases)&&doc.cases.length===3);
+ const known=new Map(triage.unresolved_forms.map(x=>[x.written_surface,x]));
+ const seen=new Set();
+ for(const row of doc.cases){
+  insist(EXACT_CONTRAST_FORMS.has(row.written_surface)&&!seen.has(row.written_surface));
+  seen.add(row.written_surface);
+  const existing=known.get(row.written_surface);
+  insist(!!existing&&Array.isArray(existing.historical_edition_examples)&&
+   typeof row.pinned_brinton_original_excerpt==='string'&&
+   row.pinned_brinton_original_excerpt.includes(row.written_surface)&&
+   row.pinned_brinton_original_excerpt.length<=160&&
+   row.pinned_brinton_work_id.startsWith('brinton-1890-poetry-')&&
+   trustedUrl(row.original_printed_source_url)&&
+   new URL(row.original_printed_source_url).hostname==='www.gutenberg.org');
+  // The original excerpt MUST match a source-pinned original-language window,
+  // not a generated English alignment, near-spelling or modern token.
+  const tokenized=x=>String(x||'').normalize('NFC').toLocaleLowerCase('en').replace(/\s+/gu,' ').trim();
+  insist(existing.historical_edition_examples.some(x=>
+   x.record_id===row.pinned_brinton_record_id&&
+   x.work_id===row.pinned_brinton_work_id&&
+   tokenized(x.original_language_short_context).includes(tokenized(row.pinned_brinton_original_excerpt))));
+  insist(Array.isArray(row.historical_dictionary_contrasts)&&
+   row.historical_dictionary_contrasts.length>=2&&row.historical_dictionary_contrasts.length<=4&&
+   row.historical_dictionary_contrasts.every(x=>trustedUrl(x.url)&&
+    /^(?:nahuatl\.wired-humanities\.org|gdn\.iib\.unam\.mx)$/u.test(new URL(x.url).hostname)&&
+    typeof x.locator==='string'&&x.locator.length>=10&&
+    typeof x.lead==='string'&&x.lead.length>=15&&
+    x.independent_original_clausal_interpretation===false));
+  insist(Array.isArray(row.other_exact_original_document_contexts)&&
+   row.other_exact_original_document_contexts.length<=2&&
+   row.other_exact_original_document_contexts.every(x=>trustedUrl(x.url)&&
+    x.historical_work_id?.length>8&&
+    typeof x.exact_short_original_excerpt==='string'&&
+    x.exact_short_original_excerpt.includes(row.written_surface)&&
+    x.exact_short_original_excerpt.length<=145&&
+    x.different_from_brinton_printed_work===true&&
+    x.original_transcription_not_folio_image_collated===true&&
+    x.existing_editorial_translation_not_gold===true));
+  insist(Array.isArray(row.competing_contextual_questions)&&
+   row.competing_contextual_questions.length>=2&&
+   row.competing_contextual_questions.every(q=>typeof q==='string'&&q.length>=20)&&
+   Array.isArray(row.non_equivalence_controls)&&row.non_equivalence_controls.length>=2&&
+   !row.non_equivalence_controls.includes(row.written_surface)&&
+   typeof row.risk==='string'&&row.risk.length>=45&&
+   typeof row.evidence_trust==='string'&&row.evidence_trust.length>=30);
+ }
+ insist(seen.size===EXACT_CONTRAST_FORMS.size);
+ return new Map(doc.cases.map(c=>[c.written_surface,c]));
+}
 function validate(triage){
  insist(triage?.format==='tentli-unresolved-historical-form-triage-v1'&&
    triage.unresolved_engine_miss_count===926&&
@@ -81,6 +206,15 @@ function validate(triage){
    Array.isArray(r.source_checked_similar_lemma_leads_not_equivalent)&&
    Array.isArray(r.unverified_morphological_surface_shape_hints)&&
    Array.isArray(r.context_specific_poetic_occurrence_reviews));
+  for(const context of r.historical_document_context_leads)
+   insist(https(context.source_url)&&
+    typeof context.original_work_id==='string'&&context.original_work_id.length>0&&
+    context.source_grade==='short_original_edition_context_not_independent_english_translation'&&
+    typeof context.context_id==='string'&&context.context_id.length>0);
+  for(const comparison of r.source_checked_similar_lemma_leads_not_equivalent)
+   insist(https(comparison.source_url)&&
+    comparison.historical_spelling_equivalence_verified===false&&
+    comparison.grammatical_derivation_verified===false);
   for(const e of r.historical_edition_examples){
    insist(https(e.printed_historical_source_url)&&
     typeof e.record_id==='string'&&typeof e.work_id==='string'&&
@@ -104,6 +238,9 @@ function buildDossiers(triage,limit=80){
  // The already source-indexed high-frequency forms are useful as cross-work
  // comparison seeds. Inclusion does NOT attest any individual contextual sense.
  const rows=triage.unresolved_forms;
+ const contrastSource=fs.readFileSync(CONTRAST_PATH,'utf8');
+ const contrastDoc=JSON.parse(contrastSource);
+ const contextContrastIndex=validateContextContrasts(contrastDoc,triage);
  const eligible=rows.filter(r=>
   r.independent_dictionary_context_lead||
   r.separate_poem_units_in_same_brinton_edition>=2||
@@ -141,6 +278,12 @@ function buildDossiers(triage,limit=80){
    triage_route:r.triage_route,
    research_category:c,
    suggested_next_source_check:nextAction[c],
+   overlapping_diagnostic_review_signals:diagnosticSignals(r),
+   source_indexed_context_contrast_not_approved:
+    contextContrastIndex.get(r.written_surface)||null,
+   grammatical_failure_type_independently_verified:false,
+   review_source_independence:witnessScope(r),
+   whole_clause_role_and_negation_scope_still_require_evidence:true,
    original_edition_examples:cited.map(e=>({
     original_record_id:e.record_id,work_id:e.work_id,
     source_url:e.printed_historical_source_url,
@@ -167,6 +310,15 @@ function buildDossiers(triage,limit=80){
   triage_source_sha256:sha(json(triage)),
   candidate_count:eligible.length,source_engine_gap_count:926,
   requested_dossier_limit:limit,prepared_dossier_count:packets.length,
+  contextual_contrast_source_pack_sha256:sha(contrastSource),
+  source_indexed_context_contrasts_without_grammatical_approval:contextContrastIndex.size,
+  contextual_contrasts_in_selected_dossiers:
+   packets.filter(x=>x.source_indexed_context_contrast_not_approved!==null).length,
+  dictionary_context_lead_is_not_sentence_translation:true,
+  diagnostic_signals_in_all_unmatched_forms_counted_with_overlap:countSignals(rows),
+  diagnostic_signals_in_selected_dossiers_counted_with_overlap:
+   countSignals(picked),
+  diagnostic_groups_are_not_independently_verified_grammatical_errors:true,
   selection:'source-indexed and repeated same-edition witnesses, source-lemma comparisons; source-work-diversified and priority ranked',
   reviewed_original_manuscript_images:0,new_human_approved_silver:0,new_human_approved_gold:0,
   verified_contextual_translations_added:0,canonical_grammar_rules_added:0,model_updates:0,
@@ -192,4 +344,4 @@ function main(){
   source_fingerprint:dossier.triage_source_sha256}));
 }
 if(require.main===module)main();
-module.exports={buildDossiers,validate};
+module.exports={buildDossiers,validate,validateContextContrasts};

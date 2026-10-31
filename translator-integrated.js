@@ -63,6 +63,22 @@ function showResult(){
       const link=safeLink(url,'Inspect finite-form or grammar evidence');
       if(link)panel.append(link);
      }
+     if(f.possibleContentCandidate){
+      const c=f.possibleContentCandidate;
+      panel.append(el('p','translator-meta','The written '+c.originalWritten+
+       ' may be a negated speech-content constituent; whether it is this verb’s object is NOT established.'));
+      for(const url of [c.lexicalSource,c.grammarComparisonSource]){
+       const link=safeLink(url,'Read lexical and historical speech-context evidence');
+       if(link)panel.append(link);
+      }
+     }
+     if(f.molinaFirstPersonComparison){
+      const c=f.molinaFirstPersonComparison;
+      panel.append(el('p','translator-meta','Molina records '+c.written+
+       ' as a first-person completed-form comparison; no person or tense is assigned to this documentary '+f.originalWritten+'.'));
+      const link=safeLink(c.lexicalSource,'Read Molina finite-form citation');
+      if(link)panel.append(link);
+     }
     }
    }
    passages.append(panel);

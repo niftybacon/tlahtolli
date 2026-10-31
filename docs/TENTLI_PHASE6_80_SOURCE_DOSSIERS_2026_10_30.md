@@ -77,6 +77,53 @@ productive clause, reviewed English pair, manuscript collation, neural
 training, Silver or Gold approval is claimed.** The 926 development misses
 remain 926; human semantic evaluation remains unavailable.
 
+## Phase 6 source-indexed contextual contrast batch: `yehua`, `antepilhuan`, `huel`
+
+A deliberately bounded **three-form original-clause follow-up** now connects
+source comparisons to the **same 926-form triage → 80-case research dossier**
+path. The new source-fingerprinted input is
+[`phase6_contextual_contrast_leads_2026_10_30.json`](../research/translation_corpus/phase6_contextual_contrast_leads_2026_10_30.json).
+It does not add a new grammar engine, rewrite original source strings or
+claim complete translations. The dossier builder checks that each proposed
+Brinton window belongs to its **existing train-only** source row and rejects
+untrusted dictionary URLs, altered witness identifiers, fabricated snippets,
+claims of independently verified meaning or false manuscript-image review.
+
+- **`yehua`** — Brinton VI.2 writes it twice in close proximity. Molina
+  f.35r / [ODN demonstrative and person-reference](https://nahuatl.wired-humanities.org/content/yehua-0)
+  contrasts with Molina f.36r, Olmos and
+  [ODN adverb/pronoun discussion](https://nahuatl.wired-humanities.org/content/yehua);
+  [GDN's Carochi index](https://gdn.iib.unam.mx/diccionario/yehua/18920)
+  separately documents temporal usage. **Neither occurrence has a reviewed
+  selected function.** These contrasts do **not** prove `yehua` equals the
+  now-canonical, distinctly written `yehuan`, or establish an antecedent.
+- **`antepilhuan`** — Brinton V.4 and the separately indexed
+  [Cantares Mexicanos fol.32r §595](https://temoa.iib.unam.mx/cantares-cantares-mexicanos/32r)
+  contain the original written surface. [Molina f.103r's `tepilhuan` entry](https://nahuatl.wired-humanities.org/node/188794)
+  and [Lockhart's social-context notes](https://nahuatl.wired-humanities.org/content/tepiltzin)
+  provide lexical alternatives, *not* a documented productive segmentation
+  of `antepilhuan`. The Temoa Spanish translation is interpretive evidence
+  needing review, not Gold or a universally approved English noun.
+- **`huel`** — Brinton VI.2 places it in a larger original clause; the
+  [Molina/Karttunen index](https://nahuatl.wired-humanities.org/content/huel-0)
+  and [Olmos/Carochi discussion](https://nahuatl.wired-humanities.org/node/172127)
+  document scalar and possibility uses. A separate
+  [GDN-indexed Cantares fol.13v §205 excerpt](https://gdn.iib.unam.mx/diccionario/ixpa/184708)
+  places it beside `ayac`, but does **not** independently resolve negation,
+  ability or English scoping. This is not a license to modify the draft
+  `ayac tle` grammar in #114/#115.
+
+These are **three research leads with source locators and competing questions**,
+not three source-certified complete clauses, new wordforms or new morphological
+derivations. Each record retains the original edited excerpt, source family,
+distinct witness limitations, negative equivalence controls, and zero approvals.
+Original historical folio images remain uncollated; expert semantic alignment,
+Silver and Gold remain **0**. The existing Phase 6 test suite now also rejects
+altered citation hosts, original windows, review claims, and false evidence
+upgrades. **Follow-up requires human/editorial source review and a separate,
+regression-tested canonical implementation before claiming historical coverage
+improvement.** This batch itself leaves **926 misses and 2,144 headwords**.
+
 ## Next substantive development milestone
 
 The **next step is not to count another 80**. For the high-impact forms the dossiers identify, inspect original manuscript/edition contexts and independent dictionaries, preserve competing senses and orthography, and separate exact word-form source identification from productive morphological hypotheses. Only independently warranted constructions should be offered to the **existing** canonical source-claim, morphological, sentence, grammar-IR and English components, with positive and negative tests and before/after engine diagnostics. Link that change through the Phase 5 review ledger **after** source/editorial review; never self-certify an LLM suggestion. The committed review ledger currently contains no human approvals.

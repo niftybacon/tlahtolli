@@ -1,4 +1,5 @@
 name: One-time zan source English, browser and versioned runtime sync
+# Revalidate corrected rejection of hyphenated zan-ye before generated asset sync.
 on:
   push:
     branches:

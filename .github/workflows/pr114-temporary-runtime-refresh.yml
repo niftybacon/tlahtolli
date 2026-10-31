@@ -1,4 +1,5 @@
 # TEMPORARY branch-only maintenance workflow; delete after asset refresh.
+# Second pass: refresh after evidence-pack-wide tamper-guard regression fix.
 name: PR114 temporary runtime asset regeneration
 on:
   push:

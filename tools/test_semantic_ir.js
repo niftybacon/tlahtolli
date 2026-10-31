@@ -127,4 +127,4 @@ assert(actual.semantic_verifier.option_count>0);
 assert.equal(actual.semantic_verifier.verified_historical_translation,false);
 assert.equal(produce('xyzzy').status,'abstain');
 console.log('PASS semantic contract: '+supported.length+
- ' complete constructed examples, '+refused+' deliberate tampering probes, real source-gated bridge, unverified semantic status and abstentions.');
+ ' complete constructed examples, '+refused+' tampering probes, 7 shared-engine surface probes, real source-gated bridge, unverified semantic status and abstentions.');

@@ -125,6 +125,7 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
    if(!Array.isArray(p?.written)||p.written.length!==2||
     p.written[0]!=='ayac'||p.written[1]!=='tle'||
     !Array.isArray(p.tokenIndices)||p.tokenIndices.length!==2||
+    !Array.isArray(p.originalWritten)||p.originalWritten.length!==2||
     p.grammarSource!==negativeGrammar||p.indexedGrammarSource!==negativeIndexed||
     p.lexicalSource!==negativeLexical||
     p.lexicallyNegativePersonIndefinite!==true||
@@ -138,9 +139,12 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
    const i=p.tokenIndices[0],j=p.tokenIndices[1];
    if(!Number.isInteger(i)||i<0||j!==i+1||j>=observedWords.length||
     observedWords[i].word!=='ayac'||observedWords[j].word!=='tle'||
+    p.originalWritten[0]!==raw.slice(observedWords[i].start,observedWords[i].end)||
+    p.originalWritten[1]!==raw.slice(observedWords[j].start,observedWords[j].end)||
     !/^[ \t]+$/u.test(raw.slice(observedWords[i].end,observedWords[j].start)))continue;
    const parent=newNode('negative-indefinite-pair-candidate',{
-    originalSpelling:'ayac tle',startTokenIndex:i,grammarSource:negativeGrammar,
+    originalSpelling:raw.slice(observedWords[i].start,observedWords[j].end),
+    startTokenIndex:i,grammarSource:negativeGrammar,
     indexedGrammarSource:negativeIndexed,lexicalSource:negativeLexical,
     sharedNegativeDomainCandidate:true,fullScopeResolved:false,
     grammaticalRolesResolved:false,finiteAnalysisResolved:false,

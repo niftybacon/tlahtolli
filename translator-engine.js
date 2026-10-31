@@ -109,11 +109,18 @@ function create(dictionary,passages,contextPack){
  const yehuaEnglish=validatedYehuaEnglish();
  function sourceEnglishReadings(input,direction='nh-en'){
   if(direction!=='nh-en'||!yehuaEnglish)return [];
-  const words=wordsOnly(String(input||'').slice(0,7000));
+  const original=String(input||'').slice(0,7000);
+  const found=[...original.matchAll(/[\p{L}\p{M}]+(?:[¯‾][\p{L}\p{M}]*|['’\-][\p{L}\p{M}]+)*/gu)];
+  const words=found.map(m=>m[0]);
   const normalized=words.map(norm);
   const out=[];
   for(let i=0;i<normalized.length&&i<90;i++){
    if(normalized[i]!=='yehua')continue;
+   const at=found[i].index;
+   // A number attached without a word boundary cannot become a supported
+   // Nahuatl lexical token (yehua123 and 2yehua are negative controls).
+   if(/[\p{N}]/u.test(original[at-1]||'')||
+      /[\p{N}]/u.test(original[at+words[i].length]||''))continue;
    // Brinton's English connective "that" is a contextual editorial choice,
    // never a dictionary gloss or an automatic complementizer analysis.
    const vi=normalized.slice(i-1,i+4).join(' ');

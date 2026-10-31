@@ -697,6 +697,24 @@ function showResult(){
      if(link)panel.append(link);
     }
    }
+   // Source-linked morphology remains visible even when clause translation
+   // abstains. These are NOT grammatical noun-argument/antecedent mentions.
+   if(graph.counts.sourcePossessedFormObservations>0){
+    panel.append(el('p','translator-caution',
+     'Source-exact possessed form(s) below: unreviewed morphological clues only. '+
+     'No full clause analysis, contextual sense, antecedent or English translation.'));
+    for(const n of graph.nodes.filter(x=>
+     x.kind==='source-possessed-form-observation').slice(0,10)){
+     panel.append(el('p','translator-meta',
+      'Clause '+(n.unit+1)+' · original written token '+n.originalWrittenToken+
+      ' · observed word '+n.written+' · candidate lemma '+n.lemma+
+      ' · possible 1sg possessor · grammatical role, referent and sense unresolved'));
+     const original=safeLink(n.historicalEditionSource,'Open original Brinton edited source');
+     const lexical=safeLink(n.lexicalSource,'Inspect lexical possessed-stem source');
+     if(original)panel.append(original);
+     if(lexical)panel.append(lexical);
+    }
+   }
    for(const e of graph.edges.filter(x=>[
     'in-subordinate-dependency','terminal-relative-dependency',
     'possible-relative-gap','possible-grammatical-argument',

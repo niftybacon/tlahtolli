@@ -166,12 +166,17 @@ function bridge(report,{models=loadModels()}={}){
   if(lexicalSourceCandidates.length)tally.source_indexed_exact_lexical_surface_research_leads++;
   const indexed=paradigms.get(norm(form))||[];
   const advancedCandidates=advanced.analyze(form);
+  // Brinton's exact noyollo now has a useful research morphology candidate;
+  // it is not independently reviewed word-sense/whole-clause recognition.
+  // Keep the pinned 926 certified-route misses unchanged until an authorized
+  // cross-edition lexical/morphological promotion and new baseline release.
   // A source-licensed but UNREVIEWED nominal predicate is exposed as a
   // morphology research candidate. Its grammar is not a certified lexical
   // hit or approved productive paradigm: do not silently reduce the 926
   // canonical recognition-miss count on this hypothesis alone.
   const countableAdvanced=advancedCandidates.filter(x=>
-   x.kind!=='Source-bounded plural nominal-predicate hypothesis');
+   x.kind!=='Source-bounded plural nominal-predicate hypothesis'&&
+   x.kind!=='Exact Brinton first-person possessed heart research reading');
   const archive=(row.source_families_exact_headword_matched!=='neither');
   const category=lexicalHits.length?'curated_lexical_headword_surface':
    indexed.length?'exact_indexed_grammar_paradigm_surface':

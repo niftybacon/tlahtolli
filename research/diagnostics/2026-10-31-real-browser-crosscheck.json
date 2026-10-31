@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-31",
+  "source": "actual index.html translator tab, local network-routed with published branch files",
+  "branch": "research/translational-capability-audit-20261031",
+  "run": "https://github.com/niftybacon/tlahtolli/actions/runs/41212886109",
+  "meta": {
+    "tested": 12,
+    "headwords_loaded": "2144 Classical Nahuatl headwords · 3419 index keys · 3 sourced passage candidates. · Runtime 9d49c4ad500f06ab"
+  },
+  "end": {
+    "cases": 12,
+    "browser_errors": []
+  },
+  "cases": [
+    {
+      "case": "known finite",
+      "input": "nichōca",
+      "direction": "nh-en",
+      "gloss": "[?nichōca]",
+      "english": "I cry.",
+      "english_choice_count": 1,
+      "poetic_notice": false,
+      "passage_excerpt": "Draft English · compare readings\n\nI cry.\n\nDraft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context. Source-gated productive verb analyses keep their original hypothesis or recorded-form grade; composing English does not attest a sentence. Grammar-graph audit: 0 relative role reading(s) matched a single source-bounded alternative; 2 finite and 0 location reading(s) keep th"
+    },
+    {
+      "case": "new finite+object",
+      "input": "ahmo niquitta in conetl",
+      "direction": "nh-en",
+      "gloss": "[?ahmo: multiple dictionary senses] [?niquitta] [?in: multiple dictionary senses] [?conetl: multiple dictionary senses]",
+      "english": "I do not see the child.",
+      "english_choice_count": 1,
+      "poetic_notice": false,
+      "passage_excerpt": "Draft English · compare readings\n\nI do not see the child.\n\nDraft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context. Source-gated productive verb analyses keep their original hypothesis or recorded-form grade; composing English does not attest a sentence. Grammar-graph audit: 0 relative role reading(s) matched a single source-bounded alternative; 3 finite and 0 location r"
+    },
+    {
+      "case": "lexical/grammar mismatch",
+      "input": "niquitta in cihuātl",
+      "direction": "nh-en",
+      "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]",
+      "english": "I see the woman.",
+      "english_choice_count": 1,
+      "poetic_notice": false,
+      "passage_excerpt": "Draft English · compare readings\n\nI see the woman.\n\nDraft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context. Source-gated productive verb analyses keep their original hypothesis or recorded-form grade; composing English does not attest a sentence. Grammar-graph audit: 0 relative role reading(s) matched a single source-bounded alternative; 3 finite and 0 location reading("
+    },
+    {
+      "case": "ambiguous roles",
+      "input": "quitta in cihuātl in tlācatl",
+      "direction": "nh-en",
+      "gloss": "[?quitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?tlācatl: multiple dictionary senses]",
+      "english": "The woman sees the person.",
+      "english_choice_count": 1,
+      "poetic_notice": false,
+      "passage_excerpt": "Draft English · compare readings\n\nThe woman sees the person.\n\nDraft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context. Source-gated productive verb analyses keep their original hypothesis or recorded-form grade; composing English does not attest a sentence. Grammar-graph audit: 0 relative role reading(s) matched a single source-bounded alternative; 6 finite and 0 locatio"
+    },
+    {
+      "case": "unknown token",
+      "input": "niquittax in cihuātl",
+      "direction": "nh-en",
+      "gloss": "[?niquittax] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]",
+      "english": null,
+      "english_choice_count": 0,
+      "poetic_notice": false,
+      "passage_excerpt": "Sentence analysis\n\nniquittax in cihuātl\n\nOutside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.\n\nPartial morphology only · 5 proposed analysises (NOT a sentence translation)\nShared grammatical representation · 1 clauses · 0 subordinate links · 0 noun mentions · 0 possible antecedent links"
+    },
+    {
+      "case": "unresolved poem",
+      "input": "In can on nemian noyollo yehua?",
+      "direction": "nh-en",
+      "gloss": "[?In: multiple dictionary senses] [?can: unreviewed archive index gloss] [?on] [?nemian] [?noyollo] [?yehua]?",
+      "english": null,
+      "english_choice_count": 0,
+      "poetic_notice": false,
+      "passage_excerpt": "Sentence analysis\n\nIn can on nemian noyollo yehua?\n\nQuestion scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred.\n\nPartial morphology only · 4 proposed analysises (NOT a sentence translation)\nShared grammatical representation · 1 clauses · 0 subordinate links · 0 noun mentions · 0 possible antecedent links"
+    },
+    {
+      "case": "unresolved contextual heart",
+      "input": "noyollo yehua",
+      "direction": "nh-en",
+      "gloss": "[?noyollo] [?yehua]",
+      "english": null,
+      "english_choice_count": 0,
+      "poetic_notice": false,
+      "passage_excerpt": "Sentence analysis\n\nnoyollo yehua\n\nOutside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.\n\nPartial morphology only · 1 proposed analysis (NOT a sentence translation)\nShared grammatical representation · 1 clauses · 0 subordinate links · 0 noun mentions · 0 possible antecedent links"
+    },
+    {
+      "case": "nominal-vocative contrast",
+      "input": "antepilhuan",
+      "direction": "nh-en",
+      "gloss": "[?antepilhuan]",
+      "english": "You (plural) are someone's children.",
+      "english_choice_count": 1,
+      "poetic_notice": false,
+      "passage_excerpt": "Draft English · compare readings\n\nYou (plural) are someone's children.\n\nDraft readings of supported structures. The initial choices are not ranked. Select alternatives to compare roles and senses. Third-person references stay unresolved; changing a connector is an editorial reading, not verified context. Source-gated productive verb analyses keep their original hypothesis or recorded-form grade; composing English does not attest a sentence. Grammar-graph audit: 0 relative role reading(s) matched a single source-bounded alternative; 0 finite and"
+    },
+    {
+      "case": "song interjection",
+      "input": "Nican momalinaco in colcahuahtecpillotl huiya nican milacatzoa in Colhuaca Chichimecayotl",
+      "direction": "nh-en",
+      "gloss": "[?Nican: multiple dictionary senses] [?momalinaco] [?in: multiple dictionary senses] [?colcahuahtecpillotl] [?huiya] [?nican: multiple dictionary senses] [?milacatzoa] [?in: multiple dictionary senses] [?Colhuaca] [?Chichimecayotl]",
+      "english": null,
+      "english_choice_count": 0,
+      "poetic_notice": true,
+      "passage_excerpt": "Historical song: context-specific poetic interjection\n\nA matched historical passage contains huiya as a likely sung vocable, not a universally disposable word. A different occurrence may instead be the verb yauh (“go”). This is a source-cited editorial interpretation, NOT a verified whole-passage translation.\n\nOriginal: huiya · cited context brinton-xv-02-huiya · no inferred English omission or global grammatical change.\n\nInspect poetic, scholarly or verbal evidenceInspect poetic, scholarly or verbal evidenceInspect poetic, scholarly or verbal "
+    },
+    {
+      "case": "punctuation edge",
+      "input": "nichōca,",
+      "direction": "nh-en",
+      "gloss": "[?nichōca],",
+      "english": null,
+      "english_choice_count": 0,
+      "poetic_notice": false,
+      "passage_excerpt": "Sentence analysis\n\nnichōca,\n\nOutside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.\n\nShared grammatical representation · 1 clauses · 0 subordinate links · 0 noun mentions · 0 possible antecedent links"
+    },
+    {
+      "case": "interrogative",
+      "input": "cuix nichōca?",
+      "direction": "nh-en",
+      "gloss": "[?cuix] [?nichōca]?",
+      "english": null,
+      "english_choice_count": 0,
+      "poetic_notice": false,
+      "passage_excerpt": "Sentence analysis\n\ncuix nichōca?\n\nQuestion scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred.\n\nPartial morphology only · 3 proposed analysises (NOT a sentence translation)\nShared grammatical representation · 1 clauses · 0 subordinate links · 0 noun mentions · 0 possible antecedent links"
+    },
+    {
+      "case": "reverse sentence",
+      "input": "I do not cry",
+      "direction": "en-nh",
+      "gloss": "[?I: unreviewed archive index gloss] [chīhua] [ahmō] [?cry]",
+      "english": null,
+      "english_choice_count": 0,
+      "poetic_notice": false,
+      "passage_excerpt": ""
+    }
+  ],
+  "limitations": [
+    "Original historical passages are not unseen expert Gold evaluation.",
+    "This is a local served copy of published main assets on the research branch, not direct interaction with the GitHub Pages production website.",
+    "No new linguistic claims, grammatical rules, human approvals, or model updates."
+  ]
+}

@@ -117,6 +117,15 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
      'no_person_tense_inference','no_historical_spelling_rewrite',
      'no_english_translation_certification','no_training','no_gold_or_silver']
        .every(k=>guard[k]===true))return [];
+  // A corrupted, substituted, or partly reviewed evidence pack cannot
+  // silently leave another witness enabled. Reject the pack as a unit.
+  if(expected.some((e,i)=>{
+   const w=doc.witnesses[i];
+   return w?.id!==e[0]||w.work_id!==e[1]||w.short_excerpt!==e[2]||
+    w.source_url!==e[3]||w.witnessed_speech_surface!==e[4]||
+    w.manuscript_collated!==false||w.grammar_approved!==false||
+    typeof w.locator!=='string'||w.locator.length<35;
+  }))return [];
   const raw=String(input||'').normalize('NFC');
   if(raw.length>7000)return [];
   const tokens=[...raw.matchAll(/[\p{L}\p{M}]+/gu)]

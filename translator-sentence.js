@@ -84,7 +84,7 @@ function compileClauseRules(pack){
  return valid;
 }
 
-function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,ayacEvidence){
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,ayacEvidence,speechMorphEvidence){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -162,6 +162,69 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
  // Bedell (2011) §14 p.19 documents negative indefinite pronouns; Wimmer
  // (2004) indexes "ayâc tle" and Sahagún XII.6 "ayâc tle quihtoa".
  // Keep colonial unmarked "ayac tle" distinct from accented scholarly forms.
+ // Source-certified *written forms* of itoa have grammar-compatible shapes.
+ // Do not use these to create a new verb paradigm, certify tense-aspect
+ // in a legal document, infer agreement, or rank translations.
+ function compileSpeechFormShapes(doc){
+  const expected=[
+   ['quitoz','future-z surface-shape candidate','-z',
+    'https://gdn.iib.unam.mx/diccionario/itoa/186420',
+    'enl-1621-coyoacan,gdn-1569-testament'],
+   ['oquito','preterite-augment surface-shape candidate','o-',
+    'https://gdn.iib.unam.mx/diccionario/itoa/186409',
+    'gdn-1585-possession,gdn-1587-land-possession,gdn-1587-isabel-maria']
+  ];
+  const g=doc?.guardrails;
+  if(doc?.format!=='tlahtolli-source-graded-itoa-speech-morphology-v1'||
+   doc.attested_lemma?.candidate!=='itoa'||
+   doc.attested_lemma?.part_of_speech_in_source!=='v.t.'||
+   doc.attested_lemma?.source_url!=='https://gdn.iib.unam.mx/diccionario/itoa/186409'||
+   doc.attested_lemma?.crosscheck!=='https://nahuatl.wired-humanities.org/content/itoa'||
+   doc.grammar_sources?.future!=='https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html'||
+   doc.grammar_sources?.preterite!=='https://nahuatl.wired-humanities.org/node/176799'||
+   doc.grammar_sources?.preterite_stem!==
+    'https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/preterite-tense/086BF0CAE349B08696892FE96A080C4F'||
+   doc.witnessed_pair_context!=='ayac tle'||
+   !Array.isArray(doc.forms)||doc.forms.length!==2||
+   g?.approved_silver!==0||g?.approved_gold!==0||
+   !['source_quote_only','exact_surface_only','no_new_lexicon_entry',
+    'no_productive_stem_paradigm','no_object_reference_assumption',
+    'no_subject_person_assumption','no_past_vs_perfect_decision',
+    'no_automatic_english','no_spelling_equivalence','no_train_or_gold']
+    .every(k=>g[k]===true))return null;
+  for(let i=0;i<2;i++){
+   const r=doc.forms[i],e=expected[i];
+   if(r?.written!==e[0]||r.label!==e[1]||
+    r.grammatical_indicator!==e[2]||r.source_url!==e[3]||
+    r.context_ids?.join(',')!==e[4]||
+    typeof r.source_locator!=='string'||r.source_locator.length<45||
+    r.full_clause_tense_adjudicated!==false||
+    r.morphological_segmentation_adjudicated!==false)return null;
+  }
+  return doc;
+ }
+ const sourceSpeechShapes=compileSpeechFormShapes(speechMorphEvidence);
+ function finiteSpeechShape(tokens,index,raw){
+  if(!sourceSpeechShapes||index+1>=tokens.length)return null;
+  const token=tokens[index+1],previous=tokens[index],row=
+   sourceSpeechShapes.forms.find(r=>r.written===token.word);
+  if(!row||!/^[ \t]+$/u.test(raw.slice(previous.end,token.start)))return null;
+  return {originalWritten:raw.slice(token.start,token.end),
+   tokenIndex:index+1,lemmaCandidate:'itoa',writtenForm:row.written,
+   surfaceShape:row.label,grammaticalIndicator:row.grammatical_indicator,
+   editedWitnessIds:row.context_ids.slice(),sourceUrl:row.source_url,
+   dictionarySource:sourceSpeechShapes.attested_lemma.source_url,
+   lexicalCrosscheck:sourceSpeechShapes.attested_lemma.crosscheck,
+   futureGrammar:sourceSpeechShapes.grammar_sources.future,
+   preteriteGrammar:sourceSpeechShapes.grammar_sources.preterite,
+   stemGrammar:sourceSpeechShapes.grammar_sources.preterite_stem,
+   finiteMorphologyCandidateOnly:true,completeSegmentationVerified:false,
+   contextualTenseAspectVerified:false,personNumberVerified:false,
+   objectIdentityVerified:false,negativeScopeVerified:false,
+   semanticArgumentRolesVerified:false,englishAlignmentVerified:false,
+   trainingAllowed:false,variantRewritingAllowed:false,
+   status:'source-graded finite surface morphology SHAPE, not complete clause analysis'};
+ }
  function negativeIndefinitePairObservations(input){
   const raw=String(input||'').normalize('NFC');
   if(raw.length>7000)return [];
@@ -173,6 +236,7 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    if(tokens[i].word!=='ayac'||tokens[i+1].word!=='tle'||
     !/^[ \t]+$/u.test(raw.slice(tokens[i].end,tokens[i+1].start)))continue;
    found.push({written:['ayac','tle'],tokenIndices:[i,i+1],
+    finiteSpeechCandidate:finiteSpeechShape(tokens,i+1,raw),
     originalWritten:[raw.slice(tokens[i].start,tokens[i].end),
      raw.slice(tokens[i+1].start,tokens[i+1].end)],
     grammarSource:'https://languageinindia.com/nov2011/bedellnawatorugo.pdf',

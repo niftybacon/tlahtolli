@@ -69,6 +69,29 @@ const graph=ir.build('antepilhuan',singular);
 assert.equal(graph.schema,'tlahtolli-grammar-ir-v1');
 assert.equal(graph.input,'antepilhuan');
 assert.equal(graph.status,'candidate-only; not a translation');
+const nomNode=graph.nodes.find(n=>n.kind==='nominal-predicate'&&
+ n.written==='antepilhuan'&&n.subjectPerson==='2pl');
+assert(nomNode,'Shared grammar representation must retain a nominal predicate');
+assert.equal(nomNode.vocativeVsPredicativeDiscourseResolved,false);
+assert(graph.nodes.some(n=>n.kind==='analysis-alternative'&&
+ n.family==='source-bounded-plural-nominal-predicate'));
+const audited=ir.auditEnglish(composed,singular,graph);
+assert.equal(audited.available,true,'Nominal grammar must pass source-locked IR audit');
+assert.equal(audited.verified,false);
+assert.equal(audited.units[0].options[0].structure.kind,
+ 'source-bounded-nominal-predicate');
+// Tampering with a person, predicate class or English cannot bypass the IR.
+for(const corrupt of [
+ a=>{a.units[0].options[0].structure.frame.subjectPerson=2},
+ a=>{a.units[0].options[0].structure.frame.tense='present'},
+ a=>{a.units[0].options[0].text='You are all princes'},
+ a=>{a.units[0].options[0].sources=['https://example.org/forged']}
+]){
+ const modified=JSON.parse(JSON.stringify(composed));corrupt(modified);
+ assert.equal(ir.auditEnglish(modified,singular,graph).available,false,
+  'Do not accept unsupported nominal meaning/roles after IR audit');
+}
+
 // Constructed extension may be analyzed morphologically, but there is
 // no exact attestation, hence no authorized complete English.
 const unrecorded=sentence.analyze('titepilhuan');

@@ -47,5 +47,28 @@ counts = Counter(steps)
 duplicates = sorted(name for name, count in counts.items() if count != 1)
 assert not duplicates, f"Duplicate workflow steps: {duplicates}"
 
+# YAML folds a plain-scalar 'run:' continuation into a single shell line.
+# Thus 'run: node first.js\\n          node second.js' runs only first.js;
+# 'second.js' is passed as an ignored argument. Catch this across the workflow.
+folded_shell_command = re.search(
+    r"(?m)^        run: (?![|>]\\s*$)[^\\n]+\\n {10,}(?:node|python|npm|bash|pytest|curl|git)\\b[^\\n]*$",
+    workflow,
+)
+assert not folded_shell_command, (
+    "A YAML-folded run continuation would silently skip a shell command: "
+    + folded_shell_command.group(0) if folded_shell_command else ""
+)
+
+# Protect exact historical source-form tests from accidentally becoming
+# ignored argv to the earlier source morphology adapter check.
+for required in (
+    "node tools/test_source_morphology.js",
+    "node tools/test_phase6_canonical_exact_forms.js",
+):
+    assert workflow.count(required) == 1, f"Expected exactly one test invocation: {required}"
+    assert re.search(rf"(?m)^          {re.escape(required)}$", workflow), (
+        f"Source evidence test must run as its own shell command: {required}"
+    )
+
 print(f"PASS translator workflow integrity: {len(push_paths)} symmetric PR/push "
       f"filters, {len(steps)} unique steps, and critical grammar paths covered")

@@ -565,6 +565,42 @@ const TlahtolliMorphEngine = (() => {
      /special semantics|only|alternativ|reverential|plural|for noble/iu.test(note))return null;
   return {base:match[1],claim};
  }
+ // A deliberately narrow nominal-predicate family rooted in MOLINA's
+ // exact attested tepilhuan noun and LAUNEY's 2pl/1pl subject concord.
+ // Children/offspring (-pil + -huan) is distinct from unpossessed noble
+ // pilli (plural pipiltin); never turn "O princes" into a global gloss.
+ const TEPILHUAN_MOLINA='https://nahuatl.wired-humanities.org/node/188794';
+ const NOMINAL_GRAMMAR='https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf';
+ const NOMINAL_KIND='Source-bounded plural nominal-predicate hypothesis';
+ function fromSourceNominalPredication(raw,all){
+  const written=String(raw||'').normalize('NFC').toLocaleLowerCase('en');
+  const attested=written==='antepilhuan',constructed=written==='titepilhuan';
+  if(!attested&&!constructed)return;
+  const matches=words.filter(w=>w.word==='tepilhuan'&&w.pos==='noun'&&
+   w.source===TEPILHUAN_MOLINA&&w.status==='Checked against source'&&
+   ['headword','pos','meaning'].every(field=>{
+    const c=sourceClaim(w,field);
+    return c?.source===TEPILHUAN_MOLINA&&
+      typeof c.locator==='string'&&c.locator.includes('103r');
+   })&&w.pluralStatus==='no_attested_form');
+  if(matches.length!==1)return;
+  const prefix=attested?'an':'ti',person=attested?'2pl':'1pl';
+  // Four proposed constituent boundaries, the complete source-spelled
+  // tepilhuan is independently lexical; its INTERNAL analysis isn't.
+  all.push(make('tepilhuan',NOMINAL_KIND,'hypothesis',
+   {category:'nominal-predicate',subject:person,number:'plural',
+    lexicalSurface:'tepilhuan',exactOriginalAttestation:attested,
+    productiveRuleStatus:'bounded grammatical hypothesis; no approved paradigm'},
+   [{surface:prefix,role:person+' nominal-predicate subject marker (Launey)'},
+    {surface:'te',role:'Lexical te- segment: possibly nonspecific human possessor; interpretation still contextual'},
+    {surface:'pil',role:'Proposed possessed offspring stem -pil; not the unpossessed noble noun pilli'},
+    {surface:'huan',role:'Proposed possessed plural -huan (Karttunen); not a universal suffix'}],
+   TEPILHUAN_MOLINA,'Molina 1571 II f.103r; Launey lesson 2.1; Karttunen -pil p.194',
+   'Source-graded morphology from exact tepilhuan plus classical plural subject marking. '+(attested?
+    'antepilhuan is attested in the cited Brinton research context; its vocative meaning remains context-specific. ':
+    'titepilhuan is an UNATTESTED constructed grammatical possibility. ')+
+   'Neither this segmentation nor a complete clause translation is independently certified; never confuse -pil (offspring) with pilli (noble). See '+NOMINAL_GRAMMAR));
+ }
  function fromPossessiveAnalogy(q,all){
   // Only an actual source-located complete no- form can license an analogy.
   // Never extrapolate from naked -possessed stems or from a generic noun.
@@ -624,6 +660,7 @@ const TlahtolliMorphEngine = (() => {
   fromSourceLocatedFiniteTemplates(raw,out);
   fromPossessiveAnalogy(q,out);
   fromSourceBoundPossessives(raw,out);
+  fromSourceNominalPredication(raw,out);
   const seen=new Set(),clean=[];
   for(const candidate of out){
    const key=JSON.stringify([candidate.lemma,candidate.kind,candidate.grade,candidate.features,candidate.parts]);

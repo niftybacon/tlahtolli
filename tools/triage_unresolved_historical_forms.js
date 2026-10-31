@@ -99,6 +99,12 @@ function shortOriginalSourceWindow(source,word){
  if(at<0)return null;
  return words.slice(Math.max(0,at-5),Math.min(words.length,at+6)).join(' ').slice(0,200);
 }
+function formIsScopedNominalCandidate(written,c){
+ return written==='antepilhuan'&&
+  c?.kind==='Source-bounded plural nominal-predicate hypothesis'&&
+  c.grade==='hypothesis'&&c.lemma==='tepilhuan'&&
+  c.source==='https://nahuatl.wired-humanities.org/node/188794';
+}
 function buildTriage(source,linked,{maxHuman=12}={}){
  validateResearch(source);
  if(linked?.format!=='tentli-research-engine-bridge-v1'||
@@ -203,7 +209,8 @@ function buildTriage(source,linked,{maxHuman=12}={}){
     linkedRow.curated_lexical_surface_count!==0||
     linkedRow.exact_verb_paradigm_candidates.length!==0||
     linkedRow.source_reviewed_morphology_candidates.length!==0||
-    linkedRow.advanced_browser_morphology_candidates.length!==0||
+    linkedRow.advanced_browser_morphology_candidates.some(c=>
+     !(formIsScopedNominalCandidate(linkedRow.written_surface,c)))||
     original.source_families_exact_headword_matched!=='neither')
    throw Error('Unresolved claim contradicts existing morphology or dictionary engine');
   const pre=prior.get(surface);

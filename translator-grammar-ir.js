@@ -152,6 +152,43 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
   }
   for(let i=0;i<clauses.length;i++){
    const cl=clauses[i]||{};
+   // The canonical sentence analyzer and morphology gate jointly authorize
+   // this ONE original nominal predicate. It is not a finite verb, an
+   // independently reviewed English line or a productive noun paradigm.
+   const nominal=(cl.candidates||[]).filter(c=>
+    cl.tokens?.length===1&&cl.tokens[0]==='antepilhuan'&&
+    String(cl.text||'').trim()==='antepilhuan'&&
+    c?.constructionId==='source-bounded-antepilhuan-nominal-predicate'&&
+    c.grade==='grammar-derived candidate'&&c.coverage===1&&
+    c.frame?.predicate==='tepilhuan'&&c.frame?.subjectPerson===4&&
+    c.frame?.tense==='nominal present'&&c.frame?.negative===false&&
+    c.frame?.object===null&&c.frame?.objectNoun===null&&
+    c.frame?.morphologyEvidence?.grade==='hypothesis'&&
+    c.frame?.morphologyEvidence?.written==='antepilhuan'&&
+    c.frame?.morphologyEvidence?.lemma==='tepilhuan'&&
+    Array.isArray(c.sources)&&c.sources.includes(
+     'https://nahuatl.wired-humanities.org/node/188794')&&
+    c.sources.includes(
+     'https://api.pageplace.de/preview/DT0400.9780511985027_A23683606/preview-9780511985027_A23683606.pdf'));
+   if(nominal.length===1){
+    const sourceAnalysis=sentenceModel?.analyze('antepilhuan');
+    const canonical=sourceAnalysis?.clauses?.[0]?.candidates||[];
+    const a=nominal[0];
+    if(sourceAnalysis.complete===true&&canonical.length===1&&
+     canonical[0].constructionId===a.constructionId&&
+     JSON.stringify(canonical[0].frame)===JSON.stringify(a.frame)&&
+     JSON.stringify(canonical[0].englishParts)===JSON.stringify(a.englishParts)){
+     const v=variant(i,'source-bounded-plural-nominal-predicate',0,
+      'source-graded morphological hypothesis; isolated nominal predication',a.sources);
+     if(v){
+      const id=newNode('nominal-predicate',{unit:i,written:'antepilhuan',
+       lexicalNoun:'tepilhuan',subjectPerson:'2pl',source:a.sources[0],
+       number:'plural',possessionOrNobleSenseResolved:false,
+       vocativeVsPredicativeDiscourseResolved:false,fullHistoricalClauseVerified:false});
+      if(id)newEdge(v,id,'contains-nominal-predicate',{readingId:v});
+     }
+    }
+   }
    // Partial analyses occupy observed token windows, not whole sentence
    // alternatives. No English, identity, or cross-boundary links follow.
    const allowed=new Set(['indexed-finite','source-finite','locative',
@@ -657,13 +694,41 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
     let status=null;
     // Reconsult the same canonical morphology provider for each productive
     // predicate; English options cannot strip or alter their evidence tier.
+    const scopedNominal=st.kind==='source-bounded-nominal-predicate'&&
+     st.frame?.predicate==='tepilhuan'&&st.frame?.tense==='nominal present'&&
+     st.frame?.subjectPerson===4&&st.frame?.negative===false&&
+     st.frame?.morphologyEvidence?.written==='antepilhuan'&&
+     st.frame?.morphologyEvidence?.grade==='hypothesis'&&
+     cl.tokens?.length===1&&cl.tokens[0]==='antepilhuan';
     const frames=[st.frame,st.relativeFrame,st.matrixFrame].filter(Boolean);
     if(frames.some(f=>{
+     if(scopedNominal&&f===st.frame)return false; // separately source-audited nominal grammar
      const expanded=!!f.morphologyEvidence||paradigms&&!paradigms.paradigms?.[f.predicate];
      if(!expanded)return false;
      try{return !sentenceModel?.validateProductiveFrame(f);}catch{return true;}
     })){counters.rejected++;continue;}
-    if(st.kind==='finite'){
+    if(scopedNominal){
+     // A nominal predicate must pass independent canonical recomputation,
+     // not the verb-only productive predicate validator or a forged candidate.
+     const fresh=sentenceModel?.analyze('antepilhuan');
+     const sourceCandidate=fresh?.clauses?.[0]?.candidates?.[0];
+     const matches=(cl.candidates||[]).some(c=>
+      c?.constructionId==='source-bounded-antepilhuan-nominal-predicate'&&
+      c.grade==='grammar-derived candidate'&&c.coverage===1&&
+      frameSame(c.frame,st.frame)&&
+      JSON.stringify(c.englishParts)===JSON.stringify(sourceCandidate?.englishParts)&&
+      JSON.stringify(c.frame)===JSON.stringify(sourceCandidate?.frame)&&
+      c.english?.includes(option.text)&&hasSources(option,c.sources));
+     const v=graph.nodes?.find(n=>n.kind==='analysis-alternative'&&
+      n.unit===i&&n.family==='source-bounded-plural-nominal-predicate');
+     const pred=graph.nodes?.find(n=>n.kind==='nominal-predicate'&&
+      n.unit===i&&n.written==='antepilhuan'&&n.lexicalNoun==='tepilhuan'&&
+      n.subjectPerson==='2pl'&&n.vocativeVsPredicativeDiscourseResolved===false);
+     if(matches&&sourceCandidate&&v&&pred&&
+      graph.edges.some(e=>e.from===v.id&&e.to===pred.id&&
+       e.relation==='contains-nominal-predicate'))
+      status='source-bounded-nominal-predicate-hypothesis';
+    }else if(st.kind==='finite'){
      const accepted=(cl.candidates||[]).some(c=>
       c?.grade==='grammar-derived candidate'&&
       c.coverage===cl.tokens?.length&&frameSame(c.frame,st.frame)&&

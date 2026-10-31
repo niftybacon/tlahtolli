@@ -42,6 +42,7 @@ on:
       - 'tools/morphology_engine.js'
       - 'tools/test_regular_present_morphology.js'
       - 'tools/test_source_bound_possessives.js'
+      - 'tools/test_antepilhuan_nominal_predication.js'
       - 'tools/test_source_verb_productivity.js'
       - 'tools/test_source_stem_class_morphology.js'
       - 'tools/test_source_stem_plural_morphology.js'
@@ -109,6 +110,7 @@ on:
       - 'tools/morphology_engine.js'
       - 'tools/test_regular_present_morphology.js'
       - 'tools/test_source_bound_possessives.js'
+      - 'tools/test_antepilhuan_nominal_predication.js'
       - 'tools/test_source_verb_productivity.js'
       - 'tools/test_source_stem_class_morphology.js'
       - 'tools/test_source_stem_plural_morphology.js'
@@ -173,6 +175,8 @@ jobs:
         run: node tools/test_regular_present_morphology.js
       - name: Canonical source-bound possessed noun morphology
         run: node tools/test_source_bound_possessives.js
+      - name: Source-bounded antepilhuan nominal predicate across morph, IR and English
+        run: node tools/test_antepilhuan_nominal_predication.js
       - name: Canonical source-located finite verb morphology
         run: node tools/test_source_verb_productivity.js
       - name: Canonical source-checked long/short verb stem productivity

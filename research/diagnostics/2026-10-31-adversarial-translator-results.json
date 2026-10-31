@@ -1,0 +1,5568 @@
+{
+  "report_type": "research-only-actual-tlahtolli-translator-execution",
+  "date": "2026-10-31",
+  "source_repo": "niftybacon/tlahtolli",
+  "base_main_commit": "440e2491f0f3266cee488521adbf779349c8114a",
+  "diagnostic_workflow_run": "https://github.com/niftybacon/tlahtolli/actions/runs/41212623762",
+  "branch": "research/translational-capability-audit-20261031",
+  "meta": {
+    "headwords": 2144,
+    "cases": 125,
+    "categories": {
+      "baseline": 13,
+      "novel_constructed": 19,
+      "historical_editions": 9,
+      "novel_unknown": 16,
+      "orthography": 25,
+      "punctuation_questions": 15,
+      "scope_syntax": 16,
+      "english_to_nahuatl": 12
+    },
+    "runtime": "published dictionary + canonical advanced morphology + source morphology + sentence/IR/English; browser archive not loaded",
+    "safety": "Development diagnostics only, no independent semantic score, no test corpus promoted"
+  },
+  "summary": {
+    "baseline": {
+      "inputs": 13,
+      "auditedEnglishDrafts": 10,
+      "completePrimarySentenceAnalysis": 8,
+      "fullyRecognizedByLexicalLookup": 3,
+      "grammaticalCandidates": 12,
+      "lexicalMatchedTokenOccurrences": 13,
+      "lexicalTotalTokenOccurrences": 24
+    },
+    "novel_constructed": {
+      "inputs": 19,
+      "auditedEnglishDrafts": 14,
+      "completePrimarySentenceAnalysis": 8,
+      "fullyRecognizedByLexicalLookup": 2,
+      "grammaticalCandidates": 20,
+      "lexicalMatchedTokenOccurrences": 52,
+      "lexicalTotalTokenOccurrences": 75
+    },
+    "historical_editions": {
+      "inputs": 9,
+      "auditedEnglishDrafts": 0,
+      "completePrimarySentenceAnalysis": 0,
+      "fullyRecognizedByLexicalLookup": 0,
+      "grammaticalCandidates": 0,
+      "lexicalMatchedTokenOccurrences": 22,
+      "lexicalTotalTokenOccurrences": 71
+    },
+    "novel_unknown": {
+      "inputs": 16,
+      "auditedEnglishDrafts": 0,
+      "completePrimarySentenceAnalysis": 0,
+      "fullyRecognizedByLexicalLookup": 0,
+      "grammaticalCandidates": 3,
+      "lexicalMatchedTokenOccurrences": 12,
+      "lexicalTotalTokenOccurrences": 36
+    },
+    "orthography": {
+      "inputs": 25,
+      "auditedEnglishDrafts": 1,
+      "completePrimarySentenceAnalysis": 1,
+      "fullyRecognizedByLexicalLookup": 11,
+      "grammaticalCandidates": 1,
+      "lexicalMatchedTokenOccurrences": 11,
+      "lexicalTotalTokenOccurrences": 25
+    },
+    "punctuation_questions": {
+      "inputs": 15,
+      "auditedEnglishDrafts": 8,
+      "completePrimarySentenceAnalysis": 7,
+      "fullyRecognizedByLexicalLookup": 0,
+      "grammaticalCandidates": 16,
+      "lexicalMatchedTokenOccurrences": 8,
+      "lexicalTotalTokenOccurrences": 29
+    },
+    "scope_syntax": {
+      "inputs": 16,
+      "auditedEnglishDrafts": 7,
+      "completePrimarySentenceAnalysis": 2,
+      "fullyRecognizedByLexicalLookup": 1,
+      "grammaticalCandidates": 12,
+      "lexicalMatchedTokenOccurrences": 45,
+      "lexicalTotalTokenOccurrences": 72
+    },
+    "english_to_nahuatl": {
+      "inputs": 12,
+      "auditedEnglishDrafts": 0,
+      "completePrimarySentenceAnalysis": 0,
+      "fullyRecognizedByLexicalLookup": 1,
+      "grammaticalCandidates": 0,
+      "lexicalMatchedTokenOccurrences": 9,
+      "lexicalTotalTokenOccurrences": 37
+    }
+  },
+  "run_end": {
+    "cases": 125,
+    "completed": 125,
+    "errors": 0,
+    "withEnglish": 40,
+    "headwordOnlyCoverage": 18,
+    "noSemanticAccuracyClaim": true
+  },
+  "restrictions": [
+    "Not a blind or independently expert-adjudicated translation benchmark.",
+    "Fresh constructed examples are not independently attested Nahuatl clauses.",
+    "Original historical excerpts previously studied by this project and are not unseen Gold.",
+    "Approximate dictionary lookups are counted as lexical recognitions but never as reviewed English.",
+    "The test harness loads dictionary, canonical advanced and source morphology, sentence analyzer, shared grammar IR, and English realizer. Browser archive overlay, live DOM, and neural optional proposals are not loaded. All 125 cases finished without a JS exception."
+  ],
+  "cases": [
+    {
+      "id": "baseline-01",
+      "category": "baseline",
+      "input": "nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep"
+        ],
+        "reason": null
+      },
+      "morphology": [
+        {
+          "lemma": "chōca",
+          "kind": "Indexed conjugation",
+          "grade": "paradigm",
+          "person": "1sg"
+        },
+        {
+          "lemma": "chōca",
+          "kind": "Indexed conjugation",
+          "grade": "paradigm",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 93
+    },
+    {
+      "id": "baseline-02",
+      "category": "baseline",
+      "input": "nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nitlacua]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 2,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "tlacuā",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I eat.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": [
+        {
+          "lemma": "tlacuā",
+          "kind": "Indexed conjugation",
+          "grade": "paradigm",
+          "person": "1sg"
+        },
+        {
+          "lemma": "tlacuā",
+          "kind": "Indexed conjugation",
+          "grade": "paradigm",
+          "person": "1sg"
+        },
+        {
+          "lemma": "cua",
+          "kind": "Source-template transitive present hypothesis",
+          "grade": "hypothesis",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 82
+    },
+    {
+      "id": "baseline-03",
+      "category": "baseline",
+      "input": "nicochi",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nicochi"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nicochi]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "cochi",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I sleep.",
+        "optionCounts": [
+          1
+        ],
+        "alternatives": [
+          "I sleep"
+        ],
+        "reason": null
+      },
+      "morphology": [
+        {
+          "lemma": "cochi",
+          "kind": "Regular intransitive present hypothesis",
+          "grade": "hypothesis",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 59
+    },
+    {
+      "id": "baseline-04",
+      "category": "baseline",
+      "input": "niquitta in cihuātl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": "the woman",
+          "subjectNoun": null,
+          "objectNoun": "cihuātl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the woman.",
+        "optionCounts": [
+          3
+        ],
+        "alternatives": [
+          "I see the woman",
+          "I inspect the woman",
+          "I look at the woman"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 47
+    },
+    {
+      "id": "baseline-05",
+      "category": "baseline",
+      "input": "ahmo niquittaz in cihuātl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 3,
+        "unknown": [
+          "niquittaz"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ahmo: multiple dictionary senses] [?niquittaz] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "future",
+          "negative": true,
+          "object": "the woman",
+          "subjectNoun": null,
+          "objectNoun": "cihuātl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I will not see the woman.",
+        "optionCounts": [
+          3
+        ],
+        "alternatives": [
+          "I will not see the woman",
+          "I will not inspect the woman",
+          "I will not look at the woman"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 38
+    },
+    {
+      "id": "baseline-06",
+      "category": "baseline",
+      "input": "niquitta in cihuātl in chōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?chōca: multiple dictionary senses]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 1,
+        "graphNodes": 7,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the woman that cries.",
+        "optionCounts": [
+          6
+        ],
+        "alternatives": [
+          "I see the woman that cries",
+          "I inspect the woman that cries",
+          "I look at the woman that cries"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 189
+    },
+    {
+      "id": "baseline-07",
+      "category": "baseline",
+      "input": "nichōca auh nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "nichōca",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca] [?auh: multiple dictionary senses] [?nitlacua]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry. I eat.",
+        "optionCounts": [
+          2,
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep",
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 57
+    },
+    {
+      "id": "baseline-08",
+      "category": "baseline",
+      "input": "nitetlazohtla",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nitetlazohtla"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nitetlazohtla]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "tlazohtla",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": "someone",
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I love someone.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "I love someone",
+          "I cherish someone"
+        ],
+        "reason": null
+      },
+      "morphology": [
+        {
+          "lemma": "tlazohtla",
+          "kind": "Source-template transitive present hypothesis",
+          "grade": "hypothesis",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 44
+    },
+    {
+      "id": "baseline-09",
+      "category": "baseline",
+      "input": "ōnicoch",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[to sleep]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "cochi",
+          "person": 0,
+          "tense": "preterite",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I slept.",
+        "optionCounts": [
+          1
+        ],
+        "alternatives": [
+          "I slept"
+        ],
+        "reason": null
+      },
+      "morphology": [
+        {
+          "lemma": "cochi",
+          "kind": "Preterite 1sg (Lockhart analysis)",
+          "grade": "lexical",
+          "person": null
+        }
+      ],
+      "elapsedMs": 37
+    },
+    {
+      "id": "baseline-10",
+      "category": "baseline",
+      "input": "antepilhuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "antepilhuan"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?antepilhuan]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 1,
+        "graphNodes": 3,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "tepilhuan",
+          "person": 4,
+          "tense": "nominal present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "You (plural) are someone's children.",
+        "optionCounts": [
+          1
+        ],
+        "alternatives": [
+          "You (plural) are someone's children"
+        ],
+        "reason": null
+      },
+      "morphology": [
+        {
+          "lemma": "tepilhuan",
+          "kind": "Source-bounded plural nominal-predicate hypothesis",
+          "grade": "hypothesis",
+          "person": "2pl"
+        }
+      ],
+      "elapsedMs": 45
+    },
+    {
+      "id": "baseline-11",
+      "category": "baseline",
+      "input": "noyollo",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "noyollo"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?noyollo]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "yollotl",
+          "kind": "Exact Brinton first-person possessed heart research reading",
+          "grade": "unreviewed",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 26
+    },
+    {
+      "id": "baseline-12",
+      "category": "baseline",
+      "input": "yehuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?yehuan: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "yehuan",
+          "kind": "Dictionary headword",
+          "grade": "lemma",
+          "person": null
+        }
+      ],
+      "elapsedMs": 25
+    },
+    {
+      "id": "baseline-13",
+      "category": "baseline",
+      "input": "tepilhuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?tepilhuan: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "tepilhuan",
+          "kind": "Dictionary headword",
+          "grade": "lemma",
+          "person": null
+        }
+      ],
+      "elapsedMs": 30
+    },
+    {
+      "id": "novel_constructed-01",
+      "category": "novel_constructed",
+      "input": "ahmo niquitta in conetl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 3,
+        "unknown": [
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ahmo: multiple dictionary senses] [?niquitta] [?in: multiple dictionary senses] [?conetl: multiple dictionary senses]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "present",
+          "negative": true,
+          "object": "the child",
+          "subjectNoun": null,
+          "objectNoun": "conetl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I do not see the child.",
+        "optionCounts": [
+          3
+        ],
+        "alternatives": [
+          "I do not see the child",
+          "I do not inspect the child",
+          "I do not look at the child"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 31
+    },
+    {
+      "id": "novel_constructed-02",
+      "category": "novel_constructed",
+      "input": "niquitta in conetl auh nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 3,
+        "unknown": [
+          "niquitta",
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?conetl: multiple dictionary senses] [?auh: multiple dictionary senses] [?nichōca]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 2,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": "the child",
+          "subjectNoun": null,
+          "objectNoun": "conetl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the child. I cry.",
+        "optionCounts": [
+          3,
+          2
+        ],
+        "alternatives": [
+          "I see the child",
+          "I inspect the child",
+          "I look at the child",
+          "I cry",
+          "I weep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 70
+    },
+    {
+      "id": "novel_constructed-03",
+      "category": "novel_constructed",
+      "input": "niquittaz in xōchitl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "niquittaz"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquittaz] [?in: multiple dictionary senses] [?xōchitl: multiple dictionary senses]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "future",
+          "negative": false,
+          "object": "the flower",
+          "subjectNoun": null,
+          "objectNoun": "xōchitl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I will see the flower.",
+        "optionCounts": [
+          3
+        ],
+        "alternatives": [
+          "I will see the flower",
+          "I will inspect the flower",
+          "I will look at the flower"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 40
+    },
+    {
+      "id": "novel_constructed-04",
+      "category": "novel_constructed",
+      "input": "cochiz in tlācatl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "cochiz"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?cochiz] [?in: multiple dictionary senses] [?tlācatl: multiple dictionary senses]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "cochi",
+          "person": 2,
+          "tense": "future",
+          "negative": false,
+          "object": null,
+          "subjectNoun": "tlācatl",
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "The person will sleep.",
+        "optionCounts": [
+          1
+        ],
+        "alternatives": [
+          "The person will sleep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 65
+    },
+    {
+      "id": "novel_constructed-05",
+      "category": "novel_constructed",
+      "input": "in tlācatl cochiz",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "cochiz"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?in: multiple dictionary senses] [?tlācatl: multiple dictionary senses] [?cochiz]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "cochi",
+          "person": 2,
+          "tense": "future",
+          "negative": false,
+          "object": null,
+          "subjectNoun": "tlācatl",
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "The person will sleep.",
+        "optionCounts": [
+          1
+        ],
+        "alternatives": [
+          "The person will sleep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 83
+    },
+    {
+      "id": "novel_constructed-06",
+      "category": "novel_constructed",
+      "input": "cochiz in conetl in chōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "cochiz"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?cochiz] [?in: multiple dictionary senses] [?conetl: multiple dictionary senses] [?in: multiple dictionary senses] [?chōca: multiple dictionary senses]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 1,
+        "graphNodes": 7,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "The child that cries will sleep.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "The child that cries will sleep",
+          "The child that weeps will sleep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 189
+    },
+    {
+      "id": "novel_constructed-07",
+      "category": "novel_constructed",
+      "input": "niquitta in conetl in cochiz",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 3,
+        "unknown": [
+          "niquitta",
+          "cochiz"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?conetl: multiple dictionary senses] [?in: multiple dictionary senses] [?cochiz]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 1,
+        "graphNodes": 7,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the child that will sleep.",
+        "optionCounts": [
+          3
+        ],
+        "alternatives": [
+          "I see the child that will sleep",
+          "I inspect the child that will sleep",
+          "I look at the child that will sleep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 129
+    },
+    {
+      "id": "novel_constructed-08",
+      "category": "novel_constructed",
+      "input": "nicochi auh niquitta in tlācatl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 3,
+        "unknown": [
+          "nicochi",
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nicochi] [?auh: multiple dictionary senses] [?niquitta] [?in: multiple dictionary senses] [?tlācatl: multiple dictionary senses]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 2,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "cochi",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I sleep. I see the person.",
+        "optionCounts": [
+          1,
+          3
+        ],
+        "alternatives": [
+          "I sleep",
+          "I see the person",
+          "I inspect the person",
+          "I look at the person"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 60
+    },
+    {
+      "id": "novel_constructed-09",
+      "category": "novel_constructed",
+      "input": "ahmo nicochi auh nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "nicochi",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ahmo: multiple dictionary senses] [?nicochi] [?auh: multiple dictionary senses] [?nitlacua]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "cochi",
+          "person": 0,
+          "tense": "present",
+          "negative": true,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I do not sleep. I eat.",
+        "optionCounts": [
+          1,
+          2
+        ],
+        "alternatives": [
+          "I do not sleep",
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 67
+    },
+    {
+      "id": "novel_constructed-10",
+      "category": "novel_constructed",
+      "input": "niquitta in tlācatl auh ahmo nicochi",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "niquitta",
+          "nicochi"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?tlācatl: multiple dictionary senses] [?auh: multiple dictionary senses] [?ahmo: multiple dictionary senses] [?nicochi]",
+        "total": 6
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 2,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": "the person",
+          "subjectNoun": null,
+          "objectNoun": "tlācatl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the person. I do not sleep.",
+        "optionCounts": [
+          3,
+          1
+        ],
+        "alternatives": [
+          "I see the person",
+          "I inspect the person",
+          "I look at the person",
+          "I do not sleep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 61
+    },
+    {
+      "id": "novel_constructed-11",
+      "category": "novel_constructed",
+      "input": "niquitta in āmatl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?āmatl: multiple dictionary senses]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": "the document",
+          "subjectNoun": null,
+          "objectNoun": "āmatl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the document.",
+        "optionCounts": [
+          3
+        ],
+        "alternatives": [
+          "I see the document",
+          "I inspect the document",
+          "I look at the document"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 30
+    },
+    {
+      "id": "novel_constructed-12",
+      "category": "novel_constructed",
+      "input": "in cihuātl quitta in conetl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "quitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?quitta] [?in: multiple dictionary senses] [?conetl: multiple dictionary senses]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 2,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 2,
+          "tense": "present",
+          "negative": false,
+          "object": "the child",
+          "subjectNoun": "cihuātl",
+          "objectNoun": "conetl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "The woman sees the child.",
+        "optionCounts": [
+          6
+        ],
+        "alternatives": [
+          "The woman sees the child",
+          "The woman inspects the child",
+          "The woman looks at the child"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 47
+    },
+    {
+      "id": "novel_constructed-13",
+      "category": "novel_constructed",
+      "input": "in conetl quitta in cihuātl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "quitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?in: multiple dictionary senses] [?conetl: multiple dictionary senses] [?quitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 2,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 2,
+          "tense": "present",
+          "negative": false,
+          "object": "the woman",
+          "subjectNoun": "conetl",
+          "objectNoun": "cihuātl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "The child sees the woman.",
+        "optionCounts": [
+          6
+        ],
+        "alternatives": [
+          "The child sees the woman",
+          "The child inspects the woman",
+          "The child looks at the woman"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 48
+    },
+    {
+      "id": "novel_constructed-14",
+      "category": "novel_constructed",
+      "input": "quitta in cihuātl in tlācatl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "quitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?quitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?tlācatl: multiple dictionary senses]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 2,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 2,
+          "tense": "present",
+          "negative": false,
+          "object": "the person",
+          "subjectNoun": "cihuātl",
+          "objectNoun": "tlācatl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "The woman sees the person.",
+        "optionCounts": [
+          6
+        ],
+        "alternatives": [
+          "The woman sees the person",
+          "The woman inspects the person",
+          "The woman looks at the person"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 42
+    },
+    {
+      "id": "novel_constructed-15",
+      "category": "novel_constructed",
+      "input": "noyollo niquitta in cihuātl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "noyollo",
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?noyollo] [?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 68
+    },
+    {
+      "id": "novel_constructed-16",
+      "category": "novel_constructed",
+      "input": "nicnequi in cihuātl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "nicnequi"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nicnequi] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 50
+    },
+    {
+      "id": "novel_constructed-17",
+      "category": "novel_constructed",
+      "input": "titepilhuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "titepilhuan"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?titepilhuan]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "tepilhuan",
+          "kind": "Source-bounded plural nominal-predicate hypothesis",
+          "grade": "hypothesis",
+          "person": "1pl"
+        }
+      ],
+      "elapsedMs": 23
+    },
+    {
+      "id": "novel_constructed-18",
+      "category": "novel_constructed",
+      "input": "ātl itic",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ātl: multiple dictionary senses] [?itic: multiple dictionary senses]",
+        "total": 2
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 42
+    },
+    {
+      "id": "novel_constructed-19",
+      "category": "novel_constructed",
+      "input": "in xōchitl in āmatl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?in: multiple dictionary senses] [?xōchitl: multiple dictionary senses] [?in: multiple dictionary senses] [?āmatl: multiple dictionary senses]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 69
+    },
+    {
+      "id": "historical_editions-01",
+      "category": "historical_editions",
+      "input": "In can on nemian noyollo yehua?",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "on",
+          "nemian",
+          "noyollo",
+          "yehua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?In: multiple dictionary senses] [?can: unreviewed archive index gloss] [?on] [?nemian] [?noyollo] [?yehua]?",
+        "total": 6
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "No supported complete passage structure."
+      },
+      "morphology": null,
+      "elapsedMs": 100
+    },
+    {
+      "id": "historical_editions-02",
+      "category": "historical_editions",
+      "input": "Macazo tleon xoconyoyocoya ti noyollo, yehua cuix ic nepohualoyan in oncan nemohua yehua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "Macazo",
+          "tleon",
+          "xoconyoyocoya",
+          "ti",
+          "noyollo",
+          "yehua",
+          "cuix",
+          "ic",
+          "nepohualoyan",
+          "nemohua",
+          "yehua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?Macazo] [?tleon] [?xoconyoyocoya] [?ti] [?noyollo], [?yehua] [?cuix] [?ic] [?nepohualoyan] [?in: multiple dictionary senses] [?oncan: multiple dictionary senses] [?nemohua] [?yehua]",
+        "total": 13
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 189
+    },
+    {
+      "id": "historical_editions-03",
+      "category": "historical_editions",
+      "input": "quen conchihuaz noyollo yehua onentacico",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "conchihuaz",
+          "noyollo",
+          "yehua",
+          "onentacico"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?quen: unreviewed archive index gloss] [?conchihuaz] [?noyollo] [?yehua] [?onentacico]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 78
+    },
+    {
+      "id": "historical_editions-04",
+      "category": "historical_editions",
+      "input": "Ma yan moyoliuh quimati in antepilhuan in anquauhtin amo celo ca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "Ma",
+          "yan",
+          "moyoliuh",
+          "quimati",
+          "antepilhuan",
+          "anquauhtin",
+          "celo"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?Ma] [?yan] [?moyoliuh] [?quimati] [?in: multiple dictionary senses] [?antepilhuan] [?in: multiple dictionary senses] [?anquauhtin] [?amo: multiple dictionary senses] [?celo] [?ca: multiple dictionary senses]",
+        "total": 11
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 183
+    },
+    {
+      "id": "historical_editions-05",
+      "category": "historical_editions",
+      "input": "Nican momalinaco in colcahuahtecpillotl huiya nican milacatzoa in Colhuaca Chichimecayotl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "momalinaco",
+          "colcahuahtecpillotl",
+          "huiya",
+          "milacatzoa",
+          "Colhuaca",
+          "Chichimecayotl"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?Nican: multiple dictionary senses] [?momalinaco] [?in: multiple dictionary senses] [?colcahuahtecpillotl] [?huiya] [?nican: multiple dictionary senses] [?milacatzoa] [?in: multiple dictionary senses] [?Colhuaca] [?Chichimec",
+        "total": 10
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 1,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "This original-language passage includes a cited poetic-vocable reading of huiya; English cannot omit it, choose the verbal homograph, or certify a whole-clause translation automatically."
+      },
+      "morphology": null,
+      "elapsedMs": 162
+    },
+    {
+      "id": "historical_editions-06",
+      "category": "historical_editions",
+      "input": "O anca yuhqui in chalchihuitl Ohuaya zan ca yuhqui in cozcatl in quetzalli",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 5,
+        "unknown": [
+          "O",
+          "anca",
+          "yuhqui",
+          "Ohuaya",
+          "yuhqui"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?O] [?anca] [?yuhqui] [?in: multiple dictionary senses] [?chalchihuitl: unreviewed archive index gloss] [?Ohuaya] [?zan: unreviewed archive index gloss] [?ca: multiple dictionary senses] [?yuhqui] [?in: multiple dictionary s",
+        "total": 13
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 178
+    },
+    {
+      "id": "historical_editions-07",
+      "category": "historical_editions",
+      "input": "ticnamaca y¯ totlal",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "ticnamaca",
+          "y¯",
+          "totlal"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ticnamaca] [?y¯] [?totlal]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 41
+    },
+    {
+      "id": "historical_editions-08",
+      "category": "historical_editions",
+      "input": "in mochioa tezcatl, in mocuepa ca tetl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 6,
+        "unknown": [
+          "mochioa"
+        ],
+        "approximates": 0,
+        "ambiguous": 1,
+        "gloss": "[?in: multiple dictionary senses] [?mochioa] [?tezcatl: multiple dictionary senses], [?in: multiple dictionary senses] [?mocuepa: multiple entries] [?ca: multiple dictionary senses] [?tetl: multiple dictionary senses]",
+        "total": 7
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 113
+    },
+    {
+      "id": "historical_editions-09",
+      "category": "historical_editions",
+      "input": "Yacuic iyec tenonotzaltzin",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "Yacuic",
+          "iyec",
+          "tenonotzaltzin"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?Yacuic] [?iyec] [?tenonotzaltzin]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 44
+    },
+    {
+      "id": "novel_unknown-01",
+      "category": "novel_unknown",
+      "input": "xyzzy",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "xyzzy"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?xyzzy]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "novel_unknown-02",
+      "category": "novel_unknown",
+      "input": "niquittax",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "niquittax"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquittax]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 22
+    },
+    {
+      "id": "novel_unknown-03",
+      "category": "novel_unknown",
+      "input": "yehuazol",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "yehuazol"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?yehuazol]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "novel_unknown-04",
+      "category": "novel_unknown",
+      "input": "noyollocom",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "noyollocom"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?noyollocom]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "novel_unknown-05",
+      "category": "novel_unknown",
+      "input": "nantepilhuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nantepilhuan"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nantepilhuan]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 27
+    },
+    {
+      "id": "novel_unknown-06",
+      "category": "novel_unknown",
+      "input": "niquittax in cihuātl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "niquittax"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquittax] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 64
+    },
+    {
+      "id": "novel_unknown-07",
+      "category": "novel_unknown",
+      "input": "ahmo niquittaz in xyzzy",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "niquittaz",
+          "xyzzy"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ahmo: multiple dictionary senses] [?niquittaz] [?in: multiple dictionary senses] [?xyzzy]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 61
+    },
+    {
+      "id": "novel_unknown-08",
+      "category": "novel_unknown",
+      "input": "niquitta in cihuātl xyzzy",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "niquitta",
+          "xyzzy"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?xyzzy]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 69
+    },
+    {
+      "id": "novel_unknown-09",
+      "category": "novel_unknown",
+      "input": "xyzzy nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "xyzzy",
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?xyzzy] [?nichōca]",
+        "total": 2
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 44
+    },
+    {
+      "id": "novel_unknown-10",
+      "category": "novel_unknown",
+      "input": "nichōca xyzzy",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca",
+          "xyzzy"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca] [?xyzzy]",
+        "total": 2
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 51
+    },
+    {
+      "id": "novel_unknown-11",
+      "category": "novel_unknown",
+      "input": "niquitta in xōchitlx",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "niquitta",
+          "xōchitlx"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?xōchitlx]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 44
+    },
+    {
+      "id": "novel_unknown-12",
+      "category": "novel_unknown",
+      "input": "nixochitequi",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nixochitequi"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nixochitequi]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "novel_unknown-13",
+      "category": "novel_unknown",
+      "input": "ninotlazotla",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "ninotlazotla"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ninotlazotla]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "novel_unknown-14",
+      "category": "novel_unknown",
+      "input": "tlahtolliztliqui",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "tlahtolliztliqui"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?tlahtolliztliqui]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 22
+    },
+    {
+      "id": "novel_unknown-15",
+      "category": "novel_unknown",
+      "input": "niquitta in cihuātl. xyzzy. nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "niquitta",
+          "xyzzy",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]. [?xyzzy]. [?nitlacua]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 3,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 3,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": "the woman",
+          "subjectNoun": null,
+          "objectNoun": "cihuātl"
+        }
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "A sentence still lacks supported English wording."
+      },
+      "morphology": null,
+      "elapsedMs": 58
+    },
+    {
+      "id": "novel_unknown-16",
+      "category": "novel_unknown",
+      "input": "niquitta in cihuātl auh xyzzy",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 3,
+        "unknown": [
+          "niquitta",
+          "xyzzy"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?auh: multiple dictionary senses] [?xyzzy]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 92
+    },
+    {
+      "id": "orthography-01",
+      "category": "orthography",
+      "input": "nichoca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichoca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichoca]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 38
+    },
+    {
+      "id": "orthography-02",
+      "category": "orthography",
+      "input": "NICHOCA",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "NICHOCA"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?NICHOCA]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "orthography-03",
+      "category": "orthography",
+      "input": "nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep"
+        ],
+        "reason": null
+      },
+      "morphology": [
+        {
+          "lemma": "chōca",
+          "kind": "Indexed conjugation",
+          "grade": "paradigm",
+          "person": "1sg"
+        },
+        {
+          "lemma": "chōca",
+          "kind": "Indexed conjugation",
+          "grade": "paradigm",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 27
+    },
+    {
+      "id": "orthography-04",
+      "category": "orthography",
+      "input": "ni-chōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "ni-chōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ni-chōca]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 16
+    },
+    {
+      "id": "orthography-05",
+      "category": "orthography",
+      "input": "nīchōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nīchōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nīchōca]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 28
+    },
+    {
+      "id": "orthography-06",
+      "category": "orthography",
+      "input": "noyollo",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "noyollo"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?noyollo]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "yollotl",
+          "kind": "Exact Brinton first-person possessed heart research reading",
+          "grade": "unreviewed",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 23
+    },
+    {
+      "id": "orthography-07",
+      "category": "orthography",
+      "input": "noyōllo",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "noyōllo"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?noyōllo]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "yollotl",
+          "kind": "Source-bound possessed noun analogy",
+          "grade": "analogy",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 26
+    },
+    {
+      "id": "orthography-08",
+      "category": "orthography",
+      "input": "noyöllo",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "noyöllo"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?noyöllo]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 31
+    },
+    {
+      "id": "orthography-09",
+      "category": "orthography",
+      "input": "yehua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "yehua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?yehua]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "orthography-10",
+      "category": "orthography",
+      "input": "yehuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?yehuan: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "yehuan",
+          "kind": "Dictionary headword",
+          "grade": "lemma",
+          "person": null
+        }
+      ],
+      "elapsedMs": 23
+    },
+    {
+      "id": "orthography-11",
+      "category": "orthography",
+      "input": "yehuān",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 1,
+        "ambiguous": 0,
+        "gloss": "[?yehuān: spelling uncertain]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 27
+    },
+    {
+      "id": "orthography-12",
+      "category": "orthography",
+      "input": "yēhuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 1,
+        "ambiguous": 0,
+        "gloss": "[?yēhuan: spelling uncertain]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 27
+    },
+    {
+      "id": "orthography-13",
+      "category": "orthography",
+      "input": "yeuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "yeuan"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?yeuan]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "orthography-14",
+      "category": "orthography",
+      "input": "tepilhuan",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?tepilhuan: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "tepilhuan",
+          "kind": "Dictionary headword",
+          "grade": "lemma",
+          "person": null
+        }
+      ],
+      "elapsedMs": 23
+    },
+    {
+      "id": "orthography-15",
+      "category": "orthography",
+      "input": "tepilhuān",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 1,
+        "ambiguous": 0,
+        "gloss": "[?tepilhuān: spelling uncertain]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 27
+    },
+    {
+      "id": "orthography-16",
+      "category": "orthography",
+      "input": "tepilhuantzin",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "tepilhuantzin"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?tepilhuantzin]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 22
+    },
+    {
+      "id": "orthography-17",
+      "category": "orthography",
+      "input": "teōtl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?teōtl: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "teōtl",
+          "kind": "Dictionary headword",
+          "grade": "lexical",
+          "person": null
+        },
+        {
+          "lemma": "teōtl",
+          "kind": "Dictionary headword",
+          "grade": "lemma",
+          "person": null
+        },
+        {
+          "lemma": "teōtl",
+          "kind": "Noun citation-form segmentation",
+          "grade": "hypothesis",
+          "person": null
+        }
+      ],
+      "elapsedMs": 27
+    },
+    {
+      "id": "orthography-18",
+      "category": "orthography",
+      "input": "teotl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?teotl: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "teōtl",
+          "kind": "Spelling variant",
+          "grade": "unreviewed",
+          "person": null
+        }
+      ],
+      "elapsedMs": 24
+    },
+    {
+      "id": "orthography-19",
+      "category": "orthography",
+      "input": "xochitl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?xochitl: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "xōchitl",
+          "kind": "Spelling variant",
+          "grade": "unreviewed",
+          "person": null
+        }
+      ],
+      "elapsedMs": 25
+    },
+    {
+      "id": "orthography-20",
+      "category": "orthography",
+      "input": "xōchitl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?xōchitl: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "xōchitl",
+          "kind": "Dictionary headword",
+          "grade": "lexical",
+          "person": null
+        },
+        {
+          "lemma": "xōchitl",
+          "kind": "Noun citation-form segmentation",
+          "grade": "lexical",
+          "person": null
+        },
+        {
+          "lemma": "xōchitl",
+          "kind": "Dictionary headword",
+          "grade": "lemma",
+          "person": null
+        }
+      ],
+      "elapsedMs": 28
+    },
+    {
+      "id": "orthography-21",
+      "category": "orthography",
+      "input": "atl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?atl: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "ātl",
+          "kind": "Spelling variant",
+          "grade": "unreviewed",
+          "person": null
+        }
+      ],
+      "elapsedMs": 20
+    },
+    {
+      "id": "orthography-22",
+      "category": "orthography",
+      "input": "ātl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ātl: multiple dictionary senses]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [
+        {
+          "lemma": "ātl",
+          "kind": "Dictionary headword",
+          "grade": "lexical",
+          "person": null
+        },
+        {
+          "lemma": "ātl",
+          "kind": "Dictionary headword",
+          "grade": "lemma",
+          "person": null
+        },
+        {
+          "lemma": "ātl",
+          "kind": "Noun citation-form segmentation",
+          "grade": "hypothesis",
+          "person": null
+        }
+      ],
+      "elapsedMs": 23
+    },
+    {
+      "id": "orthography-23",
+      "category": "orthography",
+      "input": "huiya",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "huiya"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?huiya]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 23
+    },
+    {
+      "id": "orthography-24",
+      "category": "orthography",
+      "input": "huīya",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "huīya"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?huīya]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 27
+    },
+    {
+      "id": "orthography-25",
+      "category": "orthography",
+      "input": "ohuiya",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "ohuiya"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ohuiya]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": [],
+      "elapsedMs": 24
+    },
+    {
+      "id": "punctuation_questions-01",
+      "category": "punctuation_questions",
+      "input": "nichōca.",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca].",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 17
+    },
+    {
+      "id": "punctuation_questions-02",
+      "category": "punctuation_questions",
+      "input": "Nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "Nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?Nichōca]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep"
+        ],
+        "reason": null
+      },
+      "morphology": [
+        {
+          "lemma": "chōca",
+          "kind": "Indexed conjugation",
+          "grade": "paradigm",
+          "person": "1sg"
+        },
+        {
+          "lemma": "chōca",
+          "kind": "Indexed conjugation",
+          "grade": "paradigm",
+          "person": "1sg"
+        }
+      ],
+      "elapsedMs": 27
+    },
+    {
+      "id": "punctuation_questions-03",
+      "category": "punctuation_questions",
+      "input": "nichōca!",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca]!",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 18
+    },
+    {
+      "id": "punctuation_questions-04",
+      "category": "punctuation_questions",
+      "input": "nichōca?",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca]?",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "No supported complete passage structure."
+      },
+      "morphology": null,
+      "elapsedMs": 19
+    },
+    {
+      "id": "punctuation_questions-05",
+      "category": "punctuation_questions",
+      "input": "¿nichōca?",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "¿[?nichōca]?",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "No supported complete passage structure."
+      },
+      "morphology": null,
+      "elapsedMs": 19
+    },
+    {
+      "id": "punctuation_questions-06",
+      "category": "punctuation_questions",
+      "input": "nichōca,",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca],",
+        "total": 1
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 9
+    },
+    {
+      "id": "punctuation_questions-07",
+      "category": "punctuation_questions",
+      "input": "nichōca;",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca];",
+        "total": 1
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 1,
+        "candidateCount": 1,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry.",
+        "optionCounts": [
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 18
+    },
+    {
+      "id": "punctuation_questions-08",
+      "category": "punctuation_questions",
+      "input": "nichōca\nnitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "nichōca",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca]\n[?nitlacua]",
+        "total": 2
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 2,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry. I eat.",
+        "optionCounts": [
+          2,
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep",
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 43
+    },
+    {
+      "id": "punctuation_questions-09",
+      "category": "punctuation_questions",
+      "input": "Nichōca. Nitlacua.",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "Nichōca",
+          "Nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?Nichōca]. [?Nitlacua].",
+        "total": 2
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 2,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry. I eat.",
+        "optionCounts": [
+          2,
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep",
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 42
+    },
+    {
+      "id": "punctuation_questions-10",
+      "category": "punctuation_questions",
+      "input": "niquitta in cihuātl?",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]?",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "No supported complete passage structure."
+      },
+      "morphology": null,
+      "elapsedMs": 43
+    },
+    {
+      "id": "punctuation_questions-11",
+      "category": "punctuation_questions",
+      "input": "cuix nichōca?",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "cuix",
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?cuix] [?nichōca]?",
+        "total": 2
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "No supported complete passage structure."
+      },
+      "morphology": null,
+      "elapsedMs": 44
+    },
+    {
+      "id": "punctuation_questions-12",
+      "category": "punctuation_questions",
+      "input": "cuix nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "cuix",
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?cuix] [?nichōca]",
+        "total": 2
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 45
+    },
+    {
+      "id": "punctuation_questions-13",
+      "category": "punctuation_questions",
+      "input": "nichōca, auh nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "nichōca",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca], [?auh: multiple dictionary senses] [?nitlacua]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry. I eat.",
+        "optionCounts": [
+          2,
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep",
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 46
+    },
+    {
+      "id": "punctuation_questions-14",
+      "category": "punctuation_questions",
+      "input": "ahmo nichōca. nitlacua.",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "nichōca",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ahmo: multiple dictionary senses] [?nichōca]. [?nitlacua].",
+        "total": 3
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 2,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": true,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I do not cry. I eat.",
+        "optionCounts": [
+          2,
+          2
+        ],
+        "alternatives": [
+          "I do not cry",
+          "I do not weep",
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 45
+    },
+    {
+      "id": "punctuation_questions-15",
+      "category": "punctuation_questions",
+      "input": "niquitta in cihuātl in chōca?",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?chōca: multiple dictionary senses]?",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Question scope is not yet supported. Written tokens are preserved for tentative morphology only; no question grammar or translation is inferred."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "No supported complete passage structure."
+      },
+      "morphology": null,
+      "elapsedMs": 64
+    },
+    {
+      "id": "scope_syntax-01",
+      "category": "scope_syntax",
+      "input": "ahmo ahmo nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ahmo: multiple dictionary senses] [?ahmo: multiple dictionary senses] [?nichōca]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 37
+    },
+    {
+      "id": "scope_syntax-02",
+      "category": "scope_syntax",
+      "input": "ahmo nichōca auh nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "nichōca",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ahmo: multiple dictionary senses] [?nichōca] [?auh: multiple dictionary senses] [?nitlacua]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": true,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I do not cry. I eat.",
+        "optionCounts": [
+          2,
+          2
+        ],
+        "alternatives": [
+          "I do not cry",
+          "I do not weep",
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 50
+    },
+    {
+      "id": "scope_syntax-03",
+      "category": "scope_syntax",
+      "input": "nichōca auh ahmo nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "nichōca",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca] [?auh: multiple dictionary senses] [?ahmo: multiple dictionary senses] [?nitlacua]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 3,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": null,
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I cry. I do not eat.",
+        "optionCounts": [
+          2,
+          2
+        ],
+        "alternatives": [
+          "I cry",
+          "I weep",
+          "I do not eat",
+          "I do not eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 50
+    },
+    {
+      "id": "scope_syntax-04",
+      "category": "scope_syntax",
+      "input": "zan ahmo nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?zan: unreviewed archive index gloss] [?ahmo: multiple dictionary senses] [?nichōca]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 42
+    },
+    {
+      "id": "scope_syntax-05",
+      "category": "scope_syntax",
+      "input": "niquitta in cihuātl in conetl",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?conetl: multiple dictionary senses]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 82
+    },
+    {
+      "id": "scope_syntax-06",
+      "category": "scope_syntax",
+      "input": "niquitta in cihuātl in nichōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 3,
+        "unknown": [
+          "niquitta",
+          "nichōca"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?nichōca]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 2,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 93
+    },
+    {
+      "id": "scope_syntax-07",
+      "category": "scope_syntax",
+      "input": "nicochi in calli itic",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 3,
+        "unknown": [
+          "nicochi"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nicochi] [?in: multiple dictionary senses] [?calli: multiple dictionary senses] [?itic: multiple dictionary senses]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 3,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "Inside the house, I sleep.",
+        "optionCounts": [
+          3
+        ],
+        "alternatives": [
+          "Inside the house, I sleep",
+          "Within the house, I sleep",
+          "In the interior of the house, I sleep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 100
+    },
+    {
+      "id": "scope_syntax-08",
+      "category": "scope_syntax",
+      "input": "niquitta in cihuātl in cochiz auh nicochi in calli itic",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 7,
+        "unknown": [
+          "niquitta",
+          "cochiz",
+          "nicochi"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?cochiz] [?auh: multiple dictionary senses] [?nicochi] [?in: multiple dictionary senses] [?calli: multipl",
+        "total": 10
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 2,
+        "candidateCount": 0,
+        "alternativeCount": 1,
+        "graphNodes": 10,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading.",
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the woman that will sleep. Inside the house, I sleep.",
+        "optionCounts": [
+          3,
+          3
+        ],
+        "alternatives": [
+          "I see the woman that will sleep",
+          "I inspect the woman that will sleep",
+          "I look at the woman that will sleep",
+          "Inside the house, I sleep",
+          "Within the house, I sleep",
+          "In the interior of the house, I sleep"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 224
+    },
+    {
+      "id": "scope_syntax-09",
+      "category": "scope_syntax",
+      "input": "intla nichōca nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "intla",
+          "nichōca",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?intla] [?nichōca] [?nitlacua]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 45
+    },
+    {
+      "id": "scope_syntax-10",
+      "category": "scope_syntax",
+      "input": "nichōca ihuan nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "nichōca",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?nichōca] [?ihuan: multiple dictionary senses] [?nitlacua]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 44
+    },
+    {
+      "id": "scope_syntax-11",
+      "category": "scope_syntax",
+      "input": "ahmo niquittaz in cihuātl in chōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 5,
+        "unknown": [
+          "niquittaz"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?ahmo: multiple dictionary senses] [?niquittaz] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?chōca: multiple dictionary senses]",
+        "total": 6
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 6,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 104
+    },
+    {
+      "id": "scope_syntax-12",
+      "category": "scope_syntax",
+      "input": "niquitta in cihuātl in chōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [
+          "niquitta"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses] [?in: multiple dictionary senses] [?chōca: multiple dictionary senses]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 1,
+        "graphNodes": 7,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the woman that cries.",
+        "optionCounts": [
+          6
+        ],
+        "alternatives": [
+          "I see the woman that cries",
+          "I inspect the woman that cries",
+          "I look at the woman that cries"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 110
+    },
+    {
+      "id": "scope_syntax-13",
+      "category": "scope_syntax",
+      "input": "chōca in cihuātl. chōca",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 4,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?chōca: multiple dictionary senses] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]. [?chōca: multiple dictionary senses]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 2,
+        "candidateCount": 2,
+        "alternativeCount": 0,
+        "graphNodes": 4,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "chōca",
+          "person": 2,
+          "tense": "present",
+          "negative": false,
+          "object": null,
+          "subjectNoun": "cihuātl",
+          "objectNoun": null
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "The woman cries. He / she / it cries.",
+        "optionCounts": [
+          2,
+          2
+        ],
+        "alternatives": [
+          "The woman cries",
+          "The woman weeps",
+          "He / she / it cries",
+          "He / she / it weeps"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 42
+    },
+    {
+      "id": "scope_syntax-14",
+      "category": "scope_syntax",
+      "input": "niquitta in cihuātl. chōca in conetl. nitlacua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 5,
+        "unknown": [
+          "niquitta",
+          "nitlacua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?niquitta] [?in: multiple dictionary senses] [?cihuātl: multiple dictionary senses]. [?chōca: multiple dictionary senses] [?in: multiple dictionary senses] [?conetl: multiple dictionary senses]. [?nitlacua]",
+        "total": 7
+      },
+      "grammar": {
+        "complete": true,
+        "clauseCount": 3,
+        "candidateCount": 4,
+        "alternativeCount": 0,
+        "graphNodes": 4,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": {
+          "lemma": "itta",
+          "person": 0,
+          "tense": "present",
+          "negative": false,
+          "object": "the woman",
+          "subjectNoun": null,
+          "objectNoun": "cihuātl"
+        }
+      },
+      "english": {
+        "rawAvailable": true,
+        "auditedAvailable": true,
+        "rendered": "I see the woman. The child cries. I eat.",
+        "optionCounts": [
+          3,
+          2,
+          2
+        ],
+        "alternatives": [
+          "I see the woman",
+          "I inspect the woman",
+          "I look at the woman",
+          "The child cries",
+          "The child weeps",
+          "I eat",
+          "I eat something"
+        ],
+        "reason": null
+      },
+      "morphology": null,
+      "elapsedMs": 84
+    },
+    {
+      "id": "scope_syntax-15",
+      "category": "scope_syntax",
+      "input": "noyollo yehua",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "noyollo",
+          "yehua"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?noyollo] [?yehua]",
+        "total": 2
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 37
+    },
+    {
+      "id": "scope_syntax-16",
+      "category": "scope_syntax",
+      "input": "in antepilhuan in anquauhtin",
+      "direction": "nh-en",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "antepilhuan",
+          "anquauhtin"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?in: multiple dictionary senses] [?antepilhuan] [?in: multiple dictionary senses] [?anquauhtin]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": false,
+        "clauseCount": 1,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 1,
+        "poeticVocableObservations": 0,
+        "reason": [
+          "Outside supported clause grammar; no words were silently discarded. Partial morphology below is not a complete reading."
+        ],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": false,
+        "auditedAvailable": false,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": "Some units still lack supported English wording; inspect their structural analysis below."
+      },
+      "morphology": null,
+      "elapsedMs": 58
+    },
+    {
+      "id": "english_to_nahuatl-01",
+      "category": "english_to_nahuatl",
+      "input": "I cry",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "cry"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?I: unreviewed archive index gloss] [?cry]",
+        "total": 2
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-02",
+      "category": "english_to_nahuatl",
+      "input": "I will see the woman",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "will",
+          "see",
+          "the"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?I: unreviewed archive index gloss] [?will] [?see] [?the] [cihuātl]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-03",
+      "category": "english_to_nahuatl",
+      "input": "I see a child",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "see",
+          "a"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?I: unreviewed archive index gloss] [?see] [?a] [conetl]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-04",
+      "category": "english_to_nahuatl",
+      "input": "the woman sleeps",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "the",
+          "sleeps"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?the] [cihuātl] [?sleeps]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-05",
+      "category": "english_to_nahuatl",
+      "input": "my heart",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "my"
+        ],
+        "approximates": 0,
+        "ambiguous": 1,
+        "gloss": "[?my] [?heart: multiple entries]",
+        "total": 2
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-06",
+      "category": "english_to_nahuatl",
+      "input": "we are children",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "are",
+          "children"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?we: unreviewed archive index gloss] [?are] [?children]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-07",
+      "category": "english_to_nahuatl",
+      "input": "I love somebody",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "somebody"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?I: unreviewed archive index gloss] [?love: unreviewed archive index gloss] [?somebody]",
+        "total": 3
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-08",
+      "category": "english_to_nahuatl",
+      "input": "water",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 1,
+        "unknown": [],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[ātl]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-09",
+      "category": "english_to_nahuatl",
+      "input": "I do not cry",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 2,
+        "unknown": [
+          "cry"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?I: unreviewed archive index gloss] [chīhua] [ahmō] [?cry]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 1
+    },
+    {
+      "id": "english_to_nahuatl-10",
+      "category": "english_to_nahuatl",
+      "input": "children",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 0,
+        "unknown": [
+          "children"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?children]",
+        "total": 1
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-11",
+      "category": "english_to_nahuatl",
+      "input": "the man that I see",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "the",
+          "that",
+          "see"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?the] [oquichtli] [?that] [?I: unreviewed archive index gloss] [?see]",
+        "total": 5
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    },
+    {
+      "id": "english_to_nahuatl-12",
+      "category": "english_to_nahuatl",
+      "input": "yesterday I went home",
+      "direction": "en-nh",
+      "lexical": {
+        "matched": 1,
+        "unknown": [
+          "yesterday",
+          "went"
+        ],
+        "approximates": 0,
+        "ambiguous": 0,
+        "gloss": "[?yesterday] [?I: unreviewed archive index gloss] [?went] [chantli]",
+        "total": 4
+      },
+      "grammar": {
+        "complete": null,
+        "clauseCount": 0,
+        "candidateCount": 0,
+        "alternativeCount": 0,
+        "graphNodes": 0,
+        "poeticVocableObservations": 0,
+        "reason": [],
+        "firstFrame": null
+      },
+      "english": {
+        "rawAvailable": null,
+        "auditedAvailable": null,
+        "rendered": null,
+        "optionCounts": [],
+        "alternatives": [],
+        "reason": ""
+      },
+      "morphology": null,
+      "elapsedMs": 0
+    }
+  ]
+}

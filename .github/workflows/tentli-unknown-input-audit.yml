@@ -1,0 +1,21 @@
+name: Disposable Tēntli unknown-input capability audit
+on:
+  push:
+    branches:
+      - research/translational-capability-audit-20261031
+    paths:
+      - 'tools/adhoc_translator_audit_2026_10_31.js'
+      - '.github/workflows/tentli-unknown-input-audit.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run published translator against independent constructed and known source examples
+        run: node tools/adhoc_translator_audit_2026_10_31.js

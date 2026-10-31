@@ -52,9 +52,36 @@ for(const [input,written,shape] of originalContexts){
  assert(g.nodes.some(n=>n.kind==='source-graded-itoa-speech-shape'&&
   n.originalWritten===written&&n.shape===shape&&n.temporalSemanticsResolved===false));
  assert.equal(g.edges.filter(e=>e.relation==='possible-source-graded-finite-speech-form').length,1);
+ assert.equal(g.counts.sourceGradedSpeechContentCandidates,1);
+ assert.equal(g.counts.molinaFirstPersonComparisons,written==='oquito'?1:0);
+ const content=f.possibleContentCandidate;
+ assert.equal(content.written,'tle');
+ assert.equal(content.originalWritten,'tle');
+ assert.equal(content.lexicalSource,'https://nahuatl.wired-humanities.org/content/tle');
+ assert.equal(content.grammarComparisonSource,'https://gdn.iib.unam.mx/diccionario/ayac/41417');
+ assert.equal(content.attestedScholarlyComparison,'ayâc tle quihtoa');
+ assert.equal(content.role,'possible noninterrogative speech-content constituent, grammatical attachment unverified');
+ for(const key of ['directObjectVerified','negationScopeVerified',
+  'interrogativeMeaningExcludedGlobally','englishCertified'])assert.equal(content[key],false,key);
+ const comparison=f.molinaFirstPersonComparison;
+ if(written==='oquito'){
+  assert(comparison,'Molina direct oniquito form provides explicit independent witness comparison');
+  assert.equal(comparison.written,'oniquito');
+  assert.equal(comparison.citation,'itoa. niqu. (pret. oniquito.)');
+  assert.equal(comparison.lexicalSource,'https://nahuatl.wired-humanities.org/content/itoa');
+  assert.equal(comparison.currentDocumentSubjectVerified,false);
+  assert.equal(comparison.wordformSubstitutionAllowed,false);
+  assert.equal(comparison.pastVsPerfectResolved,false);
+ }else assert.equal(comparison,null,'Molina completed comparator must NOT leak into future quitoz');
+ assert(g.nodes.some(n=>n.kind==='source-graded-tle-content-candidate'&&
+  n.possibleSpeechContent===true&&n.directObjectResolved===false));
+ assert.equal(g.edges.filter(x=>x.relation==='candidate-content-of-itoa-speech-form').length,1);
+ assert.equal(g.edges.filter(x=>x.relation==='candidate-negated-indefinite-speech-content').length,1);
  const d=diag.analyzeText(input,models);
  assert.equal(d.sourceGradedSpeechFiniteShapes,1);
  assert.equal(d.grammarIRSpeechFiniteShapes,1);
+ assert.equal(d.grammarIRSpeechContentCandidates,1);
+ assert.equal(d.grammarIRMolinaComparators,written==='oquito'?1:0);
  assert.equal(d.englishDraftAvailable,false);
  assert.equal(d.fullFiniteClauseAnalysis,false);
  assert(d.tokenCount>=5);
@@ -96,7 +123,18 @@ for(const edit of [
  d=>{d.forms[1].grammatical_indicator='-z'},
  d=>{d.forms[1].morphological_segmentation_adjudicated=true},
  d=>{d.guardrails.no_past_vs_perfect_decision=false},
- d=>{d.guardrails.approved_gold=1}
+ d=>{d.guardrails.approved_gold=1},
+ d=>{d.guardrails.no_lexical_content_as_complete_english=false},
+ d=>{d.guardrails.no_1sg_template_as_productive_inflection=false},
+ d=>{d.negative_speech_content_reference.reference_source='https://example.org/fake'},
+ d=>{d.negative_speech_content_reference.grammar_comparison_source='https://example.org/fake'},
+ d=>{d.negative_speech_content_reference.observed_scholarly_comparison='ayac tle quitoz'},
+ d=>{d.negative_speech_content_reference.direct_object_role_verified=true},
+ d=>{d.negative_speech_content_reference.certified_english=true},
+ d=>{d.first_person_completed_comparison.original_written='oquito'},
+ d=>{d.first_person_completed_comparison.cited_prefixed_entry='itoa. pret. oquito'},
+ d=>{d.first_person_completed_comparison.contextual_subject_adjudicated=true},
+ d=>{d.first_person_completed_comparison.source_spellings_interchangeable=true}
 ]){
  const modified=JSON.parse(JSON.stringify(evidence));edit(modified);
  const a=mk(modified).analyze('ayac tle quitoz');
@@ -124,7 +162,17 @@ for(const edit of [
  f=>{f.semanticArgumentRolesVerified=true},
  f=>{f.englishAlignmentVerified=true},
  f=>{f.trainingAllowed=true},
- f=>{f.variantRewritingAllowed=true}
+ f=>{f.variantRewritingAllowed=true},
+ f=>{f.possibleContentCandidate=null},
+ f=>{f.possibleContentCandidate.written='tlen'},
+ f=>{f.possibleContentCandidate.tokenIndex=99},
+ f=>{f.possibleContentCandidate.lexicalSource='https://example.org/forgery'},
+ f=>{f.possibleContentCandidate.grammarComparisonSource='https://example.org/forgery'},
+ f=>{f.possibleContentCandidate.directObjectVerified=true},
+ f=>{f.possibleContentCandidate.negationScopeVerified=true},
+ f=>{f.possibleContentCandidate.englishCertified=true},
+ f=>{f.molinaFirstPersonComparison={written:'oniquito'}},
+ f=>{f.molinaFirstPersonComparison=undefined}
 ]){
  const a=JSON.parse(JSON.stringify(sentence.analyze('ayac tle quitoz')));
  edit(a.negativeIndefinitePairObservations[0].finiteSpeechCandidate);
@@ -132,8 +180,28 @@ for(const edit of [
  assert.equal(g.counts.negativeIndefinitePairs,1,'Do not accidentally remove independently sound pair');
  assert.equal(g.counts.sourceGradedSpeechShapes,0,'Reject forged finite source/tense/roles');
 }
+// The IR must also independently refuse fabricated Molina features on
+// its 1585 completed-form path, while preserving the independent paired grammar.
+for(const edit of [
+ f=>{f.molinaFirstPersonComparison=null},
+ f=>{f.molinaFirstPersonComparison.written='oquito'},
+ f=>{f.molinaFirstPersonComparison.citation='invented'},
+ f=>{f.molinaFirstPersonComparison.lexicalSource='https://example.org/fake'},
+ f=>{f.molinaFirstPersonComparison.currentDocumentSubjectVerified=true},
+ f=>{f.molinaFirstPersonComparison.wordformSubstitutionAllowed=true},
+ f=>{f.molinaFirstPersonComparison.pastVsPerfectResolved=true},
+ f=>{f.molinaFirstPersonComparison.englishCertified=true}
+]){
+ const analysis=JSON.parse(JSON.stringify(sentence.analyze('ayac tle oquito')));
+ edit(analysis.negativeIndefinitePairObservations[0].finiteSpeechCandidate);
+ const g=graph.build('ayac tle oquito',analysis);
+ assert.equal(g.counts.negativeIndefinitePairs,1);
+ assert.equal(g.counts.sourceGradedSpeechShapes,0,
+  'Altered Molina evidence cannot license any grammar-IR finite morphology');
+ assert.equal(g.counts.molinaFirstPersonComparisons,0);
+}
 assert.equal(unpacked.analyze('ayac tle quitoz').negativeIndefinitePairObservations[0].finiteSpeechCandidate,null);
 assert.equal(english.compose('nichōca',sentence.analyze('nichōca')).available,true);
 assert.equal(diag.analyzeText('nichōca',models).englishDraftAvailable,true);
 assert(read('translator-integrated.js').includes('speechMorphEvidence.status'));
-console.log('PASS 2 distinct source-backed itoa finite surface shapes through 5 original historical contexts, canonical sentence/IR/browser/diagnostic; 20+ source/claim/near-spelling refusal cases; ordinary English finite control retained.');
+console.log('PASS: two attested itoa speech morphologies and source-graded tle content candidate; Molina 1571 oniquito comparison; five historical contexts, 60+ source/claim/orthographic tampering gates, no false English.');

@@ -185,9 +185,29 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    doc.grammar_sources?.preterite_stem!==
     'https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/preterite-tense/086BF0CAE349B08696892FE96A080C4F'||
    doc.witnessed_pair_context!=='ayac tle'||
+   doc.negative_speech_content_reference?.word!=='tle'||
+   doc.negative_speech_content_reference.reference_source!=='https://nahuatl.wired-humanities.org/content/tle'||
+   doc.negative_speech_content_reference.grammar_comparison_source!=='https://gdn.iib.unam.mx/diccionario/ayac/41417'||
+   doc.negative_speech_content_reference.observed_scholarly_comparison!=='ayâc tle quihtoa'||
+   doc.negative_speech_content_reference.interpretation_status!==
+    'possible noninterrogative indefinite speech-content constituent, not a verified direct object or English translation'||
+   doc.negative_speech_content_reference.exact_context_condition!==
+    'only adjacent written ayac tle followed by source-gated quitoz or oquito'||
+   !['direct_object_role_verified','source_context_collated','negative_scope_over_clause_verified',
+     'interrogative_reading_globally_excluded','certified_english'].every(k=>
+      doc.negative_speech_content_reference[k]===false)||
+   doc.first_person_completed_comparison?.original_written!=='oniquito'||
+   doc.first_person_completed_comparison.cited_prefixed_entry!=='itoa. niqu. (pret. oniquito.)'||
+   doc.first_person_completed_comparison.reference_source!=='https://nahuatl.wired-humanities.org/content/itoa'||
+   doc.first_person_completed_comparison.form_role!==
+    'source-recorded 1sg preterite comparator to oquito only; not a general person paradigm'||
+   !['contextual_subject_adjudicated','tense_aspect_of_document_adjudicated',
+    'automatic_person_deletion_authorized','source_spellings_interchangeable'].every(k=>
+     doc.first_person_completed_comparison[k]===false)||
    !Array.isArray(doc.forms)||doc.forms.length!==2||
    g?.approved_silver!==0||g?.approved_gold!==0||
    !['source_quote_only','exact_surface_only','no_new_lexicon_entry',
+    'no_lexical_content_as_complete_english','no_1sg_template_as_productive_inflection',
     'no_productive_stem_paradigm','no_object_reference_assumption',
     'no_subject_person_assumption','no_past_vs_perfect_decision',
     'no_automatic_english','no_spelling_equivalence','no_train_or_gold']
@@ -218,6 +238,25 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    futureGrammar:sourceSpeechShapes.grammar_sources.future,
    preteriteGrammar:sourceSpeechShapes.grammar_sources.preterite,
    stemGrammar:sourceSpeechShapes.grammar_sources.preterite_stem,
+   // Evidence for a possible speech-content constituent is distinct from
+   // a verified object or English translation. Documented Molina 1sg
+   // past "oniquito" is only a comparison for the exact "oquito" token.
+   possibleContentCandidate:{
+    written:'tle',tokenIndex:index,originalWritten:raw.slice(previous.start,previous.end),
+    lexicalSource:sourceSpeechShapes.negative_speech_content_reference.reference_source,
+    grammarComparisonSource:sourceSpeechShapes.negative_speech_content_reference.grammar_comparison_source,
+    attestedScholarlyComparison:'ayâc tle quihtoa',
+    role:'possible noninterrogative speech-content constituent, grammatical attachment unverified',
+    directObjectVerified:false,negationScopeVerified:false,
+    interrogativeMeaningExcludedGlobally:false,englishCertified:false
+   },
+   molinaFirstPersonComparison:row.written==='oquito'?{
+    written:'oniquito',citation:'itoa. niqu. (pret. oniquito.)',
+    lexicalSource:sourceSpeechShapes.first_person_completed_comparison.reference_source,
+    grammaticalRole:'source-recorded 1sg past form as comparison only, not productive derivation',
+    currentDocumentSubjectVerified:false,wordformSubstitutionAllowed:false,
+    pastVsPerfectResolved:false,englishCertified:false
+   }:null,
    finiteMorphologyCandidateOnly:true,completeSegmentationVerified:false,
    contextualTenseAspectVerified:false,personNumberVerified:false,
    objectIdentityVerified:false,negativeScopeVerified:false,

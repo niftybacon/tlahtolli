@@ -1,0 +1,30 @@
+name: One-time synchronize exact-noyollo morphology browser assets
+on:
+  push:
+    branches:
+      - feat/phase6-noyollo-exact-source-morphology-20261031
+permissions:
+  contents: write
+jobs:
+  build:
+    if: github.repository == 'niftybacon/tlahtolli'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/phase6-noyollo-exact-source-morphology-20261031
+      - name: Rebuild existing morphology embed and versioned runtime hashes
+        run: |
+          python tools/build_morphology_engine.py --write
+          python tools/build_runtime_assets.py --write
+          python tools/build_morphology_engine.py --check
+          python tools/build_runtime_assets.py --check
+          git diff --check
+      - name: Commit generated index only to isolated branch
+        run: |
+          if git diff --quiet -- index.html; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- index.html
+          git commit -m "build(browser): sync exact Brinton noyollo morphological clue"
+          git push origin HEAD:refs/heads/feat/phase6-noyollo-exact-source-morphology-20261031

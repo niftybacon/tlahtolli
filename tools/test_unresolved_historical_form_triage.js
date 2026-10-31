@@ -46,6 +46,26 @@ try{
   const changed=cloneContext(contextLeads);tamper(changed);
   assert.throws(()=>validateContextContrasts(changed,result),/Reject/i);
  }
+ // Historical complete-passage development controls: use only Brinton
+ // research-train originals, never human-reviewed Gold or invented English.
+ // Reuse the EXISTING canonical source-gated English bridge; this is NOT
+ // a separate translation engine or a morphology-derived answer key.
+ const originalStanzas=fs.readFileSync(path.join(ROOT,
+  'research/neural_training/brinton_1890_poetry_weak_en.jsonl'),'utf8')
+  .split(/\\r?\\n/u).filter(Boolean).map(x=>JSON.parse(x));
+ const byOriginalStanza=new Map(originalStanzas.map(x=>[x.record_id,x]));
+ const uniqueIds=new Set(contextLeads.cases.map(x=>x.pinned_brinton_record_id));
+ assert.equal(uniqueIds.size,2,'The three contrast forms occur in two pinned Brinton research stanzas');
+ const makeEnglish=require('./source_gated_english_bridge.js').createBatchProducer();
+ for(const recordId of uniqueIds){
+  const originalRow=byOriginalStanza.get(recordId);
+  assert(originalRow&&originalRow.split==='train'&&originalRow.translation?.alignment==='candidate');
+  const inspected=makeEnglish(originalRow.original);
+  assert.equal(inspected.status,'abstain',
+   'Unsupported complete original stanza must not be passed as semantically approved: '+recordId);
+  assert.equal(inspected.verified_translation,false);
+  assert.deepEqual(inspected.candidates,[]);
+ }
  const packet=buildDossiers(result,80);
  assert.equal(packet.format,'tentli-phase6-source-locked-gap-dossiers-v1');
  assert.equal(packet.source_engine_gap_count,926);

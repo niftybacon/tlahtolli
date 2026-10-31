@@ -57,6 +57,34 @@
     "no_spelling_equivalence": true,
     "no_train_or_gold": true,
     "approved_silver": 0,
-    "approved_gold": 0
+    "approved_gold": 0,
+    "no_lexical_content_as_complete_english": true,
+    "no_1sg_template_as_productive_inflection": true
+  },
+  "negative_speech_content_reference": {
+    "word": "tle",
+    "reference_source": "https://nahuatl.wired-humanities.org/content/tle",
+    "reference_locator": "Karttunen 1992 p.307 and Lockhart 2001 p.239: interrogative tle(h) may have noninterrogative negative sense when negated; lexical variants are distinct written surfaces",
+    "grammar_comparison_source": "https://gdn.iib.unam.mx/diccionario/ayac/41417",
+    "grammar_comparison_locator": "Wimmer 2004 cites Sahagún Historia general book XII chapter 6, original scholarly quote ayâc tle quihtoa",
+    "observed_scholarly_comparison": "ayâc tle quihtoa",
+    "interpretation_status": "possible noninterrogative indefinite speech-content constituent, not a verified direct object or English translation",
+    "exact_context_condition": "only adjacent written ayac tle followed by source-gated quitoz or oquito",
+    "direct_object_role_verified": false,
+    "source_context_collated": false,
+    "negative_scope_over_clause_verified": false,
+    "interrogative_reading_globally_excluded": false,
+    "certified_english": false
+  },
+  "first_person_completed_comparison": {
+    "original_written": "oniquito",
+    "cited_prefixed_entry": "itoa. niqu. (pret. oniquito.)",
+    "reference_source": "https://nahuatl.wired-humanities.org/content/itoa",
+    "locator": "Alonso de Molina 1571, part 2 folio 43r column 2; transcribed in the Online Nahuatl Dictionary",
+    "form_role": "source-recorded 1sg preterite comparator to oquito only; not a general person paradigm",
+    "contextual_subject_adjudicated": false,
+    "tense_aspect_of_document_adjudicated": false,
+    "automatic_person_deletion_authorized": false,
+    "source_spellings_interchangeable": false
   }
 }

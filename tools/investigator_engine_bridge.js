@@ -166,11 +166,17 @@ function bridge(report,{models=loadModels()}={}){
   if(lexicalSourceCandidates.length)tally.source_indexed_exact_lexical_surface_research_leads++;
   const indexed=paradigms.get(norm(form))||[];
   const advancedCandidates=advanced.analyze(form);
+  // A source-licensed but UNREVIEWED nominal predicate is exposed as a
+  // morphology research candidate. Its grammar is not a certified lexical
+  // hit or approved productive paradigm: do not silently reduce the 926
+  // canonical recognition-miss count on this hypothesis alone.
+  const countableAdvanced=advancedCandidates.filter(x=>
+   x.kind!=='Source-bounded plural nominal-predicate hypothesis');
   const archive=(row.source_families_exact_headword_matched!=='neither');
   const category=lexicalHits.length?'curated_lexical_headword_surface':
    indexed.length?'exact_indexed_grammar_paradigm_surface':
    morph.length?'exact_source_review_morphology_surface':
-   advancedCandidates.length?'advanced_browser_morphology_surface':
+   countableAdvanced.length?'advanced_browser_morphology_surface':
    archive?'only_archival_dictionary_headword':'no_linked_engine_surface_match';
   tally[category]++;
   records.push({

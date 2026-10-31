@@ -1,0 +1,31 @@
+name: One-time source-to-IR validation and asset sync
+on:
+  push:
+    branches: [feat/phase6-preserve-historical-heart-morphology-in-ir-20261031]
+    paths:
+      - '.github/workflows/adhoc-source-ir-runtime-sync.yml'
+permissions:
+  contents: write
+jobs:
+  validate_and_sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm actual historical source-to-IR test BEFORE deploying assets
+        run: |
+          node tools/test_phase6_source_morphology_ir_observations.js
+          node tools/test_source_bound_possessives.js
+          node tools/test_antepilhuan_nominal_predication.js
+      - name: Update source-versioned browser assets
+        run: |
+          python tools/build_runtime_assets.py --write
+          python tools/build_runtime_assets.py --check
+          git add index.html
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'build: refresh verified source-to-IR runtime fingerprint'
+          git push origin HEAD:feat/phase6-preserve-historical-heart-morphology-in-ir-20261031

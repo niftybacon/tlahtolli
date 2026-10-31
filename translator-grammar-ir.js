@@ -170,7 +170,24 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
    if(f&&parent){
     const e=speechShapeSources.find(x=>x[0]===f.writtenForm);
     const k=j+1;
-    const valid=e&&k<observedWords.length&&
+    const content=f.possibleContentCandidate,compar=f.molinaFirstPersonComparison;
+    const verifiedContent=content&&content.written==='tle'&&
+     content.tokenIndex===j&&
+     content.originalWritten===raw.slice(observedWords[j].start,observedWords[j].end)&&
+     content.lexicalSource==='https://nahuatl.wired-humanities.org/content/tle'&&
+     content.grammarComparisonSource==='https://gdn.iib.unam.mx/diccionario/ayac/41417'&&
+     content.attestedScholarlyComparison==='ayâc tle quihtoa'&&
+     content.role==='possible noninterrogative speech-content constituent, grammatical attachment unverified'&&
+     ['directObjectVerified','negationScopeVerified','interrogativeMeaningExcludedGlobally',
+      'englishCertified'].every(x=>content[x]===false);
+    const verifiedComparator=e?.[0]==='oquito'?compar&&
+     compar.written==='oniquito'&&
+     compar.citation==='itoa. niqu. (pret. oniquito.)'&&
+     compar.lexicalSource==='https://nahuatl.wired-humanities.org/content/itoa'&&
+     compar.grammaticalRole==='source-recorded 1sg past form as comparison only, not productive derivation'&&
+     ['currentDocumentSubjectVerified','wordformSubstitutionAllowed','pastVsPerfectResolved',
+      'englishCertified'].every(x=>compar[x]===false):compar===null;
+    const valid=verifiedContent&&verifiedComparator&&e&&k<observedWords.length&&
      Number.isInteger(f.tokenIndex)&&f.tokenIndex===k&&
      observedWords[k].word===f.writtenForm&&
      f.originalWritten===raw.slice(observedWords[k].start,observedWords[k].end)&&
@@ -203,6 +220,28 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
      newEdge(parent,node,'possible-source-graded-finite-speech-form',{
       interpretationVerified:false,morphemeBoundariesFullyReviewed:false,
       grammaticalArgumentsResolved:false,englishCertified:false});
+     const constituent=newNode('source-graded-tle-content-candidate',{
+      originalWritten:content.originalWritten,tokenIndex:j,
+      grammarComparisonSource:content.grammarComparisonSource,
+      lexicalSource:content.lexicalSource,
+      possibleSpeechContent:true,directObjectResolved:false,
+      sharedNegativeScopeResolved:false,interrogativeReadingExcluded:false,
+      englishCertified:false,
+      status:'content-argument possible by lexical/syntactic comparison, NOT grammatical attachment'});
+     newEdge(right,constituent,'candidate-negated-indefinite-speech-content',{
+      syntacticAttachmentResolved:false});
+     newEdge(constituent,node,'candidate-content-of-itoa-speech-form',{
+      objectIndexAlignmentVerified:false,referenceIdentityResolved:false});
+     if(compar){
+      const comparator=newNode('source-graded-molina-1sg-comparator',{
+       sourceWritten:compar.written,sourceCitation:compar.lexicalSource,
+       sourceQuotedForm:compar.citation,
+       currentDocumentPersonInferred:false,
+       tenseAspectInDocumentCertified:false,productivePersonAlternation:false,
+       status:'Molina 1571 dictionary comparator only; original historical oquito preserved'});
+      newEdge(comparator,node,'cited-1sg-preterite-form-comparison',{
+       personSubstitutionAuthorized:false,spellingEquivalenceAuthorized:false});
+     }
     }
    }
   }
@@ -755,6 +794,8 @@ function create(dictionary,historicalPassages,paradigms,sentenceModel){
      attestedAyacContexts:nodes.filter(n=>n.kind==='attested-ayac-speech-context').length,
      negativeIndefinitePairs:nodes.filter(n=>n.kind==='negative-indefinite-pair-candidate').length,
      sourceGradedSpeechShapes:nodes.filter(n=>n.kind==='source-graded-itoa-speech-shape').length,
+     sourceGradedSpeechContentCandidates:nodes.filter(n=>n.kind==='source-graded-tle-content-candidate').length,
+     molinaFirstPersonComparisons:nodes.filter(n=>n.kind==='source-graded-molina-1sg-comparator').length,
     partialSpans:nodes.filter(n=>n.kind==='partial-grammatical-span').length,
     nominalCoordinations:nodes.filter(n=>n.kind==='nominal-coordination-marker').length,
     coordinatedSubjectAttachments:edges.filter(e=>e.relation==='possible-coordinated-subject-attachment').length}};

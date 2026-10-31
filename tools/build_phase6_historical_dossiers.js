@@ -162,6 +162,55 @@ function validateContextContrasts(doc,triage){
     x.different_from_brinton_printed_work===true&&
     x.original_transcription_not_folio_image_collated===true&&
     x.existing_editorial_translation_not_gold===true));
+  if(row.written_surface==='yehua'){
+   // Existing canonical lexicography gives competing functions, but these
+   // printed poem renderings do not independently prove the grammar.
+   // This is a consumed research note, never permission to rewrite English.
+   const n=row.editorial_yehua_engine_note;
+   const expectedKeys=[
+    'no_single_default_gloss','no_global_yehua_equals_english_that',
+    'no_automatic_temporal_only','no_global_noyollo_yehua_resumptive_rule',
+    'no_source_token_deletion','no_editorial_comma_as_syntax_proof',
+    'no_equation_with_yehuan_yehuatl_or_yegua',
+    'no_invented_english_translation','preserve_alternative_function_hypotheses',
+    'abstain_on_unparsed_whole_clause','no_promotion_to_gold_silver_or_training',
+    'no_change_to_926_gap_count',
+    'no_repeated_external_review_demand_without_new_material'
+   ];
+   insist(n?.exact_written_form==='yehua'&&
+    n.proposed_productive_rules===0&&
+    n.independently_approved_sentence_translation===false&&
+    n.implementation_scope?.includes('no production sentence')&&
+    n.human_review?.includes('project-director')&&
+    n.related_phrase_excluded?.includes('miztemoa noyollo')&&
+    n.source_policy?.includes('Molina, Olmos, and Brinton/Temoa')&&
+    n.tentative_discourse_hypothesis?.includes('plausible')&&
+    n.source_collection_warning?.includes('not independently collated')&&
+    Object.keys(n.hard_engine_constraints||{}).length===expectedKeys.length&&
+    expectedKeys.every(key=>n.hard_engine_constraints[key]===true));
+   insist(Array.isArray(n.dictionary_supported_function_families)&&
+    n.dictionary_supported_function_families.length===3&&
+    new Set(n.dictionary_supported_function_families.map(x=>x.function)).size===3&&
+    n.dictionary_supported_function_families.every(x=>
+     trustedUrl(x.source_url)&&
+     new URL(x.source_url).hostname==='nahuatl.wired-humanities.org'&&
+     typeof x.source_locator==='string'&&x.source_locator.length>=18&&
+     typeof x.attested_spanish==='string'&&x.attested_spanish.length>1&&
+     x.per_occurrence_selection_approved===false));
+   const contexts=n.published_original_contexts;
+   insist(Array.isArray(contexts)&&contexts.length===3&&
+    contexts[0].locator==='Brinton 1890 Song VI stanza 2'&&
+    contexts[1].locator.includes('Song XI stanza 4')&&
+    contexts[2].locator==='Brinton 1890 Song XVII stanzas 13 and 14'&&
+    contexts.every(x=>trustedUrl(x.source_url)&&
+     x.original_short_span.includes('noyollo')&&
+     x.original_short_span.includes('yehua')&&
+     x.original_short_span.length<=110&&
+     typeof x.editorial_observation==='string'&&
+     x.editorial_observation.length>=65&&
+     x.contextual_resumptive_hypothesis===true&&
+     x.grammatical_role_verified===false));
+  }else insist(row.editorial_yehua_engine_note===undefined);
   // Project-director statements are preserved exactly as scoped feedback.
   // A linguistic proposal is never an independent Silver/Gold evaluation.
   if(row.written_surface==='antepilhuan'){

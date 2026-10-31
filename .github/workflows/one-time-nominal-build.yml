@@ -1,0 +1,31 @@
+name: One-time source-controlled nominal morphology browser asset build
+on:
+  push:
+    branches:
+      - feat/source-licensed-antepilhuan-nominal-20261030
+permissions:
+  contents: write
+jobs:
+  regenerate-index:
+    if: github.repository == 'niftybacon/tlahtolli'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/source-licensed-antepilhuan-nominal-20261030
+          persist-credentials: true
+      - name: Regenerate existing canonical embedded morphology and version URLs
+        run: |
+          python tools/build_morphology_engine.py --write
+          python tools/build_runtime_assets.py --write
+          python tools/build_morphology_engine.py --check
+          python tools/build_runtime_assets.py --check
+          git diff --check
+      - name: Commit only generated index on this isolated branch
+        run: |
+          if git diff --quiet -- index.html; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- index.html
+          git commit -m "build(browser): synchronize embedded nominal morphology and runtime asset hashes"
+          git push origin HEAD:refs/heads/feat/source-licensed-antepilhuan-nominal-20261030

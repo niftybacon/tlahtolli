@@ -158,6 +158,35 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   }
   return matches;
  }
+ // Source-graded Phase 3 co-occurrence candidate, not a finite clause.
+ // Bedell (2011) §14 p.19 documents negative indefinite pronouns; Wimmer
+ // (2004) indexes "ayâc tle" and Sahagún XII.6 "ayâc tle quihtoa".
+ // Keep colonial unmarked "ayac tle" distinct from accented scholarly forms.
+ function negativeIndefinitePairObservations(input){
+  const raw=String(input||'').normalize('NFC');
+  if(raw.length>7000)return [];
+  const tokens=[...raw.matchAll(/[\p{L}\p{M}]+/gu)]
+   .map(m=>({word:norm(m[0]),start:m.index,end:m.index+m[0].length}));
+  if(tokens.length>512)return [];
+  const found=[];
+  for(let i=0;i+1<tokens.length;i++){
+   if(tokens[i].word!=='ayac'||tokens[i+1].word!=='tle'||
+    !/^[ \t]+$/u.test(raw.slice(tokens[i].end,tokens[i+1].start)))continue;
+   found.push({written:['ayac','tle'],tokenIndices:[i,i+1],
+    grammarSource:'https://languageinindia.com/nov2011/bedellnawatorugo.pdf',
+    indexedGrammarSource:'https://gdn.iib.unam.mx/diccionario/ayac/41417',
+    lexicalSource:'https://nahuatl.wired-humanities.org/content/ayac',
+    observedRelationship:'negative-indefinite co-occurrence; potential shared negative domain',
+    grade:'grammar-source-bounded structural candidate, not historical whole-clause attestation',
+    lexicallyNegativePersonIndefinite:true,secondIndefiniteUnderPotentialNegation:true,
+    scopeBeyondPairResolved:false,syntacticSubjectResolved:false,
+    objectRoleResolved:false,finitePredicateResolved:false,personResolved:false,
+    tenseAspectResolved:false,englishReviewed:false,trainingEligible:false,
+    spellingVariantsInferred:false,wholeClauseComplete:false});
+   if(found.length===12)break;
+  }
+  return found;
+ }
  function poeticVocableObservations(input){
   const doc=poeticEvidence;
   const guard=doc?.guardrails;
@@ -1651,9 +1680,11 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   if(owner)morphologyMemo=new Map();
   try{
    const result=analyzeInput(input,allowPartialRecovery);
-   if(result&&typeof result==='object'&&!Array.isArray(result))
+   if(result&&typeof result==='object'&&!Array.isArray(result)){
     result.poeticVocableObservations=poeticVocableObservations(input);
-     result.attestedAyacObservations=attestedAyacObservations(input);
+    result.attestedAyacObservations=attestedAyacObservations(input);
+    result.negativeIndefinitePairObservations=negativeIndefinitePairObservations(input);
+   }
    return result;
   }
   finally{if(owner)morphologyMemo=null;}

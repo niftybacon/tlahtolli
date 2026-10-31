@@ -41,6 +41,21 @@ function showResult(){
  if(sentenceModel&&direction.value==='nh-en'){
   const result=sentenceModel.analyze(content);
   const graph=grammarIR?.build(content,result)||null;
+  if(result.negativeIndefinitePairObservations?.length){
+   const panel=el('section','translator-candidate');
+   panel.append(el('h4','','Classical grammar: paired negative indefinites'),
+    el('p','translator-caution',
+     'The written ayac tle sequence admits a source-backed local negative-indefinite analysis (potential shared negative domain). The grammar does NOT establish full-clause negation scope, subject, object, verbal person, tense or approved English.'));
+   for(const obs of result.negativeIndefinitePairObservations){
+    panel.append(el('p','translator-meta','Original written pair: '+obs.originalWritten.join(' ') +
+     ' · token positions '+obs.tokenIndices.join(', ')+' · candidate-only.'));
+    for(const url of [obs.grammarSource,obs.indexedGrammarSource,obs.lexicalSource]){
+     const link=safeLink(url,'Inspect source grammar or dictionary');
+     if(link)panel.append(link);
+    }
+   }
+   passages.append(panel);
+  }
   if(result.attestedAyacObservations?.length){
    const panel=el('section','translator-candidate');
    panel.append(el('h4','','Historical ayac tle speech context'),

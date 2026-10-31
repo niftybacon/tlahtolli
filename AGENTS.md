@@ -20,7 +20,7 @@ Reuse these existing components rather than writing rival engines:
 
 | Phase | Required objective (current roadmap) |
 | --- | --- |
-| 1 | **Finish** source-grounded semantic role/scope verification in Issue #95 using merged source-word and English-preservation checks (#108/#116) plus reviewed whole clauses. Do **not** build a duplicate semantic adapter. |
+| 1 | **Stabilize the engines:** finish source-grounded semantic role/scope verification in Issue #95 using merged source-word and English-preservation checks (#108/#116) plus reviewed whole clauses. Do **not** build a duplicate semantic adapter. |
 | 2 | **Top priority:** independently review the 150 Brinton **candidate** alignments/40 pending Silver worksheets and prepare truly untouched, blind, work-disjoint Gold under #98. Current approved Silver/Gold = **0**; project-director research is not independent Gold. |
 | 3 | Improve productive grammar *diversity* from the existing **6,176 Bronze synthetic** examples with independently justified historical constructions; #114/#115 are draft stacked work, not merged grammar. |
 | 4 | Hold major stronger-English retraining until independently reviewed semantic supervision/evaluation exists; preserve canonical English source gates and abstention. |
@@ -53,7 +53,7 @@ See [required PR checklist](.github/PULL_REQUEST_TEMPLATE.md). Lightweight docum
 ## First recommended tasks and forbidden shortcuts
 
 - **Best independent engineering workstream:** semantic verifier [#95](https://github.com/niftybacon/tlahtolli/issues/95), not an alternative morphology engine.
-- **Best autonomous historical research workstream:** reuse `neural/paged_historical_investigator.py`, `tools/investigator_engine_bridge.js`, `tools/triage_unresolved_historical_forms.js` for source-traceable 928-case gap analysis; promote only individually justified findings.
+- **Best autonomous historical research workstream:** reuse `neural/paged_historical_investigator.py`, `tools/investigator_engine_bridge.js`, `tools/triage_unresolved_historical_forms.js` for source-traceable current 926-case gap analysis (historical baseline 928); promote only individually justified findings.
 - **Best human review workstream:** [#98](https://github.com/niftybacon/tlahtolli/issues/98) for actual independent Gold, plus pending Silver review.
 - **Best efficiency workstream:** durable reviewed evidence promotion, regression trace and honest coverage funnel; **do not add redundant weekly schedulers** or blindly train on the same unverified text.
 

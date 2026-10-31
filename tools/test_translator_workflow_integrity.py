@@ -48,10 +48,10 @@ duplicates = sorted(name for name, count in counts.items() if count != 1)
 assert not duplicates, f"Duplicate workflow steps: {duplicates}"
 
 # YAML folds a plain-scalar 'run:' continuation into a single shell line.
-# Thus 'run: node first.js\\n          node second.js' runs only first.js;
+# Thus 'run: node first.js\n          node second.js' runs only first.js;
 # 'second.js' is passed as an ignored argument. Catch this across the workflow.
 folded_shell_command = re.search(
-    r"(?m)^        run: (?![|>]\\s*$)[^\\n]+\\n {10,}(?:node|python|npm|bash|pytest|curl|git)\\b[^\\n]*$",
+    r"(?m)^        run: (?![|>]\s*$)[^\n]+\n {10,}(?:node|python|npm|bash|pytest|curl|git)\b[^\n]*$",
     workflow,
 )
 assert not folded_shell_command, (

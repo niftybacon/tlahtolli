@@ -89,6 +89,35 @@ for(const input of ['xyzzy','nichōca xyzzy','nichōca?']){
  const m=make(input);
  assert.equal(semantic.verify(input,m.analysis,m.graph,m.options).available,false,input);
 }
+// An independent written-word ledger must detect a *shared* analyzer/realizer
+// omission even when all supplied objects agree with a fresh recomputation.
+// These deliberately faulty engine doubles are adversarial software tests,
+// never Nahuatl historical attestations or reference translations.
+function sharedEngineScenario(text,example,mutate=()=>{}){
+ const a=clone(example.analysis),g=clone(example.graph),o=clone(example.options);
+ mutate(a,g,o);
+ const s={analyze:()=>clone(a)};
+ const e={compose:()=>clone(o),render:c=>english.render(c)};
+ const ir={build:()=>clone(g),auditEnglish:()=>clone(o)};
+ return ctx.window.TlahtolliSemanticIR.create(s,e,ir).verify(text,a,g,o);
+}
+const coordination=make('nichōca auh nitlacua');
+assert.equal(sharedEngineScenario(coordination.text,coordination).available,true,
+ 'all clause and auh words accounted for');
+assert.equal(sharedEngineScenario('nichōca xyzzy',person).available,false,
+ 'canonical components agreeing to drop an unknown terminal word must fail');
+assert.equal(sharedEngineScenario('xyzzy nichōca',person).available,false,
+ 'canonical components agreeing to drop an unknown initial word must fail');
+assert.equal(sharedEngineScenario(coordination.text,coordination,(a,g,o)=>{
+ o.joins[0].written='punctuation';
+}).available,false,'shared disappearance of overt auh must fail');
+assert.equal(sharedEngineScenario('nichōca auh nitlacua xyzzy',coordination).available,false,
+ 'shared omission after a source connector must fail');
+const group=make('chōca in cihuātl. chōca');
+assert.equal(sharedEngineScenario(group.text,group).available,true,
+ 'sentence punctuation carries no extra source words');
+assert.equal(sharedEngineScenario(group.text+' xyzzy',group).available,false,
+ 'shared omission at end of later sentence must fail');
 const {produce}=require('./source_gated_english_bridge.js');
 const actual=produce('niquitta in cihuātl');
 assert.equal(actual.status,'candidates');
@@ -98,4 +127,4 @@ assert(actual.semantic_verifier.option_count>0);
 assert.equal(actual.semantic_verifier.verified_historical_translation,false);
 assert.equal(produce('xyzzy').status,'abstain');
 console.log('PASS semantic contract: '+supported.length+
- ' complete constructed examples, '+refused+' deliberate tampering probes, real source-gated bridge, unverified semantic status and abstentions.');
+ ' complete constructed examples, '+refused+' tampering probes, 7 shared-engine surface probes, real source-gated bridge, unverified semantic status and abstentions.');

@@ -14,6 +14,20 @@ function create(sentence,english,grammarIR){
     typeof english?.render!=='function'||typeof grammarIR?.build!=='function'||
     typeof grammarIR?.auditEnglish!=='function')throw Error('Existing canonical engines required');
  const serialize=x=>JSON.stringify(x);
+ // Independent lexical-surface ledger: reanalysis alone cannot detect a
+ // shared parser/composer mistake that silently drops an original word.
+ // This does NOT resolve punctuation, lexical senses or contextual meaning.
+ const sourceWords=text=>String(text||'').normalize('NFC')
+  .match(/[\p{L}\p{M}’'\-\u00AF]+/gu)||[];
+ function allSourceWordsAccountedFor(input,units,joins){
+  const expected=sourceWords(input),accounted=[];
+  for(let i=0;i<units.length;i++){
+   accounted.push(...sourceWords(units[i]?.written));
+   if(i<joins.length&&joins[i]?.written!=='punctuation')
+    accounted.push(...sourceWords(joins[i]?.written));
+  }
+  return expected.length>0&&serialize(expected)===serialize(accounted);
+ }
  const fail=reason=>({available:false,version:'tentli-semantic-contract-v1',
   verifiedTranslation:false,reason,composition:null,units:[],optionsChecked:0});
  function event(frame,sourceUrls){
@@ -90,6 +104,10 @@ function create(sentence,english,grammarIR){
      !Array.isArray(fresh.units)||!fresh.units.length||fresh.units.length>24||
      !Array.isArray(fresh.joins)||fresh.joins.length!==fresh.units.length-1)
    return fail('Canonical grammar did not license a complete English passage');
+  if(!Array.isArray(freshAnalysis.clauses)||
+     freshAnalysis.clauses.length!==fresh.units.length||
+     !allSourceWordsAccountedFor(input,fresh.units,fresh.joins))
+   return fail('Original written words were omitted, reordered or added across clauses and connectors');
   // Compare the entire bounded analysis/graph: a forged lexical rule or graph
   // edge cannot authorize a superficially plausible English option.
   if(!analysis||!graph||serialize(analysis)!==serialize(freshAnalysis)||

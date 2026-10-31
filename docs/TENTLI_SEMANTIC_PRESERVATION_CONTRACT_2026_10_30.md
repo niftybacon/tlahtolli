@@ -25,6 +25,28 @@ The new adapter also deliberately avoids claiming that locative attachment is in
 
 `translator-regressions.yml` runs the new test and existing `test_source_gated_english_bridge.js` on both pull requests and pushes, alongside earlier grammar and source tests. This tests software preservation, **not historical translation accuracy**.
 
+## Independent written-word coverage hardening (same Phase 1 partial milestone)
+
+The verifier now separately tokenizes the **original written input**, each canonical
+English unit's original-language clause, and any overt written connector (such as
+`auh`). It requires the full ordered word-token streams to match exactly.
+Punctuation-only boundaries contribute zero words. This catches a shared
+analyzer/composer defect that would otherwise accept English after silently
+dropping, adding or reordering a source word—even if every supplied IR object
+agreed with fresh canonical recomputation. Constructed adversarial doubles in
+`tools/test_semantic_ir.js` simulate such defects as well as a correctly
+preserved coordination and a multi-sentence boundary.
+
+The check is a **lexical-surface conservation guard**, not a proof of
+punctuation interpretation, morphological segmentation, semantic equivalence,
+correct historical word division, textual fidelity, or contextual translation.
+It does not license unsupported `ayac tle` research nodes, altered
+`huiya` readings, English senses, Gold/Silver cases or neural training.
+It reuses existing canonical sentence/IR/English data, adds no independent
+parser or vocabulary, and does not change historical-form coverage claims.
+This is narrower robustness work under the already published Phase 1 objective,
+not a revised roadmap priority or completion of Issue #95.
+
 ## Remaining Issue #95 work
 
 - Expand the semantic contract to additional source-licensed constructions only where the current grammar and English composer already support them; do not invent finite analyses for nested/conditional/possessed structures merely to widen a success count.

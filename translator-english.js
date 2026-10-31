@@ -111,6 +111,10 @@ function create(model){
   // Exact attested word order does not establish a whole English clause.
   if(result?.attestedAyacObservations?.length)
    return fail('Cited ayac tle speech context: scope, person, tense and roles remain unresolved; no English draft licensed.');
+  // Grammatical co-occurrence is not an independently reviewed English clause.
+  if(result?.negativeIndefinitePairObservations?.length)
+   return fail('The source-licensed ayac tle negative-indefinite pair leaves person, finite predicate, grammatical roles and full negation scope unresolved; no English draft licensed.');
+
   // A reviewed *poetic* huiya is still a written token. No English draft
   // may silently discard it or automatically render it as 'went'.
   if(Array.isArray(result?.poeticVocableObservations)&&

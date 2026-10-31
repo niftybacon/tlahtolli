@@ -41,6 +41,48 @@ function showResult(){
  if(sentenceModel&&direction.value==='nh-en'){
   const result=sentenceModel.analyze(content);
   const graph=grammarIR?.build(content,result)||null;
+  if(result.negativeIndefinitePairObservations?.length){
+   const panel=el('section','translator-candidate');
+   panel.append(el('h4','','Classical grammar: paired negative indefinites'),
+    el('p','translator-caution',
+     'The written ayac tle sequence admits a source-backed local negative-indefinite analysis (potential shared negative domain). The grammar does NOT establish full-clause negation scope, subject, object, verbal person, tense or approved English.'));
+   for(const obs of result.negativeIndefinitePairObservations){
+    panel.append(el('p','translator-meta','Original written pair: '+obs.originalWritten.join(' ') +
+     ' · token positions '+obs.tokenIndices.join(', ')+' · candidate-only.'));
+    for(const url of [obs.grammarSource,obs.indexedGrammarSource,obs.lexicalSource]){
+     const link=safeLink(url,'Inspect source grammar or dictionary');
+     if(link)panel.append(link);
+    }
+    if(obs.finiteSpeechCandidate){
+     const f=obs.finiteSpeechCandidate;
+     panel.append(el('p','translator-meta',
+      'Adjacent speech form '+f.originalWritten+' · '+f.surfaceShape+
+      ' · historical tense, person and object remain UNVERIFIED.'));
+     for(const url of [f.sourceUrl,f.dictionarySource,
+      f.futureGrammar,f.preteriteGrammar,f.stemGrammar]){
+      const link=safeLink(url,'Inspect finite-form or grammar evidence');
+      if(link)panel.append(link);
+     }
+     if(f.possibleContentCandidate){
+      const c=f.possibleContentCandidate;
+      panel.append(el('p','translator-meta','The written '+c.originalWritten+
+       ' may be a negated speech-content constituent; whether it is this verb’s object is NOT established.'));
+      for(const url of [c.lexicalSource,c.grammarComparisonSource]){
+       const link=safeLink(url,'Read lexical and historical speech-context evidence');
+       if(link)panel.append(link);
+      }
+     }
+     if(f.molinaFirstPersonComparison){
+      const c=f.molinaFirstPersonComparison;
+      panel.append(el('p','translator-meta','Molina records '+c.written+
+       ' as a first-person completed-form comparison; no person or tense is assigned to this documentary '+f.originalWritten+'.'));
+      const link=safeLink(c.lexicalSource,'Read Molina finite-form citation');
+      if(link)panel.append(link);
+     }
+    }
+   }
+   passages.append(panel);
+  }
   if(result.attestedAyacObservations?.length){
    const panel=el('section','translator-candidate');
    panel.append(el('h4','','Historical ayac tle speech context'),
@@ -1044,9 +1086,11 @@ async function init(){
    fetch('./research/translation_corpus/huiya_context_specific_song_vocable_2026_10_30.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null),
    fetch('./research/translation_corpus/attested_ayac_speech_contexts_2026_10_30.json',{cache:'no-cache'})
+    .then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch('./research/translation_corpus/source_graded_itoa_speech_morphology_2026_10_30.json',{cache:'no-cache'})
     .then(r=>r.ok?r.json():null).catch(()=>null)
   ];
-  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,ayacEvidence]=await Promise.allSettled(requests);
+  const [dictionary,candidates,codexStats,lukeStats,sourceReview,clauseGrammar,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,ayacEvidence,speechMorphEvidence]=await Promise.allSettled(requests);
   let document;
   if(dictionary.status==='fulfilled'&&Array.isArray(dictionary.value.words)){
    document=dictionary.value;dataMode='published';
@@ -1082,7 +1126,8 @@ async function init(){
     sourceFiniteEvidence.status==='fulfilled'?sourceFiniteEvidence.value:null,
     citedPassages,predicateEnglish.status==='fulfilled'?predicateEnglish.value:null,
     poeticEvidence.status==='fulfilled'?poeticEvidence.value:null,
-    ayacEvidence.status==='fulfilled'?ayacEvidence.value:null);
+    ayacEvidence.status==='fulfilled'?ayacEvidence.value:null,
+    speechMorphEvidence.status==='fulfilled'?speechMorphEvidence.value:null);
     grammarIR=window.TlahtolliGrammarIR?.create(document,citedPassages,parsedParadigms,sentenceModel)||null;
    }
   }catch{} // Lexical analysis remains usable when paradigm loading fails.

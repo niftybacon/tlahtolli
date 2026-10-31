@@ -84,7 +84,7 @@ function compileClauseRules(pack){
  return valid;
 }
 
-function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,ayacEvidence){
+function create(dictionary,paradigms,morphology,researchExamples,locative,grammarRules,possessiveEvidence,sourceFiniteEvidence,historicalPassages,predicateEnglish,poeticEvidence,ayacEvidence,speechMorphEvidence){
  // Reuse existing source-sensitive morphology, never a new guessed conjugator.
  // This optional provider is the canonical morphology engine's analyze(token).
  const parseMorph=typeof morphology==='function'?morphology:()=>[];
@@ -157,6 +157,140 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
    }
   }
   return matches;
+ }
+ // Source-graded Phase 3 co-occurrence candidate, not a finite clause.
+ // Bedell (2011) §14 p.19 documents negative indefinite pronouns; Wimmer
+ // (2004) indexes "ayâc tle" and Sahagún XII.6 "ayâc tle quihtoa".
+ // Keep colonial unmarked "ayac tle" distinct from accented scholarly forms.
+ // Source-certified *written forms* of itoa have grammar-compatible shapes.
+ // Do not use these to create a new verb paradigm, certify tense-aspect
+ // in a legal document, infer agreement, or rank translations.
+ function compileSpeechFormShapes(doc){
+  const expected=[
+   ['quitoz','future-z surface-shape candidate','-z',
+    'https://gdn.iib.unam.mx/diccionario/itoa/186420',
+    'enl-1621-coyoacan,gdn-1569-testament'],
+   ['oquito','preterite-augment surface-shape candidate','o-',
+    'https://gdn.iib.unam.mx/diccionario/itoa/186409',
+    'gdn-1585-possession,gdn-1587-land-possession,gdn-1587-isabel-maria']
+  ];
+  const g=doc?.guardrails;
+  if(doc?.format!=='tlahtolli-source-graded-itoa-speech-morphology-v1'||
+   doc.attested_lemma?.candidate!=='itoa'||
+   doc.attested_lemma?.part_of_speech_in_source!=='v.t.'||
+   doc.attested_lemma?.source_url!=='https://gdn.iib.unam.mx/diccionario/itoa/186409'||
+   doc.attested_lemma?.crosscheck!=='https://nahuatl.wired-humanities.org/content/itoa'||
+   doc.grammar_sources?.future!=='https://pages.ucsd.edu/~dkjordan/nahuatl/nahugram.html'||
+   doc.grammar_sources?.preterite!=='https://nahuatl.wired-humanities.org/node/176799'||
+   doc.grammar_sources?.preterite_stem!==
+    'https://www.cambridge.org/core/books/abs/an-introduction-to-classical-nahuatl/preterite-tense/086BF0CAE349B08696892FE96A080C4F'||
+   doc.witnessed_pair_context!=='ayac tle'||
+   doc.negative_speech_content_reference?.word!=='tle'||
+   doc.negative_speech_content_reference.reference_source!=='https://nahuatl.wired-humanities.org/content/tle'||
+   doc.negative_speech_content_reference.grammar_comparison_source!=='https://gdn.iib.unam.mx/diccionario/ayac/41417'||
+   doc.negative_speech_content_reference.observed_scholarly_comparison!=='ayâc tle quihtoa'||
+   doc.negative_speech_content_reference.interpretation_status!==
+    'possible noninterrogative indefinite speech-content constituent, not a verified direct object or English translation'||
+   doc.negative_speech_content_reference.exact_context_condition!==
+    'only adjacent written ayac tle followed by source-gated quitoz or oquito'||
+   !['direct_object_role_verified','source_context_collated','negative_scope_over_clause_verified',
+     'interrogative_reading_globally_excluded','certified_english'].every(k=>
+      doc.negative_speech_content_reference[k]===false)||
+   doc.first_person_completed_comparison?.original_written!=='oniquito'||
+   doc.first_person_completed_comparison.cited_prefixed_entry!=='itoa. niqu. (pret. oniquito.)'||
+   doc.first_person_completed_comparison.reference_source!=='https://nahuatl.wired-humanities.org/content/itoa'||
+   doc.first_person_completed_comparison.form_role!==
+    'source-recorded 1sg preterite comparator to oquito only; not a general person paradigm'||
+   !['contextual_subject_adjudicated','tense_aspect_of_document_adjudicated',
+    'automatic_person_deletion_authorized','source_spellings_interchangeable'].every(k=>
+     doc.first_person_completed_comparison[k]===false)||
+   !Array.isArray(doc.forms)||doc.forms.length!==2||
+   g?.approved_silver!==0||g?.approved_gold!==0||
+   !['source_quote_only','exact_surface_only','no_new_lexicon_entry',
+    'no_lexical_content_as_complete_english','no_1sg_template_as_productive_inflection',
+    'no_productive_stem_paradigm','no_object_reference_assumption',
+    'no_subject_person_assumption','no_past_vs_perfect_decision',
+    'no_automatic_english','no_spelling_equivalence','no_train_or_gold']
+    .every(k=>g[k]===true))return null;
+  for(let i=0;i<2;i++){
+   const r=doc.forms[i],e=expected[i];
+   if(r?.written!==e[0]||r.label!==e[1]||
+    r.grammatical_indicator!==e[2]||r.source_url!==e[3]||
+    r.context_ids?.join(',')!==e[4]||
+    typeof r.source_locator!=='string'||r.source_locator.length<45||
+    r.full_clause_tense_adjudicated!==false||
+    r.morphological_segmentation_adjudicated!==false)return null;
+  }
+  return doc;
+ }
+ const sourceSpeechShapes=compileSpeechFormShapes(speechMorphEvidence);
+ function finiteSpeechShape(tokens,index,raw){
+  if(!sourceSpeechShapes||index+1>=tokens.length)return null;
+  const token=tokens[index+1],previous=tokens[index],row=
+   sourceSpeechShapes.forms.find(r=>r.written===token.word);
+  if(!row||!/^[ \t]+$/u.test(raw.slice(previous.end,token.start)))return null;
+  return {originalWritten:raw.slice(token.start,token.end),
+   tokenIndex:index+1,lemmaCandidate:'itoa',writtenForm:row.written,
+   surfaceShape:row.label,grammaticalIndicator:row.grammatical_indicator,
+   editedWitnessIds:row.context_ids.slice(),sourceUrl:row.source_url,
+   dictionarySource:sourceSpeechShapes.attested_lemma.source_url,
+   lexicalCrosscheck:sourceSpeechShapes.attested_lemma.crosscheck,
+   futureGrammar:sourceSpeechShapes.grammar_sources.future,
+   preteriteGrammar:sourceSpeechShapes.grammar_sources.preterite,
+   stemGrammar:sourceSpeechShapes.grammar_sources.preterite_stem,
+   // Evidence for a possible speech-content constituent is distinct from
+   // a verified object or English translation. Documented Molina 1sg
+   // past "oniquito" is only a comparison for the exact "oquito" token.
+   possibleContentCandidate:{
+    written:'tle',tokenIndex:index,originalWritten:raw.slice(previous.start,previous.end),
+    lexicalSource:sourceSpeechShapes.negative_speech_content_reference.reference_source,
+    grammarComparisonSource:sourceSpeechShapes.negative_speech_content_reference.grammar_comparison_source,
+    attestedScholarlyComparison:'ayâc tle quihtoa',
+    role:'possible noninterrogative speech-content constituent, grammatical attachment unverified',
+    directObjectVerified:false,negationScopeVerified:false,
+    interrogativeMeaningExcludedGlobally:false,englishCertified:false
+   },
+   molinaFirstPersonComparison:row.written==='oquito'?{
+    written:'oniquito',citation:'itoa. niqu. (pret. oniquito.)',
+    lexicalSource:sourceSpeechShapes.first_person_completed_comparison.reference_source,
+    grammaticalRole:'source-recorded 1sg past form as comparison only, not productive derivation',
+    currentDocumentSubjectVerified:false,wordformSubstitutionAllowed:false,
+    pastVsPerfectResolved:false,englishCertified:false
+   }:null,
+   finiteMorphologyCandidateOnly:true,completeSegmentationVerified:false,
+   contextualTenseAspectVerified:false,personNumberVerified:false,
+   objectIdentityVerified:false,negativeScopeVerified:false,
+   semanticArgumentRolesVerified:false,englishAlignmentVerified:false,
+   trainingAllowed:false,variantRewritingAllowed:false,
+   status:'source-graded finite surface morphology SHAPE, not complete clause analysis'};
+ }
+ function negativeIndefinitePairObservations(input){
+  const raw=String(input||'').normalize('NFC');
+  if(raw.length>7000)return [];
+  const tokens=[...raw.matchAll(/[\p{L}\p{M}]+/gu)]
+   .map(m=>({word:norm(m[0]),start:m.index,end:m.index+m[0].length}));
+  if(tokens.length>512)return [];
+  const found=[];
+  for(let i=0;i+1<tokens.length;i++){
+   if(tokens[i].word!=='ayac'||tokens[i+1].word!=='tle'||
+    !/^[ \t]+$/u.test(raw.slice(tokens[i].end,tokens[i+1].start)))continue;
+   found.push({written:['ayac','tle'],tokenIndices:[i,i+1],
+    finiteSpeechCandidate:finiteSpeechShape(tokens,i+1,raw),
+    originalWritten:[raw.slice(tokens[i].start,tokens[i].end),
+     raw.slice(tokens[i+1].start,tokens[i+1].end)],
+    grammarSource:'https://languageinindia.com/nov2011/bedellnawatorugo.pdf',
+    indexedGrammarSource:'https://gdn.iib.unam.mx/diccionario/ayac/41417',
+    lexicalSource:'https://nahuatl.wired-humanities.org/content/ayac',
+    observedRelationship:'negative-indefinite co-occurrence; potential shared negative domain',
+    grade:'grammar-source-bounded structural candidate, not historical whole-clause attestation',
+    lexicallyNegativePersonIndefinite:true,secondIndefiniteUnderPotentialNegation:true,
+    scopeBeyondPairResolved:false,syntacticSubjectResolved:false,
+    objectRoleResolved:false,finitePredicateResolved:false,personResolved:false,
+    tenseAspectResolved:false,englishReviewed:false,trainingEligible:false,
+    spellingVariantsInferred:false,wholeClauseComplete:false});
+   if(found.length===12)break;
+  }
+  return found;
  }
  function poeticVocableObservations(input){
   const doc=poeticEvidence;
@@ -1651,9 +1785,11 @@ function create(dictionary,paradigms,morphology,researchExamples,locative,gramma
   if(owner)morphologyMemo=new Map();
   try{
    const result=analyzeInput(input,allowPartialRecovery);
-   if(result&&typeof result==='object'&&!Array.isArray(result))
+   if(result&&typeof result==='object'&&!Array.isArray(result)){
     result.poeticVocableObservations=poeticVocableObservations(input);
-     result.attestedAyacObservations=attestedAyacObservations(input);
+    result.attestedAyacObservations=attestedAyacObservations(input);
+    result.negativeIndefinitePairObservations=negativeIndefinitePairObservations(input);
+   }
    return result;
   }
   finally{if(owner)morphologyMemo=null;}

@@ -66,6 +66,8 @@ on:
       - 'tools/diagnose_historical_sentences.js'
       - 'tools/test_historical_sentence_diagnostics.js'
       - 'tools/test_attested_ayac_contexts.js'
+      - 'tools/test_negative_indefinite_pair.js'
+      - 'tools/test_itoa_speech_morphology.js'
       - 'data/passages.json'
       - '.github/workflows/translator-regressions.yml'
       - 'tools/test_translator_workflow_integrity.py'
@@ -134,6 +136,8 @@ on:
       - 'tools/diagnose_historical_sentences.js'
       - 'tools/test_historical_sentence_diagnostics.js'
       - 'tools/test_attested_ayac_contexts.js'
+      - 'tools/test_negative_indefinite_pair.js'
+      - 'tools/test_itoa_speech_morphology.js'
       - 'data/passages.json'
       - '.github/workflows/translator-regressions.yml'
       - 'tools/test_translator_workflow_integrity.py'
@@ -242,5 +246,9 @@ jobs:
         run: node --check tools/diagnose_historical_sentences.js && node tools/test_historical_sentence_diagnostics.js && node tools/diagnose_historical_sentences.js
       - name: Two independent historical ayac construction witnesses and English abstention
         run: node tools/test_attested_ayac_contexts.js
+      - name: Source-licensed negative-indefinite structural grammar and refusal cases
+        run: node tools/test_negative_indefinite_pair.js
+      - name: Original quitoz and oquito speech morphology-shape source gates
+        run: node tools/test_itoa_speech_morphology.js
       - name: Productive predicate English integration and evidence negative controls
         run: node tools/test_productive_predicate_english.js

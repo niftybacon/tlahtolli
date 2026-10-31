@@ -92,7 +92,8 @@ function analyzeText(input,models){
  const structured=graphAlt>0||proposals.some(x=>Object.keys(x).length>0);
  const finiteCandidates=clauses.reduce((n,c)=>n+truthyList(c.candidates).length,0);
  const status=wording.available?'english-draft-unverified':
-  (structured||truthyList(syntax.attestedAyacObservations).length>0)?'structural-proposals-no-english':
+  (structured||truthyList(syntax.attestedAyacObservations).length>0||
+   truthyList(syntax.negativeIndefinitePairObservations).length>0)?'structural-proposals-no-english':
   unknown.length===0?'lexical-headwords-covered-no-composition':
   'lexical-headword-gaps-and-no-composition';
  return {tokenCount:tokens.length,headwordMatched:tokens.length-unknown.length,
@@ -102,8 +103,10 @@ function analyzeText(input,models){
   grammarAlternatives:graphAlt,grammarNodes:truthyList(graph.nodes).length,
   sourceLinkedSongVocableObservations:truthyList(syntax.poeticVocableObservations).length,
   sourceLinkedAyacContexts:truthyList(syntax.attestedAyacObservations).length,
+  grammaticalNegativeIndefinitePairs:truthyList(syntax.negativeIndefinitePairObservations).length,
   grammarIRSongVocableNodes:truthyList(graph.nodes).filter(n=>n.kind==='poetic-vocable-context').length,
   grammarIRAyacContexts:truthyList(graph.nodes).filter(n=>n.kind==='attested-ayac-speech-context').length,
+  grammarIRNegativeIndefinitePairs:truthyList(graph.nodes).filter(n=>n.kind==='negative-indefinite-pair-candidate').length,
   proposalCounts:proposals,englishDraftAvailable:wording.available===true,
   // Diagnostic illustration ONLY: never compare automatically with an editorial reference.
   englishDraft:wording.available?models.english.render(wording):null,

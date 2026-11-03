@@ -33,7 +33,8 @@ with sync_playwright() as pw:
         ("zan",1),("çan",1),("zan tontemiqui",1),
         ("zan ye in cuicatlin",1),("amo tlatla, zan quintocaya",1),
         ("zan ye no",1),("zan ye nō",1),
-        ("zan in xochitl, zan in cuicatl",2)
+        ("zan in xochitl, zan in cuicatl",2),
+        ("zan ye yatl chichixhuiya no zan ye tlaqualli chichixaya",2)
     ]:
         panel=run(word)
         assert panel.count()==1,word
@@ -49,6 +50,10 @@ with sync_playwright() as pw:
             assert "Published Brinton English: \"the only songs\"" in contents
         if word=="zan tontemiqui":
             assert "Published Brinton English: \"we only dream\"" in contents
+        if word=="zan ye yatl chichixhuiya no zan ye tlaqualli chichixaya":
+            assert contents.count("Documented expression zan ye")==2
+            assert "Published Brinton English:" not in contents
+            assert "likewise / the same" not in contents
         if word.startswith("zan ye no") or word=="zan ye nō":
             assert "likewise / the same" in contents and "Documented expression" in contents
     for text in ["zanio","zanye","za","zān","san","zancuel","zan-ye","yehua"]:

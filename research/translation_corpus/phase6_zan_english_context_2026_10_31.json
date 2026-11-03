@@ -129,5 +129,37 @@
     "english": "they were not burning them, but they were burying them",
     "locator": "ODN zan, Haskett and Wood notes from Lockhart sessions; an explanatory example, NOT a newly reviewed historical Brinton stanza",
     "verified_complete_historical_translation": false
+  },
+  "contextual_review_case_xiii_09": {
+    "source": "Brinton 1890 Song XIII stanza 9; same edited research-exposed collection (not independent Gold)",
+    "source_url": "https://www.gutenberg.org/files/12219/12219-h/12219-h.htm",
+    "exact_original_short_span": "zan ye yatl chichixhuiya no zan ye tlaqualli chichixaya",
+    "printed_english_excerpt": "and then their water shall be made bitter and their food shall be made bitter",
+    "published_translation_kind": "stanza-level editorial rendering, not independent token-wise English alignment",
+    "project_director_position": "Apply the same dictionary-attested zan ye alternatives to both repetitions; Brinton not printing 'but' is not sufficient reason to reclassify the phrase.",
+    "contextual_observation": "Repeated zan ye frames parallel descriptions of water and food with intervening no; additive or emphatic interpretation is plausible, not established.",
+    "separate_no_evidence": {
+      "source_url": "https://nahuatl.wired-humanities.org/node/172507",
+      "locator": "Molina 1571 part II f.72v col.1 (no. tambien); Karttunen 1992 p.172 (nō, also). The unmarked original printed no is not an automatic vowel-length certification.",
+      "translation_options": [
+        "also",
+        "likewise",
+        "in addition"
+      ]
+    },
+    "intensified_zan_ye_comparison": {
+      "source_url": "https://gdn.iib.unam.mx/diccionario/zan/181482",
+      "locator": "Clavijero (1780) indexed by UNAM Gran Diccionario Nahuatl; original Spanish says adding ye to zan strengthens its force",
+      "hypothesis": "An emphatic/restrictive source reading may suit parallel bitter-water and bitter-food predicates; later Clavijero is a lexicographic comparison, not an independent Brinton line translation"
+    },
+    "lexical_policy": {
+      "two_exact_zan_ye_occurrences_keep_both_dictionary_options": true,
+      "no_global_adversative_default": true,
+      "no_hardcoded_only_or_temporal_for_xiii9": true,
+      "no_automatic_contextual_english_assignment": true,
+      "no_new_english_sentence_or_source_word_deletion": true,
+      "no_automatic_zan_ye_no_long_cluster_across_intervening_words": true
+    },
+    "reviewer_status": "project-director source interpretation recorded; alternatives retained; no independently certified grammatical function or whole-line bilingual translation"
   }
 }

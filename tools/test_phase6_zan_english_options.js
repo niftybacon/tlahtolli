@@ -59,23 +59,31 @@ assert.equal(reviewed.separate_no_evidence.source_url,'https://nahuatl.wired-hum
 assert.equal(reviewed.intensified_zan_ye_comparison.source_url,'https://gdn.iib.unam.mx/diccionario/zan/181482');
 for(const text of [xiiishort,xiii]){
  const hits=model.sourceZanReadings(text),parsed=model.analyze(text);
- assert.equal(hits.length,2,'Original contains two independent zan tokens');
- assert.equal(parsed.sourceZanReadings.length,2);
+ // The quoted water/food unit has TWO zan ye; the full stanza has a THIRD
+ // later original zan in "zan con aya chiuhqui". Do not delete that token.
+ const expected=text===xiiishort?2:3;
+ assert.equal(hits.length,expected,'Preserve every original zan, including later zan con');
+ assert.equal(parsed.sourceZanReadings.length,expected);
  assert.deepEqual(plain(parsed.stats),plain(base.analyze(text).stats));
- assert.equal(parsed.gloss.split('[only / just / merely | but / however]').length-1,2);
+ assert.equal(parsed.gloss.split('[only / just / merely | but / however]').length-1,expected);
  for(const [i,reading] of hits.entries()){
   assert.deepEqual(Array.from(reading.options,o=>o.english),
-    ['only / just / merely','but / however'],'Neither XIII.9 instance has a forced English winner');
-  assert.equal(reading.documentedPhrase?.english,'but / however / yet',
-    'Both independently retain Molina phrase alternative');
-  assert.equal(reading.documentedPhrase?.wordCount,2,
-    'No false three-word zan ye no cluster across water, bitter or food');
+    ['only / just / merely','but / however'],'No XIII.9 source token has a forced English winner');
+  if(i<2){
+   assert.equal(reading.documentedPhrase?.english,'but / however / yet',
+     'Both zan ye expressions independently retain the Molina phrase alternative');
+   assert.equal(reading.documentedPhrase?.wordCount,2,
+     'No false three-word zan ye no cluster across water, bitter or food');
+  }else{
+   assert.equal(reading.written.toLowerCase(),'zan');
+   assert.equal(reading.documentedPhrase,null,'The later zan con does not inherit zan ye');
+  }
   assert.equal(reading.editorialReading,null,
-    'Brinton omitted "but" in XIII.9; omission does not force a new word meaning');
+    'Brinton omitted "but" in XIII.9; omission does not force a new meaning');
   assert.equal(reading.selectedEnglish,null);
   assert.equal(reading.scope,null);
   assert.equal(reading.verifiedTranslation,false);
-  assert(i===0?reading.wordIndex<hits[1].wordIndex:true);
+  if(i===0)assert(reading.wordIndex<hits[1].wordIndex);
  }
 }
 

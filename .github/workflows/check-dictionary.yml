@@ -7,7 +7,9 @@ permissions:
   contents: read
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    # Playwright 1.57 chromium-headless-shell does not support Ubuntu 26.04,
+    # which the hosted ubuntu-latest runner currently resolves to.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

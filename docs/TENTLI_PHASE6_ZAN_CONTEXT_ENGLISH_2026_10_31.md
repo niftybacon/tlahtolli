@@ -24,6 +24,8 @@ Actual published editorial contrasts within [Brinton's 1890 poetry](https://www.
 
 ## November 2 director review — Brinton XIII.9: do **not** hard-code a new English meaning
 
+The entire stanza also contains a **third** independent `zan` in `zan con aya chiuhqui` after the quoted water-and-food comparison. That later token keeps ordinary lexical choices but **does not** inherit the two earlier `zan ye` phrase analyses; source-word conservation must retain all three. 
+
 The source-exact original excerpt in [Brinton 1890, Song XIII stanza 9](https://www.gutenberg.org/files/12219/12219-h/12219-h.htm) has **two independent** `zan ye` occurrences:
 
 > `zan ye yatl chichixhuiya no zan ye tlaqualli chichixaya`

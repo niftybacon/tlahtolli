@@ -46,6 +46,39 @@ assert.equal(ed('zan ye in cuicatlin').source,'https://www.gutenberg.org/files/1
 assert.equal(ed('zan ye'),null,'Dictionary adversative cannot trump Brinton only songs');
 assert.equal(ed('zan ye no'),null);
 assert.equal(ed('amo tlatla, zan quintocaya'),null,'ODN cited semantic example is not Brinton stanza');
+
+// Brinton XIII.9 deliberately must NOT be a special-cased translation.
+const xiii='In antocnihuan ma xachocacan aya ma xaconmatican ica ye ticcauhque Mexicayotl huiya, zan ye yatl chichixhuiya no zan ye tlaqualli chichixaya zan con aya chiuhqui in ipalnemoani ha in Tlatilolco y, ohuaya';
+const xiiishort='zan ye yatl chichixhuiya no zan ye tlaqualli chichixaya';
+const reviewed=pack.contextual_review_case_xiii_09;
+assert.equal(reviewed.exact_original_short_span,xiiishort);
+assert.match(reviewed.project_director_position,/same dictionary-attested zan ye alternatives/);
+assert.equal(reviewed.lexical_policy.two_exact_zan_ye_occurrences_keep_both_dictionary_options,true);
+assert.equal(reviewed.lexical_policy.no_new_english_sentence_or_source_word_deletion,true);
+assert.equal(reviewed.separate_no_evidence.source_url,'https://nahuatl.wired-humanities.org/node/172507');
+assert.equal(reviewed.intensified_zan_ye_comparison.source_url,'https://gdn.iib.unam.mx/diccionario/zan/181482');
+for(const text of [xiiishort,xiii]){
+ const hits=model.sourceZanReadings(text),parsed=model.analyze(text);
+ assert.equal(hits.length,2,'Original contains two independent zan tokens');
+ assert.equal(parsed.sourceZanReadings.length,2);
+ assert.deepEqual(plain(parsed.stats),plain(base.analyze(text).stats));
+ assert.equal(parsed.gloss.split('[only / just / merely | but / however]').length-1,2);
+ for(const [i,reading] of hits.entries()){
+  assert.deepEqual(Array.from(reading.options,o=>o.english),
+    ['only / just / merely','but / however'],'Neither XIII.9 instance has a forced English winner');
+  assert.equal(reading.documentedPhrase?.english,'but / however / yet',
+    'Both independently retain Molina phrase alternative');
+  assert.equal(reading.documentedPhrase?.wordCount,2,
+    'No false three-word zan ye no cluster across water, bitter or food');
+  assert.equal(reading.editorialReading,null,
+    'Brinton omitted "but" in XIII.9; omission does not force a new word meaning');
+  assert.equal(reading.selectedEnglish,null);
+  assert.equal(reading.scope,null);
+  assert.equal(reading.verifiedTranslation,false);
+  assert(i===0?reading.wordIndex<hits[1].wordIndex:true);
+ }
+}
+
 for(const t of ['zanio','zaniyo','zanye','zān','sān','san','za','ça','zancuel','zancuelachitzincan',
   'zanzan','zazan','nazan','zan123','2zan','çanio','çan-ye','zan ye nozan']){
  const vals=model.sourceZanReadings(t);
